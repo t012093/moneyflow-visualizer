@@ -20,6 +20,28 @@ const YEARS = unifiedData.metadata?.fiscal_years?.length
   : [2021, 2022, 2023, 2024, 2025];
 const DEFAULT_YEAR = unifiedData.metadata?.latestFiscalYear || YEARS[YEARS.length - 1];
 
+const getInitialYear = () => {
+  const params = new URLSearchParams(window.location.search);
+  const requestedYear = Number(params.get('year'));
+  if (Number.isFinite(requestedYear) && YEARS.includes(requestedYear)) {
+    return requestedYear;
+  }
+  return DEFAULT_YEAR;
+};
+
+const getInitialViewMode = (): '3D' | '2D' | 'Budget' => {
+  const params = new URLSearchParams(window.location.search);
+  const requestedView = (params.get('view') || '').toLowerCase();
+
+  if (requestedView === '2d' || requestedView === 'flow') {
+    return '2D';
+  }
+  if (requestedView === 'budget' || requestedView === 'report') {
+    return 'Budget';
+  }
+  return '3D';
+};
+
 export const GLOBAL_NODES = unifiedData.nodes;
 
 // Group edges by year for the timeline playback
@@ -31,9 +53,9 @@ unifiedData.edges.forEach((edge: Edge) => {
 
 function App() {
   const [dimensions, setDimensions] = useState({ width: window.innerWidth, height: window.innerHeight });
-  const [currentYear, setCurrentYear] = useState(DEFAULT_YEAR);
+  const [currentYear, setCurrentYear] = useState(getInitialYear);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [viewMode, setViewMode] = useState<'3D' | '2D' | 'Budget'>('3D');
+  const [viewMode, setViewMode] = useState<'3D' | '2D' | 'Budget'>(getInitialViewMode);
   
   const [activeCategories, setActiveCategories] = useState<string[]>(['trade', 'banking', 'bop', 'remittance', 'crypto', 'welfare', 'services', 'technology', 'education', 'infrastructure', 'tax']);
   const [confidenceThreshold, setConfidenceThreshold] = useState<number>(0.7);

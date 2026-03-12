@@ -1,10 +1,53 @@
 # Global Money Flow
 
-SQLite と MCP を使って、日本の予算文書や関連資料をクロールし、ローカル embedding で検索できるようにしたリポジトリです。
+日本の予算文書、政策 PDF、関連データを `RAG + フロー可視化 + 予算ページ` で横断的に扱うアプリです。文書をローカル embedding で検索しつつ、構造化した `source -> target -> amount` のフローを `3D / 2D / 予算ページ` で見られます。
 
-利用者向けの使い分けは [`docs/app_usage_guide.md`](/Volumes/space/お金の流れ/global-money-flow/docs/app_usage_guide.md) を参照してください。RAG、2D/3D フロー、予算ページの違いと、どこまでが自動でどこからが構造化作業かを整理しています。
+## 何ができるか
+
+- `RAG`: PDF / HTML / CSV / Excel を取り込み、引用付きで回答する
+- `2D 解析フロー`: 特定主体の入出金と出典 PDF を見る
+- `3D グローブ`: 年度ごとの大きな資金移動を俯瞰する
+- `予算ページ`: 総額、増要因、政策枠、主要事業を一覧で読む
+- `trusted ingest`: 信頼ドメインだけ自動 discovery / review / ingest / eval する
+
+## 画面イメージ
+
+### 2D 解析フロー
+
+![2D flow screenshot](docs/screenshots/flow-2d-cfa.png)
+
+### 予算ページ
+
+![Budget page screenshot](docs/screenshots/budget-page-cfa.png)
+
+## 画面の使い分け
+
+| 画面 | 向いている用途 |
+| --- | --- |
+| `3D グローブ` | 年度ごとの大きな資金移動を俯瞰したい |
+| `2D 解析フロー` | 特定主体の入出金、hover の PDF 出典、ページ番号を追いたい |
+| `予算ページ` | 省庁ごとの総額、増要因、政策枠、主要事業を読みたい |
+| `RAG / MCP` | 文書群から引用付きで質問回答したい |
+
+使い分けの詳細は [`docs/app_usage_guide.md`](/Volumes/space/お金の流れ/global-money-flow/docs/app_usage_guide.md) を参照してください。`RAG` と `フローDB` の違い、`公式PDF` と `推計配分` の見分け方、reviewed workflow の使い方を整理しています。
 
 MEXT のように official PDF から主要事業 edge を半自動で作る workflow は [`scripts/reviewed_budget_candidates/mext_r7_major_projects.json`](/Volumes/space/お金の流れ/global-money-flow/scripts/reviewed_budget_candidates/mext_r7_major_projects.json)、[`scripts/build_reviewed_budget_dataset.py`](/Volumes/space/お金の流れ/global-money-flow/scripts/build_reviewed_budget_dataset.py)、[`scripts/fetch_mext_budget.py`](/Volumes/space/お金の流れ/global-money-flow/scripts/fetch_mext_budget.py) にあります。Codex 用の運用手順は [`SKILL.md`](/Volumes/space/お金の流れ/global-money-flow/.codex/skills/ministry-budget-flow/SKILL.md) に切り出しました。
+
+近い実装予定は [`docs/roadmap.md`](/Volumes/space/お金の流れ/global-money-flow/docs/roadmap.md) にまとめています。
+
+## 最短セットアップ
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r scripts/requirements.txt
+cp .env.example .env
+ollama pull qwen2.5:3b
+python3 scripts/seed_db.py
+npm run build
+```
+
+`.env` の `EMBEDDING_MODEL_PATH` は自分のモデル配置先に合わせてください。
 
 ## Local RAG
 

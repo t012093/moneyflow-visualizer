@@ -1,0 +1,36 @@
+name: Feature request
+description: Track a new budget workflow, provenance improvement, or UI enhancement.
+title: "[Feature] "
+labels:
+  - enhancement
+body:
+  - type: textarea
+    id: background
+    attributes:
+      label: Background
+      description: What problem are you trying to solve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+      description: Describe the feature or workflow you want to add.
+    validations:
+      required: true
+  - type: textarea
+    id: data_sources
+    attributes:
+      label: Source documents or datasets
+      description: List official PDFs, pages, datasets, or trusted domains involved.
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: What should be true when this is done?
+      placeholder: |
+        - 2D flow shows new REC_* edges
+        - source_provenance has official PDF and page number
+        - budget page reflects the new highlights
+    validations:
+      required: true
