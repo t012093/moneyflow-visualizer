@@ -152,13 +152,16 @@ python3 scripts/build_reviewed_budget_dataset.py \
   --input scripts/reviewed_budget_candidates/mlit_r6_major_programs.json \
   --output src/data/mlit_budget_2024_data.json
 python3 scripts/build_reviewed_budget_dataset.py \
+  --input scripts/reviewed_budget_candidates/meti_r6_major_programs.json \
+  --output src/data/meti_budget_2024_data.json
+python3 scripts/build_reviewed_budget_dataset.py \
   --input scripts/reviewed_budget_candidates/meti_r7_major_programs.json \
   --output src/data/meti_budget_data.json
 python3 scripts/seed_db.py
 npm run build
 ```
 
-MEXT / MHLW の FY2023-FY2025、MLIT の FY2023-FY2024、METI の FY2025 主要事業はこの workflow で `REC_*` edge と `budget_highlights` に入っています。
+MEXT / MHLW の FY2022-FY2025、MLIT の FY2022-FY2024、METI の FY2024-FY2025 主要事業はこの workflow で `REC_*` edge と `budget_highlights` に入っています。
 
 review 前のたたき台を RAG から作るときは以下を使います。
 

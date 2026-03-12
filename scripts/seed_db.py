@@ -27,13 +27,17 @@ DATASETS = [
     {"file": "mof_data.json",   "dataset": "mof_data",   "label": "National Treasury (MOF General Account)"},
     {"file": "ministries_data.json", "dataset": "ministries_data", "label": "Ministries (1府11省庁)"},
     {"file": "mext_budget_data.json", "dataset": "mext_budget_data", "label": "MEXT Major Budget Projects"},
+    {"file": "mext_budget_2022_data.json", "dataset": "mext_budget_2022_data", "label": "MEXT FY2022 Major Budget Projects"},
     {"file": "mext_budget_2023_data.json", "dataset": "mext_budget_2023_data", "label": "MEXT FY2023 Major Budget Projects"},
     {"file": "mext_budget_2024_data.json", "dataset": "mext_budget_2024_data", "label": "MEXT FY2024 Major Budget Projects"},
     {"file": "mhlw_budget_data.json", "dataset": "mhlw_budget_data", "label": "MHLW Major Budget Programs"},
+    {"file": "mhlw_budget_2022_data.json", "dataset": "mhlw_budget_2022_data", "label": "MHLW FY2022 Major Budget Programs"},
     {"file": "mhlw_budget_2023_data.json", "dataset": "mhlw_budget_2023_data", "label": "MHLW FY2023 Major Budget Programs"},
     {"file": "mhlw_budget_2024_data.json", "dataset": "mhlw_budget_2024_data", "label": "MHLW FY2024 Major Budget Programs"},
+    {"file": "mlit_budget_2022_data.json", "dataset": "mlit_budget_2022_data", "label": "MLIT FY2022 Major Budget Programs"},
     {"file": "mlit_budget_2023_data.json", "dataset": "mlit_budget_2023_data", "label": "MLIT FY2023 Major Budget Programs"},
     {"file": "mlit_budget_2024_data.json", "dataset": "mlit_budget_2024_data", "label": "MLIT FY2024 Major Budget Programs"},
+    {"file": "meti_budget_2024_data.json", "dataset": "meti_budget_2024_data", "label": "METI FY2024 Major Budget Programs"},
     {"file": "meti_budget_data.json", "dataset": "meti_budget_data", "label": "METI FY2025 Major Budget Programs"},
     {"file": "toyama_data.json", "dataset": "toyama_data", "label": "Toyama Prefecture (Local Gov)"},
     {"file": "mhlw_data.json",  "dataset": "mhlw_data",  "label": "Social Security (MHLW/CFA)"},
@@ -54,14 +58,18 @@ DATASET_TO_SOURCE_ID = {
     "財務省一般会計": "mof_budget",
     "財務省 一般会計（所管別）": "mof_budget",
     "省庁別主要経費推計": "mof_budget",
+    "文部科学省 令和4年度予算のポイント": "mext_budget",
     "文部科学省 令和5年度予算のポイント": "mext_budget",
     "文部科学省 令和6年度予算のポイント": "mext_budget",
     "文部科学省 令和7年度予算のポイント": "mext_budget",
+    "厚生労働省 令和4年度予算案の概要": "mhlw_budget",
     "厚生労働省 令和5年度予算案の概要": "mhlw_budget",
     "厚生労働省 令和6年度予算案の概要": "mhlw_budget",
     "厚生労働省 令和7年度予算案の概要": "mhlw_budget",
+    "国土交通省 令和4年度予算概要": "mlit_budget",
     "国土交通省 令和5年度予算概要": "mlit_budget",
     "国土交通省 令和6年度予算概要": "mlit_budget",
+    "経済産業省関係 令和5年度補正予算・令和6年度当初予算の概要": "meti_budget",
     "経済産業省 2025年度経済産業政策の重点": "meti_budget",
     # Social security
     "参議院予算委員会調査室 R6": "sangiin_social_security",
@@ -190,6 +198,10 @@ SOURCE_TITLE_HINTS = [
         "令和6年度一般会計歳出概算所管別内訳",
     ),
     (
+        "20211223-mxt_kouhou02-000017672_1.pdf",
+        "文部科学省 令和4年度予算のポイント",
+    ),
+    (
         "20230328-mxt_kouhou01-000024735_1.pdf",
         "文部科学省 令和5年度予算のポイント",
     ),
@@ -200,6 +212,10 @@ SOURCE_TITLE_HINTS = [
     (
         "20240326-ope_dev03-000031627-1.pdf",
         "文部科学省 令和6年度予算のポイント",
+    ),
+    (
+        "000908162.pdf",
+        "厚生労働省 令和4年度予算案の概要",
     ),
     (
         "23syokanyosan/dl/01-01.pdf",
@@ -214,12 +230,20 @@ SOURCE_TITLE_HINTS = [
         "厚生労働省 令和7年度予算案の概要",
     ),
     (
+        "001460097.pdf",
+        "国土交通省 令和4年度予算概要",
+    ),
+    (
         "001588099.pdf",
         "国土交通省 令和5年度予算概要",
     ),
     (
         "001720593.pdf",
         "国土交通省 令和6年度予算概要",
+    ),
+    (
+        "yosan_fy2024/pdf/01.pdf",
+        "経済産業省関係 令和5年度補正予算・令和6年度当初予算の概要",
     ),
     (
         "fy2025/pr/enj/siryo/01.pdf",

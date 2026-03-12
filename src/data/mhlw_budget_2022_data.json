@@ -1,0 +1,237 @@
+{
+  "nodes": [
+    {
+      "id": "MIN_MHLW",
+      "name": "厚生労働省 (MHLW)",
+      "lat": 35.6749,
+      "lng": 139.7514,
+      "region": "Ministry",
+      "type": "ministry"
+    },
+    {
+      "id": "REC_MHLW_PENSION",
+      "name": "年金",
+      "lat": 35.6756,
+      "lng": 139.7523,
+      "region": "Welfare",
+      "type": "recipient"
+    },
+    {
+      "id": "REC_MHLW_MEDICAL",
+      "name": "医療",
+      "lat": 35.6742,
+      "lng": 139.7531,
+      "region": "Welfare",
+      "type": "recipient"
+    },
+    {
+      "id": "REC_MHLW_CARE",
+      "name": "介護",
+      "lat": 35.6738,
+      "lng": 139.7502,
+      "region": "Welfare",
+      "type": "recipient"
+    },
+    {
+      "id": "REC_MHLW_WELFARE_ETC",
+      "name": "福祉等",
+      "lat": 35.6761,
+      "lng": 139.7494,
+      "region": "Welfare",
+      "type": "recipient"
+    },
+    {
+      "id": "REC_MHLW_EMPLOYMENT",
+      "name": "雇用",
+      "lat": 35.6768,
+      "lng": 139.7516,
+      "region": "Labor",
+      "type": "recipient"
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "MIN_MHLW",
+      "target_id": "REC_MHLW_PENSION",
+      "category": "welfare",
+      "sub_category": "社会保障関係費 / 年金",
+      "value_usd": 84571333333.33334,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "厚生労働省 令和4年度予算案の概要",
+      "description": "社会保障関係費のうち年金給付に充てる主要枠。",
+      "source_title": "厚生労働省 令和4年度予算案の概要",
+      "source_url": "https://www.mhlw.go.jp/content/12602000/000908162.pdf#page=5&search=%E5%B9%B4%E9%87%91",
+      "page_number": 5
+    },
+    {
+      "source_id": "MIN_MHLW",
+      "target_id": "REC_MHLW_MEDICAL",
+      "category": "welfare",
+      "sub_category": "社会保障関係費 / 医療",
+      "value_usd": 81268666666.66667,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "厚生労働省 令和4年度予算案の概要",
+      "description": "医療保険制度や医療費国庫負担を支える主要枠。",
+      "source_title": "厚生労働省 令和4年度予算案の概要",
+      "source_url": "https://www.mhlw.go.jp/content/12602000/000908162.pdf#page=5&search=%E5%8C%BB%E7%99%82",
+      "page_number": 5
+    },
+    {
+      "source_id": "MIN_MHLW",
+      "target_id": "REC_MHLW_CARE",
+      "category": "welfare",
+      "sub_category": "社会保障関係費 / 介護",
+      "value_usd": 24002000000.0,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "厚生労働省 令和4年度予算案の概要",
+      "description": "介護保険や地域包括ケアを含む介護関連の主要枠。",
+      "source_title": "厚生労働省 令和4年度予算案の概要",
+      "source_url": "https://www.mhlw.go.jp/content/12602000/000908162.pdf#page=5&search=%E4%BB%8B%E8%AD%B7",
+      "page_number": 5
+    },
+    {
+      "source_id": "MIN_MHLW",
+      "target_id": "REC_MHLW_WELFARE_ETC",
+      "category": "welfare",
+      "sub_category": "社会保障関係費 / 福祉等",
+      "value_usd": 30816000000.000004,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "厚生労働省 令和4年度予算案の概要",
+      "description": "生活保護、障害福祉、子育て支援などを含む福祉枠。",
+      "source_title": "厚生労働省 令和4年度予算案の概要",
+      "source_url": "https://www.mhlw.go.jp/content/12602000/000908162.pdf#page=5&search=%E7%A6%8F%E7%A5%89%E7%AD%89",
+      "page_number": 5
+    },
+    {
+      "source_id": "MIN_MHLW",
+      "target_id": "REC_MHLW_EMPLOYMENT",
+      "category": "services",
+      "sub_category": "社会保障関係費 / 雇用",
+      "value_usd": 564666666.6666667,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "厚生労働省 令和4年度予算案の概要",
+      "description": "賃上げ支援や再就職支援を含む雇用関連の主要枠。",
+      "source_title": "厚生労働省 令和4年度予算案の概要",
+      "source_url": "https://www.mhlw.go.jp/content/12602000/000908162.pdf#page=5&search=%E9%9B%87%E7%94%A8",
+      "page_number": 5
+    }
+  ],
+  "budget_highlights": [
+    {
+      "entity_id": "MIN_MHLW",
+      "fiscal_year": 2022,
+      "section_key": "overview",
+      "title": "令和4年度厚生労働省一般会計予算",
+      "amount_text": "33兆5,160億円",
+      "amount_oku_yen": 335160,
+      "summary": "一般会計ベースの総額。対前年度 3,781億円増、1.1%増。",
+      "source_title": "厚生労働省 令和4年度予算案の概要",
+      "source_url": "https://www.mhlw.go.jp/content/12602000/000908162.pdf#page=4&search=%E4%B8%80%E8%88%AC%E4%BC%9A%E8%A8%88",
+      "page_number": 4,
+      "display_order": 10
+    },
+    {
+      "entity_id": "MIN_MHLW",
+      "fiscal_year": 2022,
+      "section_key": "increase_driver",
+      "title": "福祉等",
+      "amount_text": "+1,326億円",
+      "amount_oku_yen": 1326,
+      "summary": "社会保障関係費の中で大きい増要因の一つ。",
+      "source_title": "厚生労働省 令和4年度予算案の概要",
+      "source_url": "https://www.mhlw.go.jp/content/12602000/000908162.pdf#page=5&search=%E7%A6%8F%E7%A5%89%E7%AD%89",
+      "page_number": 5,
+      "display_order": 20
+    },
+    {
+      "entity_id": "MIN_MHLW",
+      "fiscal_year": 2022,
+      "section_key": "increase_driver",
+      "title": "介護",
+      "amount_text": "+1,141億円",
+      "amount_oku_yen": 1141,
+      "summary": "介護保険・介護基盤整備を中心とした増額分。",
+      "source_title": "厚生労働省 令和4年度予算案の概要",
+      "source_url": "https://www.mhlw.go.jp/content/12602000/000908162.pdf#page=5&search=%E4%BB%8B%E8%AD%B7",
+      "page_number": 5,
+      "display_order": 30
+    },
+    {
+      "entity_id": "MIN_MHLW",
+      "fiscal_year": 2022,
+      "section_key": "increase_driver",
+      "title": "医療",
+      "amount_text": "+1,104億円",
+      "amount_oku_yen": 1104,
+      "summary": "医療保険制度や国庫負担に伴う増額分。",
+      "source_title": "厚生労働省 令和4年度予算案の概要",
+      "source_url": "https://www.mhlw.go.jp/content/12602000/000908162.pdf#page=5&search=%E5%8C%BB%E7%99%82",
+      "page_number": 5,
+      "display_order": 40
+    },
+    {
+      "entity_id": "MIN_MHLW",
+      "fiscal_year": 2022,
+      "section_key": "policy_frame",
+      "title": "社会保障関係費",
+      "amount_text": "33兆1,833億円",
+      "amount_oku_yen": 331833,
+      "summary": "厚生労働省一般会計の中心を占める政策枠。",
+      "source_title": "厚生労働省 令和4年度予算案の概要",
+      "source_url": "https://www.mhlw.go.jp/content/12602000/000908162.pdf#page=4&search=%E7%A4%BE%E4%BC%9A%E4%BF%9D%E9%9A%9C%E9%96%A2%E4%BF%82%E8%B2%BB",
+      "page_number": 4,
+      "display_order": 50
+    },
+    {
+      "entity_id": "MIN_MHLW",
+      "fiscal_year": 2022,
+      "section_key": "individual_project",
+      "title": "看護、介護、保育など現場で働く方々の収入の引上げ",
+      "amount_text": "395億円",
+      "amount_oku_yen": 395,
+      "summary": "看護、介護、保育現場の処遇改善を支える施策。",
+      "source_title": "厚生労働省 令和4年度予算案の概要",
+      "source_url": "https://www.mhlw.go.jp/content/12602000/000908162.pdf#page=10&search=%E5%8F%8E%E5%85%A5%E3%81%AE%E5%BC%95%E4%B8%8A%E3%81%92",
+      "page_number": 10,
+      "display_order": 60
+    },
+    {
+      "entity_id": "MIN_MHLW",
+      "fiscal_year": 2022,
+      "section_key": "individual_project",
+      "title": "総合的な子育て支援",
+      "amount_text": "969億円",
+      "amount_oku_yen": 969,
+      "summary": "保育の受け皿整備や保育人材確保を含む総合的な子育て支援。",
+      "source_title": "厚生労働省 令和4年度予算案の概要",
+      "source_url": "https://www.mhlw.go.jp/content/12602000/000908162.pdf#page=11&search=%E7%B7%8F%E5%90%88%E7%9A%84%E3%81%AA%E5%AD%90%E8%82%B2%E3%81%A6%E6%94%AF%E6%8F%B4",
+      "page_number": 11,
+      "display_order": 70
+    },
+    {
+      "entity_id": "MIN_MHLW",
+      "fiscal_year": 2022,
+      "section_key": "individual_project",
+      "title": "重層的支援体制整備事業の実施",
+      "amount_text": "261億円",
+      "amount_oku_yen": 261,
+      "summary": "相談支援、参加支援、地域づくりを一体で進める重層的支援体制の整備。",
+      "source_title": "厚生労働省 令和4年度予算案の概要",
+      "source_url": "https://www.mhlw.go.jp/content/12602000/000908162.pdf#page=12&search=%E9%87%8D%E5%B1%A4%E7%9A%84%E6%94%AF%E6%8F%B4%E4%BD%93%E5%88%B6",
+      "page_number": 12,
+      "display_order": 80
+    }
+  ],
+  "metadata": {
+    "source": [
+      "厚生労働省 令和4年度予算案の概要"
+    ],
+    "generated_at": "2026-03-12T07:31:56.167754+00:00",
+    "scope": "MHLW FY2022 reviewed major budget programs"
+  }
+}
