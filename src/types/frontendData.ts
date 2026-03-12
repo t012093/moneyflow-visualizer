@@ -14,6 +14,51 @@ export interface BudgetHighlight {
   display_order: number;
 }
 
+export interface KnowledgeNoteSource {
+  source_title: string;
+  source_url: string;
+  source_kind?: string | null;
+  authority_level?: string | null;
+  display_order: number;
+}
+
+export interface KnowledgeNote {
+  entity_id: string;
+  fiscal_year: number;
+  note_key: string;
+  title: string;
+  summary?: string | null;
+  key_points?: string[];
+  body_markdown?: string | null;
+  doc_path?: string | null;
+  display_order: number;
+  sources: KnowledgeNoteSource[];
+}
+
+export interface StructuredFactSource {
+  source_title: string;
+  source_url: string;
+  source_kind?: string | null;
+  authority_level?: string | null;
+  display_order: number;
+}
+
+export interface StructuredFact {
+  entity_id: string;
+  fiscal_year: number;
+  fact_key: string;
+  fact_group?: string | null;
+  title: string;
+  value_text: string;
+  numeric_value?: number | null;
+  unit?: string | null;
+  summary?: string | null;
+  note_key?: string | null;
+  source_excerpt?: string | null;
+  display_order: number;
+  sources: StructuredFactSource[];
+}
+
 export interface AppMetadata {
   source: string;
   total_nodes: number;
@@ -22,6 +67,8 @@ export interface AppMetadata {
   latestFiscalYear?: number | null;
   featuredEntityId?: string | null;
   budgetHighlights?: BudgetHighlight[];
+  knowledgeNotes?: KnowledgeNote[];
+  structuredFacts?: StructuredFact[];
 }
 
 export interface UnifiedData {

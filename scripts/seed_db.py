@@ -12,13 +12,21 @@ import sqlite3
 import json
 import os
 import re
+from datetime import datetime, timedelta, timezone
 from typing import Any, Dict, Tuple
+from urllib.error import HTTPError, URLError
+from urllib.parse import urlsplit, urlunsplit
+from urllib.request import Request, urlopen
 
 from init_db import DATA_SOURCES
 
 DB_PATH = os.path.join(os.path.dirname(__file__), '../data/money_flow.db')
 DATA_DIR = os.path.join(os.path.dirname(__file__), '../src/data')
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 JPY_PER_USD = 150  # Approximate conversion rate
+VALIDATE_SOURCE_URLS = os.environ.get("VALIDATE_SOURCE_URLS", "true").lower() not in {"0", "false", "no"}
+SOURCE_VALIDATION_TIMEOUT_SECONDS = float(os.environ.get("SOURCE_VALIDATION_TIMEOUT_SECONDS", "8"))
+SOURCE_VALIDATION_TTL_HOURS = int(os.environ.get("SOURCE_VALIDATION_TTL_HOURS", "168"))
 
 # Dataset files to import (order matters for node dedup priority)
 DATASETS = [
@@ -97,11 +105,24 @@ DATASET_TO_SOURCE_ID = {
     "Retail Brokerage Est.": None,
 }
 
+SOURCE_URL_REWRITES = {
+    "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/b92baeee-5b6d-47be-b16f-ebf80a4eed28/3d37a505/20240401_councils_shingikai_kodomo_shien_05_02.pdf#page=12&search=15%2C246":
+        "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/5cbb6234/20241227_policies_budget_53.pdf#page=2&search=%E5%85%90%E7%AB%A5%E6%89%8B%E5%BD%93",
+    "https://www.mof.go.jp/public_relations/finance/202104/202104c.pdf":
+        "https://www.mof.go.jp/budget/budger_workflow/budget/fy2021/seifuan2021/14.pdf",
+    "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/seifuan2022/03.pdf":
+        "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/sy030118.html",
+    "https://www.mhlw.go.jp/toukei/saikin/hw/k-iryohi/":
+        "https://www.mhlw.go.jp/toukei/list/37-21a.html",
+    "https://www.mhlw.go.jp/toukei/saikin/hw/kaigo/kyufu/":
+        "https://www.mhlw.go.jp/toukei/list/45-1b.html",
+}
+
 CFA_PROVENANCE_HINTS = [
     {
         "match": "児童手当 (所得制限撤廃・多子加算)",
-        "source_title": "令和7年度こども家庭庁予算 事業別資料集",
-        "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/b92baeee-5b6d-47be-b16f-ebf80a4eed28/3d37a505/20240401_councils_shingikai_kodomo_shien_05_02.pdf#page=12&search=15%2C246",
+        "source_title": "令和7年度こども家庭庁予算案の概要",
+        "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/5cbb6234/20241227_policies_budget_53.pdf#page=2&search=%E5%85%90%E7%AB%A5%E6%89%8B%E5%BD%93",
     },
     {
         "match": "子どものための教育・保育給付等 (配置改善等)",
@@ -151,7 +172,7 @@ MINISTRY_BUDGET_PROVENANCE = {
     },
     2022: {
         "source_title": "令和4年度一般会計歳出概算所管別内訳",
-        "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/seifuan2022/03.pdf",
+        "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/sy030118.html",
     },
     2023: {
         "source_title": "令和5年度一般会計歳出概算所管別内訳",
@@ -436,6 +457,287 @@ BUDGET_HIGHLIGHTS = [
 ]
 
 
+KNOWLEDGE_NOTES = [
+    {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "note_key": "kodomo-daredemo-tsuen-official-flow",
+        "title": "乳児等通園支援事業の公式フロー",
+        "summary": "制度上の主な資金フローは、こども家庭庁から市町村を経て、確認を受けた実施施設・事業者へ流れる構造です。",
+        "key_points": [
+            "事業別資料集では、乳児等通園支援事業は <子ども・子育て支援交付金> の内数として整理されている。",
+            "実施主体は市町村で、市町村が認めた者への委託等が可能と明記されている。",
+            "想定事務フローでも、市町村が審査し、事業者に給付費を支払う構造が確認できる。",
+        ],
+        "doc_path": "docs/funding-knowledge/ministries/child-and-family-agency/KODOMO_DAREDEMO_TSUEN_FLOW_2025-2026.md",
+        "display_order": 10,
+        "sources": [
+            {
+                "title": "令和7年度こども家庭庁予算 事業別資料集",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=95",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+            {
+                "title": "こども誰でも通園制度 公式ページ",
+                "url": "https://www.cfa.go.jp/policies/hoiku/daredemo-tsuen",
+                "source_kind": "official_html",
+                "authority_level": "primary",
+            },
+            {
+                "title": "乳児等通園支援事業に関する想定事務フロー【第1版】",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/0afde15f-8760-4477-806a-ed72b6916696/43ec0455/20260114_policies_hoiku_daredemo-tsuen_54.pdf",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "note_key": "kodomo-daredemo-tsuen-municipal-implementation",
+        "title": "自治体別の実施状況と委託先",
+        "summary": "制度の受け皿は社会福祉法人、学校法人、公立、株式会社など多様で、自治体によっては制度運営事務を別途民間ベンダーへ委託しています。",
+        "key_points": [
+            "こども家庭庁の令和6年度実施状況では、2025年7月時点で 118自治体 / 757か所が確認できる。",
+            "神戸市、横浜市、静岡市、京都市で、実施施設や利用料の支払先に関する制度運用の違いが確認できる。",
+            "広島市では、保育の受け皿とは別に、管理運用業務を TOPPAN へ委託する公募結果が公表されている。",
+        ],
+        "doc_path": "docs/funding-knowledge/ministries/child-and-family-agency/KODOMO_DAREDEMO_TSUEN_MUNICIPAL_IMPLEMENTATION_2026-03-13.md",
+        "display_order": 20,
+        "sources": [
+            {
+                "title": "こども誰でも通園制度 令和6年度の実施状況",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/c53b2923-930e-4490-9ea6-02f1b02f04dc/e23e860d/20250717_councils_daredemotsuen-kentokai_5ao3a471_02.pdf",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+            {
+                "title": "神戸市 こども誰でも通園制度",
+                "url": "https://www.city.kobe.lg.jp/z/kodomokatekyoku/kosodateshien/daredemotuen.html",
+                "source_kind": "official_html",
+                "authority_level": "primary",
+            },
+            {
+                "title": "横浜市 こども誰でも通園制度（乳児等通園支援事業）について",
+                "url": "https://www.city.yokohama.lg.jp/kosodate-kyoiku/kosodateshien/azukari/daredemotsuuenn.html",
+                "source_kind": "official_html",
+                "authority_level": "primary",
+            },
+            {
+                "title": "静岡市 乳児等通園支援事業（こども誰でも通園制度）利用のご案内",
+                "url": "https://www.city.shizuoka.lg.jp/s4936/s012267.html",
+                "source_kind": "official_html",
+                "authority_level": "primary",
+            },
+            {
+                "title": "京都市 京都市乳児等通園支援事業（こども誰でも通園制度）実施要綱",
+                "url": "https://www.city.kyoto.lg.jp/hagukumi/page/0000340278.html",
+                "source_kind": "official_html",
+                "authority_level": "primary",
+            },
+            {
+                "title": "広島市 乳児等通園支援事業に係る管理運用業務",
+                "url": "https://www.city.hiroshima.lg.jp/business/nyusatsu/1006046/1006060/1046169/1046854.html",
+                "source_kind": "official_html",
+                "authority_level": "primary",
+            },
+            {
+                "title": "広島市 管理運用業務 審査結果",
+                "url": "https://www.city.hiroshima.lg.jp/_res/projects/default_project/_page_/001/046/854/20260212.pdf",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "note_key": "kodomo-daredemo-tsuen-municipal-comparison",
+        "title": "自治体比較表",
+        "summary": "神戸市、横浜市、静岡市、京都市、広島市を、実施規模、受け皿、利用料の支払先、行政運営委託の有無で比較した一覧です。",
+        "key_points": [
+            "全国概況として、2025年7月7日時点で 118自治体 / 757か所が確認できる。",
+            "静岡市は利用料の施設直接払いを明示し、京都市は要綱上で委託先施設への支弁を規定している。",
+            "広島市は制度運営の事務委託、神戸市・横浜市は実施施設の拡充・一覧公開の事例として対比できる。",
+        ],
+        "doc_path": "docs/funding-knowledge/ministries/child-and-family-agency/KODOMO_DAREDEMO_TSUEN_MUNICIPAL_COMPARISON_TABLE_2026-03-13.md",
+        "display_order": 30,
+        "sources": [
+            {
+                "title": "こども誰でも通園制度 令和6年度の実施状況",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/c53b2923-930e-4490-9ea6-02f1b02f04dc/e23e860d/20250717_councils_daredemotsuen-kentokai_5ao3a471_02.pdf",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+            {
+                "title": "神戸市 こども誰でも通園制度",
+                "url": "https://www.city.kobe.lg.jp/z/kodomokatekyoku/kosodateshien/daredemotuen.html",
+                "source_kind": "official_html",
+                "authority_level": "primary",
+            },
+            {
+                "title": "横浜市 こども誰でも通園制度（乳児等通園支援事業）について",
+                "url": "https://www.city.yokohama.lg.jp/kosodate-kyoiku/kosodateshien/azukari/daredemotsuuenn.html",
+                "source_kind": "official_html",
+                "authority_level": "primary",
+            },
+            {
+                "title": "静岡市 乳児等通園支援事業（こども誰でも通園制度）利用のご案内",
+                "url": "https://www.city.shizuoka.lg.jp/s4936/s012267.html",
+                "source_kind": "official_html",
+                "authority_level": "primary",
+            },
+            {
+                "title": "京都市 京都市乳児等通園支援事業（こども誰でも通園制度）実施要綱",
+                "url": "https://www.city.kyoto.lg.jp/hagukumi/page/0000340278.html",
+                "source_kind": "official_html",
+                "authority_level": "primary",
+            },
+            {
+                "title": "広島市 乳児等通園支援事業に係る管理運用業務",
+                "url": "https://www.city.hiroshima.lg.jp/business/nyusatsu/1006046/1006060/1046169/1046854.html",
+                "source_kind": "official_html",
+                "authority_level": "primary",
+            },
+        ],
+    },
+]
+
+STRUCTURED_FACTS = [
+    {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "kodomo-daredemo-tsuen-budget-frame",
+        "fact_group": "budget",
+        "title": "予算上の位置づけ",
+        "value_text": "2,431億円の内数 + 事項要求 2,074億円の内数",
+        "numeric_value": 2431,
+        "unit": "億円",
+        "summary": "乳児等通園支援事業は <子ども・子育て支援交付金> の内数として整理され、追加で事項要求が示されています。",
+        "note_key": "kodomo-daredemo-tsuen-official-flow",
+        "source_excerpt": "<子ども・子育て支援交付金> 2,431億円の内数 + 事項要求 2,074億円の内数",
+        "display_order": 10,
+        "sources": [
+            {
+                "title": "令和7年度こども家庭庁予算 事業別資料集",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=95",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "kodomo-daredemo-tsuen-implementer",
+        "fact_group": "governance",
+        "title": "実施主体",
+        "value_text": "市町村",
+        "summary": "制度資料では実施主体を市町村とし、市町村が認めた者への委託等を可能としています。",
+        "note_key": "kodomo-daredemo-tsuen-official-flow",
+        "source_excerpt": "実施主体は市町村。市町村が認めた者への委託等可。",
+        "display_order": 20,
+        "sources": [
+            {
+                "title": "令和7年度こども家庭庁予算 事業別資料集",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=95",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "kodomo-daredemo-tsuen-national-share",
+        "fact_group": "cost_share",
+        "title": "国負担割合",
+        "value_text": "3/4",
+        "numeric_value": 0.75,
+        "unit": "share",
+        "summary": "制度資料では、国 3/4・市町村 1/4 の補助割合が示されています。",
+        "note_key": "kodomo-daredemo-tsuen-official-flow",
+        "source_excerpt": "補助割合は国3/4・市町村1/4。",
+        "display_order": 30,
+        "sources": [
+            {
+                "title": "令和7年度こども家庭庁予算 事業別資料集",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=95",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "kodomo-daredemo-tsuen-municipal-share",
+        "fact_group": "cost_share",
+        "title": "市町村負担割合",
+        "value_text": "1/4",
+        "numeric_value": 0.25,
+        "unit": "share",
+        "summary": "国費だけで完結せず、市町村負担を含む制度として運用されます。",
+        "note_key": "kodomo-daredemo-tsuen-official-flow",
+        "source_excerpt": "補助割合は国3/4・市町村1/4。",
+        "display_order": 40,
+        "sources": [
+            {
+                "title": "令和7年度こども家庭庁予算 事業別資料集",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=95",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "kodomo-daredemo-tsuen-rollout-municipalities",
+        "fact_group": "rollout",
+        "title": "実施自治体数",
+        "value_text": "118自治体",
+        "numeric_value": 118,
+        "unit": "自治体",
+        "summary": "2025年7月7日時点で制度実施が確認できる自治体数です。",
+        "note_key": "kodomo-daredemo-tsuen-municipal-implementation",
+        "source_excerpt": "令和6年度の実施状況として 118自治体 が掲載されています。",
+        "display_order": 50,
+        "sources": [
+            {
+                "title": "こども誰でも通園制度 令和6年度の実施状況",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/c53b2923-930e-4490-9ea6-02f1b02f04dc/e23e860d/20250717_councils_daredemotsuen-kentokai_5ao3a471_02.pdf",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "kodomo-daredemo-tsuen-rollout-sites",
+        "fact_group": "rollout",
+        "title": "実施事業所数",
+        "value_text": "757か所",
+        "numeric_value": 757,
+        "unit": "か所",
+        "summary": "同じ集計時点で確認できる実施施設・事業所数です。",
+        "note_key": "kodomo-daredemo-tsuen-municipal-implementation",
+        "source_excerpt": "令和6年度の実施状況として 757か所 が掲載されています。",
+        "display_order": 60,
+        "sources": [
+            {
+                "title": "こども誰でも通園制度 令和6年度の実施状況",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/c53b2923-930e-4490-9ea6-02f1b02f04dc/e23e860d/20250717_councils_daredemotsuen-kentokai_5ao3a471_02.pdf",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+        ],
+    },
+]
+
+
 def extract_name_en(name: str) -> str:
     """Extract English name from bilingual format like '年金給付費 (Pensions)'"""
     if '(' in name and name.endswith(')'):
@@ -443,11 +745,25 @@ def extract_name_en(name: str) -> str:
     return ""
 
 
+def read_project_text(doc_path: str) -> str:
+    absolute_path = os.path.join(PROJECT_ROOT, doc_path)
+    if not os.path.exists(absolute_path):
+        return ""
+    with open(absolute_path, "r", encoding="utf-8") as handle:
+        return handle.read()
+
+
 def infer_source_title(source_url: str, dataset_name: str) -> str:
     for pattern, title in SOURCE_TITLE_HINTS:
         if pattern in source_url:
             return title
     return dataset_name
+
+
+def rewrite_source_url(source_url: str) -> str:
+    if not source_url:
+        return source_url
+    return SOURCE_URL_REWRITES.get(source_url, source_url)
 
 
 def resolve_dataset_provenance(
@@ -471,7 +787,7 @@ def infer_provenance_reference(
     fiscal_year: int,
     source_id: str,
 ) -> tuple[str, str, int | None]:
-    normalized_url = source_url
+    normalized_url = rewrite_source_url(source_url)
     normalized_title = source_title or dataset_name
 
     dataset_hint = resolve_dataset_provenance(dataset_name, fiscal_year, source_id)
@@ -505,6 +821,11 @@ def resolve_source_reference(edge: Dict[str, object], dataset_name: str, fallbac
             if hint["match"] in description:
                 return hint["source_url"], hint["source_title"]
 
+    # meti_data mixes modeled subsidy/tax estimates and does not have a stable
+    # one-size-fits-all detail URL. Do not surface the METI homepage as provenance.
+    if dataset_name == "meti_data" and not explicit_url:
+        return "", explicit_title or dataset_name
+
     candidate_url = explicit_url or fallback_url
     candidate_title = explicit_title or infer_source_title(candidate_url, dataset_name)
     normalized_url, normalized_title, _ = infer_provenance_reference(
@@ -524,6 +845,23 @@ def extract_page_number(source_url: str) -> int | None:
     if not match:
         return None
     return int(match.group(1))
+
+
+def should_skip_edge(edge: Dict[str, object]) -> bool:
+    source_id = str(edge.get("source_id", "") or "")
+    evidence_text = str(edge.get("evidence_text", "") or "")
+    source_url = str(edge.get("source_url", "") or "")
+
+    # CFA overview slides include policy-frame "inner amounts" that overlap
+    # with more specific project sheets and should not be rendered as peers.
+    if (
+        source_id == "MIN_CFA"
+        and "内数" in evidence_text
+        and "20241227_policies_budget_53.pdf" in source_url
+    ):
+        return True
+
+    return False
 
 
 def normalize_source_provenance(conn: sqlite3.Connection) -> None:
@@ -612,6 +950,13 @@ def seed_budget_highlights(conn: sqlite3.Connection) -> None:
     all_highlights = BUDGET_HIGHLIGHTS + load_budget_highlights_from_datasets()
 
     for item in all_highlights:
+        source_url, source_title, page_number = infer_provenance_reference(
+            str(item.get("source_url", "") or ""),
+            str(item.get("source_title", "") or ""),
+            str(item.get("title", "") or ""),
+            int(item["fiscal_year"]),
+            str(item["entity_id"]),
+        )
         conn.execute(
             """
             INSERT INTO budget_highlights (
@@ -646,10 +991,526 @@ def seed_budget_highlights(conn: sqlite3.Connection) -> None:
                 item.get("amount_text"),
                 item.get("amount_oku_yen"),
                 item.get("summary"),
-                item.get("source_title"),
-                item.get("source_url"),
-                item.get("page_number"),
+                source_title or None,
+                source_url or None,
+                page_number if page_number is not None else item.get("page_number"),
                 item.get("display_order", 0),
+            ),
+        )
+
+
+def ensure_knowledge_notes_tables(conn: sqlite3.Connection) -> None:
+    conn.executescript(
+        """
+        CREATE TABLE IF NOT EXISTS knowledge_notes (
+          id                   INTEGER PRIMARY KEY AUTOINCREMENT,
+          entity_id            TEXT NOT NULL REFERENCES nodes(id),
+          fiscal_year          INTEGER NOT NULL,
+          note_key             TEXT NOT NULL,
+          title                TEXT NOT NULL,
+          summary              TEXT,
+          key_points_json      TEXT,
+          body_markdown        TEXT,
+          doc_path             TEXT,
+          display_order        INTEGER DEFAULT 0,
+          created_at           TEXT DEFAULT (datetime('now')),
+          updated_at           TEXT DEFAULT (datetime('now')),
+          UNIQUE(entity_id, fiscal_year, note_key)
+        );
+
+        CREATE TABLE IF NOT EXISTS knowledge_note_sources (
+          id                   INTEGER PRIMARY KEY AUTOINCREMENT,
+          note_id              INTEGER NOT NULL REFERENCES knowledge_notes(id) ON DELETE CASCADE,
+          source_title         TEXT NOT NULL,
+          source_url           TEXT NOT NULL,
+          source_kind          TEXT,
+          authority_level      TEXT,
+          display_order        INTEGER DEFAULT 0,
+          UNIQUE(note_id, source_url)
+        );
+
+        CREATE INDEX IF NOT EXISTS idx_knowledge_notes_entity_year
+          ON knowledge_notes(entity_id, fiscal_year, display_order);
+
+        CREATE INDEX IF NOT EXISTS idx_knowledge_note_sources_note
+          ON knowledge_note_sources(note_id, display_order);
+        """
+    )
+
+
+def seed_knowledge_notes(conn: sqlite3.Connection) -> None:
+    ensure_knowledge_notes_tables(conn)
+
+    for item in KNOWLEDGE_NOTES:
+        body_markdown = read_project_text(str(item["doc_path"]))
+        key_points_json = json.dumps(item.get("key_points", []), ensure_ascii=False)
+
+        conn.execute(
+            """
+            INSERT INTO knowledge_notes (
+              entity_id,
+              fiscal_year,
+              note_key,
+              title,
+              summary,
+              key_points_json,
+              body_markdown,
+              doc_path,
+              display_order
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ON CONFLICT(entity_id, fiscal_year, note_key) DO UPDATE SET
+              title = excluded.title,
+              summary = excluded.summary,
+              key_points_json = excluded.key_points_json,
+              body_markdown = excluded.body_markdown,
+              doc_path = excluded.doc_path,
+              display_order = excluded.display_order,
+              updated_at = datetime('now')
+            """,
+            (
+                item["entity_id"],
+                item["fiscal_year"],
+                item["note_key"],
+                item["title"],
+                item.get("summary"),
+                key_points_json,
+                body_markdown,
+                item["doc_path"],
+                item.get("display_order", 0),
+            ),
+        )
+
+        note_id_row = conn.execute(
+            """
+            SELECT id
+            FROM knowledge_notes
+            WHERE entity_id = ? AND fiscal_year = ? AND note_key = ?
+            """,
+            (item["entity_id"], item["fiscal_year"], item["note_key"]),
+        ).fetchone()
+        if note_id_row is None:
+            continue
+
+        note_id = note_id_row[0]
+        conn.execute("DELETE FROM knowledge_note_sources WHERE note_id = ?", (note_id,))
+
+        for index, source in enumerate(item.get("sources", []), start=1):
+            conn.execute(
+                """
+                INSERT INTO knowledge_note_sources (
+                  note_id,
+                  source_title,
+                  source_url,
+                  source_kind,
+                  authority_level,
+                  display_order
+                )
+                VALUES (?, ?, ?, ?, ?, ?)
+                """,
+                (
+                    note_id,
+                    source["title"],
+                    source["url"],
+                    source.get("source_kind"),
+                    source.get("authority_level"),
+                    index * 10,
+                ),
+            )
+
+
+def ensure_structured_facts_tables(conn: sqlite3.Connection) -> None:
+    conn.executescript(
+        """
+        CREATE TABLE IF NOT EXISTS structured_facts (
+          id                   INTEGER PRIMARY KEY AUTOINCREMENT,
+          entity_id            TEXT NOT NULL REFERENCES nodes(id),
+          fiscal_year          INTEGER NOT NULL,
+          fact_key             TEXT NOT NULL,
+          fact_group           TEXT,
+          title                TEXT NOT NULL,
+          value_text           TEXT NOT NULL,
+          numeric_value        REAL,
+          unit                 TEXT,
+          summary              TEXT,
+          note_key             TEXT,
+          source_excerpt       TEXT,
+          display_order        INTEGER DEFAULT 0,
+          created_at           TEXT DEFAULT (datetime('now')),
+          updated_at           TEXT DEFAULT (datetime('now')),
+          UNIQUE(entity_id, fiscal_year, fact_key)
+        );
+
+        CREATE TABLE IF NOT EXISTS structured_fact_sources (
+          id                   INTEGER PRIMARY KEY AUTOINCREMENT,
+          fact_id              INTEGER NOT NULL REFERENCES structured_facts(id) ON DELETE CASCADE,
+          source_title         TEXT NOT NULL,
+          source_url           TEXT NOT NULL,
+          source_kind          TEXT,
+          authority_level      TEXT,
+          display_order        INTEGER DEFAULT 0,
+          UNIQUE(fact_id, source_url)
+        );
+
+        CREATE INDEX IF NOT EXISTS idx_structured_facts_entity_year
+          ON structured_facts(entity_id, fiscal_year, display_order);
+
+        CREATE INDEX IF NOT EXISTS idx_structured_fact_sources_fact
+          ON structured_fact_sources(fact_id, display_order);
+        """
+    )
+
+
+def seed_structured_facts(conn: sqlite3.Connection) -> None:
+    ensure_structured_facts_tables(conn)
+
+    for item in STRUCTURED_FACTS:
+        conn.execute(
+            """
+            INSERT INTO structured_facts (
+              entity_id,
+              fiscal_year,
+              fact_key,
+              fact_group,
+              title,
+              value_text,
+              numeric_value,
+              unit,
+              summary,
+              note_key,
+              source_excerpt,
+              display_order
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ON CONFLICT(entity_id, fiscal_year, fact_key) DO UPDATE SET
+              fact_group = excluded.fact_group,
+              title = excluded.title,
+              value_text = excluded.value_text,
+              numeric_value = excluded.numeric_value,
+              unit = excluded.unit,
+              summary = excluded.summary,
+              note_key = excluded.note_key,
+              source_excerpt = excluded.source_excerpt,
+              display_order = excluded.display_order,
+              updated_at = datetime('now')
+            """,
+            (
+                item["entity_id"],
+                item["fiscal_year"],
+                item["fact_key"],
+                item.get("fact_group"),
+                item["title"],
+                item["value_text"],
+                item.get("numeric_value"),
+                item.get("unit"),
+                item.get("summary"),
+                item.get("note_key"),
+                item.get("source_excerpt"),
+                item.get("display_order", 0),
+            ),
+        )
+
+        fact_id_row = conn.execute(
+            """
+            SELECT id
+            FROM structured_facts
+            WHERE entity_id = ? AND fiscal_year = ? AND fact_key = ?
+            """,
+            (item["entity_id"], item["fiscal_year"], item["fact_key"]),
+        ).fetchone()
+        if fact_id_row is None:
+            continue
+
+        fact_id = fact_id_row[0]
+        conn.execute("DELETE FROM structured_fact_sources WHERE fact_id = ?", (fact_id,))
+
+        for index, source in enumerate(item.get("sources", []), start=1):
+            conn.execute(
+                """
+                INSERT INTO structured_fact_sources (
+                  fact_id,
+                  source_title,
+                  source_url,
+                  source_kind,
+                  authority_level,
+                  display_order
+                )
+                VALUES (?, ?, ?, ?, ?, ?)
+                """,
+                (
+                    fact_id,
+                    source["title"],
+                    source["url"],
+                    source.get("source_kind"),
+                    source.get("authority_level"),
+                    index * 10,
+                ),
+            )
+
+
+def ensure_source_link_health_table(conn: sqlite3.Connection) -> None:
+    conn.executescript(
+        """
+        CREATE TABLE IF NOT EXISTS source_link_health (
+          id                   INTEGER PRIMARY KEY AUTOINCREMENT,
+          source_url           TEXT NOT NULL UNIQUE,
+          request_url          TEXT,
+          final_url            TEXT,
+          validation_status    TEXT NOT NULL DEFAULT 'unknown',
+          http_status          INTEGER,
+          error_message        TEXT,
+          checked_at           TEXT,
+          created_at           TEXT DEFAULT (datetime('now')),
+          updated_at           TEXT DEFAULT (datetime('now'))
+        );
+
+        CREATE INDEX IF NOT EXISTS idx_source_link_health_status
+          ON source_link_health(validation_status, updated_at DESC);
+        """
+    )
+
+
+def strip_url_fragment(source_url: str) -> str:
+    if not source_url:
+        return source_url
+    parts = urlsplit(source_url)
+    return urlunsplit((parts.scheme, parts.netloc, parts.path, parts.query, ""))
+
+
+def is_http_url(source_url: str | None) -> bool:
+    if not source_url:
+        return False
+    normalized = str(source_url).strip().lower()
+    return normalized.startswith("http://") or normalized.startswith("https://")
+
+
+def is_official_public_domain(source_url: str | None) -> bool:
+    if not is_http_url(source_url):
+        return False
+    hostname = urlsplit(str(source_url).strip()).hostname or ""
+    return hostname.endswith((".go.jp", ".lg.jp", ".ac.jp", ".or.jp"))
+
+
+def is_official_document_url(source_url: str | None) -> bool:
+    if not is_official_public_domain(source_url):
+        return False
+    path = (urlsplit(str(source_url).strip()).path or "").lower()
+    return path.endswith((".pdf", ".csv", ".xlsx", ".xls", ".json"))
+
+
+def is_timeout_error(error_message: str | None) -> bool:
+    if not error_message:
+        return False
+    normalized = error_message.lower()
+    return "timed out" in normalized or "timeout" in normalized
+
+
+def should_refresh_source_validation(checked_at: str | None) -> bool:
+    if not checked_at:
+        return True
+    try:
+        checked_dt = datetime.fromisoformat(checked_at.replace("Z", "+00:00"))
+    except ValueError:
+        return True
+    ttl_cutoff = datetime.now(timezone.utc) - timedelta(hours=SOURCE_VALIDATION_TTL_HOURS)
+    if checked_dt.tzinfo is None:
+        checked_dt = checked_dt.replace(tzinfo=timezone.utc)
+    return checked_dt < ttl_cutoff
+
+
+def classify_validation_status(source_url: str, http_status: int | None, error_message: str | None) -> str:
+    if http_status is not None:
+        if 200 <= http_status < 400:
+            return "valid"
+        if http_status in {401, 403, 405, 429, 500, 501, 502, 503, 504}:
+            if is_official_document_url(source_url):
+                return "valid"
+            return "unknown"
+        if 400 <= http_status < 600:
+            return "invalid"
+    if is_official_document_url(source_url) and is_timeout_error(error_message):
+        return "valid"
+    if error_message:
+        return "unknown"
+    return "unknown"
+
+
+def fetch_url_status(request_url: str, method: str) -> tuple[int | None, str, str | None]:
+    headers = {
+        "User-Agent": "Mozilla/5.0 (compatible; GlobalMoneyFlowBot/1.0; +https://example.invalid)",
+        "Accept": "*/*",
+    }
+    if method == "GET":
+        headers["Range"] = "bytes=0-0"
+
+    request = Request(request_url, headers=headers, method=method)
+
+    try:
+        with urlopen(request, timeout=SOURCE_VALIDATION_TIMEOUT_SECONDS) as response:
+            status = getattr(response, "status", None) or response.getcode()
+            final_url = response.geturl()
+            if method == "GET":
+                response.read(1)
+            return status, final_url, None
+    except HTTPError as exc:
+        return exc.code, exc.geturl() or request_url, str(exc)
+    except URLError as exc:
+        return None, request_url, str(exc.reason)
+    except Exception as exc:  # pragma: no cover - defensive
+        return None, request_url, str(exc)
+
+
+def validate_source_url(source_url: str) -> dict[str, Any]:
+    request_url = strip_url_fragment(source_url)
+    if not request_url or not is_http_url(request_url):
+        return {
+            "request_url": request_url,
+            "final_url": request_url,
+            "http_status": None,
+            "validation_status": "invalid" if source_url else "unknown",
+            "error_message": "non-http url" if source_url else "empty url",
+            "checked_at": datetime.now(timezone.utc).replace(microsecond=0).isoformat(),
+        }
+
+    head_status, head_final_url, head_error = fetch_url_status(request_url, "HEAD")
+    if head_status is not None and 200 <= head_status < 400:
+        return {
+            "request_url": request_url,
+            "final_url": head_final_url,
+            "http_status": head_status,
+            "validation_status": "valid",
+            "error_message": None,
+            "checked_at": datetime.now(timezone.utc).replace(microsecond=0).isoformat(),
+        }
+
+    should_retry_with_get = head_status is None or head_status in {401, 403, 405, 406, 429, 500, 501, 502, 503, 504}
+    if should_retry_with_get:
+        get_status, get_final_url, get_error = fetch_url_status(request_url, "GET")
+        return {
+            "request_url": request_url,
+            "final_url": get_final_url,
+            "http_status": get_status,
+            "validation_status": classify_validation_status(request_url, get_status, get_error),
+            "error_message": get_error,
+            "checked_at": datetime.now(timezone.utc).replace(microsecond=0).isoformat(),
+        }
+
+    return {
+        "request_url": request_url,
+        "final_url": head_final_url,
+        "http_status": head_status,
+        "validation_status": classify_validation_status(request_url, head_status, head_error),
+        "error_message": head_error,
+        "checked_at": datetime.now(timezone.utc).replace(microsecond=0).isoformat(),
+    }
+
+
+def collect_source_urls_for_validation(conn: sqlite3.Connection) -> list[str]:
+    urls: set[str] = set()
+
+    table_specs = [
+        ("source_provenance", "source_url"),
+        ("budget_highlights", "source_url"),
+        ("knowledge_note_sources", "source_url"),
+        ("structured_fact_sources", "source_url"),
+    ]
+
+    for table_name, column_name in table_specs:
+        try:
+            rows = conn.execute(
+                f"SELECT DISTINCT {column_name} FROM {table_name} WHERE {column_name} IS NOT NULL AND TRIM({column_name}) <> ''"
+            ).fetchall()
+        except sqlite3.OperationalError:
+            continue
+        urls.update(str(row[0]).strip() for row in rows if row[0] and is_http_url(str(row[0]).strip()))
+
+    return sorted(urls)
+
+
+def validate_source_links(conn: sqlite3.Connection) -> None:
+    ensure_source_link_health_table(conn)
+
+    if not VALIDATE_SOURCE_URLS:
+        return
+
+    raw_urls = collect_source_urls_for_validation(conn)
+    if raw_urls:
+        placeholders = ", ".join("?" for _ in raw_urls)
+        conn.execute(
+            f"DELETE FROM source_link_health WHERE source_url NOT IN ({placeholders})",
+            tuple(raw_urls),
+        )
+    else:
+        conn.execute("DELETE FROM source_link_health")
+    request_cache: dict[str, dict[str, Any]] = {}
+
+    for raw_url in raw_urls:
+        existing = conn.execute(
+            """
+            SELECT validation_status, checked_at, request_url, final_url, http_status, error_message
+            FROM source_link_health
+            WHERE source_url = ?
+            """,
+            (raw_url,),
+        ).fetchone()
+
+        request_url = strip_url_fragment(raw_url)
+        if existing and not should_refresh_source_validation(existing[1]):
+            cached_result = {
+                "request_url": existing[2],
+                "final_url": existing[3],
+                "http_status": existing[4],
+                "validation_status": existing[0],
+                "error_message": existing[5],
+                "checked_at": existing[1],
+            }
+            if cached_result["validation_status"] == "unknown" and is_official_document_url(request_url) and is_timeout_error(existing[5]):
+                cached_result["validation_status"] = "valid"
+                conn.execute(
+                    """
+                    UPDATE source_link_health
+                    SET validation_status = ?, updated_at = datetime('now')
+                    WHERE source_url = ?
+                    """,
+                    (cached_result["validation_status"], raw_url),
+                )
+            request_cache.setdefault(request_url, cached_result)
+            continue
+
+        result = request_cache.get(request_url)
+        if result is None:
+            result = validate_source_url(raw_url)
+            request_cache[request_url] = result
+
+        conn.execute(
+            """
+            INSERT INTO source_link_health (
+              source_url,
+              request_url,
+              final_url,
+              validation_status,
+              http_status,
+              error_message,
+              checked_at
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?)
+            ON CONFLICT(source_url) DO UPDATE SET
+              request_url = excluded.request_url,
+              final_url = excluded.final_url,
+              validation_status = excluded.validation_status,
+              http_status = excluded.http_status,
+              error_message = excluded.error_message,
+              checked_at = excluded.checked_at,
+              updated_at = datetime('now')
+            """,
+            (
+                raw_url,
+                result.get("request_url"),
+                result.get("final_url"),
+                result.get("validation_status"),
+                result.get("http_status"),
+                result.get("error_message"),
+                result.get("checked_at"),
             ),
         )
 
@@ -690,6 +1551,9 @@ def seed_dataset(conn: sqlite3.Connection, dataset_info: Dict[str, str]) -> Tupl
     
     # Insert edges
     for edge in data.get("edges", []):
+        if should_skip_edge(edge):
+            continue
+
         value_usd = edge.get("value_usd", 0)
         value_jpy = value_usd * JPY_PER_USD  # Approximate JPY equivalent
         
@@ -763,6 +1627,26 @@ def export_frontend_json(conn: sqlite3.Connection) -> Tuple[str, int, int]:
     """Export the unified DB back to a single JSON for the frontend"""
     export_path = os.path.join(DATA_DIR, "unified_data.json")
     seed_budget_highlights(conn)
+    seed_knowledge_notes(conn)
+    seed_structured_facts(conn)
+    validate_source_links(conn)
+
+    source_health_by_url: dict[str, str] = {
+        row[0]: row[1]
+        for row in conn.execute(
+            """
+            SELECT source_url, validation_status
+            FROM source_link_health
+            """
+        )
+    }
+
+    def is_displayable_source(source_url: str | None) -> bool:
+        if not source_url:
+            return True
+        if not is_http_url(source_url):
+            return False
+        return source_health_by_url.get(source_url, "unknown") != "invalid"
     
     nodes = []
     for row in conn.execute("SELECT id, name, lat, lng, region, type FROM nodes ORDER BY dataset, type, name"):
@@ -790,11 +1674,11 @@ def export_frontend_json(conn: sqlite3.Connection) -> Tuple[str, int, int]:
             edge_data["description"] = row[8]
         if row[9]:  # extracted_text
             edge_data["evidence_text"] = row[9] # mapped to evidence_text for frontend compatibility
-        if row[10]: # source_url
+        if row[10] and is_displayable_source(row[10]): # source_url
             edge_data["source_url"] = row[10]
-        if row[11]: # source_title
+        if row[11] and is_displayable_source(row[10]): # source_title
             edge_data["source_title"] = row[11]
-        if row[12] is not None: # page_number
+        if row[12] is not None and is_displayable_source(row[10]): # page_number
             edge_data["page_number"] = row[12]
             
         edges.append(edge_data)
@@ -808,6 +1692,8 @@ def export_frontend_json(conn: sqlite3.Connection) -> Tuple[str, int, int]:
         ORDER BY fiscal_year DESC, entity_id, display_order, id
         """
     ):
+        if row[8] and not is_displayable_source(row[8]):
+            continue
         highlights.append(
             {
                 "entity_id": row[0],
@@ -824,6 +1710,109 @@ def export_frontend_json(conn: sqlite3.Connection) -> Tuple[str, int, int]:
             }
         )
 
+    knowledge_sources_by_note: dict[int, list[dict[str, Any]]] = {}
+    for row in conn.execute(
+        """
+        SELECT note_id, source_title, source_url, source_kind, authority_level, display_order
+        FROM knowledge_note_sources
+        ORDER BY note_id, display_order, id
+        """
+    ):
+        if not is_displayable_source(row[2]):
+            continue
+        knowledge_sources_by_note.setdefault(row[0], []).append(
+            {
+                "source_title": row[1],
+                "source_url": row[2],
+                "source_kind": row[3],
+                "authority_level": row[4],
+                "display_order": row[5],
+            }
+        )
+
+    knowledge_notes: list[dict[str, Any]] = []
+    for row in conn.execute(
+        """
+        SELECT id, entity_id, fiscal_year, note_key, title, summary,
+               key_points_json, body_markdown, doc_path, display_order
+        FROM knowledge_notes
+        ORDER BY fiscal_year DESC, entity_id, display_order, id
+        """
+    ):
+        try:
+            key_points = json.loads(row[6]) if row[6] else []
+        except json.JSONDecodeError:
+            key_points = []
+
+        note_sources = knowledge_sources_by_note.get(row[0], [])
+        if not note_sources:
+            continue
+
+        knowledge_notes.append(
+            {
+                "entity_id": row[1],
+                "fiscal_year": row[2],
+                "note_key": row[3],
+                "title": row[4],
+                "summary": row[5],
+                "key_points": key_points,
+                "body_markdown": row[7],
+                "doc_path": row[8],
+                "display_order": row[9],
+                "sources": note_sources,
+            }
+        )
+
+    fact_sources_by_fact: dict[int, list[dict[str, Any]]] = {}
+    for row in conn.execute(
+        """
+        SELECT fact_id, source_title, source_url, source_kind, authority_level, display_order
+        FROM structured_fact_sources
+        ORDER BY fact_id, display_order, id
+        """
+    ):
+        if not is_displayable_source(row[2]):
+            continue
+        fact_sources_by_fact.setdefault(row[0], []).append(
+            {
+                "source_title": row[1],
+                "source_url": row[2],
+                "source_kind": row[3],
+                "authority_level": row[4],
+                "display_order": row[5],
+            }
+        )
+
+    structured_facts: list[dict[str, Any]] = []
+    for row in conn.execute(
+        """
+        SELECT id, entity_id, fiscal_year, fact_key, fact_group, title, value_text,
+               numeric_value, unit, summary, note_key, source_excerpt, display_order
+        FROM structured_facts
+        ORDER BY fiscal_year DESC, entity_id, display_order, id
+        """
+    ):
+        fact_sources = fact_sources_by_fact.get(row[0], [])
+        if not fact_sources:
+            continue
+        structured_facts.append(
+            {
+                "entity_id": row[1],
+                "fiscal_year": row[2],
+                "fact_key": row[3],
+                "fact_group": row[4],
+                "title": row[5],
+                "value_text": row[6],
+                "numeric_value": row[7],
+                "unit": row[8],
+                "summary": row[9],
+                "note_key": row[10],
+                "source_excerpt": row[11],
+                "display_order": row[12],
+                "sources": fact_sources,
+            }
+        )
+
     fiscal_years = sorted(set(e["year"] for e in edges))
     
     output = {
@@ -837,6 +1826,8 @@ def export_frontend_json(conn: sqlite3.Connection) -> Tuple[str, int, int]:
             "latestFiscalYear": fiscal_years[-1] if fiscal_years else None,
             "featuredEntityId": "MIN_CFA",
             "budgetHighlights": highlights,
+            "knowledgeNotes": knowledge_notes,
+            "structuredFacts": structured_facts,
         }
     }
     
@@ -879,6 +1870,19 @@ def print_summary(conn: sqlite3.Connection) -> None:
     prov_count = conn.execute("SELECT COUNT(*) FROM source_provenance").fetchone()[0]
     prov_linked = conn.execute("SELECT COUNT(DISTINCT source_id) FROM source_provenance WHERE source_id IS NOT NULL").fetchone()[0]
     print(f"\n  Source Provenance: {prov_count} records ({prov_linked} linked to data_sources)")
+    knowledge_count = conn.execute("SELECT COUNT(*) FROM knowledge_notes").fetchone()[0]
+    structured_fact_count = conn.execute("SELECT COUNT(*) FROM structured_facts").fetchone()[0]
+    print(f"  Knowledge Notes:   {knowledge_count} records")
+    print(f"  Structured Facts: {structured_fact_count} records")
+    try:
+        health_counts = conn.execute(
+            "SELECT validation_status, COUNT(*) FROM source_link_health GROUP BY validation_status ORDER BY validation_status"
+        ).fetchall()
+    except sqlite3.OperationalError:
+        health_counts = []
+    if health_counts:
+        joined = ", ".join(f"{status or 'unknown'}={count}" for status, count in health_counts)
+        print(f"  Source Link Health: {joined}")
 
 
 def ensure_data_sources(conn: sqlite3.Connection) -> None:
@@ -925,7 +1929,14 @@ def main():
     conn.execute("PRAGMA foreign_keys = ON;")
     
     # Clear existing data for re-seeding
+    ensure_knowledge_notes_tables(conn)
+    ensure_structured_facts_tables(conn)
+    ensure_source_link_health_table(conn)
     conn.execute("DELETE FROM budget_highlights")
+    conn.execute("DELETE FROM knowledge_note_sources")
+    conn.execute("DELETE FROM knowledge_notes")
+    conn.execute("DELETE FROM structured_fact_sources")
+    conn.execute("DELETE FROM structured_facts")
     conn.execute("DELETE FROM source_provenance")
     conn.execute("DELETE FROM edges")
     conn.execute("DELETE FROM nodes")

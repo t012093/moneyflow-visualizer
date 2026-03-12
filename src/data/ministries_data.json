@@ -201,14 +201,6 @@
       "type": "mhlw_benefit"
     },
     {
-      "id": "REC_CHILDREN",
-      "name": "子育て世帯（児童手当）",
-      "lat": 35.6,
-      "lng": 139.6,
-      "region": "Social Security",
-      "type": "recipient"
-    },
-    {
       "id": "REC_AFTER_SCHOOL_OP",
       "name": "放課後児童クラブ (運営費・処遇改善)",
       "lat": 35.65,
@@ -1825,19 +1817,6 @@
       "year": 2024,
       "confidence": 0.9,
       "source_dataset": "省庁別主要経費推計"
-    },
-    {
-      "source_id": "MIN_CFA",
-      "target_id": "REC_CHILDREN",
-      "category": "welfare",
-      "sub_category": "児童手当 (R7予算案)",
-      "value_usd": 10164000000,
-      "year": 2025,
-      "confidence": 0.95,
-      "source_dataset": "こども家庭庁 R7予算 オープンデータ",
-      "description": "児童手当の拡充 等",
-      "evidence_text": "2兆1,819億円の内数 （児童手当の拡充、放課後児童クラブの整備推進 などの合計）",
-      "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/b92baeee-5b6d-47be-b16f-ebf80a4eed28/3d37a505/20240401_councils_shingikai_kodomo_shien_05_02.pdf#page=12&search=15%2C246"
     },
     {
       "source_id": "MIN_CFA",

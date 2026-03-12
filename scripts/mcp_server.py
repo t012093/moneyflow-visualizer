@@ -328,6 +328,76 @@ CREATE TABLE IF NOT EXISTS budget_highlights (
   UNIQUE(entity_id, fiscal_year, section_key, title)
 );
 
+CREATE TABLE IF NOT EXISTS knowledge_notes (
+  id                   INTEGER PRIMARY KEY AUTOINCREMENT,
+  entity_id            TEXT NOT NULL REFERENCES nodes(id),
+  fiscal_year          INTEGER NOT NULL,
+  note_key             TEXT NOT NULL,
+  title                TEXT NOT NULL,
+  summary              TEXT,
+  key_points_json      TEXT,
+  body_markdown        TEXT,
+  doc_path             TEXT,
+  display_order        INTEGER DEFAULT 0,
+  created_at           TEXT DEFAULT (datetime('now')),
+  updated_at           TEXT DEFAULT (datetime('now')),
+  UNIQUE(entity_id, fiscal_year, note_key)
+);
+
+CREATE TABLE IF NOT EXISTS knowledge_note_sources (
+  id                   INTEGER PRIMARY KEY AUTOINCREMENT,
+  note_id              INTEGER NOT NULL REFERENCES knowledge_notes(id) ON DELETE CASCADE,
+  source_title         TEXT NOT NULL,
+  source_url           TEXT NOT NULL,
+  source_kind          TEXT,
+  authority_level      TEXT,
+  display_order        INTEGER DEFAULT 0,
+  UNIQUE(note_id, source_url)
+);
+
+CREATE TABLE IF NOT EXISTS structured_facts (
+  id                   INTEGER PRIMARY KEY AUTOINCREMENT,
+  entity_id            TEXT NOT NULL REFERENCES nodes(id),
+  fiscal_year          INTEGER NOT NULL,
+  fact_key             TEXT NOT NULL,
+  fact_group           TEXT,
+  title                TEXT NOT NULL,
+  value_text           TEXT NOT NULL,
+  numeric_value        REAL,
+  unit                 TEXT,
+  summary              TEXT,
+  note_key             TEXT,
+  source_excerpt       TEXT,
+  display_order        INTEGER DEFAULT 0,
+  created_at           TEXT DEFAULT (datetime('now')),
+  updated_at           TEXT DEFAULT (datetime('now')),
+  UNIQUE(entity_id, fiscal_year, fact_key)
+);
+
+CREATE TABLE IF NOT EXISTS structured_fact_sources (
+  id                   INTEGER PRIMARY KEY AUTOINCREMENT,
+  fact_id              INTEGER NOT NULL REFERENCES structured_facts(id) ON DELETE CASCADE,
+  source_title         TEXT NOT NULL,
+  source_url           TEXT NOT NULL,
+  source_kind          TEXT,
+  authority_level      TEXT,
+  display_order        INTEGER DEFAULT 0,
+  UNIQUE(fact_id, source_url)
+);
+
+CREATE TABLE IF NOT EXISTS source_link_health (
+  id                   INTEGER PRIMARY KEY AUTOINCREMENT,
+  source_url           TEXT NOT NULL UNIQUE,
+  request_url          TEXT,
+  final_url            TEXT,
+  validation_status    TEXT NOT NULL DEFAULT 'unknown',
+  http_status          INTEGER,
+  error_message        TEXT,
+  checked_at           TEXT,
+  created_at           TEXT DEFAULT (datetime('now')),
+  updated_at           TEXT DEFAULT (datetime('now'))
+);
+
 CREATE INDEX IF NOT EXISTS idx_source_candidates_domain
   ON source_candidates(domain);
 
@@ -342,6 +412,21 @@ CREATE INDEX IF NOT EXISTS idx_source_policies_status
 
 CREATE INDEX IF NOT EXISTS idx_budget_highlights_entity_year
   ON budget_highlights(entity_id, fiscal_year, section_key, display_order);
+
+CREATE INDEX IF NOT EXISTS idx_knowledge_notes_entity_year
+  ON knowledge_notes(entity_id, fiscal_year, display_order);
+
+CREATE INDEX IF NOT EXISTS idx_knowledge_note_sources_note
+  ON knowledge_note_sources(note_id, display_order);
+
+CREATE INDEX IF NOT EXISTS idx_structured_facts_entity_year
+  ON structured_facts(entity_id, fiscal_year, display_order);
+
+CREATE INDEX IF NOT EXISTS idx_structured_fact_sources_fact
+  ON structured_fact_sources(fact_id, display_order);
+
+CREATE INDEX IF NOT EXISTS idx_source_link_health_status
+  ON source_link_health(validation_status, updated_at DESC);
 """
 
 # ─── Database helpers ───
@@ -4497,6 +4582,14 @@ def _get_db_summary(conn: sqlite3.Connection) -> dict:
         s["total_budget_highlights"] = conn.execute("SELECT COUNT(*) FROM budget_highlights").fetchone()[0]
     except Exception:
         s["total_budget_highlights"] = 0
+    try:
+        s["total_knowledge_notes"] = conn.execute("SELECT COUNT(*) FROM knowledge_notes").fetchone()[0]
+        s["total_structured_facts"] = conn.execute("SELECT COUNT(*) FROM structured_facts").fetchone()[0]
+        s["total_source_link_health"] = conn.execute("SELECT COUNT(*) FROM source_link_health").fetchone()[0]
+    except Exception:
+        s["total_knowledge_notes"] = 0
+        s["total_structured_facts"] = 0
+        s["total_source_link_health"] = 0
     s["nodes_by_type"] = {r["type"]: r["count"] for r in conn.execute(
         "SELECT type, COUNT(*) as count FROM nodes GROUP BY type ORDER BY count DESC").fetchall()}
     s["edges_by_category"] = {r["category"]: {"count": r["count"], "total_oku_yen": round(r["total_jpy"] / 1e8, 0) if r["total_jpy"] else 0}

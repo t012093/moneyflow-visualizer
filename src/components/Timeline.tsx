@@ -7,6 +7,7 @@ interface TimelineProps {
   setCurrentYear: (year: number) => void;
   isPlaying: boolean;
   setIsPlaying: (playing: boolean) => void;
+  showPlaybackControls?: boolean;
 }
 
 export const Timeline: React.FC<TimelineProps> = ({
@@ -14,10 +15,15 @@ export const Timeline: React.FC<TimelineProps> = ({
   currentYear,
   setCurrentYear,
   isPlaying,
-  setIsPlaying
+  setIsPlaying,
+  showPlaybackControls = true,
 }) => {
-  const minYear = years[0];
-  const maxYear = years[years.length - 1];
+  const selectableYears = [...years].sort((a, b) => a - b);
+  const currentIndex = Math.max(0, selectableYears.indexOf(currentYear));
+
+  if (!selectableYears.length) {
+    return null;
+  }
 
   return (
     <div className="glass-panel" style={{
@@ -39,7 +45,7 @@ export const Timeline: React.FC<TimelineProps> = ({
         
         <div style={{ display: 'flex', gap: '0.4rem' }}>
           <button 
-            onClick={() => setCurrentYear(Math.max(minYear, currentYear - 1))}
+            onClick={() => setCurrentYear(selectableYears[Math.max(0, currentIndex - 1)])}
             title="前年度"
             style={{ 
               background: 'var(--bg-panel)', border: '1px solid var(--border-color)', 
@@ -48,22 +54,24 @@ export const Timeline: React.FC<TimelineProps> = ({
           >
             <Rewind size={16} />
           </button>
-          
-          <button 
-            onClick={() => setIsPlaying(!isPlaying)}
-            title={isPlaying ? "一時停止" : "自動再生"}
-            style={{ 
-              background: isPlaying ? 'var(--accent-color)' : 'var(--bg-panel)', 
-              border: '1px solid ' + (isPlaying ? 'var(--accent-color)' : 'var(--border-color)'), 
-              borderRadius: '6px', padding: '0.4rem', 
-              color: isPlaying ? '#000' : 'var(--text-main)', cursor: 'pointer' 
-            }}
-          >
-            {isPlaying ? <Pause size={16} /> : <Play size={16} />}
-          </button>
+
+          {showPlaybackControls && (
+            <button 
+              onClick={() => setIsPlaying(!isPlaying)}
+              title={isPlaying ? "一時停止" : "自動再生"}
+              style={{ 
+                background: isPlaying ? 'var(--accent-color)' : 'var(--bg-panel)', 
+                border: '1px solid ' + (isPlaying ? 'var(--accent-color)' : 'var(--border-color)'), 
+                borderRadius: '6px', padding: '0.4rem', 
+                color: isPlaying ? '#000' : 'var(--text-main)', cursor: 'pointer' 
+              }}
+            >
+              {isPlaying ? <Pause size={16} /> : <Play size={16} />}
+            </button>
+          )}
 
           <button 
-            onClick={() => setCurrentYear(Math.min(maxYear, currentYear + 1))}
+            onClick={() => setCurrentYear(selectableYears[Math.min(selectableYears.length - 1, currentIndex + 1)])}
             title="翌年度"
             style={{ 
               background: 'var(--bg-panel)', border: '1px solid var(--border-color)', 
@@ -78,21 +86,30 @@ export const Timeline: React.FC<TimelineProps> = ({
       {/* Year Slider */}
       <input 
         type="range" 
-        min={minYear} 
-        max={maxYear} 
+        min={0} 
+        max={Math.max(0, selectableYears.length - 1)} 
         step={1} 
-        value={currentYear}
+        value={currentIndex}
         onChange={(e) => {
           setIsPlaying(false);
-          setCurrentYear(parseInt(e.target.value, 10));
+          setCurrentYear(selectableYears[parseInt(e.target.value, 10)]);
         }}
         style={{ width: '100%', cursor: 'pointer', accentColor: 'var(--accent-color)' }}
       />
       
       {/* Year Labels */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', color: 'var(--text-muted)' }}>
-        <span>{minYear}</span>
-        <span>{maxYear}</span>
+      <div style={{ display: 'flex', justifyContent: 'space-between', gap: '0.4rem', fontSize: '0.75rem', color: 'var(--text-muted)', flexWrap: 'wrap' }}>
+        {selectableYears.map((year) => (
+          <span
+            key={year}
+            style={{
+              color: year === currentYear ? 'var(--text-main)' : 'var(--text-muted)',
+              fontWeight: year === currentYear ? 700 : 500,
+            }}
+          >
+            {year}
+          </span>
+        ))}
       </div>
     </div>
   );

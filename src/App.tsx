@@ -12,6 +12,7 @@ import type { UnifiedData } from './types/frontendData';
 import './index.css';
 
 const CATEGORIES = ['trade', 'banking', 'crypto', 'remittance', 'bop', 'welfare', 'services', 'technology', 'education', 'infrastructure', 'tax'];
+const MODELED_DATASET_MARKERS = ['省庁別主要経費推計', '想定', 'Proxy', 'Approximation', 'Estimated', 'ministries_data', '財務省 一般会計（所管別）', '財務省一般会計', 'meti_data'];
 
 // Type assertion for the imported unified JSON (from SQLite DB export)
 const unifiedData = unifiedDataRaw as unknown as UnifiedData;
@@ -42,6 +43,25 @@ const getInitialViewMode = (): '3D' | '2D' | 'Budget' => {
   return '3D';
 };
 
+const getInitialEntityId = (fallback: string) => {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('entity') || fallback;
+};
+
+const hasRealDataEdge = (edge: Edge) => {
+  const dataset = edge.source_dataset || '';
+  return dataset !== '' && !MODELED_DATASET_MARKERS.some((marker) => dataset.includes(marker));
+};
+
+const getNearestAvailableYear = (years: number[], targetYear: number) => {
+  if (!years.length) {
+    return targetYear;
+  }
+  return years.reduce((nearest, year) =>
+    Math.abs(year - targetYear) < Math.abs(nearest - targetYear) ? year : nearest
+  , years[0]);
+};
+
 export const GLOBAL_NODES = unifiedData.nodes;
 
 // Group edges by year for the timeline playback
@@ -56,6 +76,8 @@ function App() {
   const [currentYear, setCurrentYear] = useState(getInitialYear);
   const [isPlaying, setIsPlaying] = useState(false);
   const [viewMode, setViewMode] = useState<'3D' | '2D' | 'Budget'>(getInitialViewMode);
+  const [selectedFlowEntityId, setSelectedFlowEntityId] = useState(() => getInitialEntityId('MIN_CFA'));
+  const [selectedBudgetEntityId, setSelectedBudgetEntityId] = useState(() => getInitialEntityId(unifiedData.metadata.featuredEntityId || 'MIN_CFA'));
   
   const [activeCategories, setActiveCategories] = useState<string[]>(['trade', 'banking', 'bop', 'remittance', 'crypto', 'welfare', 'services', 'technology', 'education', 'infrastructure', 'tax']);
   const [confidenceThreshold, setConfidenceThreshold] = useState<number>(0.7);
@@ -71,46 +93,90 @@ function App() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Handle Playback
-  useEffect(() => {
-    let interval: ReturnType<typeof setInterval>;
-    if (isPlaying) {
-      interval = setInterval(() => {
-        setCurrentYear(y => {
-          if (y >= YEARS[YEARS.length - 1]) {
-            setIsPlaying(false);
-            return y;
-          }
-          return y + 1;
-        });
-      }, 2000); // 2 seconds per year
+  const budgetEntityIds = useMemo(
+    () =>
+      [
+        ...(unifiedData.metadata.budgetHighlights || []).map((item) => item.entity_id),
+        ...(unifiedData.metadata.knowledgeNotes || []).map((item) => item.entity_id),
+        ...(unifiedData.metadata.structuredFacts || []).map((item) => item.entity_id),
+      ].filter((value, index, array) => array.indexOf(value) === index),
+    []
+  );
+  const available3DYears = useMemo(
+    () => YEARS.filter((year) => (datasetByYear[year] || []).some((edge) => hasRealDataEdge(edge))),
+    []
+  );
+  const available2DYears = useMemo(
+    () =>
+      YEARS.filter((year) =>
+        (datasetByYear[year] || []).some(
+          (edge) => (edge.source_id === selectedFlowEntityId || edge.target_id === selectedFlowEntityId) && hasRealDataEdge(edge)
+        )
+      ),
+    [selectedFlowEntityId]
+  );
+  const availableBudgetYears = useMemo(
+    () =>
+      YEARS.filter((year) =>
+        (unifiedData.metadata.budgetHighlights || []).some((item) => item.entity_id === selectedBudgetEntityId && item.fiscal_year === year) ||
+        (unifiedData.metadata.knowledgeNotes || []).some((item) => item.entity_id === selectedBudgetEntityId && item.fiscal_year === year) ||
+        (unifiedData.metadata.structuredFacts || []).some((item) => item.entity_id === selectedBudgetEntityId && item.fiscal_year === year)
+      ),
+    [selectedBudgetEntityId]
+  );
+  const selectableYears = useMemo(() => {
+    if (viewMode === '2D') {
+      return available2DYears;
     }
-    return () => clearInterval(interval);
-  }, [isPlaying]);
+    if (viewMode === 'Budget') {
+      return availableBudgetYears;
+    }
+    return available3DYears;
+  }, [available2DYears, available3DYears, availableBudgetYears, viewMode]);
+  const effectiveCurrentYear = selectableYears.includes(currentYear)
+    ? currentYear
+    : getNearestAvailableYear(selectableYears, currentYear);
 
   // Filter Edges
   const visibleEdges = useMemo(() => {
-    const currentData = datasetByYear[currentYear] || [];
+    const currentData = datasetByYear[effectiveCurrentYear] || [];
     return currentData.filter((edge: Edge) => 
       activeCategories.includes(edge.category) && 
       edge.confidence >= confidenceThreshold
     );
-  }, [currentYear, activeCategories, confidenceThreshold]);
+  }, [effectiveCurrentYear, activeCategories, confidenceThreshold]);
 
   // For 2D view, show ALL edges for the year (no category filter)
   const allEdgesForYear = useMemo(() => {
-    return datasetByYear[currentYear] || [];
-  }, [currentYear]);
-  const budgetEntityIds = useMemo(
-    () => [...new Set((unifiedData.metadata.budgetHighlights || []).map((item) => item.entity_id))],
-    []
-  );
+    return datasetByYear[effectiveCurrentYear] || [];
+  }, [effectiveCurrentYear]);
 
   const toggleCategory = (cat: string) => {
     setActiveCategories(prev => 
       prev.includes(cat) ? prev.filter(c => c !== cat) : [...prev, cat]
     );
   };
+
+  // Handle Playback
+  useEffect(() => {
+    let interval: ReturnType<typeof setInterval>;
+    if (isPlaying && viewMode === '3D' && selectableYears.length > 1) {
+      interval = setInterval(() => {
+        setCurrentYear(y => {
+          const currentIndex = selectableYears.indexOf(y);
+          if (currentIndex === -1) {
+            return selectableYears[0];
+          }
+          if (currentIndex >= selectableYears.length - 1) {
+            setIsPlaying(false);
+            return y;
+          }
+          return selectableYears[currentIndex + 1];
+        });
+      }, 2000); // 2 seconds per year
+    }
+    return () => clearInterval(interval);
+  }, [isPlaying, selectableYears, viewMode]);
 
   return (
     <div style={{ width: '100vw', height: '100vh', position: 'relative', overflow: 'hidden' }}>
@@ -130,7 +196,10 @@ function App() {
         border: '1px solid var(--panel-border)'
       }}>
         <button
-          onClick={() => setViewMode('3D')}
+          onClick={() => {
+            setIsPlaying(false);
+            setViewMode('3D');
+          }}
           style={{
             background: viewMode === '3D' ? 'var(--accent-color)' : 'transparent',
             color: viewMode === '3D' ? '#000' : 'var(--text-main)',
@@ -148,7 +217,10 @@ function App() {
           <Globe size={16} /> 3D グローブ
         </button>
         <button
-          onClick={() => setViewMode('2D')}
+          onClick={() => {
+            setIsPlaying(false);
+            setViewMode('2D');
+          }}
           style={{
             background: viewMode === '2D' ? 'var(--accent-color)' : 'transparent',
             color: viewMode === '2D' ? '#000' : 'var(--text-main)',
@@ -166,7 +238,10 @@ function App() {
           <GitMerge size={16} style={{ transform: 'rotate(90deg)' }} /> 2D 解析フロー
         </button>
         <button
-          onClick={() => setViewMode('Budget')}
+          onClick={() => {
+            setIsPlaying(false);
+            setViewMode('Budget');
+          }}
           style={{
             background: viewMode === 'Budget' ? 'var(--accent-color)' : 'transparent',
             color: viewMode === 'Budget' ? '#000' : 'var(--text-main)',
@@ -200,16 +275,21 @@ function App() {
           <FlowDashboard 
             edges={allEdgesForYear} 
             nodes={GLOBAL_NODES} 
-            currentYear={currentYear}
+            currentYear={effectiveCurrentYear}
             currency={currency}
+            metadata={unifiedData.metadata}
             budgetEntityIds={budgetEntityIds}
+            selectedEntityId={selectedFlowEntityId}
+            onSelectedEntityChange={setSelectedFlowEntityId}
           />
         ) : (
           <BudgetReportPage
-            currentYear={currentYear}
+            currentYear={effectiveCurrentYear}
             nodes={GLOBAL_NODES}
             edges={allEdgesForYear}
             metadata={unifiedData.metadata}
+            selectedEntityId={selectedBudgetEntityId}
+            onSelectedEntityChange={setSelectedBudgetEntityId}
           />
         )}
       </div>
@@ -228,11 +308,12 @@ function App() {
       </div>
 
       <Timeline 
-        years={YEARS}
-        currentYear={currentYear}
+        years={selectableYears}
+        currentYear={effectiveCurrentYear}
         setCurrentYear={setCurrentYear}
         isPlaying={isPlaying}
         setIsPlaying={setIsPlaying}
+        showPlaybackControls={viewMode === '3D'}
       />
 
       {viewMode === '3D' && (

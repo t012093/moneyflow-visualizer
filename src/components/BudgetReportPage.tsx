@@ -1,15 +1,17 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import type { Edge, Node } from '../data/mockGenerator';
-import type { AppMetadata, BudgetHighlight } from '../types/frontendData';
+import type { AppMetadata, BudgetHighlight, KnowledgeNote, KnowledgeNoteSource, StructuredFact, StructuredFactSource } from '../types/frontendData';
 import { JPY_RATE } from '../utils/currencyFormatter';
 
-type BudgetTab = 'overview' | 'increase_driver' | 'policy_frame' | 'major_program' | 'individual_project' | 'year_compare';
+type BudgetTab = 'overview' | 'increase_driver' | 'policy_frame' | 'major_program' | 'individual_project' | 'research_note' | 'year_compare';
 
 interface BudgetReportPageProps {
   currentYear: number;
   nodes: Node[];
   edges: Edge[];
   metadata: AppMetadata;
+  selectedEntityId: string;
+  onSelectedEntityChange: (entityId: string) => void;
 }
 
 const TAB_LABELS: Record<BudgetTab, string> = {
@@ -18,6 +20,7 @@ const TAB_LABELS: Record<BudgetTab, string> = {
   policy_frame: '政策枠',
   major_program: '主な事業',
   individual_project: '個別施策',
+  research_note: '調査ノート',
   year_compare: '年度比較',
 };
 
@@ -27,12 +30,14 @@ const TAB_ACCENTS: Record<BudgetTab, string> = {
   policy_frame: '#34d399',
   major_program: '#60a5fa',
   individual_project: '#c084fc',
+  research_note: '#a3e635',
   year_compare: '#fca5a5',
 };
 
 type BudgetEvidenceStatus = 'reviewed' | 'model-based' | 'hybrid';
+type ReferenceSource = KnowledgeNoteSource | StructuredFactSource;
 
-const MODEL_BUDGET_DATASETS = new Set(['省庁別主要経費推計', '財務省 一般会計（所管別）', '財務省一般会計', 'ministries_data']);
+const MODEL_BUDGET_DATASET_MARKERS = ['省庁別主要経費推計', '財務省 一般会計（所管別）', '財務省一般会計', 'ministries_data', 'meti_data', '想定', 'Proxy', 'Approximation', 'Estimated'];
 
 const EVIDENCE_BADGE_STYLE: Record<BudgetEvidenceStatus, { label: string; color: string; background: string; border: string; description: string }> = {
   reviewed: {
@@ -59,13 +64,18 @@ const EVIDENCE_BADGE_STYLE: Record<BudgetEvidenceStatus, { label: string; color:
 };
 
 function inferEvidenceStatus(item: { source_dataset?: string | null; source_url?: string | null }): BudgetEvidenceStatus {
-  if (item.source_dataset && MODEL_BUDGET_DATASETS.has(item.source_dataset)) {
+  if (item.source_dataset && MODEL_BUDGET_DATASET_MARKERS.some((marker) => item.source_dataset?.includes(marker))) {
     return 'model-based';
   }
   if (item.source_url && item.source_url.toLowerCase().includes('.pdf')) {
     return 'reviewed';
   }
   return 'model-based';
+}
+
+function isBudgetSurfaceEligibleEdge(edge: Edge): boolean {
+  const dataset = edge.source_dataset || '';
+  return !MODEL_BUDGET_DATASET_MARKERS.some((marker) => dataset.includes(marker));
 }
 
 function renderEvidenceBadge(status: BudgetEvidenceStatus) {
@@ -129,7 +139,7 @@ function parseBudgetPageParams(): { entityId: string | null; tab: BudgetTab | nu
   const entityId = params.get('entity');
   const focusTargetId = params.get('focus');
   const requestedTab = params.get('tab');
-  const allowedTabs = new Set<BudgetTab>(['overview', 'increase_driver', 'policy_frame', 'major_program', 'individual_project', 'year_compare']);
+  const allowedTabs = new Set<BudgetTab>(['overview', 'increase_driver', 'policy_frame', 'major_program', 'individual_project', 'research_note', 'year_compare']);
   const tab = requestedTab && allowedTabs.has(requestedTab as BudgetTab) ? (requestedTab as BudgetTab) : null;
   return {
     entityId: entityId || null,
@@ -185,11 +195,193 @@ function renderHighlightGrid(items: BudgetHighlight[], accent: string) {
   );
 }
 
-export const BudgetReportPage: React.FC<BudgetReportPageProps> = ({ currentYear, nodes, edges, metadata }) => {
+function renderReferenceSources(sources: ReferenceSource[], accent: string) {
+  if (!sources.length) {
+    return null;
+  }
+
+  return (
+    <div style={{ marginTop: '0.85rem', display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+      {sources.map((source) => (
+        <a
+          key={`${source.source_title}-${source.source_url}`}
+          href={source.source_url}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.35rem',
+            padding: '0.35rem 0.65rem',
+            borderRadius: '999px',
+            textDecoration: 'none',
+            color: accent,
+            background: `${accent}14`,
+            border: `1px solid ${accent}22`,
+            fontSize: '0.78rem',
+          }}
+        >
+          {source.source_title}
+        </a>
+      ))}
+    </div>
+  );
+}
+
+function renderStructuredFactGrid(items: StructuredFact[], accent: string) {
+  return (
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '0.9rem' }}>
+      {items.map((item) => (
+        <article
+          key={item.fact_key}
+          style={{
+            padding: '1rem',
+            borderRadius: '18px',
+            background: 'rgba(255,255,255,0.04)',
+            border: `1px solid ${accent}22`,
+          }}
+        >
+          {item.fact_group ? (
+            <div
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                padding: '0.22rem 0.6rem',
+                borderRadius: '999px',
+                fontSize: '0.72rem',
+                fontWeight: 700,
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                color: accent,
+                background: `${accent}14`,
+                border: `1px solid ${accent}22`,
+              }}
+            >
+              {item.fact_group}
+            </div>
+          ) : null}
+          <div style={{ marginTop: '0.7rem', color: accent, fontSize: '1.45rem', fontWeight: 700 }}>{item.value_text}</div>
+          <div style={{ marginTop: '0.35rem', fontWeight: 700, lineHeight: 1.45 }}>{item.title}</div>
+          {item.summary ? (
+            <div style={{ marginTop: '0.5rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>
+              {item.summary}
+            </div>
+          ) : null}
+          {item.source_excerpt ? (
+            <div
+              style={{
+                marginTop: '0.75rem',
+                padding: '0.75rem',
+                borderRadius: '14px',
+                background: 'rgba(255,255,255,0.03)',
+                border: '1px solid rgba(148, 163, 184, 0.12)',
+                color: 'var(--text-muted)',
+                fontSize: '0.84rem',
+                lineHeight: 1.6,
+              }}
+            >
+              {item.source_excerpt}
+            </div>
+          ) : null}
+          {renderReferenceSources(item.sources || [], accent)}
+        </article>
+      ))}
+    </div>
+  );
+}
+
+function renderKnowledgeNoteGrid(items: KnowledgeNote[], accent: string) {
+  return (
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '0.9rem' }}>
+      {items.map((item) => (
+        <article
+          key={item.note_key}
+          style={{
+            padding: '1rem',
+            borderRadius: '18px',
+            background: 'rgba(255,255,255,0.04)',
+            border: `1px solid ${accent}22`,
+          }}
+        >
+          <div
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              padding: '0.22rem 0.6rem',
+              borderRadius: '999px',
+              fontSize: '0.72rem',
+              fontWeight: 700,
+              letterSpacing: '0.08em',
+              textTransform: 'uppercase',
+              color: accent,
+              background: `${accent}14`,
+              border: `1px solid ${accent}22`,
+            }}
+          >
+            Research note
+          </div>
+          <div style={{ marginTop: '0.7rem', fontWeight: 700, fontSize: '1.05rem', lineHeight: 1.5 }}>{item.title}</div>
+          {item.summary && (
+            <div style={{ marginTop: '0.5rem', color: 'var(--text-muted)', lineHeight: 1.65 }}>
+              {item.summary}
+            </div>
+          )}
+          {item.key_points?.length ? (
+            <ul style={{ margin: '0.85rem 0 0', paddingLeft: '1.1rem', color: 'var(--text-main)', lineHeight: 1.7 }}>
+              {item.key_points.map((point) => (
+                <li key={point}>{point}</li>
+              ))}
+            </ul>
+          ) : null}
+          {renderReferenceSources(item.sources || [], accent)}
+          {item.doc_path && (
+            <div style={{ marginTop: '0.75rem', color: 'var(--text-muted)', fontSize: '0.78rem' }}>
+              internal doc: {item.doc_path}
+            </div>
+          )}
+          {item.body_markdown ? (
+            <details style={{ marginTop: '0.85rem' }}>
+              <summary style={{ cursor: 'pointer', color: accent, fontWeight: 600 }}>ノート全文</summary>
+              <div
+                style={{
+                  marginTop: '0.7rem',
+                  padding: '0.9rem',
+                  borderRadius: '14px',
+                  background: 'rgba(255,255,255,0.03)',
+                  border: '1px solid rgba(148, 163, 184, 0.12)',
+                  whiteSpace: 'pre-wrap',
+                  lineHeight: 1.65,
+                  fontSize: '0.88rem',
+                }}
+              >
+                {item.body_markdown}
+              </div>
+            </details>
+          ) : null}
+        </article>
+      ))}
+    </div>
+  );
+}
+
+export const BudgetReportPage: React.FC<BudgetReportPageProps> = ({
+  currentYear,
+  nodes,
+  edges,
+  metadata,
+  selectedEntityId,
+  onSelectedEntityChange,
+}) => {
   const budgetHighlights = metadata.budgetHighlights || [];
+  const knowledgeNotes = metadata.knowledgeNotes || [];
+  const structuredFacts = metadata.structuredFacts || [];
   const budgetPageParams = useMemo(() => parseBudgetPageParams(), []);
   const entityOptions = useMemo(() => {
-    return [...new Set(budgetHighlights.map((item) => item.entity_id))]
+    return [...new Set([
+      ...budgetHighlights.map((item) => item.entity_id),
+      ...knowledgeNotes.map((item) => item.entity_id),
+      ...structuredFacts.map((item) => item.entity_id),
+    ])]
       .map((entityId) => ({
         entityId,
         name: nodes.find((node) => node.id === entityId)?.name || entityId,
@@ -199,41 +391,61 @@ export const BudgetReportPage: React.FC<BudgetReportPageProps> = ({ currentYear,
         if (b.entityId === metadata.featuredEntityId) return 1;
         return a.name.localeCompare(b.name, 'ja');
       });
-  }, [budgetHighlights, metadata.featuredEntityId, nodes]);
-
-  const [selectedEntityId, setSelectedEntityId] = useState<string>(
-    budgetPageParams.entityId || metadata.featuredEntityId || entityOptions[0]?.entityId || ''
-  );
+  }, [budgetHighlights, knowledgeNotes, structuredFacts, metadata.featuredEntityId, nodes]);
+  const fallbackEntityId = budgetPageParams.entityId || metadata.featuredEntityId || entityOptions[0]?.entityId || '';
+  const activeEntityId = entityOptions.some((item) => item.entityId === selectedEntityId) ? selectedEntityId : fallbackEntityId;
   const [activeTab, setActiveTab] = useState<BudgetTab>(
     budgetPageParams.tab || (budgetPageParams.focusTargetId ? 'major_program' : 'overview')
   );
   const focusTargetId = budgetPageParams.focusTargetId;
 
   useEffect(() => {
-    if (!entityOptions.some((item) => item.entityId === selectedEntityId)) {
-      setSelectedEntityId(budgetPageParams.entityId || metadata.featuredEntityId || entityOptions[0]?.entityId || '');
+    if (selectedEntityId !== activeEntityId) {
+      onSelectedEntityChange(activeEntityId);
     }
-  }, [budgetPageParams.entityId, entityOptions, metadata.featuredEntityId, selectedEntityId]);
+  }, [activeEntityId, onSelectedEntityChange, selectedEntityId]);
 
   useEffect(() => {
     setActiveTab(budgetPageParams.tab || (focusTargetId ? 'major_program' : 'overview'));
-  }, [budgetPageParams.tab, currentYear, focusTargetId, selectedEntityId]);
+  }, [activeEntityId, budgetPageParams.tab, currentYear, focusTargetId]);
 
   const currentHighlights = useMemo(
     () =>
       budgetHighlights
-        .filter((item) => item.entity_id === selectedEntityId && item.fiscal_year === currentYear)
+        .filter((item) => item.entity_id === activeEntityId && item.fiscal_year === currentYear)
         .sort((a, b) => a.display_order - b.display_order),
-    [budgetHighlights, currentYear, selectedEntityId]
+    [activeEntityId, budgetHighlights, currentYear]
   );
 
   const overview = currentHighlights.find((item) => item.section_key === 'overview');
   const increaseDrivers = currentHighlights.filter((item) => item.section_key === 'increase_driver');
   const policyFrames = currentHighlights.filter((item) => item.section_key === 'policy_frame');
   const individualProjects = currentHighlights.filter((item) => item.section_key === 'individual_project');
+  const currentKnowledgeNotes = useMemo(
+    () =>
+      knowledgeNotes
+        .filter((item) => item.entity_id === activeEntityId && item.fiscal_year === currentYear)
+        .sort((a, b) => a.display_order - b.display_order),
+    [activeEntityId, currentYear, knowledgeNotes]
+  );
+  const currentStructuredFacts = useMemo(
+    () =>
+      structuredFacts
+        .filter((item) => item.entity_id === activeEntityId && item.fiscal_year === currentYear)
+        .sort((a, b) => a.display_order - b.display_order),
+    [activeEntityId, currentYear, structuredFacts]
+  );
+  const availableKnowledgeYears = useMemo(
+    () => [...new Set(knowledgeNotes.filter((item) => item.entity_id === activeEntityId).map((item) => item.fiscal_year))].sort(),
+    [activeEntityId, knowledgeNotes]
+  );
+  const availableStructuredFactYears = useMemo(
+    () => [...new Set(structuredFacts.filter((item) => item.entity_id === activeEntityId).map((item) => item.fiscal_year))].sort(),
+    [activeEntityId, structuredFacts]
+  );
   const availableYears = useMemo(
-    () => [...new Set(budgetHighlights.filter((item) => item.entity_id === selectedEntityId).map((item) => item.fiscal_year))].sort(),
-    [budgetHighlights, selectedEntityId]
+    () => [...new Set(budgetHighlights.filter((item) => item.entity_id === activeEntityId).map((item) => item.fiscal_year))].sort(),
+    [activeEntityId, budgetHighlights]
   );
   const previousYear = useMemo(
     () => [...availableYears].filter((year) => year < currentYear).sort((a, b) => b - a)[0] || null,
@@ -244,34 +456,34 @@ export const BudgetReportPage: React.FC<BudgetReportPageProps> = ({ currentYear,
       previousYear === null
         ? []
         : budgetHighlights
-            .filter((item) => item.entity_id === selectedEntityId && item.fiscal_year === previousYear)
+            .filter((item) => item.entity_id === activeEntityId && item.fiscal_year === previousYear)
             .sort((a, b) => a.display_order - b.display_order),
-    [budgetHighlights, previousYear, selectedEntityId]
+    [activeEntityId, budgetHighlights, previousYear]
   );
 
   const majorPrograms = useMemo(() => {
     return edges
-      .filter((edge) => edge.source_id === selectedEntityId && edge.year === currentYear)
+      .filter((edge) => edge.source_id === activeEntityId && edge.year === currentYear && isBudgetSurfaceEligibleEdge(edge))
       .sort((a, b) => b.value_usd - a.value_usd)
       .slice(0, 8)
       .map((edge) => ({
         ...edge,
         targetName: nodes.find((node) => node.id === edge.target_id)?.name || edge.target_id,
       }));
-  }, [currentYear, edges, nodes, selectedEntityId]);
+  }, [activeEntityId, currentYear, edges, nodes]);
   const previousMajorPrograms = useMemo(() => {
     if (previousYear === null) {
       return [];
     }
     return edges
-      .filter((edge) => edge.source_id === selectedEntityId && edge.year === previousYear)
+      .filter((edge) => edge.source_id === activeEntityId && edge.year === previousYear && isBudgetSurfaceEligibleEdge(edge))
       .sort((a, b) => b.value_usd - a.value_usd)
       .slice(0, 8)
       .map((edge) => ({
         ...edge,
         targetName: nodes.find((node) => node.id === edge.target_id)?.name || edge.target_id,
       }));
-  }, [edges, nodes, previousYear, selectedEntityId]);
+  }, [activeEntityId, edges, nodes, previousYear]);
   const yearComparisonRows = useMemo(() => {
     if (previousYear === null) {
       return [];
@@ -298,7 +510,7 @@ export const BudgetReportPage: React.FC<BudgetReportPageProps> = ({ currentYear,
       .sort((a, b) => Math.abs(b.deltaOku) - Math.abs(a.deltaOku));
   }, [majorPrograms, previousMajorPrograms, previousYear]);
 
-  const selectedEntityName = entityOptions.find((item) => item.entityId === selectedEntityId)?.name || selectedEntityId;
+  const selectedEntityName = entityOptions.find((item) => item.entityId === activeEntityId)?.name || activeEntityId;
   const coverageStatus = useMemo<BudgetEvidenceStatus | null>(() => {
     const statuses = new Set<BudgetEvidenceStatus>();
 
@@ -315,7 +527,67 @@ export const BudgetReportPage: React.FC<BudgetReportPageProps> = ({ currentYear,
   }, [currentHighlights, majorPrograms]);
 
   const tabContent = useMemo(() => {
-    if (!selectedEntityId || !currentHighlights.length) {
+    if (!activeEntityId) {
+      return (
+        <div
+          style={{
+            padding: '1.2rem',
+            borderRadius: '18px',
+            background: 'rgba(255,255,255,0.04)',
+            border: '1px solid rgba(148, 163, 184, 0.16)',
+            color: 'var(--text-muted)',
+            lineHeight: 1.7,
+          }}
+        >
+          表示対象の主体が見つかりません。
+        </div>
+      );
+    }
+
+    if (activeTab === 'research_note') {
+      if (currentStructuredFacts.length || currentKnowledgeNotes.length) {
+        return (
+          <div style={{ display: 'grid', gap: '1rem' }}>
+            {currentStructuredFacts.length ? (
+              <section style={{ display: 'grid', gap: '0.75rem' }}>
+                <div style={{ fontSize: '0.9rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: TAB_ACCENTS.research_note }}>
+                  Structured Facts
+                </div>
+                {renderStructuredFactGrid(currentStructuredFacts, TAB_ACCENTS.research_note)}
+              </section>
+            ) : null}
+            {currentKnowledgeNotes.length ? (
+              <section style={{ display: 'grid', gap: '0.75rem' }}>
+                <div style={{ fontSize: '0.9rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: TAB_ACCENTS.research_note }}>
+                  Research Notes
+                </div>
+                {renderKnowledgeNoteGrid(currentKnowledgeNotes, TAB_ACCENTS.research_note)}
+              </section>
+            ) : null}
+          </div>
+        );
+      }
+
+      return (
+        <div
+          style={{
+            padding: '1.2rem',
+            borderRadius: '18px',
+            background: 'rgba(255,255,255,0.04)',
+            border: '1px solid rgba(148, 163, 184, 0.16)',
+            color: 'var(--text-muted)',
+            lineHeight: 1.7,
+          }}
+        >
+          {selectedEntityName} の {currentYear} 年度調査ノートは未登録です。
+          {[...new Set([...availableKnowledgeYears, ...availableStructuredFactYears])].length > 0
+            ? ` 登録済み年度: ${[...new Set([...availableKnowledgeYears, ...availableStructuredFactYears])].join(', ')}`
+            : ' 登録済みの調査ノート / structured facts がありません。'}
+        </div>
+      );
+    }
+
+    if (!currentHighlights.length) {
       return (
         <div
           style={{
@@ -552,8 +824,12 @@ export const BudgetReportPage: React.FC<BudgetReportPageProps> = ({ currentYear,
     );
   }, [
     activeTab,
+    availableKnowledgeYears,
+    availableStructuredFactYears,
     availableYears,
     currentHighlights,
+    currentKnowledgeNotes,
+    currentStructuredFacts,
     currentYear,
     increaseDrivers,
     individualProjects,
@@ -563,7 +839,7 @@ export const BudgetReportPage: React.FC<BudgetReportPageProps> = ({ currentYear,
     previousHighlights,
     previousMajorPrograms,
     previousYear,
-    selectedEntityId,
+    activeEntityId,
     selectedEntityName,
     yearComparisonRows,
     focusTargetId,
@@ -608,8 +884,8 @@ export const BudgetReportPage: React.FC<BudgetReportPageProps> = ({ currentYear,
         >
           <label style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>対象省庁 / 主体</label>
           <select
-            value={selectedEntityId}
-            onChange={(event) => setSelectedEntityId(event.target.value)}
+            value={activeEntityId}
+            onChange={(event) => onSelectedEntityChange(event.target.value)}
             style={{
               background: '#000',
               color: '#fff',
@@ -645,7 +921,7 @@ export const BudgetReportPage: React.FC<BudgetReportPageProps> = ({ currentYear,
         <div>
           <div style={{ fontSize: '1.35rem', fontWeight: 700 }}>{selectedEntityName}</div>
           <div style={{ marginTop: '0.25rem', color: 'var(--text-muted)', fontSize: '0.9rem' }}>
-            {currentYear}年度の登録済み予算ハイライト
+            {currentYear}年度の登録済み予算ハイライト / 調査ナレッジ
           </div>
           {coverageStatus && (
             <div style={{ marginTop: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.65rem', flexWrap: 'wrap' }}>

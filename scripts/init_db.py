@@ -250,6 +250,85 @@ CREATE TABLE IF NOT EXISTS budget_highlights (
 );
 
 -- ============================================================
+-- Knowledge Notes (調査メモ / 比較表)
+-- ============================================================
+CREATE TABLE IF NOT EXISTS knowledge_notes (
+  id                   INTEGER PRIMARY KEY AUTOINCREMENT,
+  entity_id            TEXT NOT NULL REFERENCES nodes(id),
+  fiscal_year          INTEGER NOT NULL,
+  note_key             TEXT NOT NULL,
+  title                TEXT NOT NULL,
+  summary              TEXT,
+  key_points_json      TEXT,
+  body_markdown        TEXT,
+  doc_path             TEXT,
+  display_order        INTEGER DEFAULT 0,
+  created_at           TEXT DEFAULT (datetime('now')),
+  updated_at           TEXT DEFAULT (datetime('now')),
+  UNIQUE(entity_id, fiscal_year, note_key)
+);
+
+CREATE TABLE IF NOT EXISTS knowledge_note_sources (
+  id                   INTEGER PRIMARY KEY AUTOINCREMENT,
+  note_id              INTEGER NOT NULL REFERENCES knowledge_notes(id) ON DELETE CASCADE,
+  source_title         TEXT NOT NULL,
+  source_url           TEXT NOT NULL,
+  source_kind          TEXT,
+  authority_level      TEXT,
+  display_order        INTEGER DEFAULT 0,
+  UNIQUE(note_id, source_url)
+);
+
+-- ============================================================
+-- Structured Facts (比較可能な事実)
+-- ============================================================
+CREATE TABLE IF NOT EXISTS structured_facts (
+  id                   INTEGER PRIMARY KEY AUTOINCREMENT,
+  entity_id            TEXT NOT NULL REFERENCES nodes(id),
+  fiscal_year          INTEGER NOT NULL,
+  fact_key             TEXT NOT NULL,
+  fact_group           TEXT,
+  title                TEXT NOT NULL,
+  value_text           TEXT NOT NULL,
+  numeric_value        REAL,
+  unit                 TEXT,
+  summary              TEXT,
+  note_key             TEXT,
+  source_excerpt       TEXT,
+  display_order        INTEGER DEFAULT 0,
+  created_at           TEXT DEFAULT (datetime('now')),
+  updated_at           TEXT DEFAULT (datetime('now')),
+  UNIQUE(entity_id, fiscal_year, fact_key)
+);
+
+CREATE TABLE IF NOT EXISTS structured_fact_sources (
+  id                   INTEGER PRIMARY KEY AUTOINCREMENT,
+  fact_id              INTEGER NOT NULL REFERENCES structured_facts(id) ON DELETE CASCADE,
+  source_title         TEXT NOT NULL,
+  source_url           TEXT NOT NULL,
+  source_kind          TEXT,
+  authority_level      TEXT,
+  display_order        INTEGER DEFAULT 0,
+  UNIQUE(fact_id, source_url)
+);
+
+-- ============================================================
+-- Source Link Health (URL健全性)
+-- ============================================================
+CREATE TABLE IF NOT EXISTS source_link_health (
+  id                   INTEGER PRIMARY KEY AUTOINCREMENT,
+  source_url           TEXT NOT NULL UNIQUE,
+  request_url          TEXT,
+  final_url            TEXT,
+  validation_status    TEXT NOT NULL DEFAULT 'unknown',
+  http_status          INTEGER,
+  error_message        TEXT,
+  checked_at           TEXT,
+  created_at           TEXT DEFAULT (datetime('now')),
+  updated_at           TEXT DEFAULT (datetime('now'))
+);
+
+-- ============================================================
 -- Indexes
 -- ============================================================
 CREATE INDEX IF NOT EXISTS idx_edges_source   ON edges(source_id);
@@ -269,6 +348,11 @@ CREATE INDEX IF NOT EXISTS idx_source_candidates_status ON source_candidates(rev
 CREATE INDEX IF NOT EXISTS idx_source_policies_domain ON source_policies(domain);
 CREATE INDEX IF NOT EXISTS idx_source_policies_status ON source_policies(review_status, auto_ingest, updated_at DESC);
 CREATE INDEX IF NOT EXISTS idx_budget_highlights_entity_year ON budget_highlights(entity_id, fiscal_year, section_key, display_order);
+CREATE INDEX IF NOT EXISTS idx_knowledge_notes_entity_year ON knowledge_notes(entity_id, fiscal_year, display_order);
+CREATE INDEX IF NOT EXISTS idx_knowledge_note_sources_note ON knowledge_note_sources(note_id, display_order);
+CREATE INDEX IF NOT EXISTS idx_structured_facts_entity_year ON structured_facts(entity_id, fiscal_year, display_order);
+CREATE INDEX IF NOT EXISTS idx_structured_fact_sources_fact ON structured_fact_sources(fact_id, display_order);
+CREATE INDEX IF NOT EXISTS idx_source_link_health_status ON source_link_health(validation_status, updated_at DESC);
 """
 
 # Official data sources to register
@@ -566,7 +650,12 @@ def main():
     # Verify
     count = conn.execute("SELECT COUNT(*) FROM data_sources").fetchone()[0]
     print(f"✅ Database initialized: {DB_PATH}")
-    print(f"   Tables: nodes, edges, data_sources, source_provenance, crawl_jobs, crawl_documents, chunk_embeddings, source_candidates, source_policies")
+    print(
+        "   Tables: nodes, edges, data_sources, source_provenance, crawl_jobs, "
+        "crawl_documents, chunk_embeddings, source_candidates, source_policies, "
+        "budget_highlights, knowledge_notes, knowledge_note_sources, "
+        "structured_facts, structured_fact_sources, source_link_health"
+    )
     print(f"   Data sources registered: {count}")
     
     conn.close()

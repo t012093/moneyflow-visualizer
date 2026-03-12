@@ -729,14 +729,6 @@
       "type": "recipient"
     },
     {
-      "id": "REC_CHILDREN",
-      "name": "子育て世帯（児童手当）",
-      "lat": 35.6,
-      "lng": 139.6,
-      "region": "Social Security",
-      "type": "recipient"
-    },
-    {
       "id": "REC_PRESCHOOL_FAC",
       "name": "就学前教育・保育施設整備",
       "lat": 35.66,
@@ -1330,9 +1322,7 @@
       "value_usd": 157500000000.0,
       "year": 2021,
       "confidence": 0.9,
-      "source_dataset": "Corporate SEC Filings",
-      "source_url": "Corporate SEC Filings",
-      "source_title": "Corporate SEC Filings"
+      "source_dataset": "Corporate SEC Filings"
     },
     {
       "source_id": "ARG",
@@ -1630,9 +1620,7 @@
       "value_usd": 77000000000.0,
       "year": 2021,
       "confidence": 0.88,
-      "source_dataset": "Corporate SEC Filings",
-      "source_url": "Corporate SEC Filings",
-      "source_title": "Corporate SEC Filings"
+      "source_dataset": "Corporate SEC Filings"
     },
     {
       "source_id": "CITY_HIMI",
@@ -2354,9 +2342,7 @@
       "value_usd": 8000000000.0,
       "year": 2021,
       "confidence": 0.9,
-      "source_dataset": "EDINET XBRL (Sony)",
-      "source_url": "EDINET XBRL (Sony)",
-      "source_title": "EDINET XBRL (Sony)"
+      "source_dataset": "EDINET XBRL (Sony)"
     },
     {
       "source_id": "CORP_6758",
@@ -2369,7 +2355,6 @@
       "source_dataset": "meti_data",
       "description": "Corporate Tax Revenue from Sony Group",
       "evidence_text": "Corporate Tax Revenue from Sony Group",
-      "source_url": "https://www.meti.go.jp/",
       "source_title": "meti_data"
     },
     {
@@ -2380,9 +2365,7 @@
       "value_usd": 8000000000.0,
       "year": 2021,
       "confidence": 0.99,
-      "source_dataset": "EDINET XBRL (Toyota)",
-      "source_url": "EDINET XBRL (Toyota)",
-      "source_title": "EDINET XBRL (Toyota)"
+      "source_dataset": "EDINET XBRL (Toyota)"
     },
     {
       "source_id": "CORP_7203",
@@ -2392,9 +2375,7 @@
       "value_usd": 25000000000.0,
       "year": 2021,
       "confidence": 0.9,
-      "source_dataset": "EDINET / IR Reports",
-      "source_url": "EDINET / IR Reports",
-      "source_title": "EDINET / IR Reports"
+      "source_dataset": "EDINET / IR Reports"
     },
     {
       "source_id": "CORP_7203",
@@ -2407,7 +2388,6 @@
       "source_dataset": "meti_data",
       "description": "Corporate Tax Revenue from Toyota Motor Corp",
       "evidence_text": "Corporate Tax Revenue from Toyota Motor Corp",
-      "source_url": "https://www.meti.go.jp/",
       "source_title": "meti_data"
     },
     {
@@ -2435,7 +2415,6 @@
       "source_dataset": "meti_data",
       "description": "Corporate Tax Revenue from SoftBank Group",
       "evidence_text": "Corporate Tax Revenue from SoftBank Group",
-      "source_url": "https://www.meti.go.jp/",
       "source_title": "meti_data"
     },
     {
@@ -2446,9 +2425,7 @@
       "value_usd": 12000000000.0,
       "year": 2021,
       "confidence": 0.4,
-      "source_dataset": "Chainalysis",
-      "source_url": "Chainalysis",
-      "source_title": "Chainalysis"
+      "source_dataset": "Chainalysis"
     },
     {
       "source_id": "DEU",
@@ -3374,9 +3351,7 @@
       "value_usd": 15000000000.0,
       "year": 2021,
       "confidence": 0.99,
-      "source_dataset": "EDINET XBRL (Toyota)",
-      "source_url": "EDINET XBRL (Toyota)",
-      "source_title": "EDINET XBRL (Toyota)"
+      "source_dataset": "EDINET XBRL (Toyota)"
     },
     {
       "source_id": "HH_JP",
@@ -3386,9 +3361,7 @@
       "value_usd": 10000000000.0,
       "year": 2021,
       "confidence": 0.99,
-      "source_dataset": "EDINET XBRL (Sony)",
-      "source_url": "EDINET XBRL (Sony)",
-      "source_title": "EDINET XBRL (Sony)"
+      "source_dataset": "EDINET XBRL (Sony)"
     },
     {
       "source_id": "HH_JP",
@@ -3766,9 +3739,7 @@
       "value_usd": 25000000000.0,
       "year": 2021,
       "confidence": 0.9,
-      "source_dataset": "IR Reports",
-      "source_url": "IR Reports",
-      "source_title": "IR Reports"
+      "source_dataset": "IR Reports"
     },
     {
       "source_id": "KOR",
@@ -3827,7 +3798,7 @@
       "year": 2021,
       "confidence": 0.9,
       "source_dataset": "省庁別主要経費推計",
-      "source_url": "https://www.mof.go.jp/public_relations/finance/202104/202104c.pdf",
+      "source_url": "https://www.mof.go.jp/budget/budger_workflow/budget/fy2021/seifuan2021/14.pdf",
       "source_title": "令和3年度社会保障関係予算のポイント"
     },
     {
@@ -3839,7 +3810,7 @@
       "year": 2021,
       "confidence": 0.9,
       "source_dataset": "省庁別主要経費推計",
-      "source_url": "https://www.mof.go.jp/public_relations/finance/202104/202104c.pdf",
+      "source_url": "https://www.mof.go.jp/budget/budger_workflow/budget/fy2021/seifuan2021/14.pdf",
       "source_title": "令和3年度社会保障関係予算のポイント"
     },
     {
@@ -4488,9 +4459,7 @@
       "value_usd": 15000000000.0,
       "year": 2021,
       "confidence": 0.7,
-      "source_dataset": "Retail Brokerage Est.",
-      "source_url": "Retail Brokerage Est.",
-      "source_title": "Retail Brokerage Est."
+      "source_dataset": "Retail Brokerage Est."
     },
     {
       "source_id": "RUS",
@@ -4584,9 +4553,7 @@
       "value_usd": 30000000000.0,
       "year": 2021,
       "confidence": 0.6,
-      "source_dataset": "Wealth Reports",
-      "source_url": "Wealth Reports",
-      "source_title": "Wealth Reports"
+      "source_dataset": "Wealth Reports"
     },
     {
       "source_id": "SS_CHILDCARE",
@@ -4599,9 +4566,9 @@
       "source_dataset": "こども家庭庁 R6/R7予算 オープンデータ",
       "description": "児童手当 (所得制限撤廃・多子加算) - こども家庭庁オープンデータ (https://www.cfa.go.jp/)",
       "evidence_text": "児童手当 (所得制限撤廃・多子加算) - こども家庭庁オープンデータ (https://www.cfa.go.jp/)",
-      "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/b92baeee-5b6d-47be-b16f-ebf80a4eed28/3d37a505/20240401_councils_shingikai_kodomo_shien_05_02.pdf#page=12&search=15%2C246",
-      "source_title": "令和7年度こども家庭庁予算 事業別資料集",
-      "page_number": 12
+      "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/5cbb6234/20241227_policies_budget_53.pdf#page=2&search=%E5%85%90%E7%AB%A5%E6%89%8B%E5%BD%93",
+      "source_title": "令和7年度こども家庭庁予算案の概要",
+      "page_number": 2
     },
     {
       "source_id": "SS_CHILDCARE",
@@ -4684,7 +4651,7 @@
       "year": 2021,
       "confidence": 0.95,
       "source_dataset": "厚生労働省 国民医療費 R4",
-      "source_url": "https://www.mhlw.go.jp/toukei/saikin/hw/k-iryohi/",
+      "source_url": "https://www.mhlw.go.jp/toukei/list/37-21a.html",
       "source_title": "厚生労働省 国民医療費 R4"
     },
     {
@@ -4696,7 +4663,7 @@
       "year": 2021,
       "confidence": 0.95,
       "source_dataset": "厚生労働省 国民医療費 R4",
-      "source_url": "https://www.mhlw.go.jp/toukei/saikin/hw/k-iryohi/",
+      "source_url": "https://www.mhlw.go.jp/toukei/list/37-21a.html",
       "source_title": "厚生労働省 国民医療費 R4"
     },
     {
@@ -4708,7 +4675,7 @@
       "year": 2021,
       "confidence": 0.95,
       "source_dataset": "厚生労働省 国民医療費 R4",
-      "source_url": "https://www.mhlw.go.jp/toukei/saikin/hw/k-iryohi/",
+      "source_url": "https://www.mhlw.go.jp/toukei/list/37-21a.html",
       "source_title": "厚生労働省 国民医療費 R4"
     },
     {
@@ -4720,7 +4687,7 @@
       "year": 2021,
       "confidence": 0.95,
       "source_dataset": "厚生労働省 国民医療費 R4",
-      "source_url": "https://www.mhlw.go.jp/toukei/saikin/hw/k-iryohi/",
+      "source_url": "https://www.mhlw.go.jp/toukei/list/37-21a.html",
       "source_title": "厚生労働省 国民医療費 R4"
     },
     {
@@ -4744,7 +4711,7 @@
       "year": 2021,
       "confidence": 0.9,
       "source_dataset": "厚生労働省 介護給付費等実態統計 R5",
-      "source_url": "https://www.mhlw.go.jp/toukei/saikin/hw/kaigo/kyufu/",
+      "source_url": "https://www.mhlw.go.jp/toukei/list/45-1b.html",
       "source_title": "厚生労働省 介護給付費等実態統計 R5"
     },
     {
@@ -4756,7 +4723,7 @@
       "year": 2021,
       "confidence": 0.9,
       "source_dataset": "厚生労働省 介護給付費等実態統計 R5",
-      "source_url": "https://www.mhlw.go.jp/toukei/saikin/hw/kaigo/kyufu/",
+      "source_url": "https://www.mhlw.go.jp/toukei/list/45-1b.html",
       "source_title": "厚生労働省 介護給付費等実態統計 R5"
     },
     {
@@ -4768,7 +4735,7 @@
       "year": 2021,
       "confidence": 0.9,
       "source_dataset": "厚生労働省 介護給付費等実態統計 R5",
-      "source_url": "https://www.mhlw.go.jp/toukei/saikin/hw/kaigo/kyufu/",
+      "source_url": "https://www.mhlw.go.jp/toukei/list/45-1b.html",
       "source_title": "厚生労働省 介護給付費等実態統計 R5"
     },
     {
@@ -4780,7 +4747,7 @@
       "year": 2021,
       "confidence": 0.9,
       "source_dataset": "厚生労働省 介護給付費等実態統計 R5",
-      "source_url": "https://www.mhlw.go.jp/toukei/saikin/hw/kaigo/kyufu/",
+      "source_url": "https://www.mhlw.go.jp/toukei/list/45-1b.html",
       "source_title": "厚生労働省 介護給付費等実態統計 R5"
     },
     {
@@ -5007,9 +4974,7 @@
       "value_usd": 40000000000.0,
       "year": 2021,
       "confidence": 0.9,
-      "source_dataset": "IR Reports",
-      "source_url": "IR Reports",
-      "source_title": "IR Reports"
+      "source_dataset": "IR Reports"
     },
     {
       "source_id": "TUR",
@@ -5451,9 +5416,7 @@
       "value_usd": 20000000000.0,
       "year": 2021,
       "confidence": 0.5,
-      "source_dataset": "Chainalysis",
-      "source_url": "Chainalysis",
-      "source_title": "Chainalysis"
+      "source_dataset": "Chainalysis"
     },
     {
       "source_id": "VILLAGE_FUNAHASHI",
@@ -5505,9 +5468,7 @@
       "value_usd": 165000000000.0,
       "year": 2022,
       "confidence": 0.9,
-      "source_dataset": "Corporate SEC Filings",
-      "source_url": "Corporate SEC Filings",
-      "source_title": "Corporate SEC Filings"
+      "source_dataset": "Corporate SEC Filings"
     },
     {
       "source_id": "ARG",
@@ -5817,9 +5778,7 @@
       "value_usd": 84000000000.0,
       "year": 2022,
       "confidence": 0.88,
-      "source_dataset": "Corporate SEC Filings",
-      "source_url": "Corporate SEC Filings",
-      "source_title": "Corporate SEC Filings"
+      "source_dataset": "Corporate SEC Filings"
     },
     {
       "source_id": "CITY_HIMI",
@@ -6541,9 +6500,7 @@
       "value_usd": 8000000000.0,
       "year": 2022,
       "confidence": 0.9,
-      "source_dataset": "EDINET XBRL (Sony)",
-      "source_url": "EDINET XBRL (Sony)",
-      "source_title": "EDINET XBRL (Sony)"
+      "source_dataset": "EDINET XBRL (Sony)"
     },
     {
       "source_id": "CORP_6758",
@@ -6556,7 +6513,6 @@
       "source_dataset": "meti_data",
       "description": "Corporate Tax Revenue from Sony Group",
       "evidence_text": "Corporate Tax Revenue from Sony Group",
-      "source_url": "https://www.meti.go.jp/",
       "source_title": "meti_data"
     },
     {
@@ -6567,9 +6523,7 @@
       "value_usd": 8000000000.0,
       "year": 2022,
       "confidence": 0.99,
-      "source_dataset": "EDINET XBRL (Toyota)",
-      "source_url": "EDINET XBRL (Toyota)",
-      "source_title": "EDINET XBRL (Toyota)"
+      "source_dataset": "EDINET XBRL (Toyota)"
     },
     {
       "source_id": "CORP_7203",
@@ -6579,9 +6533,7 @@
       "value_usd": 25000000000.0,
       "year": 2022,
       "confidence": 0.9,
-      "source_dataset": "EDINET / IR Reports",
-      "source_url": "EDINET / IR Reports",
-      "source_title": "EDINET / IR Reports"
+      "source_dataset": "EDINET / IR Reports"
     },
     {
       "source_id": "CORP_7203",
@@ -6594,7 +6546,6 @@
       "source_dataset": "meti_data",
       "description": "Corporate Tax Revenue from Toyota Motor Corp",
       "evidence_text": "Corporate Tax Revenue from Toyota Motor Corp",
-      "source_url": "https://www.meti.go.jp/",
       "source_title": "meti_data"
     },
     {
@@ -6622,7 +6573,6 @@
       "source_dataset": "meti_data",
       "description": "Corporate Tax Revenue from SoftBank Group",
       "evidence_text": "Corporate Tax Revenue from SoftBank Group",
-      "source_url": "https://www.meti.go.jp/",
       "source_title": "meti_data"
     },
     {
@@ -6633,9 +6583,7 @@
       "value_usd": 12000000000.0,
       "year": 2022,
       "confidence": 0.4,
-      "source_dataset": "Chainalysis",
-      "source_url": "Chainalysis",
-      "source_title": "Chainalysis"
+      "source_dataset": "Chainalysis"
     },
     {
       "source_id": "DEU",
@@ -7050,7 +6998,7 @@
       "year": 2022,
       "confidence": 0.95,
       "source_dataset": "財務省 一般会計（所管別）",
-      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/seifuan2022/03.pdf",
+      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/sy030118.html",
       "source_title": "令和4年度一般会計歳出概算所管別内訳"
     },
     {
@@ -7062,7 +7010,7 @@
       "year": 2022,
       "confidence": 0.95,
       "source_dataset": "財務省 一般会計（所管別）",
-      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/seifuan2022/03.pdf",
+      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/sy030118.html",
       "source_title": "令和4年度一般会計歳出概算所管別内訳"
     },
     {
@@ -7074,7 +7022,7 @@
       "year": 2022,
       "confidence": 0.95,
       "source_dataset": "財務省 一般会計（所管別）",
-      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/seifuan2022/03.pdf",
+      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/sy030118.html",
       "source_title": "令和4年度一般会計歳出概算所管別内訳"
     },
     {
@@ -7086,7 +7034,7 @@
       "year": 2022,
       "confidence": 0.95,
       "source_dataset": "財務省 一般会計（所管別）",
-      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/seifuan2022/03.pdf",
+      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/sy030118.html",
       "source_title": "令和4年度一般会計歳出概算所管別内訳"
     },
     {
@@ -7098,7 +7046,7 @@
       "year": 2022,
       "confidence": 0.95,
       "source_dataset": "財務省 一般会計（所管別）",
-      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/seifuan2022/03.pdf",
+      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/sy030118.html",
       "source_title": "令和4年度一般会計歳出概算所管別内訳"
     },
     {
@@ -7110,7 +7058,7 @@
       "year": 2022,
       "confidence": 0.95,
       "source_dataset": "財務省 一般会計（所管別）",
-      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/seifuan2022/03.pdf",
+      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/sy030118.html",
       "source_title": "令和4年度一般会計歳出概算所管別内訳"
     },
     {
@@ -7122,7 +7070,7 @@
       "year": 2022,
       "confidence": 0.95,
       "source_dataset": "財務省 一般会計（所管別）",
-      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/seifuan2022/03.pdf",
+      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/sy030118.html",
       "source_title": "令和4年度一般会計歳出概算所管別内訳"
     },
     {
@@ -7134,7 +7082,7 @@
       "year": 2022,
       "confidence": 0.95,
       "source_dataset": "財務省 一般会計（所管別）",
-      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/seifuan2022/03.pdf",
+      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/sy030118.html",
       "source_title": "令和4年度一般会計歳出概算所管別内訳"
     },
     {
@@ -7146,7 +7094,7 @@
       "year": 2022,
       "confidence": 0.95,
       "source_dataset": "財務省 一般会計（所管別）",
-      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/seifuan2022/03.pdf",
+      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/sy030118.html",
       "source_title": "令和4年度一般会計歳出概算所管別内訳"
     },
     {
@@ -7158,7 +7106,7 @@
       "year": 2022,
       "confidence": 0.95,
       "source_dataset": "財務省 一般会計（所管別）",
-      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/seifuan2022/03.pdf",
+      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/sy030118.html",
       "source_title": "令和4年度一般会計歳出概算所管別内訳"
     },
     {
@@ -7170,7 +7118,7 @@
       "year": 2022,
       "confidence": 0.95,
       "source_dataset": "財務省 一般会計（所管別）",
-      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/seifuan2022/03.pdf",
+      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/sy030118.html",
       "source_title": "令和4年度一般会計歳出概算所管別内訳"
     },
     {
@@ -7182,7 +7130,7 @@
       "year": 2022,
       "confidence": 0.95,
       "source_dataset": "財務省 一般会計（所管別）",
-      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/seifuan2022/03.pdf",
+      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/sy030118.html",
       "source_title": "令和4年度一般会計歳出概算所管別内訳"
     },
     {
@@ -7194,7 +7142,7 @@
       "year": 2022,
       "confidence": 0.95,
       "source_dataset": "財務省 一般会計（所管別）",
-      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/seifuan2022/03.pdf",
+      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/sy030118.html",
       "source_title": "令和4年度一般会計歳出概算所管別内訳"
     },
     {
@@ -7206,7 +7154,7 @@
       "year": 2022,
       "confidence": 0.95,
       "source_dataset": "財務省 一般会計（所管別）",
-      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/seifuan2022/03.pdf",
+      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/sy030118.html",
       "source_title": "令和4年度一般会計歳出概算所管別内訳"
     },
     {
@@ -7537,9 +7485,7 @@
       "value_usd": 15450000000.0,
       "year": 2022,
       "confidence": 0.99,
-      "source_dataset": "EDINET XBRL (Toyota)",
-      "source_url": "EDINET XBRL (Toyota)",
-      "source_title": "EDINET XBRL (Toyota)"
+      "source_dataset": "EDINET XBRL (Toyota)"
     },
     {
       "source_id": "HH_JP",
@@ -7549,9 +7495,7 @@
       "value_usd": 10000000000.0,
       "year": 2022,
       "confidence": 0.99,
-      "source_dataset": "EDINET XBRL (Sony)",
-      "source_url": "EDINET XBRL (Sony)",
-      "source_title": "EDINET XBRL (Sony)"
+      "source_dataset": "EDINET XBRL (Sony)"
     },
     {
       "source_id": "HH_JP",
@@ -7953,9 +7897,7 @@
       "value_usd": 25000000000.0,
       "year": 2022,
       "confidence": 0.9,
-      "source_dataset": "IR Reports",
-      "source_url": "IR Reports",
-      "source_title": "IR Reports"
+      "source_dataset": "IR Reports"
     },
     {
       "source_id": "KOR",
@@ -8014,7 +7956,7 @@
       "year": 2022,
       "confidence": 0.9,
       "source_dataset": "省庁別主要経費推計",
-      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/seifuan2022/03.pdf",
+      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/sy030118.html",
       "source_title": "令和4年度一般会計歳出概算所管別内訳"
     },
     {
@@ -8050,7 +7992,7 @@
       "year": 2022,
       "confidence": 0.9,
       "source_dataset": "省庁別主要経費推計",
-      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/seifuan2022/03.pdf",
+      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/sy030118.html",
       "source_title": "令和4年度一般会計歳出概算所管別内訳"
     },
     {
@@ -8062,7 +8004,7 @@
       "year": 2022,
       "confidence": 0.9,
       "source_dataset": "省庁別主要経費推計",
-      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/seifuan2022/03.pdf",
+      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/sy030118.html",
       "source_title": "令和4年度一般会計歳出概算所管別内訳"
     },
     {
@@ -8074,7 +8016,7 @@
       "year": 2022,
       "confidence": 0.9,
       "source_dataset": "省庁別主要経費推計",
-      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/seifuan2022/03.pdf",
+      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/sy030118.html",
       "source_title": "令和4年度一般会計歳出概算所管別内訳"
     },
     {
@@ -8161,7 +8103,7 @@
       "year": 2022,
       "confidence": 0.9,
       "source_dataset": "省庁別主要経費推計",
-      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/seifuan2022/03.pdf",
+      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/sy030118.html",
       "source_title": "令和4年度一般会計歳出概算所管別内訳"
     },
     {
@@ -8173,7 +8115,7 @@
       "year": 2022,
       "confidence": 0.9,
       "source_dataset": "省庁別主要経費推計",
-      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/seifuan2022/03.pdf",
+      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/sy030118.html",
       "source_title": "令和4年度一般会計歳出概算所管別内訳"
     },
     {
@@ -8260,7 +8202,7 @@
       "year": 2022,
       "confidence": 0.9,
       "source_dataset": "省庁別主要経費推計",
-      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/seifuan2022/03.pdf",
+      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/sy030118.html",
       "source_title": "令和4年度一般会計歳出概算所管別内訳"
     },
     {
@@ -8272,7 +8214,7 @@
       "year": 2022,
       "confidence": 0.9,
       "source_dataset": "省庁別主要経費推計",
-      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/seifuan2022/03.pdf",
+      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/sy030118.html",
       "source_title": "令和4年度一般会計歳出概算所管別内訳"
     },
     {
@@ -8359,7 +8301,7 @@
       "year": 2022,
       "confidence": 0.9,
       "source_dataset": "省庁別主要経費推計",
-      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/seifuan2022/03.pdf",
+      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/sy030118.html",
       "source_title": "令和4年度一般会計歳出概算所管別内訳"
     },
     {
@@ -8371,7 +8313,7 @@
       "year": 2022,
       "confidence": 0.9,
       "source_dataset": "省庁別主要経費推計",
-      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/seifuan2022/03.pdf",
+      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/sy030118.html",
       "source_title": "令和4年度一般会計歳出概算所管別内訳"
     },
     {
@@ -8383,7 +8325,7 @@
       "year": 2022,
       "confidence": 0.9,
       "source_dataset": "省庁別主要経費推計",
-      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/seifuan2022/03.pdf",
+      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/sy030118.html",
       "source_title": "令和4年度一般会計歳出概算所管別内訳"
     },
     {
@@ -8395,7 +8337,7 @@
       "year": 2022,
       "confidence": 0.9,
       "source_dataset": "省庁別主要経費推計",
-      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/seifuan2022/03.pdf",
+      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/sy030118.html",
       "source_title": "令和4年度一般会計歳出概算所管別内訳"
     },
     {
@@ -8482,7 +8424,7 @@
       "year": 2022,
       "confidence": 0.9,
       "source_dataset": "省庁別主要経費推計",
-      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/seifuan2022/03.pdf",
+      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/sy030118.html",
       "source_title": "令和4年度一般会計歳出概算所管別内訳"
     },
     {
@@ -8494,7 +8436,7 @@
       "year": 2022,
       "confidence": 0.9,
       "source_dataset": "省庁別主要経費推計",
-      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/seifuan2022/03.pdf",
+      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/sy030118.html",
       "source_title": "令和4年度一般会計歳出概算所管別内訳"
     },
     {
@@ -8506,7 +8448,7 @@
       "year": 2022,
       "confidence": 0.9,
       "source_dataset": "省庁別主要経費推計",
-      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/seifuan2022/03.pdf",
+      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/sy030118.html",
       "source_title": "令和4年度一般会計歳出概算所管別内訳"
     },
     {
@@ -8518,7 +8460,7 @@
       "year": 2022,
       "confidence": 0.9,
       "source_dataset": "省庁別主要経費推計",
-      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/seifuan2022/03.pdf",
+      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/sy030118.html",
       "source_title": "令和4年度一般会計歳出概算所管別内訳"
     },
     {
@@ -8530,7 +8472,7 @@
       "year": 2022,
       "confidence": 0.9,
       "source_dataset": "省庁別主要経費推計",
-      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/seifuan2022/03.pdf",
+      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/sy030118.html",
       "source_title": "令和4年度一般会計歳出概算所管別内訳"
     },
     {
@@ -8542,7 +8484,7 @@
       "year": 2022,
       "confidence": 0.9,
       "source_dataset": "省庁別主要経費推計",
-      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/seifuan2022/03.pdf",
+      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/sy030118.html",
       "source_title": "令和4年度一般会計歳出概算所管別内訳"
     },
     {
@@ -8554,7 +8496,7 @@
       "year": 2022,
       "confidence": 0.9,
       "source_dataset": "省庁別主要経費推計",
-      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/seifuan2022/03.pdf",
+      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/sy030118.html",
       "source_title": "令和4年度一般会計歳出概算所管別内訳"
     },
     {
@@ -8566,7 +8508,7 @@
       "year": 2022,
       "confidence": 0.9,
       "source_dataset": "省庁別主要経費推計",
-      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/seifuan2022/03.pdf",
+      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/sy030118.html",
       "source_title": "令和4年度一般会計歳出概算所管別内訳"
     },
     {
@@ -8578,7 +8520,7 @@
       "year": 2022,
       "confidence": 0.9,
       "source_dataset": "省庁別主要経費推計",
-      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/seifuan2022/03.pdf",
+      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/sy030118.html",
       "source_title": "令和4年度一般会計歳出概算所管別内訳"
     },
     {
@@ -8590,7 +8532,7 @@
       "year": 2022,
       "confidence": 0.9,
       "source_dataset": "省庁別主要経費推計",
-      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/seifuan2022/03.pdf",
+      "source_url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2022/sy030118.html",
       "source_title": "令和4年度一般会計歳出概算所管別内訳"
     },
     {
@@ -8987,9 +8929,7 @@
       "value_usd": 15000000000.0,
       "year": 2022,
       "confidence": 0.7,
-      "source_dataset": "Retail Brokerage Est.",
-      "source_url": "Retail Brokerage Est.",
-      "source_title": "Retail Brokerage Est."
+      "source_dataset": "Retail Brokerage Est."
     },
     {
       "source_id": "RUS",
@@ -9083,9 +9023,7 @@
       "value_usd": 30000000000.0,
       "year": 2022,
       "confidence": 0.6,
-      "source_dataset": "Wealth Reports",
-      "source_url": "Wealth Reports",
-      "source_title": "Wealth Reports"
+      "source_dataset": "Wealth Reports"
     },
     {
       "source_id": "SS_CHILDCARE",
@@ -9098,9 +9036,9 @@
       "source_dataset": "こども家庭庁 R6/R7予算 オープンデータ",
       "description": "児童手当 (所得制限撤廃・多子加算) - こども家庭庁オープンデータ (https://www.cfa.go.jp/)",
       "evidence_text": "児童手当 (所得制限撤廃・多子加算) - こども家庭庁オープンデータ (https://www.cfa.go.jp/)",
-      "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/b92baeee-5b6d-47be-b16f-ebf80a4eed28/3d37a505/20240401_councils_shingikai_kodomo_shien_05_02.pdf#page=12&search=15%2C246",
-      "source_title": "令和7年度こども家庭庁予算 事業別資料集",
-      "page_number": 12
+      "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/5cbb6234/20241227_policies_budget_53.pdf#page=2&search=%E5%85%90%E7%AB%A5%E6%89%8B%E5%BD%93",
+      "source_title": "令和7年度こども家庭庁予算案の概要",
+      "page_number": 2
     },
     {
       "source_id": "SS_CHILDCARE",
@@ -9183,7 +9121,7 @@
       "year": 2022,
       "confidence": 0.95,
       "source_dataset": "厚生労働省 国民医療費 R4",
-      "source_url": "https://www.mhlw.go.jp/toukei/saikin/hw/k-iryohi/",
+      "source_url": "https://www.mhlw.go.jp/toukei/list/37-21a.html",
       "source_title": "厚生労働省 国民医療費 R4"
     },
     {
@@ -9195,7 +9133,7 @@
       "year": 2022,
       "confidence": 0.95,
       "source_dataset": "厚生労働省 国民医療費 R4",
-      "source_url": "https://www.mhlw.go.jp/toukei/saikin/hw/k-iryohi/",
+      "source_url": "https://www.mhlw.go.jp/toukei/list/37-21a.html",
       "source_title": "厚生労働省 国民医療費 R4"
     },
     {
@@ -9207,7 +9145,7 @@
       "year": 2022,
       "confidence": 0.95,
       "source_dataset": "厚生労働省 国民医療費 R4",
-      "source_url": "https://www.mhlw.go.jp/toukei/saikin/hw/k-iryohi/",
+      "source_url": "https://www.mhlw.go.jp/toukei/list/37-21a.html",
       "source_title": "厚生労働省 国民医療費 R4"
     },
     {
@@ -9219,7 +9157,7 @@
       "year": 2022,
       "confidence": 0.95,
       "source_dataset": "厚生労働省 国民医療費 R4",
-      "source_url": "https://www.mhlw.go.jp/toukei/saikin/hw/k-iryohi/",
+      "source_url": "https://www.mhlw.go.jp/toukei/list/37-21a.html",
       "source_title": "厚生労働省 国民医療費 R4"
     },
     {
@@ -9243,7 +9181,7 @@
       "year": 2022,
       "confidence": 0.9,
       "source_dataset": "厚生労働省 介護給付費等実態統計 R5",
-      "source_url": "https://www.mhlw.go.jp/toukei/saikin/hw/kaigo/kyufu/",
+      "source_url": "https://www.mhlw.go.jp/toukei/list/45-1b.html",
       "source_title": "厚生労働省 介護給付費等実態統計 R5"
     },
     {
@@ -9255,7 +9193,7 @@
       "year": 2022,
       "confidence": 0.9,
       "source_dataset": "厚生労働省 介護給付費等実態統計 R5",
-      "source_url": "https://www.mhlw.go.jp/toukei/saikin/hw/kaigo/kyufu/",
+      "source_url": "https://www.mhlw.go.jp/toukei/list/45-1b.html",
       "source_title": "厚生労働省 介護給付費等実態統計 R5"
     },
     {
@@ -9267,7 +9205,7 @@
       "year": 2022,
       "confidence": 0.9,
       "source_dataset": "厚生労働省 介護給付費等実態統計 R5",
-      "source_url": "https://www.mhlw.go.jp/toukei/saikin/hw/kaigo/kyufu/",
+      "source_url": "https://www.mhlw.go.jp/toukei/list/45-1b.html",
       "source_title": "厚生労働省 介護給付費等実態統計 R5"
     },
     {
@@ -9279,7 +9217,7 @@
       "year": 2022,
       "confidence": 0.9,
       "source_dataset": "厚生労働省 介護給付費等実態統計 R5",
-      "source_url": "https://www.mhlw.go.jp/toukei/saikin/hw/kaigo/kyufu/",
+      "source_url": "https://www.mhlw.go.jp/toukei/list/45-1b.html",
       "source_title": "厚生労働省 介護給付費等実態統計 R5"
     },
     {
@@ -9506,9 +9444,7 @@
       "value_usd": 40000000000.0,
       "year": 2022,
       "confidence": 0.9,
-      "source_dataset": "IR Reports",
-      "source_url": "IR Reports",
-      "source_title": "IR Reports"
+      "source_dataset": "IR Reports"
     },
     {
       "source_id": "TUR",
@@ -9950,9 +9886,7 @@
       "value_usd": 20000000000.0,
       "year": 2022,
       "confidence": 0.5,
-      "source_dataset": "Chainalysis",
-      "source_url": "Chainalysis",
-      "source_title": "Chainalysis"
+      "source_dataset": "Chainalysis"
     },
     {
       "source_id": "VILLAGE_FUNAHASHI",
@@ -10016,9 +9950,7 @@
       "value_usd": 172500000000.0,
       "year": 2023,
       "confidence": 0.9,
-      "source_dataset": "Corporate SEC Filings",
-      "source_url": "Corporate SEC Filings",
-      "source_title": "Corporate SEC Filings"
+      "source_dataset": "Corporate SEC Filings"
     },
     {
       "source_id": "ARG",
@@ -10316,9 +10248,7 @@
       "value_usd": 91000000000.0,
       "year": 2023,
       "confidence": 0.88,
-      "source_dataset": "Corporate SEC Filings",
-      "source_url": "Corporate SEC Filings",
-      "source_title": "Corporate SEC Filings"
+      "source_dataset": "Corporate SEC Filings"
     },
     {
       "source_id": "CITY_HIMI",
@@ -11040,9 +10970,7 @@
       "value_usd": 8000000000.0,
       "year": 2023,
       "confidence": 0.9,
-      "source_dataset": "EDINET XBRL (Sony)",
-      "source_url": "EDINET XBRL (Sony)",
-      "source_title": "EDINET XBRL (Sony)"
+      "source_dataset": "EDINET XBRL (Sony)"
     },
     {
       "source_id": "CORP_6758",
@@ -11055,7 +10983,6 @@
       "source_dataset": "meti_data",
       "description": "Corporate Tax Revenue from Sony Group",
       "evidence_text": "Corporate Tax Revenue from Sony Group",
-      "source_url": "https://www.meti.go.jp/",
       "source_title": "meti_data"
     },
     {
@@ -11066,9 +10993,7 @@
       "value_usd": 8000000000.0,
       "year": 2023,
       "confidence": 0.99,
-      "source_dataset": "EDINET XBRL (Toyota)",
-      "source_url": "EDINET XBRL (Toyota)",
-      "source_title": "EDINET XBRL (Toyota)"
+      "source_dataset": "EDINET XBRL (Toyota)"
     },
     {
       "source_id": "CORP_7203",
@@ -11078,9 +11003,7 @@
       "value_usd": 25000000000.0,
       "year": 2023,
       "confidence": 0.9,
-      "source_dataset": "EDINET / IR Reports",
-      "source_url": "EDINET / IR Reports",
-      "source_title": "EDINET / IR Reports"
+      "source_dataset": "EDINET / IR Reports"
     },
     {
       "source_id": "CORP_7203",
@@ -11093,7 +11016,6 @@
       "source_dataset": "meti_data",
       "description": "Corporate Tax Revenue from Toyota Motor Corp",
       "evidence_text": "Corporate Tax Revenue from Toyota Motor Corp",
-      "source_url": "https://www.meti.go.jp/",
       "source_title": "meti_data"
     },
     {
@@ -11121,7 +11043,6 @@
       "source_dataset": "meti_data",
       "description": "Corporate Tax Revenue from SoftBank Group",
       "evidence_text": "Corporate Tax Revenue from SoftBank Group",
-      "source_url": "https://www.meti.go.jp/",
       "source_title": "meti_data"
     },
     {
@@ -11132,9 +11053,7 @@
       "value_usd": 12000000000.0,
       "year": 2023,
       "confidence": 0.4,
-      "source_dataset": "Chainalysis",
-      "source_url": "Chainalysis",
-      "source_title": "Chainalysis"
+      "source_dataset": "Chainalysis"
     },
     {
       "source_id": "DEU",
@@ -12096,9 +12015,7 @@
       "value_usd": 15900000000.0,
       "year": 2023,
       "confidence": 0.99,
-      "source_dataset": "EDINET XBRL (Toyota)",
-      "source_url": "EDINET XBRL (Toyota)",
-      "source_title": "EDINET XBRL (Toyota)"
+      "source_dataset": "EDINET XBRL (Toyota)"
     },
     {
       "source_id": "HH_JP",
@@ -12108,9 +12025,7 @@
       "value_usd": 10000000000.0,
       "year": 2023,
       "confidence": 0.99,
-      "source_dataset": "EDINET XBRL (Sony)",
-      "source_url": "EDINET XBRL (Sony)",
-      "source_title": "EDINET XBRL (Sony)"
+      "source_dataset": "EDINET XBRL (Sony)"
     },
     {
       "source_id": "HH_JP",
@@ -12452,9 +12367,7 @@
       "value_usd": 25000000000.0,
       "year": 2023,
       "confidence": 0.9,
-      "source_dataset": "IR Reports",
-      "source_url": "IR Reports",
-      "source_title": "IR Reports"
+      "source_dataset": "IR Reports"
     },
     {
       "source_id": "KOR",
@@ -12662,7 +12575,6 @@
       "source_dataset": "meti_data",
       "description": "METI Semiconductor Subsidy for TSMC Kumamoto Fab 1",
       "evidence_text": "METI Semiconductor Subsidy for TSMC Kumamoto Fab 1",
-      "source_url": "https://www.meti.go.jp/",
       "source_title": "meti_data"
     },
     {
@@ -12676,7 +12588,6 @@
       "source_dataset": "meti_data",
       "description": "METI Advanced Semiconductor R&D Subsidy to Rapidus",
       "evidence_text": "METI Advanced Semiconductor R&D Subsidy to Rapidus",
-      "source_url": "https://www.meti.go.jp/",
       "source_title": "meti_data"
     },
     {
@@ -13514,9 +13425,7 @@
       "value_usd": 15000000000.0,
       "year": 2023,
       "confidence": 0.7,
-      "source_dataset": "Retail Brokerage Est.",
-      "source_url": "Retail Brokerage Est.",
-      "source_title": "Retail Brokerage Est."
+      "source_dataset": "Retail Brokerage Est."
     },
     {
       "source_id": "RUS",
@@ -13610,9 +13519,7 @@
       "value_usd": 30000000000.0,
       "year": 2023,
       "confidence": 0.6,
-      "source_dataset": "Wealth Reports",
-      "source_url": "Wealth Reports",
-      "source_title": "Wealth Reports"
+      "source_dataset": "Wealth Reports"
     },
     {
       "source_id": "SS_CHILDCARE",
@@ -13625,9 +13532,9 @@
       "source_dataset": "こども家庭庁 R6/R7予算 オープンデータ",
       "description": "児童手当 (所得制限撤廃・多子加算) - こども家庭庁オープンデータ (https://www.cfa.go.jp/)",
       "evidence_text": "児童手当 (所得制限撤廃・多子加算) - こども家庭庁オープンデータ (https://www.cfa.go.jp/)",
-      "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/b92baeee-5b6d-47be-b16f-ebf80a4eed28/3d37a505/20240401_councils_shingikai_kodomo_shien_05_02.pdf#page=12&search=15%2C246",
-      "source_title": "令和7年度こども家庭庁予算 事業別資料集",
-      "page_number": 12
+      "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/5cbb6234/20241227_policies_budget_53.pdf#page=2&search=%E5%85%90%E7%AB%A5%E6%89%8B%E5%BD%93",
+      "source_title": "令和7年度こども家庭庁予算案の概要",
+      "page_number": 2
     },
     {
       "source_id": "SS_CHILDCARE",
@@ -13710,7 +13617,7 @@
       "year": 2023,
       "confidence": 0.95,
       "source_dataset": "厚生労働省 国民医療費 R4",
-      "source_url": "https://www.mhlw.go.jp/toukei/saikin/hw/k-iryohi/",
+      "source_url": "https://www.mhlw.go.jp/toukei/list/37-21a.html",
       "source_title": "厚生労働省 国民医療費 R4"
     },
     {
@@ -13722,7 +13629,7 @@
       "year": 2023,
       "confidence": 0.95,
       "source_dataset": "厚生労働省 国民医療費 R4",
-      "source_url": "https://www.mhlw.go.jp/toukei/saikin/hw/k-iryohi/",
+      "source_url": "https://www.mhlw.go.jp/toukei/list/37-21a.html",
       "source_title": "厚生労働省 国民医療費 R4"
     },
     {
@@ -13734,7 +13641,7 @@
       "year": 2023,
       "confidence": 0.95,
       "source_dataset": "厚生労働省 国民医療費 R4",
-      "source_url": "https://www.mhlw.go.jp/toukei/saikin/hw/k-iryohi/",
+      "source_url": "https://www.mhlw.go.jp/toukei/list/37-21a.html",
       "source_title": "厚生労働省 国民医療費 R4"
     },
     {
@@ -13746,7 +13653,7 @@
       "year": 2023,
       "confidence": 0.95,
       "source_dataset": "厚生労働省 国民医療費 R4",
-      "source_url": "https://www.mhlw.go.jp/toukei/saikin/hw/k-iryohi/",
+      "source_url": "https://www.mhlw.go.jp/toukei/list/37-21a.html",
       "source_title": "厚生労働省 国民医療費 R4"
     },
     {
@@ -13770,7 +13677,7 @@
       "year": 2023,
       "confidence": 0.9,
       "source_dataset": "厚生労働省 介護給付費等実態統計 R5",
-      "source_url": "https://www.mhlw.go.jp/toukei/saikin/hw/kaigo/kyufu/",
+      "source_url": "https://www.mhlw.go.jp/toukei/list/45-1b.html",
       "source_title": "厚生労働省 介護給付費等実態統計 R5"
     },
     {
@@ -13782,7 +13689,7 @@
       "year": 2023,
       "confidence": 0.9,
       "source_dataset": "厚生労働省 介護給付費等実態統計 R5",
-      "source_url": "https://www.mhlw.go.jp/toukei/saikin/hw/kaigo/kyufu/",
+      "source_url": "https://www.mhlw.go.jp/toukei/list/45-1b.html",
       "source_title": "厚生労働省 介護給付費等実態統計 R5"
     },
     {
@@ -13794,7 +13701,7 @@
       "year": 2023,
       "confidence": 0.9,
       "source_dataset": "厚生労働省 介護給付費等実態統計 R5",
-      "source_url": "https://www.mhlw.go.jp/toukei/saikin/hw/kaigo/kyufu/",
+      "source_url": "https://www.mhlw.go.jp/toukei/list/45-1b.html",
       "source_title": "厚生労働省 介護給付費等実態統計 R5"
     },
     {
@@ -13806,7 +13713,7 @@
       "year": 2023,
       "confidence": 0.9,
       "source_dataset": "厚生労働省 介護給付費等実態統計 R5",
-      "source_url": "https://www.mhlw.go.jp/toukei/saikin/hw/kaigo/kyufu/",
+      "source_url": "https://www.mhlw.go.jp/toukei/list/45-1b.html",
       "source_title": "厚生労働省 介護給付費等実態統計 R5"
     },
     {
@@ -14033,9 +13940,7 @@
       "value_usd": 40000000000.0,
       "year": 2023,
       "confidence": 0.9,
-      "source_dataset": "IR Reports",
-      "source_url": "IR Reports",
-      "source_title": "IR Reports"
+      "source_dataset": "IR Reports"
     },
     {
       "source_id": "TUR",
@@ -14477,9 +14382,7 @@
       "value_usd": 20000000000.0,
       "year": 2023,
       "confidence": 0.5,
-      "source_dataset": "Chainalysis",
-      "source_url": "Chainalysis",
-      "source_title": "Chainalysis"
+      "source_dataset": "Chainalysis"
     },
     {
       "source_id": "VILLAGE_FUNAHASHI",
@@ -14531,9 +14434,7 @@
       "value_usd": 180000000000.0,
       "year": 2024,
       "confidence": 0.9,
-      "source_dataset": "Corporate SEC Filings",
-      "source_url": "Corporate SEC Filings",
-      "source_title": "Corporate SEC Filings"
+      "source_dataset": "Corporate SEC Filings"
     },
     {
       "source_id": "ARG",
@@ -14819,9 +14720,7 @@
       "value_usd": 98000000000.0,
       "year": 2024,
       "confidence": 0.88,
-      "source_dataset": "Corporate SEC Filings",
-      "source_url": "Corporate SEC Filings",
-      "source_title": "Corporate SEC Filings"
+      "source_dataset": "Corporate SEC Filings"
     },
     {
       "source_id": "CITY_HIMI",
@@ -15543,9 +15442,7 @@
       "value_usd": 8000000000.0,
       "year": 2024,
       "confidence": 0.9,
-      "source_dataset": "EDINET XBRL (Sony)",
-      "source_url": "EDINET XBRL (Sony)",
-      "source_title": "EDINET XBRL (Sony)"
+      "source_dataset": "EDINET XBRL (Sony)"
     },
     {
       "source_id": "CORP_6758",
@@ -15558,7 +15455,6 @@
       "source_dataset": "meti_data",
       "description": "Corporate Tax Revenue from Sony Group",
       "evidence_text": "Corporate Tax Revenue from Sony Group",
-      "source_url": "https://www.meti.go.jp/",
       "source_title": "meti_data"
     },
     {
@@ -15569,9 +15465,7 @@
       "value_usd": 8000000000.0,
       "year": 2024,
       "confidence": 0.99,
-      "source_dataset": "EDINET XBRL (Toyota)",
-      "source_url": "EDINET XBRL (Toyota)",
-      "source_title": "EDINET XBRL (Toyota)"
+      "source_dataset": "EDINET XBRL (Toyota)"
     },
     {
       "source_id": "CORP_7203",
@@ -15581,9 +15475,7 @@
       "value_usd": 25000000000.0,
       "year": 2024,
       "confidence": 0.9,
-      "source_dataset": "EDINET / IR Reports",
-      "source_url": "EDINET / IR Reports",
-      "source_title": "EDINET / IR Reports"
+      "source_dataset": "EDINET / IR Reports"
     },
     {
       "source_id": "CORP_7203",
@@ -15596,7 +15488,6 @@
       "source_dataset": "meti_data",
       "description": "Corporate Tax Revenue from Toyota Motor Corp",
       "evidence_text": "Corporate Tax Revenue from Toyota Motor Corp",
-      "source_url": "https://www.meti.go.jp/",
       "source_title": "meti_data"
     },
     {
@@ -15624,7 +15515,6 @@
       "source_dataset": "meti_data",
       "description": "Corporate Tax Revenue from SoftBank Group",
       "evidence_text": "Corporate Tax Revenue from SoftBank Group",
-      "source_url": "https://www.meti.go.jp/",
       "source_title": "meti_data"
     },
     {
@@ -15635,9 +15525,7 @@
       "value_usd": 12000000000.0,
       "year": 2024,
       "confidence": 0.4,
-      "source_dataset": "Chainalysis",
-      "source_url": "Chainalysis",
-      "source_title": "Chainalysis"
+      "source_dataset": "Chainalysis"
     },
     {
       "source_id": "DEU",
@@ -16551,9 +16439,7 @@
       "value_usd": 16350000000.000002,
       "year": 2024,
       "confidence": 0.99,
-      "source_dataset": "EDINET XBRL (Toyota)",
-      "source_url": "EDINET XBRL (Toyota)",
-      "source_title": "EDINET XBRL (Toyota)"
+      "source_dataset": "EDINET XBRL (Toyota)"
     },
     {
       "source_id": "HH_JP",
@@ -16563,9 +16449,7 @@
       "value_usd": 10000000000.0,
       "year": 2024,
       "confidence": 0.99,
-      "source_dataset": "EDINET XBRL (Sony)",
-      "source_url": "EDINET XBRL (Sony)",
-      "source_title": "EDINET XBRL (Sony)"
+      "source_dataset": "EDINET XBRL (Sony)"
     },
     {
       "source_id": "HH_JP",
@@ -16991,9 +16875,7 @@
       "value_usd": 25000000000.0,
       "year": 2024,
       "confidence": 0.9,
-      "source_dataset": "IR Reports",
-      "source_url": "IR Reports",
-      "source_title": "IR Reports"
+      "source_dataset": "IR Reports"
     },
     {
       "source_id": "KOR",
@@ -17201,7 +17083,6 @@
       "source_dataset": "meti_data",
       "description": "METI Semiconductor Subsidy for TSMC Kumamoto Fab 2",
       "evidence_text": "METI Semiconductor Subsidy for TSMC Kumamoto Fab 2",
-      "source_url": "https://www.meti.go.jp/",
       "source_title": "meti_data"
     },
     {
@@ -17215,7 +17096,6 @@
       "source_dataset": "meti_data",
       "description": "METI Additional Support for Rapidus Front-End/Back-End Processes",
       "evidence_text": "METI Additional Support for Rapidus Front-End/Back-End Processes",
-      "source_url": "https://www.meti.go.jp/",
       "source_title": "meti_data"
     },
     {
@@ -17229,7 +17109,6 @@
       "source_dataset": "meti_data",
       "description": "METI Subsidy for Automotive SoC Research (ASRA)",
       "evidence_text": "METI Subsidy for Automotive SoC Research (ASRA)",
-      "source_url": "https://www.meti.go.jp/",
       "source_title": "meti_data"
     },
     {
@@ -18067,9 +17946,7 @@
       "value_usd": 15000000000.0,
       "year": 2024,
       "confidence": 0.7,
-      "source_dataset": "Retail Brokerage Est.",
-      "source_url": "Retail Brokerage Est.",
-      "source_title": "Retail Brokerage Est."
+      "source_dataset": "Retail Brokerage Est."
     },
     {
       "source_id": "RUS",
@@ -18163,9 +18040,7 @@
       "value_usd": 30000000000.0,
       "year": 2024,
       "confidence": 0.6,
-      "source_dataset": "Wealth Reports",
-      "source_url": "Wealth Reports",
-      "source_title": "Wealth Reports"
+      "source_dataset": "Wealth Reports"
     },
     {
       "source_id": "SS_CHILDCARE",
@@ -18178,9 +18053,9 @@
       "source_dataset": "こども家庭庁 R6/R7予算 オープンデータ",
       "description": "児童手当 (所得制限撤廃・多子加算) - こども家庭庁オープンデータ (https://www.cfa.go.jp/)",
       "evidence_text": "児童手当 (所得制限撤廃・多子加算) - こども家庭庁オープンデータ (https://www.cfa.go.jp/)",
-      "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/b92baeee-5b6d-47be-b16f-ebf80a4eed28/3d37a505/20240401_councils_shingikai_kodomo_shien_05_02.pdf#page=12&search=15%2C246",
-      "source_title": "令和7年度こども家庭庁予算 事業別資料集",
-      "page_number": 12
+      "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/5cbb6234/20241227_policies_budget_53.pdf#page=2&search=%E5%85%90%E7%AB%A5%E6%89%8B%E5%BD%93",
+      "source_title": "令和7年度こども家庭庁予算案の概要",
+      "page_number": 2
     },
     {
       "source_id": "SS_CHILDCARE",
@@ -18263,7 +18138,7 @@
       "year": 2024,
       "confidence": 0.95,
       "source_dataset": "厚生労働省 国民医療費 R4",
-      "source_url": "https://www.mhlw.go.jp/toukei/saikin/hw/k-iryohi/",
+      "source_url": "https://www.mhlw.go.jp/toukei/list/37-21a.html",
       "source_title": "厚生労働省 国民医療費 R4"
     },
     {
@@ -18275,7 +18150,7 @@
       "year": 2024,
       "confidence": 0.95,
       "source_dataset": "厚生労働省 国民医療費 R4",
-      "source_url": "https://www.mhlw.go.jp/toukei/saikin/hw/k-iryohi/",
+      "source_url": "https://www.mhlw.go.jp/toukei/list/37-21a.html",
       "source_title": "厚生労働省 国民医療費 R4"
     },
     {
@@ -18287,7 +18162,7 @@
       "year": 2024,
       "confidence": 0.95,
       "source_dataset": "厚生労働省 国民医療費 R4",
-      "source_url": "https://www.mhlw.go.jp/toukei/saikin/hw/k-iryohi/",
+      "source_url": "https://www.mhlw.go.jp/toukei/list/37-21a.html",
       "source_title": "厚生労働省 国民医療費 R4"
     },
     {
@@ -18299,7 +18174,7 @@
       "year": 2024,
       "confidence": 0.95,
       "source_dataset": "厚生労働省 国民医療費 R4",
-      "source_url": "https://www.mhlw.go.jp/toukei/saikin/hw/k-iryohi/",
+      "source_url": "https://www.mhlw.go.jp/toukei/list/37-21a.html",
       "source_title": "厚生労働省 国民医療費 R4"
     },
     {
@@ -18323,7 +18198,7 @@
       "year": 2024,
       "confidence": 0.9,
       "source_dataset": "厚生労働省 介護給付費等実態統計 R5",
-      "source_url": "https://www.mhlw.go.jp/toukei/saikin/hw/kaigo/kyufu/",
+      "source_url": "https://www.mhlw.go.jp/toukei/list/45-1b.html",
       "source_title": "厚生労働省 介護給付費等実態統計 R5"
     },
     {
@@ -18335,7 +18210,7 @@
       "year": 2024,
       "confidence": 0.9,
       "source_dataset": "厚生労働省 介護給付費等実態統計 R5",
-      "source_url": "https://www.mhlw.go.jp/toukei/saikin/hw/kaigo/kyufu/",
+      "source_url": "https://www.mhlw.go.jp/toukei/list/45-1b.html",
       "source_title": "厚生労働省 介護給付費等実態統計 R5"
     },
     {
@@ -18347,7 +18222,7 @@
       "year": 2024,
       "confidence": 0.9,
       "source_dataset": "厚生労働省 介護給付費等実態統計 R5",
-      "source_url": "https://www.mhlw.go.jp/toukei/saikin/hw/kaigo/kyufu/",
+      "source_url": "https://www.mhlw.go.jp/toukei/list/45-1b.html",
       "source_title": "厚生労働省 介護給付費等実態統計 R5"
     },
     {
@@ -18359,7 +18234,7 @@
       "year": 2024,
       "confidence": 0.9,
       "source_dataset": "厚生労働省 介護給付費等実態統計 R5",
-      "source_url": "https://www.mhlw.go.jp/toukei/saikin/hw/kaigo/kyufu/",
+      "source_url": "https://www.mhlw.go.jp/toukei/list/45-1b.html",
       "source_title": "厚生労働省 介護給付費等実態統計 R5"
     },
     {
@@ -18586,9 +18461,7 @@
       "value_usd": 40000000000.0,
       "year": 2024,
       "confidence": 0.9,
-      "source_dataset": "IR Reports",
-      "source_url": "IR Reports",
-      "source_title": "IR Reports"
+      "source_dataset": "IR Reports"
     },
     {
       "source_id": "TUR",
@@ -19018,9 +18891,7 @@
       "value_usd": 20000000000.0,
       "year": 2024,
       "confidence": 0.5,
-      "source_dataset": "Chainalysis",
-      "source_url": "Chainalysis",
-      "source_title": "Chainalysis"
+      "source_dataset": "Chainalysis"
     },
     {
       "source_id": "VILLAGE_FUNAHASHI",
@@ -19063,21 +18934,6 @@
       "evidence_text": "舟橋村 spending on public elementary/middle schools",
       "source_url": "https://opendata.pref.toyama.jp/",
       "source_title": "toyama_data"
-    },
-    {
-      "source_id": "MIN_CFA",
-      "target_id": "REC_CHILDREN",
-      "category": "welfare",
-      "sub_category": "児童手当 (R7予算案)",
-      "value_usd": 10164000000.0,
-      "year": 2025,
-      "confidence": 0.95,
-      "source_dataset": "こども家庭庁 R7予算 オープンデータ",
-      "description": "児童手当の拡充 等",
-      "evidence_text": "児童手当の拡充 等",
-      "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/b92baeee-5b6d-47be-b16f-ebf80a4eed28/3d37a505/20240401_councils_shingikai_kodomo_shien_05_02.pdf#page=12&search=15%2C246",
-      "source_title": "令和7年度こども家庭庁予算 事業別資料集",
-      "page_number": 12
     },
     {
       "source_id": "MIN_CFA",
@@ -19471,8 +19327,8 @@
   ],
   "metadata": {
     "source": "SQLite DB (money_flow.db)",
-    "total_nodes": 165,
-    "total_edges": 1387,
+    "total_nodes": 164,
+    "total_edges": 1386,
     "fiscal_years": [
       2021,
       2022,
@@ -19491,7 +19347,7 @@
         "amount_text": "73,270億円",
         "amount_oku_yen": 73270.0,
         "summary": "実質ベースの総額。前年度比で約1.1兆円の増。",
-        "source_title": "令和7年度こども家庭庁予算の全体像",
+        "source_title": "令和7年度こども家庭庁予算案の概要",
         "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/5cbb6234/20241227_policies_budget_53.pdf",
         "page_number": 2,
         "display_order": 10
@@ -19504,7 +19360,7 @@
         "amount_text": "+0.6兆円",
         "amount_oku_yen": 6000.0,
         "summary": "令和7年度予算の主な増要因。",
-        "source_title": "令和7年度こども家庭庁予算の全体像",
+        "source_title": "令和7年度こども家庭庁予算案の概要",
         "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/5cbb6234/20241227_policies_budget_53.pdf",
         "page_number": 2,
         "display_order": 20
@@ -19517,7 +19373,7 @@
         "amount_text": "+0.1兆円",
         "amount_oku_yen": 1000.0,
         "summary": "こども未来戦略の加速化プランに沿った増要因。",
-        "source_title": "令和7年度こども家庭庁予算の全体像",
+        "source_title": "令和7年度こども家庭庁予算案の概要",
         "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/5cbb6234/20241227_policies_budget_53.pdf",
         "page_number": 2,
         "display_order": 30
@@ -19530,7 +19386,7 @@
         "amount_text": "+0.1兆円",
         "amount_oku_yen": 1000.0,
         "summary": "両立支援を含む重点増額分。",
-        "source_title": "令和7年度こども家庭庁予算の全体像",
+        "source_title": "令和7年度こども家庭庁予算案の概要",
         "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/5cbb6234/20241227_policies_budget_53.pdf",
         "page_number": 2,
         "display_order": 40
@@ -19543,7 +19399,7 @@
         "amount_text": "+0.1兆円",
         "amount_oku_yen": 1000.0,
         "summary": "配置改善や処遇改善を含む重点分野。",
-        "source_title": "令和7年度こども家庭庁予算の全体像",
+        "source_title": "令和7年度こども家庭庁予算案の概要",
         "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/5cbb6234/20241227_policies_budget_53.pdf",
         "page_number": 2,
         "display_order": 50
@@ -19595,7 +19451,7 @@
         "amount_text": "2.1億円",
         "amount_oku_yen": 2.1,
         "summary": "こども・若者の意見反映を進めるための事業。",
-        "source_title": "こども・若者意見反映推進事業",
+        "source_title": "令和7年度こども家庭庁予算 個別事業資料",
         "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/86f71a32/20250306_policies_budget_63.pdf",
         "page_number": 3,
         "display_order": 90
@@ -19608,7 +19464,7 @@
         "amount_text": "21百万円",
         "amount_oku_yen": 0.21,
         "summary": "地方自治体での意見反映を進める取組支援。",
-        "source_title": "地方自治体におけるこども・若者の意見反映の取組促進",
+        "source_title": "令和7年度こども家庭庁予算 個別事業資料",
         "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/86f71a32/20250306_policies_budget_63.pdf",
         "page_number": 4,
         "display_order": 100
@@ -19621,7 +19477,7 @@
         "amount_text": "18百万円",
         "amount_oku_yen": 0.18,
         "summary": "こども基本法と児童の権利条約の普及啓発。",
-        "source_title": "こども基本法・児童の権利に関する条約の普及啓発事業",
+        "source_title": "令和7年度こども家庭庁予算 個別事業資料",
         "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/86f71a32/20250306_policies_budget_63.pdf",
         "page_number": 5,
         "display_order": 110
@@ -19634,7 +19490,7 @@
         "amount_text": "3.7億円",
         "amount_oku_yen": 3.7,
         "summary": "こども政策DXの推進体制を強化する事業。",
-        "source_title": "こども政策DX推進体制強化事業",
+        "source_title": "令和7年度こども家庭庁予算 個別事業資料",
         "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/86f71a32/20250306_policies_budget_63.pdf",
         "page_number": 8,
         "display_order": 120
@@ -19647,7 +19503,7 @@
         "amount_text": "1.2億円",
         "amount_oku_yen": 1.2,
         "summary": "こども家庭庁ウェブサイトの運用保守。",
-        "source_title": "こども家庭庁ウェブサイトの運用保守",
+        "source_title": "令和7年度こども家庭庁予算 個別事業資料",
         "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/86f71a32/20250306_policies_budget_63.pdf",
         "page_number": 11,
         "display_order": 130
@@ -19790,7 +19646,7 @@
         "amount_text": "2,379億円",
         "amount_oku_yen": 2379.0,
         "summary": "研究者の自由な発想に基づく学術研究を助成する競争的研究費。",
-        "source_title": "令和7年度予算のポイント",
+        "source_title": "文部科学省 令和7年度予算のポイント",
         "source_url": "https://www.mext.go.jp/content/20250305-ope_dev03-000037774-1.pdf#page=68&search=%E7%A7%91%E5%AD%A6%E7%A0%94%E7%A9%B6%E8%B2%BB%E5%8A%A9%E6%88%90%E4%BA%8B%E6%A5%AD",
         "page_number": 68,
         "display_order": 40
@@ -21081,6 +20937,311 @@
         "source_url": "https://www.mlit.go.jp/page/content/001460097.pdf#page=6&search=ZEH%E3%83%BBZEB",
         "page_number": 6,
         "display_order": 80
+      }
+    ],
+    "knowledgeNotes": [
+      {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "note_key": "kodomo-daredemo-tsuen-official-flow",
+        "title": "乳児等通園支援事業の公式フロー",
+        "summary": "制度上の主な資金フローは、こども家庭庁から市町村を経て、確認を受けた実施施設・事業者へ流れる構造です。",
+        "key_points": [
+          "事業別資料集では、乳児等通園支援事業は <子ども・子育て支援交付金> の内数として整理されている。",
+          "実施主体は市町村で、市町村が認めた者への委託等が可能と明記されている。",
+          "想定事務フローでも、市町村が審査し、事業者に給付費を支払う構造が確認できる。"
+        ],
+        "body_markdown": "",
+        "doc_path": "docs/funding-knowledge/ministries/child-and-family-agency/KODOMO_DAREDEMO_TSUEN_FLOW_2025-2026.md",
+        "display_order": 10,
+        "sources": [
+          {
+            "source_title": "令和7年度こども家庭庁予算 事業別資料集",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=95",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          },
+          {
+            "source_title": "こども誰でも通園制度 公式ページ",
+            "source_url": "https://www.cfa.go.jp/policies/hoiku/daredemo-tsuen",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 20
+          },
+          {
+            "source_title": "乳児等通園支援事業に関する想定事務フロー【第1版】",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/0afde15f-8760-4477-806a-ed72b6916696/43ec0455/20260114_policies_hoiku_daredemo-tsuen_54.pdf",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 30
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "note_key": "kodomo-daredemo-tsuen-municipal-implementation",
+        "title": "自治体別の実施状況と委託先",
+        "summary": "制度の受け皿は社会福祉法人、学校法人、公立、株式会社など多様で、自治体によっては制度運営事務を別途民間ベンダーへ委託しています。",
+        "key_points": [
+          "こども家庭庁の令和6年度実施状況では、2025年7月時点で 118自治体 / 757か所が確認できる。",
+          "神戸市、横浜市、静岡市、京都市で、実施施設や利用料の支払先に関する制度運用の違いが確認できる。",
+          "広島市では、保育の受け皿とは別に、管理運用業務を TOPPAN へ委託する公募結果が公表されている。"
+        ],
+        "body_markdown": "",
+        "doc_path": "docs/funding-knowledge/ministries/child-and-family-agency/KODOMO_DAREDEMO_TSUEN_MUNICIPAL_IMPLEMENTATION_2026-03-13.md",
+        "display_order": 20,
+        "sources": [
+          {
+            "source_title": "こども誰でも通園制度 令和6年度の実施状況",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/c53b2923-930e-4490-9ea6-02f1b02f04dc/e23e860d/20250717_councils_daredemotsuen-kentokai_5ao3a471_02.pdf",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          },
+          {
+            "source_title": "神戸市 こども誰でも通園制度",
+            "source_url": "https://www.city.kobe.lg.jp/z/kodomokatekyoku/kosodateshien/daredemotuen.html",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 20
+          },
+          {
+            "source_title": "横浜市 こども誰でも通園制度（乳児等通園支援事業）について",
+            "source_url": "https://www.city.yokohama.lg.jp/kosodate-kyoiku/kosodateshien/azukari/daredemotsuuenn.html",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 30
+          },
+          {
+            "source_title": "静岡市 乳児等通園支援事業（こども誰でも通園制度）利用のご案内",
+            "source_url": "https://www.city.shizuoka.lg.jp/s4936/s012267.html",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 40
+          },
+          {
+            "source_title": "京都市 京都市乳児等通園支援事業（こども誰でも通園制度）実施要綱",
+            "source_url": "https://www.city.kyoto.lg.jp/hagukumi/page/0000340278.html",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 50
+          },
+          {
+            "source_title": "広島市 乳児等通園支援事業に係る管理運用業務",
+            "source_url": "https://www.city.hiroshima.lg.jp/business/nyusatsu/1006046/1006060/1046169/1046854.html",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 60
+          },
+          {
+            "source_title": "広島市 管理運用業務 審査結果",
+            "source_url": "https://www.city.hiroshima.lg.jp/_res/projects/default_project/_page_/001/046/854/20260212.pdf",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 70
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "note_key": "kodomo-daredemo-tsuen-municipal-comparison",
+        "title": "自治体比較表",
+        "summary": "神戸市、横浜市、静岡市、京都市、広島市を、実施規模、受け皿、利用料の支払先、行政運営委託の有無で比較した一覧です。",
+        "key_points": [
+          "全国概況として、2025年7月7日時点で 118自治体 / 757か所が確認できる。",
+          "静岡市は利用料の施設直接払いを明示し、京都市は要綱上で委託先施設への支弁を規定している。",
+          "広島市は制度運営の事務委託、神戸市・横浜市は実施施設の拡充・一覧公開の事例として対比できる。"
+        ],
+        "body_markdown": "",
+        "doc_path": "docs/funding-knowledge/ministries/child-and-family-agency/KODOMO_DAREDEMO_TSUEN_MUNICIPAL_COMPARISON_TABLE_2026-03-13.md",
+        "display_order": 30,
+        "sources": [
+          {
+            "source_title": "こども誰でも通園制度 令和6年度の実施状況",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/c53b2923-930e-4490-9ea6-02f1b02f04dc/e23e860d/20250717_councils_daredemotsuen-kentokai_5ao3a471_02.pdf",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          },
+          {
+            "source_title": "神戸市 こども誰でも通園制度",
+            "source_url": "https://www.city.kobe.lg.jp/z/kodomokatekyoku/kosodateshien/daredemotuen.html",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 20
+          },
+          {
+            "source_title": "横浜市 こども誰でも通園制度（乳児等通園支援事業）について",
+            "source_url": "https://www.city.yokohama.lg.jp/kosodate-kyoiku/kosodateshien/azukari/daredemotsuuenn.html",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 30
+          },
+          {
+            "source_title": "静岡市 乳児等通園支援事業（こども誰でも通園制度）利用のご案内",
+            "source_url": "https://www.city.shizuoka.lg.jp/s4936/s012267.html",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 40
+          },
+          {
+            "source_title": "京都市 京都市乳児等通園支援事業（こども誰でも通園制度）実施要綱",
+            "source_url": "https://www.city.kyoto.lg.jp/hagukumi/page/0000340278.html",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 50
+          },
+          {
+            "source_title": "広島市 乳児等通園支援事業に係る管理運用業務",
+            "source_url": "https://www.city.hiroshima.lg.jp/business/nyusatsu/1006046/1006060/1046169/1046854.html",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 60
+          }
+        ]
+      }
+    ],
+    "structuredFacts": [
+      {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "kodomo-daredemo-tsuen-budget-frame",
+        "fact_group": "budget",
+        "title": "予算上の位置づけ",
+        "value_text": "2,431億円の内数 + 事項要求 2,074億円の内数",
+        "numeric_value": 2431.0,
+        "unit": "億円",
+        "summary": "乳児等通園支援事業は <子ども・子育て支援交付金> の内数として整理され、追加で事項要求が示されています。",
+        "note_key": "kodomo-daredemo-tsuen-official-flow",
+        "source_excerpt": "<子ども・子育て支援交付金> 2,431億円の内数 + 事項要求 2,074億円の内数",
+        "display_order": 10,
+        "sources": [
+          {
+            "source_title": "令和7年度こども家庭庁予算 事業別資料集",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=95",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "kodomo-daredemo-tsuen-implementer",
+        "fact_group": "governance",
+        "title": "実施主体",
+        "value_text": "市町村",
+        "numeric_value": null,
+        "unit": null,
+        "summary": "制度資料では実施主体を市町村とし、市町村が認めた者への委託等を可能としています。",
+        "note_key": "kodomo-daredemo-tsuen-official-flow",
+        "source_excerpt": "実施主体は市町村。市町村が認めた者への委託等可。",
+        "display_order": 20,
+        "sources": [
+          {
+            "source_title": "令和7年度こども家庭庁予算 事業別資料集",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=95",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "kodomo-daredemo-tsuen-national-share",
+        "fact_group": "cost_share",
+        "title": "国負担割合",
+        "value_text": "3/4",
+        "numeric_value": 0.75,
+        "unit": "share",
+        "summary": "制度資料では、国 3/4・市町村 1/4 の補助割合が示されています。",
+        "note_key": "kodomo-daredemo-tsuen-official-flow",
+        "source_excerpt": "補助割合は国3/4・市町村1/4。",
+        "display_order": 30,
+        "sources": [
+          {
+            "source_title": "令和7年度こども家庭庁予算 事業別資料集",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=95",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "kodomo-daredemo-tsuen-municipal-share",
+        "fact_group": "cost_share",
+        "title": "市町村負担割合",
+        "value_text": "1/4",
+        "numeric_value": 0.25,
+        "unit": "share",
+        "summary": "国費だけで完結せず、市町村負担を含む制度として運用されます。",
+        "note_key": "kodomo-daredemo-tsuen-official-flow",
+        "source_excerpt": "補助割合は国3/4・市町村1/4。",
+        "display_order": 40,
+        "sources": [
+          {
+            "source_title": "令和7年度こども家庭庁予算 事業別資料集",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=95",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "kodomo-daredemo-tsuen-rollout-municipalities",
+        "fact_group": "rollout",
+        "title": "実施自治体数",
+        "value_text": "118自治体",
+        "numeric_value": 118.0,
+        "unit": "自治体",
+        "summary": "2025年7月7日時点で制度実施が確認できる自治体数です。",
+        "note_key": "kodomo-daredemo-tsuen-municipal-implementation",
+        "source_excerpt": "令和6年度の実施状況として 118自治体 が掲載されています。",
+        "display_order": 50,
+        "sources": [
+          {
+            "source_title": "こども誰でも通園制度 令和6年度の実施状況",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/c53b2923-930e-4490-9ea6-02f1b02f04dc/e23e860d/20250717_councils_daredemotsuen-kentokai_5ao3a471_02.pdf",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "kodomo-daredemo-tsuen-rollout-sites",
+        "fact_group": "rollout",
+        "title": "実施事業所数",
+        "value_text": "757か所",
+        "numeric_value": 757.0,
+        "unit": "か所",
+        "summary": "同じ集計時点で確認できる実施施設・事業所数です。",
+        "note_key": "kodomo-daredemo-tsuen-municipal-implementation",
+        "source_excerpt": "令和6年度の実施状況として 757か所 が掲載されています。",
+        "display_order": 60,
+        "sources": [
+          {
+            "source_title": "こども誰でも通園制度 令和6年度の実施状況",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/c53b2923-930e-4490-9ea6-02f1b02f04dc/e23e860d/20250717_councils_daredemotsuen-kentokai_5ao3a471_02.pdf",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
       }
     ]
   }
