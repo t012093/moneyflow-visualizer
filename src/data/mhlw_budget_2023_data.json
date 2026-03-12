@@ -1,0 +1,237 @@
+{
+  "nodes": [
+    {
+      "id": "MIN_MHLW",
+      "name": "厚生労働省 (MHLW)",
+      "lat": 35.6749,
+      "lng": 139.7514,
+      "region": "Ministry",
+      "type": "ministry"
+    },
+    {
+      "id": "REC_MHLW_PENSION",
+      "name": "年金",
+      "lat": 35.6756,
+      "lng": 139.7523,
+      "region": "Welfare",
+      "type": "recipient"
+    },
+    {
+      "id": "REC_MHLW_MEDICAL",
+      "name": "医療",
+      "lat": 35.6742,
+      "lng": 139.7531,
+      "region": "Welfare",
+      "type": "recipient"
+    },
+    {
+      "id": "REC_MHLW_CARE",
+      "name": "介護",
+      "lat": 35.6738,
+      "lng": 139.7502,
+      "region": "Welfare",
+      "type": "recipient"
+    },
+    {
+      "id": "REC_MHLW_WELFARE_ETC",
+      "name": "福祉等",
+      "lat": 35.6761,
+      "lng": 139.7494,
+      "region": "Welfare",
+      "type": "recipient"
+    },
+    {
+      "id": "REC_MHLW_EMPLOYMENT",
+      "name": "雇用",
+      "lat": 35.6768,
+      "lng": 139.7516,
+      "region": "Labor",
+      "type": "recipient"
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "MIN_MHLW",
+      "target_id": "REC_MHLW_PENSION",
+      "category": "welfare",
+      "sub_category": "社会保障関係費 / 年金",
+      "value_usd": 86718666666.66667,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "厚生労働省 令和5年度予算案の概要",
+      "description": "社会保障関係費のうち年金給付に充てる主要枠。",
+      "source_title": "厚生労働省 令和5年度予算案の概要",
+      "source_url": "https://www.mhlw.go.jp/wp/yosan/yosan/23syokanyosan/dl/01-01.pdf#page=2&search=%E5%B9%B4%E9%87%91",
+      "page_number": 2
+    },
+    {
+      "source_id": "MIN_MHLW",
+      "target_id": "REC_MHLW_MEDICAL",
+      "category": "welfare",
+      "sub_category": "社会保障関係費 / 医療",
+      "value_usd": 81570666666.66667,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "厚生労働省 令和5年度予算案の概要",
+      "description": "医療保険制度や医療費国庫負担を支える主要枠。",
+      "source_title": "厚生労働省 令和5年度予算案の概要",
+      "source_url": "https://www.mhlw.go.jp/wp/yosan/yosan/23syokanyosan/dl/01-01.pdf#page=2&search=%E5%8C%BB%E7%99%82",
+      "page_number": 2
+    },
+    {
+      "source_id": "MIN_MHLW",
+      "target_id": "REC_MHLW_CARE",
+      "category": "welfare",
+      "sub_category": "社会保障関係費 / 介護",
+      "value_usd": 24639333333.333336,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "厚生労働省 令和5年度予算案の概要",
+      "description": "介護保険や地域包括ケアを含む介護関連の主要枠。",
+      "source_title": "厚生労働省 令和5年度予算案の概要",
+      "source_url": "https://www.mhlw.go.jp/wp/yosan/yosan/23syokanyosan/dl/01-01.pdf#page=2&search=%E4%BB%8B%E8%AD%B7",
+      "page_number": 2
+    },
+    {
+      "source_id": "MIN_MHLW",
+      "target_id": "REC_MHLW_WELFARE_ETC",
+      "category": "welfare",
+      "sub_category": "社会保障関係費 / 福祉等",
+      "value_usd": 25721333333.333336,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "厚生労働省 令和5年度予算案の概要",
+      "description": "生活保護、障害福祉、子ども家庭支援などを含む福祉枠。",
+      "source_title": "厚生労働省 令和5年度予算案の概要",
+      "source_url": "https://www.mhlw.go.jp/wp/yosan/yosan/23syokanyosan/dl/01-01.pdf#page=2&search=%E7%A6%8F%E7%A5%89%E7%AD%89",
+      "page_number": 2
+    },
+    {
+      "source_id": "MIN_MHLW",
+      "target_id": "REC_MHLW_EMPLOYMENT",
+      "category": "services",
+      "sub_category": "社会保障関係費 / 雇用",
+      "value_usd": 359333333.3333334,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "厚生労働省 令和5年度予算案の概要",
+      "description": "賃上げ支援や再就職支援を含む雇用関連の主要枠。",
+      "source_title": "厚生労働省 令和5年度予算案の概要",
+      "source_url": "https://www.mhlw.go.jp/wp/yosan/yosan/23syokanyosan/dl/01-01.pdf#page=2&search=%E9%9B%87%E7%94%A8",
+      "page_number": 2
+    }
+  ],
+  "budget_highlights": [
+    {
+      "entity_id": "MIN_MHLW",
+      "fiscal_year": 2023,
+      "section_key": "overview",
+      "title": "令和5年度厚生労働省一般会計予算",
+      "amount_text": "33兆1,686億円",
+      "amount_oku_yen": 331686,
+      "summary": "一般会計ベースの総額。対前年度 5,382億円増、1.6%増。",
+      "source_title": "厚生労働省 令和5年度予算案の概要",
+      "source_url": "https://www.mhlw.go.jp/wp/yosan/yosan/23syokanyosan/dl/01-01.pdf#page=1&search=%E4%B8%80%E8%88%AC%E4%BC%9A%E8%A8%88",
+      "page_number": 1,
+      "display_order": 10
+    },
+    {
+      "entity_id": "MIN_MHLW",
+      "fiscal_year": 2023,
+      "section_key": "increase_driver",
+      "title": "年金",
+      "amount_text": "+3,221億円",
+      "amount_oku_yen": 3221,
+      "summary": "社会保障関係費の中で最も大きい増要因。",
+      "source_title": "厚生労働省 令和5年度予算案の概要",
+      "source_url": "https://www.mhlw.go.jp/wp/yosan/yosan/23syokanyosan/dl/01-01.pdf#page=2&search=%E5%B9%B4%E9%87%91",
+      "page_number": 2,
+      "display_order": 20
+    },
+    {
+      "entity_id": "MIN_MHLW",
+      "fiscal_year": 2023,
+      "section_key": "increase_driver",
+      "title": "医療",
+      "amount_text": "+587億円",
+      "amount_oku_yen": 587,
+      "summary": "医療保険制度や国庫負担に伴う増額分。",
+      "source_title": "厚生労働省 令和5年度予算案の概要",
+      "source_url": "https://www.mhlw.go.jp/wp/yosan/yosan/23syokanyosan/dl/01-01.pdf#page=2&search=%E5%8C%BB%E7%99%82",
+      "page_number": 2,
+      "display_order": 30
+    },
+    {
+      "entity_id": "MIN_MHLW",
+      "fiscal_year": 2023,
+      "section_key": "increase_driver",
+      "title": "福祉等",
+      "amount_text": "+1,048億円",
+      "amount_oku_yen": 1048,
+      "summary": "福祉・生活支援領域での増額分。",
+      "source_title": "厚生労働省 令和5年度予算案の概要",
+      "source_url": "https://www.mhlw.go.jp/wp/yosan/yosan/23syokanyosan/dl/01-01.pdf#page=2&search=%E7%A6%8F%E7%A5%89%E7%AD%89",
+      "page_number": 2,
+      "display_order": 40
+    },
+    {
+      "entity_id": "MIN_MHLW",
+      "fiscal_year": 2023,
+      "section_key": "policy_frame",
+      "title": "社会保障関係費",
+      "amount_text": "32兆8,514億円",
+      "amount_oku_yen": 328514,
+      "summary": "厚生労働省一般会計の中心を占める政策枠。",
+      "source_title": "厚生労働省 令和5年度予算案の概要",
+      "source_url": "https://www.mhlw.go.jp/wp/yosan/yosan/23syokanyosan/dl/01-01.pdf#page=1&search=%E7%A4%BE%E4%BC%9A%E4%BF%9D%E9%9A%9C%E9%96%A2%E4%BF%82%E8%B2%BB",
+      "page_number": 1,
+      "display_order": 50
+    },
+    {
+      "entity_id": "MIN_MHLW",
+      "fiscal_year": 2023,
+      "section_key": "individual_project",
+      "title": "地域包括ケアシステムの構築",
+      "amount_text": "852億円",
+      "amount_oku_yen": 852,
+      "summary": "地域の事情に応じた介護サービス体制や人材確保を支える施策。",
+      "source_title": "厚生労働省 令和5年度予算案の概要",
+      "source_url": "https://www.mhlw.go.jp/wp/yosan/yosan/23syokanyosan/dl/01-01.pdf#page=5&search=%E5%9C%B0%E5%9F%9F%E5%8C%85%E6%8B%AC%E3%82%B1%E3%82%A2",
+      "page_number": 5,
+      "display_order": 60
+    },
+    {
+      "entity_id": "MIN_MHLW",
+      "fiscal_year": 2023,
+      "section_key": "individual_project",
+      "title": "労働者の賃上げ支援",
+      "amount_text": "107億円",
+      "amount_oku_yen": 107,
+      "summary": "事業場内最低賃金引上げや処遇改善を支える施策。",
+      "source_title": "厚生労働省 令和5年度予算案の概要",
+      "source_url": "https://www.mhlw.go.jp/wp/yosan/yosan/23syokanyosan/dl/01-01.pdf#page=7&search=%E5%8A%B4%E5%83%8D%E8%80%85%E3%81%AE%E8%B3%83%E4%B8%8A%E3%81%92%E6%94%AF%E6%8F%B4",
+      "page_number": 7,
+      "display_order": 70
+    },
+    {
+      "entity_id": "MIN_MHLW",
+      "fiscal_year": 2023,
+      "section_key": "individual_project",
+      "title": "看護、介護、障害福祉の現場で働く方々の処遇改善",
+      "amount_text": "855億円",
+      "amount_oku_yen": 855,
+      "summary": "医療・介護・障害福祉現場の処遇改善を継続する施策。",
+      "source_title": "厚生労働省 令和5年度予算案の概要",
+      "source_url": "https://www.mhlw.go.jp/wp/yosan/yosan/23syokanyosan/dl/01-01.pdf#page=8&search=%E5%87%A6%E9%81%87%E6%94%B9%E5%96%84",
+      "page_number": 8,
+      "display_order": 80
+    }
+  ],
+  "metadata": {
+    "source": [
+      "厚生労働省 令和5年度予算案の概要"
+    ],
+    "generated_at": "2026-03-12T07:19:36.583321+00:00",
+    "scope": "MHLW FY2023 reviewed major budget programs"
+  }
+}

@@ -158,7 +158,7 @@ python3 scripts/seed_db.py
 npm run build
 ```
 
-MEXT / MHLW の FY2024-FY2025、MLIT の FY2024、METI の FY2025 主要事業はこの workflow で `REC_*` edge と `budget_highlights` に入っています。
+MEXT / MHLW の FY2023-FY2025、MLIT の FY2023-FY2024、METI の FY2025 主要事業はこの workflow で `REC_*` edge と `budget_highlights` に入っています。
 
 review 前のたたき台を RAG から作るときは以下を使います。
 
