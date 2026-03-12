@@ -370,9 +370,9 @@ DATA_SOURCES = [
         "name_ja": "経済産業省 経済産業政策の重点",
         "agency_code": "MIN_METI",
         "url": "https://www.meti.go.jp/main/yosan/index.html",
-        "description": "Major FY2023-FY2025 METI budget programs and budget highlights",
+        "description": "Major FY2022-FY2025 METI budget programs and budget highlights",
         "data_format": "PDF",
-        "fiscal_years": "2023,2024,2025",
+        "fiscal_years": "2022,2023,2024,2025",
         "crawl_mode": "http",
         "crawl_frequency": "annually",
         "priority": "high"
