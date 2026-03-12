@@ -139,7 +139,7 @@
 
 - provenance は年別の official PDF に正規化済み
 - `FY2022-FY2025` の `MEXT` と `MHLW` は reviewed workflow で主要事業 edge を追加済み
-- `FY2022-FY2024` の `MLIT` と `FY2024-FY2025` の `METI` も reviewed workflow で主要事業 edge を追加済み
+- `FY2022-FY2024` の `MLIT` と `FY2023-FY2025` の `METI` も reviewed workflow で主要事業 edge を追加済み
 - それ以外の年度・省庁はまだ大分類中心
 
 改善したい場合:

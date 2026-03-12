@@ -37,6 +37,7 @@ DATASETS = [
     {"file": "mlit_budget_2022_data.json", "dataset": "mlit_budget_2022_data", "label": "MLIT FY2022 Major Budget Programs"},
     {"file": "mlit_budget_2023_data.json", "dataset": "mlit_budget_2023_data", "label": "MLIT FY2023 Major Budget Programs"},
     {"file": "mlit_budget_2024_data.json", "dataset": "mlit_budget_2024_data", "label": "MLIT FY2024 Major Budget Programs"},
+    {"file": "meti_budget_2023_data.json", "dataset": "meti_budget_2023_data", "label": "METI FY2023 Major Budget Programs"},
     {"file": "meti_budget_2024_data.json", "dataset": "meti_budget_2024_data", "label": "METI FY2024 Major Budget Programs"},
     {"file": "meti_budget_data.json", "dataset": "meti_budget_data", "label": "METI FY2025 Major Budget Programs"},
     {"file": "toyama_data.json", "dataset": "toyama_data", "label": "Toyama Prefecture (Local Gov)"},
@@ -69,6 +70,7 @@ DATASET_TO_SOURCE_ID = {
     "国土交通省 令和4年度予算概要": "mlit_budget",
     "国土交通省 令和5年度予算概要": "mlit_budget",
     "国土交通省 令和6年度予算概要": "mlit_budget",
+    "経済産業省関係 令和4年度補正予算・令和5年度当初予算のポイント": "meti_budget",
     "経済産業省関係 令和5年度補正予算・令和6年度当初予算の概要": "meti_budget",
     "経済産業省 2025年度経済産業政策の重点": "meti_budget",
     # Social security
@@ -240,6 +242,10 @@ SOURCE_TITLE_HINTS = [
     (
         "001720593.pdf",
         "国土交通省 令和6年度予算概要",
+    ),
+    (
+        "yosan_fy2023/pdf/01.pdf",
+        "経済産業省関係 令和4年度補正予算・令和5年度当初予算のポイント",
     ),
     (
         "yosan_fy2024/pdf/01.pdf",
