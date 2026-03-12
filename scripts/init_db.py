@@ -339,6 +339,19 @@ DATA_SOURCES = [
         "priority": "high"
     },
     {
+        "source_id": "mhlw_budget",
+        "name": "MHLW Budget Overview",
+        "name_ja": "厚生労働省 予算案の概要",
+        "agency_code": "MIN_MHLW",
+        "url": "https://www.mhlw.go.jp/wp/yosan/yosan/25syokanyosan/dl/01-01.pdf",
+        "description": "Major FY2025 MHLW budget programs and budget highlights",
+        "data_format": "PDF",
+        "fiscal_years": "2025",
+        "crawl_mode": "http",
+        "crawl_frequency": "annually",
+        "priority": "high"
+    },
+    {
         "source_id": "mhlw_medical",
         "name": "MHLW - National Medical Expenditure",
         "name_ja": "厚生労働省 国民医療費の概況",
