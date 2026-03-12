@@ -1,0 +1,235 @@
+{
+  "nodes": [
+    {
+      "id": "MIN_MLIT",
+      "name": "国土交通省 (MLIT)",
+      "lat": 35.675,
+      "lng": 139.755,
+      "region": "Ministry",
+      "type": "ministry"
+    },
+    {
+      "id": "REC_MLIT_FLOOD_CONTROL",
+      "name": "流域治水の加速化・強化",
+      "lat": 35.6761,
+      "lng": 139.7562,
+      "region": "Infrastructure",
+      "type": "recipient"
+    },
+    {
+      "id": "REC_MLIT_DISASTER_LOGISTICS",
+      "name": "災害時における物流・人流の確保",
+      "lat": 35.6741,
+      "lng": 139.7568,
+      "region": "Infrastructure",
+      "type": "recipient"
+    },
+    {
+      "id": "REC_MLIT_LOGISTICS_NETWORK",
+      "name": "効率的な物流ネットワークの早期整備・活用",
+      "lat": 35.6739,
+      "lng": 139.7542,
+      "region": "Infrastructure",
+      "type": "recipient"
+    },
+    {
+      "id": "REC_MLIT_SOCIAL_CAPITAL_GRANT",
+      "name": "社会資本整備総合交付金",
+      "lat": 35.6768,
+      "lng": 139.7536,
+      "region": "Infrastructure",
+      "type": "recipient"
+    },
+    {
+      "id": "REC_MLIT_HOUSING_GX",
+      "name": "住宅・建築物の省エネ対策等の強化",
+      "lat": 35.6774,
+      "lng": 139.7557,
+      "region": "Infrastructure",
+      "type": "recipient"
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "MIN_MLIT",
+      "target_id": "REC_MLIT_FLOOD_CONTROL",
+      "category": "infrastructure",
+      "sub_category": "防災・減災 / 流域治水",
+      "value_usd": 4076000000.0000005,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "国土交通省 令和6年度予算概要",
+      "description": "水害・土砂災害の激甚化に対抗する防災・減災の重点枠。",
+      "source_title": "国土交通省 令和6年度予算概要",
+      "source_url": "https://www.mlit.go.jp/page/content/001720593.pdf#page=6&search=%E6%B5%81%E5%9F%9F%E6%B2%BB%E6%B0%B4",
+      "page_number": 6
+    },
+    {
+      "source_id": "MIN_MLIT",
+      "target_id": "REC_MLIT_DISASTER_LOGISTICS",
+      "category": "infrastructure",
+      "sub_category": "防災・減災 / 物流・人流",
+      "value_usd": 2746000000.0,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "国土交通省 令和6年度予算概要",
+      "description": "災害時の物流・交通ネットワーク確保に向けた重点枠。",
+      "source_title": "国土交通省 令和6年度予算概要",
+      "source_url": "https://www.mlit.go.jp/page/content/001720593.pdf#page=6&search=%E7%89%A9%E6%B5%81%E3%83%BB%E4%BA%BA%E6%B5%81",
+      "page_number": 6
+    },
+    {
+      "source_id": "MIN_MLIT",
+      "target_id": "REC_MLIT_LOGISTICS_NETWORK",
+      "category": "infrastructure",
+      "sub_category": "成長基盤 / 物流ネットワーク",
+      "value_usd": 2534666666.666667,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "国土交通省 令和6年度予算概要",
+      "description": "物流効率化と経済成長基盤整備を支える重点枠。",
+      "source_title": "国土交通省 令和6年度予算概要",
+      "source_url": "https://www.mlit.go.jp/page/content/001720593.pdf#page=6&search=%E7%89%A9%E6%B5%81%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF",
+      "page_number": 6
+    },
+    {
+      "source_id": "MIN_MLIT",
+      "target_id": "REC_MLIT_SOCIAL_CAPITAL_GRANT",
+      "category": "infrastructure",
+      "sub_category": "成長基盤 / 社会資本整備総合交付金",
+      "value_usd": 3376666666.666667,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "国土交通省 令和6年度予算概要",
+      "description": "地方公共団体の社会資本整備を支える総合交付金。",
+      "source_title": "国土交通省 令和6年度予算概要",
+      "source_url": "https://www.mlit.go.jp/page/content/001720593.pdf#page=6&search=%E7%A4%BE%E4%BC%9A%E8%B3%87%E6%9C%AC%E6%95%B4%E5%82%99%E7%B7%8F%E5%90%88%E4%BA%A4%E4%BB%98%E9%87%91",
+      "page_number": 6
+    },
+    {
+      "source_id": "MIN_MLIT",
+      "target_id": "REC_MLIT_HOUSING_GX",
+      "category": "infrastructure",
+      "sub_category": "GX / 住宅・建築物",
+      "value_usd": 735333333.3333334,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "国土交通省 令和6年度予算概要",
+      "description": "ZEH・ZEB や既存ストック省エネ化を支えるGX枠。",
+      "source_title": "国土交通省 令和6年度予算概要",
+      "source_url": "https://www.mlit.go.jp/page/content/001720593.pdf#page=6&search=ZEH%E3%83%BBZEB",
+      "page_number": 6
+    }
+  ],
+  "budget_highlights": [
+    {
+      "entity_id": "MIN_MLIT",
+      "fiscal_year": 2024,
+      "section_key": "overview",
+      "title": "令和6年度国土交通省関係予算",
+      "amount_text": "5兆9,537億円",
+      "amount_oku_yen": 59537,
+      "summary": "一般会計ベースの国土交通省関係予算総額。",
+      "source_title": "国土交通省 令和6年度予算概要",
+      "source_url": "https://www.mlit.go.jp/page/content/001720593.pdf#page=4&search=%E4%B8%80%E8%88%AC%E4%BC%9A%E8%A8%88",
+      "page_number": 4,
+      "display_order": 10
+    },
+    {
+      "entity_id": "MIN_MLIT",
+      "fiscal_year": 2024,
+      "section_key": "increase_driver",
+      "title": "一般会計伸び率",
+      "amount_text": "1.01倍",
+      "summary": "対前年度比で一般会計を維持・拡充。",
+      "source_title": "国土交通省 令和6年度予算概要",
+      "source_url": "https://www.mlit.go.jp/page/content/001720593.pdf#page=4&search=1.01%E5%80%8D",
+      "page_number": 4,
+      "display_order": 20
+    },
+    {
+      "entity_id": "MIN_MLIT",
+      "fiscal_year": 2024,
+      "section_key": "increase_driver",
+      "title": "非公共事業伸び率",
+      "amount_text": "1.07倍",
+      "summary": "非公共事業分野を対前年度比で拡充。",
+      "source_title": "国土交通省 令和6年度予算概要",
+      "source_url": "https://www.mlit.go.jp/page/content/001720593.pdf#page=4&search=%E9%9D%9E%E5%85%AC%E5%85%B1%E4%BA%8B%E6%A5%AD",
+      "page_number": 4,
+      "display_order": 30
+    },
+    {
+      "entity_id": "MIN_MLIT",
+      "fiscal_year": 2024,
+      "section_key": "policy_frame",
+      "title": "公共事業関係費",
+      "amount_text": "5兆2,901億円",
+      "amount_oku_yen": 52901,
+      "summary": "一般会計の大半を占める公共事業の政策枠。",
+      "source_title": "国土交通省 令和6年度予算概要",
+      "source_url": "https://www.mlit.go.jp/page/content/001720593.pdf#page=4&search=%E5%85%AC%E5%85%B1%E4%BA%8B%E6%A5%AD%E9%96%A2%E4%BF%82%E8%B2%BB",
+      "page_number": 4,
+      "display_order": 40
+    },
+    {
+      "entity_id": "MIN_MLIT",
+      "fiscal_year": 2024,
+      "section_key": "policy_frame",
+      "title": "非公共事業",
+      "amount_text": "6,636億円",
+      "amount_oku_yen": 6636,
+      "summary": "施設・行政経費などの非公共事業枠。",
+      "source_title": "国土交通省 令和6年度予算概要",
+      "source_url": "https://www.mlit.go.jp/page/content/001720593.pdf#page=4&search=%E9%9D%9E%E5%85%AC%E5%85%B1%E4%BA%8B%E6%A5%AD",
+      "page_number": 4,
+      "display_order": 50
+    },
+    {
+      "entity_id": "MIN_MLIT",
+      "fiscal_year": 2024,
+      "section_key": "individual_project",
+      "title": "流域治水の加速化・強化",
+      "amount_text": "6,114億円",
+      "amount_oku_yen": 6114,
+      "summary": "気候変動による水害・土砂災害の激甚化に対抗する重点施策。",
+      "source_title": "国土交通省 令和6年度予算概要",
+      "source_url": "https://www.mlit.go.jp/page/content/001720593.pdf#page=6&search=%E6%B5%81%E5%9F%9F%E6%B2%BB%E6%B0%B4",
+      "page_number": 6,
+      "display_order": 60
+    },
+    {
+      "entity_id": "MIN_MLIT",
+      "fiscal_year": 2024,
+      "section_key": "individual_project",
+      "title": "効率的な物流ネットワークの早期整備・活用",
+      "amount_text": "3,802億円",
+      "amount_oku_yen": 3802,
+      "summary": "物流効率化と成長基盤整備を支える重点施策。",
+      "source_title": "国土交通省 令和6年度予算概要",
+      "source_url": "https://www.mlit.go.jp/page/content/001720593.pdf#page=6&search=%E7%89%A9%E6%B5%81%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF",
+      "page_number": 6,
+      "display_order": 70
+    },
+    {
+      "entity_id": "MIN_MLIT",
+      "fiscal_year": 2024,
+      "section_key": "individual_project",
+      "title": "住宅・建築物の省エネ対策等の強化",
+      "amount_text": "1,103億円",
+      "amount_oku_yen": 1103,
+      "summary": "ZEH・ZEB や木材活用を含むGX施策。",
+      "source_title": "国土交通省 令和6年度予算概要",
+      "source_url": "https://www.mlit.go.jp/page/content/001720593.pdf#page=6&search=ZEH%E3%83%BBZEB",
+      "page_number": 6,
+      "display_order": 80
+    }
+  ],
+  "metadata": {
+    "source": [
+      "国土交通省 令和6年度予算概要"
+    ],
+    "generated_at": "2026-03-12T05:36:03.167482+00:00",
+    "scope": "MLIT FY2024 reviewed major budget programs"
+  }
+}

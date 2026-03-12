@@ -28,6 +28,68 @@ const TAB_ACCENTS: Record<BudgetTab, string> = {
   individual_project: '#c084fc',
 };
 
+type BudgetEvidenceStatus = 'reviewed' | 'model-based' | 'hybrid';
+
+const MODEL_BUDGET_DATASETS = new Set(['省庁別主要経費推計', '財務省 一般会計（所管別）', '財務省一般会計', 'ministries_data']);
+
+const EVIDENCE_BADGE_STYLE: Record<BudgetEvidenceStatus, { label: string; color: string; background: string; border: string; description: string }> = {
+  reviewed: {
+    label: 'reviewed',
+    color: '#86efac',
+    background: 'rgba(34, 197, 94, 0.14)',
+    border: 'rgba(74, 222, 128, 0.22)',
+    description: 'official PDF から review 済みの予算情報を表示しています。',
+  },
+  'model-based': {
+    label: 'model-based',
+    color: '#fbbf24',
+    background: 'rgba(251, 191, 36, 0.14)',
+    border: 'rgba(251, 191, 36, 0.22)',
+    description: '推計配分や大分類モデルの情報を含みます。',
+  },
+  hybrid: {
+    label: 'hybrid',
+    color: '#93c5fd',
+    background: 'rgba(96, 165, 250, 0.14)',
+    border: 'rgba(96, 165, 250, 0.22)',
+    description: 'reviewed edge と model-based edge が混在しています。',
+  },
+};
+
+function inferEvidenceStatus(item: { source_dataset?: string | null; source_url?: string | null }): BudgetEvidenceStatus {
+  if (item.source_dataset && MODEL_BUDGET_DATASETS.has(item.source_dataset)) {
+    return 'model-based';
+  }
+  if (item.source_url && item.source_url.toLowerCase().includes('.pdf')) {
+    return 'reviewed';
+  }
+  return 'model-based';
+}
+
+function renderEvidenceBadge(status: BudgetEvidenceStatus) {
+  const badge = EVIDENCE_BADGE_STYLE[status];
+  return (
+    <span
+      style={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: '0.3rem',
+        padding: '0.22rem 0.6rem',
+        borderRadius: '999px',
+        fontSize: '0.72rem',
+        fontWeight: 700,
+        letterSpacing: '0.08em',
+        textTransform: 'uppercase',
+        color: badge.color,
+        background: badge.background,
+        border: `1px solid ${badge.border}`,
+      }}
+    >
+      {badge.label}
+    </span>
+  );
+}
+
 function formatExactBudgetAmount(valueUsd: number): string {
   const rawValJpy = valueUsd * JPY_RATE;
   if (rawValJpy >= 1e8) {
@@ -69,6 +131,7 @@ function renderHighlightGrid(items: BudgetHighlight[], accent: string) {
             border: `1px solid ${accent}22`,
           }}
         >
+          <div style={{ marginBottom: '0.55rem' }}>{renderEvidenceBadge(inferEvidenceStatus({ source_url: item.source_url }))}</div>
           <div style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem', alignItems: 'baseline' }}>
             <div style={{ fontWeight: 700, lineHeight: 1.45 }}>{item.title}</div>
             {item.amount_text && <div style={{ color: accent, fontWeight: 700, whiteSpace: 'nowrap' }}>{item.amount_text}</div>}
@@ -144,6 +207,20 @@ export const BudgetReportPage: React.FC<BudgetReportPageProps> = ({ currentYear,
   }, [currentYear, edges, nodes, selectedEntityId]);
 
   const selectedEntityName = entityOptions.find((item) => item.entityId === selectedEntityId)?.name || selectedEntityId;
+  const coverageStatus = useMemo<BudgetEvidenceStatus | null>(() => {
+    const statuses = new Set<BudgetEvidenceStatus>();
+
+    currentHighlights.forEach((item) => statuses.add(inferEvidenceStatus({ source_url: item.source_url })));
+    majorPrograms.forEach((program) => statuses.add(inferEvidenceStatus(program)));
+
+    if (statuses.size === 0) {
+      return null;
+    }
+    if (statuses.size > 1) {
+      return 'hybrid';
+    }
+    return Array.from(statuses)[0];
+  }, [currentHighlights, majorPrograms]);
 
   const tabContent = useMemo(() => {
     if (!selectedEntityId || !currentHighlights.length) {
@@ -224,6 +301,7 @@ export const BudgetReportPage: React.FC<BudgetReportPageProps> = ({ currentYear,
               border: '1px solid rgba(96, 165, 250, 0.18)',
             }}
           >
+            <div style={{ marginBottom: '0.55rem' }}>{renderEvidenceBadge(inferEvidenceStatus(program))}</div>
             <div style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem', alignItems: 'baseline' }}>
               <div style={{ fontWeight: 700, lineHeight: 1.45 }}>{program.sub_category || program.targetName}</div>
               <div style={{ color: TAB_ACCENTS.major_program, fontWeight: 700, whiteSpace: 'nowrap' }}>
@@ -238,7 +316,10 @@ export const BudgetReportPage: React.FC<BudgetReportPageProps> = ({ currentYear,
                 {program.description}
               </div>
             )}
-            {renderSourceLink({ source_url: program.source_url, source_title: '元の資料' }, TAB_ACCENTS.major_program)}
+            {renderSourceLink(
+              { source_url: program.source_url, source_title: program.source_title || '元の資料', page_number: program.page_number },
+              TAB_ACCENTS.major_program
+            )}
           </article>
         ))}
       </div>
@@ -335,6 +416,14 @@ export const BudgetReportPage: React.FC<BudgetReportPageProps> = ({ currentYear,
           <div style={{ marginTop: '0.25rem', color: 'var(--text-muted)', fontSize: '0.9rem' }}>
             {currentYear}年度の登録済み予算ハイライト
           </div>
+          {coverageStatus && (
+            <div style={{ marginTop: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.65rem', flexWrap: 'wrap' }}>
+              {renderEvidenceBadge(coverageStatus)}
+              <span style={{ color: 'var(--text-muted)', fontSize: '0.82rem' }}>
+                {EVIDENCE_BADGE_STYLE[coverageStatus].description}
+              </span>
+            </div>
+          )}
         </div>
 
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.55rem' }}>

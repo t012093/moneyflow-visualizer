@@ -27,7 +27,10 @@ DATASETS = [
     {"file": "mof_data.json",   "dataset": "mof_data",   "label": "National Treasury (MOF General Account)"},
     {"file": "ministries_data.json", "dataset": "ministries_data", "label": "Ministries (1府11省庁)"},
     {"file": "mext_budget_data.json", "dataset": "mext_budget_data", "label": "MEXT Major Budget Projects"},
+    {"file": "mext_budget_2024_data.json", "dataset": "mext_budget_2024_data", "label": "MEXT FY2024 Major Budget Projects"},
     {"file": "mhlw_budget_data.json", "dataset": "mhlw_budget_data", "label": "MHLW Major Budget Programs"},
+    {"file": "mhlw_budget_2024_data.json", "dataset": "mhlw_budget_2024_data", "label": "MHLW FY2024 Major Budget Programs"},
+    {"file": "mlit_budget_2024_data.json", "dataset": "mlit_budget_2024_data", "label": "MLIT FY2024 Major Budget Programs"},
     {"file": "toyama_data.json", "dataset": "toyama_data", "label": "Toyama Prefecture (Local Gov)"},
     {"file": "mhlw_data.json",  "dataset": "mhlw_data",  "label": "Social Security (MHLW/CFA)"},
     {"file": "meti_subsidies_data.json", "dataset": "meti_data", "label": "Corporate Subsidies & Taxes (METI)"},
@@ -47,8 +50,11 @@ DATASET_TO_SOURCE_ID = {
     "財務省一般会計": "mof_budget",
     "財務省 一般会計（所管別）": "mof_budget",
     "省庁別主要経費推計": "mof_budget",
+    "文部科学省 令和6年度予算のポイント": "mext_budget",
     "文部科学省 令和7年度予算のポイント": "mext_budget",
+    "厚生労働省 令和6年度予算案の概要": "mhlw_budget",
     "厚生労働省 令和7年度予算案の概要": "mhlw_budget",
+    "国土交通省 令和6年度予算概要": "mlit_budget",
     # Social security
     "参議院予算委員会調査室 R6": "sangiin_social_security",
     "こども家庭庁 R6/R7予算 オープンデータ": "cfa_budget",
@@ -180,8 +186,20 @@ SOURCE_TITLE_HINTS = [
         "文部科学省 令和7年度予算のポイント",
     ),
     (
+        "20240326-ope_dev03-000031627-1.pdf",
+        "文部科学省 令和6年度予算のポイント",
+    ),
+    (
+        "24syokanyosan/dl/01-01.pdf",
+        "厚生労働省 令和6年度予算案の概要",
+    ),
+    (
         "25syokanyosan/dl/01-01.pdf",
         "厚生労働省 令和7年度予算案の概要",
+    ),
+    (
+        "001720593.pdf",
+        "国土交通省 令和6年度予算概要",
     ),
 ]
 

@@ -138,8 +138,9 @@
 現在の状態:
 
 - provenance は年別の official PDF に正規化済み
-- `FY2025` の `MEXT` と `MHLW` は reviewed workflow で主要事業 edge を追加済み
-- `FY2024` 以前の `MEXT` はまだ大分類中心
+- `FY2024-FY2025` の `MEXT` と `MHLW` は reviewed workflow で主要事業 edge を追加済み
+- `FY2024` の `MLIT` も reviewed workflow で主要事業 edge を追加済み
+- それ以外の年度・省庁はまだ大分類中心
 
 改善したい場合:
 
@@ -204,14 +205,14 @@
 - まず `予算ページ` で全体像を見る
 - 個別の確認は `2D 解析フロー` の `特定エンティティ` を使う
 - 根拠確認は `公式PDF` バッジを優先する
-- `FY2024` 以前の `MEXT` や未分解主体は、今後 `主要事業 edge` を増やす前提で見る
+- reviewed workflow 未対応の年度・主体は、今後 `主要事業 edge` を増やす前提で見る
 - 文書検索の回答と UI のフロー表示は別レイヤーだと意識する
 
 ## 8. このアプリをさらに活かす次の打ち手
 
 優先度が高い順です。
 
-1. `FY2024` 以前の `MEXT` や他省庁にも reviewed workflow を広げる
+1. 未対応年度の `MEXT` / `MHLW` や他省庁にも reviewed workflow を広げる
 2. `page_number` を他省庁にも増やす
 3. PDF から edge への半自動変換フローを固定化する
 4. その運用手順を skill で再利用する
