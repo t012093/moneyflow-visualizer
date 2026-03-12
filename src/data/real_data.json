@@ -1,0 +1,3840 @@
+{
+  "nodes": [
+    {
+      "id": "USA",
+      "name": "United States",
+      "lat": 39.8283,
+      "lng": -98.5795,
+      "region": "Americas",
+      "type": "country"
+    },
+    {
+      "id": "CHN",
+      "name": "China",
+      "lat": 35.8617,
+      "lng": 104.1954,
+      "region": "Asia",
+      "type": "country"
+    },
+    {
+      "id": "JPN",
+      "name": "Japan",
+      "lat": 36.2048,
+      "lng": 138.2529,
+      "region": "Asia",
+      "type": "country"
+    },
+    {
+      "id": "DEU",
+      "name": "Germany",
+      "lat": 51.1657,
+      "lng": 10.4515,
+      "region": "Europe",
+      "type": "country"
+    },
+    {
+      "id": "GBR",
+      "name": "United Kingdom",
+      "lat": 55.3781,
+      "lng": -3.436,
+      "region": "Europe",
+      "type": "country"
+    },
+    {
+      "id": "IND",
+      "name": "India",
+      "lat": 20.5937,
+      "lng": 78.9629,
+      "region": "Asia",
+      "type": "country"
+    },
+    {
+      "id": "FRA",
+      "name": "France",
+      "lat": 46.2276,
+      "lng": 2.2137,
+      "region": "Europe",
+      "type": "country"
+    },
+    {
+      "id": "ITA",
+      "name": "Italy",
+      "lat": 41.8719,
+      "lng": 12.5674,
+      "region": "Europe",
+      "type": "country"
+    },
+    {
+      "id": "CAN",
+      "name": "Canada",
+      "lat": 56.1304,
+      "lng": -106.3468,
+      "region": "Americas",
+      "type": "country"
+    },
+    {
+      "id": "KOR",
+      "name": "South Korea",
+      "lat": 35.9078,
+      "lng": 127.7669,
+      "region": "Asia",
+      "type": "country"
+    },
+    {
+      "id": "RUS",
+      "name": "Russia",
+      "lat": 61.524,
+      "lng": 105.3188,
+      "region": "Europe/Asia",
+      "type": "country"
+    },
+    {
+      "id": "BRA",
+      "name": "Brazil",
+      "lat": -14.235,
+      "lng": -51.9253,
+      "region": "Americas",
+      "type": "country"
+    },
+    {
+      "id": "AUS",
+      "name": "Australia",
+      "lat": -25.2744,
+      "lng": 133.7751,
+      "region": "Oceania",
+      "type": "country"
+    },
+    {
+      "id": "MEX",
+      "name": "Mexico",
+      "lat": 23.6345,
+      "lng": -102.5528,
+      "region": "Americas",
+      "type": "country"
+    },
+    {
+      "id": "IDN",
+      "name": "Indonesia",
+      "lat": -0.7893,
+      "lng": 113.9213,
+      "region": "Asia",
+      "type": "country"
+    },
+    {
+      "id": "TUR",
+      "name": "Turkey",
+      "lat": 38.9637,
+      "lng": 35.2433,
+      "region": "Europe/Asia",
+      "type": "country"
+    },
+    {
+      "id": "SAU",
+      "name": "Saudi Arabia",
+      "lat": 23.8859,
+      "lng": 45.0792,
+      "region": "Middle East",
+      "type": "country"
+    },
+    {
+      "id": "ARG",
+      "name": "Argentina",
+      "lat": -38.4161,
+      "lng": -63.6167,
+      "region": "Americas",
+      "type": "country"
+    },
+    {
+      "id": "ZAF",
+      "name": "South Africa",
+      "lat": -30.5595,
+      "lng": 22.9375,
+      "region": "Africa",
+      "type": "country"
+    },
+    {
+      "id": "AAPL",
+      "name": "Apple Inc.",
+      "lat": 37.3346,
+      "lng": -122.009,
+      "region": "Americas",
+      "type": "corporation"
+    },
+    {
+      "id": "TSLA",
+      "name": "Tesla",
+      "lat": 30.2223,
+      "lng": -97.6171,
+      "region": "Americas",
+      "type": "corporation"
+    },
+    {
+      "id": "TOYOTA",
+      "name": "トヨタ自動車",
+      "lat": 35.0828,
+      "lng": 137.1562,
+      "region": "Asia",
+      "type": "corporation"
+    },
+    {
+      "id": "HNWI_US",
+      "name": "米国 富裕層",
+      "lat": 40.7128,
+      "lng": -74.006,
+      "region": "Americas",
+      "type": "individual"
+    },
+    {
+      "id": "RET_JPN",
+      "name": "日本 個人投資家",
+      "lat": 35.6762,
+      "lng": 139.6503,
+      "region": "Asia",
+      "type": "individual"
+    },
+    {
+      "id": "RET_IND",
+      "name": "インド 出稼ぎ労働者",
+      "lat": 19.076,
+      "lng": 72.8777,
+      "region": "Asia",
+      "type": "individual"
+    },
+    {
+      "id": "CRYPTO_WHALE",
+      "name": "世界の暗号資産クジラ",
+      "lat": 25.0478,
+      "lng": -77.3554,
+      "region": "Global",
+      "type": "individual"
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "USA",
+      "target_id": "ARG",
+      "category": "remittance",
+      "value_usd": 361115768.80717325,
+      "year": 2021,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "AUS",
+      "category": "remittance",
+      "value_usd": 336390188.8870492,
+      "year": 2021,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "BRA",
+      "category": "remittance",
+      "value_usd": 1640807259.08,
+      "year": 2021,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "CAN",
+      "category": "remittance",
+      "value_usd": 332601078.6649792,
+      "year": 2021,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "CHN",
+      "category": "remittance",
+      "value_usd": 8991959613.088001,
+      "year": 2021,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "SAU",
+      "target_id": "CHN",
+      "category": "remittance",
+      "value_usd": 6743969709.816,
+      "year": 2021,
+      "confidence": 0.82,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "DEU",
+      "category": "remittance",
+      "value_usd": 8102416734.40112,
+      "year": 2021,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "FRA",
+      "category": "remittance",
+      "value_usd": 13058600651.38528,
+      "year": 2021,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "GBR",
+      "category": "remittance",
+      "value_usd": 1384600696.3517323,
+      "year": 2021,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "IDN",
+      "category": "remittance",
+      "value_usd": 3760970835.5419407,
+      "year": 2021,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "SAU",
+      "target_id": "IDN",
+      "category": "remittance",
+      "value_usd": 2820728126.656455,
+      "year": 2021,
+      "confidence": 0.82,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "IND",
+      "category": "remittance",
+      "value_usd": 35750060887.02628,
+      "year": 2021,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "SAU",
+      "target_id": "IND",
+      "category": "remittance",
+      "value_usd": 26812545665.26971,
+      "year": 2021,
+      "confidence": 0.82,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "ITA",
+      "category": "remittance",
+      "value_usd": 4041577151.2265606,
+      "year": 2021,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "JPN",
+      "category": "remittance",
+      "value_usd": 2117557626.0550241,
+      "year": 2021,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "KOR",
+      "category": "remittance",
+      "value_usd": 3096920000.0,
+      "year": 2021,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "MEX",
+      "category": "remittance",
+      "value_usd": 22026811824.0,
+      "year": 2021,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "RUS",
+      "category": "remittance",
+      "value_usd": 3858768000.0,
+      "year": 2021,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "SAU",
+      "category": "remittance",
+      "value_usd": 117965727.8933332,
+      "year": 2021,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "TUR",
+      "category": "remittance",
+      "value_usd": 290400000.0,
+      "year": 2021,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "ZAF",
+      "category": "remittance",
+      "value_usd": 370660337.46131724,
+      "year": 2021,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 108268212636.49478,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "JPN",
+      "category": "trade",
+      "value_usd": 31849064654.794655,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "DEU",
+      "category": "trade",
+      "value_usd": 30401274699.641617,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "GBR",
+      "category": "trade",
+      "value_usd": 23141971330.737747,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "IND",
+      "category": "trade",
+      "value_usd": 50744790094.64158,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "FRA",
+      "category": "trade",
+      "value_usd": 25187499766.04219,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "ITA",
+      "category": "trade",
+      "value_usd": 17990930670.568314,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "CAN",
+      "category": "trade",
+      "value_usd": 11645917288.445549,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "KOR",
+      "category": "trade",
+      "value_usd": 9825183071.508938,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "RUS",
+      "category": "trade",
+      "value_usd": 10537172219.896023,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "BRA",
+      "category": "trade",
+      "value_usd": 22273054730.61278,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "AUS",
+      "category": "trade",
+      "value_usd": 23752643776.89066,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "MEX",
+      "category": "trade",
+      "value_usd": 9885746185.958757,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "IDN",
+      "category": "trade",
+      "value_usd": 8412725062.243324,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "SAU",
+      "category": "trade",
+      "value_usd": 5706894792.570148,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "ARG",
+      "category": "trade",
+      "value_usd": 6340818665.160935,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 212210979212.6939,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "JPN",
+      "category": "trade",
+      "value_usd": 22482458359.58765,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "DEU",
+      "category": "trade",
+      "value_usd": 26367379373.77129,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "GBR",
+      "category": "trade",
+      "value_usd": 19062160223.75989,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "IND",
+      "category": "trade",
+      "value_usd": 20455771154.126106,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "FRA",
+      "category": "trade",
+      "value_usd": 14279861378.9709,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "ITA",
+      "category": "trade",
+      "value_usd": 15778461303.324942,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "CAN",
+      "category": "trade",
+      "value_usd": 15141812435.176847,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "KOR",
+      "category": "trade",
+      "value_usd": 10040654436.612328,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "RUS",
+      "category": "trade",
+      "value_usd": 10667819761.49354,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "BRA",
+      "category": "trade",
+      "value_usd": 9986239767.682543,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "AUS",
+      "category": "trade",
+      "value_usd": 16575735856.812946,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "MEX",
+      "category": "trade",
+      "value_usd": 7708777666.225406,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "IDN",
+      "category": "trade",
+      "value_usd": 5799291229.816694,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "TUR",
+      "category": "trade",
+      "value_usd": 10993302347.476236,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "SAU",
+      "category": "trade",
+      "value_usd": 9020845796.355867,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "JPN",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 30367023958.225456,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "JPN",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 31275237517.311672,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "JPN",
+      "target_id": "DEU",
+      "category": "trade",
+      "value_usd": 9279973492.91072,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "JPN",
+      "target_id": "IND",
+      "category": "trade",
+      "value_usd": 9692756803.967113,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "DEU",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 44596885567.141846,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "DEU",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 20612087937.405712,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "DEU",
+      "target_id": "JPN",
+      "category": "trade",
+      "value_usd": 5735169457.282609,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "DEU",
+      "target_id": "BRA",
+      "category": "trade",
+      "value_usd": 5208841754.612897,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "GBR",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 38192049425.32831,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "GBR",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 21161464092.929226,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "IND",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 57751596594.42981,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "IND",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 20186588691.028126,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "IND",
+      "target_id": "JPN",
+      "category": "trade",
+      "value_usd": 6125736162.574492,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "IND",
+      "target_id": "ITA",
+      "category": "trade",
+      "value_usd": 5684201341.812911,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "FRA",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 19209841205.153122,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "FRA",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 12167176853.376228,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "FRA",
+      "target_id": "JPN",
+      "category": "trade",
+      "value_usd": 9103715163.655361,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "FRA",
+      "target_id": "IND",
+      "category": "trade",
+      "value_usd": 5629107982.482204,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "ITA",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 19889785003.654644,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "ITA",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 7214530062.665177,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CAN",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 11993578106.107763,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CAN",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 18475669533.003574,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "KOR",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 25766200505.106613,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "KOR",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 10431948401.036741,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "RUS",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 13397360458.613533,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "RUS",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 10297117389.413399,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "BRA",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 12607156456.430311,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "BRA",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 15537410188.257816,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "AUS",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 16141683995.66187,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "AUS",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 10813599948.736032,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "MEX",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 12095645061.000437,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "IDN",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 18283083024.411755,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "IDN",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 7170553016.303699,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "TUR",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 5674514851.897359,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "TUR",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 5589692248.509678,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "SAU",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 10757273986.886261,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "SAU",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 5855937431.872647,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "ARG",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 6020524729.97236,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "AAPL",
+      "category": "trade",
+      "value_usd": 77000000000.0,
+      "year": 2021,
+      "confidence": 0.88,
+      "source_dataset": "Corporate SEC Filings"
+    },
+    {
+      "source_id": "AAPL",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 157500000000.0,
+      "year": 2021,
+      "confidence": 0.9,
+      "source_dataset": "Corporate SEC Filings"
+    },
+    {
+      "source_id": "TOYOTA",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 40000000000.0,
+      "year": 2021,
+      "confidence": 0.9,
+      "source_dataset": "IR Reports"
+    },
+    {
+      "source_id": "JPN",
+      "target_id": "TOYOTA",
+      "category": "trade",
+      "value_usd": 25000000000.0,
+      "year": 2021,
+      "confidence": 0.9,
+      "source_dataset": "IR Reports"
+    },
+    {
+      "source_id": "RET_JPN",
+      "target_id": "USA",
+      "category": "banking",
+      "value_usd": 15000000000.0,
+      "year": 2021,
+      "confidence": 0.7,
+      "source_dataset": "Retail Brokerage Est."
+    },
+    {
+      "source_id": "CRYPTO_WHALE",
+      "target_id": "CHN",
+      "category": "crypto",
+      "value_usd": 12000000000.0,
+      "year": 2021,
+      "confidence": 0.4,
+      "source_dataset": "Chainalysis"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "CRYPTO_WHALE",
+      "category": "crypto",
+      "value_usd": 20000000000.0,
+      "year": 2021,
+      "confidence": 0.5,
+      "source_dataset": "Chainalysis"
+    },
+    {
+      "source_id": "SAU",
+      "target_id": "HNWI_US",
+      "category": "banking",
+      "value_usd": 30000000000.0,
+      "year": 2021,
+      "confidence": 0.6,
+      "source_dataset": "Wealth Reports"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "ARG",
+      "category": "remittance",
+      "value_usd": 422583958.267448,
+      "year": 2022,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "AUS",
+      "category": "remittance",
+      "value_usd": 483737490.88470006,
+      "year": 2022,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "BRA",
+      "category": "remittance",
+      "value_usd": 1989503493.828,
+      "year": 2022,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "CAN",
+      "category": "remittance",
+      "value_usd": 345534790.5757476,
+      "year": 2022,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "CHN",
+      "category": "remittance",
+      "value_usd": 10437453280.812,
+      "year": 2022,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "SAU",
+      "target_id": "CHN",
+      "category": "remittance",
+      "value_usd": 7828089960.608999,
+      "year": 2022,
+      "confidence": 0.82,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "DEU",
+      "category": "remittance",
+      "value_usd": 7838740875.40044,
+      "year": 2022,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "FRA",
+      "category": "remittance",
+      "value_usd": 13085439051.20136,
+      "year": 2022,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "GBR",
+      "category": "remittance",
+      "value_usd": 1586033032.3726282,
+      "year": 2022,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "IDN",
+      "category": "remittance",
+      "value_usd": 5235718598.1443205,
+      "year": 2022,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "SAU",
+      "target_id": "IDN",
+      "category": "remittance",
+      "value_usd": 3926788948.6082397,
+      "year": 2022,
+      "confidence": 0.82,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "IND",
+      "category": "remittance",
+      "value_usd": 44488709888.83481,
+      "year": 2022,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "SAU",
+      "target_id": "IND",
+      "category": "remittance",
+      "value_usd": 33366532416.6261,
+      "year": 2022,
+      "confidence": 0.82,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "ITA",
+      "category": "remittance",
+      "value_usd": 3928896665.898276,
+      "year": 2022,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "JPN",
+      "category": "remittance",
+      "value_usd": 2163199002.919176,
+      "year": 2022,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "KOR",
+      "category": "remittance",
+      "value_usd": 3125800000.0,
+      "year": 2022,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "MEX",
+      "category": "remittance",
+      "value_usd": 24583087190.0,
+      "year": 2022,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "RUS",
+      "category": "remittance",
+      "value_usd": 1298068402.54252,
+      "year": 2022,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "SAU",
+      "category": "remittance",
+      "value_usd": 114816178.8643552,
+      "year": 2022,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "TUR",
+      "category": "remittance",
+      "value_usd": 278400000.0,
+      "year": 2022,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "ZAF",
+      "category": "remittance",
+      "value_usd": 349142230.49247646,
+      "year": 2022,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 151228687168.4162,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "JPN",
+      "category": "trade",
+      "value_usd": 27159499125.97522,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "DEU",
+      "category": "trade",
+      "value_usd": 39076749064.30368,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "GBR",
+      "category": "trade",
+      "value_usd": 18516066638.008884,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "IND",
+      "category": "trade",
+      "value_usd": 29968379686.273815,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "FRA",
+      "category": "trade",
+      "value_usd": 17445631448.72115,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "ITA",
+      "category": "trade",
+      "value_usd": 24005870330.468136,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "CAN",
+      "category": "trade",
+      "value_usd": 15102829513.148514,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "KOR",
+      "category": "trade",
+      "value_usd": 14604939705.766394,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "RUS",
+      "category": "trade",
+      "value_usd": 12160456800.796291,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "BRA",
+      "category": "trade",
+      "value_usd": 23524334761.365242,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "AUS",
+      "category": "trade",
+      "value_usd": 15864206473.458576,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "MEX",
+      "category": "trade",
+      "value_usd": 9657607617.417873,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "IDN",
+      "category": "trade",
+      "value_usd": 6708812679.322857,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "TUR",
+      "category": "trade",
+      "value_usd": 8632208014.909544,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "SAU",
+      "category": "trade",
+      "value_usd": 11809331603.537884,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 154006035446.6823,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "JPN",
+      "category": "trade",
+      "value_usd": 49784066553.602776,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "DEU",
+      "category": "trade",
+      "value_usd": 15328121556.102123,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "GBR",
+      "category": "trade",
+      "value_usd": 27345173581.330414,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "IND",
+      "category": "trade",
+      "value_usd": 29641009523.592403,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "FRA",
+      "category": "trade",
+      "value_usd": 31376610594.33402,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "ITA",
+      "category": "trade",
+      "value_usd": 15613231344.643913,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "CAN",
+      "category": "trade",
+      "value_usd": 18558008103.922543,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "KOR",
+      "category": "trade",
+      "value_usd": 13486996510.525745,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "RUS",
+      "category": "trade",
+      "value_usd": 9689824933.946821,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "BRA",
+      "category": "trade",
+      "value_usd": 13607369162.036999,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "AUS",
+      "category": "trade",
+      "value_usd": 8941015247.681953,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "MEX",
+      "category": "trade",
+      "value_usd": 14393273993.49192,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "IDN",
+      "category": "trade",
+      "value_usd": 7733178172.139593,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "SAU",
+      "category": "trade",
+      "value_usd": 6512939772.716605,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "ARG",
+      "category": "trade",
+      "value_usd": 5170397079.445657,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "JPN",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 48195229446.09144,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "JPN",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 16387578156.06841,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "JPN",
+      "target_id": "DEU",
+      "category": "trade",
+      "value_usd": 8144751153.446369,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "JPN",
+      "target_id": "GBR",
+      "category": "trade",
+      "value_usd": 7378035907.382705,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "JPN",
+      "target_id": "CAN",
+      "category": "trade",
+      "value_usd": 6357176651.413533,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "JPN",
+      "target_id": "RUS",
+      "category": "trade",
+      "value_usd": 5928130187.72739,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "DEU",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 21254694089.837196,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "DEU",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 37409558598.02339,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "DEU",
+      "target_id": "JPN",
+      "category": "trade",
+      "value_usd": 8703468741.612307,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "DEU",
+      "target_id": "IND",
+      "category": "trade",
+      "value_usd": 5455268117.447642,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "GBR",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 16481019376.037737,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "GBR",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 17296752362.114124,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "IND",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 21252250247.657513,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "IND",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 24893331519.01313,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "IND",
+      "target_id": "JPN",
+      "category": "trade",
+      "value_usd": 9319641239.600552,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "IND",
+      "target_id": "DEU",
+      "category": "trade",
+      "value_usd": 5302614553.200539,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "FRA",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 31680071888.455154,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "FRA",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 24921906856.4849,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "ITA",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 27043068995.882885,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "ITA",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 9923036242.872578,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CAN",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 21003623687.414948,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CAN",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 11848581413.19966,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "KOR",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 15410259253.943579,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "KOR",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 9078060374.962143,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "RUS",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 38828376039.82547,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "RUS",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 8162394239.528343,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "BRA",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 11336846645.435411,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "BRA",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 10208127511.6613,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "AUS",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 14236924528.580717,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "AUS",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 10579809702.730854,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "MEX",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 10276434399.864822,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "MEX",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 16545746424.083689,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "IDN",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 10547119364.592314,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "IDN",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 7574174333.473516,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "TUR",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 8411761170.706721,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "TUR",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 11524355875.953663,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "SAU",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 7773938526.608676,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "SAU",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 10252135614.04336,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "ARG",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 5463284956.545655,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "ARG",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 5601624594.44686,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "ZAF",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 5277823040.557433,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "AAPL",
+      "category": "trade",
+      "value_usd": 84000000000.0,
+      "year": 2022,
+      "confidence": 0.88,
+      "source_dataset": "Corporate SEC Filings"
+    },
+    {
+      "source_id": "AAPL",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 165000000000.0,
+      "year": 2022,
+      "confidence": 0.9,
+      "source_dataset": "Corporate SEC Filings"
+    },
+    {
+      "source_id": "TOYOTA",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 40000000000.0,
+      "year": 2022,
+      "confidence": 0.9,
+      "source_dataset": "IR Reports"
+    },
+    {
+      "source_id": "JPN",
+      "target_id": "TOYOTA",
+      "category": "trade",
+      "value_usd": 25000000000.0,
+      "year": 2022,
+      "confidence": 0.9,
+      "source_dataset": "IR Reports"
+    },
+    {
+      "source_id": "RET_JPN",
+      "target_id": "USA",
+      "category": "banking",
+      "value_usd": 15000000000.0,
+      "year": 2022,
+      "confidence": 0.7,
+      "source_dataset": "Retail Brokerage Est."
+    },
+    {
+      "source_id": "CRYPTO_WHALE",
+      "target_id": "CHN",
+      "category": "crypto",
+      "value_usd": 12000000000.0,
+      "year": 2022,
+      "confidence": 0.4,
+      "source_dataset": "Chainalysis"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "CRYPTO_WHALE",
+      "category": "crypto",
+      "value_usd": 20000000000.0,
+      "year": 2022,
+      "confidence": 0.5,
+      "source_dataset": "Chainalysis"
+    },
+    {
+      "source_id": "SAU",
+      "target_id": "HNWI_US",
+      "category": "banking",
+      "value_usd": 30000000000.0,
+      "year": 2022,
+      "confidence": 0.6,
+      "source_dataset": "Wealth Reports"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "ARG",
+      "category": "remittance",
+      "value_usd": 403594577.02652,
+      "year": 2023,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "AUS",
+      "category": "remittance",
+      "value_usd": 644216609.410552,
+      "year": 2023,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "BRA",
+      "category": "remittance",
+      "value_usd": 1773480381.36,
+      "year": 2023,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "CAN",
+      "category": "remittance",
+      "value_usd": 338877287.43826723,
+      "year": 2023,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "CHN",
+      "category": "remittance",
+      "value_usd": 11793719965.956001,
+      "year": 2023,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "SAU",
+      "target_id": "CHN",
+      "category": "remittance",
+      "value_usd": 8845289974.467,
+      "year": 2023,
+      "confidence": 0.82,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "DEU",
+      "category": "remittance",
+      "value_usd": 8408488396.0924,
+      "year": 2023,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "FRA",
+      "category": "remittance",
+      "value_usd": 14680257849.890282,
+      "year": 2023,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "GBR",
+      "category": "remittance",
+      "value_usd": 1794580579.3171082,
+      "year": 2023,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "IDN",
+      "category": "remittance",
+      "value_usd": 5786734083.901561,
+      "year": 2023,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "SAU",
+      "target_id": "IDN",
+      "category": "remittance",
+      "value_usd": 4340050562.92617,
+      "year": 2023,
+      "confidence": 0.82,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "IND",
+      "category": "remittance",
+      "value_usd": 47810422003.2404,
+      "year": 2023,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "SAU",
+      "target_id": "IND",
+      "category": "remittance",
+      "value_usd": 35857816502.4303,
+      "year": 2023,
+      "confidence": 0.82,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "ITA",
+      "category": "remittance",
+      "value_usd": 4841160613.7580805,
+      "year": 2023,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "JPN",
+      "category": "remittance",
+      "value_usd": 1884914617.4083118,
+      "year": 2023,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "KOR",
+      "category": "remittance",
+      "value_usd": 2814000000.0,
+      "year": 2023,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "MEX",
+      "category": "remittance",
+      "value_usd": 26495139040.0,
+      "year": 2023,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "RUS",
+      "category": "remittance",
+      "value_usd": 1046580000.0,
+      "year": 2023,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "SAU",
+      "category": "remittance",
+      "value_usd": 124938475.728356,
+      "year": 2023,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "TUR",
+      "category": "remittance",
+      "value_usd": 411600000.0,
+      "year": 2023,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "ZAF",
+      "category": "remittance",
+      "value_usd": 321354242.0730332,
+      "year": 2023,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 132037091651.82141,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "JPN",
+      "category": "trade",
+      "value_usd": 22792069640.223103,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "DEU",
+      "category": "trade",
+      "value_usd": 59335046719.387955,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "GBR",
+      "category": "trade",
+      "value_usd": 23843804722.86875,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "IND",
+      "category": "trade",
+      "value_usd": 25466458674.90209,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "FRA",
+      "category": "trade",
+      "value_usd": 24736243804.276745,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "ITA",
+      "category": "trade",
+      "value_usd": 41256641979.31745,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "CAN",
+      "category": "trade",
+      "value_usd": 28960013545.832973,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "KOR",
+      "category": "trade",
+      "value_usd": 9463705648.902676,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "RUS",
+      "category": "trade",
+      "value_usd": 17881233259.09355,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "BRA",
+      "category": "trade",
+      "value_usd": 16271519553.504963,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "AUS",
+      "category": "trade",
+      "value_usd": 8774830834.390013,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "MEX",
+      "category": "trade",
+      "value_usd": 10233164835.631693,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "IDN",
+      "category": "trade",
+      "value_usd": 9002932610.781073,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "TUR",
+      "category": "trade",
+      "value_usd": 6749360242.200012,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "SAU",
+      "category": "trade",
+      "value_usd": 7298214339.579456,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "ARG",
+      "category": "trade",
+      "value_usd": 7952811186.563729,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 248247140448.5252,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "JPN",
+      "category": "trade",
+      "value_usd": 46293478924.47481,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "DEU",
+      "category": "trade",
+      "value_usd": 25363645922.4304,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "GBR",
+      "category": "trade",
+      "value_usd": 12896118088.624304,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "IND",
+      "category": "trade",
+      "value_usd": 12854290609.573997,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "FRA",
+      "category": "trade",
+      "value_usd": 34992354498.56422,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "ITA",
+      "category": "trade",
+      "value_usd": 22018467188.015816,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "CAN",
+      "category": "trade",
+      "value_usd": 23011000476.55552,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "KOR",
+      "category": "trade",
+      "value_usd": 8964485758.885761,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "RUS",
+      "category": "trade",
+      "value_usd": 8336959996.707004,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "BRA",
+      "category": "trade",
+      "value_usd": 26687262659.217674,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "AUS",
+      "category": "trade",
+      "value_usd": 14276174501.486101,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "MEX",
+      "category": "trade",
+      "value_usd": 6359048270.793079,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "IDN",
+      "category": "trade",
+      "value_usd": 9282733492.328545,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "SAU",
+      "category": "trade",
+      "value_usd": 13047945895.269533,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "JPN",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 68254708180.484726,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "JPN",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 47525286683.41145,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "DEU",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 24539424409.690327,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "DEU",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 17710431468.640995,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "DEU",
+      "target_id": "GBR",
+      "category": "trade",
+      "value_usd": 6078726975.864645,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "DEU",
+      "target_id": "BRA",
+      "category": "trade",
+      "value_usd": 5366900266.484916,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "GBR",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 20396871307.922,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "GBR",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 28378709870.560146,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "GBR",
+      "target_id": "DEU",
+      "category": "trade",
+      "value_usd": 9602485075.631073,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "GBR",
+      "target_id": "IND",
+      "category": "trade",
+      "value_usd": 5930836942.124114,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "IND",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 28561328310.24438,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "IND",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 15647936569.673206,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "IND",
+      "target_id": "RUS",
+      "category": "trade",
+      "value_usd": 5380222365.500034,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "FRA",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 27725416319.147243,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "FRA",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 9568803434.58173,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "FRA",
+      "target_id": "JPN",
+      "category": "trade",
+      "value_usd": 6405951562.573253,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "FRA",
+      "target_id": "DEU",
+      "category": "trade",
+      "value_usd": 6975825440.841036,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "FRA",
+      "target_id": "IND",
+      "category": "trade",
+      "value_usd": 5400416635.864475,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "ITA",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 14611335653.518475,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "ITA",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 12125500117.73241,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CAN",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 16175639610.22557,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CAN",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 8891244950.702866,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CAN",
+      "target_id": "DEU",
+      "category": "trade",
+      "value_usd": 5321362463.572698,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "KOR",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 22863389476.04831,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "KOR",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 11790605761.847834,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "RUS",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 25232612828.00909,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "RUS",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 11027741539.906528,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "BRA",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 10363555737.431442,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "BRA",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 14729206172.948866,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "AUS",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 15123177089.957584,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "AUS",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 8230185983.190902,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "MEX",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 14655859439.08516,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "MEX",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 6783028308.307728,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "IDN",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 16082371824.15794,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "IDN",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 7985204930.731611,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "TUR",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 8574928346.510056,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "SAU",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 9643879285.281284,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "SAU",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 12246515433.43451,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "ARG",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 6885269772.909687,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "AAPL",
+      "category": "trade",
+      "value_usd": 91000000000.0,
+      "year": 2023,
+      "confidence": 0.88,
+      "source_dataset": "Corporate SEC Filings"
+    },
+    {
+      "source_id": "AAPL",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 172500000000.0,
+      "year": 2023,
+      "confidence": 0.9,
+      "source_dataset": "Corporate SEC Filings"
+    },
+    {
+      "source_id": "TOYOTA",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 40000000000.0,
+      "year": 2023,
+      "confidence": 0.9,
+      "source_dataset": "IR Reports"
+    },
+    {
+      "source_id": "JPN",
+      "target_id": "TOYOTA",
+      "category": "trade",
+      "value_usd": 25000000000.0,
+      "year": 2023,
+      "confidence": 0.9,
+      "source_dataset": "IR Reports"
+    },
+    {
+      "source_id": "RET_JPN",
+      "target_id": "USA",
+      "category": "banking",
+      "value_usd": 15000000000.0,
+      "year": 2023,
+      "confidence": 0.7,
+      "source_dataset": "Retail Brokerage Est."
+    },
+    {
+      "source_id": "CRYPTO_WHALE",
+      "target_id": "CHN",
+      "category": "crypto",
+      "value_usd": 12000000000.0,
+      "year": 2023,
+      "confidence": 0.4,
+      "source_dataset": "Chainalysis"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "CRYPTO_WHALE",
+      "category": "crypto",
+      "value_usd": 20000000000.0,
+      "year": 2023,
+      "confidence": 0.5,
+      "source_dataset": "Chainalysis"
+    },
+    {
+      "source_id": "SAU",
+      "target_id": "HNWI_US",
+      "category": "banking",
+      "value_usd": 30000000000.0,
+      "year": 2023,
+      "confidence": 0.6,
+      "source_dataset": "Wealth Reports"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "ARG",
+      "category": "remittance",
+      "value_usd": 417746042.01526403,
+      "year": 2024,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "AUS",
+      "category": "remittance",
+      "value_usd": 706161328.930124,
+      "year": 2024,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "BRA",
+      "category": "remittance",
+      "value_usd": 1960960179.3000002,
+      "year": 2024,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "CAN",
+      "category": "remittance",
+      "value_usd": 340575159.38896203,
+      "year": 2024,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "CHN",
+      "category": "remittance",
+      "value_usd": 12564239280.048,
+      "year": 2024,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "SAU",
+      "target_id": "CHN",
+      "category": "remittance",
+      "value_usd": 9423179460.036,
+      "year": 2024,
+      "confidence": 0.82,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "DEU",
+      "category": "remittance",
+      "value_usd": 8490002513.412841,
+      "year": 2024,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "FRA",
+      "category": "remittance",
+      "value_usd": 15510144537.611403,
+      "year": 2024,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "GBR",
+      "category": "remittance",
+      "value_usd": 1933733149.6589322,
+      "year": 2024,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "IDN",
+      "category": "remittance",
+      "value_usd": 6415346788.978041,
+      "year": 2024,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "SAU",
+      "target_id": "IDN",
+      "category": "remittance",
+      "value_usd": 4811510091.73353,
+      "year": 2024,
+      "confidence": 0.82,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "IND",
+      "category": "remittance",
+      "value_usd": 55069813558.27441,
+      "year": 2024,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "SAU",
+      "target_id": "IND",
+      "category": "remittance",
+      "value_usd": 41302360168.7058,
+      "year": 2024,
+      "confidence": 0.82,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "ITA",
+      "category": "remittance",
+      "value_usd": 4460715964.430079,
+      "year": 2024,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "JPN",
+      "category": "remittance",
+      "value_usd": 1857679742.249096,
+      "year": 2024,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "KOR",
+      "category": "remittance",
+      "value_usd": 2979760000.0,
+      "year": 2024,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "MEX",
+      "category": "remittance",
+      "value_usd": 27055165518.800003,
+      "year": 2024,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "RUS",
+      "category": "remittance",
+      "value_usd": 763132000.0,
+      "year": 2024,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "SAU",
+      "category": "remittance",
+      "value_usd": 135386657.15512,
+      "year": 2024,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "TUR",
+      "category": "remittance",
+      "value_usd": 392800000.0,
+      "year": 2024,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "ZAF",
+      "category": "remittance",
+      "value_usd": 342149868.44853926,
+      "year": 2024,
+      "confidence": 0.85,
+      "source_dataset": "World Bank (Estimated Bilateral)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 134512013632.88948,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "JPN",
+      "category": "trade",
+      "value_usd": 62131537053.109825,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "DEU",
+      "category": "trade",
+      "value_usd": 25165177778.037716,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "GBR",
+      "category": "trade",
+      "value_usd": 15209443474.530956,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "IND",
+      "category": "trade",
+      "value_usd": 46051567723.754944,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "FRA",
+      "category": "trade",
+      "value_usd": 42023255030.88004,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "ITA",
+      "category": "trade",
+      "value_usd": 18455454302.421883,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "CAN",
+      "category": "trade",
+      "value_usd": 15657141940.53602,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "KOR",
+      "category": "trade",
+      "value_usd": 11229617227.205667,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "RUS",
+      "category": "trade",
+      "value_usd": 24409847010.160442,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "BRA",
+      "category": "trade",
+      "value_usd": 20726180090.341427,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "AUS",
+      "category": "trade",
+      "value_usd": 17743458011.779057,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "MEX",
+      "category": "trade",
+      "value_usd": 11679121745.614443,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "IDN",
+      "category": "trade",
+      "value_usd": 14224206168.826479,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "SAU",
+      "category": "trade",
+      "value_usd": 8382397091.090604,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "ZAF",
+      "category": "trade",
+      "value_usd": 5623909504.3073435,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 169871361936.50626,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "JPN",
+      "category": "trade",
+      "value_usd": 25865515892.321247,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "DEU",
+      "category": "trade",
+      "value_usd": 22301162607.741425,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "GBR",
+      "category": "trade",
+      "value_usd": 20859490756.574482,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "IND",
+      "category": "trade",
+      "value_usd": 14874090510.122622,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "FRA",
+      "category": "trade",
+      "value_usd": 12552139762.856554,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "ITA",
+      "category": "trade",
+      "value_usd": 19642795506.880756,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "CAN",
+      "category": "trade",
+      "value_usd": 8575130739.093144,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "KOR",
+      "category": "trade",
+      "value_usd": 13204060166.679626,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "RUS",
+      "category": "trade",
+      "value_usd": 10054259819.887508,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "BRA",
+      "category": "trade",
+      "value_usd": 6654431169.911738,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "AUS",
+      "category": "trade",
+      "value_usd": 8992407942.528137,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "MEX",
+      "category": "trade",
+      "value_usd": 6237240398.228773,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "SAU",
+      "category": "trade",
+      "value_usd": 6613865295.068734,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "JPN",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 34394210634.349014,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "JPN",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 28898786222.71227,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "JPN",
+      "target_id": "DEU",
+      "category": "trade",
+      "value_usd": 7971367339.715057,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "JPN",
+      "target_id": "IND",
+      "category": "trade",
+      "value_usd": 5048888214.323237,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "JPN",
+      "target_id": "FRA",
+      "category": "trade",
+      "value_usd": 6775205615.28934,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "JPN",
+      "target_id": "RUS",
+      "category": "trade",
+      "value_usd": 5693113494.391791,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "JPN",
+      "target_id": "BRA",
+      "category": "trade",
+      "value_usd": 5360628714.979047,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "DEU",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 39689049898.78453,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "DEU",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 46567497476.46803,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "DEU",
+      "target_id": "FRA",
+      "category": "trade",
+      "value_usd": 6711911233.1013975,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "GBR",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 43860983207.29255,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "GBR",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 17815038640.58641,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "GBR",
+      "target_id": "DEU",
+      "category": "trade",
+      "value_usd": 5082031562.641913,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "IND",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 82890444591.51164,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "IND",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 29000348051.14654,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "IND",
+      "target_id": "JPN",
+      "category": "trade",
+      "value_usd": 6475935750.4801,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "IND",
+      "target_id": "DEU",
+      "category": "trade",
+      "value_usd": 10783059962.559904,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "IND",
+      "target_id": "FRA",
+      "category": "trade",
+      "value_usd": 7577758230.383162,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "FRA",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 33418032032.16629,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "FRA",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 15060501796.225296,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "FRA",
+      "target_id": "JPN",
+      "category": "trade",
+      "value_usd": 6935242294.922791,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "ITA",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 15095829572.033697,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "ITA",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 15877898961.932688,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CAN",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 18061566726.271484,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CAN",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 32245131579.07367,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "KOR",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 27695599515.34514,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "KOR",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 9429420064.34599,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "RUS",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 15300588846.69005,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "RUS",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 29851690453.635715,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "BRA",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 20792204707.86969,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "BRA",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 9313449623.967098,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "BRA",
+      "target_id": "DEU",
+      "category": "trade",
+      "value_usd": 5992059009.082694,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "AUS",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 14411801683.354282,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "AUS",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 15197148157.313025,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "MEX",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 18605784600.69393,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "MEX",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 10848820093.737234,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "IDN",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 17514051430.3921,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "IDN",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 17964423372.866096,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "TUR",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 17096702270.362877,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "SAU",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 16393308084.690407,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "SAU",
+      "target_id": "CHN",
+      "category": "trade",
+      "value_usd": 8457328031.705017,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "ARG",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 7154084495.621967,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "IMF DOTS (Approximation Model)"
+    },
+    {
+      "source_id": "CHN",
+      "target_id": "AAPL",
+      "category": "trade",
+      "value_usd": 98000000000.0,
+      "year": 2024,
+      "confidence": 0.88,
+      "source_dataset": "Corporate SEC Filings"
+    },
+    {
+      "source_id": "AAPL",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 180000000000.0,
+      "year": 2024,
+      "confidence": 0.9,
+      "source_dataset": "Corporate SEC Filings"
+    },
+    {
+      "source_id": "TOYOTA",
+      "target_id": "USA",
+      "category": "trade",
+      "value_usd": 40000000000.0,
+      "year": 2024,
+      "confidence": 0.9,
+      "source_dataset": "IR Reports"
+    },
+    {
+      "source_id": "JPN",
+      "target_id": "TOYOTA",
+      "category": "trade",
+      "value_usd": 25000000000.0,
+      "year": 2024,
+      "confidence": 0.9,
+      "source_dataset": "IR Reports"
+    },
+    {
+      "source_id": "RET_JPN",
+      "target_id": "USA",
+      "category": "banking",
+      "value_usd": 15000000000.0,
+      "year": 2024,
+      "confidence": 0.7,
+      "source_dataset": "Retail Brokerage Est."
+    },
+    {
+      "source_id": "CRYPTO_WHALE",
+      "target_id": "CHN",
+      "category": "crypto",
+      "value_usd": 12000000000.0,
+      "year": 2024,
+      "confidence": 0.4,
+      "source_dataset": "Chainalysis"
+    },
+    {
+      "source_id": "USA",
+      "target_id": "CRYPTO_WHALE",
+      "category": "crypto",
+      "value_usd": 20000000000.0,
+      "year": 2024,
+      "confidence": 0.5,
+      "source_dataset": "Chainalysis"
+    },
+    {
+      "source_id": "SAU",
+      "target_id": "HNWI_US",
+      "category": "banking",
+      "value_usd": 30000000000.0,
+      "year": 2024,
+      "confidence": 0.6,
+      "source_dataset": "Wealth Reports"
+    }
+  ],
+  "metadata": {
+    "source": [
+      "World Bank API",
+      "IMF Proxies",
+      "Corporate Filings"
+    ],
+    "generated_at": "2026-03-10T00:00:00Z"
+  }
+}

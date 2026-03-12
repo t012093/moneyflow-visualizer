@@ -1,0 +1,1982 @@
+{
+  "nodes": [
+    {
+      "id": "GOV_JP",
+      "name": "日本国政府 (一般会計)",
+      "lat": 35.6762,
+      "lng": 139.7503,
+      "region": "Treasury",
+      "type": "macro_entity"
+    },
+    {
+      "id": "MIN_CABINET",
+      "name": "内閣府 (Cabinet Office)",
+      "lat": 35.672,
+      "lng": 139.745,
+      "region": "Ministry",
+      "type": "ministry"
+    },
+    {
+      "id": "MIN_MIC",
+      "name": "総務省 (MIC)",
+      "lat": 35.673,
+      "lng": 139.746,
+      "region": "Ministry",
+      "type": "ministry"
+    },
+    {
+      "id": "MIN_MOJ",
+      "name": "法務省 (MOJ)",
+      "lat": 35.674,
+      "lng": 139.747,
+      "region": "Ministry",
+      "type": "ministry"
+    },
+    {
+      "id": "MIN_MOFA",
+      "name": "外務省 (MOFA)",
+      "lat": 35.675,
+      "lng": 139.748,
+      "region": "Ministry",
+      "type": "ministry"
+    },
+    {
+      "id": "MIN_MOF",
+      "name": "財務省 (MOF)",
+      "lat": 35.67,
+      "lng": 139.75,
+      "region": "Ministry",
+      "type": "ministry"
+    },
+    {
+      "id": "MIN_MEXT",
+      "name": "文部科学省 (MEXT)",
+      "lat": 35.671,
+      "lng": 139.751,
+      "region": "Ministry",
+      "type": "ministry"
+    },
+    {
+      "id": "MIN_MHLW",
+      "name": "厚生労働省 (MHLW)",
+      "lat": 35.672,
+      "lng": 139.752,
+      "region": "Ministry",
+      "type": "ministry"
+    },
+    {
+      "id": "MIN_MAFF",
+      "name": "農林水産省 (MAFF)",
+      "lat": 35.673,
+      "lng": 139.753,
+      "region": "Ministry",
+      "type": "ministry"
+    },
+    {
+      "id": "MIN_METI",
+      "name": "経済産業省 (METI)",
+      "lat": 35.674,
+      "lng": 139.754,
+      "region": "Ministry",
+      "type": "ministry"
+    },
+    {
+      "id": "MIN_MLIT",
+      "name": "国土交通省 (MLIT)",
+      "lat": 35.675,
+      "lng": 139.755,
+      "region": "Ministry",
+      "type": "ministry"
+    },
+    {
+      "id": "MIN_MOE",
+      "name": "環境省 (MOE)",
+      "lat": 35.676,
+      "lng": 139.756,
+      "region": "Ministry",
+      "type": "ministry"
+    },
+    {
+      "id": "MIN_MOD",
+      "name": "防衛省 (MOD)",
+      "lat": 35.677,
+      "lng": 139.757,
+      "region": "Ministry",
+      "type": "ministry"
+    },
+    {
+      "id": "MIN_CFA",
+      "name": "こども家庭庁 (CFA)",
+      "lat": 35.678,
+      "lng": 139.758,
+      "region": "Ministry",
+      "type": "ministry"
+    },
+    {
+      "id": "MIN_RECONSTRUCTION",
+      "name": "復興庁 (Reconstruction)",
+      "lat": 35.679,
+      "lng": 139.759,
+      "region": "Ministry",
+      "type": "ministry"
+    },
+    {
+      "id": "EXP_SOCIAL",
+      "name": "社会保障関係費 (Social Security)",
+      "lat": 35.68,
+      "lng": 139.76,
+      "region": "Expenditure",
+      "type": "mof_expenditure"
+    },
+    {
+      "id": "EXP_DEBT",
+      "name": "国債費 (National Debt Service)",
+      "lat": 35.681,
+      "lng": 139.761,
+      "region": "Expenditure",
+      "type": "mof_expenditure"
+    },
+    {
+      "id": "EXP_LOCAL",
+      "name": "地方交付税交付金等 (Local Grants)",
+      "lat": 35.682,
+      "lng": 139.762,
+      "region": "Expenditure",
+      "type": "mof_expenditure"
+    },
+    {
+      "id": "EXP_PUBLIC",
+      "name": "公共事業関係費 (Public Works)",
+      "lat": 35.683,
+      "lng": 139.763,
+      "region": "Expenditure",
+      "type": "mof_expenditure"
+    },
+    {
+      "id": "EXP_EDU",
+      "name": "文教及び科学振興費 (Education & Science)",
+      "lat": 35.684,
+      "lng": 139.764,
+      "region": "Expenditure",
+      "type": "mof_expenditure"
+    },
+    {
+      "id": "EXP_OTHER",
+      "name": "その他経費 (Other Exp)",
+      "lat": 35.686,
+      "lng": 139.766,
+      "region": "Expenditure",
+      "type": "mof_expenditure"
+    },
+    {
+      "id": "SS_MEDICAL",
+      "name": "医療給付費",
+      "lat": 35.71,
+      "lng": 139.71,
+      "region": "Social Security",
+      "type": "mhlw_benefit"
+    },
+    {
+      "id": "SS_WELFARE",
+      "name": "介護給付費",
+      "lat": 35.72,
+      "lng": 139.72,
+      "region": "Social Security",
+      "type": "mhlw_benefit"
+    },
+    {
+      "id": "SS_CHILDCARE",
+      "name": "少子化対策費 (Childcare)",
+      "lat": 35.73,
+      "lng": 139.73,
+      "region": "Social Security",
+      "type": "mhlw_benefit"
+    },
+    {
+      "id": "SS_PENSION",
+      "name": "年金給付費",
+      "lat": 35.7,
+      "lng": 139.7,
+      "region": "Social Security",
+      "type": "mhlw_benefit"
+    },
+    {
+      "id": "REC_CHILDREN",
+      "name": "子育て世帯（児童手当）",
+      "lat": 35.6,
+      "lng": 139.6,
+      "region": "Social Security",
+      "type": "recipient"
+    },
+    {
+      "id": "REC_AFTER_SCHOOL_OP",
+      "name": "放課後児童クラブ (運営費・処遇改善)",
+      "lat": 35.65,
+      "lng": 139.65,
+      "region": "Social Security",
+      "type": "recipient"
+    },
+    {
+      "id": "REC_AFTER_SCHOOL_FAC",
+      "name": "放課後児童クラブ (施設整備)",
+      "lat": 35.66,
+      "lng": 139.66,
+      "region": "Social Security",
+      "type": "recipient"
+    },
+    {
+      "id": "REC_AFTER_SCHOOL_DX",
+      "name": "放課後児童クラブ (DX・体制強化)",
+      "lat": 35.67,
+      "lng": 139.67,
+      "region": "Social Security",
+      "type": "recipient"
+    },
+    {
+      "id": "REC_AFTER_SCHOOL_SUP",
+      "name": "放課後児童クラブ (巡回等サポート)",
+      "lat": 35.68,
+      "lng": 139.68,
+      "region": "Social Security",
+      "type": "recipient"
+    },
+    {
+      "id": "REC_HIGHER_ED_FREE",
+      "name": "高等教育の無償化・奨学金",
+      "lat": 35.61,
+      "lng": 139.61,
+      "region": "Social Security",
+      "type": "recipient"
+    },
+    {
+      "id": "REC_CHILDCARE_ALL",
+      "name": "こども誰でも通園制度",
+      "lat": 35.62,
+      "lng": 139.62,
+      "region": "Social Security",
+      "type": "recipient"
+    },
+    {
+      "id": "REC_CORP_CHILDCARE",
+      "name": "企業主導型保育事業",
+      "lat": 35.63,
+      "lng": 139.63,
+      "region": "Social Security",
+      "type": "recipient"
+    },
+    {
+      "id": "REC_CHILD_WELFARE_SW",
+      "name": "ソーシャルワーカー・一時保護整備",
+      "lat": 35.64,
+      "lng": 139.64,
+      "region": "Social Security",
+      "type": "recipient"
+    },
+    {
+      "id": "REC_MATERNITY_GRANT",
+      "name": "妊婦支援給付金",
+      "lat": 35.65,
+      "lng": 139.65,
+      "region": "Social Security",
+      "type": "recipient"
+    },
+    {
+      "id": "REC_PRESCHOOL_FAC",
+      "name": "就学前教育・保育施設整備",
+      "lat": 35.66,
+      "lng": 139.66,
+      "region": "Social Security",
+      "type": "recipient"
+    },
+    {
+      "id": "REC_ABUSE_PREVENTION",
+      "name": "児童虐待防止対策等",
+      "lat": 35.67,
+      "lng": 139.67,
+      "region": "Social Security",
+      "type": "recipient"
+    },
+    {
+      "id": "REC_CHILDCARE_ICT",
+      "name": "保育所ICT化・環境改善支援 (保育ICTラボ等)",
+      "lat": 35.68,
+      "lng": 139.68,
+      "region": "Social Security",
+      "type": "recipient"
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_MHLW",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 210655800000.0,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_MHLW",
+      "target_id": "EXP_SOCIAL",
+      "category": "welfare",
+      "sub_category": "予算執行",
+      "value_usd": 200123010000.0,
+      "year": 2021,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "MIN_MHLW",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 10532790000.0,
+      "year": 2021,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_MOF",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 183653333333.33334,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_MOF",
+      "target_id": "EXP_DEBT",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 156105333333.33334,
+      "year": 2021,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "MIN_MOF",
+      "target_id": "EXP_LOCAL",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 18365333333.333336,
+      "year": 2021,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "MIN_MOF",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 9182666666.666668,
+      "year": 2021,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_MIC",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 115106666666.66667,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_MIC",
+      "target_id": "EXP_LOCAL",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 103596000000.0,
+      "year": 2021,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "MIN_MIC",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 11510666666.666668,
+      "year": 2021,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_MOD",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 29148533333.33334,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_MOD",
+      "target_id": "EXP_DEFENSE",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 28565562666.66667,
+      "year": 2021,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "MIN_MOD",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 582970666.6666669,
+      "year": 2021,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_MLIT",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 38476666666.66667,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_MLIT",
+      "target_id": "EXP_PUBLIC",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 32705166666.66667,
+      "year": 2021,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "MIN_MLIT",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 5771500000.000001,
+      "year": 2021,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_MEXT",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 34014666666.666668,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_MEXT",
+      "target_id": "EXP_EDU",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 32313933333.333332,
+      "year": 2021,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "MIN_MEXT",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 1700733333.3333335,
+      "year": 2021,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_CFA",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 25900000000.0,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_CFA",
+      "target_id": "SS_CHILDCARE",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 24605000000.0,
+      "year": 2021,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "MIN_CFA",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 1295000000.0,
+      "year": 2021,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_MAFF",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 14614666666.666668,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_MAFF",
+      "target_id": "EXP_PUBLIC",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 5845866666.666668,
+      "year": 2021,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "MIN_MAFF",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 8768800000.0,
+      "year": 2021,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_CABINET",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 9376666666.666668,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_CABINET",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 9376666666.666668,
+      "year": 2021,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_METI",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 5496666666.666667,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_METI",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 5496666666.666667,
+      "year": 2021,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_MOFA",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 4850000000.0,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_MOFA",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 4850000000.0,
+      "year": 2021,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_MOJ",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 5432000000.0,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_MOJ",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 5432000000.0,
+      "year": 2021,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_MOE",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 1940000000.0000002,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_MOE",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 1940000000.0000002,
+      "year": 2021,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_RECONSTRUCTION",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 1616666666.6666667,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_RECONSTRUCTION",
+      "target_id": "EXP_PUBLIC",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 808333333.3333334,
+      "year": 2021,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "MIN_RECONSTRUCTION",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 808333333.3333334,
+      "year": 2021,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_MHLW",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 216349200000.0,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_MHLW",
+      "target_id": "EXP_SOCIAL",
+      "category": "welfare",
+      "sub_category": "予算執行",
+      "value_usd": 205531740000.0,
+      "year": 2022,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "MIN_MHLW",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 10817460000.0,
+      "year": 2022,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_MOF",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 185546666666.6667,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_MOF",
+      "target_id": "EXP_DEBT",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 157714666666.6667,
+      "year": 2022,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "MIN_MOF",
+      "target_id": "EXP_LOCAL",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 18554666666.666668,
+      "year": 2022,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "MIN_MOF",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 9277333333.333334,
+      "year": 2022,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_MIC",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 116293333333.33334,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_MIC",
+      "target_id": "EXP_LOCAL",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 104664000000.00002,
+      "year": 2022,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "MIN_MIC",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 11629333333.333336,
+      "year": 2022,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_MOD",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 37098133333.333336,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_MOD",
+      "target_id": "EXP_DEFENSE",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 36356170666.66667,
+      "year": 2022,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "MIN_MOD",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 741962666.6666667,
+      "year": 2022,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_MLIT",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 38873333333.333336,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_MLIT",
+      "target_id": "EXP_PUBLIC",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 33042333333.333336,
+      "year": 2022,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "MIN_MLIT",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 5831000000.0,
+      "year": 2022,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_MEXT",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 34365333333.333336,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_MEXT",
+      "target_id": "EXP_EDU",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 32647066666.666668,
+      "year": 2022,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "MIN_MEXT",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 1718266666.666667,
+      "year": 2022,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_CFA",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 26600000000.0,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_CFA",
+      "target_id": "SS_CHILDCARE",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 25270000000.0,
+      "year": 2022,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "MIN_CFA",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 1330000000.0,
+      "year": 2022,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_MAFF",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 14765333333.333334,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_MAFF",
+      "target_id": "EXP_PUBLIC",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 5906133333.333334,
+      "year": 2022,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "MIN_MAFF",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 8859200000.0,
+      "year": 2022,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_CABINET",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 9473333333.333334,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_CABINET",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 9473333333.333334,
+      "year": 2022,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_METI",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 5553333333.333334,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_METI",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 5553333333.333334,
+      "year": 2022,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_MOFA",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 4900000000.0,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_MOFA",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 4900000000.0,
+      "year": 2022,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_MOJ",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 5488000000.0,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_MOJ",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 5488000000.0,
+      "year": 2022,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_MOE",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 1960000000.0000002,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_MOE",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 1960000000.0000002,
+      "year": 2022,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_RECONSTRUCTION",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 1633333333.3333335,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_RECONSTRUCTION",
+      "target_id": "EXP_PUBLIC",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 816666666.6666667,
+      "year": 2022,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "MIN_RECONSTRUCTION",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 816666666.6666667,
+      "year": 2022,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_MHLW",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 222042600000.0,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_MHLW",
+      "target_id": "EXP_SOCIAL",
+      "category": "welfare",
+      "sub_category": "予算執行",
+      "value_usd": 210940470000.0,
+      "year": 2023,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "MIN_MHLW",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 11102130000.0,
+      "year": 2023,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_MOF",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 187440000000.0,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_MOF",
+      "target_id": "EXP_DEBT",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 159324000000.0,
+      "year": 2023,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "MIN_MOF",
+      "target_id": "EXP_LOCAL",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 18744000000.0,
+      "year": 2023,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "MIN_MOF",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 9372000000.0,
+      "year": 2023,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_MIC",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 117480000000.0,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_MIC",
+      "target_id": "EXP_LOCAL",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 105732000000.0,
+      "year": 2023,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "MIN_MIC",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 11748000000.0,
+      "year": 2023,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_MOD",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 45047733333.33333,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_MOD",
+      "target_id": "EXP_DEFENSE",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 44146778666.666664,
+      "year": 2023,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "MIN_MOD",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 900954666.6666666,
+      "year": 2023,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_MLIT",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 39270000000.0,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_MLIT",
+      "target_id": "EXP_PUBLIC",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 33379500000.0,
+      "year": 2023,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "MIN_MLIT",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 5890500000.0,
+      "year": 2023,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_MEXT",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 34716000000.0,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_MEXT",
+      "target_id": "EXP_EDU",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 32980200000.0,
+      "year": 2023,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "MIN_MEXT",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 1735800000.0,
+      "year": 2023,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_CFA",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 27300000000.0,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_CFA",
+      "target_id": "SS_CHILDCARE",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 25935000000.0,
+      "year": 2023,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "MIN_CFA",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 1365000000.0,
+      "year": 2023,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_MAFF",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 14916000000.000002,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_MAFF",
+      "target_id": "EXP_PUBLIC",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 5966400000.000001,
+      "year": 2023,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "MIN_MAFF",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 8949600000.0,
+      "year": 2023,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_CABINET",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 9570000000.0,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_CABINET",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 9570000000.0,
+      "year": 2023,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_METI",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 5610000000.0,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_METI",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 5610000000.0,
+      "year": 2023,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_MOFA",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 4950000000.0,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_MOFA",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 4950000000.0,
+      "year": 2023,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_MOJ",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 5544000000.0,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_MOJ",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 5544000000.0,
+      "year": 2023,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_MOE",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 1980000000.0000002,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_MOE",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 1980000000.0000002,
+      "year": 2023,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_RECONSTRUCTION",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 1650000000.0,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_RECONSTRUCTION",
+      "target_id": "EXP_PUBLIC",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 825000000.0,
+      "year": 2023,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "MIN_RECONSTRUCTION",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 825000000.0,
+      "year": 2023,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_MHLW",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 227736000000.0,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_MHLW",
+      "target_id": "EXP_SOCIAL",
+      "category": "welfare",
+      "sub_category": "予算執行",
+      "value_usd": 216349200000.0,
+      "year": 2024,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "MIN_MHLW",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 11386800000.0,
+      "year": 2024,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_MOF",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 189333333333.33334,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_MOF",
+      "target_id": "EXP_DEBT",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 160933333333.33334,
+      "year": 2024,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "MIN_MOF",
+      "target_id": "EXP_LOCAL",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 18933333333.333336,
+      "year": 2024,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "MIN_MOF",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 9466666666.666668,
+      "year": 2024,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_MIC",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 118666666666.66667,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_MIC",
+      "target_id": "EXP_LOCAL",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 106800000000.0,
+      "year": 2024,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "MIN_MIC",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 11866666666.666668,
+      "year": 2024,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_MOD",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 52997333333.333336,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_MOD",
+      "target_id": "EXP_DEFENSE",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 51937386666.66667,
+      "year": 2024,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "MIN_MOD",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 1059946666.6666667,
+      "year": 2024,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_MLIT",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 39666666666.66667,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_MLIT",
+      "target_id": "EXP_PUBLIC",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 33716666666.66667,
+      "year": 2024,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "MIN_MLIT",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 5950000000.000001,
+      "year": 2024,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_MEXT",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 35066666666.66667,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_MEXT",
+      "target_id": "EXP_EDU",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 33313333333.333336,
+      "year": 2024,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "MIN_MEXT",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 1753333333.3333337,
+      "year": 2024,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_CFA",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 28000000000.0,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_CFA",
+      "target_id": "SS_CHILDCARE",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 26600000000.0,
+      "year": 2024,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "MIN_CFA",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 1400000000.0,
+      "year": 2024,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_MAFF",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 15066666666.666668,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_MAFF",
+      "target_id": "EXP_PUBLIC",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 6026666666.666668,
+      "year": 2024,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "MIN_MAFF",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 9040000000.0,
+      "year": 2024,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_CABINET",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 9666666666.666668,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_CABINET",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 9666666666.666668,
+      "year": 2024,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_METI",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 5666666666.666667,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_METI",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 5666666666.666667,
+      "year": 2024,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_MOFA",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 5000000000.0,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_MOFA",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 5000000000.0,
+      "year": 2024,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_MOJ",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 5600000000.0,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_MOJ",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 5600000000.0,
+      "year": 2024,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_MOE",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 2000000000.0000002,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_MOE",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 2000000000.0000002,
+      "year": 2024,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "MIN_RECONSTRUCTION",
+      "category": "trade",
+      "sub_category": "歳出予算配分",
+      "value_usd": 1666666666.6666667,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "財務省 一般会計（所管別）"
+    },
+    {
+      "source_id": "MIN_RECONSTRUCTION",
+      "target_id": "EXP_PUBLIC",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 833333333.3333334,
+      "year": 2024,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "MIN_RECONSTRUCTION",
+      "target_id": "EXP_OTHER",
+      "category": "trade",
+      "sub_category": "予算執行",
+      "value_usd": 833333333.3333334,
+      "year": 2024,
+      "confidence": 0.9,
+      "source_dataset": "省庁別主要経費推計"
+    },
+    {
+      "source_id": "MIN_CFA",
+      "target_id": "REC_CHILDREN",
+      "category": "welfare",
+      "sub_category": "児童手当 (R7予算案)",
+      "value_usd": 10164000000,
+      "year": 2025,
+      "confidence": 0.95,
+      "source_dataset": "こども家庭庁 R7予算 オープンデータ",
+      "description": "児童手当の拡充 等",
+      "evidence_text": "2兆1,819億円の内数 （児童手当の拡充、放課後児童クラブの整備推進 などの合計）",
+      "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/b92baeee-5b6d-47be-b16f-ebf80a4eed28/3d37a505/20240401_councils_shingikai_kodomo_shien_05_02.pdf#page=12&search=15%2C246"
+    },
+    {
+      "source_id": "MIN_CFA",
+      "target_id": "REC_AFTER_SCHOOL_OP",
+      "category": "welfare",
+      "sub_category": "子ども・子育て支援交付金 (R7)",
+      "value_usd": 806000000,
+      "year": 2025,
+      "confidence": 0.98,
+      "source_dataset": "こども家庭庁 令和7年度予算 概算要求（事業別の資料集）",
+      "description": "放課後児童クラブの運営費、放課後児童支援員の処遇改善（月額9,000円等）、障害児受入加配、送迎支援など",
+      "evidence_text": "＜子ども・子育て支援交付金＞令和７年度概算要求額 1,209億円",
+      "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=74&search=1%2C209"
+    },
+    {
+      "source_id": "MIN_CFA",
+      "target_id": "REC_AFTER_SCHOOL_FAC",
+      "category": "welfare",
+      "sub_category": "子ども・子育て支援施設整備交付金 (R7)",
+      "value_usd": 95333333,
+      "year": 2025,
+      "confidence": 0.98,
+      "source_dataset": "こども家庭庁 令和7年度予算 概算要求（事業別の資料集）",
+      "description": "既存施設を活用した改修等、新たなクラブ実施のための環境整備やアパート等活用費（賃借料）",
+      "evidence_text": "＜子ども・子育て支援施設整備交付金＞令和７年度概算要求額 143億円",
+      "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=74&search=143"
+    },
+    {
+      "source_id": "MIN_CFA",
+      "target_id": "REC_AFTER_SCHOOL_DX",
+      "category": "welfare",
+      "sub_category": "こども政策推進事業費補助金 (R7)",
+      "value_usd": 19333333,
+      "year": 2025,
+      "confidence": 0.98,
+      "source_dataset": "こども家庭庁 令和7年度予算 概算要求（事業別の資料集）",
+      "description": "利用手続きオンライン化・ICT推進実証事業、第三者評価の推進、利用調整支援など",
+      "evidence_text": "＜こども政策推進事業費補助金（放課後関係）＞令和７年度概算要求額 29億円",
+      "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=74&search=29"
+    },
+    {
+      "source_id": "MIN_CFA",
+      "target_id": "REC_AFTER_SCHOOL_SUP",
+      "category": "welfare",
+      "sub_category": "保育対策総合支援事業費費補助金 (R7)",
+      "value_usd": 7333333,
+      "year": 2025,
+      "confidence": 0.98,
+      "source_dataset": "こども家庭庁 令和7年度予算 概算要求（事業別の資料集）",
+      "description": "要支援児童等対応推進、育成支援体制強化、巡回アドバイザー配置など周辺支援業務",
+      "evidence_text": "＜保育対策総合支援事業費費補助金（放課後関係）＞令和７年度概算要求額 11億円",
+      "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=74&search=11"
+    },
+    {
+      "source_id": "MIN_CFA",
+      "target_id": "REC_HIGHER_ED_FREE",
+      "category": "welfare",
+      "sub_category": "高等教育の無償化・奨学金 (R7)",
+      "value_usd": 3625333333,
+      "year": 2025,
+      "confidence": 0.95,
+      "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=80&search=5%2C438"
+    },
+    {
+      "source_id": "MIN_CFA",
+      "target_id": "REC_CHILDCARE_ALL",
+      "category": "welfare",
+      "sub_category": "こども誰でも通園制度関連 (R7)",
+      "value_usd": 1620666666,
+      "year": 2025,
+      "confidence": 0.95,
+      "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=95&search=2%2C431"
+    },
+    {
+      "source_id": "MIN_CFA",
+      "target_id": "REC_CORP_CHILDCARE",
+      "category": "welfare",
+      "sub_category": "企業主導型保育事業 (R7)",
+      "value_usd": 1538000000,
+      "year": 2025,
+      "confidence": 0.95,
+      "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=77&search=2%2C307"
+    },
+    {
+      "source_id": "MIN_CFA",
+      "target_id": "REC_CHILD_WELFARE_SW",
+      "category": "welfare",
+      "sub_category": "ソーシャルワーカー・一時保護等改善 (R7)",
+      "value_usd": 1022000000,
+      "year": 2025,
+      "confidence": 0.95,
+      "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=135&search=1%2C533"
+    },
+    {
+      "source_id": "MIN_CFA",
+      "target_id": "REC_MATERNITY_GRANT",
+      "category": "welfare",
+      "sub_category": "妊婦のための支援給付交付金 (R7)",
+      "value_usd": 544000000,
+      "year": 2025,
+      "confidence": 0.95,
+      "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=47&search=816"
+    },
+    {
+      "source_id": "MIN_CFA",
+      "target_id": "REC_PRESCHOOL_FAC",
+      "category": "welfare",
+      "sub_category": "就学前教育・保育施設整備交付金 (R7)",
+      "value_usd": 262000000,
+      "year": 2025,
+      "confidence": 0.95,
+      "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=86&search=393"
+    },
+    {
+      "source_id": "MIN_CFA",
+      "target_id": "REC_ABUSE_PREVENTION",
+      "category": "welfare",
+      "sub_category": "児童虐待防止対策等総合支援 (R7)",
+      "value_usd": 195333333,
+      "year": 2025,
+      "confidence": 0.95,
+      "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=160&search=293"
+    },
+    {
+      "source_id": "MIN_CFA",
+      "target_id": "REC_CHILDCARE_ICT",
+      "category": "welfare",
+      "sub_category": "保育対策総合支援事業費補助金 (R7)",
+      "value_usd": 392666666,
+      "year": 2025,
+      "confidence": 0.95,
+      "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=15&search=%E4%BF%9D%E8%82%B2ICT%E3%83%A9%E3%83%9C"
+    }
+  ],
+  "metadata": {
+    "source": [
+      "財務省 令和6年度一般会計予算（所管別）"
+    ],
+    "generated_at": "2026-03-10T00:00:00Z",
+    "scope": "Japan 1府11省庁 Budget Allocations"
+  }
+}

@@ -1,0 +1,92 @@
+[
+  {
+    "id": "child_allowance_expansion",
+    "query": "児童手当の予算拡充について要点を教えてください",
+    "expected_file_name": "20241227_policies_budget_53.pdf",
+    "expected_page_numbers_any": [2, 6],
+    "expected_citation_terms_all": ["児童手当"],
+    "expected_answer_terms_any": ["0.6兆円", "0.6"],
+    "notes": "児童手当の拡充と増額規模を拾えるかを見る。"
+  },
+  {
+    "id": "higher_education_relief",
+    "query": "高等教育費の負担軽減について要点を教えてください",
+    "expected_file_name": "20241227_policies_budget_53.pdf",
+    "expected_page_numbers_any": [2, 6],
+    "expected_citation_terms_all": ["高等教育", "負担軽減"],
+    "expected_answer_terms_any": ["0.1兆円", "0.1", "無償化"],
+    "notes": "高等教育費の負担軽減と関連施策の抽出。"
+  },
+  {
+    "id": "exam_fee_support",
+    "query": "大学受験料の支援内容を教えてください",
+    "expected_file_name": "20241227_policies_budget_53.pdf",
+    "expected_page_numbers_any": [3, 4],
+    "expected_citation_terms_all": ["受験料", "53,000円"],
+    "expected_answer_terms_any": ["53,000円", "53000円", "8,000円", "8000円"],
+    "notes": "大学受験料等支援の具体額を含む回答になるかを見る。"
+  },
+  {
+    "id": "after_school_club_support",
+    "query": "放課後児童クラブの整備推進について教えてください",
+    "expected_file_name": "20241227_policies_budget_53.pdf",
+    "expected_page_numbers_any": [6],
+    "expected_citation_terms_all": ["放課後児童クラブ"],
+    "expected_answer_terms_any": ["放課後児童クラブ", "整備推進"],
+    "notes": "子育て関連の具体施策を summary page から拾えるか。"
+  },
+  {
+    "id": "opinion_reflection_project",
+    "query": "こども・若者意見反映推進事業の予算と目的を教えてください",
+    "expected_file_name": "20250306_policies_budget_63.pdf",
+    "expected_page_numbers_any": [3],
+    "expected_citation_terms_all": ["意見反映", "2.1億円"],
+    "expected_answer_terms_any": ["2.1億円", "2.1", "意見反映"],
+    "notes": "事業別資料集の 2.1 億円案件。"
+  },
+  {
+    "id": "local_opinion_reflection_support",
+    "query": "地方自治体におけるこども・若者の意見反映の取組促進の予算は何ですか",
+    "expected_file_name": "20250306_policies_budget_63.pdf",
+    "expected_page_numbers_any": [4],
+    "expected_citation_terms_all": ["地方自治体", "21百万円"],
+    "expected_answer_terms_any": ["21百万円", "21"],
+    "notes": "地方自治体の意見反映支援を拾えるか。"
+  },
+  {
+    "id": "rights_awareness_project",
+    "query": "こども基本法・児童の権利に関する条約の普及啓発事業の予算は何ですか",
+    "expected_file_name": "20250306_policies_budget_63.pdf",
+    "expected_page_numbers_any": [5],
+    "expected_citation_terms_all": ["児童の権利", "18百万円"],
+    "expected_answer_terms_any": ["18百万円", "18"],
+    "notes": "普及啓発事業の予算額。"
+  },
+  {
+    "id": "local_child_plan_support",
+    "query": "自治体こども計画策定支援事業の予算は何ですか",
+    "expected_file_name": "20250306_policies_budget_63.pdf",
+    "expected_page_numbers_any": [6],
+    "expected_citation_terms_all": ["自治体こども計画", "86百万円"],
+    "expected_answer_terms_any": ["86百万円", "86"],
+    "notes": "自治体計画策定支援の予算額。"
+  },
+  {
+    "id": "policy_dx_support",
+    "query": "こども政策DX推進体制強化事業の予算は何ですか",
+    "expected_file_name": "20250306_policies_budget_63.pdf",
+    "expected_page_numbers_any": [8],
+    "expected_citation_terms_all": ["DX", "3.7億円"],
+    "expected_answer_terms_any": ["3.7億円", "3.7"],
+    "notes": "DX 系の個別事業。"
+  },
+  {
+    "id": "life_design_budget",
+    "query": "若い世代のライフデザインの可能性の最大化に関する予算は何ですか",
+    "expected_file_name": "20250306_policies_budget_63.pdf",
+    "expected_page_numbers_any": [13, 14],
+    "expected_citation_terms_all": ["ライフデザイン"],
+    "expected_answer_terms_any": ["84百万円", "84", "10億円", "10"],
+    "notes": "ライフデザイン本体 84 百万円と結婚支援 10 億円のいずれかを拾えればよい。"
+  }
+]

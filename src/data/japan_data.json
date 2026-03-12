@@ -1,0 +1,591 @@
+{
+  "nodes": [
+    {
+      "id": "GOV_JP",
+      "name": "日本国政府 (国庫)",
+      "lat": 35.6762,
+      "lng": 139.7503,
+      "region": "Japan",
+      "type": "macro_entity"
+    },
+    {
+      "id": "BOJ",
+      "name": "日本銀行",
+      "lat": 35.6865,
+      "lng": 139.7713,
+      "region": "Japan",
+      "type": "macro_entity"
+    },
+    {
+      "id": "HH_JP",
+      "name": "日本の家計 (約2000兆円)",
+      "lat": 35.6895,
+      "lng": 139.6917,
+      "region": "Japan",
+      "type": "macro_entity"
+    },
+    {
+      "id": "COMM_BANKS",
+      "name": "国内銀行",
+      "lat": 35.6812,
+      "lng": 139.7671,
+      "region": "Japan",
+      "type": "macro_entity"
+    },
+    {
+      "id": "PREF_13",
+      "name": "東京都",
+      "lat": 35.6894,
+      "lng": 139.6917,
+      "region": "Kanto",
+      "type": "prefecture"
+    },
+    {
+      "id": "PREF_27",
+      "name": "大阪府",
+      "lat": 34.6937,
+      "lng": 135.5023,
+      "region": "Kansai",
+      "type": "prefecture"
+    },
+    {
+      "id": "PREF_23",
+      "name": "愛知県",
+      "lat": 35.1815,
+      "lng": 136.9066,
+      "region": "Chubu",
+      "type": "prefecture"
+    },
+    {
+      "id": "PREF_40",
+      "name": "福岡県",
+      "lat": 33.5902,
+      "lng": 130.4017,
+      "region": "Kyushu",
+      "type": "prefecture"
+    },
+    {
+      "id": "PREF_01",
+      "name": "北海道",
+      "lat": 43.0618,
+      "lng": 141.3545,
+      "region": "Hokkaido",
+      "type": "prefecture"
+    },
+    {
+      "id": "CORP_7203",
+      "name": "トヨタ自動車",
+      "lat": 35.0828,
+      "lng": 137.1562,
+      "region": "Chubu",
+      "type": "corporation_jp"
+    },
+    {
+      "id": "CORP_6758",
+      "name": "ソニーグループ",
+      "lat": 35.6266,
+      "lng": 139.7408,
+      "region": "Kanto",
+      "type": "corporation_jp"
+    },
+    {
+      "id": "CORP_9984",
+      "name": "ソフトバンクグループ",
+      "lat": 35.6605,
+      "lng": 139.7621,
+      "region": "Kanto",
+      "type": "corporation_jp"
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "HH_JP",
+      "target_id": "COMM_BANKS",
+      "category": "banking",
+      "sub_category": "Deposits",
+      "value_usd": 250000000000.0,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "BOJ Flow of Funds (Proxy)"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "GOV_JP",
+      "category": "bop",
+      "sub_category": "JGB Purchases",
+      "value_usd": 300000000000.0,
+      "year": 2021,
+      "confidence": 0.98,
+      "source_dataset": "BOJ Flow of Funds (Proxy)"
+    },
+    {
+      "source_id": "BOJ",
+      "target_id": "GOV_JP",
+      "category": "bop",
+      "sub_category": "QE JGB Purchases",
+      "value_usd": 400000000000.0,
+      "year": 2021,
+      "confidence": 0.99,
+      "source_dataset": "BOJ Statistics"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "PREF_01",
+      "category": "remittance",
+      "sub_category": "Local Allocation Tax",
+      "value_usd": 13056769116.501019,
+      "year": 2021,
+      "confidence": 0.9,
+      "source_dataset": "MIC Local Finance (Proxy)"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "PREF_40",
+      "category": "remittance",
+      "sub_category": "Local Allocation Tax",
+      "value_usd": 5915921789.216426,
+      "year": 2021,
+      "confidence": 0.9,
+      "source_dataset": "MIC Local Finance (Proxy)"
+    },
+    {
+      "source_id": "PREF_23",
+      "target_id": "PREF_13",
+      "category": "trade",
+      "sub_category": "Domestic Supply Chain",
+      "value_usd": 120000000000.0,
+      "year": 2021,
+      "confidence": 0.85,
+      "source_dataset": "RESAS Inter-Regional Trade (Proxy)"
+    },
+    {
+      "source_id": "PREF_27",
+      "target_id": "PREF_13",
+      "category": "trade",
+      "sub_category": "Domestic Trade",
+      "value_usd": 80000000000.0,
+      "year": 2021,
+      "confidence": 0.85,
+      "source_dataset": "RESAS Inter-Regional Trade (Proxy)"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "CORP_7203",
+      "category": "trade",
+      "sub_category": "Domestic Auto Sales",
+      "value_usd": 15000000000.0,
+      "year": 2021,
+      "confidence": 0.99,
+      "source_dataset": "EDINET XBRL (Toyota)"
+    },
+    {
+      "source_id": "CORP_7203",
+      "target_id": "GOV_JP",
+      "category": "bop",
+      "sub_category": "Corporate Tax",
+      "value_usd": 8000000000.0,
+      "year": 2021,
+      "confidence": 0.99,
+      "source_dataset": "EDINET XBRL (Toyota)"
+    },
+    {
+      "source_id": "CORP_7203",
+      "target_id": "PREF_23",
+      "category": "trade",
+      "sub_category": "Capex & Procurement",
+      "value_usd": 25000000000.0,
+      "year": 2021,
+      "confidence": 0.9,
+      "source_dataset": "EDINET / IR Reports"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "CORP_6758",
+      "category": "trade",
+      "sub_category": "Electronics & Entertainment",
+      "value_usd": 10000000000.0,
+      "year": 2021,
+      "confidence": 0.99,
+      "source_dataset": "EDINET XBRL (Sony)"
+    },
+    {
+      "source_id": "CORP_6758",
+      "target_id": "PREF_13",
+      "category": "trade",
+      "sub_category": "Payroll & Domestic Capex",
+      "value_usd": 8000000000.0,
+      "year": 2021,
+      "confidence": 0.9,
+      "source_dataset": "EDINET XBRL (Sony)"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "COMM_BANKS",
+      "category": "banking",
+      "sub_category": "Deposits",
+      "value_usd": 255000000000.0,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "BOJ Flow of Funds (Proxy)"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "GOV_JP",
+      "category": "bop",
+      "sub_category": "JGB Purchases",
+      "value_usd": 315000000000.0,
+      "year": 2022,
+      "confidence": 0.98,
+      "source_dataset": "BOJ Flow of Funds (Proxy)"
+    },
+    {
+      "source_id": "BOJ",
+      "target_id": "GOV_JP",
+      "category": "bop",
+      "sub_category": "QE JGB Purchases",
+      "value_usd": 400000000000.0,
+      "year": 2022,
+      "confidence": 0.99,
+      "source_dataset": "BOJ Statistics"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "PREF_01",
+      "category": "remittance",
+      "sub_category": "Local Allocation Tax",
+      "value_usd": 9254344111.684875,
+      "year": 2022,
+      "confidence": 0.9,
+      "source_dataset": "MIC Local Finance (Proxy)"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "PREF_40",
+      "category": "remittance",
+      "sub_category": "Local Allocation Tax",
+      "value_usd": 8880225429.51355,
+      "year": 2022,
+      "confidence": 0.9,
+      "source_dataset": "MIC Local Finance (Proxy)"
+    },
+    {
+      "source_id": "PREF_23",
+      "target_id": "PREF_13",
+      "category": "trade",
+      "sub_category": "Domestic Supply Chain",
+      "value_usd": 120000000000.0,
+      "year": 2022,
+      "confidence": 0.85,
+      "source_dataset": "RESAS Inter-Regional Trade (Proxy)"
+    },
+    {
+      "source_id": "PREF_27",
+      "target_id": "PREF_13",
+      "category": "trade",
+      "sub_category": "Domestic Trade",
+      "value_usd": 80000000000.0,
+      "year": 2022,
+      "confidence": 0.85,
+      "source_dataset": "RESAS Inter-Regional Trade (Proxy)"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "CORP_7203",
+      "category": "trade",
+      "sub_category": "Domestic Auto Sales",
+      "value_usd": 15450000000.0,
+      "year": 2022,
+      "confidence": 0.99,
+      "source_dataset": "EDINET XBRL (Toyota)"
+    },
+    {
+      "source_id": "CORP_7203",
+      "target_id": "GOV_JP",
+      "category": "bop",
+      "sub_category": "Corporate Tax",
+      "value_usd": 8000000000.0,
+      "year": 2022,
+      "confidence": 0.99,
+      "source_dataset": "EDINET XBRL (Toyota)"
+    },
+    {
+      "source_id": "CORP_7203",
+      "target_id": "PREF_23",
+      "category": "trade",
+      "sub_category": "Capex & Procurement",
+      "value_usd": 25000000000.0,
+      "year": 2022,
+      "confidence": 0.9,
+      "source_dataset": "EDINET / IR Reports"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "CORP_6758",
+      "category": "trade",
+      "sub_category": "Electronics & Entertainment",
+      "value_usd": 10000000000.0,
+      "year": 2022,
+      "confidence": 0.99,
+      "source_dataset": "EDINET XBRL (Sony)"
+    },
+    {
+      "source_id": "CORP_6758",
+      "target_id": "PREF_13",
+      "category": "trade",
+      "sub_category": "Payroll & Domestic Capex",
+      "value_usd": 8000000000.0,
+      "year": 2022,
+      "confidence": 0.9,
+      "source_dataset": "EDINET XBRL (Sony)"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "COMM_BANKS",
+      "category": "banking",
+      "sub_category": "Deposits",
+      "value_usd": 260000000000.0,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "BOJ Flow of Funds (Proxy)"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "GOV_JP",
+      "category": "bop",
+      "sub_category": "JGB Purchases",
+      "value_usd": 330000000000.0,
+      "year": 2023,
+      "confidence": 0.98,
+      "source_dataset": "BOJ Flow of Funds (Proxy)"
+    },
+    {
+      "source_id": "BOJ",
+      "target_id": "GOV_JP",
+      "category": "bop",
+      "sub_category": "QE JGB Purchases",
+      "value_usd": 400000000000.0,
+      "year": 2023,
+      "confidence": 0.99,
+      "source_dataset": "BOJ Statistics"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "PREF_01",
+      "category": "remittance",
+      "sub_category": "Local Allocation Tax",
+      "value_usd": 7371012326.100544,
+      "year": 2023,
+      "confidence": 0.9,
+      "source_dataset": "MIC Local Finance (Proxy)"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "PREF_40",
+      "category": "remittance",
+      "sub_category": "Local Allocation Tax",
+      "value_usd": 6198417213.294733,
+      "year": 2023,
+      "confidence": 0.9,
+      "source_dataset": "MIC Local Finance (Proxy)"
+    },
+    {
+      "source_id": "PREF_23",
+      "target_id": "PREF_13",
+      "category": "trade",
+      "sub_category": "Domestic Supply Chain",
+      "value_usd": 120000000000.0,
+      "year": 2023,
+      "confidence": 0.85,
+      "source_dataset": "RESAS Inter-Regional Trade (Proxy)"
+    },
+    {
+      "source_id": "PREF_27",
+      "target_id": "PREF_13",
+      "category": "trade",
+      "sub_category": "Domestic Trade",
+      "value_usd": 80000000000.0,
+      "year": 2023,
+      "confidence": 0.85,
+      "source_dataset": "RESAS Inter-Regional Trade (Proxy)"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "CORP_7203",
+      "category": "trade",
+      "sub_category": "Domestic Auto Sales",
+      "value_usd": 15900000000.0,
+      "year": 2023,
+      "confidence": 0.99,
+      "source_dataset": "EDINET XBRL (Toyota)"
+    },
+    {
+      "source_id": "CORP_7203",
+      "target_id": "GOV_JP",
+      "category": "bop",
+      "sub_category": "Corporate Tax",
+      "value_usd": 8000000000.0,
+      "year": 2023,
+      "confidence": 0.99,
+      "source_dataset": "EDINET XBRL (Toyota)"
+    },
+    {
+      "source_id": "CORP_7203",
+      "target_id": "PREF_23",
+      "category": "trade",
+      "sub_category": "Capex & Procurement",
+      "value_usd": 25000000000.0,
+      "year": 2023,
+      "confidence": 0.9,
+      "source_dataset": "EDINET / IR Reports"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "CORP_6758",
+      "category": "trade",
+      "sub_category": "Electronics & Entertainment",
+      "value_usd": 10000000000.0,
+      "year": 2023,
+      "confidence": 0.99,
+      "source_dataset": "EDINET XBRL (Sony)"
+    },
+    {
+      "source_id": "CORP_6758",
+      "target_id": "PREF_13",
+      "category": "trade",
+      "sub_category": "Payroll & Domestic Capex",
+      "value_usd": 8000000000.0,
+      "year": 2023,
+      "confidence": 0.9,
+      "source_dataset": "EDINET XBRL (Sony)"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "COMM_BANKS",
+      "category": "banking",
+      "sub_category": "Deposits",
+      "value_usd": 265000000000.0,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "BOJ Flow of Funds (Proxy)"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "GOV_JP",
+      "category": "bop",
+      "sub_category": "JGB Purchases",
+      "value_usd": 345000000000.0,
+      "year": 2024,
+      "confidence": 0.98,
+      "source_dataset": "BOJ Flow of Funds (Proxy)"
+    },
+    {
+      "source_id": "BOJ",
+      "target_id": "GOV_JP",
+      "category": "bop",
+      "sub_category": "QE JGB Purchases",
+      "value_usd": 400000000000.0,
+      "year": 2024,
+      "confidence": 0.99,
+      "source_dataset": "BOJ Statistics"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "PREF_01",
+      "category": "remittance",
+      "sub_category": "Local Allocation Tax",
+      "value_usd": 8854071876.685875,
+      "year": 2024,
+      "confidence": 0.9,
+      "source_dataset": "MIC Local Finance (Proxy)"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "PREF_40",
+      "category": "remittance",
+      "sub_category": "Local Allocation Tax",
+      "value_usd": 5461648605.915642,
+      "year": 2024,
+      "confidence": 0.9,
+      "source_dataset": "MIC Local Finance (Proxy)"
+    },
+    {
+      "source_id": "PREF_23",
+      "target_id": "PREF_13",
+      "category": "trade",
+      "sub_category": "Domestic Supply Chain",
+      "value_usd": 120000000000.0,
+      "year": 2024,
+      "confidence": 0.85,
+      "source_dataset": "RESAS Inter-Regional Trade (Proxy)"
+    },
+    {
+      "source_id": "PREF_27",
+      "target_id": "PREF_13",
+      "category": "trade",
+      "sub_category": "Domestic Trade",
+      "value_usd": 80000000000.0,
+      "year": 2024,
+      "confidence": 0.85,
+      "source_dataset": "RESAS Inter-Regional Trade (Proxy)"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "CORP_7203",
+      "category": "trade",
+      "sub_category": "Domestic Auto Sales",
+      "value_usd": 16350000000.000002,
+      "year": 2024,
+      "confidence": 0.99,
+      "source_dataset": "EDINET XBRL (Toyota)"
+    },
+    {
+      "source_id": "CORP_7203",
+      "target_id": "GOV_JP",
+      "category": "bop",
+      "sub_category": "Corporate Tax",
+      "value_usd": 8000000000.0,
+      "year": 2024,
+      "confidence": 0.99,
+      "source_dataset": "EDINET XBRL (Toyota)"
+    },
+    {
+      "source_id": "CORP_7203",
+      "target_id": "PREF_23",
+      "category": "trade",
+      "sub_category": "Capex & Procurement",
+      "value_usd": 25000000000.0,
+      "year": 2024,
+      "confidence": 0.9,
+      "source_dataset": "EDINET / IR Reports"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "CORP_6758",
+      "category": "trade",
+      "sub_category": "Electronics & Entertainment",
+      "value_usd": 10000000000.0,
+      "year": 2024,
+      "confidence": 0.99,
+      "source_dataset": "EDINET XBRL (Sony)"
+    },
+    {
+      "source_id": "CORP_6758",
+      "target_id": "PREF_13",
+      "category": "trade",
+      "sub_category": "Payroll & Domestic Capex",
+      "value_usd": 8000000000.0,
+      "year": 2024,
+      "confidence": 0.9,
+      "source_dataset": "EDINET XBRL (Sony)"
+    }
+  ],
+  "metadata": {
+    "source": [
+      "BOJ Flow of Funds",
+      "RESAS Inter-Regional",
+      "EDINET XBRL Analytics"
+    ],
+    "generated_at": "2026-03-10T00:00:00Z",
+    "scope": "Japan Domestic Deep Dive"
+  }
+}

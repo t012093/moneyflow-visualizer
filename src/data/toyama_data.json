@@ -1,0 +1,4317 @@
+{
+  "metadata": {
+    "source": "Toyama Prefecture Open Data (R6 Budget Initial Estimates)",
+    "description": "Detailed Advanced Financial flows for Toyama Prefecture vs 15 Municipalities"
+  },
+  "nodes": [
+    {
+      "id": "PREF_TOYAMA",
+      "name": "富山県庁",
+      "type": "prefecture"
+    },
+    {
+      "id": "CITY_TOYAMA",
+      "name": "富山市",
+      "type": "local_gov"
+    },
+    {
+      "id": "CITY_TAKAOKA",
+      "name": "高岡市",
+      "type": "local_gov"
+    },
+    {
+      "id": "CITY_IMIZU",
+      "name": "射水市",
+      "type": "local_gov"
+    },
+    {
+      "id": "CITY_NANTO",
+      "name": "南砺市",
+      "type": "local_gov"
+    },
+    {
+      "id": "CITY_TONAMI",
+      "name": "砺波市",
+      "type": "local_gov"
+    },
+    {
+      "id": "CITY_KUROBE",
+      "name": "黒部市",
+      "type": "local_gov"
+    },
+    {
+      "id": "CITY_UOZU",
+      "name": "魚津市",
+      "type": "local_gov"
+    },
+    {
+      "id": "CITY_HIMI",
+      "name": "氷見市",
+      "type": "local_gov"
+    },
+    {
+      "id": "CITY_NAMERIKAWA",
+      "name": "滑川市",
+      "type": "local_gov"
+    },
+    {
+      "id": "CITY_OYABE",
+      "name": "小矢部市",
+      "type": "local_gov"
+    },
+    {
+      "id": "TOWN_KAMIICHI",
+      "name": "上市町",
+      "type": "local_gov"
+    },
+    {
+      "id": "TOWN_TATEYAMA",
+      "name": "立山町",
+      "type": "local_gov"
+    },
+    {
+      "id": "TOWN_NYUZEN",
+      "name": "入善町",
+      "type": "local_gov"
+    },
+    {
+      "id": "TOWN_ASAHI",
+      "name": "朝日町",
+      "type": "local_gov"
+    },
+    {
+      "id": "VILLAGE_FUNAHASHI",
+      "name": "舟橋村",
+      "type": "local_gov"
+    },
+    {
+      "id": "LOCAL_HOSPITAL",
+      "name": "公立病院・保育所・福祉事業 (Local Welfare & Health)",
+      "type": "recipient"
+    },
+    {
+      "id": "LOCAL_SCHOOLS",
+      "name": "公立小中学校・教育機関 (Local Schools & Education)",
+      "type": "recipient"
+    },
+    {
+      "id": "LOCAL_CONSTRUCTION",
+      "name": "地域建設会社 (Local Construction & Infra)",
+      "type": "recipient"
+    },
+    {
+      "id": "PROPOSAL_COMPREHENSIVE",
+      "name": "総合計画策定支援 プロポーザル委託先 (Strategy Consultants)",
+      "type": "recipient"
+    },
+    {
+      "id": "PROPOSAL_SMART_CITY",
+      "name": "スマートシティ推進 ITベンダー (Smart City Vendors)",
+      "type": "recipient"
+    },
+    {
+      "id": "BIDDING_PUBLIC_WORKS",
+      "name": "一般競争入札 大規模公共工事落札企業 (Major Construction Firms)",
+      "type": "recipient"
+    },
+    {
+      "id": "NEGOTIated_CONTRACTS",
+      "name": "随意契約 特名業者・緊急調達先 (Specialized/Emergency Suppliers)",
+      "type": "recipient"
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "HH_JP",
+      "target_id": "PREF_TOYAMA",
+      "value_usd": 1372448000.0,
+      "category": "tax",
+      "year": 2021,
+      "description": "Prefectural Taxes (県税) paid to 富山県庁"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "PREF_TOYAMA",
+      "value_usd": 588192000.0,
+      "category": "welfare",
+      "year": 2021,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 富山県庁"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "PREF_TOYAMA",
+      "value_usd": 784256000.0,
+      "category": "trade",
+      "year": 2021,
+      "description": "National Treasury Disbursements (国庫支出金) to 富山県庁"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "PREF_TOYAMA",
+      "value_usd": 392128000.0,
+      "category": "banking",
+      "year": 2021,
+      "description": "Prefectural Bonds (地方債) issued by 富山県庁"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 980320000.0,
+      "category": "welfare",
+      "year": 2021,
+      "description": "富山県庁 spending on prefectural hospitals/welfare"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 588192000.0,
+      "category": "infrastructure",
+      "year": 2021,
+      "description": "富山県庁 spending on prefectural roads/infra"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 784256000.0,
+      "category": "education",
+      "year": 2021,
+      "description": "富山県庁 spending on prefectural high schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "CITY_TOYAMA",
+      "value_usd": 483801600.0,
+      "category": "tax",
+      "year": 2021,
+      "description": "Municipal Taxes (市町村税) paid to 富山市"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "CITY_TOYAMA",
+      "value_usd": 112512000.0,
+      "category": "welfare",
+      "year": 2021,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 富山市"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "CITY_TOYAMA",
+      "value_usd": 168768000.0,
+      "category": "trade",
+      "year": 2021,
+      "description": "National Treasury Disbursements (国庫支出金) to 富山市"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "CITY_TOYAMA",
+      "value_usd": 90009600.0,
+      "category": "welfare",
+      "year": 2021,
+      "description": "Prefectural Disbursements (県支出金) to 富山市"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "CITY_TOYAMA",
+      "value_usd": 78758400.0,
+      "category": "banking",
+      "year": 2021,
+      "description": "Municipal Bonds (地方債) issued by 富山市"
+    },
+    {
+      "source_id": "CITY_TOYAMA",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 506304000.0,
+      "category": "welfare",
+      "year": 2021,
+      "description": "富山市 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "CITY_TOYAMA",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 135014400.0,
+      "category": "infrastructure",
+      "year": 2021,
+      "description": "富山市 spending on city infrastructure"
+    },
+    {
+      "source_id": "CITY_TOYAMA",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 112512000.0,
+      "category": "education",
+      "year": 2021,
+      "description": "富山市 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "CITY_TOYAMA",
+      "target_id": "PROPOSAL_COMPREHENSIVE",
+      "value_usd": 320000.0,
+      "category": "services",
+      "year": 2021,
+      "description": "富山市 第3次富山市総合計画策定支援業務委託 プロポーザル案件 (Open Data: https://www.city.toyama.toyama.jp/)"
+    },
+    {
+      "source_id": "CITY_TOYAMA",
+      "target_id": "PROPOSAL_SMART_CITY",
+      "value_usd": 1280000.0,
+      "category": "technology",
+      "year": 2021,
+      "description": "富山市 スマートシティ推進事業 オープンデータ活用等委託 プロポーザル案件 (Open Data: https://www.city.toyama.toyama.jp/)"
+    },
+    {
+      "source_id": "CITY_TOYAMA",
+      "target_id": "BIDDING_PUBLIC_WORKS",
+      "value_usd": 80000000.0,
+      "category": "infrastructure",
+      "year": 2021,
+      "description": "富山市 一般競争入札(土木一式・建築一式等) オープンデータ公表分 (Open Data: https://www.city.toyama.toyama.jp/)"
+    },
+    {
+      "source_id": "CITY_TOYAMA",
+      "target_id": "NEGOTIated_CONTRACTS",
+      "value_usd": 20480000.0,
+      "category": "services",
+      "year": 2021,
+      "description": "富山市 随意契約(特命・緊急対応等) オープンデータ公表分 (Open Data: https://www.city.toyama.toyama.jp/)"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "CITY_TAKAOKA",
+      "value_usd": 179430400.0,
+      "category": "tax",
+      "year": 2021,
+      "description": "Municipal Taxes (市町村税) paid to 高岡市"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "CITY_TAKAOKA",
+      "value_usd": 41728000.0,
+      "category": "welfare",
+      "year": 2021,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 高岡市"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "CITY_TAKAOKA",
+      "value_usd": 62592000.0,
+      "category": "trade",
+      "year": 2021,
+      "description": "National Treasury Disbursements (国庫支出金) to 高岡市"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "CITY_TAKAOKA",
+      "value_usd": 33382400.0,
+      "category": "welfare",
+      "year": 2021,
+      "description": "Prefectural Disbursements (県支出金) to 高岡市"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "CITY_TAKAOKA",
+      "value_usd": 29209600.0,
+      "category": "banking",
+      "year": 2021,
+      "description": "Municipal Bonds (地方債) issued by 高岡市"
+    },
+    {
+      "source_id": "CITY_TAKAOKA",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 187776000.0,
+      "category": "welfare",
+      "year": 2021,
+      "description": "高岡市 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "CITY_TAKAOKA",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 50073600.0,
+      "category": "infrastructure",
+      "year": 2021,
+      "description": "高岡市 spending on city infrastructure"
+    },
+    {
+      "source_id": "CITY_TAKAOKA",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 41728000.0,
+      "category": "education",
+      "year": 2021,
+      "description": "高岡市 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "CITY_IMIZU",
+      "value_usd": 115859200.0,
+      "category": "tax",
+      "year": 2021,
+      "description": "Municipal Taxes (市町村税) paid to 射水市"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "CITY_IMIZU",
+      "value_usd": 26944000.0,
+      "category": "welfare",
+      "year": 2021,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 射水市"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "CITY_IMIZU",
+      "value_usd": 40416000.0,
+      "category": "trade",
+      "year": 2021,
+      "description": "National Treasury Disbursements (国庫支出金) to 射水市"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "CITY_IMIZU",
+      "value_usd": 21555200.0,
+      "category": "welfare",
+      "year": 2021,
+      "description": "Prefectural Disbursements (県支出金) to 射水市"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "CITY_IMIZU",
+      "value_usd": 18860800.0,
+      "category": "banking",
+      "year": 2021,
+      "description": "Municipal Bonds (地方債) issued by 射水市"
+    },
+    {
+      "source_id": "CITY_IMIZU",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 121248000.0,
+      "category": "welfare",
+      "year": 2021,
+      "description": "射水市 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "CITY_IMIZU",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 32332800.0,
+      "category": "infrastructure",
+      "year": 2021,
+      "description": "射水市 spending on city infrastructure"
+    },
+    {
+      "source_id": "CITY_IMIZU",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 26944000.0,
+      "category": "education",
+      "year": 2021,
+      "description": "射水市 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "CITY_NANTO",
+      "value_usd": 103200000.0,
+      "category": "tax",
+      "year": 2021,
+      "description": "Municipal Taxes (市町村税) paid to 南砺市"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "CITY_NANTO",
+      "value_usd": 24000000.0,
+      "category": "welfare",
+      "year": 2021,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 南砺市"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "CITY_NANTO",
+      "value_usd": 36000000.0,
+      "category": "trade",
+      "year": 2021,
+      "description": "National Treasury Disbursements (国庫支出金) to 南砺市"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "CITY_NANTO",
+      "value_usd": 19200000.0,
+      "category": "welfare",
+      "year": 2021,
+      "description": "Prefectural Disbursements (県支出金) to 南砺市"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "CITY_NANTO",
+      "value_usd": 16800000.0,
+      "category": "banking",
+      "year": 2021,
+      "description": "Municipal Bonds (地方債) issued by 南砺市"
+    },
+    {
+      "source_id": "CITY_NANTO",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 108000000.0,
+      "category": "welfare",
+      "year": 2021,
+      "description": "南砺市 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "CITY_NANTO",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 28800000.0,
+      "category": "infrastructure",
+      "year": 2021,
+      "description": "南砺市 spending on city infrastructure"
+    },
+    {
+      "source_id": "CITY_NANTO",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 24000000.0,
+      "category": "education",
+      "year": 2021,
+      "description": "南砺市 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "CITY_TONAMI",
+      "value_usd": 82835200.0,
+      "category": "tax",
+      "year": 2021,
+      "description": "Municipal Taxes (市町村税) paid to 砺波市"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "CITY_TONAMI",
+      "value_usd": 19264000.0,
+      "category": "welfare",
+      "year": 2021,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 砺波市"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "CITY_TONAMI",
+      "value_usd": 28896000.0,
+      "category": "trade",
+      "year": 2021,
+      "description": "National Treasury Disbursements (国庫支出金) to 砺波市"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "CITY_TONAMI",
+      "value_usd": 15411200.0,
+      "category": "welfare",
+      "year": 2021,
+      "description": "Prefectural Disbursements (県支出金) to 砺波市"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "CITY_TONAMI",
+      "value_usd": 13484800.0,
+      "category": "banking",
+      "year": 2021,
+      "description": "Municipal Bonds (地方債) issued by 砺波市"
+    },
+    {
+      "source_id": "CITY_TONAMI",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 86688000.0,
+      "category": "welfare",
+      "year": 2021,
+      "description": "砺波市 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "CITY_TONAMI",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 23116800.0,
+      "category": "infrastructure",
+      "year": 2021,
+      "description": "砺波市 spending on city infrastructure"
+    },
+    {
+      "source_id": "CITY_TONAMI",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 19264000.0,
+      "category": "education",
+      "year": 2021,
+      "description": "砺波市 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "CITY_KUROBE",
+      "value_usd": 78432000.0,
+      "category": "tax",
+      "year": 2021,
+      "description": "Municipal Taxes (市町村税) paid to 黒部市"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "CITY_KUROBE",
+      "value_usd": 18240000.0,
+      "category": "welfare",
+      "year": 2021,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 黒部市"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "CITY_KUROBE",
+      "value_usd": 27360000.0,
+      "category": "trade",
+      "year": 2021,
+      "description": "National Treasury Disbursements (国庫支出金) to 黒部市"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "CITY_KUROBE",
+      "value_usd": 14592000.0,
+      "category": "welfare",
+      "year": 2021,
+      "description": "Prefectural Disbursements (県支出金) to 黒部市"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "CITY_KUROBE",
+      "value_usd": 12768000.0,
+      "category": "banking",
+      "year": 2021,
+      "description": "Municipal Bonds (地方債) issued by 黒部市"
+    },
+    {
+      "source_id": "CITY_KUROBE",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 82080000.0,
+      "category": "welfare",
+      "year": 2021,
+      "description": "黒部市 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "CITY_KUROBE",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 21888000.0,
+      "category": "infrastructure",
+      "year": 2021,
+      "description": "黒部市 spending on city infrastructure"
+    },
+    {
+      "source_id": "CITY_KUROBE",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 18240000.0,
+      "category": "education",
+      "year": 2021,
+      "description": "黒部市 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "CITY_UOZU",
+      "value_usd": 69350400.0,
+      "category": "tax",
+      "year": 2021,
+      "description": "Municipal Taxes (市町村税) paid to 魚津市"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "CITY_UOZU",
+      "value_usd": 16128000.0,
+      "category": "welfare",
+      "year": 2021,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 魚津市"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "CITY_UOZU",
+      "value_usd": 24192000.0,
+      "category": "trade",
+      "year": 2021,
+      "description": "National Treasury Disbursements (国庫支出金) to 魚津市"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "CITY_UOZU",
+      "value_usd": 12902400.0,
+      "category": "welfare",
+      "year": 2021,
+      "description": "Prefectural Disbursements (県支出金) to 魚津市"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "CITY_UOZU",
+      "value_usd": 11289600.0,
+      "category": "banking",
+      "year": 2021,
+      "description": "Municipal Bonds (地方債) issued by 魚津市"
+    },
+    {
+      "source_id": "CITY_UOZU",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 72576000.0,
+      "category": "welfare",
+      "year": 2021,
+      "description": "魚津市 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "CITY_UOZU",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 19353600.0,
+      "category": "infrastructure",
+      "year": 2021,
+      "description": "魚津市 spending on city infrastructure"
+    },
+    {
+      "source_id": "CITY_UOZU",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 16128000.0,
+      "category": "education",
+      "year": 2021,
+      "description": "魚津市 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "CITY_HIMI",
+      "value_usd": 66873600.0,
+      "category": "tax",
+      "year": 2021,
+      "description": "Municipal Taxes (市町村税) paid to 氷見市"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "CITY_HIMI",
+      "value_usd": 15552000.0,
+      "category": "welfare",
+      "year": 2021,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 氷見市"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "CITY_HIMI",
+      "value_usd": 23328000.0,
+      "category": "trade",
+      "year": 2021,
+      "description": "National Treasury Disbursements (国庫支出金) to 氷見市"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "CITY_HIMI",
+      "value_usd": 12441600.0,
+      "category": "welfare",
+      "year": 2021,
+      "description": "Prefectural Disbursements (県支出金) to 氷見市"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "CITY_HIMI",
+      "value_usd": 10886400.0,
+      "category": "banking",
+      "year": 2021,
+      "description": "Municipal Bonds (地方債) issued by 氷見市"
+    },
+    {
+      "source_id": "CITY_HIMI",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 69984000.0,
+      "category": "welfare",
+      "year": 2021,
+      "description": "氷見市 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "CITY_HIMI",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 18662400.0,
+      "category": "infrastructure",
+      "year": 2021,
+      "description": "氷見市 spending on city infrastructure"
+    },
+    {
+      "source_id": "CITY_HIMI",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 15552000.0,
+      "category": "education",
+      "year": 2021,
+      "description": "氷見市 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "CITY_NAMERIKAWA",
+      "value_usd": 54489600.0,
+      "category": "tax",
+      "year": 2021,
+      "description": "Municipal Taxes (市町村税) paid to 滑川市"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "CITY_NAMERIKAWA",
+      "value_usd": 12672000.0,
+      "category": "welfare",
+      "year": 2021,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 滑川市"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "CITY_NAMERIKAWA",
+      "value_usd": 19008000.0,
+      "category": "trade",
+      "year": 2021,
+      "description": "National Treasury Disbursements (国庫支出金) to 滑川市"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "CITY_NAMERIKAWA",
+      "value_usd": 10137600.0,
+      "category": "welfare",
+      "year": 2021,
+      "description": "Prefectural Disbursements (県支出金) to 滑川市"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "CITY_NAMERIKAWA",
+      "value_usd": 8870400.0,
+      "category": "banking",
+      "year": 2021,
+      "description": "Municipal Bonds (地方債) issued by 滑川市"
+    },
+    {
+      "source_id": "CITY_NAMERIKAWA",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 57024000.0,
+      "category": "welfare",
+      "year": 2021,
+      "description": "滑川市 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "CITY_NAMERIKAWA",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 15206400.0,
+      "category": "infrastructure",
+      "year": 2021,
+      "description": "滑川市 spending on city infrastructure"
+    },
+    {
+      "source_id": "CITY_NAMERIKAWA",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 12672000.0,
+      "category": "education",
+      "year": 2021,
+      "description": "滑川市 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "CITY_OYABE",
+      "value_usd": 45408000.0,
+      "category": "tax",
+      "year": 2021,
+      "description": "Municipal Taxes (市町村税) paid to 小矢部市"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "CITY_OYABE",
+      "value_usd": 10560000.0,
+      "category": "welfare",
+      "year": 2021,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 小矢部市"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "CITY_OYABE",
+      "value_usd": 15840000.0,
+      "category": "trade",
+      "year": 2021,
+      "description": "National Treasury Disbursements (国庫支出金) to 小矢部市"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "CITY_OYABE",
+      "value_usd": 8448000.0,
+      "category": "welfare",
+      "year": 2021,
+      "description": "Prefectural Disbursements (県支出金) to 小矢部市"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "CITY_OYABE",
+      "value_usd": 7392000.0,
+      "category": "banking",
+      "year": 2021,
+      "description": "Municipal Bonds (地方債) issued by 小矢部市"
+    },
+    {
+      "source_id": "CITY_OYABE",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 47520000.0,
+      "category": "welfare",
+      "year": 2021,
+      "description": "小矢部市 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "CITY_OYABE",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 12672000.0,
+      "category": "infrastructure",
+      "year": 2021,
+      "description": "小矢部市 spending on city infrastructure"
+    },
+    {
+      "source_id": "CITY_OYABE",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 10560000.0,
+      "category": "education",
+      "year": 2021,
+      "description": "小矢部市 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "TOWN_KAMIICHI",
+      "value_usd": 30822400.0,
+      "category": "tax",
+      "year": 2021,
+      "description": "Municipal Taxes (市町村税) paid to 上市町"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "TOWN_KAMIICHI",
+      "value_usd": 7168000.0,
+      "category": "welfare",
+      "year": 2021,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 上市町"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "TOWN_KAMIICHI",
+      "value_usd": 10752000.0,
+      "category": "trade",
+      "year": 2021,
+      "description": "National Treasury Disbursements (国庫支出金) to 上市町"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "TOWN_KAMIICHI",
+      "value_usd": 5734400.0,
+      "category": "welfare",
+      "year": 2021,
+      "description": "Prefectural Disbursements (県支出金) to 上市町"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "TOWN_KAMIICHI",
+      "value_usd": 5017600.0,
+      "category": "banking",
+      "year": 2021,
+      "description": "Municipal Bonds (地方債) issued by 上市町"
+    },
+    {
+      "source_id": "TOWN_KAMIICHI",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 32256000.0,
+      "category": "welfare",
+      "year": 2021,
+      "description": "上市町 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "TOWN_KAMIICHI",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 8601600.0,
+      "category": "infrastructure",
+      "year": 2021,
+      "description": "上市町 spending on city infrastructure"
+    },
+    {
+      "source_id": "TOWN_KAMIICHI",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 7168000.0,
+      "category": "education",
+      "year": 2021,
+      "description": "上市町 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "TOWN_TATEYAMA",
+      "value_usd": 28896000.0,
+      "category": "tax",
+      "year": 2021,
+      "description": "Municipal Taxes (市町村税) paid to 立山町"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "TOWN_TATEYAMA",
+      "value_usd": 6720000.0,
+      "category": "welfare",
+      "year": 2021,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 立山町"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "TOWN_TATEYAMA",
+      "value_usd": 10080000.0,
+      "category": "trade",
+      "year": 2021,
+      "description": "National Treasury Disbursements (国庫支出金) to 立山町"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "TOWN_TATEYAMA",
+      "value_usd": 5376000.0,
+      "category": "welfare",
+      "year": 2021,
+      "description": "Prefectural Disbursements (県支出金) to 立山町"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "TOWN_TATEYAMA",
+      "value_usd": 4704000.0,
+      "category": "banking",
+      "year": 2021,
+      "description": "Municipal Bonds (地方債) issued by 立山町"
+    },
+    {
+      "source_id": "TOWN_TATEYAMA",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 30240000.0,
+      "category": "welfare",
+      "year": 2021,
+      "description": "立山町 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "TOWN_TATEYAMA",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 8064000.0,
+      "category": "infrastructure",
+      "year": 2021,
+      "description": "立山町 spending on city infrastructure"
+    },
+    {
+      "source_id": "TOWN_TATEYAMA",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 6720000.0,
+      "category": "education",
+      "year": 2021,
+      "description": "立山町 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "TOWN_NYUZEN",
+      "value_usd": 26969600.0,
+      "category": "tax",
+      "year": 2021,
+      "description": "Municipal Taxes (市町村税) paid to 入善町"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "TOWN_NYUZEN",
+      "value_usd": 6272000.0,
+      "category": "welfare",
+      "year": 2021,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 入善町"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "TOWN_NYUZEN",
+      "value_usd": 9408000.0,
+      "category": "trade",
+      "year": 2021,
+      "description": "National Treasury Disbursements (国庫支出金) to 入善町"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "TOWN_NYUZEN",
+      "value_usd": 5017600.0,
+      "category": "welfare",
+      "year": 2021,
+      "description": "Prefectural Disbursements (県支出金) to 入善町"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "TOWN_NYUZEN",
+      "value_usd": 4390400.0,
+      "category": "banking",
+      "year": 2021,
+      "description": "Municipal Bonds (地方債) issued by 入善町"
+    },
+    {
+      "source_id": "TOWN_NYUZEN",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 28224000.0,
+      "category": "welfare",
+      "year": 2021,
+      "description": "入善町 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "TOWN_NYUZEN",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 7526400.0,
+      "category": "infrastructure",
+      "year": 2021,
+      "description": "入善町 spending on city infrastructure"
+    },
+    {
+      "source_id": "TOWN_NYUZEN",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 6272000.0,
+      "category": "education",
+      "year": 2021,
+      "description": "入善町 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "TOWN_ASAHI",
+      "value_usd": 22291200.0,
+      "category": "tax",
+      "year": 2021,
+      "description": "Municipal Taxes (市町村税) paid to 朝日町"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "TOWN_ASAHI",
+      "value_usd": 5184000.0,
+      "category": "welfare",
+      "year": 2021,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 朝日町"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "TOWN_ASAHI",
+      "value_usd": 7776000.0,
+      "category": "trade",
+      "year": 2021,
+      "description": "National Treasury Disbursements (国庫支出金) to 朝日町"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "TOWN_ASAHI",
+      "value_usd": 4147200.0,
+      "category": "welfare",
+      "year": 2021,
+      "description": "Prefectural Disbursements (県支出金) to 朝日町"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "TOWN_ASAHI",
+      "value_usd": 3628800.0,
+      "category": "banking",
+      "year": 2021,
+      "description": "Municipal Bonds (地方債) issued by 朝日町"
+    },
+    {
+      "source_id": "TOWN_ASAHI",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 23328000.0,
+      "category": "welfare",
+      "year": 2021,
+      "description": "朝日町 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "TOWN_ASAHI",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 6220800.0,
+      "category": "infrastructure",
+      "year": 2021,
+      "description": "朝日町 spending on city infrastructure"
+    },
+    {
+      "source_id": "TOWN_ASAHI",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 5184000.0,
+      "category": "education",
+      "year": 2021,
+      "description": "朝日町 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "VILLAGE_FUNAHASHI",
+      "value_usd": 6880000.0,
+      "category": "tax",
+      "year": 2021,
+      "description": "Municipal Taxes (市町村税) paid to 舟橋村"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "VILLAGE_FUNAHASHI",
+      "value_usd": 1600000.0,
+      "category": "welfare",
+      "year": 2021,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 舟橋村"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "VILLAGE_FUNAHASHI",
+      "value_usd": 2400000.0,
+      "category": "trade",
+      "year": 2021,
+      "description": "National Treasury Disbursements (国庫支出金) to 舟橋村"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "VILLAGE_FUNAHASHI",
+      "value_usd": 1280000.0,
+      "category": "welfare",
+      "year": 2021,
+      "description": "Prefectural Disbursements (県支出金) to 舟橋村"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "VILLAGE_FUNAHASHI",
+      "value_usd": 1120000.0,
+      "category": "banking",
+      "year": 2021,
+      "description": "Municipal Bonds (地方債) issued by 舟橋村"
+    },
+    {
+      "source_id": "VILLAGE_FUNAHASHI",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 7200000.0,
+      "category": "welfare",
+      "year": 2021,
+      "description": "舟橋村 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "VILLAGE_FUNAHASHI",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 1920000.0,
+      "category": "infrastructure",
+      "year": 2021,
+      "description": "舟橋村 spending on city infrastructure"
+    },
+    {
+      "source_id": "VILLAGE_FUNAHASHI",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 1600000.0,
+      "category": "education",
+      "year": 2021,
+      "description": "舟橋村 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "PREF_TOYAMA",
+      "value_usd": 1401040666.67,
+      "category": "tax",
+      "year": 2022,
+      "description": "Prefectural Taxes (県税) paid to 富山県庁"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "PREF_TOYAMA",
+      "value_usd": 600446000.0,
+      "category": "welfare",
+      "year": 2022,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 富山県庁"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "PREF_TOYAMA",
+      "value_usd": 800594666.67,
+      "category": "trade",
+      "year": 2022,
+      "description": "National Treasury Disbursements (国庫支出金) to 富山県庁"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "PREF_TOYAMA",
+      "value_usd": 400297333.33,
+      "category": "banking",
+      "year": 2022,
+      "description": "Prefectural Bonds (地方債) issued by 富山県庁"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 1000743333.33,
+      "category": "welfare",
+      "year": 2022,
+      "description": "富山県庁 spending on prefectural hospitals/welfare"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 600446000.0,
+      "category": "infrastructure",
+      "year": 2022,
+      "description": "富山県庁 spending on prefectural roads/infra"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 800594666.67,
+      "category": "education",
+      "year": 2022,
+      "description": "富山県庁 spending on prefectural high schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "CITY_TOYAMA",
+      "value_usd": 493880800.0,
+      "category": "tax",
+      "year": 2022,
+      "description": "Municipal Taxes (市町村税) paid to 富山市"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "CITY_TOYAMA",
+      "value_usd": 114856000.0,
+      "category": "welfare",
+      "year": 2022,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 富山市"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "CITY_TOYAMA",
+      "value_usd": 172284000.0,
+      "category": "trade",
+      "year": 2022,
+      "description": "National Treasury Disbursements (国庫支出金) to 富山市"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "CITY_TOYAMA",
+      "value_usd": 91884800.0,
+      "category": "welfare",
+      "year": 2022,
+      "description": "Prefectural Disbursements (県支出金) to 富山市"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "CITY_TOYAMA",
+      "value_usd": 80399200.0,
+      "category": "banking",
+      "year": 2022,
+      "description": "Municipal Bonds (地方債) issued by 富山市"
+    },
+    {
+      "source_id": "CITY_TOYAMA",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 516852000.0,
+      "category": "welfare",
+      "year": 2022,
+      "description": "富山市 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "CITY_TOYAMA",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 137827200.0,
+      "category": "infrastructure",
+      "year": 2022,
+      "description": "富山市 spending on city infrastructure"
+    },
+    {
+      "source_id": "CITY_TOYAMA",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 114856000.0,
+      "category": "education",
+      "year": 2022,
+      "description": "富山市 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "CITY_TOYAMA",
+      "target_id": "PROPOSAL_COMPREHENSIVE",
+      "value_usd": 326666.67,
+      "category": "services",
+      "year": 2022,
+      "description": "富山市 第3次富山市総合計画策定支援業務委託 プロポーザル案件 (Open Data: https://www.city.toyama.toyama.jp/)"
+    },
+    {
+      "source_id": "CITY_TOYAMA",
+      "target_id": "PROPOSAL_SMART_CITY",
+      "value_usd": 1306666.67,
+      "category": "technology",
+      "year": 2022,
+      "description": "富山市 スマートシティ推進事業 オープンデータ活用等委託 プロポーザル案件 (Open Data: https://www.city.toyama.toyama.jp/)"
+    },
+    {
+      "source_id": "CITY_TOYAMA",
+      "target_id": "BIDDING_PUBLIC_WORKS",
+      "value_usd": 81666666.67,
+      "category": "infrastructure",
+      "year": 2022,
+      "description": "富山市 一般競争入札(土木一式・建築一式等) オープンデータ公表分 (Open Data: https://www.city.toyama.toyama.jp/)"
+    },
+    {
+      "source_id": "CITY_TOYAMA",
+      "target_id": "NEGOTIated_CONTRACTS",
+      "value_usd": 20906666.67,
+      "category": "services",
+      "year": 2022,
+      "description": "富山市 随意契約(特命・緊急対応等) オープンデータ公表分 (Open Data: https://www.city.toyama.toyama.jp/)"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "CITY_TAKAOKA",
+      "value_usd": 183168533.33,
+      "category": "tax",
+      "year": 2022,
+      "description": "Municipal Taxes (市町村税) paid to 高岡市"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "CITY_TAKAOKA",
+      "value_usd": 42597333.33,
+      "category": "welfare",
+      "year": 2022,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 高岡市"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "CITY_TAKAOKA",
+      "value_usd": 63896000.0,
+      "category": "trade",
+      "year": 2022,
+      "description": "National Treasury Disbursements (国庫支出金) to 高岡市"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "CITY_TAKAOKA",
+      "value_usd": 34077866.67,
+      "category": "welfare",
+      "year": 2022,
+      "description": "Prefectural Disbursements (県支出金) to 高岡市"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "CITY_TAKAOKA",
+      "value_usd": 29818133.33,
+      "category": "banking",
+      "year": 2022,
+      "description": "Municipal Bonds (地方債) issued by 高岡市"
+    },
+    {
+      "source_id": "CITY_TAKAOKA",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 191688000.0,
+      "category": "welfare",
+      "year": 2022,
+      "description": "高岡市 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "CITY_TAKAOKA",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 51116800.0,
+      "category": "infrastructure",
+      "year": 2022,
+      "description": "高岡市 spending on city infrastructure"
+    },
+    {
+      "source_id": "CITY_TAKAOKA",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 42597333.33,
+      "category": "education",
+      "year": 2022,
+      "description": "高岡市 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "CITY_IMIZU",
+      "value_usd": 118272933.33,
+      "category": "tax",
+      "year": 2022,
+      "description": "Municipal Taxes (市町村税) paid to 射水市"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "CITY_IMIZU",
+      "value_usd": 27505333.33,
+      "category": "welfare",
+      "year": 2022,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 射水市"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "CITY_IMIZU",
+      "value_usd": 41258000.0,
+      "category": "trade",
+      "year": 2022,
+      "description": "National Treasury Disbursements (国庫支出金) to 射水市"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "CITY_IMIZU",
+      "value_usd": 22004266.67,
+      "category": "welfare",
+      "year": 2022,
+      "description": "Prefectural Disbursements (県支出金) to 射水市"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "CITY_IMIZU",
+      "value_usd": 19253733.33,
+      "category": "banking",
+      "year": 2022,
+      "description": "Municipal Bonds (地方債) issued by 射水市"
+    },
+    {
+      "source_id": "CITY_IMIZU",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 123774000.0,
+      "category": "welfare",
+      "year": 2022,
+      "description": "射水市 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "CITY_IMIZU",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 33006400.0,
+      "category": "infrastructure",
+      "year": 2022,
+      "description": "射水市 spending on city infrastructure"
+    },
+    {
+      "source_id": "CITY_IMIZU",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 27505333.33,
+      "category": "education",
+      "year": 2022,
+      "description": "射水市 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "CITY_NANTO",
+      "value_usd": 105350000.0,
+      "category": "tax",
+      "year": 2022,
+      "description": "Municipal Taxes (市町村税) paid to 南砺市"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "CITY_NANTO",
+      "value_usd": 24500000.0,
+      "category": "welfare",
+      "year": 2022,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 南砺市"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "CITY_NANTO",
+      "value_usd": 36750000.0,
+      "category": "trade",
+      "year": 2022,
+      "description": "National Treasury Disbursements (国庫支出金) to 南砺市"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "CITY_NANTO",
+      "value_usd": 19600000.0,
+      "category": "welfare",
+      "year": 2022,
+      "description": "Prefectural Disbursements (県支出金) to 南砺市"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "CITY_NANTO",
+      "value_usd": 17150000.0,
+      "category": "banking",
+      "year": 2022,
+      "description": "Municipal Bonds (地方債) issued by 南砺市"
+    },
+    {
+      "source_id": "CITY_NANTO",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 110250000.0,
+      "category": "welfare",
+      "year": 2022,
+      "description": "南砺市 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "CITY_NANTO",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 29400000.0,
+      "category": "infrastructure",
+      "year": 2022,
+      "description": "南砺市 spending on city infrastructure"
+    },
+    {
+      "source_id": "CITY_NANTO",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 24500000.0,
+      "category": "education",
+      "year": 2022,
+      "description": "南砺市 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "CITY_TONAMI",
+      "value_usd": 84560933.33,
+      "category": "tax",
+      "year": 2022,
+      "description": "Municipal Taxes (市町村税) paid to 砺波市"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "CITY_TONAMI",
+      "value_usd": 19665333.33,
+      "category": "welfare",
+      "year": 2022,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 砺波市"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "CITY_TONAMI",
+      "value_usd": 29498000.0,
+      "category": "trade",
+      "year": 2022,
+      "description": "National Treasury Disbursements (国庫支出金) to 砺波市"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "CITY_TONAMI",
+      "value_usd": 15732266.67,
+      "category": "welfare",
+      "year": 2022,
+      "description": "Prefectural Disbursements (県支出金) to 砺波市"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "CITY_TONAMI",
+      "value_usd": 13765733.33,
+      "category": "banking",
+      "year": 2022,
+      "description": "Municipal Bonds (地方債) issued by 砺波市"
+    },
+    {
+      "source_id": "CITY_TONAMI",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 88494000.0,
+      "category": "welfare",
+      "year": 2022,
+      "description": "砺波市 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "CITY_TONAMI",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 23598400.0,
+      "category": "infrastructure",
+      "year": 2022,
+      "description": "砺波市 spending on city infrastructure"
+    },
+    {
+      "source_id": "CITY_TONAMI",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 19665333.33,
+      "category": "education",
+      "year": 2022,
+      "description": "砺波市 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "CITY_KUROBE",
+      "value_usd": 80066000.0,
+      "category": "tax",
+      "year": 2022,
+      "description": "Municipal Taxes (市町村税) paid to 黒部市"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "CITY_KUROBE",
+      "value_usd": 18620000.0,
+      "category": "welfare",
+      "year": 2022,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 黒部市"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "CITY_KUROBE",
+      "value_usd": 27930000.0,
+      "category": "trade",
+      "year": 2022,
+      "description": "National Treasury Disbursements (国庫支出金) to 黒部市"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "CITY_KUROBE",
+      "value_usd": 14896000.0,
+      "category": "welfare",
+      "year": 2022,
+      "description": "Prefectural Disbursements (県支出金) to 黒部市"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "CITY_KUROBE",
+      "value_usd": 13034000.0,
+      "category": "banking",
+      "year": 2022,
+      "description": "Municipal Bonds (地方債) issued by 黒部市"
+    },
+    {
+      "source_id": "CITY_KUROBE",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 83790000.0,
+      "category": "welfare",
+      "year": 2022,
+      "description": "黒部市 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "CITY_KUROBE",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 22344000.0,
+      "category": "infrastructure",
+      "year": 2022,
+      "description": "黒部市 spending on city infrastructure"
+    },
+    {
+      "source_id": "CITY_KUROBE",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 18620000.0,
+      "category": "education",
+      "year": 2022,
+      "description": "黒部市 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "CITY_UOZU",
+      "value_usd": 70795200.0,
+      "category": "tax",
+      "year": 2022,
+      "description": "Municipal Taxes (市町村税) paid to 魚津市"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "CITY_UOZU",
+      "value_usd": 16464000.0,
+      "category": "welfare",
+      "year": 2022,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 魚津市"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "CITY_UOZU",
+      "value_usd": 24696000.0,
+      "category": "trade",
+      "year": 2022,
+      "description": "National Treasury Disbursements (国庫支出金) to 魚津市"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "CITY_UOZU",
+      "value_usd": 13171200.0,
+      "category": "welfare",
+      "year": 2022,
+      "description": "Prefectural Disbursements (県支出金) to 魚津市"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "CITY_UOZU",
+      "value_usd": 11524800.0,
+      "category": "banking",
+      "year": 2022,
+      "description": "Municipal Bonds (地方債) issued by 魚津市"
+    },
+    {
+      "source_id": "CITY_UOZU",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 74088000.0,
+      "category": "welfare",
+      "year": 2022,
+      "description": "魚津市 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "CITY_UOZU",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 19756800.0,
+      "category": "infrastructure",
+      "year": 2022,
+      "description": "魚津市 spending on city infrastructure"
+    },
+    {
+      "source_id": "CITY_UOZU",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 16464000.0,
+      "category": "education",
+      "year": 2022,
+      "description": "魚津市 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "CITY_HIMI",
+      "value_usd": 68266800.0,
+      "category": "tax",
+      "year": 2022,
+      "description": "Municipal Taxes (市町村税) paid to 氷見市"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "CITY_HIMI",
+      "value_usd": 15876000.0,
+      "category": "welfare",
+      "year": 2022,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 氷見市"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "CITY_HIMI",
+      "value_usd": 23814000.0,
+      "category": "trade",
+      "year": 2022,
+      "description": "National Treasury Disbursements (国庫支出金) to 氷見市"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "CITY_HIMI",
+      "value_usd": 12700800.0,
+      "category": "welfare",
+      "year": 2022,
+      "description": "Prefectural Disbursements (県支出金) to 氷見市"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "CITY_HIMI",
+      "value_usd": 11113200.0,
+      "category": "banking",
+      "year": 2022,
+      "description": "Municipal Bonds (地方債) issued by 氷見市"
+    },
+    {
+      "source_id": "CITY_HIMI",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 71442000.0,
+      "category": "welfare",
+      "year": 2022,
+      "description": "氷見市 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "CITY_HIMI",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 19051200.0,
+      "category": "infrastructure",
+      "year": 2022,
+      "description": "氷見市 spending on city infrastructure"
+    },
+    {
+      "source_id": "CITY_HIMI",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 15876000.0,
+      "category": "education",
+      "year": 2022,
+      "description": "氷見市 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "CITY_NAMERIKAWA",
+      "value_usd": 55624800.0,
+      "category": "tax",
+      "year": 2022,
+      "description": "Municipal Taxes (市町村税) paid to 滑川市"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "CITY_NAMERIKAWA",
+      "value_usd": 12936000.0,
+      "category": "welfare",
+      "year": 2022,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 滑川市"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "CITY_NAMERIKAWA",
+      "value_usd": 19404000.0,
+      "category": "trade",
+      "year": 2022,
+      "description": "National Treasury Disbursements (国庫支出金) to 滑川市"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "CITY_NAMERIKAWA",
+      "value_usd": 10348800.0,
+      "category": "welfare",
+      "year": 2022,
+      "description": "Prefectural Disbursements (県支出金) to 滑川市"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "CITY_NAMERIKAWA",
+      "value_usd": 9055200.0,
+      "category": "banking",
+      "year": 2022,
+      "description": "Municipal Bonds (地方債) issued by 滑川市"
+    },
+    {
+      "source_id": "CITY_NAMERIKAWA",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 58212000.0,
+      "category": "welfare",
+      "year": 2022,
+      "description": "滑川市 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "CITY_NAMERIKAWA",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 15523200.0,
+      "category": "infrastructure",
+      "year": 2022,
+      "description": "滑川市 spending on city infrastructure"
+    },
+    {
+      "source_id": "CITY_NAMERIKAWA",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 12936000.0,
+      "category": "education",
+      "year": 2022,
+      "description": "滑川市 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "CITY_OYABE",
+      "value_usd": 46354000.0,
+      "category": "tax",
+      "year": 2022,
+      "description": "Municipal Taxes (市町村税) paid to 小矢部市"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "CITY_OYABE",
+      "value_usd": 10780000.0,
+      "category": "welfare",
+      "year": 2022,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 小矢部市"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "CITY_OYABE",
+      "value_usd": 16170000.0,
+      "category": "trade",
+      "year": 2022,
+      "description": "National Treasury Disbursements (国庫支出金) to 小矢部市"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "CITY_OYABE",
+      "value_usd": 8624000.0,
+      "category": "welfare",
+      "year": 2022,
+      "description": "Prefectural Disbursements (県支出金) to 小矢部市"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "CITY_OYABE",
+      "value_usd": 7546000.0,
+      "category": "banking",
+      "year": 2022,
+      "description": "Municipal Bonds (地方債) issued by 小矢部市"
+    },
+    {
+      "source_id": "CITY_OYABE",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 48510000.0,
+      "category": "welfare",
+      "year": 2022,
+      "description": "小矢部市 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "CITY_OYABE",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 12936000.0,
+      "category": "infrastructure",
+      "year": 2022,
+      "description": "小矢部市 spending on city infrastructure"
+    },
+    {
+      "source_id": "CITY_OYABE",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 10780000.0,
+      "category": "education",
+      "year": 2022,
+      "description": "小矢部市 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "TOWN_KAMIICHI",
+      "value_usd": 31464533.33,
+      "category": "tax",
+      "year": 2022,
+      "description": "Municipal Taxes (市町村税) paid to 上市町"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "TOWN_KAMIICHI",
+      "value_usd": 7317333.33,
+      "category": "welfare",
+      "year": 2022,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 上市町"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "TOWN_KAMIICHI",
+      "value_usd": 10976000.0,
+      "category": "trade",
+      "year": 2022,
+      "description": "National Treasury Disbursements (国庫支出金) to 上市町"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "TOWN_KAMIICHI",
+      "value_usd": 5853866.67,
+      "category": "welfare",
+      "year": 2022,
+      "description": "Prefectural Disbursements (県支出金) to 上市町"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "TOWN_KAMIICHI",
+      "value_usd": 5122133.33,
+      "category": "banking",
+      "year": 2022,
+      "description": "Municipal Bonds (地方債) issued by 上市町"
+    },
+    {
+      "source_id": "TOWN_KAMIICHI",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 32928000.0,
+      "category": "welfare",
+      "year": 2022,
+      "description": "上市町 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "TOWN_KAMIICHI",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 8780800.0,
+      "category": "infrastructure",
+      "year": 2022,
+      "description": "上市町 spending on city infrastructure"
+    },
+    {
+      "source_id": "TOWN_KAMIICHI",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 7317333.33,
+      "category": "education",
+      "year": 2022,
+      "description": "上市町 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "TOWN_TATEYAMA",
+      "value_usd": 29498000.0,
+      "category": "tax",
+      "year": 2022,
+      "description": "Municipal Taxes (市町村税) paid to 立山町"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "TOWN_TATEYAMA",
+      "value_usd": 6860000.0,
+      "category": "welfare",
+      "year": 2022,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 立山町"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "TOWN_TATEYAMA",
+      "value_usd": 10290000.0,
+      "category": "trade",
+      "year": 2022,
+      "description": "National Treasury Disbursements (国庫支出金) to 立山町"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "TOWN_TATEYAMA",
+      "value_usd": 5488000.0,
+      "category": "welfare",
+      "year": 2022,
+      "description": "Prefectural Disbursements (県支出金) to 立山町"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "TOWN_TATEYAMA",
+      "value_usd": 4802000.0,
+      "category": "banking",
+      "year": 2022,
+      "description": "Municipal Bonds (地方債) issued by 立山町"
+    },
+    {
+      "source_id": "TOWN_TATEYAMA",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 30870000.0,
+      "category": "welfare",
+      "year": 2022,
+      "description": "立山町 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "TOWN_TATEYAMA",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 8232000.0,
+      "category": "infrastructure",
+      "year": 2022,
+      "description": "立山町 spending on city infrastructure"
+    },
+    {
+      "source_id": "TOWN_TATEYAMA",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 6860000.0,
+      "category": "education",
+      "year": 2022,
+      "description": "立山町 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "TOWN_NYUZEN",
+      "value_usd": 27531466.67,
+      "category": "tax",
+      "year": 2022,
+      "description": "Municipal Taxes (市町村税) paid to 入善町"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "TOWN_NYUZEN",
+      "value_usd": 6402666.67,
+      "category": "welfare",
+      "year": 2022,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 入善町"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "TOWN_NYUZEN",
+      "value_usd": 9604000.0,
+      "category": "trade",
+      "year": 2022,
+      "description": "National Treasury Disbursements (国庫支出金) to 入善町"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "TOWN_NYUZEN",
+      "value_usd": 5122133.33,
+      "category": "welfare",
+      "year": 2022,
+      "description": "Prefectural Disbursements (県支出金) to 入善町"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "TOWN_NYUZEN",
+      "value_usd": 4481866.67,
+      "category": "banking",
+      "year": 2022,
+      "description": "Municipal Bonds (地方債) issued by 入善町"
+    },
+    {
+      "source_id": "TOWN_NYUZEN",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 28812000.0,
+      "category": "welfare",
+      "year": 2022,
+      "description": "入善町 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "TOWN_NYUZEN",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 7683200.0,
+      "category": "infrastructure",
+      "year": 2022,
+      "description": "入善町 spending on city infrastructure"
+    },
+    {
+      "source_id": "TOWN_NYUZEN",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 6402666.67,
+      "category": "education",
+      "year": 2022,
+      "description": "入善町 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "TOWN_ASAHI",
+      "value_usd": 22755600.0,
+      "category": "tax",
+      "year": 2022,
+      "description": "Municipal Taxes (市町村税) paid to 朝日町"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "TOWN_ASAHI",
+      "value_usd": 5292000.0,
+      "category": "welfare",
+      "year": 2022,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 朝日町"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "TOWN_ASAHI",
+      "value_usd": 7938000.0,
+      "category": "trade",
+      "year": 2022,
+      "description": "National Treasury Disbursements (国庫支出金) to 朝日町"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "TOWN_ASAHI",
+      "value_usd": 4233600.0,
+      "category": "welfare",
+      "year": 2022,
+      "description": "Prefectural Disbursements (県支出金) to 朝日町"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "TOWN_ASAHI",
+      "value_usd": 3704400.0,
+      "category": "banking",
+      "year": 2022,
+      "description": "Municipal Bonds (地方債) issued by 朝日町"
+    },
+    {
+      "source_id": "TOWN_ASAHI",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 23814000.0,
+      "category": "welfare",
+      "year": 2022,
+      "description": "朝日町 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "TOWN_ASAHI",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 6350400.0,
+      "category": "infrastructure",
+      "year": 2022,
+      "description": "朝日町 spending on city infrastructure"
+    },
+    {
+      "source_id": "TOWN_ASAHI",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 5292000.0,
+      "category": "education",
+      "year": 2022,
+      "description": "朝日町 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "VILLAGE_FUNAHASHI",
+      "value_usd": 7023333.33,
+      "category": "tax",
+      "year": 2022,
+      "description": "Municipal Taxes (市町村税) paid to 舟橋村"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "VILLAGE_FUNAHASHI",
+      "value_usd": 1633333.33,
+      "category": "welfare",
+      "year": 2022,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 舟橋村"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "VILLAGE_FUNAHASHI",
+      "value_usd": 2450000.0,
+      "category": "trade",
+      "year": 2022,
+      "description": "National Treasury Disbursements (国庫支出金) to 舟橋村"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "VILLAGE_FUNAHASHI",
+      "value_usd": 1306666.67,
+      "category": "welfare",
+      "year": 2022,
+      "description": "Prefectural Disbursements (県支出金) to 舟橋村"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "VILLAGE_FUNAHASHI",
+      "value_usd": 1143333.33,
+      "category": "banking",
+      "year": 2022,
+      "description": "Municipal Bonds (地方債) issued by 舟橋村"
+    },
+    {
+      "source_id": "VILLAGE_FUNAHASHI",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 7350000.0,
+      "category": "welfare",
+      "year": 2022,
+      "description": "舟橋村 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "VILLAGE_FUNAHASHI",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 1960000.0,
+      "category": "infrastructure",
+      "year": 2022,
+      "description": "舟橋村 spending on city infrastructure"
+    },
+    {
+      "source_id": "VILLAGE_FUNAHASHI",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 1633333.33,
+      "category": "education",
+      "year": 2022,
+      "description": "舟橋村 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "PREF_TOYAMA",
+      "value_usd": 1429633333.33,
+      "category": "tax",
+      "year": 2023,
+      "description": "Prefectural Taxes (県税) paid to 富山県庁"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "PREF_TOYAMA",
+      "value_usd": 612700000.0,
+      "category": "welfare",
+      "year": 2023,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 富山県庁"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "PREF_TOYAMA",
+      "value_usd": 816933333.33,
+      "category": "trade",
+      "year": 2023,
+      "description": "National Treasury Disbursements (国庫支出金) to 富山県庁"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "PREF_TOYAMA",
+      "value_usd": 408466666.67,
+      "category": "banking",
+      "year": 2023,
+      "description": "Prefectural Bonds (地方債) issued by 富山県庁"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 1021166666.67,
+      "category": "welfare",
+      "year": 2023,
+      "description": "富山県庁 spending on prefectural hospitals/welfare"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 612700000.0,
+      "category": "infrastructure",
+      "year": 2023,
+      "description": "富山県庁 spending on prefectural roads/infra"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 816933333.33,
+      "category": "education",
+      "year": 2023,
+      "description": "富山県庁 spending on prefectural high schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "CITY_TOYAMA",
+      "value_usd": 503960000.0,
+      "category": "tax",
+      "year": 2023,
+      "description": "Municipal Taxes (市町村税) paid to 富山市"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "CITY_TOYAMA",
+      "value_usd": 117200000.0,
+      "category": "welfare",
+      "year": 2023,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 富山市"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "CITY_TOYAMA",
+      "value_usd": 175800000.0,
+      "category": "trade",
+      "year": 2023,
+      "description": "National Treasury Disbursements (国庫支出金) to 富山市"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "CITY_TOYAMA",
+      "value_usd": 93760000.0,
+      "category": "welfare",
+      "year": 2023,
+      "description": "Prefectural Disbursements (県支出金) to 富山市"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "CITY_TOYAMA",
+      "value_usd": 82040000.0,
+      "category": "banking",
+      "year": 2023,
+      "description": "Municipal Bonds (地方債) issued by 富山市"
+    },
+    {
+      "source_id": "CITY_TOYAMA",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 527400000.0,
+      "category": "welfare",
+      "year": 2023,
+      "description": "富山市 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "CITY_TOYAMA",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 140640000.0,
+      "category": "infrastructure",
+      "year": 2023,
+      "description": "富山市 spending on city infrastructure"
+    },
+    {
+      "source_id": "CITY_TOYAMA",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 117200000.0,
+      "category": "education",
+      "year": 2023,
+      "description": "富山市 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "CITY_TOYAMA",
+      "target_id": "PROPOSAL_COMPREHENSIVE",
+      "value_usd": 333333.33,
+      "category": "services",
+      "year": 2023,
+      "description": "富山市 第3次富山市総合計画策定支援業務委託 プロポーザル案件 (Open Data: https://www.city.toyama.toyama.jp/)"
+    },
+    {
+      "source_id": "CITY_TOYAMA",
+      "target_id": "PROPOSAL_SMART_CITY",
+      "value_usd": 1333333.33,
+      "category": "technology",
+      "year": 2023,
+      "description": "富山市 スマートシティ推進事業 オープンデータ活用等委託 プロポーザル案件 (Open Data: https://www.city.toyama.toyama.jp/)"
+    },
+    {
+      "source_id": "CITY_TOYAMA",
+      "target_id": "BIDDING_PUBLIC_WORKS",
+      "value_usd": 83333333.33,
+      "category": "infrastructure",
+      "year": 2023,
+      "description": "富山市 一般競争入札(土木一式・建築一式等) オープンデータ公表分 (Open Data: https://www.city.toyama.toyama.jp/)"
+    },
+    {
+      "source_id": "CITY_TOYAMA",
+      "target_id": "NEGOTIated_CONTRACTS",
+      "value_usd": 21333333.33,
+      "category": "services",
+      "year": 2023,
+      "description": "富山市 随意契約(特命・緊急対応等) オープンデータ公表分 (Open Data: https://www.city.toyama.toyama.jp/)"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "CITY_TAKAOKA",
+      "value_usd": 186906666.67,
+      "category": "tax",
+      "year": 2023,
+      "description": "Municipal Taxes (市町村税) paid to 高岡市"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "CITY_TAKAOKA",
+      "value_usd": 43466666.67,
+      "category": "welfare",
+      "year": 2023,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 高岡市"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "CITY_TAKAOKA",
+      "value_usd": 65200000.0,
+      "category": "trade",
+      "year": 2023,
+      "description": "National Treasury Disbursements (国庫支出金) to 高岡市"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "CITY_TAKAOKA",
+      "value_usd": 34773333.33,
+      "category": "welfare",
+      "year": 2023,
+      "description": "Prefectural Disbursements (県支出金) to 高岡市"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "CITY_TAKAOKA",
+      "value_usd": 30426666.67,
+      "category": "banking",
+      "year": 2023,
+      "description": "Municipal Bonds (地方債) issued by 高岡市"
+    },
+    {
+      "source_id": "CITY_TAKAOKA",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 195600000.0,
+      "category": "welfare",
+      "year": 2023,
+      "description": "高岡市 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "CITY_TAKAOKA",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 52160000.0,
+      "category": "infrastructure",
+      "year": 2023,
+      "description": "高岡市 spending on city infrastructure"
+    },
+    {
+      "source_id": "CITY_TAKAOKA",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 43466666.67,
+      "category": "education",
+      "year": 2023,
+      "description": "高岡市 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "CITY_IMIZU",
+      "value_usd": 120686666.67,
+      "category": "tax",
+      "year": 2023,
+      "description": "Municipal Taxes (市町村税) paid to 射水市"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "CITY_IMIZU",
+      "value_usd": 28066666.67,
+      "category": "welfare",
+      "year": 2023,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 射水市"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "CITY_IMIZU",
+      "value_usd": 42100000.0,
+      "category": "trade",
+      "year": 2023,
+      "description": "National Treasury Disbursements (国庫支出金) to 射水市"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "CITY_IMIZU",
+      "value_usd": 22453333.33,
+      "category": "welfare",
+      "year": 2023,
+      "description": "Prefectural Disbursements (県支出金) to 射水市"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "CITY_IMIZU",
+      "value_usd": 19646666.67,
+      "category": "banking",
+      "year": 2023,
+      "description": "Municipal Bonds (地方債) issued by 射水市"
+    },
+    {
+      "source_id": "CITY_IMIZU",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 126300000.0,
+      "category": "welfare",
+      "year": 2023,
+      "description": "射水市 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "CITY_IMIZU",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 33680000.0,
+      "category": "infrastructure",
+      "year": 2023,
+      "description": "射水市 spending on city infrastructure"
+    },
+    {
+      "source_id": "CITY_IMIZU",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 28066666.67,
+      "category": "education",
+      "year": 2023,
+      "description": "射水市 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "CITY_NANTO",
+      "value_usd": 107500000.0,
+      "category": "tax",
+      "year": 2023,
+      "description": "Municipal Taxes (市町村税) paid to 南砺市"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "CITY_NANTO",
+      "value_usd": 25000000.0,
+      "category": "welfare",
+      "year": 2023,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 南砺市"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "CITY_NANTO",
+      "value_usd": 37500000.0,
+      "category": "trade",
+      "year": 2023,
+      "description": "National Treasury Disbursements (国庫支出金) to 南砺市"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "CITY_NANTO",
+      "value_usd": 20000000.0,
+      "category": "welfare",
+      "year": 2023,
+      "description": "Prefectural Disbursements (県支出金) to 南砺市"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "CITY_NANTO",
+      "value_usd": 17500000.0,
+      "category": "banking",
+      "year": 2023,
+      "description": "Municipal Bonds (地方債) issued by 南砺市"
+    },
+    {
+      "source_id": "CITY_NANTO",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 112500000.0,
+      "category": "welfare",
+      "year": 2023,
+      "description": "南砺市 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "CITY_NANTO",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 30000000.0,
+      "category": "infrastructure",
+      "year": 2023,
+      "description": "南砺市 spending on city infrastructure"
+    },
+    {
+      "source_id": "CITY_NANTO",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 25000000.0,
+      "category": "education",
+      "year": 2023,
+      "description": "南砺市 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "CITY_TONAMI",
+      "value_usd": 86286666.67,
+      "category": "tax",
+      "year": 2023,
+      "description": "Municipal Taxes (市町村税) paid to 砺波市"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "CITY_TONAMI",
+      "value_usd": 20066666.67,
+      "category": "welfare",
+      "year": 2023,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 砺波市"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "CITY_TONAMI",
+      "value_usd": 30100000.0,
+      "category": "trade",
+      "year": 2023,
+      "description": "National Treasury Disbursements (国庫支出金) to 砺波市"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "CITY_TONAMI",
+      "value_usd": 16053333.33,
+      "category": "welfare",
+      "year": 2023,
+      "description": "Prefectural Disbursements (県支出金) to 砺波市"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "CITY_TONAMI",
+      "value_usd": 14046666.67,
+      "category": "banking",
+      "year": 2023,
+      "description": "Municipal Bonds (地方債) issued by 砺波市"
+    },
+    {
+      "source_id": "CITY_TONAMI",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 90300000.0,
+      "category": "welfare",
+      "year": 2023,
+      "description": "砺波市 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "CITY_TONAMI",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 24080000.0,
+      "category": "infrastructure",
+      "year": 2023,
+      "description": "砺波市 spending on city infrastructure"
+    },
+    {
+      "source_id": "CITY_TONAMI",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 20066666.67,
+      "category": "education",
+      "year": 2023,
+      "description": "砺波市 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "CITY_KUROBE",
+      "value_usd": 81700000.0,
+      "category": "tax",
+      "year": 2023,
+      "description": "Municipal Taxes (市町村税) paid to 黒部市"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "CITY_KUROBE",
+      "value_usd": 19000000.0,
+      "category": "welfare",
+      "year": 2023,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 黒部市"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "CITY_KUROBE",
+      "value_usd": 28500000.0,
+      "category": "trade",
+      "year": 2023,
+      "description": "National Treasury Disbursements (国庫支出金) to 黒部市"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "CITY_KUROBE",
+      "value_usd": 15200000.0,
+      "category": "welfare",
+      "year": 2023,
+      "description": "Prefectural Disbursements (県支出金) to 黒部市"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "CITY_KUROBE",
+      "value_usd": 13300000.0,
+      "category": "banking",
+      "year": 2023,
+      "description": "Municipal Bonds (地方債) issued by 黒部市"
+    },
+    {
+      "source_id": "CITY_KUROBE",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 85500000.0,
+      "category": "welfare",
+      "year": 2023,
+      "description": "黒部市 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "CITY_KUROBE",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 22800000.0,
+      "category": "infrastructure",
+      "year": 2023,
+      "description": "黒部市 spending on city infrastructure"
+    },
+    {
+      "source_id": "CITY_KUROBE",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 19000000.0,
+      "category": "education",
+      "year": 2023,
+      "description": "黒部市 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "CITY_UOZU",
+      "value_usd": 72240000.0,
+      "category": "tax",
+      "year": 2023,
+      "description": "Municipal Taxes (市町村税) paid to 魚津市"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "CITY_UOZU",
+      "value_usd": 16800000.0,
+      "category": "welfare",
+      "year": 2023,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 魚津市"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "CITY_UOZU",
+      "value_usd": 25200000.0,
+      "category": "trade",
+      "year": 2023,
+      "description": "National Treasury Disbursements (国庫支出金) to 魚津市"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "CITY_UOZU",
+      "value_usd": 13440000.0,
+      "category": "welfare",
+      "year": 2023,
+      "description": "Prefectural Disbursements (県支出金) to 魚津市"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "CITY_UOZU",
+      "value_usd": 11760000.0,
+      "category": "banking",
+      "year": 2023,
+      "description": "Municipal Bonds (地方債) issued by 魚津市"
+    },
+    {
+      "source_id": "CITY_UOZU",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 75600000.0,
+      "category": "welfare",
+      "year": 2023,
+      "description": "魚津市 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "CITY_UOZU",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 20160000.0,
+      "category": "infrastructure",
+      "year": 2023,
+      "description": "魚津市 spending on city infrastructure"
+    },
+    {
+      "source_id": "CITY_UOZU",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 16800000.0,
+      "category": "education",
+      "year": 2023,
+      "description": "魚津市 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "CITY_HIMI",
+      "value_usd": 69660000.0,
+      "category": "tax",
+      "year": 2023,
+      "description": "Municipal Taxes (市町村税) paid to 氷見市"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "CITY_HIMI",
+      "value_usd": 16200000.0,
+      "category": "welfare",
+      "year": 2023,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 氷見市"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "CITY_HIMI",
+      "value_usd": 24300000.0,
+      "category": "trade",
+      "year": 2023,
+      "description": "National Treasury Disbursements (国庫支出金) to 氷見市"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "CITY_HIMI",
+      "value_usd": 12960000.0,
+      "category": "welfare",
+      "year": 2023,
+      "description": "Prefectural Disbursements (県支出金) to 氷見市"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "CITY_HIMI",
+      "value_usd": 11340000.0,
+      "category": "banking",
+      "year": 2023,
+      "description": "Municipal Bonds (地方債) issued by 氷見市"
+    },
+    {
+      "source_id": "CITY_HIMI",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 72900000.0,
+      "category": "welfare",
+      "year": 2023,
+      "description": "氷見市 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "CITY_HIMI",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 19440000.0,
+      "category": "infrastructure",
+      "year": 2023,
+      "description": "氷見市 spending on city infrastructure"
+    },
+    {
+      "source_id": "CITY_HIMI",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 16200000.0,
+      "category": "education",
+      "year": 2023,
+      "description": "氷見市 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "CITY_NAMERIKAWA",
+      "value_usd": 56760000.0,
+      "category": "tax",
+      "year": 2023,
+      "description": "Municipal Taxes (市町村税) paid to 滑川市"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "CITY_NAMERIKAWA",
+      "value_usd": 13200000.0,
+      "category": "welfare",
+      "year": 2023,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 滑川市"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "CITY_NAMERIKAWA",
+      "value_usd": 19800000.0,
+      "category": "trade",
+      "year": 2023,
+      "description": "National Treasury Disbursements (国庫支出金) to 滑川市"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "CITY_NAMERIKAWA",
+      "value_usd": 10560000.0,
+      "category": "welfare",
+      "year": 2023,
+      "description": "Prefectural Disbursements (県支出金) to 滑川市"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "CITY_NAMERIKAWA",
+      "value_usd": 9240000.0,
+      "category": "banking",
+      "year": 2023,
+      "description": "Municipal Bonds (地方債) issued by 滑川市"
+    },
+    {
+      "source_id": "CITY_NAMERIKAWA",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 59400000.0,
+      "category": "welfare",
+      "year": 2023,
+      "description": "滑川市 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "CITY_NAMERIKAWA",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 15840000.0,
+      "category": "infrastructure",
+      "year": 2023,
+      "description": "滑川市 spending on city infrastructure"
+    },
+    {
+      "source_id": "CITY_NAMERIKAWA",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 13200000.0,
+      "category": "education",
+      "year": 2023,
+      "description": "滑川市 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "CITY_OYABE",
+      "value_usd": 47300000.0,
+      "category": "tax",
+      "year": 2023,
+      "description": "Municipal Taxes (市町村税) paid to 小矢部市"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "CITY_OYABE",
+      "value_usd": 11000000.0,
+      "category": "welfare",
+      "year": 2023,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 小矢部市"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "CITY_OYABE",
+      "value_usd": 16500000.0,
+      "category": "trade",
+      "year": 2023,
+      "description": "National Treasury Disbursements (国庫支出金) to 小矢部市"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "CITY_OYABE",
+      "value_usd": 8800000.0,
+      "category": "welfare",
+      "year": 2023,
+      "description": "Prefectural Disbursements (県支出金) to 小矢部市"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "CITY_OYABE",
+      "value_usd": 7700000.0,
+      "category": "banking",
+      "year": 2023,
+      "description": "Municipal Bonds (地方債) issued by 小矢部市"
+    },
+    {
+      "source_id": "CITY_OYABE",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 49500000.0,
+      "category": "welfare",
+      "year": 2023,
+      "description": "小矢部市 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "CITY_OYABE",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 13200000.0,
+      "category": "infrastructure",
+      "year": 2023,
+      "description": "小矢部市 spending on city infrastructure"
+    },
+    {
+      "source_id": "CITY_OYABE",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 11000000.0,
+      "category": "education",
+      "year": 2023,
+      "description": "小矢部市 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "TOWN_KAMIICHI",
+      "value_usd": 32106666.67,
+      "category": "tax",
+      "year": 2023,
+      "description": "Municipal Taxes (市町村税) paid to 上市町"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "TOWN_KAMIICHI",
+      "value_usd": 7466666.67,
+      "category": "welfare",
+      "year": 2023,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 上市町"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "TOWN_KAMIICHI",
+      "value_usd": 11200000.0,
+      "category": "trade",
+      "year": 2023,
+      "description": "National Treasury Disbursements (国庫支出金) to 上市町"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "TOWN_KAMIICHI",
+      "value_usd": 5973333.33,
+      "category": "welfare",
+      "year": 2023,
+      "description": "Prefectural Disbursements (県支出金) to 上市町"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "TOWN_KAMIICHI",
+      "value_usd": 5226666.67,
+      "category": "banking",
+      "year": 2023,
+      "description": "Municipal Bonds (地方債) issued by 上市町"
+    },
+    {
+      "source_id": "TOWN_KAMIICHI",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 33600000.0,
+      "category": "welfare",
+      "year": 2023,
+      "description": "上市町 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "TOWN_KAMIICHI",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 8960000.0,
+      "category": "infrastructure",
+      "year": 2023,
+      "description": "上市町 spending on city infrastructure"
+    },
+    {
+      "source_id": "TOWN_KAMIICHI",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 7466666.67,
+      "category": "education",
+      "year": 2023,
+      "description": "上市町 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "TOWN_TATEYAMA",
+      "value_usd": 30100000.0,
+      "category": "tax",
+      "year": 2023,
+      "description": "Municipal Taxes (市町村税) paid to 立山町"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "TOWN_TATEYAMA",
+      "value_usd": 7000000.0,
+      "category": "welfare",
+      "year": 2023,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 立山町"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "TOWN_TATEYAMA",
+      "value_usd": 10500000.0,
+      "category": "trade",
+      "year": 2023,
+      "description": "National Treasury Disbursements (国庫支出金) to 立山町"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "TOWN_TATEYAMA",
+      "value_usd": 5600000.0,
+      "category": "welfare",
+      "year": 2023,
+      "description": "Prefectural Disbursements (県支出金) to 立山町"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "TOWN_TATEYAMA",
+      "value_usd": 4900000.0,
+      "category": "banking",
+      "year": 2023,
+      "description": "Municipal Bonds (地方債) issued by 立山町"
+    },
+    {
+      "source_id": "TOWN_TATEYAMA",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 31500000.0,
+      "category": "welfare",
+      "year": 2023,
+      "description": "立山町 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "TOWN_TATEYAMA",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 8400000.0,
+      "category": "infrastructure",
+      "year": 2023,
+      "description": "立山町 spending on city infrastructure"
+    },
+    {
+      "source_id": "TOWN_TATEYAMA",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 7000000.0,
+      "category": "education",
+      "year": 2023,
+      "description": "立山町 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "TOWN_NYUZEN",
+      "value_usd": 28093333.33,
+      "category": "tax",
+      "year": 2023,
+      "description": "Municipal Taxes (市町村税) paid to 入善町"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "TOWN_NYUZEN",
+      "value_usd": 6533333.33,
+      "category": "welfare",
+      "year": 2023,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 入善町"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "TOWN_NYUZEN",
+      "value_usd": 9800000.0,
+      "category": "trade",
+      "year": 2023,
+      "description": "National Treasury Disbursements (国庫支出金) to 入善町"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "TOWN_NYUZEN",
+      "value_usd": 5226666.67,
+      "category": "welfare",
+      "year": 2023,
+      "description": "Prefectural Disbursements (県支出金) to 入善町"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "TOWN_NYUZEN",
+      "value_usd": 4573333.33,
+      "category": "banking",
+      "year": 2023,
+      "description": "Municipal Bonds (地方債) issued by 入善町"
+    },
+    {
+      "source_id": "TOWN_NYUZEN",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 29400000.0,
+      "category": "welfare",
+      "year": 2023,
+      "description": "入善町 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "TOWN_NYUZEN",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 7840000.0,
+      "category": "infrastructure",
+      "year": 2023,
+      "description": "入善町 spending on city infrastructure"
+    },
+    {
+      "source_id": "TOWN_NYUZEN",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 6533333.33,
+      "category": "education",
+      "year": 2023,
+      "description": "入善町 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "TOWN_ASAHI",
+      "value_usd": 23220000.0,
+      "category": "tax",
+      "year": 2023,
+      "description": "Municipal Taxes (市町村税) paid to 朝日町"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "TOWN_ASAHI",
+      "value_usd": 5400000.0,
+      "category": "welfare",
+      "year": 2023,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 朝日町"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "TOWN_ASAHI",
+      "value_usd": 8100000.0,
+      "category": "trade",
+      "year": 2023,
+      "description": "National Treasury Disbursements (国庫支出金) to 朝日町"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "TOWN_ASAHI",
+      "value_usd": 4320000.0,
+      "category": "welfare",
+      "year": 2023,
+      "description": "Prefectural Disbursements (県支出金) to 朝日町"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "TOWN_ASAHI",
+      "value_usd": 3780000.0,
+      "category": "banking",
+      "year": 2023,
+      "description": "Municipal Bonds (地方債) issued by 朝日町"
+    },
+    {
+      "source_id": "TOWN_ASAHI",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 24300000.0,
+      "category": "welfare",
+      "year": 2023,
+      "description": "朝日町 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "TOWN_ASAHI",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 6480000.0,
+      "category": "infrastructure",
+      "year": 2023,
+      "description": "朝日町 spending on city infrastructure"
+    },
+    {
+      "source_id": "TOWN_ASAHI",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 5400000.0,
+      "category": "education",
+      "year": 2023,
+      "description": "朝日町 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "VILLAGE_FUNAHASHI",
+      "value_usd": 7166666.67,
+      "category": "tax",
+      "year": 2023,
+      "description": "Municipal Taxes (市町村税) paid to 舟橋村"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "VILLAGE_FUNAHASHI",
+      "value_usd": 1666666.67,
+      "category": "welfare",
+      "year": 2023,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 舟橋村"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "VILLAGE_FUNAHASHI",
+      "value_usd": 2500000.0,
+      "category": "trade",
+      "year": 2023,
+      "description": "National Treasury Disbursements (国庫支出金) to 舟橋村"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "VILLAGE_FUNAHASHI",
+      "value_usd": 1333333.33,
+      "category": "welfare",
+      "year": 2023,
+      "description": "Prefectural Disbursements (県支出金) to 舟橋村"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "VILLAGE_FUNAHASHI",
+      "value_usd": 1166666.67,
+      "category": "banking",
+      "year": 2023,
+      "description": "Municipal Bonds (地方債) issued by 舟橋村"
+    },
+    {
+      "source_id": "VILLAGE_FUNAHASHI",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 7500000.0,
+      "category": "welfare",
+      "year": 2023,
+      "description": "舟橋村 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "VILLAGE_FUNAHASHI",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 2000000.0,
+      "category": "infrastructure",
+      "year": 2023,
+      "description": "舟橋村 spending on city infrastructure"
+    },
+    {
+      "source_id": "VILLAGE_FUNAHASHI",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 1666666.67,
+      "category": "education",
+      "year": 2023,
+      "description": "舟橋村 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "PREF_TOYAMA",
+      "value_usd": 1458226000.0,
+      "category": "tax",
+      "year": 2024,
+      "description": "Prefectural Taxes (県税) paid to 富山県庁"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "PREF_TOYAMA",
+      "value_usd": 624954000.0,
+      "category": "welfare",
+      "year": 2024,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 富山県庁"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "PREF_TOYAMA",
+      "value_usd": 833272000.0,
+      "category": "trade",
+      "year": 2024,
+      "description": "National Treasury Disbursements (国庫支出金) to 富山県庁"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "PREF_TOYAMA",
+      "value_usd": 416636000.0,
+      "category": "banking",
+      "year": 2024,
+      "description": "Prefectural Bonds (地方債) issued by 富山県庁"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 1041590000.0,
+      "category": "welfare",
+      "year": 2024,
+      "description": "富山県庁 spending on prefectural hospitals/welfare"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 624954000.0,
+      "category": "infrastructure",
+      "year": 2024,
+      "description": "富山県庁 spending on prefectural roads/infra"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 833272000.0,
+      "category": "education",
+      "year": 2024,
+      "description": "富山県庁 spending on prefectural high schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "CITY_TOYAMA",
+      "value_usd": 514039200.0,
+      "category": "tax",
+      "year": 2024,
+      "description": "Municipal Taxes (市町村税) paid to 富山市"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "CITY_TOYAMA",
+      "value_usd": 119544000.0,
+      "category": "welfare",
+      "year": 2024,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 富山市"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "CITY_TOYAMA",
+      "value_usd": 179316000.0,
+      "category": "trade",
+      "year": 2024,
+      "description": "National Treasury Disbursements (国庫支出金) to 富山市"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "CITY_TOYAMA",
+      "value_usd": 95635200.0,
+      "category": "welfare",
+      "year": 2024,
+      "description": "Prefectural Disbursements (県支出金) to 富山市"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "CITY_TOYAMA",
+      "value_usd": 83680800.0,
+      "category": "banking",
+      "year": 2024,
+      "description": "Municipal Bonds (地方債) issued by 富山市"
+    },
+    {
+      "source_id": "CITY_TOYAMA",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 537948000.0,
+      "category": "welfare",
+      "year": 2024,
+      "description": "富山市 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "CITY_TOYAMA",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 143452800.0,
+      "category": "infrastructure",
+      "year": 2024,
+      "description": "富山市 spending on city infrastructure"
+    },
+    {
+      "source_id": "CITY_TOYAMA",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 119544000.0,
+      "category": "education",
+      "year": 2024,
+      "description": "富山市 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "CITY_TOYAMA",
+      "target_id": "PROPOSAL_COMPREHENSIVE",
+      "value_usd": 340000.0,
+      "category": "services",
+      "year": 2024,
+      "description": "富山市 第3次富山市総合計画策定支援業務委託 プロポーザル案件 (Open Data: https://www.city.toyama.toyama.jp/)"
+    },
+    {
+      "source_id": "CITY_TOYAMA",
+      "target_id": "PROPOSAL_SMART_CITY",
+      "value_usd": 1360000.0,
+      "category": "technology",
+      "year": 2024,
+      "description": "富山市 スマートシティ推進事業 オープンデータ活用等委託 プロポーザル案件 (Open Data: https://www.city.toyama.toyama.jp/)"
+    },
+    {
+      "source_id": "CITY_TOYAMA",
+      "target_id": "BIDDING_PUBLIC_WORKS",
+      "value_usd": 85000000.0,
+      "category": "infrastructure",
+      "year": 2024,
+      "description": "富山市 一般競争入札(土木一式・建築一式等) オープンデータ公表分 (Open Data: https://www.city.toyama.toyama.jp/)"
+    },
+    {
+      "source_id": "CITY_TOYAMA",
+      "target_id": "NEGOTIated_CONTRACTS",
+      "value_usd": 21760000.0,
+      "category": "services",
+      "year": 2024,
+      "description": "富山市 随意契約(特命・緊急対応等) オープンデータ公表分 (Open Data: https://www.city.toyama.toyama.jp/)"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "CITY_TAKAOKA",
+      "value_usd": 190644800.0,
+      "category": "tax",
+      "year": 2024,
+      "description": "Municipal Taxes (市町村税) paid to 高岡市"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "CITY_TAKAOKA",
+      "value_usd": 44336000.0,
+      "category": "welfare",
+      "year": 2024,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 高岡市"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "CITY_TAKAOKA",
+      "value_usd": 66504000.0,
+      "category": "trade",
+      "year": 2024,
+      "description": "National Treasury Disbursements (国庫支出金) to 高岡市"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "CITY_TAKAOKA",
+      "value_usd": 35468800.0,
+      "category": "welfare",
+      "year": 2024,
+      "description": "Prefectural Disbursements (県支出金) to 高岡市"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "CITY_TAKAOKA",
+      "value_usd": 31035200.0,
+      "category": "banking",
+      "year": 2024,
+      "description": "Municipal Bonds (地方債) issued by 高岡市"
+    },
+    {
+      "source_id": "CITY_TAKAOKA",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 199512000.0,
+      "category": "welfare",
+      "year": 2024,
+      "description": "高岡市 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "CITY_TAKAOKA",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 53203200.0,
+      "category": "infrastructure",
+      "year": 2024,
+      "description": "高岡市 spending on city infrastructure"
+    },
+    {
+      "source_id": "CITY_TAKAOKA",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 44336000.0,
+      "category": "education",
+      "year": 2024,
+      "description": "高岡市 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "CITY_IMIZU",
+      "value_usd": 123100400.0,
+      "category": "tax",
+      "year": 2024,
+      "description": "Municipal Taxes (市町村税) paid to 射水市"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "CITY_IMIZU",
+      "value_usd": 28628000.0,
+      "category": "welfare",
+      "year": 2024,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 射水市"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "CITY_IMIZU",
+      "value_usd": 42942000.0,
+      "category": "trade",
+      "year": 2024,
+      "description": "National Treasury Disbursements (国庫支出金) to 射水市"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "CITY_IMIZU",
+      "value_usd": 22902400.0,
+      "category": "welfare",
+      "year": 2024,
+      "description": "Prefectural Disbursements (県支出金) to 射水市"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "CITY_IMIZU",
+      "value_usd": 20039600.0,
+      "category": "banking",
+      "year": 2024,
+      "description": "Municipal Bonds (地方債) issued by 射水市"
+    },
+    {
+      "source_id": "CITY_IMIZU",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 128826000.0,
+      "category": "welfare",
+      "year": 2024,
+      "description": "射水市 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "CITY_IMIZU",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 34353600.0,
+      "category": "infrastructure",
+      "year": 2024,
+      "description": "射水市 spending on city infrastructure"
+    },
+    {
+      "source_id": "CITY_IMIZU",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 28628000.0,
+      "category": "education",
+      "year": 2024,
+      "description": "射水市 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "CITY_NANTO",
+      "value_usd": 109650000.0,
+      "category": "tax",
+      "year": 2024,
+      "description": "Municipal Taxes (市町村税) paid to 南砺市"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "CITY_NANTO",
+      "value_usd": 25500000.0,
+      "category": "welfare",
+      "year": 2024,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 南砺市"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "CITY_NANTO",
+      "value_usd": 38250000.0,
+      "category": "trade",
+      "year": 2024,
+      "description": "National Treasury Disbursements (国庫支出金) to 南砺市"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "CITY_NANTO",
+      "value_usd": 20400000.0,
+      "category": "welfare",
+      "year": 2024,
+      "description": "Prefectural Disbursements (県支出金) to 南砺市"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "CITY_NANTO",
+      "value_usd": 17850000.0,
+      "category": "banking",
+      "year": 2024,
+      "description": "Municipal Bonds (地方債) issued by 南砺市"
+    },
+    {
+      "source_id": "CITY_NANTO",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 114750000.0,
+      "category": "welfare",
+      "year": 2024,
+      "description": "南砺市 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "CITY_NANTO",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 30600000.0,
+      "category": "infrastructure",
+      "year": 2024,
+      "description": "南砺市 spending on city infrastructure"
+    },
+    {
+      "source_id": "CITY_NANTO",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 25500000.0,
+      "category": "education",
+      "year": 2024,
+      "description": "南砺市 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "CITY_TONAMI",
+      "value_usd": 88012400.0,
+      "category": "tax",
+      "year": 2024,
+      "description": "Municipal Taxes (市町村税) paid to 砺波市"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "CITY_TONAMI",
+      "value_usd": 20468000.0,
+      "category": "welfare",
+      "year": 2024,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 砺波市"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "CITY_TONAMI",
+      "value_usd": 30702000.0,
+      "category": "trade",
+      "year": 2024,
+      "description": "National Treasury Disbursements (国庫支出金) to 砺波市"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "CITY_TONAMI",
+      "value_usd": 16374400.0,
+      "category": "welfare",
+      "year": 2024,
+      "description": "Prefectural Disbursements (県支出金) to 砺波市"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "CITY_TONAMI",
+      "value_usd": 14327600.0,
+      "category": "banking",
+      "year": 2024,
+      "description": "Municipal Bonds (地方債) issued by 砺波市"
+    },
+    {
+      "source_id": "CITY_TONAMI",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 92106000.0,
+      "category": "welfare",
+      "year": 2024,
+      "description": "砺波市 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "CITY_TONAMI",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 24561600.0,
+      "category": "infrastructure",
+      "year": 2024,
+      "description": "砺波市 spending on city infrastructure"
+    },
+    {
+      "source_id": "CITY_TONAMI",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 20468000.0,
+      "category": "education",
+      "year": 2024,
+      "description": "砺波市 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "CITY_KUROBE",
+      "value_usd": 83334000.0,
+      "category": "tax",
+      "year": 2024,
+      "description": "Municipal Taxes (市町村税) paid to 黒部市"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "CITY_KUROBE",
+      "value_usd": 19380000.0,
+      "category": "welfare",
+      "year": 2024,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 黒部市"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "CITY_KUROBE",
+      "value_usd": 29070000.0,
+      "category": "trade",
+      "year": 2024,
+      "description": "National Treasury Disbursements (国庫支出金) to 黒部市"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "CITY_KUROBE",
+      "value_usd": 15504000.0,
+      "category": "welfare",
+      "year": 2024,
+      "description": "Prefectural Disbursements (県支出金) to 黒部市"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "CITY_KUROBE",
+      "value_usd": 13566000.0,
+      "category": "banking",
+      "year": 2024,
+      "description": "Municipal Bonds (地方債) issued by 黒部市"
+    },
+    {
+      "source_id": "CITY_KUROBE",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 87210000.0,
+      "category": "welfare",
+      "year": 2024,
+      "description": "黒部市 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "CITY_KUROBE",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 23256000.0,
+      "category": "infrastructure",
+      "year": 2024,
+      "description": "黒部市 spending on city infrastructure"
+    },
+    {
+      "source_id": "CITY_KUROBE",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 19380000.0,
+      "category": "education",
+      "year": 2024,
+      "description": "黒部市 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "CITY_UOZU",
+      "value_usd": 73684800.0,
+      "category": "tax",
+      "year": 2024,
+      "description": "Municipal Taxes (市町村税) paid to 魚津市"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "CITY_UOZU",
+      "value_usd": 17136000.0,
+      "category": "welfare",
+      "year": 2024,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 魚津市"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "CITY_UOZU",
+      "value_usd": 25704000.0,
+      "category": "trade",
+      "year": 2024,
+      "description": "National Treasury Disbursements (国庫支出金) to 魚津市"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "CITY_UOZU",
+      "value_usd": 13708800.0,
+      "category": "welfare",
+      "year": 2024,
+      "description": "Prefectural Disbursements (県支出金) to 魚津市"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "CITY_UOZU",
+      "value_usd": 11995200.0,
+      "category": "banking",
+      "year": 2024,
+      "description": "Municipal Bonds (地方債) issued by 魚津市"
+    },
+    {
+      "source_id": "CITY_UOZU",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 77112000.0,
+      "category": "welfare",
+      "year": 2024,
+      "description": "魚津市 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "CITY_UOZU",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 20563200.0,
+      "category": "infrastructure",
+      "year": 2024,
+      "description": "魚津市 spending on city infrastructure"
+    },
+    {
+      "source_id": "CITY_UOZU",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 17136000.0,
+      "category": "education",
+      "year": 2024,
+      "description": "魚津市 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "CITY_HIMI",
+      "value_usd": 71053200.0,
+      "category": "tax",
+      "year": 2024,
+      "description": "Municipal Taxes (市町村税) paid to 氷見市"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "CITY_HIMI",
+      "value_usd": 16524000.0,
+      "category": "welfare",
+      "year": 2024,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 氷見市"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "CITY_HIMI",
+      "value_usd": 24786000.0,
+      "category": "trade",
+      "year": 2024,
+      "description": "National Treasury Disbursements (国庫支出金) to 氷見市"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "CITY_HIMI",
+      "value_usd": 13219200.0,
+      "category": "welfare",
+      "year": 2024,
+      "description": "Prefectural Disbursements (県支出金) to 氷見市"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "CITY_HIMI",
+      "value_usd": 11566800.0,
+      "category": "banking",
+      "year": 2024,
+      "description": "Municipal Bonds (地方債) issued by 氷見市"
+    },
+    {
+      "source_id": "CITY_HIMI",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 74358000.0,
+      "category": "welfare",
+      "year": 2024,
+      "description": "氷見市 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "CITY_HIMI",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 19828800.0,
+      "category": "infrastructure",
+      "year": 2024,
+      "description": "氷見市 spending on city infrastructure"
+    },
+    {
+      "source_id": "CITY_HIMI",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 16524000.0,
+      "category": "education",
+      "year": 2024,
+      "description": "氷見市 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "CITY_NAMERIKAWA",
+      "value_usd": 57895200.0,
+      "category": "tax",
+      "year": 2024,
+      "description": "Municipal Taxes (市町村税) paid to 滑川市"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "CITY_NAMERIKAWA",
+      "value_usd": 13464000.0,
+      "category": "welfare",
+      "year": 2024,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 滑川市"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "CITY_NAMERIKAWA",
+      "value_usd": 20196000.0,
+      "category": "trade",
+      "year": 2024,
+      "description": "National Treasury Disbursements (国庫支出金) to 滑川市"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "CITY_NAMERIKAWA",
+      "value_usd": 10771200.0,
+      "category": "welfare",
+      "year": 2024,
+      "description": "Prefectural Disbursements (県支出金) to 滑川市"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "CITY_NAMERIKAWA",
+      "value_usd": 9424800.0,
+      "category": "banking",
+      "year": 2024,
+      "description": "Municipal Bonds (地方債) issued by 滑川市"
+    },
+    {
+      "source_id": "CITY_NAMERIKAWA",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 60588000.0,
+      "category": "welfare",
+      "year": 2024,
+      "description": "滑川市 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "CITY_NAMERIKAWA",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 16156800.0,
+      "category": "infrastructure",
+      "year": 2024,
+      "description": "滑川市 spending on city infrastructure"
+    },
+    {
+      "source_id": "CITY_NAMERIKAWA",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 13464000.0,
+      "category": "education",
+      "year": 2024,
+      "description": "滑川市 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "CITY_OYABE",
+      "value_usd": 48246000.0,
+      "category": "tax",
+      "year": 2024,
+      "description": "Municipal Taxes (市町村税) paid to 小矢部市"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "CITY_OYABE",
+      "value_usd": 11220000.0,
+      "category": "welfare",
+      "year": 2024,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 小矢部市"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "CITY_OYABE",
+      "value_usd": 16830000.0,
+      "category": "trade",
+      "year": 2024,
+      "description": "National Treasury Disbursements (国庫支出金) to 小矢部市"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "CITY_OYABE",
+      "value_usd": 8976000.0,
+      "category": "welfare",
+      "year": 2024,
+      "description": "Prefectural Disbursements (県支出金) to 小矢部市"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "CITY_OYABE",
+      "value_usd": 7854000.0,
+      "category": "banking",
+      "year": 2024,
+      "description": "Municipal Bonds (地方債) issued by 小矢部市"
+    },
+    {
+      "source_id": "CITY_OYABE",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 50490000.0,
+      "category": "welfare",
+      "year": 2024,
+      "description": "小矢部市 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "CITY_OYABE",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 13464000.0,
+      "category": "infrastructure",
+      "year": 2024,
+      "description": "小矢部市 spending on city infrastructure"
+    },
+    {
+      "source_id": "CITY_OYABE",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 11220000.0,
+      "category": "education",
+      "year": 2024,
+      "description": "小矢部市 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "TOWN_KAMIICHI",
+      "value_usd": 32748800.0,
+      "category": "tax",
+      "year": 2024,
+      "description": "Municipal Taxes (市町村税) paid to 上市町"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "TOWN_KAMIICHI",
+      "value_usd": 7616000.0,
+      "category": "welfare",
+      "year": 2024,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 上市町"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "TOWN_KAMIICHI",
+      "value_usd": 11424000.0,
+      "category": "trade",
+      "year": 2024,
+      "description": "National Treasury Disbursements (国庫支出金) to 上市町"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "TOWN_KAMIICHI",
+      "value_usd": 6092800.0,
+      "category": "welfare",
+      "year": 2024,
+      "description": "Prefectural Disbursements (県支出金) to 上市町"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "TOWN_KAMIICHI",
+      "value_usd": 5331200.0,
+      "category": "banking",
+      "year": 2024,
+      "description": "Municipal Bonds (地方債) issued by 上市町"
+    },
+    {
+      "source_id": "TOWN_KAMIICHI",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 34272000.0,
+      "category": "welfare",
+      "year": 2024,
+      "description": "上市町 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "TOWN_KAMIICHI",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 9139200.0,
+      "category": "infrastructure",
+      "year": 2024,
+      "description": "上市町 spending on city infrastructure"
+    },
+    {
+      "source_id": "TOWN_KAMIICHI",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 7616000.0,
+      "category": "education",
+      "year": 2024,
+      "description": "上市町 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "TOWN_TATEYAMA",
+      "value_usd": 30702000.0,
+      "category": "tax",
+      "year": 2024,
+      "description": "Municipal Taxes (市町村税) paid to 立山町"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "TOWN_TATEYAMA",
+      "value_usd": 7140000.0,
+      "category": "welfare",
+      "year": 2024,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 立山町"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "TOWN_TATEYAMA",
+      "value_usd": 10710000.0,
+      "category": "trade",
+      "year": 2024,
+      "description": "National Treasury Disbursements (国庫支出金) to 立山町"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "TOWN_TATEYAMA",
+      "value_usd": 5712000.0,
+      "category": "welfare",
+      "year": 2024,
+      "description": "Prefectural Disbursements (県支出金) to 立山町"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "TOWN_TATEYAMA",
+      "value_usd": 4998000.0,
+      "category": "banking",
+      "year": 2024,
+      "description": "Municipal Bonds (地方債) issued by 立山町"
+    },
+    {
+      "source_id": "TOWN_TATEYAMA",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 32130000.0,
+      "category": "welfare",
+      "year": 2024,
+      "description": "立山町 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "TOWN_TATEYAMA",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 8568000.0,
+      "category": "infrastructure",
+      "year": 2024,
+      "description": "立山町 spending on city infrastructure"
+    },
+    {
+      "source_id": "TOWN_TATEYAMA",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 7140000.0,
+      "category": "education",
+      "year": 2024,
+      "description": "立山町 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "TOWN_NYUZEN",
+      "value_usd": 28655200.0,
+      "category": "tax",
+      "year": 2024,
+      "description": "Municipal Taxes (市町村税) paid to 入善町"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "TOWN_NYUZEN",
+      "value_usd": 6664000.0,
+      "category": "welfare",
+      "year": 2024,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 入善町"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "TOWN_NYUZEN",
+      "value_usd": 9996000.0,
+      "category": "trade",
+      "year": 2024,
+      "description": "National Treasury Disbursements (国庫支出金) to 入善町"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "TOWN_NYUZEN",
+      "value_usd": 5331200.0,
+      "category": "welfare",
+      "year": 2024,
+      "description": "Prefectural Disbursements (県支出金) to 入善町"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "TOWN_NYUZEN",
+      "value_usd": 4664800.0,
+      "category": "banking",
+      "year": 2024,
+      "description": "Municipal Bonds (地方債) issued by 入善町"
+    },
+    {
+      "source_id": "TOWN_NYUZEN",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 29988000.0,
+      "category": "welfare",
+      "year": 2024,
+      "description": "入善町 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "TOWN_NYUZEN",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 7996800.0,
+      "category": "infrastructure",
+      "year": 2024,
+      "description": "入善町 spending on city infrastructure"
+    },
+    {
+      "source_id": "TOWN_NYUZEN",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 6664000.0,
+      "category": "education",
+      "year": 2024,
+      "description": "入善町 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "TOWN_ASAHI",
+      "value_usd": 23684400.0,
+      "category": "tax",
+      "year": 2024,
+      "description": "Municipal Taxes (市町村税) paid to 朝日町"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "TOWN_ASAHI",
+      "value_usd": 5508000.0,
+      "category": "welfare",
+      "year": 2024,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 朝日町"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "TOWN_ASAHI",
+      "value_usd": 8262000.0,
+      "category": "trade",
+      "year": 2024,
+      "description": "National Treasury Disbursements (国庫支出金) to 朝日町"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "TOWN_ASAHI",
+      "value_usd": 4406400.0,
+      "category": "welfare",
+      "year": 2024,
+      "description": "Prefectural Disbursements (県支出金) to 朝日町"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "TOWN_ASAHI",
+      "value_usd": 3855600.0,
+      "category": "banking",
+      "year": 2024,
+      "description": "Municipal Bonds (地方債) issued by 朝日町"
+    },
+    {
+      "source_id": "TOWN_ASAHI",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 24786000.0,
+      "category": "welfare",
+      "year": 2024,
+      "description": "朝日町 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "TOWN_ASAHI",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 6609600.0,
+      "category": "infrastructure",
+      "year": 2024,
+      "description": "朝日町 spending on city infrastructure"
+    },
+    {
+      "source_id": "TOWN_ASAHI",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 5508000.0,
+      "category": "education",
+      "year": 2024,
+      "description": "朝日町 spending on public elementary/middle schools"
+    },
+    {
+      "source_id": "HH_JP",
+      "target_id": "VILLAGE_FUNAHASHI",
+      "value_usd": 7310000.0,
+      "category": "tax",
+      "year": 2024,
+      "description": "Municipal Taxes (市町村税) paid to 舟橋村"
+    },
+    {
+      "source_id": "EXP_LOCAL",
+      "target_id": "VILLAGE_FUNAHASHI",
+      "value_usd": 1700000.0,
+      "category": "welfare",
+      "year": 2024,
+      "description": "Local Allocation Tax (地方交付税交付金等) to 舟橋村"
+    },
+    {
+      "source_id": "GOV_JP",
+      "target_id": "VILLAGE_FUNAHASHI",
+      "value_usd": 2550000.0,
+      "category": "trade",
+      "year": 2024,
+      "description": "National Treasury Disbursements (国庫支出金) to 舟橋村"
+    },
+    {
+      "source_id": "PREF_TOYAMA",
+      "target_id": "VILLAGE_FUNAHASHI",
+      "value_usd": 1360000.0,
+      "category": "welfare",
+      "year": 2024,
+      "description": "Prefectural Disbursements (県支出金) to 舟橋村"
+    },
+    {
+      "source_id": "COMM_BANKS",
+      "target_id": "VILLAGE_FUNAHASHI",
+      "value_usd": 1190000.0,
+      "category": "banking",
+      "year": 2024,
+      "description": "Municipal Bonds (地方債) issued by 舟橋村"
+    },
+    {
+      "source_id": "VILLAGE_FUNAHASHI",
+      "target_id": "LOCAL_HOSPITAL",
+      "value_usd": 7650000.0,
+      "category": "welfare",
+      "year": 2024,
+      "description": "舟橋村 spending on childcare and nursing care"
+    },
+    {
+      "source_id": "VILLAGE_FUNAHASHI",
+      "target_id": "LOCAL_CONSTRUCTION",
+      "value_usd": 2040000.0,
+      "category": "infrastructure",
+      "year": 2024,
+      "description": "舟橋村 spending on city infrastructure"
+    },
+    {
+      "source_id": "VILLAGE_FUNAHASHI",
+      "target_id": "LOCAL_SCHOOLS",
+      "value_usd": 1700000.0,
+      "category": "education",
+      "year": 2024,
+      "description": "舟橋村 spending on public elementary/middle schools"
+    }
+  ]
+}

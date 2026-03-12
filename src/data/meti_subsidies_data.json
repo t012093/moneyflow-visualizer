@@ -1,0 +1,161 @@
+{
+  "metadata": {
+    "source": "METI FY2023-FY2024 Budgets & Estimation of Major Corporation Tax",
+    "description": "Phase 10: State subsidies to semiconductor industry & corporate tax recycling"
+  },
+  "nodes": [
+    {
+      "id": "CORP_TSMC_JASM",
+      "name": "JASM (TSMC 熊本工場)",
+      "type": "corporation_jp"
+    },
+    {
+      "id": "CORP_RAPIDUS",
+      "name": "Rapidus (次世代半導体)",
+      "type": "corporation_jp"
+    },
+    {
+      "id": "CORP_ASRA",
+      "name": "ASRA (車載半導体研究組合)",
+      "type": "corporation_jp"
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "MIN_METI",
+      "target_id": "CORP_TSMC_JASM",
+      "value_usd": 3173333333.33,
+      "category": "infrastructure",
+      "year": 2023,
+      "description": "METI Semiconductor Subsidy for TSMC Kumamoto Fab 1"
+    },
+    {
+      "source_id": "MIN_METI",
+      "target_id": "CORP_RAPIDUS",
+      "value_usd": 2200000000.0,
+      "category": "infrastructure",
+      "year": 2023,
+      "description": "METI Advanced Semiconductor R&D Subsidy to Rapidus"
+    },
+    {
+      "source_id": "MIN_METI",
+      "target_id": "CORP_TSMC_JASM",
+      "value_usd": 4880000000.0,
+      "category": "infrastructure",
+      "year": 2024,
+      "description": "METI Semiconductor Subsidy for TSMC Kumamoto Fab 2"
+    },
+    {
+      "source_id": "MIN_METI",
+      "target_id": "CORP_RAPIDUS",
+      "value_usd": 3933333333.33,
+      "category": "infrastructure",
+      "year": 2024,
+      "description": "METI Additional Support for Rapidus Front-End/Back-End Processes"
+    },
+    {
+      "source_id": "MIN_METI",
+      "target_id": "CORP_ASRA",
+      "value_usd": 6666666.67,
+      "category": "education",
+      "year": 2024,
+      "description": "METI Subsidy for Automotive SoC Research (ASRA)"
+    },
+    {
+      "source_id": "CORP_7203",
+      "target_id": "TAX_CORP",
+      "value_usd": 6800000000.0,
+      "category": "tax",
+      "year": 2021,
+      "description": "Corporate Tax Revenue from Toyota Motor Corp"
+    },
+    {
+      "source_id": "CORP_6758",
+      "target_id": "TAX_CORP",
+      "value_usd": 1900000000.0,
+      "category": "tax",
+      "year": 2021,
+      "description": "Corporate Tax Revenue from Sony Group"
+    },
+    {
+      "source_id": "CORP_9984",
+      "target_id": "TAX_CORP",
+      "value_usd": 1200000000.0,
+      "category": "tax",
+      "year": 2021,
+      "description": "Corporate Tax Revenue from SoftBank Group"
+    },
+    {
+      "source_id": "CORP_7203",
+      "target_id": "TAX_CORP",
+      "value_usd": 8000000000.0,
+      "category": "tax",
+      "year": 2022,
+      "description": "Corporate Tax Revenue from Toyota Motor Corp"
+    },
+    {
+      "source_id": "CORP_6758",
+      "target_id": "TAX_CORP",
+      "value_usd": 2000000000.0,
+      "category": "tax",
+      "year": 2022,
+      "description": "Corporate Tax Revenue from Sony Group"
+    },
+    {
+      "source_id": "CORP_9984",
+      "target_id": "TAX_CORP",
+      "value_usd": 1333333333.33,
+      "category": "tax",
+      "year": 2022,
+      "description": "Corporate Tax Revenue from SoftBank Group"
+    },
+    {
+      "source_id": "CORP_7203",
+      "target_id": "TAX_CORP",
+      "value_usd": 9200000000.0,
+      "category": "tax",
+      "year": 2023,
+      "description": "Corporate Tax Revenue from Toyota Motor Corp"
+    },
+    {
+      "source_id": "CORP_6758",
+      "target_id": "TAX_CORP",
+      "value_usd": 2100000000.0,
+      "category": "tax",
+      "year": 2023,
+      "description": "Corporate Tax Revenue from Sony Group"
+    },
+    {
+      "source_id": "CORP_9984",
+      "target_id": "TAX_CORP",
+      "value_usd": 1466666666.67,
+      "category": "tax",
+      "year": 2023,
+      "description": "Corporate Tax Revenue from SoftBank Group"
+    },
+    {
+      "source_id": "CORP_7203",
+      "target_id": "TAX_CORP",
+      "value_usd": 10400000000.0,
+      "category": "tax",
+      "year": 2024,
+      "description": "Corporate Tax Revenue from Toyota Motor Corp"
+    },
+    {
+      "source_id": "CORP_6758",
+      "target_id": "TAX_CORP",
+      "value_usd": 2200000000.0,
+      "category": "tax",
+      "year": 2024,
+      "description": "Corporate Tax Revenue from Sony Group"
+    },
+    {
+      "source_id": "CORP_9984",
+      "target_id": "TAX_CORP",
+      "value_usd": 1600000000.0,
+      "category": "tax",
+      "year": 2024,
+      "description": "Corporate Tax Revenue from SoftBank Group"
+    }
+  ]
+}

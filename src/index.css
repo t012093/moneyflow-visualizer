@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+  --font-family: 'Inter', -apple-system, system-ui, sans-serif;
+  --bg-color: #03050a; /* Deep space dark */
+  --text-main: #f0f2f5;
+  --text-muted: #8b949e;
+  --panel-bg: rgba(13, 17, 23, 0.6);
+  --panel-border: rgba(48, 54, 61, 0.5);
+  --accent-color: #58a6ff;
+  --accent-hover: #79c0ff;
+  --glass-blur: 16px;
+  
+  /* Category Colors */
+  --color-trade: #4ade80; /* Green */
+  --color-banking: #3b82f6; /* Blue */
+  --color-crypto: #f43f5e; /* Red-Pink */
+  --color-remittance: #eab308; /* Yellow */
+  --color-bop: #fb923c; /* Orange */
+  --color-welfare: #a78bfa; /* Purple */
+  --color-infrastructure: #facc15; /* Yellow */
+  --color-education: #34d399; /* Emerald */
+  --color-services: #f87171; /* Red */
+  --color-technology: #60a5fa; /* Blue */
+  --color-tax: #fb923c; /* Orange */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: var(--font-family);
+  overflow: hidden; /* Prevent scrolling, full app feel */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Glassmorphism Utility */
+.glass-panel {
+  background: var(--panel-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--panel-border);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4);
+}

@@ -1,0 +1,10 @@
+mcp
+httpx
+beautifulsoup4
+pymupdf
+pandas
+openpyxl
+requests
+numpy<2
+torch>=2.1.0
+transformers>=4.51.0,<5

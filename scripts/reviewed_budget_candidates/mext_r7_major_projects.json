@@ -1,0 +1,150 @@
+{
+  "source_dataset": "文部科学省 令和7年度予算のポイント",
+  "source_title": "文部科学省 令和7年度予算のポイント",
+  "source_url": "https://www.mext.go.jp/content/20250305-ope_dev03-000037774-1.pdf",
+  "fiscal_year": 2025,
+  "confidence": 0.95,
+  "metadata_source": [
+    "文部科学省 令和7年度予算のポイント"
+  ],
+  "scope": "MEXT FY2025 reviewed major budget projects",
+  "source_node": {
+    "id": "MIN_MEXT",
+    "name": "文部科学省 (MEXT)",
+    "lat": 35.7036,
+    "lng": 139.7495,
+    "region": "Ministry",
+    "type": "ministry"
+  },
+  "targets": [
+    {
+      "target_id": "REC_MEXT_NATL_UNIV_GRANT",
+      "target_name": "国立大学法人運営費交付金等",
+      "target_type": "recipient",
+      "region": "Education",
+      "lat": 35.7048,
+      "lng": 139.7512,
+      "amount_oku_yen": 10784,
+      "category": "education",
+      "sub_category": "国立大学法人運営費交付金等",
+      "description": "国立大学等の教育研究基盤を支える基盤的経費。",
+      "source_title": "文部科学省 令和7年度予算のポイント",
+      "source_url": "https://www.mext.go.jp/content/20250305-ope_dev03-000037774-1.pdf#page=3&search=%E5%9B%BD%E7%AB%8B%E5%A4%A7%E5%AD%A6%E6%B3%95%E4%BA%BA",
+      "page_number": 3
+    },
+    {
+      "target_id": "REC_MEXT_HIGH_SCHOOL_SUPPORT",
+      "target_name": "高校生等への修学支援",
+      "target_type": "recipient",
+      "region": "Education",
+      "lat": 35.7062,
+      "lng": 139.7481,
+      "amount_oku_yen": 5285,
+      "category": "education",
+      "sub_category": "高校生等への修学支援",
+      "description": "高校生等の修学機会を確保するための支援。",
+      "source_title": "文部科学省 令和7年度予算のポイント",
+      "source_url": "https://www.mext.go.jp/content/20250305-ope_dev03-000037774-1.pdf#page=3&search=%E9%AB%98%E6%A0%A1%E7%94%9F%E7%AD%89%E3%81%B8%E3%81%AE%E4%BF%AE%E5%AD%A6%E6%94%AF%E6%8F%B4",
+      "page_number": 3
+    },
+    {
+      "target_id": "REC_MEXT_PRIVATE_SCHOOL_AID",
+      "target_name": "私学助成関係予算",
+      "target_type": "recipient",
+      "region": "Education",
+      "lat": 35.7024,
+      "lng": 139.7525,
+      "amount_oku_yen": 4073,
+      "category": "education",
+      "sub_category": "私学助成関係予算",
+      "description": "私立学校の教育研究条件整備を支える助成。",
+      "source_title": "文部科学省 令和7年度予算のポイント",
+      "source_url": "https://www.mext.go.jp/content/20250305-ope_dev03-000037774-1.pdf#page=3&search=%E7%A7%81%E5%AD%A6%E5%8A%A9%E6%88%90%E9%96%A2%E4%BF%82%E4%BA%88%E7%AE%97",
+      "page_number": 3
+    },
+    {
+      "target_id": "REC_MEXT_PUBLIC_SCHOOL_FAC",
+      "target_name": "公立学校施設整備",
+      "target_type": "recipient",
+      "region": "Education",
+      "lat": 35.7074,
+      "lng": 139.7532,
+      "amount_oku_yen": 691,
+      "category": "infrastructure",
+      "sub_category": "公立学校施設整備",
+      "description": "老朽化対策、防災機能強化、脱炭素化を含む学校施設整備。",
+      "source_title": "文部科学省 令和7年度予算のポイント",
+      "source_url": "https://www.mext.go.jp/content/20250305-ope_dev03-000037774-1.pdf#page=3&search=%E5%85%AC%E7%AB%8B%E5%AD%A6%E6%A0%A1%E6%96%BD%E8%A8%AD%E6%95%B4%E5%82%99",
+      "page_number": 3
+    },
+    {
+      "target_id": "REC_MEXT_KAKENHI",
+      "target_name": "科学研究費助成事業（科研費）",
+      "target_type": "recipient",
+      "region": "Science",
+      "lat": 35.7089,
+      "lng": 139.7474,
+      "amount_oku_yen": 2379,
+      "category": "education",
+      "sub_category": "科学研究費助成事業（科研費）",
+      "description": "基礎から応用までの学術研究を支える競争的研究費。",
+      "source_title": "文部科学省 令和7年度予算のポイント",
+      "source_url": "https://www.mext.go.jp/content/20250305-ope_dev03-000037774-1.pdf#page=68&search=%E7%A7%91%E5%AD%A6%E7%A0%94%E7%A9%B6%E8%B2%BB%E5%8A%A9%E6%88%90%E4%BA%8B%E6%A5%AD",
+      "page_number": 68
+    }
+  ],
+  "budget_highlights": [
+    {
+      "entity_id": "MIN_MEXT",
+      "fiscal_year": 2025,
+      "section_key": "overview",
+      "title": "令和7年度 文部科学省一般会計予算",
+      "amount_text": "55,094億円",
+      "amount_oku_yen": 55094,
+      "summary": "令和7年度文部科学省一般会計予算。対前年度比 1,709億円増、3.2%増。",
+      "source_title": "文部科学省 令和7年度予算のポイント",
+      "source_url": "https://www.mext.go.jp/content/20250305-ope_dev03-000037774-1.pdf#page=2&search=%E4%B8%80%E8%88%AC%E4%BC%9A%E8%A8%88",
+      "page_number": 2,
+      "display_order": 10
+    },
+    {
+      "entity_id": "MIN_MEXT",
+      "fiscal_year": 2025,
+      "section_key": "policy_frame",
+      "title": "義務教育費国庫負担金",
+      "amount_text": "1兆6,210億円",
+      "amount_oku_yen": 16210,
+      "summary": "義務教育段階の基盤的経費を支える予算枠。",
+      "source_title": "文部科学省 令和7年度予算のポイント",
+      "source_url": "https://www.mext.go.jp/content/20250305-ope_dev03-000037774-1.pdf#page=3&search=%E7%BE%A9%E5%8B%99%E6%95%99%E8%82%B2%E8%B2%BB",
+      "page_number": 3,
+      "display_order": 20
+    },
+    {
+      "entity_id": "MIN_MEXT",
+      "fiscal_year": 2025,
+      "section_key": "policy_frame",
+      "title": "科学技術予算",
+      "amount_text": "9,777億円",
+      "amount_oku_yen": 9777,
+      "summary": "科学技術・イノベーション関連の主要予算枠。",
+      "source_title": "文部科学省 令和7年度予算のポイント",
+      "source_url": "https://www.mext.go.jp/content/20250305-ope_dev03-000037774-1.pdf#page=3&search=%E7%A7%91%E5%AD%A6%E6%8A%80%E8%A1%93%E4%BA%88%E7%AE%97",
+      "page_number": 3,
+      "display_order": 30
+    },
+    {
+      "entity_id": "MIN_MEXT",
+      "fiscal_year": 2025,
+      "section_key": "individual_project",
+      "title": "科学研究費助成事業（科研費）",
+      "amount_text": "2,379億円",
+      "amount_oku_yen": 2379,
+      "summary": "研究者の自由な発想に基づく学術研究を助成する競争的研究費。",
+      "source_title": "令和7年度予算のポイント",
+      "source_url": "https://www.mext.go.jp/content/20250305-ope_dev03-000037774-1.pdf#page=68&search=%E7%A7%91%E5%AD%A6%E7%A0%94%E7%A9%B6%E8%B2%BB%E5%8A%A9%E6%88%90%E4%BA%8B%E6%A5%AD",
+      "page_number": 68,
+      "display_order": 40
+    }
+  ]
+}

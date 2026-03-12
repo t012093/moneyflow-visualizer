@@ -1,0 +1,263 @@
+{
+  "metadata": {
+    "source": "MIC Family Income and Expenditure Survey (2024 Worker's Household Monthly Avg)",
+    "description": "Phase 11: Micro-Economy flow of an average worker household"
+  },
+  "nodes": [
+    {
+      "id": "HH_AVERAGE",
+      "name": "一般勤労者世帯 (Average Worker Household)",
+      "type": "individual"
+    },
+    {
+      "id": "EXP_FOOD",
+      "name": "食料費 (Food & Groceries)",
+      "type": "recipient"
+    },
+    {
+      "id": "EXP_HOUSING",
+      "name": "住居・光熱費 (Housing & Utilities)",
+      "type": "recipient"
+    },
+    {
+      "id": "EXP_OTHER_LIVING",
+      "name": "交通・通信・教養娯楽費 (Other Living Expenses)",
+      "type": "recipient"
+    },
+    {
+      "id": "EXP_SAVINGS",
+      "name": "黒字・貯蓄等 (Savings & Surplus)",
+      "type": "recipient"
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "CORP_7203",
+      "target_id": "HH_AVERAGE",
+      "value_usd": 3402.8,
+      "category": "trade",
+      "year": 2021,
+      "description": "Monthly Salary (実収入) from Employer to Average Worker Household (FY2021)",
+      "source_url": "https://www.stat.go.jp/data/kakei/index.html"
+    },
+    {
+      "source_id": "HH_AVERAGE",
+      "target_id": "TAX_INCOME",
+      "value_usd": 250.67,
+      "category": "tax",
+      "year": 2021,
+      "description": "Income & Resident Taxes (所得税・住民税) paid by Household"
+    },
+    {
+      "source_id": "HH_AVERAGE",
+      "target_id": "MIN_MHLW",
+      "value_usd": 332.13,
+      "category": "welfare",
+      "year": 2021,
+      "description": "Social Insurance Premiums (社会保険料) paid by Household"
+    },
+    {
+      "source_id": "HH_AVERAGE",
+      "target_id": "EXP_FOOD",
+      "value_usd": 501.33,
+      "category": "trade",
+      "year": 2021,
+      "description": "Monthly Food & Grocery Expenditure (食料費)"
+    },
+    {
+      "source_id": "HH_AVERAGE",
+      "target_id": "EXP_HOUSING",
+      "value_usd": 376.0,
+      "category": "infrastructure",
+      "year": 2021,
+      "description": "Monthly Housing & Utilities Expenditure (住居・光熱費)"
+    },
+    {
+      "source_id": "HH_AVERAGE",
+      "target_id": "EXP_OTHER_LIVING",
+      "value_usd": 927.47,
+      "category": "trade",
+      "year": 2021,
+      "description": "Monthly Transport, Comm, Education & Entertainment (交通・通信・教養娯楽費)"
+    },
+    {
+      "source_id": "HH_AVERAGE",
+      "target_id": "EXP_SAVINGS",
+      "value_usd": 1015.2,
+      "category": "banking",
+      "year": 2021,
+      "description": "Monthly Household Surplus & Savings (黒字・貯蓄)"
+    },
+    {
+      "source_id": "CORP_7203",
+      "target_id": "HH_AVERAGE",
+      "value_usd": 3475.2,
+      "category": "trade",
+      "year": 2022,
+      "description": "Monthly Salary (実収入) from Employer to Average Worker Household (FY2022)",
+      "source_url": "https://www.stat.go.jp/data/kakei/index.html"
+    },
+    {
+      "source_id": "HH_AVERAGE",
+      "target_id": "TAX_INCOME",
+      "value_usd": 256.0,
+      "category": "tax",
+      "year": 2022,
+      "description": "Income & Resident Taxes (所得税・住民税) paid by Household"
+    },
+    {
+      "source_id": "HH_AVERAGE",
+      "target_id": "MIN_MHLW",
+      "value_usd": 339.2,
+      "category": "welfare",
+      "year": 2022,
+      "description": "Social Insurance Premiums (社会保険料) paid by Household"
+    },
+    {
+      "source_id": "HH_AVERAGE",
+      "target_id": "EXP_FOOD",
+      "value_usd": 512.0,
+      "category": "trade",
+      "year": 2022,
+      "description": "Monthly Food & Grocery Expenditure (食料費)"
+    },
+    {
+      "source_id": "HH_AVERAGE",
+      "target_id": "EXP_HOUSING",
+      "value_usd": 384.0,
+      "category": "infrastructure",
+      "year": 2022,
+      "description": "Monthly Housing & Utilities Expenditure (住居・光熱費)"
+    },
+    {
+      "source_id": "HH_AVERAGE",
+      "target_id": "EXP_OTHER_LIVING",
+      "value_usd": 947.2,
+      "category": "trade",
+      "year": 2022,
+      "description": "Monthly Transport, Comm, Education & Entertainment (交通・通信・教養娯楽費)"
+    },
+    {
+      "source_id": "HH_AVERAGE",
+      "target_id": "EXP_SAVINGS",
+      "value_usd": 1036.8,
+      "category": "banking",
+      "year": 2022,
+      "description": "Monthly Household Surplus & Savings (黒字・貯蓄)"
+    },
+    {
+      "source_id": "CORP_7203",
+      "target_id": "HH_AVERAGE",
+      "value_usd": 3547.6,
+      "category": "trade",
+      "year": 2023,
+      "description": "Monthly Salary (実収入) from Employer to Average Worker Household (FY2023)",
+      "source_url": "https://www.stat.go.jp/data/kakei/index.html"
+    },
+    {
+      "source_id": "HH_AVERAGE",
+      "target_id": "TAX_INCOME",
+      "value_usd": 261.33,
+      "category": "tax",
+      "year": 2023,
+      "description": "Income & Resident Taxes (所得税・住民税) paid by Household"
+    },
+    {
+      "source_id": "HH_AVERAGE",
+      "target_id": "MIN_MHLW",
+      "value_usd": 346.27,
+      "category": "welfare",
+      "year": 2023,
+      "description": "Social Insurance Premiums (社会保険料) paid by Household"
+    },
+    {
+      "source_id": "HH_AVERAGE",
+      "target_id": "EXP_FOOD",
+      "value_usd": 522.67,
+      "category": "trade",
+      "year": 2023,
+      "description": "Monthly Food & Grocery Expenditure (食料費)"
+    },
+    {
+      "source_id": "HH_AVERAGE",
+      "target_id": "EXP_HOUSING",
+      "value_usd": 392.0,
+      "category": "infrastructure",
+      "year": 2023,
+      "description": "Monthly Housing & Utilities Expenditure (住居・光熱費)"
+    },
+    {
+      "source_id": "HH_AVERAGE",
+      "target_id": "EXP_OTHER_LIVING",
+      "value_usd": 966.93,
+      "category": "trade",
+      "year": 2023,
+      "description": "Monthly Transport, Comm, Education & Entertainment (交通・通信・教養娯楽費)"
+    },
+    {
+      "source_id": "HH_AVERAGE",
+      "target_id": "EXP_SAVINGS",
+      "value_usd": 1058.4,
+      "category": "banking",
+      "year": 2023,
+      "description": "Monthly Household Surplus & Savings (黒字・貯蓄)"
+    },
+    {
+      "source_id": "CORP_7203",
+      "target_id": "HH_AVERAGE",
+      "value_usd": 3620.0,
+      "category": "trade",
+      "year": 2024,
+      "description": "Monthly Salary (実収入) from Employer to Average Worker Household (FY2024)",
+      "source_url": "https://www.stat.go.jp/data/kakei/index.html"
+    },
+    {
+      "source_id": "HH_AVERAGE",
+      "target_id": "TAX_INCOME",
+      "value_usd": 266.67,
+      "category": "tax",
+      "year": 2024,
+      "description": "Income & Resident Taxes (所得税・住民税) paid by Household"
+    },
+    {
+      "source_id": "HH_AVERAGE",
+      "target_id": "MIN_MHLW",
+      "value_usd": 353.33,
+      "category": "welfare",
+      "year": 2024,
+      "description": "Social Insurance Premiums (社会保険料) paid by Household"
+    },
+    {
+      "source_id": "HH_AVERAGE",
+      "target_id": "EXP_FOOD",
+      "value_usd": 533.33,
+      "category": "trade",
+      "year": 2024,
+      "description": "Monthly Food & Grocery Expenditure (食料費)"
+    },
+    {
+      "source_id": "HH_AVERAGE",
+      "target_id": "EXP_HOUSING",
+      "value_usd": 400.0,
+      "category": "infrastructure",
+      "year": 2024,
+      "description": "Monthly Housing & Utilities Expenditure (住居・光熱費)"
+    },
+    {
+      "source_id": "HH_AVERAGE",
+      "target_id": "EXP_OTHER_LIVING",
+      "value_usd": 986.67,
+      "category": "trade",
+      "year": 2024,
+      "description": "Monthly Transport, Comm, Education & Entertainment (交通・通信・教養娯楽費)"
+    },
+    {
+      "source_id": "HH_AVERAGE",
+      "target_id": "EXP_SAVINGS",
+      "value_usd": 1080.0,
+      "category": "banking",
+      "year": 2024,
+      "description": "Monthly Household Surplus & Savings (黒字・貯蓄)"
+    }
+  ]
+}

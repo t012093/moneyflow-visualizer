@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ministry Budget Flow"
+  short_description: "Ministry budget PDF to flow edges"
+  default_prompt: "Use $ministry-budget-flow to turn an official ministry budget PDF into reviewed flow edges and budget highlights for this app."

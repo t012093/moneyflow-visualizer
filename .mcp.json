@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "money-flow": {
+      "command": "bash",
+      "args": [
+        "${PWD:-.}/scripts/run_local_rag_server.sh"
+      ],
+      "env": {}
+    }
+  }
+}

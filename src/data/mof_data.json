@@ -1,0 +1,365 @@
+{
+  "nodes": [
+    {
+      "id": "TAX_INCOME",
+      "name": "所得税 (Income Tax)",
+      "lat": 35.67,
+      "lng": 139.75,
+      "region": "Revenue",
+      "type": "mof_revenue"
+    },
+    {
+      "id": "TAX_CORP",
+      "name": "法人税 (Corporate Tax)",
+      "lat": 35.671,
+      "lng": 139.751,
+      "region": "Revenue",
+      "type": "mof_revenue"
+    },
+    {
+      "id": "TAX_CONSUMPTION",
+      "name": "消費税 (Consumption Tax)",
+      "lat": 35.672,
+      "lng": 139.752,
+      "region": "Revenue",
+      "type": "mof_revenue"
+    },
+    {
+      "id": "TAX_OTHER",
+      "name": "その他租税 (Other Taxes)",
+      "lat": 35.673,
+      "lng": 139.753,
+      "region": "Revenue",
+      "type": "mof_revenue"
+    },
+    {
+      "id": "NON_TAX_REV",
+      "name": "税外収入 (Non-Tax Rev)",
+      "lat": 35.674,
+      "lng": 139.754,
+      "region": "Revenue",
+      "type": "mof_revenue"
+    },
+    {
+      "id": "GOV_BONDS_ISSUE",
+      "name": "公債金 (Gov Bond Issuance)",
+      "lat": 35.675,
+      "lng": 139.755,
+      "region": "Revenue",
+      "type": "mof_revenue"
+    },
+    {
+      "id": "GOV_JP",
+      "name": "日本国政府 (一般会計)",
+      "lat": 35.6762,
+      "lng": 139.7503,
+      "region": "Treasury",
+      "type": "macro_entity"
+    },
+    {
+      "id": "EXP_SOCIAL",
+      "name": "社会保障関係費 (Social Security)",
+      "lat": 35.68,
+      "lng": 139.76,
+      "region": "Expenditure",
+      "type": "mof_expenditure"
+    },
+    {
+      "id": "EXP_DEBT",
+      "name": "国債費 (National Debt Service)",
+      "lat": 35.681,
+      "lng": 139.761,
+      "region": "Expenditure",
+      "type": "mof_expenditure"
+    },
+    {
+      "id": "EXP_LOCAL",
+      "name": "地方交付税交付金等 (Local Grants)",
+      "lat": 35.682,
+      "lng": 139.762,
+      "region": "Expenditure",
+      "type": "mof_expenditure"
+    },
+    {
+      "id": "EXP_PUBLIC",
+      "name": "公共事業関係費 (Public Works)",
+      "lat": 35.683,
+      "lng": 139.763,
+      "region": "Expenditure",
+      "type": "mof_expenditure"
+    },
+    {
+      "id": "EXP_EDU",
+      "name": "文教及び科学振興費 (Education & Science)",
+      "lat": 35.684,
+      "lng": 139.764,
+      "region": "Expenditure",
+      "type": "mof_expenditure"
+    },
+    {
+      "id": "EXP_DEFENSE",
+      "name": "防衛関係費 (Defense)",
+      "lat": 35.685,
+      "lng": 139.765,
+      "region": "Expenditure",
+      "type": "mof_expenditure"
+    },
+    {
+      "id": "EXP_OTHER",
+      "name": "その他経費 (Other Exp)",
+      "lat": 35.686,
+      "lng": 139.766,
+      "region": "Expenditure",
+      "type": "mof_expenditure"
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "TAX_CONSUMPTION",
+      "target_id": "GOV_JP",
+      "category": "bop",
+      "sub_category": "Revenue",
+      "value_usd": 155000000000.0,
+      "year": 2021,
+      "confidence": 0.99,
+      "source_dataset": "MOF General Account"
+    },
+    {
+      "source_id": "TAX_INCOME",
+      "target_id": "GOV_JP",
+      "category": "bop",
+      "sub_category": "Revenue",
+      "value_usd": 145000000000.0,
+      "year": 2021,
+      "confidence": 0.99,
+      "source_dataset": "MOF General Account"
+    },
+    {
+      "source_id": "TAX_CORP",
+      "target_id": "GOV_JP",
+      "category": "bop",
+      "sub_category": "Revenue",
+      "value_usd": 100000000000.0,
+      "year": 2021,
+      "confidence": 0.99,
+      "source_dataset": "MOF General Account"
+    },
+    {
+      "source_id": "TAX_OTHER",
+      "target_id": "GOV_JP",
+      "category": "bop",
+      "sub_category": "Revenue",
+      "value_usd": 65000000000.0,
+      "year": 2021,
+      "confidence": 0.99,
+      "source_dataset": "MOF General Account"
+    },
+    {
+      "source_id": "NON_TAX_REV",
+      "target_id": "GOV_JP",
+      "category": "bop",
+      "sub_category": "Revenue",
+      "value_usd": 50000000000.0,
+      "year": 2021,
+      "confidence": 0.99,
+      "source_dataset": "MOF General Account"
+    },
+    {
+      "source_id": "GOV_BONDS_ISSUE",
+      "target_id": "GOV_JP",
+      "category": "bop",
+      "sub_category": "Revenue",
+      "value_usd": 240000000000.0,
+      "year": 2021,
+      "confidence": 0.99,
+      "source_dataset": "MOF General Account"
+    },
+    {
+      "source_id": "TAX_CONSUMPTION",
+      "target_id": "GOV_JP",
+      "category": "bop",
+      "sub_category": "Revenue",
+      "value_usd": 158100000000.0,
+      "year": 2022,
+      "confidence": 0.99,
+      "source_dataset": "MOF General Account"
+    },
+    {
+      "source_id": "TAX_INCOME",
+      "target_id": "GOV_JP",
+      "category": "bop",
+      "sub_category": "Revenue",
+      "value_usd": 147900000000.0,
+      "year": 2022,
+      "confidence": 0.99,
+      "source_dataset": "MOF General Account"
+    },
+    {
+      "source_id": "TAX_CORP",
+      "target_id": "GOV_JP",
+      "category": "bop",
+      "sub_category": "Revenue",
+      "value_usd": 102000000000.0,
+      "year": 2022,
+      "confidence": 0.99,
+      "source_dataset": "MOF General Account"
+    },
+    {
+      "source_id": "TAX_OTHER",
+      "target_id": "GOV_JP",
+      "category": "bop",
+      "sub_category": "Revenue",
+      "value_usd": 66300000000.0,
+      "year": 2022,
+      "confidence": 0.99,
+      "source_dataset": "MOF General Account"
+    },
+    {
+      "source_id": "NON_TAX_REV",
+      "target_id": "GOV_JP",
+      "category": "bop",
+      "sub_category": "Revenue",
+      "value_usd": 51000000000.0,
+      "year": 2022,
+      "confidence": 0.99,
+      "source_dataset": "MOF General Account"
+    },
+    {
+      "source_id": "GOV_BONDS_ISSUE",
+      "target_id": "GOV_JP",
+      "category": "bop",
+      "sub_category": "Revenue",
+      "value_usd": 244800000000.0,
+      "year": 2022,
+      "confidence": 0.99,
+      "source_dataset": "MOF General Account"
+    },
+    {
+      "source_id": "TAX_CONSUMPTION",
+      "target_id": "GOV_JP",
+      "category": "bop",
+      "sub_category": "Revenue",
+      "value_usd": 161200000000.0,
+      "year": 2023,
+      "confidence": 0.99,
+      "source_dataset": "MOF General Account"
+    },
+    {
+      "source_id": "TAX_INCOME",
+      "target_id": "GOV_JP",
+      "category": "bop",
+      "sub_category": "Revenue",
+      "value_usd": 150800000000.0,
+      "year": 2023,
+      "confidence": 0.99,
+      "source_dataset": "MOF General Account"
+    },
+    {
+      "source_id": "TAX_CORP",
+      "target_id": "GOV_JP",
+      "category": "bop",
+      "sub_category": "Revenue",
+      "value_usd": 104000000000.0,
+      "year": 2023,
+      "confidence": 0.99,
+      "source_dataset": "MOF General Account"
+    },
+    {
+      "source_id": "TAX_OTHER",
+      "target_id": "GOV_JP",
+      "category": "bop",
+      "sub_category": "Revenue",
+      "value_usd": 67600000000.0,
+      "year": 2023,
+      "confidence": 0.99,
+      "source_dataset": "MOF General Account"
+    },
+    {
+      "source_id": "NON_TAX_REV",
+      "target_id": "GOV_JP",
+      "category": "bop",
+      "sub_category": "Revenue",
+      "value_usd": 52000000000.0,
+      "year": 2023,
+      "confidence": 0.99,
+      "source_dataset": "MOF General Account"
+    },
+    {
+      "source_id": "GOV_BONDS_ISSUE",
+      "target_id": "GOV_JP",
+      "category": "bop",
+      "sub_category": "Revenue",
+      "value_usd": 249600000000.0,
+      "year": 2023,
+      "confidence": 0.99,
+      "source_dataset": "MOF General Account"
+    },
+    {
+      "source_id": "TAX_CONSUMPTION",
+      "target_id": "GOV_JP",
+      "category": "bop",
+      "sub_category": "Revenue",
+      "value_usd": 164300000000.0,
+      "year": 2024,
+      "confidence": 0.99,
+      "source_dataset": "MOF General Account"
+    },
+    {
+      "source_id": "TAX_INCOME",
+      "target_id": "GOV_JP",
+      "category": "bop",
+      "sub_category": "Revenue",
+      "value_usd": 153700000000.0,
+      "year": 2024,
+      "confidence": 0.99,
+      "source_dataset": "MOF General Account"
+    },
+    {
+      "source_id": "TAX_CORP",
+      "target_id": "GOV_JP",
+      "category": "bop",
+      "sub_category": "Revenue",
+      "value_usd": 106000000000.0,
+      "year": 2024,
+      "confidence": 0.99,
+      "source_dataset": "MOF General Account"
+    },
+    {
+      "source_id": "TAX_OTHER",
+      "target_id": "GOV_JP",
+      "category": "bop",
+      "sub_category": "Revenue",
+      "value_usd": 68900000000.0,
+      "year": 2024,
+      "confidence": 0.99,
+      "source_dataset": "MOF General Account"
+    },
+    {
+      "source_id": "NON_TAX_REV",
+      "target_id": "GOV_JP",
+      "category": "bop",
+      "sub_category": "Revenue",
+      "value_usd": 53000000000.0,
+      "year": 2024,
+      "confidence": 0.99,
+      "source_dataset": "MOF General Account"
+    },
+    {
+      "source_id": "GOV_BONDS_ISSUE",
+      "target_id": "GOV_JP",
+      "category": "bop",
+      "sub_category": "Revenue",
+      "value_usd": 254400000000.0,
+      "year": 2024,
+      "confidence": 0.99,
+      "source_dataset": "MOF General Account"
+    }
+  ],
+  "metadata": {
+    "source": [
+      "Ministry of Finance (財務省)"
+    ],
+    "generated_at": "2026-03-10T00:00:00Z",
+    "scope": "Japan National Budget (一般会計)"
+  }
+}

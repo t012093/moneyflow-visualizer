@@ -1,0 +1,1337 @@
+{
+  "nodes": [
+    {
+      "id": "EXP_SOCIAL",
+      "name": "社会保障関係費",
+      "lat": 35.68,
+      "lng": 139.76,
+      "region": "Expenditure",
+      "type": "mof_expenditure"
+    },
+    {
+      "id": "SS_PENSION",
+      "name": "年金給付費",
+      "lat": 35.7,
+      "lng": 139.7,
+      "region": "Social Security",
+      "type": "mhlw_benefit"
+    },
+    {
+      "id": "SS_MEDICAL",
+      "name": "医療給付費",
+      "lat": 35.71,
+      "lng": 139.71,
+      "region": "Social Security",
+      "type": "mhlw_benefit"
+    },
+    {
+      "id": "SS_WELFARE",
+      "name": "介護給付費",
+      "lat": 35.72,
+      "lng": 139.72,
+      "region": "Social Security",
+      "type": "mhlw_benefit"
+    },
+    {
+      "id": "SS_CHILDCARE",
+      "name": "少子化対策費",
+      "lat": 35.73,
+      "lng": 139.73,
+      "region": "Social Security",
+      "type": "mhlw_benefit"
+    },
+    {
+      "id": "SS_LIVELIHOOD",
+      "name": "生活扶助等社会福祉費",
+      "lat": 35.74,
+      "lng": 139.74,
+      "region": "Social Security",
+      "type": "mhlw_benefit"
+    },
+    {
+      "id": "REC_HOSPITAL",
+      "name": "病院・診療所 (入院+外来)",
+      "lat": 35.81,
+      "lng": 139.81,
+      "region": "Medical",
+      "type": "recipient"
+    },
+    {
+      "id": "REC_PHARMACY",
+      "name": "薬局 (調剤薬局チェーン)",
+      "lat": 35.82,
+      "lng": 139.82,
+      "region": "Medical",
+      "type": "recipient"
+    },
+    {
+      "id": "REC_DENTAL",
+      "name": "歯科医院",
+      "lat": 35.83,
+      "lng": 139.83,
+      "region": "Medical",
+      "type": "recipient"
+    },
+    {
+      "id": "REC_PHARMA",
+      "name": "製薬企業・医療機器メーカー",
+      "lat": 35.84,
+      "lng": 139.84,
+      "region": "Medical",
+      "type": "recipient"
+    },
+    {
+      "id": "REC_HOME_CARE",
+      "name": "訪問介護事業者",
+      "lat": 35.85,
+      "lng": 139.85,
+      "region": "Nursing",
+      "type": "recipient"
+    },
+    {
+      "id": "REC_NURSING_HOME",
+      "name": "特別養護老人ホーム (社福法人)",
+      "lat": 35.86,
+      "lng": 139.86,
+      "region": "Nursing",
+      "type": "recipient"
+    },
+    {
+      "id": "REC_DAY_SERVICE",
+      "name": "通所介護 (デイサービス)",
+      "lat": 35.87,
+      "lng": 139.87,
+      "region": "Nursing",
+      "type": "recipient"
+    },
+    {
+      "id": "REC_CARE_OTHER",
+      "name": "福祉用具・住宅改修等",
+      "lat": 35.88,
+      "lng": 139.88,
+      "region": "Nursing",
+      "type": "recipient"
+    },
+    {
+      "id": "REC_CHILD_ALLOW",
+      "name": "子育て世帯 (児童手当・所得制限撤廃等)",
+      "lat": 35.89,
+      "lng": 139.89,
+      "region": "Childcare",
+      "type": "recipient"
+    },
+    {
+      "id": "REC_NURSERY",
+      "name": "保育所等の処遇改善",
+      "lat": 35.9,
+      "lng": 139.9,
+      "region": "Childcare",
+      "type": "recipient"
+    },
+    {
+      "id": "REC_BIRTH_SUPP",
+      "name": "出産・子育て応援給付金 (妊娠・出産時10万円)",
+      "lat": 35.91,
+      "lng": 139.91,
+      "region": "Childcare",
+      "type": "recipient"
+    },
+    {
+      "id": "REC_DANY_NURSERY",
+      "name": "こども誰でも通園制度",
+      "lat": 35.92,
+      "lng": 139.88,
+      "region": "Childcare",
+      "type": "recipient"
+    },
+    {
+      "id": "REC_AFTERSCHOOL",
+      "name": "放課後児童クラブ等・地域子ども支援",
+      "lat": 35.92,
+      "lng": 139.92,
+      "region": "Childcare",
+      "type": "recipient"
+    },
+    {
+      "id": "DEST_PRIV_NURSERY",
+      "name": "民間保育施設・こども園",
+      "lat": 35.95,
+      "lng": 139.95,
+      "region": "Childcare",
+      "type": "corporation_jp"
+    },
+    {
+      "id": "DEST_MUNI_NURSERY",
+      "name": "公立保育所 (市町村)",
+      "lat": 35.96,
+      "lng": 139.96,
+      "region": "Childcare",
+      "type": "local_gov"
+    },
+    {
+      "id": "DEST_NPO_SUPPORT",
+      "name": "NPO法人・地域子育て支援拠点",
+      "lat": 35.97,
+      "lng": 139.97,
+      "region": "Childcare",
+      "type": "corporation_jp"
+    },
+    {
+      "id": "DEST_ACCENTURE",
+      "name": "アクセンチュア株式会社 (総合支援システム開発)",
+      "lat": 35.98,
+      "lng": 139.98,
+      "region": "Childcare",
+      "type": "corporation_jp"
+    },
+    {
+      "id": "ICT_CODMON",
+      "name": "株式会社コドモン (CoDMON)",
+      "lat": 35.68,
+      "lng": 139.75,
+      "region": "Childcare",
+      "type": "corporation_jp"
+    },
+    {
+      "id": "ICT_LOOKMEE",
+      "name": "ユニファ株式会社 (ルクミー)",
+      "lat": 35.17,
+      "lng": 136.91,
+      "region": "Childcare",
+      "type": "corporation_jp"
+    },
+    {
+      "id": "ICT_OTHERS",
+      "name": "その他保育ICT (キッズリー等)",
+      "lat": 35.69,
+      "lng": 139.69,
+      "region": "Childcare",
+      "type": "corporation_jp"
+    },
+    {
+      "id": "DEST_FACILITY_UPGRADE",
+      "name": "建設・設備業者 (施設整備補助)",
+      "lat": 35.99,
+      "lng": 139.99,
+      "region": "Childcare",
+      "type": "corporation_jp"
+    },
+    {
+      "id": "REC_ELDERLY",
+      "name": "高齢者世帯 (年金受給者)",
+      "lat": 35.8,
+      "lng": 139.8,
+      "region": "Pension",
+      "type": "recipient"
+    },
+    {
+      "id": "REC_LIVELIHOOD",
+      "name": "生活保護受給世帯・障害者",
+      "lat": 35.93,
+      "lng": 139.93,
+      "region": "Livelihood",
+      "type": "recipient"
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "EXP_SOCIAL",
+      "target_id": "SS_PENSION",
+      "category": "welfare",
+      "sub_category": "National Budget Allocation",
+      "value_usd": 85326066666.66667,
+      "year": 2021,
+      "confidence": 0.99,
+      "source_dataset": "参議院予算委員会調査室 R6"
+    },
+    {
+      "source_id": "EXP_SOCIAL",
+      "target_id": "SS_MEDICAL",
+      "category": "welfare",
+      "sub_category": "National Budget Allocation",
+      "value_usd": 75459033333.33334,
+      "year": 2021,
+      "confidence": 0.99,
+      "source_dataset": "参議院予算委員会調査室 R6"
+    },
+    {
+      "source_id": "EXP_SOCIAL",
+      "target_id": "SS_WELFARE",
+      "category": "welfare",
+      "sub_category": "National Budget Allocation",
+      "value_usd": 22188840000.0,
+      "year": 2021,
+      "confidence": 0.99,
+      "source_dataset": "参議院予算委員会調査室 R6"
+    },
+    {
+      "source_id": "EXP_SOCIAL",
+      "target_id": "SS_LIVELIHOOD",
+      "category": "welfare",
+      "sub_category": "National Budget Allocation",
+      "value_usd": 29043093333.333336,
+      "year": 2021,
+      "confidence": 0.99,
+      "source_dataset": "参議院予算委員会調査室 R6"
+    },
+    {
+      "source_id": "SS_PENSION",
+      "target_id": "REC_ELDERLY",
+      "category": "remittance",
+      "sub_category": "基礎年金国庫負担",
+      "value_usd": 85326066666.66667,
+      "year": 2021,
+      "confidence": 0.99,
+      "source_dataset": "財務省一般会計"
+    },
+    {
+      "source_id": "SS_MEDICAL",
+      "target_id": "REC_HOSPITAL",
+      "category": "trade",
+      "sub_category": "医療費支弁",
+      "value_usd": 52066733000.0,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "厚生労働省 国民医療費 R4"
+    },
+    {
+      "source_id": "SS_MEDICAL",
+      "target_id": "REC_PHARMACY",
+      "category": "trade",
+      "sub_category": "医療費支弁",
+      "value_usd": 12828035666.66667,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "厚生労働省 国民医療費 R4"
+    },
+    {
+      "source_id": "SS_MEDICAL",
+      "target_id": "REC_DENTAL",
+      "category": "trade",
+      "sub_category": "医療費支弁",
+      "value_usd": 5282132333.333335,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "厚生労働省 国民医療費 R4"
+    },
+    {
+      "source_id": "SS_MEDICAL",
+      "target_id": "REC_PHARMA",
+      "category": "trade",
+      "sub_category": "医療費支弁",
+      "value_usd": 5282132333.333335,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "厚生労働省 国民医療費 R4"
+    },
+    {
+      "source_id": "SS_WELFARE",
+      "target_id": "REC_HOME_CARE",
+      "category": "trade",
+      "sub_category": "介護保険給付",
+      "value_usd": 6656652000.000001,
+      "year": 2021,
+      "confidence": 0.9,
+      "source_dataset": "厚生労働省 介護給付費等実態統計 R5"
+    },
+    {
+      "source_id": "SS_WELFARE",
+      "target_id": "REC_NURSING_HOME",
+      "category": "trade",
+      "sub_category": "介護保険給付",
+      "value_usd": 6656652000.000001,
+      "year": 2021,
+      "confidence": 0.9,
+      "source_dataset": "厚生労働省 介護給付費等実態統計 R5"
+    },
+    {
+      "source_id": "SS_WELFARE",
+      "target_id": "REC_DAY_SERVICE",
+      "category": "trade",
+      "sub_category": "介護保険給付",
+      "value_usd": 4437768000.000001,
+      "year": 2021,
+      "confidence": 0.9,
+      "source_dataset": "厚生労働省 介護給付費等実態統計 R5"
+    },
+    {
+      "source_id": "SS_WELFARE",
+      "target_id": "REC_CARE_OTHER",
+      "category": "trade",
+      "sub_category": "介護保険給付",
+      "value_usd": 4437768000.000001,
+      "year": 2021,
+      "confidence": 0.9,
+      "source_dataset": "厚生労働省 介護給付費等実態統計 R5"
+    },
+    {
+      "source_id": "SS_CHILDCARE",
+      "target_id": "REC_CHILD_ALLOW",
+      "category": "remittance",
+      "sub_category": "少子化対策給付",
+      "value_usd": 9249240000.0,
+      "year": 2021,
+      "confidence": 0.99,
+      "source_dataset": "こども家庭庁 R6/R7予算 オープンデータ",
+      "description": "児童手当 (所得制限撤廃・多子加算) - こども家庭庁オープンデータ (https://www.cfa.go.jp/)"
+    },
+    {
+      "source_id": "SS_CHILDCARE",
+      "target_id": "REC_NURSERY",
+      "category": "remittance",
+      "sub_category": "少子化対策給付",
+      "value_usd": 10691286666.666668,
+      "year": 2021,
+      "confidence": 0.99,
+      "source_dataset": "こども家庭庁 R6/R7予算 オープンデータ",
+      "description": "子どものための教育・保育給付等 (配置改善等) - こども家庭庁オープンデータ (https://www.cfa.go.jp/)"
+    },
+    {
+      "source_id": "SS_CHILDCARE",
+      "target_id": "REC_BIRTH_SUPP",
+      "category": "remittance",
+      "sub_category": "少子化対策給付",
+      "value_usd": 378560000.0,
+      "year": 2021,
+      "confidence": 0.99,
+      "source_dataset": "こども家庭庁 R6/R7予算 オープンデータ",
+      "description": "出産・子育て応援交付金 - こども家庭庁オープンデータ (https://www.cfa.go.jp/)"
+    },
+    {
+      "source_id": "SS_CHILDCARE",
+      "target_id": "REC_DANY_NURSERY",
+      "category": "remittance",
+      "sub_category": "少子化対策給付",
+      "value_usd": 76440000.00000001,
+      "year": 2021,
+      "confidence": 0.99,
+      "source_dataset": "こども家庭庁 R6/R7予算 オープンデータ",
+      "description": "こども誰でも通園制度 (令和7年度本格実施に向けた体制整備) - こども家庭庁オープンデータ (https://www.cfa.go.jp/)"
+    },
+    {
+      "source_id": "SS_CHILDCARE",
+      "target_id": "REC_AFTERSCHOOL",
+      "category": "remittance",
+      "sub_category": "少子化対策給付",
+      "value_usd": 11757806666.666668,
+      "year": 2021,
+      "confidence": 0.99,
+      "source_dataset": "こども家庭庁 R6/R7予算 オープンデータ",
+      "description": "放課後児童事業等 - こども家庭庁オープンデータ (https://www.cfa.go.jp/)"
+    },
+    {
+      "source_id": "REC_DANY_NURSERY",
+      "target_id": "DEST_PRIV_NURSERY",
+      "category": "services",
+      "sub_category": "委託・助成金",
+      "value_usd": 45864000.00000001,
+      "year": 2021,
+      "confidence": 0.85,
+      "source_dataset": "こども誰でも通園制度(仮称)の本格実施に向けた制度移行 (想定)",
+      "description": "民間保育施設等への利用料補助 (0歳1,300円/時, 1歳1,100円/時, 2歳900円/時)"
+    },
+    {
+      "source_id": "REC_DANY_NURSERY",
+      "target_id": "DEST_MUNI_NURSERY",
+      "category": "services",
+      "sub_category": "委託・助成金",
+      "value_usd": 11466000.000000002,
+      "year": 2021,
+      "confidence": 0.85,
+      "source_dataset": "こども誰でも通園制度(仮称)の本格実施に向けた制度移行 (想定)",
+      "description": "公立保育施設への利用料補助 (国3/4, 市町朱1/4負担)"
+    },
+    {
+      "source_id": "REC_DANY_NURSERY",
+      "target_id": "DEST_ACCENTURE",
+      "category": "services",
+      "sub_category": "委託・助成金",
+      "value_usd": 7644000.000000001,
+      "year": 2021,
+      "confidence": 0.85,
+      "source_dataset": "こども誰でも通園制度(仮称)の本格実施に向けた制度移行 (想定)",
+      "description": "総合支援システムの運用保守開発 (落札額 約12.5億円 / NJSS参照)"
+    },
+    {
+      "source_id": "REC_DANY_NURSERY",
+      "target_id": "ICT_CODMON",
+      "category": "services",
+      "sub_category": "委託・助成金",
+      "value_usd": 2293200.0000000005,
+      "year": 2021,
+      "confidence": 0.85,
+      "source_dataset": "こども誰でも通園制度(仮称)の本格実施に向けた制度移行 (想定)",
+      "description": "コドモン: 導入施設24,000+, 709自治体, シェアNo.1 (SaaS型業務支援システム導入園調査2025)"
+    },
+    {
+      "source_id": "REC_DANY_NURSERY",
+      "target_id": "ICT_LOOKMEE",
+      "category": "services",
+      "sub_category": "委託・助成金",
+      "value_usd": 1146600.0000000002,
+      "year": 2021,
+      "confidence": 0.85,
+      "source_dataset": "こども誰でも通園制度(仮称)の本格実施に向けた制度移行 (想定)",
+      "description": "ルクミー: 累計導入数20,000件+, 約60自治体, ユニファ株式会社が提供"
+    },
+    {
+      "source_id": "REC_DANY_NURSERY",
+      "target_id": "ICT_OTHERS",
+      "category": "services",
+      "sub_category": "委託・助成金",
+      "value_usd": 382200.0,
+      "year": 2021,
+      "confidence": 0.85,
+      "source_dataset": "こども誰でも通園制度(仮称)の本格実施に向けた制度移行 (想定)",
+      "description": "キッズリー(リクルート)等その他保育ICT SaaS"
+    },
+    {
+      "source_id": "REC_DANY_NURSERY",
+      "target_id": "DEST_FACILITY_UPGRADE",
+      "category": "services",
+      "sub_category": "委託・助成金",
+      "value_usd": 7644000.000000001,
+      "year": 2021,
+      "confidence": 0.85,
+      "source_dataset": "こども誰でも通園制度(仮称)の本格実施に向けた制度移行 (想定)",
+      "description": "施設整備費の国庫補助率嵩上げ"
+    },
+    {
+      "source_id": "SS_LIVELIHOOD",
+      "target_id": "REC_LIVELIHOOD",
+      "category": "remittance",
+      "sub_category": "生活保護費・障害福祉",
+      "value_usd": 29043093333.333336,
+      "year": 2021,
+      "confidence": 0.95,
+      "source_dataset": "参議院予算委員会調査室 R6"
+    },
+    {
+      "source_id": "EXP_SOCIAL",
+      "target_id": "SS_PENSION",
+      "category": "welfare",
+      "sub_category": "National Budget Allocation",
+      "value_usd": 86666266666.66667,
+      "year": 2022,
+      "confidence": 0.99,
+      "source_dataset": "参議院予算委員会調査室 R6"
+    },
+    {
+      "source_id": "EXP_SOCIAL",
+      "target_id": "SS_MEDICAL",
+      "category": "welfare",
+      "sub_category": "National Budget Allocation",
+      "value_usd": 77498466666.66667,
+      "year": 2022,
+      "confidence": 0.99,
+      "source_dataset": "参議院予算委員会調査室 R6"
+    },
+    {
+      "source_id": "EXP_SOCIAL",
+      "target_id": "SS_WELFARE",
+      "category": "welfare",
+      "sub_category": "National Budget Allocation",
+      "value_usd": 23056560000.0,
+      "year": 2022,
+      "confidence": 0.99,
+      "source_dataset": "参議院予算委員会調査室 R6"
+    },
+    {
+      "source_id": "EXP_SOCIAL",
+      "target_id": "SS_LIVELIHOOD",
+      "category": "welfare",
+      "sub_category": "National Budget Allocation",
+      "value_usd": 29342506666.666668,
+      "year": 2022,
+      "confidence": 0.99,
+      "source_dataset": "参議院予算委員会調査室 R6"
+    },
+    {
+      "source_id": "SS_PENSION",
+      "target_id": "REC_ELDERLY",
+      "category": "remittance",
+      "sub_category": "基礎年金国庫負担",
+      "value_usd": 86666266666.66667,
+      "year": 2022,
+      "confidence": 0.99,
+      "source_dataset": "財務省一般会計"
+    },
+    {
+      "source_id": "SS_MEDICAL",
+      "target_id": "REC_HOSPITAL",
+      "category": "trade",
+      "sub_category": "医療費支弁",
+      "value_usd": 53473942000.0,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "厚生労働省 国民医療費 R4"
+    },
+    {
+      "source_id": "SS_MEDICAL",
+      "target_id": "REC_PHARMACY",
+      "category": "trade",
+      "sub_category": "医療費支弁",
+      "value_usd": 13174739333.333334,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "厚生労働省 国民医療費 R4"
+    },
+    {
+      "source_id": "SS_MEDICAL",
+      "target_id": "REC_DENTAL",
+      "category": "trade",
+      "sub_category": "医療費支弁",
+      "value_usd": 5424892666.666668,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "厚生労働省 国民医療費 R4"
+    },
+    {
+      "source_id": "SS_MEDICAL",
+      "target_id": "REC_PHARMA",
+      "category": "trade",
+      "sub_category": "医療費支弁",
+      "value_usd": 5424892666.666668,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "厚生労働省 国民医療費 R4"
+    },
+    {
+      "source_id": "SS_WELFARE",
+      "target_id": "REC_HOME_CARE",
+      "category": "trade",
+      "sub_category": "介護保険給付",
+      "value_usd": 6916968000.0,
+      "year": 2022,
+      "confidence": 0.9,
+      "source_dataset": "厚生労働省 介護給付費等実態統計 R5"
+    },
+    {
+      "source_id": "SS_WELFARE",
+      "target_id": "REC_NURSING_HOME",
+      "category": "trade",
+      "sub_category": "介護保険給付",
+      "value_usd": 6916968000.0,
+      "year": 2022,
+      "confidence": 0.9,
+      "source_dataset": "厚生労働省 介護給付費等実態統計 R5"
+    },
+    {
+      "source_id": "SS_WELFARE",
+      "target_id": "REC_DAY_SERVICE",
+      "category": "trade",
+      "sub_category": "介護保険給付",
+      "value_usd": 4611312000.0,
+      "year": 2022,
+      "confidence": 0.9,
+      "source_dataset": "厚生労働省 介護給付費等実態統計 R5"
+    },
+    {
+      "source_id": "SS_WELFARE",
+      "target_id": "REC_CARE_OTHER",
+      "category": "trade",
+      "sub_category": "介護保険給付",
+      "value_usd": 4611312000.0,
+      "year": 2022,
+      "confidence": 0.9,
+      "source_dataset": "厚生労働省 介護給付費等実態統計 R5"
+    },
+    {
+      "source_id": "SS_CHILDCARE",
+      "target_id": "REC_CHILD_ALLOW",
+      "category": "remittance",
+      "sub_category": "少子化対策給付",
+      "value_usd": 9554160000.0,
+      "year": 2022,
+      "confidence": 0.99,
+      "source_dataset": "こども家庭庁 R6/R7予算 オープンデータ",
+      "description": "児童手当 (所得制限撤廃・多子加算) - こども家庭庁オープンデータ (https://www.cfa.go.jp/)"
+    },
+    {
+      "source_id": "SS_CHILDCARE",
+      "target_id": "REC_NURSERY",
+      "category": "remittance",
+      "sub_category": "少子化対策給付",
+      "value_usd": 11043746666.666668,
+      "year": 2022,
+      "confidence": 0.99,
+      "source_dataset": "こども家庭庁 R6/R7予算 オープンデータ",
+      "description": "子どものための教育・保育給付等 (配置改善等) - こども家庭庁オープンデータ (https://www.cfa.go.jp/)"
+    },
+    {
+      "source_id": "SS_CHILDCARE",
+      "target_id": "REC_BIRTH_SUPP",
+      "category": "remittance",
+      "sub_category": "少子化対策給付",
+      "value_usd": 391040000.0,
+      "year": 2022,
+      "confidence": 0.99,
+      "source_dataset": "こども家庭庁 R6/R7予算 オープンデータ",
+      "description": "出産・子育て応援交付金 - こども家庭庁オープンデータ (https://www.cfa.go.jp/)"
+    },
+    {
+      "source_id": "SS_CHILDCARE",
+      "target_id": "REC_DANY_NURSERY",
+      "category": "remittance",
+      "sub_category": "少子化対策給付",
+      "value_usd": 78960000.0,
+      "year": 2022,
+      "confidence": 0.99,
+      "source_dataset": "こども家庭庁 R6/R7予算 オープンデータ",
+      "description": "こども誰でも通園制度 (令和7年度本格実施に向けた体制整備) - こども家庭庁オープンデータ (https://www.cfa.go.jp/)"
+    },
+    {
+      "source_id": "SS_CHILDCARE",
+      "target_id": "REC_AFTERSCHOOL",
+      "category": "remittance",
+      "sub_category": "少子化対策給付",
+      "value_usd": 12145426666.666668,
+      "year": 2022,
+      "confidence": 0.99,
+      "source_dataset": "こども家庭庁 R6/R7予算 オープンデータ",
+      "description": "放課後児童事業等 - こども家庭庁オープンデータ (https://www.cfa.go.jp/)"
+    },
+    {
+      "source_id": "REC_DANY_NURSERY",
+      "target_id": "DEST_PRIV_NURSERY",
+      "category": "services",
+      "sub_category": "委託・助成金",
+      "value_usd": 47376000.0,
+      "year": 2022,
+      "confidence": 0.85,
+      "source_dataset": "こども誰でも通園制度(仮称)の本格実施に向けた制度移行 (想定)",
+      "description": "民間保育施設等への利用料補助 (0歳1,300円/時, 1歳1,100円/時, 2歳900円/時)"
+    },
+    {
+      "source_id": "REC_DANY_NURSERY",
+      "target_id": "DEST_MUNI_NURSERY",
+      "category": "services",
+      "sub_category": "委託・助成金",
+      "value_usd": 11844000.0,
+      "year": 2022,
+      "confidence": 0.85,
+      "source_dataset": "こども誰でも通園制度(仮称)の本格実施に向けた制度移行 (想定)",
+      "description": "公立保育施設への利用料補助 (国3/4, 市町朱1/4負担)"
+    },
+    {
+      "source_id": "REC_DANY_NURSERY",
+      "target_id": "DEST_ACCENTURE",
+      "category": "services",
+      "sub_category": "委託・助成金",
+      "value_usd": 7896000.000000002,
+      "year": 2022,
+      "confidence": 0.85,
+      "source_dataset": "こども誰でも通園制度(仮称)の本格実施に向けた制度移行 (想定)",
+      "description": "総合支援システムの運用保守開発 (落札額 約12.5億円 / NJSS参照)"
+    },
+    {
+      "source_id": "REC_DANY_NURSERY",
+      "target_id": "ICT_CODMON",
+      "category": "services",
+      "sub_category": "委託・助成金",
+      "value_usd": 2368800.0,
+      "year": 2022,
+      "confidence": 0.85,
+      "source_dataset": "こども誰でも通園制度(仮称)の本格実施に向けた制度移行 (想定)",
+      "description": "コドモン: 導入施設24,000+, 709自治体, シェアNo.1 (SaaS型業務支援システム導入園調査2025)"
+    },
+    {
+      "source_id": "REC_DANY_NURSERY",
+      "target_id": "ICT_LOOKMEE",
+      "category": "services",
+      "sub_category": "委託・助成金",
+      "value_usd": 1184400.0,
+      "year": 2022,
+      "confidence": 0.85,
+      "source_dataset": "こども誰でも通園制度(仮称)の本格実施に向けた制度移行 (想定)",
+      "description": "ルクミー: 累計導入数20,000件+, 約60自治体, ユニファ株式会社が提供"
+    },
+    {
+      "source_id": "REC_DANY_NURSERY",
+      "target_id": "ICT_OTHERS",
+      "category": "services",
+      "sub_category": "委託・助成金",
+      "value_usd": 394800.0,
+      "year": 2022,
+      "confidence": 0.85,
+      "source_dataset": "こども誰でも通園制度(仮称)の本格実施に向けた制度移行 (想定)",
+      "description": "キッズリー(リクルート)等その他保育ICT SaaS"
+    },
+    {
+      "source_id": "REC_DANY_NURSERY",
+      "target_id": "DEST_FACILITY_UPGRADE",
+      "category": "services",
+      "sub_category": "委託・助成金",
+      "value_usd": 7896000.000000002,
+      "year": 2022,
+      "confidence": 0.85,
+      "source_dataset": "こども誰でも通園制度(仮称)の本格実施に向けた制度移行 (想定)",
+      "description": "施設整備費の国庫補助率嵩上げ"
+    },
+    {
+      "source_id": "SS_LIVELIHOOD",
+      "target_id": "REC_LIVELIHOOD",
+      "category": "remittance",
+      "sub_category": "生活保護費・障害福祉",
+      "value_usd": 29342506666.666668,
+      "year": 2022,
+      "confidence": 0.95,
+      "source_dataset": "参議院予算委員会調査室 R6"
+    },
+    {
+      "source_id": "EXP_SOCIAL",
+      "target_id": "SS_PENSION",
+      "category": "welfare",
+      "sub_category": "National Budget Allocation",
+      "value_usd": 88006466666.66669,
+      "year": 2023,
+      "confidence": 0.99,
+      "source_dataset": "参議院予算委員会調査室 R6"
+    },
+    {
+      "source_id": "EXP_SOCIAL",
+      "target_id": "SS_MEDICAL",
+      "category": "welfare",
+      "sub_category": "National Budget Allocation",
+      "value_usd": 79537900000.0,
+      "year": 2023,
+      "confidence": 0.99,
+      "source_dataset": "参議院予算委員会調査室 R6"
+    },
+    {
+      "source_id": "EXP_SOCIAL",
+      "target_id": "SS_WELFARE",
+      "category": "welfare",
+      "sub_category": "National Budget Allocation",
+      "value_usd": 23924280000.0,
+      "year": 2023,
+      "confidence": 0.99,
+      "source_dataset": "参議院予算委員会調査室 R6"
+    },
+    {
+      "source_id": "EXP_SOCIAL",
+      "target_id": "SS_LIVELIHOOD",
+      "category": "welfare",
+      "sub_category": "National Budget Allocation",
+      "value_usd": 29641920000.0,
+      "year": 2023,
+      "confidence": 0.99,
+      "source_dataset": "参議院予算委員会調査室 R6"
+    },
+    {
+      "source_id": "SS_PENSION",
+      "target_id": "REC_ELDERLY",
+      "category": "remittance",
+      "sub_category": "基礎年金国庫負担",
+      "value_usd": 88006466666.66669,
+      "year": 2023,
+      "confidence": 0.99,
+      "source_dataset": "財務省一般会計"
+    },
+    {
+      "source_id": "SS_MEDICAL",
+      "target_id": "REC_HOSPITAL",
+      "category": "trade",
+      "sub_category": "医療費支弁",
+      "value_usd": 54881151000.0,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "厚生労働省 国民医療費 R4"
+    },
+    {
+      "source_id": "SS_MEDICAL",
+      "target_id": "REC_PHARMACY",
+      "category": "trade",
+      "sub_category": "医療費支弁",
+      "value_usd": 13521443000.0,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "厚生労働省 国民医療費 R4"
+    },
+    {
+      "source_id": "SS_MEDICAL",
+      "target_id": "REC_DENTAL",
+      "category": "trade",
+      "sub_category": "医療費支弁",
+      "value_usd": 5567653000.0,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "厚生労働省 国民医療費 R4"
+    },
+    {
+      "source_id": "SS_MEDICAL",
+      "target_id": "REC_PHARMA",
+      "category": "trade",
+      "sub_category": "医療費支弁",
+      "value_usd": 5567653000.0,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "厚生労働省 国民医療費 R4"
+    },
+    {
+      "source_id": "SS_WELFARE",
+      "target_id": "REC_HOME_CARE",
+      "category": "trade",
+      "sub_category": "介護保険給付",
+      "value_usd": 7177284000.0,
+      "year": 2023,
+      "confidence": 0.9,
+      "source_dataset": "厚生労働省 介護給付費等実態統計 R5"
+    },
+    {
+      "source_id": "SS_WELFARE",
+      "target_id": "REC_NURSING_HOME",
+      "category": "trade",
+      "sub_category": "介護保険給付",
+      "value_usd": 7177284000.0,
+      "year": 2023,
+      "confidence": 0.9,
+      "source_dataset": "厚生労働省 介護給付費等実態統計 R5"
+    },
+    {
+      "source_id": "SS_WELFARE",
+      "target_id": "REC_DAY_SERVICE",
+      "category": "trade",
+      "sub_category": "介護保険給付",
+      "value_usd": 4784856000.0,
+      "year": 2023,
+      "confidence": 0.9,
+      "source_dataset": "厚生労働省 介護給付費等実態統計 R5"
+    },
+    {
+      "source_id": "SS_WELFARE",
+      "target_id": "REC_CARE_OTHER",
+      "category": "trade",
+      "sub_category": "介護保険給付",
+      "value_usd": 4784856000.0,
+      "year": 2023,
+      "confidence": 0.9,
+      "source_dataset": "厚生労働省 介護給付費等実態統計 R5"
+    },
+    {
+      "source_id": "SS_CHILDCARE",
+      "target_id": "REC_CHILD_ALLOW",
+      "category": "remittance",
+      "sub_category": "少子化対策給付",
+      "value_usd": 9859080000.0,
+      "year": 2023,
+      "confidence": 0.99,
+      "source_dataset": "こども家庭庁 R6/R7予算 オープンデータ",
+      "description": "児童手当 (所得制限撤廃・多子加算) - こども家庭庁オープンデータ (https://www.cfa.go.jp/)"
+    },
+    {
+      "source_id": "SS_CHILDCARE",
+      "target_id": "REC_NURSERY",
+      "category": "remittance",
+      "sub_category": "少子化対策給付",
+      "value_usd": 11396206666.66667,
+      "year": 2023,
+      "confidence": 0.99,
+      "source_dataset": "こども家庭庁 R6/R7予算 オープンデータ",
+      "description": "子どものための教育・保育給付等 (配置改善等) - こども家庭庁オープンデータ (https://www.cfa.go.jp/)"
+    },
+    {
+      "source_id": "SS_CHILDCARE",
+      "target_id": "REC_BIRTH_SUPP",
+      "category": "remittance",
+      "sub_category": "少子化対策給付",
+      "value_usd": 403520000.0,
+      "year": 2023,
+      "confidence": 0.99,
+      "source_dataset": "こども家庭庁 R6/R7予算 オープンデータ",
+      "description": "出産・子育て応援交付金 - こども家庭庁オープンデータ (https://www.cfa.go.jp/)"
+    },
+    {
+      "source_id": "SS_CHILDCARE",
+      "target_id": "REC_DANY_NURSERY",
+      "category": "remittance",
+      "sub_category": "少子化対策給付",
+      "value_usd": 81480000.0,
+      "year": 2023,
+      "confidence": 0.99,
+      "source_dataset": "こども家庭庁 R6/R7予算 オープンデータ",
+      "description": "こども誰でも通園制度 (令和7年度本格実施に向けた体制整備) - こども家庭庁オープンデータ (https://www.cfa.go.jp/)"
+    },
+    {
+      "source_id": "SS_CHILDCARE",
+      "target_id": "REC_AFTERSCHOOL",
+      "category": "remittance",
+      "sub_category": "少子化対策給付",
+      "value_usd": 12533046666.666668,
+      "year": 2023,
+      "confidence": 0.99,
+      "source_dataset": "こども家庭庁 R6/R7予算 オープンデータ",
+      "description": "放課後児童事業等 - こども家庭庁オープンデータ (https://www.cfa.go.jp/)"
+    },
+    {
+      "source_id": "REC_DANY_NURSERY",
+      "target_id": "DEST_PRIV_NURSERY",
+      "category": "services",
+      "sub_category": "委託・助成金",
+      "value_usd": 48888000.0,
+      "year": 2023,
+      "confidence": 0.85,
+      "source_dataset": "こども誰でも通園制度(仮称)の本格実施に向けた制度移行 (想定)",
+      "description": "民間保育施設等への利用料補助 (0歳1,300円/時, 1歳1,100円/時, 2歳900円/時)"
+    },
+    {
+      "source_id": "REC_DANY_NURSERY",
+      "target_id": "DEST_MUNI_NURSERY",
+      "category": "services",
+      "sub_category": "委託・助成金",
+      "value_usd": 12222000.0,
+      "year": 2023,
+      "confidence": 0.85,
+      "source_dataset": "こども誰でも通園制度(仮称)の本格実施に向けた制度移行 (想定)",
+      "description": "公立保育施設への利用料補助 (国3/4, 市町朱1/4負担)"
+    },
+    {
+      "source_id": "REC_DANY_NURSERY",
+      "target_id": "DEST_ACCENTURE",
+      "category": "services",
+      "sub_category": "委託・助成金",
+      "value_usd": 8148000.000000002,
+      "year": 2023,
+      "confidence": 0.85,
+      "source_dataset": "こども誰でも通園制度(仮称)の本格実施に向けた制度移行 (想定)",
+      "description": "総合支援システムの運用保守開発 (落札額 約12.5億円 / NJSS参照)"
+    },
+    {
+      "source_id": "REC_DANY_NURSERY",
+      "target_id": "ICT_CODMON",
+      "category": "services",
+      "sub_category": "委託・助成金",
+      "value_usd": 2444400.0,
+      "year": 2023,
+      "confidence": 0.85,
+      "source_dataset": "こども誰でも通園制度(仮称)の本格実施に向けた制度移行 (想定)",
+      "description": "コドモン: 導入施設24,000+, 709自治体, シェアNo.1 (SaaS型業務支援システム導入園調査2025)"
+    },
+    {
+      "source_id": "REC_DANY_NURSERY",
+      "target_id": "ICT_LOOKMEE",
+      "category": "services",
+      "sub_category": "委託・助成金",
+      "value_usd": 1222200.0,
+      "year": 2023,
+      "confidence": 0.85,
+      "source_dataset": "こども誰でも通園制度(仮称)の本格実施に向けた制度移行 (想定)",
+      "description": "ルクミー: 累計導入数20,000件+, 約60自治体, ユニファ株式会社が提供"
+    },
+    {
+      "source_id": "REC_DANY_NURSERY",
+      "target_id": "ICT_OTHERS",
+      "category": "services",
+      "sub_category": "委託・助成金",
+      "value_usd": 407400.0,
+      "year": 2023,
+      "confidence": 0.85,
+      "source_dataset": "こども誰でも通園制度(仮称)の本格実施に向けた制度移行 (想定)",
+      "description": "キッズリー(リクルート)等その他保育ICT SaaS"
+    },
+    {
+      "source_id": "REC_DANY_NURSERY",
+      "target_id": "DEST_FACILITY_UPGRADE",
+      "category": "services",
+      "sub_category": "委託・助成金",
+      "value_usd": 8148000.000000002,
+      "year": 2023,
+      "confidence": 0.85,
+      "source_dataset": "こども誰でも通園制度(仮称)の本格実施に向けた制度移行 (想定)",
+      "description": "施設整備費の国庫補助率嵩上げ"
+    },
+    {
+      "source_id": "SS_LIVELIHOOD",
+      "target_id": "REC_LIVELIHOOD",
+      "category": "remittance",
+      "sub_category": "生活保護費・障害福祉",
+      "value_usd": 29641920000.0,
+      "year": 2023,
+      "confidence": 0.95,
+      "source_dataset": "参議院予算委員会調査室 R6"
+    },
+    {
+      "source_id": "EXP_SOCIAL",
+      "target_id": "SS_PENSION",
+      "category": "welfare",
+      "sub_category": "National Budget Allocation",
+      "value_usd": 89346666666.66667,
+      "year": 2024,
+      "confidence": 0.99,
+      "source_dataset": "参議院予算委員会調査室 R6"
+    },
+    {
+      "source_id": "EXP_SOCIAL",
+      "target_id": "SS_MEDICAL",
+      "category": "welfare",
+      "sub_category": "National Budget Allocation",
+      "value_usd": 81577333333.33334,
+      "year": 2024,
+      "confidence": 0.99,
+      "source_dataset": "参議院予算委員会調査室 R6"
+    },
+    {
+      "source_id": "EXP_SOCIAL",
+      "target_id": "SS_WELFARE",
+      "category": "welfare",
+      "sub_category": "National Budget Allocation",
+      "value_usd": 24792000000.0,
+      "year": 2024,
+      "confidence": 0.99,
+      "source_dataset": "参議院予算委員会調査室 R6"
+    },
+    {
+      "source_id": "EXP_SOCIAL",
+      "target_id": "SS_LIVELIHOOD",
+      "category": "welfare",
+      "sub_category": "National Budget Allocation",
+      "value_usd": 29941333333.333336,
+      "year": 2024,
+      "confidence": 0.99,
+      "source_dataset": "参議院予算委員会調査室 R6"
+    },
+    {
+      "source_id": "SS_PENSION",
+      "target_id": "REC_ELDERLY",
+      "category": "remittance",
+      "sub_category": "基礎年金国庫負担",
+      "value_usd": 89346666666.66667,
+      "year": 2024,
+      "confidence": 0.99,
+      "source_dataset": "財務省一般会計"
+    },
+    {
+      "source_id": "SS_MEDICAL",
+      "target_id": "REC_HOSPITAL",
+      "category": "trade",
+      "sub_category": "医療費支弁",
+      "value_usd": 56288360000.0,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "厚生労働省 国民医療費 R4"
+    },
+    {
+      "source_id": "SS_MEDICAL",
+      "target_id": "REC_PHARMACY",
+      "category": "trade",
+      "sub_category": "医療費支弁",
+      "value_usd": 13868146666.666668,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "厚生労働省 国民医療費 R4"
+    },
+    {
+      "source_id": "SS_MEDICAL",
+      "target_id": "REC_DENTAL",
+      "category": "trade",
+      "sub_category": "医療費支弁",
+      "value_usd": 5710413333.333335,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "厚生労働省 国民医療費 R4"
+    },
+    {
+      "source_id": "SS_MEDICAL",
+      "target_id": "REC_PHARMA",
+      "category": "trade",
+      "sub_category": "医療費支弁",
+      "value_usd": 5710413333.333335,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "厚生労働省 国民医療費 R4"
+    },
+    {
+      "source_id": "SS_WELFARE",
+      "target_id": "REC_HOME_CARE",
+      "category": "trade",
+      "sub_category": "介護保険給付",
+      "value_usd": 7437600000.000001,
+      "year": 2024,
+      "confidence": 0.9,
+      "source_dataset": "厚生労働省 介護給付費等実態統計 R5"
+    },
+    {
+      "source_id": "SS_WELFARE",
+      "target_id": "REC_NURSING_HOME",
+      "category": "trade",
+      "sub_category": "介護保険給付",
+      "value_usd": 7437600000.000001,
+      "year": 2024,
+      "confidence": 0.9,
+      "source_dataset": "厚生労働省 介護給付費等実態統計 R5"
+    },
+    {
+      "source_id": "SS_WELFARE",
+      "target_id": "REC_DAY_SERVICE",
+      "category": "trade",
+      "sub_category": "介護保険給付",
+      "value_usd": 4958400000.0,
+      "year": 2024,
+      "confidence": 0.9,
+      "source_dataset": "厚生労働省 介護給付費等実態統計 R5"
+    },
+    {
+      "source_id": "SS_WELFARE",
+      "target_id": "REC_CARE_OTHER",
+      "category": "trade",
+      "sub_category": "介護保険給付",
+      "value_usd": 4958400000.0,
+      "year": 2024,
+      "confidence": 0.9,
+      "source_dataset": "厚生労働省 介護給付費等実態統計 R5"
+    },
+    {
+      "source_id": "SS_CHILDCARE",
+      "target_id": "REC_CHILD_ALLOW",
+      "category": "remittance",
+      "sub_category": "少子化対策給付",
+      "value_usd": 10164000000.0,
+      "year": 2024,
+      "confidence": 0.99,
+      "source_dataset": "こども家庭庁 R6/R7予算 オープンデータ",
+      "description": "児童手当 (所得制限撤廃・多子加算) - こども家庭庁オープンデータ (https://www.cfa.go.jp/)"
+    },
+    {
+      "source_id": "SS_CHILDCARE",
+      "target_id": "REC_NURSERY",
+      "category": "remittance",
+      "sub_category": "少子化対策給付",
+      "value_usd": 11748666666.666668,
+      "year": 2024,
+      "confidence": 0.99,
+      "source_dataset": "こども家庭庁 R6/R7予算 オープンデータ",
+      "description": "子どものための教育・保育給付等 (配置改善等) - こども家庭庁オープンデータ (https://www.cfa.go.jp/)"
+    },
+    {
+      "source_id": "SS_CHILDCARE",
+      "target_id": "REC_BIRTH_SUPP",
+      "category": "remittance",
+      "sub_category": "少子化対策給付",
+      "value_usd": 416000000.0,
+      "year": 2024,
+      "confidence": 0.99,
+      "source_dataset": "こども家庭庁 R6/R7予算 オープンデータ",
+      "description": "出産・子育て応援交付金 - こども家庭庁オープンデータ (https://www.cfa.go.jp/)"
+    },
+    {
+      "source_id": "SS_CHILDCARE",
+      "target_id": "REC_DANY_NURSERY",
+      "category": "remittance",
+      "sub_category": "少子化対策給付",
+      "value_usd": 84000000.0,
+      "year": 2024,
+      "confidence": 0.99,
+      "source_dataset": "こども家庭庁 R6/R7予算 オープンデータ",
+      "description": "こども誰でも通園制度 (令和7年度本格実施に向けた体制整備) - こども家庭庁オープンデータ (https://www.cfa.go.jp/)"
+    },
+    {
+      "source_id": "SS_CHILDCARE",
+      "target_id": "REC_AFTERSCHOOL",
+      "category": "remittance",
+      "sub_category": "少子化対策給付",
+      "value_usd": 12920666666.666668,
+      "year": 2024,
+      "confidence": 0.99,
+      "source_dataset": "こども家庭庁 R6/R7予算 オープンデータ",
+      "description": "放課後児童事業等 - こども家庭庁オープンデータ (https://www.cfa.go.jp/)"
+    },
+    {
+      "source_id": "REC_DANY_NURSERY",
+      "target_id": "DEST_PRIV_NURSERY",
+      "category": "services",
+      "sub_category": "委託・助成金",
+      "value_usd": 50400000.0,
+      "year": 2024,
+      "confidence": 0.85,
+      "source_dataset": "こども誰でも通園制度(仮称)の本格実施に向けた制度移行 (想定)",
+      "description": "民間保育施設等への利用料補助 (0歳1,300円/時, 1歳1,100円/時, 2歳900円/時)"
+    },
+    {
+      "source_id": "REC_DANY_NURSERY",
+      "target_id": "DEST_MUNI_NURSERY",
+      "category": "services",
+      "sub_category": "委託・助成金",
+      "value_usd": 12600000.0,
+      "year": 2024,
+      "confidence": 0.85,
+      "source_dataset": "こども誰でも通園制度(仮称)の本格実施に向けた制度移行 (想定)",
+      "description": "公立保育施設への利用料補助 (国3/4, 市町朱1/4負担)"
+    },
+    {
+      "source_id": "REC_DANY_NURSERY",
+      "target_id": "DEST_ACCENTURE",
+      "category": "services",
+      "sub_category": "委託・助成金",
+      "value_usd": 8400000.000000002,
+      "year": 2024,
+      "confidence": 0.85,
+      "source_dataset": "こども誰でも通園制度(仮称)の本格実施に向けた制度移行 (想定)",
+      "description": "総合支援システムの運用保守開発 (落札額 約12.5億円 / NJSS参照)"
+    },
+    {
+      "source_id": "REC_DANY_NURSERY",
+      "target_id": "ICT_CODMON",
+      "category": "services",
+      "sub_category": "委託・助成金",
+      "value_usd": 2520000.0,
+      "year": 2024,
+      "confidence": 0.85,
+      "source_dataset": "こども誰でも通園制度(仮称)の本格実施に向けた制度移行 (想定)",
+      "description": "コドモン: 導入施設24,000+, 709自治体, シェアNo.1 (SaaS型業務支援システム導入園調査2025)"
+    },
+    {
+      "source_id": "REC_DANY_NURSERY",
+      "target_id": "ICT_LOOKMEE",
+      "category": "services",
+      "sub_category": "委託・助成金",
+      "value_usd": 1260000.0,
+      "year": 2024,
+      "confidence": 0.85,
+      "source_dataset": "こども誰でも通園制度(仮称)の本格実施に向けた制度移行 (想定)",
+      "description": "ルクミー: 累計導入数20,000件+, 約60自治体, ユニファ株式会社が提供"
+    },
+    {
+      "source_id": "REC_DANY_NURSERY",
+      "target_id": "ICT_OTHERS",
+      "category": "services",
+      "sub_category": "委託・助成金",
+      "value_usd": 420000.0,
+      "year": 2024,
+      "confidence": 0.85,
+      "source_dataset": "こども誰でも通園制度(仮称)の本格実施に向けた制度移行 (想定)",
+      "description": "キッズリー(リクルート)等その他保育ICT SaaS"
+    },
+    {
+      "source_id": "REC_DANY_NURSERY",
+      "target_id": "DEST_FACILITY_UPGRADE",
+      "category": "services",
+      "sub_category": "委託・助成金",
+      "value_usd": 8400000.000000002,
+      "year": 2024,
+      "confidence": 0.85,
+      "source_dataset": "こども誰でも通園制度(仮称)の本格実施に向けた制度移行 (想定)",
+      "description": "施設整備費の国庫補助率嵩上げ"
+    },
+    {
+      "source_id": "SS_LIVELIHOOD",
+      "target_id": "REC_LIVELIHOOD",
+      "category": "remittance",
+      "sub_category": "生活保護費・障害福祉",
+      "value_usd": 29941333333.333336,
+      "year": 2024,
+      "confidence": 0.95,
+      "source_dataset": "参議院予算委員会調査室 R6"
+    }
+  ],
+  "metadata": {
+    "source": [
+      "参議院予算委員会調査室 (R6社会保障関係予算)",
+      "厚生労働省 (国民医療費R4, 介護給付費R5)",
+      "こども家庭庁 (R6/R7予算概要・オープンデータ)",
+      "国立社会保障・人口問題研究所 (IPSS)"
+    ],
+    "generated_at": "2026-03-10T06:00:00Z",
+    "scope": "Japan Social Security Expenditure Deep Dive (Real Data)",
+    "reference_doc": "docs/social_security_data_sources.md"
+  }
+}

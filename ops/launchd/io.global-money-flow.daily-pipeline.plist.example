@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>io.global-money-flow.daily-pipeline</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>__REPO_ROOT__/scripts/run_daily_trusted_ingest_pipeline.sh</string>
+    <string>--listing-page-url</string>
+    <string>https://www.cfa.go.jp/policies/budget/</string>
+    <string>--allowed-domain</string>
+    <string>cfa.go.jp</string>
+    <string>--eval-sample</string>
+    <string>3</string>
+    <!-- Dry-run is the default. Add --apply after you verify the pipeline output. -->
+  </array>
+
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>ENV_FILE</key>
+    <string>__REPO_ROOT__/.env</string>
+    <key>PYTHON_BIN</key>
+    <string>__REPO_ROOT__/.venv/bin/python</string>
+  </dict>
+
+  <key>WorkingDirectory</key>
+  <string>__REPO_ROOT__</string>
+
+  <key>RunAtLoad</key>
+  <false/>
+
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Hour</key>
+    <integer>6</integer>
+    <key>Minute</key>
+    <integer>0</integer>
+  </dict>
+
+  <key>StandardOutPath</key>
+  <string>__REPO_ROOT__/eval/daily_pipeline.stdout.log</string>
+  <key>StandardErrorPath</key>
+  <string>__REPO_ROOT__/eval/daily_pipeline.stderr.log</string>
+</dict>
+</plist>
