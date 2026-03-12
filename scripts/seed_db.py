@@ -31,6 +31,7 @@ DATASETS = [
     {"file": "mhlw_budget_data.json", "dataset": "mhlw_budget_data", "label": "MHLW Major Budget Programs"},
     {"file": "mhlw_budget_2024_data.json", "dataset": "mhlw_budget_2024_data", "label": "MHLW FY2024 Major Budget Programs"},
     {"file": "mlit_budget_2024_data.json", "dataset": "mlit_budget_2024_data", "label": "MLIT FY2024 Major Budget Programs"},
+    {"file": "meti_budget_data.json", "dataset": "meti_budget_data", "label": "METI FY2025 Major Budget Programs"},
     {"file": "toyama_data.json", "dataset": "toyama_data", "label": "Toyama Prefecture (Local Gov)"},
     {"file": "mhlw_data.json",  "dataset": "mhlw_data",  "label": "Social Security (MHLW/CFA)"},
     {"file": "meti_subsidies_data.json", "dataset": "meti_data", "label": "Corporate Subsidies & Taxes (METI)"},
@@ -55,6 +56,7 @@ DATASET_TO_SOURCE_ID = {
     "厚生労働省 令和6年度予算案の概要": "mhlw_budget",
     "厚生労働省 令和7年度予算案の概要": "mhlw_budget",
     "国土交通省 令和6年度予算概要": "mlit_budget",
+    "経済産業省 2025年度経済産業政策の重点": "meti_budget",
     # Social security
     "参議院予算委員会調査室 R6": "sangiin_social_security",
     "こども家庭庁 R6/R7予算 オープンデータ": "cfa_budget",
@@ -200,6 +202,10 @@ SOURCE_TITLE_HINTS = [
     (
         "001720593.pdf",
         "国土交通省 令和6年度予算概要",
+    ),
+    (
+        "fy2025/pr/enj/siryo/01.pdf",
+        "2025年度経済産業政策の重点",
     ),
 ]
 
@@ -893,6 +899,7 @@ def main():
     # Export unified JSON for frontend
     print("\n📤 Exporting unified JSON for frontend...")
     path, n, e = export_frontend_json(conn)
+    conn.commit()
     print(f"  ✅ {path}")
     print(f"     {n} nodes, {e} edges")
     

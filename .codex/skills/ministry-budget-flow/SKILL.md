@@ -17,12 +17,13 @@ Do not use this skill for generic RAG ingestion only. This workflow is specifica
 ## Workflow
 
 1. Identify the official PDF and verify the exact viewer page numbers you want to cite.
-2. Create or update a reviewed candidate JSON under `scripts/reviewed_budget_candidates/`.
-3. Convert that reviewed candidate into a dataset JSON with `scripts/build_reviewed_budget_dataset.py`, or add a thin ministry wrapper like `scripts/fetch_mext_budget.py` when the file should be regenerated often.
-4. Wire the new dataset into `scripts/seed_db.py`.
-5. If the ministry is new, make sure `scripts/init_db.py` and `scripts/seed_db.py` both know the `data_sources.source_id`.
-6. Re-seed with `python3 scripts/seed_db.py`.
-7. Verify:
+2. If you want a draft first, run `scripts/generate_reviewed_budget_candidate.py` against the official PDF corpus and save a draft JSON.
+3. Create or update a reviewed candidate JSON under `scripts/reviewed_budget_candidates/`.
+4. Convert that reviewed candidate into a dataset JSON with `scripts/build_reviewed_budget_dataset.py`, or add a thin ministry wrapper like `scripts/fetch_mext_budget.py` when the file should be regenerated often.
+5. Wire the new dataset into `scripts/seed_db.py`.
+6. If the ministry is new, make sure `scripts/init_db.py` and `scripts/seed_db.py` both know the `data_sources.source_id`.
+7. Re-seed with `python3 scripts/seed_db.py`.
+8. Verify:
    - the new `edges` exist in `data/money_flow.db`
    - `source_provenance` has the official PDF URL, title, and page
    - `src/data/unified_data.json` contains the new edges and `metadata.budgetHighlights`
@@ -40,6 +41,7 @@ Each reviewed ministry dataset should produce all of the following:
 
 - Reviewed candidate schema: `references/reviewed_candidate_schema.md`
 - Generic builder: [`scripts/build_reviewed_budget_dataset.py`](/Volumes/space/お金の流れ/global-money-flow/scripts/build_reviewed_budget_dataset.py)
+- Draft generator: [`scripts/generate_reviewed_budget_candidate.py`](/Volumes/space/お金の流れ/global-money-flow/scripts/generate_reviewed_budget_candidate.py)
 - MEXT example wrapper: [`scripts/fetch_mext_budget.py`](/Volumes/space/お金の流れ/global-money-flow/scripts/fetch_mext_budget.py)
 - Seed/export pipeline: [`scripts/seed_db.py`](/Volumes/space/お金の流れ/global-money-flow/scripts/seed_db.py)
 - App usage notes: [`docs/app_usage_guide.md`](/Volumes/space/お金の流れ/global-money-flow/docs/app_usage_guide.md)

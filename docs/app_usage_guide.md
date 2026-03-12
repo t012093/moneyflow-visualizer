@@ -139,7 +139,7 @@
 
 - provenance は年別の official PDF に正規化済み
 - `FY2024-FY2025` の `MEXT` と `MHLW` は reviewed workflow で主要事業 edge を追加済み
-- `FY2024` の `MLIT` も reviewed workflow で主要事業 edge を追加済み
+- `FY2024` の `MLIT` と `FY2025` の `METI` も reviewed workflow で主要事業 edge を追加済み
 - それ以外の年度・省庁はまだ大分類中心
 
 改善したい場合:
@@ -183,15 +183,17 @@
 1. `2D 解析フロー` を開く
 2. `特定エンティティ` を選ぶ
 3. 線をクリックして詳細パネルを見る
-4. `元の資料・PDFを開く` で一次資料を確認する
+4. `この年度の予算ページへ` で同年度の主要事業カードへ飛ぶ
+5. 必要なら `元の資料・PDFを開く` で一次資料を確認する
 
 ### ケース 3: PDF に載っている事業を UI に増やしたい
 
 1. RAG で PDF から事業名と金額を確認する
-2. reviewed candidate JSON を `scripts/reviewed_budget_candidates/` に作る
-3. `scripts/build_reviewed_budget_dataset.py` か省庁別 wrapper で dataset JSON を生成する
-4. `python3 scripts/seed_db.py` で `edges` と `source_provenance` に反映する
-5. `npm run build` 後に UI で表示確認する
+2. `scripts/generate_reviewed_budget_candidate.py` で reviewed candidate の draft JSON を作る
+3. draft を review して `scripts/reviewed_budget_candidates/` に確定 JSON として保存する
+4. `scripts/build_reviewed_budget_dataset.py` か省庁別 wrapper で dataset JSON を生成する
+5. `python3 scripts/seed_db.py` で `edges` と `source_provenance` に反映する
+6. `npm run build` 後に UI で表示確認する
 
 ### ケース 4: 新しい公式資料を継続的に取り込みたい
 

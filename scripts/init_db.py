@@ -365,6 +365,19 @@ DATA_SOURCES = [
         "priority": "high"
     },
     {
+        "source_id": "meti_budget",
+        "name": "METI Budget Highlights",
+        "name_ja": "経済産業省 経済産業政策の重点",
+        "agency_code": "MIN_METI",
+        "url": "https://www.meti.go.jp/main/yosangaisan/fy2025/pr/enj/siryo/01.pdf",
+        "description": "Major FY2025 METI budget programs and budget highlights",
+        "data_format": "PDF",
+        "fiscal_years": "2025",
+        "crawl_mode": "http",
+        "crawl_frequency": "annually",
+        "priority": "high"
+    },
+    {
         "source_id": "mhlw_medical",
         "name": "MHLW - National Medical Expenditure",
         "name_ja": "厚生労働省 国民医療費の概況",

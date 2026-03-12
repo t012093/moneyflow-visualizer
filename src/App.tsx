@@ -101,6 +101,10 @@ function App() {
   const allEdgesForYear = useMemo(() => {
     return datasetByYear[currentYear] || [];
   }, [currentYear]);
+  const budgetEntityIds = useMemo(
+    () => [...new Set((unifiedData.metadata.budgetHighlights || []).map((item) => item.entity_id))],
+    []
+  );
 
   const toggleCategory = (cat: string) => {
     setActiveCategories(prev => 
@@ -198,6 +202,7 @@ function App() {
             nodes={GLOBAL_NODES} 
             currentYear={currentYear}
             currency={currency}
+            budgetEntityIds={budgetEntityIds}
           />
         ) : (
           <BudgetReportPage

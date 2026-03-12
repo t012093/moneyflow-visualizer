@@ -31,7 +31,7 @@
 
 使い分けの詳細は [`docs/app_usage_guide.md`](/Volumes/space/お金の流れ/global-money-flow/docs/app_usage_guide.md) を参照してください。`RAG` と `フローDB` の違い、`公式PDF` と `推計配分` の見分け方、reviewed workflow の使い方を整理しています。
 
-MEXT / MHLW / MLIT のように official PDF から主要事業 edge を半自動で作る workflow は [`scripts/reviewed_budget_candidates/mext_r7_major_projects.json`](/Volumes/space/お金の流れ/global-money-flow/scripts/reviewed_budget_candidates/mext_r7_major_projects.json)、[`scripts/reviewed_budget_candidates/mext_r6_major_projects.json`](/Volumes/space/お金の流れ/global-money-flow/scripts/reviewed_budget_candidates/mext_r6_major_projects.json)、[`scripts/reviewed_budget_candidates/mhlw_r7_major_programs.json`](/Volumes/space/お金の流れ/global-money-flow/scripts/reviewed_budget_candidates/mhlw_r7_major_programs.json)、[`scripts/reviewed_budget_candidates/mhlw_r6_major_programs.json`](/Volumes/space/お金の流れ/global-money-flow/scripts/reviewed_budget_candidates/mhlw_r6_major_programs.json)、[`scripts/reviewed_budget_candidates/mlit_r6_major_programs.json`](/Volumes/space/お金の流れ/global-money-flow/scripts/reviewed_budget_candidates/mlit_r6_major_programs.json)、[`scripts/build_reviewed_budget_dataset.py`](/Volumes/space/お金の流れ/global-money-flow/scripts/build_reviewed_budget_dataset.py)、各 `fetch_*_budget*.py` にあります。Codex 用の運用手順は [`SKILL.md`](/Volumes/space/お金の流れ/global-money-flow/.codex/skills/ministry-budget-flow/SKILL.md) に切り出しました。
+MEXT / MHLW / MLIT / METI のように official PDF から主要事業 edge を半自動で作る workflow は [`scripts/reviewed_budget_candidates/`](/Volumes/space/お金の流れ/global-money-flow/scripts/reviewed_budget_candidates) 配下、[`scripts/build_reviewed_budget_dataset.py`](/Volumes/space/お金の流れ/global-money-flow/scripts/build_reviewed_budget_dataset.py)、[`scripts/generate_reviewed_budget_candidate.py`](/Volumes/space/お金の流れ/global-money-flow/scripts/generate_reviewed_budget_candidate.py)、各 `fetch_*_budget*.py` にあります。Codex 用の運用手順は [`SKILL.md`](/Volumes/space/お金の流れ/global-money-flow/.codex/skills/ministry-budget-flow/SKILL.md) に切り出しました。
 
 近い実装予定は [`docs/roadmap.md`](/Volumes/space/お金の流れ/global-money-flow/docs/roadmap.md) にまとめています。
 
@@ -151,11 +151,31 @@ python3 scripts/build_reviewed_budget_dataset.py \
 python3 scripts/build_reviewed_budget_dataset.py \
   --input scripts/reviewed_budget_candidates/mlit_r6_major_programs.json \
   --output src/data/mlit_budget_2024_data.json
+python3 scripts/build_reviewed_budget_dataset.py \
+  --input scripts/reviewed_budget_candidates/meti_r7_major_programs.json \
+  --output src/data/meti_budget_data.json
 python3 scripts/seed_db.py
 npm run build
 ```
 
-MEXT / MHLW の FY2024-FY2025、MLIT の FY2024 主要事業はこの workflow で `REC_*` edge と `budget_highlights` に入っています。
+MEXT / MHLW の FY2024-FY2025、MLIT の FY2024、METI の FY2025 主要事業はこの workflow で `REC_*` edge と `budget_highlights` に入っています。
+
+review 前のたたき台を RAG から作るときは以下を使います。
+
+```bash
+source .venv/bin/activate
+set -a
+source .env
+set +a
+python3 scripts/generate_reviewed_budget_candidate.py \
+  --query "2025年度経済産業政策の重点から主要事業と予算ハイライトを抽出してください" \
+  --source-node-id MIN_METI \
+  --source-dataset "経済産業省 2025年度経済産業政策の重点" \
+  --source-title "2025年度経済産業政策の重点" \
+  --source-url https://www.meti.go.jp/main/yosangaisan/fy2025/pr/enj/siryo/01.pdf \
+  --fiscal-year 2025 \
+  --output scripts/reviewed_budget_candidates/meti_r7_draft.json
+```
 
 ## Query Examples
 

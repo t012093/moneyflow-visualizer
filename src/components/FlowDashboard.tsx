@@ -8,6 +8,7 @@ interface FlowDashboardProps {
   nodes: Node[];
   currentYear: number;
   currency: 'USD' | 'JPY';
+  budgetEntityIds: string[];
 }
 
 const CATEGORY_COLORS: Record<string, string> = {
@@ -81,7 +82,7 @@ const getProvenanceBadge = (edge: Edge) => {
   return null;
 };
 
-export const FlowDashboard: React.FC<FlowDashboardProps> = ({ nodes, edges, currentYear, currency }) => {
+export const FlowDashboard: React.FC<FlowDashboardProps> = ({ nodes, edges, currentYear, currency, budgetEntityIds }) => {
   const [selectedEntityId, setSelectedEntityId] = useState<string>('MIN_CFA');
   const [viewLevel, setViewLevel] = useState<'entity' | 'type'>('entity');
   const [selectedLinkDetails, setSelectedLinkDetails] = useState<Edge | null>(null);
@@ -279,6 +280,25 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({ nodes, edges, curr
   }, [edges, selectedEntityId, nodes, viewLevel]);
 
   const hasData = sankeyData.links.length > 0;
+  const budgetDeepLink = useMemo(() => {
+    if (!selectedLinkDetails) {
+      return null;
+    }
+    const preferredEntityId = [selectedLinkDetails.source_id, selectedEntityId, selectedLinkDetails.target_id].find((id) =>
+      budgetEntityIds.includes(id)
+    );
+    if (!preferredEntityId) {
+      return null;
+    }
+    const params = new URLSearchParams({
+      view: 'budget',
+      year: String(currentYear),
+      entity: preferredEntityId,
+      tab: 'major_program',
+      focus: selectedLinkDetails.target_id,
+    });
+    return `${window.location.pathname}?${params.toString()}`;
+  }, [budgetEntityIds, currentYear, selectedEntityId, selectedLinkDetails]);
   const renderSourceMeta = (edge: Edge, labelColor: string) => {
     const sourceLabel = edge.source_title || edge.source_dataset;
     const pageSuffix = edge.page_number ? ` p.${edge.page_number}` : '';
@@ -730,26 +750,46 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({ nodes, edges, curr
               </div>
             )}
 
-            {selectedLinkDetails.source_url && (
-              <a 
-                href={selectedLinkDetails.source_url} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                style={{ 
-                  display: 'inline-block', 
-                  marginTop: '0.5rem',
-                  padding: '0.5rem 1rem', 
-                  background: 'var(--accent-color)', 
-                  color: '#000', 
-                  textDecoration: 'none', 
-                  borderRadius: '20px', 
-                  fontWeight: 600, 
-                  textAlign: 'center',
-                  alignSelf: 'flex-start'
-                }}
-              >
-                元の資料・PDFを開く
-              </a>
+            {(selectedLinkDetails.source_url || budgetDeepLink) && (
+              <div style={{ display: 'flex', gap: '0.65rem', flexWrap: 'wrap', marginTop: '0.5rem' }}>
+                {selectedLinkDetails.source_url && (
+                  <a
+                    href={selectedLinkDetails.source_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      display: 'inline-block',
+                      padding: '0.5rem 1rem',
+                      background: 'var(--accent-color)',
+                      color: '#000',
+                      textDecoration: 'none',
+                      borderRadius: '20px',
+                      fontWeight: 600,
+                      textAlign: 'center',
+                    }}
+                  >
+                    元の資料・PDFを開く
+                  </a>
+                )}
+                {budgetDeepLink && (
+                  <a
+                    href={budgetDeepLink}
+                    style={{
+                      display: 'inline-block',
+                      padding: '0.5rem 1rem',
+                      background: 'rgba(96, 165, 250, 0.14)',
+                      color: '#bfdbfe',
+                      textDecoration: 'none',
+                      borderRadius: '20px',
+                      fontWeight: 600,
+                      textAlign: 'center',
+                      border: '1px solid rgba(96, 165, 250, 0.28)',
+                    }}
+                  >
+                    この年度の予算ページへ
+                  </a>
+                )}
+              </div>
             )}
           </div>
         </div>

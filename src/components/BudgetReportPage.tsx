@@ -3,7 +3,7 @@ import type { Edge, Node } from '../data/mockGenerator';
 import type { AppMetadata, BudgetHighlight } from '../types/frontendData';
 import { JPY_RATE } from '../utils/currencyFormatter';
 
-type BudgetTab = 'overview' | 'increase_driver' | 'policy_frame' | 'major_program' | 'individual_project';
+type BudgetTab = 'overview' | 'increase_driver' | 'policy_frame' | 'major_program' | 'individual_project' | 'year_compare';
 
 interface BudgetReportPageProps {
   currentYear: number;
@@ -18,6 +18,7 @@ const TAB_LABELS: Record<BudgetTab, string> = {
   policy_frame: '政策枠',
   major_program: '主な事業',
   individual_project: '個別施策',
+  year_compare: '年度比較',
 };
 
 const TAB_ACCENTS: Record<BudgetTab, string> = {
@@ -26,6 +27,7 @@ const TAB_ACCENTS: Record<BudgetTab, string> = {
   policy_frame: '#34d399',
   major_program: '#60a5fa',
   individual_project: '#c084fc',
+  year_compare: '#fca5a5',
 };
 
 type BudgetEvidenceStatus = 'reviewed' | 'model-based' | 'hybrid';
@@ -101,6 +103,41 @@ function formatExactBudgetAmount(valueUsd: number): string {
   return `${Math.round(rawValJpy).toLocaleString()}円`;
 }
 
+function formatOkuuDelta(valueOku: number | null | undefined): string {
+  if (valueOku === null || valueOku === undefined || Number.isNaN(valueOku)) {
+    return '差分なし';
+  }
+  if (valueOku === 0) {
+    return '±0億円';
+  }
+  const sign = valueOku > 0 ? '+' : '-';
+  const absValue = Math.abs(valueOku);
+  if (absValue >= 10000) {
+    const trillions = absValue / 10000;
+    const text = Number.isInteger(trillions) ? trillions.toLocaleString() : trillions.toFixed(1);
+    return `${sign}${text}兆円`;
+  }
+  return `${sign}${Math.round(absValue).toLocaleString()}億円`;
+}
+
+function amountUsdToOku(valueUsd: number): number {
+  return Math.round((valueUsd * JPY_RATE) / 1e8);
+}
+
+function parseBudgetPageParams(): { entityId: string | null; tab: BudgetTab | null; focusTargetId: string | null } {
+  const params = new URLSearchParams(window.location.search);
+  const entityId = params.get('entity');
+  const focusTargetId = params.get('focus');
+  const requestedTab = params.get('tab');
+  const allowedTabs = new Set<BudgetTab>(['overview', 'increase_driver', 'policy_frame', 'major_program', 'individual_project', 'year_compare']);
+  const tab = requestedTab && allowedTabs.has(requestedTab as BudgetTab) ? (requestedTab as BudgetTab) : null;
+  return {
+    entityId: entityId || null,
+    tab,
+    focusTargetId: focusTargetId || null,
+  };
+}
+
 function renderSourceLink(item: { source_url?: string | null; source_title?: string | null; page_number?: number | null }, color: string) {
   if (!item.source_url) {
     return null;
@@ -150,6 +187,7 @@ function renderHighlightGrid(items: BudgetHighlight[], accent: string) {
 
 export const BudgetReportPage: React.FC<BudgetReportPageProps> = ({ currentYear, nodes, edges, metadata }) => {
   const budgetHighlights = metadata.budgetHighlights || [];
+  const budgetPageParams = useMemo(() => parseBudgetPageParams(), []);
   const entityOptions = useMemo(() => {
     return [...new Set(budgetHighlights.map((item) => item.entity_id))]
       .map((entityId) => ({
@@ -164,19 +202,22 @@ export const BudgetReportPage: React.FC<BudgetReportPageProps> = ({ currentYear,
   }, [budgetHighlights, metadata.featuredEntityId, nodes]);
 
   const [selectedEntityId, setSelectedEntityId] = useState<string>(
-    metadata.featuredEntityId || entityOptions[0]?.entityId || ''
+    budgetPageParams.entityId || metadata.featuredEntityId || entityOptions[0]?.entityId || ''
   );
-  const [activeTab, setActiveTab] = useState<BudgetTab>('overview');
+  const [activeTab, setActiveTab] = useState<BudgetTab>(
+    budgetPageParams.tab || (budgetPageParams.focusTargetId ? 'major_program' : 'overview')
+  );
+  const focusTargetId = budgetPageParams.focusTargetId;
 
   useEffect(() => {
     if (!entityOptions.some((item) => item.entityId === selectedEntityId)) {
-      setSelectedEntityId(metadata.featuredEntityId || entityOptions[0]?.entityId || '');
+      setSelectedEntityId(budgetPageParams.entityId || metadata.featuredEntityId || entityOptions[0]?.entityId || '');
     }
-  }, [entityOptions, metadata.featuredEntityId, selectedEntityId]);
+  }, [budgetPageParams.entityId, entityOptions, metadata.featuredEntityId, selectedEntityId]);
 
   useEffect(() => {
-    setActiveTab('overview');
-  }, [currentYear, selectedEntityId]);
+    setActiveTab(budgetPageParams.tab || (focusTargetId ? 'major_program' : 'overview'));
+  }, [budgetPageParams.tab, currentYear, focusTargetId, selectedEntityId]);
 
   const currentHighlights = useMemo(
     () =>
@@ -194,6 +235,19 @@ export const BudgetReportPage: React.FC<BudgetReportPageProps> = ({ currentYear,
     () => [...new Set(budgetHighlights.filter((item) => item.entity_id === selectedEntityId).map((item) => item.fiscal_year))].sort(),
     [budgetHighlights, selectedEntityId]
   );
+  const previousYear = useMemo(
+    () => [...availableYears].filter((year) => year < currentYear).sort((a, b) => b - a)[0] || null,
+    [availableYears, currentYear]
+  );
+  const previousHighlights = useMemo(
+    () =>
+      previousYear === null
+        ? []
+        : budgetHighlights
+            .filter((item) => item.entity_id === selectedEntityId && item.fiscal_year === previousYear)
+            .sort((a, b) => a.display_order - b.display_order),
+    [budgetHighlights, previousYear, selectedEntityId]
+  );
 
   const majorPrograms = useMemo(() => {
     return edges
@@ -205,6 +259,44 @@ export const BudgetReportPage: React.FC<BudgetReportPageProps> = ({ currentYear,
         targetName: nodes.find((node) => node.id === edge.target_id)?.name || edge.target_id,
       }));
   }, [currentYear, edges, nodes, selectedEntityId]);
+  const previousMajorPrograms = useMemo(() => {
+    if (previousYear === null) {
+      return [];
+    }
+    return edges
+      .filter((edge) => edge.source_id === selectedEntityId && edge.year === previousYear)
+      .sort((a, b) => b.value_usd - a.value_usd)
+      .slice(0, 8)
+      .map((edge) => ({
+        ...edge,
+        targetName: nodes.find((node) => node.id === edge.target_id)?.name || edge.target_id,
+      }));
+  }, [edges, nodes, previousYear, selectedEntityId]);
+  const yearComparisonRows = useMemo(() => {
+    if (previousYear === null) {
+      return [];
+    }
+    const currentMap = new Map(majorPrograms.map((program) => [program.target_id, program]));
+    const previousMap = new Map(previousMajorPrograms.map((program) => [program.target_id, program]));
+    const targetIds = [...new Set([...currentMap.keys(), ...previousMap.keys()])];
+    return targetIds
+      .map((targetId) => {
+        const current = currentMap.get(targetId);
+        const previous = previousMap.get(targetId);
+        const currentOku = current ? amountUsdToOku(current.value_usd) : 0;
+        const previousOku = previous ? amountUsdToOku(previous.value_usd) : 0;
+        return {
+          targetId,
+          title: current?.sub_category || previous?.sub_category || current?.targetName || previous?.targetName || targetId,
+          current,
+          previous,
+          currentOku,
+          previousOku,
+          deltaOku: currentOku - previousOku,
+        };
+      })
+      .sort((a, b) => Math.abs(b.deltaOku) - Math.abs(a.deltaOku));
+  }, [majorPrograms, previousMajorPrograms, previousYear]);
 
   const selectedEntityName = entityOptions.find((item) => item.entityId === selectedEntityId)?.name || selectedEntityId;
   const coverageStatus = useMemo<BudgetEvidenceStatus | null>(() => {
@@ -289,6 +381,139 @@ export const BudgetReportPage: React.FC<BudgetReportPageProps> = ({ currentYear,
       return renderHighlightGrid(individualProjects, TAB_ACCENTS.individual_project);
     }
 
+    if (activeTab === 'year_compare') {
+      const currentOverview = overview;
+      const previousOverview = previousHighlights.find((item) => item.section_key === 'overview');
+      const totalDelta =
+        currentOverview?.amount_oku_yen !== null &&
+        currentOverview?.amount_oku_yen !== undefined &&
+        previousOverview?.amount_oku_yen !== null &&
+        previousOverview?.amount_oku_yen !== undefined
+          ? Number(currentOverview.amount_oku_yen) - Number(previousOverview.amount_oku_yen)
+          : null;
+
+      return (
+        <div style={{ display: 'grid', gap: '1rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '0.9rem' }}>
+            <article
+              style={{
+                padding: '1rem',
+                borderRadius: '18px',
+                background: 'rgba(255,255,255,0.04)',
+                border: '1px solid rgba(252, 165, 165, 0.18)',
+              }}
+            >
+              <div style={{ color: TAB_ACCENTS.year_compare, fontSize: '0.76rem', textTransform: 'uppercase', letterSpacing: '0.14em' }}>
+                Current
+              </div>
+              <div style={{ marginTop: '0.45rem', fontSize: '1.35rem', fontWeight: 700 }}>{currentYear}年度</div>
+              <div style={{ marginTop: '0.35rem', color: '#fff', fontSize: '1.8rem', fontWeight: 700 }}>
+                {currentOverview?.amount_text || '未登録'}
+              </div>
+              {currentOverview?.summary && (
+                <div style={{ marginTop: '0.55rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>{currentOverview.summary}</div>
+              )}
+            </article>
+            <article
+              style={{
+                padding: '1rem',
+                borderRadius: '18px',
+                background: 'rgba(255,255,255,0.04)',
+                border: '1px solid rgba(148, 163, 184, 0.18)',
+              }}
+            >
+              <div style={{ color: '#cbd5e1', fontSize: '0.76rem', textTransform: 'uppercase', letterSpacing: '0.14em' }}>
+                Previous
+              </div>
+              <div style={{ marginTop: '0.45rem', fontSize: '1.35rem', fontWeight: 700 }}>
+                {previousYear ? `${previousYear}年度` : '比較対象なし'}
+              </div>
+              <div style={{ marginTop: '0.35rem', color: '#fff', fontSize: '1.8rem', fontWeight: 700 }}>
+                {previousOverview?.amount_text || '未登録'}
+              </div>
+              {previousOverview?.summary && (
+                <div style={{ marginTop: '0.55rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>{previousOverview.summary}</div>
+              )}
+            </article>
+            <article
+              style={{
+                padding: '1rem',
+                borderRadius: '18px',
+                background: 'rgba(255,255,255,0.04)',
+                border: '1px solid rgba(96, 165, 250, 0.18)',
+              }}
+            >
+              <div style={{ color: '#93c5fd', fontSize: '0.76rem', textTransform: 'uppercase', letterSpacing: '0.14em' }}>
+                Delta
+              </div>
+              <div style={{ marginTop: '0.45rem', fontSize: '1.35rem', fontWeight: 700 }}>主な事業差分</div>
+              <div style={{ marginTop: '0.35rem', color: '#fff', fontSize: '1.8rem', fontWeight: 700 }}>
+                {formatOkuuDelta(totalDelta)}
+              </div>
+              <div style={{ marginTop: '0.55rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>
+                {previousYear ? `${previousYear}年度との比較で、主要事業 edge の増減と有無を一覧化しています。` : '前年ハイライトがないため、差分比較はまだできません。'}
+              </div>
+            </article>
+          </div>
+
+          <div style={{ display: 'grid', gap: '0.8rem' }}>
+            {yearComparisonRows.length ? (
+              yearComparisonRows.map((row) => (
+                <article
+                  key={row.targetId}
+                  style={{
+                    padding: '1rem',
+                    borderRadius: '18px',
+                    background: 'rgba(255,255,255,0.04)',
+                    border: `1px solid ${row.deltaOku >= 0 ? 'rgba(74, 222, 128, 0.2)' : 'rgba(248, 113, 113, 0.2)'}`,
+                  }}
+                >
+                  <div style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem', alignItems: 'baseline', flexWrap: 'wrap' }}>
+                    <div style={{ fontWeight: 700, lineHeight: 1.45 }}>{row.title}</div>
+                    <div style={{ color: row.deltaOku >= 0 ? '#86efac' : '#fda4af', fontWeight: 700 }}>
+                      {formatOkuuDelta(row.deltaOku)}
+                    </div>
+                  </div>
+                  <div style={{ marginTop: '0.45rem', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '0.7rem' }}>
+                    <div>
+                      <div style={{ color: 'var(--text-muted)', fontSize: '0.78rem' }}>{currentYear}年度</div>
+                      <div style={{ marginTop: '0.2rem', fontWeight: 600 }}>
+                        {row.current ? formatExactBudgetAmount(row.current.value_usd) : '未掲載'}
+                      </div>
+                    </div>
+                    <div>
+                      <div style={{ color: 'var(--text-muted)', fontSize: '0.78rem' }}>{previousYear}年度</div>
+                      <div style={{ marginTop: '0.2rem', fontWeight: 600 }}>
+                        {row.previous ? formatExactBudgetAmount(row.previous.value_usd) : '未掲載'}
+                      </div>
+                    </div>
+                    <div>
+                      <div style={{ color: 'var(--text-muted)', fontSize: '0.78rem' }}>出典</div>
+                      <div style={{ marginTop: '0.2rem', fontWeight: 600 }}>
+                        {row.current?.source_title || row.previous?.source_title || row.current?.source_dataset || row.previous?.source_dataset || '未登録'}
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              ))
+            ) : (
+              <div
+                style={{
+                  padding: '1.2rem',
+                  borderRadius: '18px',
+                  background: 'rgba(255,255,255,0.04)',
+                  border: '1px solid rgba(148, 163, 184, 0.16)',
+                  color: 'var(--text-muted)',
+                }}
+              >
+                {previousYear ? '比較できる主要事業 edge がまだありません。' : '前年データがないため、年度比較はまだできません。'}
+              </div>
+            )}
+          </div>
+        </div>
+      );
+    }
+
     return (
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '0.9rem' }}>
         {majorPrograms.map((program) => (
@@ -297,8 +522,9 @@ export const BudgetReportPage: React.FC<BudgetReportPageProps> = ({ currentYear,
             style={{
               padding: '1rem',
               borderRadius: '18px',
-              background: 'rgba(255,255,255,0.04)',
-              border: '1px solid rgba(96, 165, 250, 0.18)',
+              background: program.target_id === focusTargetId ? 'rgba(96, 165, 250, 0.12)' : 'rgba(255,255,255,0.04)',
+              border: program.target_id === focusTargetId ? '1px solid rgba(96, 165, 250, 0.38)' : '1px solid rgba(96, 165, 250, 0.18)',
+              boxShadow: program.target_id === focusTargetId ? '0 0 0 1px rgba(191, 219, 254, 0.18) inset' : 'none',
             }}
           >
             <div style={{ marginBottom: '0.55rem' }}>{renderEvidenceBadge(inferEvidenceStatus(program))}</div>
@@ -334,8 +560,13 @@ export const BudgetReportPage: React.FC<BudgetReportPageProps> = ({ currentYear,
     majorPrograms,
     overview,
     policyFrames,
+    previousHighlights,
+    previousMajorPrograms,
+    previousYear,
     selectedEntityId,
     selectedEntityName,
+    yearComparisonRows,
+    focusTargetId,
   ]);
 
   return (
