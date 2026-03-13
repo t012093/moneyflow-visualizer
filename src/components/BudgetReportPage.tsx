@@ -45,6 +45,15 @@ const TAB_ACCENTS: Record<BudgetTab, string> = {
 
 type BudgetEvidenceStatus = 'reviewed' | 'model-based' | 'hybrid';
 type ReferenceSource = KnowledgeNoteSource | StructuredFactSource | ImplementationSiteSource;
+type BudgetEvidenceCountRecord = Record<'reviewed' | 'model-based', number>;
+type BudgetHighlightWithEvidence = BudgetHighlight & { evidenceStatus: Exclude<BudgetEvidenceStatus, 'hybrid'> };
+type KnowledgeNoteWithEvidence = KnowledgeNote & { evidenceStatus: Exclude<BudgetEvidenceStatus, 'hybrid'> };
+type StructuredFactWithEvidence = StructuredFact & { evidenceStatus: Exclude<BudgetEvidenceStatus, 'hybrid'> };
+type ImplementationSiteWithEvidence = ImplementationSite & { evidenceStatus: Exclude<BudgetEvidenceStatus, 'hybrid'> };
+type MajorProgramWithEvidence = Edge & {
+  targetName: string;
+  evidenceStatus: Exclude<BudgetEvidenceStatus, 'hybrid'>;
+};
 
 const MODEL_BUDGET_DATASET_MARKERS = ['省庁別主要経費推計', '財務省 一般会計（所管別）', '財務省一般会計', 'ministries_data', 'meti_data', '想定', '按分', 'Proxy', 'Approximation', 'Estimated'];
 
@@ -72,14 +81,63 @@ const EVIDENCE_BADGE_STYLE: Record<BudgetEvidenceStatus, { label: string; color:
   },
 };
 
-function inferEvidenceStatus(item: { source_dataset?: string | null; source_url?: string | null }): BudgetEvidenceStatus {
+function inferEvidenceStatus(item: { source_dataset?: string | null; source_url?: string | null }): Exclude<BudgetEvidenceStatus, 'hybrid'> {
   if (item.source_dataset && MODEL_BUDGET_DATASET_MARKERS.some((marker) => item.source_dataset?.includes(marker))) {
     return 'model-based';
   }
-  if (item.source_url && item.source_url.toLowerCase().includes('.pdf')) {
+  if (item.source_url && isOfficialPublicSourceUrl(item.source_url)) {
     return 'reviewed';
   }
   return 'model-based';
+}
+
+function isOfficialPublicSourceUrl(sourceUrl?: string | null): boolean {
+  if (!sourceUrl) {
+    return false;
+  }
+  try {
+    const hostname = new URL(sourceUrl).hostname.toLowerCase();
+    return ['.go.jp', '.lg.jp', '.ac.jp', '.or.jp'].some((suffix) => hostname.endsWith(suffix));
+  } catch {
+    return false;
+  }
+}
+
+function inferEvidenceStatusFromSources(sources: ReferenceSource[] = []): Exclude<BudgetEvidenceStatus, 'hybrid'> {
+  if (sources.some((source) => isOfficialPublicSourceUrl(source.source_url))) {
+    return 'reviewed';
+  }
+  return 'model-based';
+}
+
+function createBudgetEvidenceCounts(): BudgetEvidenceCountRecord {
+  return { reviewed: 0, 'model-based': 0 };
+}
+
+function countBudgetEvidence(items: Array<{ evidenceStatus: Exclude<BudgetEvidenceStatus, 'hybrid'> }>): BudgetEvidenceCountRecord {
+  return items.reduce<BudgetEvidenceCountRecord>((counts, item) => {
+    counts[item.evidenceStatus] += 1;
+    return counts;
+  }, createBudgetEvidenceCounts());
+}
+
+function shouldIncludeBudgetItem(
+  item: { evidenceStatus: Exclude<BudgetEvidenceStatus, 'hybrid'> },
+  reviewedOnly: boolean
+): boolean {
+  return !reviewedOnly || item.evidenceStatus === 'reviewed';
+}
+
+function aggregateBudgetEvidenceStatus(items: Array<{ evidenceStatus: Exclude<BudgetEvidenceStatus, 'hybrid'> }>): BudgetEvidenceStatus | null {
+  const statuses = new Set<BudgetEvidenceStatus>();
+  items.forEach((item) => statuses.add(item.evidenceStatus));
+  if (statuses.size === 0) {
+    return null;
+  }
+  if (statuses.size > 1) {
+    return 'hybrid';
+  }
+  return Array.from(statuses)[0];
 }
 
 function isBudgetSurfaceEligibleEdge(edge: Edge): boolean {
@@ -174,7 +232,7 @@ function renderSourceLink(item: { source_url?: string | null; source_title?: str
   );
 }
 
-function renderHighlightGrid(items: BudgetHighlight[], accent: string) {
+function renderHighlightGrid(items: BudgetHighlightWithEvidence[], accent: string) {
   return (
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '0.9rem' }}>
       {items.map((item) => (
@@ -187,7 +245,7 @@ function renderHighlightGrid(items: BudgetHighlight[], accent: string) {
             border: `1px solid ${accent}22`,
           }}
         >
-          <div style={{ marginBottom: '0.55rem' }}>{renderEvidenceBadge(inferEvidenceStatus({ source_url: item.source_url }))}</div>
+          <div style={{ marginBottom: '0.55rem' }}>{renderEvidenceBadge(item.evidenceStatus)}</div>
           <div style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem', alignItems: 'baseline' }}>
             <div style={{ fontWeight: 700, lineHeight: 1.45 }}>{item.title}</div>
             {item.amount_text && <div style={{ color: accent, fontWeight: 700, whiteSpace: 'nowrap' }}>{item.amount_text}</div>}
@@ -237,7 +295,7 @@ function renderReferenceSources(sources: ReferenceSource[], accent: string) {
   );
 }
 
-function renderStructuredFactGrid(items: StructuredFact[], accent: string) {
+function renderStructuredFactGrid(items: StructuredFactWithEvidence[], accent: string) {
   return (
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '0.9rem' }}>
       {items.map((item) => (
@@ -250,25 +308,28 @@ function renderStructuredFactGrid(items: StructuredFact[], accent: string) {
             border: `1px solid ${accent}22`,
           }}
         >
-          {item.fact_group ? (
-            <div
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                padding: '0.22rem 0.6rem',
-                borderRadius: '999px',
-                fontSize: '0.72rem',
-                fontWeight: 700,
-                letterSpacing: '0.08em',
-                textTransform: 'uppercase',
-                color: accent,
-                background: `${accent}14`,
-                border: `1px solid ${accent}22`,
-              }}
-            >
-              {item.fact_group}
-            </div>
-          ) : null}
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem', alignItems: 'center' }}>
+            {renderEvidenceBadge(item.evidenceStatus)}
+            {item.fact_group ? (
+              <div
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  padding: '0.22rem 0.6rem',
+                  borderRadius: '999px',
+                  fontSize: '0.72rem',
+                  fontWeight: 700,
+                  letterSpacing: '0.08em',
+                  textTransform: 'uppercase',
+                  color: accent,
+                  background: `${accent}14`,
+                  border: `1px solid ${accent}22`,
+                }}
+              >
+                {item.fact_group}
+              </div>
+            ) : null}
+          </div>
           <div style={{ marginTop: '0.7rem', color: accent, fontSize: '1.45rem', fontWeight: 700 }}>{item.value_text}</div>
           <div style={{ marginTop: '0.35rem', fontWeight: 700, lineHeight: 1.45 }}>{item.title}</div>
           {item.summary ? (
@@ -299,7 +360,7 @@ function renderStructuredFactGrid(items: StructuredFact[], accent: string) {
   );
 }
 
-function renderKnowledgeNoteGrid(items: KnowledgeNote[], accent: string) {
+function renderKnowledgeNoteGrid(items: KnowledgeNoteWithEvidence[], accent: string) {
   return (
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '0.9rem' }}>
       {items.map((item) => (
@@ -312,22 +373,25 @@ function renderKnowledgeNoteGrid(items: KnowledgeNote[], accent: string) {
             border: `1px solid ${accent}22`,
           }}
         >
-          <div
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              padding: '0.22rem 0.6rem',
-              borderRadius: '999px',
-              fontSize: '0.72rem',
-              fontWeight: 700,
-              letterSpacing: '0.08em',
-              textTransform: 'uppercase',
-              color: accent,
-              background: `${accent}14`,
-              border: `1px solid ${accent}22`,
-            }}
-          >
-            Research note
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem', alignItems: 'center' }}>
+            <div
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                padding: '0.22rem 0.6rem',
+                borderRadius: '999px',
+                fontSize: '0.72rem',
+                fontWeight: 700,
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                color: accent,
+                background: `${accent}14`,
+                border: `1px solid ${accent}22`,
+              }}
+            >
+              Research note
+            </div>
+            {renderEvidenceBadge(item.evidenceStatus)}
           </div>
           <div style={{ marginTop: '0.7rem', fontWeight: 700, fontSize: '1.05rem', lineHeight: 1.5 }}>{item.title}</div>
           {item.summary && (
@@ -373,9 +437,10 @@ function renderKnowledgeNoteGrid(items: KnowledgeNote[], accent: string) {
   );
 }
 
-function renderImplementationSiteDirectory(items: ImplementationSite[], accent: string) {
+function renderImplementationSiteDirectory(items: ImplementationSiteWithEvidence[], accent: string) {
   const sitesByWard = new Map<string, ImplementationSite[]>();
   const categoryCounts = new Map<string, number>();
+  const aggregateStatus = aggregateBudgetEvidenceStatus(items) || 'reviewed';
 
   items.forEach((item) => {
     const ward = item.ward || '区未設定';
@@ -397,6 +462,7 @@ function renderImplementationSiteDirectory(items: ImplementationSite[], accent: 
             border: `1px solid ${accent}22`,
           }}
         >
+          <div style={{ marginBottom: '0.55rem' }}>{renderEvidenceBadge(aggregateStatus)}</div>
           <div style={{ color: accent, fontSize: '0.76rem', textTransform: 'uppercase', letterSpacing: '0.14em' }}>Total Sites</div>
           <div style={{ marginTop: '0.4rem', fontSize: '1.8rem', fontWeight: 700 }}>{items.length}施設</div>
           <div style={{ marginTop: '0.45rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>
@@ -411,6 +477,7 @@ function renderImplementationSiteDirectory(items: ImplementationSite[], accent: 
             border: `1px solid ${accent}22`,
           }}
         >
+          <div style={{ marginBottom: '0.55rem' }}>{renderEvidenceBadge(aggregateStatus)}</div>
           <div style={{ color: accent, fontSize: '0.76rem', textTransform: 'uppercase', letterSpacing: '0.14em' }}>Coverage</div>
           <div style={{ marginTop: '0.4rem', fontSize: '1.8rem', fontWeight: 700 }}>{sitesByWard.size}区</div>
           <div style={{ marginTop: '0.45rem', display: 'flex', flexWrap: 'wrap', gap: '0.45rem' }}>
@@ -571,10 +638,6 @@ export const BudgetReportPage: React.FC<BudgetReportPageProps> = ({
     [activeEntityId, budgetHighlights, currentYear]
   );
 
-  const overview = currentHighlights.find((item) => item.section_key === 'overview');
-  const increaseDrivers = currentHighlights.filter((item) => item.section_key === 'increase_driver');
-  const policyFrames = currentHighlights.filter((item) => item.section_key === 'policy_frame');
-  const individualProjects = currentHighlights.filter((item) => item.section_key === 'individual_project');
   const currentKnowledgeNotes = useMemo(
     () =>
       knowledgeNotes
@@ -625,8 +688,42 @@ export const BudgetReportPage: React.FC<BudgetReportPageProps> = ({
             .sort((a, b) => a.display_order - b.display_order),
     [activeEntityId, budgetHighlights, previousYear]
   );
+  const [reviewedOnly, setReviewedOnly] = useState(false);
 
-  const majorPrograms = useMemo(() => {
+  const currentHighlightsWithEvidence = useMemo<BudgetHighlightWithEvidence[]>(
+    () =>
+      currentHighlights.map((item) => ({
+        ...item,
+        evidenceStatus: inferEvidenceStatus({ source_url: item.source_url }),
+      })),
+    [currentHighlights]
+  );
+  const currentKnowledgeNotesWithEvidence = useMemo<KnowledgeNoteWithEvidence[]>(
+    () =>
+      currentKnowledgeNotes.map((item) => ({
+        ...item,
+        evidenceStatus: inferEvidenceStatusFromSources(item.sources),
+      })),
+    [currentKnowledgeNotes]
+  );
+  const currentStructuredFactsWithEvidence = useMemo<StructuredFactWithEvidence[]>(
+    () =>
+      currentStructuredFacts.map((item) => ({
+        ...item,
+        evidenceStatus: inferEvidenceStatusFromSources(item.sources),
+      })),
+    [currentStructuredFacts]
+  );
+  const currentImplementationSitesWithEvidence = useMemo<ImplementationSiteWithEvidence[]>(
+    () =>
+      currentImplementationSites.map((item) => ({
+        ...item,
+        evidenceStatus: inferEvidenceStatusFromSources(item.sources),
+      })),
+    [currentImplementationSites]
+  );
+
+  const majorPrograms = useMemo<MajorProgramWithEvidence[]>(() => {
     return edges
       .filter((edge) => edge.source_id === activeEntityId && edge.year === currentYear && isBudgetSurfaceEligibleEdge(edge))
       .sort((a, b) => b.value_usd - a.value_usd)
@@ -634,9 +731,10 @@ export const BudgetReportPage: React.FC<BudgetReportPageProps> = ({
       .map((edge) => ({
         ...edge,
         targetName: nodes.find((node) => node.id === edge.target_id)?.name || edge.target_id,
+        evidenceStatus: inferEvidenceStatus(edge) as Exclude<BudgetEvidenceStatus, 'hybrid'>,
       }));
   }, [activeEntityId, currentYear, edges, nodes]);
-  const previousMajorPrograms = useMemo(() => {
+  const previousMajorPrograms = useMemo<MajorProgramWithEvidence[]>(() => {
     if (previousYear === null) {
       return [];
     }
@@ -647,14 +745,55 @@ export const BudgetReportPage: React.FC<BudgetReportPageProps> = ({
       .map((edge) => ({
         ...edge,
         targetName: nodes.find((node) => node.id === edge.target_id)?.name || edge.target_id,
+        evidenceStatus: inferEvidenceStatus(edge) as Exclude<BudgetEvidenceStatus, 'hybrid'>,
       }));
   }, [activeEntityId, edges, nodes, previousYear]);
+  const visibleHighlights = useMemo(
+    () => currentHighlightsWithEvidence.filter((item) => shouldIncludeBudgetItem(item, reviewedOnly)),
+    [currentHighlightsWithEvidence, reviewedOnly]
+  );
+  const visibleIncreaseDrivers = useMemo(
+    () => visibleHighlights.filter((item) => item.section_key === 'increase_driver'),
+    [visibleHighlights]
+  );
+  const visiblePolicyFrames = useMemo(
+    () => visibleHighlights.filter((item) => item.section_key === 'policy_frame'),
+    [visibleHighlights]
+  );
+  const visibleIndividualProjects = useMemo(
+    () => visibleHighlights.filter((item) => item.section_key === 'individual_project'),
+    [visibleHighlights]
+  );
+  const visibleOverview = useMemo(
+    () => visibleHighlights.find((item) => item.section_key === 'overview'),
+    [visibleHighlights]
+  );
+  const visibleKnowledgeNotes = useMemo(
+    () => currentKnowledgeNotesWithEvidence.filter((item) => shouldIncludeBudgetItem(item, reviewedOnly)),
+    [currentKnowledgeNotesWithEvidence, reviewedOnly]
+  );
+  const visibleStructuredFacts = useMemo(
+    () => currentStructuredFactsWithEvidence.filter((item) => shouldIncludeBudgetItem(item, reviewedOnly)),
+    [currentStructuredFactsWithEvidence, reviewedOnly]
+  );
+  const visibleImplementationSites = useMemo(
+    () => currentImplementationSitesWithEvidence.filter((item) => shouldIncludeBudgetItem(item, reviewedOnly)),
+    [currentImplementationSitesWithEvidence, reviewedOnly]
+  );
+  const visibleMajorPrograms = useMemo(
+    () => majorPrograms.filter((item) => shouldIncludeBudgetItem(item, reviewedOnly)),
+    [majorPrograms, reviewedOnly]
+  );
   const yearComparisonRows = useMemo(() => {
     if (previousYear === null) {
       return [];
     }
-    const currentMap = new Map(majorPrograms.map((program) => [program.target_id, program]));
-    const previousMap = new Map(previousMajorPrograms.map((program) => [program.target_id, program]));
+    const currentMap = new Map(visibleMajorPrograms.map((program) => [program.target_id, program]));
+    const previousMap = new Map(
+      previousMajorPrograms
+        .filter((program) => shouldIncludeBudgetItem(program, reviewedOnly))
+        .map((program) => [program.target_id, program])
+    );
     const targetIds = [...new Set([...currentMap.keys(), ...previousMap.keys()])];
     return targetIds
       .map((targetId) => {
@@ -673,112 +812,152 @@ export const BudgetReportPage: React.FC<BudgetReportPageProps> = ({
         };
       })
       .sort((a, b) => Math.abs(b.deltaOku) - Math.abs(a.deltaOku));
-  }, [majorPrograms, previousMajorPrograms, previousYear]);
+  }, [previousMajorPrograms, previousYear, reviewedOnly, visibleMajorPrograms]);
+
+  const evidenceSummary = useMemo(() => {
+    const allItems = [
+      ...currentHighlightsWithEvidence,
+      ...majorPrograms,
+      ...currentKnowledgeNotesWithEvidence,
+      ...currentStructuredFactsWithEvidence,
+      ...currentImplementationSitesWithEvidence,
+    ];
+    const visibleItems = [
+      ...visibleHighlights,
+      ...visibleMajorPrograms,
+      ...visibleKnowledgeNotes,
+      ...visibleStructuredFacts,
+      ...visibleImplementationSites,
+    ];
+    const allCounts = countBudgetEvidence(allItems);
+    const visibleCounts = countBudgetEvidence(visibleItems);
+    return {
+      allCounts,
+      visibleCounts,
+      hiddenModelBasedCount: Math.max(0, allCounts['model-based'] - visibleCounts['model-based']),
+    };
+  }, [
+    currentHighlightsWithEvidence,
+    currentImplementationSitesWithEvidence,
+    currentKnowledgeNotesWithEvidence,
+    currentStructuredFactsWithEvidence,
+    majorPrograms,
+    visibleHighlights,
+    visibleImplementationSites,
+    visibleKnowledgeNotes,
+    visibleMajorPrograms,
+    visibleStructuredFacts,
+  ]);
 
   const selectedEntityName = entityOptions.find((item) => item.entityId === activeEntityId)?.name || activeEntityId;
-  const coverageStatus = useMemo<BudgetEvidenceStatus | null>(() => {
-    const statuses = new Set<BudgetEvidenceStatus>();
-
-    currentHighlights.forEach((item) => statuses.add(inferEvidenceStatus({ source_url: item.source_url })));
-    majorPrograms.forEach((program) => statuses.add(inferEvidenceStatus(program)));
-
-    if (statuses.size === 0) {
+  const coverageStatus = useMemo<BudgetEvidenceStatus | null>(
+    () =>
+      aggregateBudgetEvidenceStatus([
+        ...visibleHighlights,
+        ...visibleMajorPrograms,
+        ...visibleKnowledgeNotes,
+        ...visibleStructuredFacts,
+        ...visibleImplementationSites,
+      ]),
+    [visibleHighlights, visibleImplementationSites, visibleKnowledgeNotes, visibleMajorPrograms, visibleStructuredFacts]
+  );
+  const visibleResearchItemCount = visibleStructuredFacts.length + visibleKnowledgeNotes.length + visibleImplementationSites.length;
+  const hasAnyBudgetHighlights = currentHighlights.length > 0;
+  const hasVisibleBudgetHighlights = visibleHighlights.length > 0;
+  const hasHiddenBudgetHighlights = reviewedOnly && hasAnyBudgetHighlights && !hasVisibleBudgetHighlights;
+  const hasAnyResearchItems = currentStructuredFacts.length + currentKnowledgeNotes.length + currentImplementationSites.length > 0;
+  const hasHiddenResearchItems = reviewedOnly && hasAnyResearchItems && visibleResearchItemCount === 0;
+  const previousOverviewWithEvidence = useMemo<BudgetHighlightWithEvidence | null>(() => {
+    const previousOverview = previousHighlights.find((item) => item.section_key === 'overview');
+    if (!previousOverview) {
       return null;
     }
-    if (statuses.size > 1) {
-      return 'hybrid';
+    const evidenceStatus = inferEvidenceStatus({ source_url: previousOverview.source_url });
+    if (reviewedOnly && evidenceStatus !== 'reviewed') {
+      return null;
     }
-    return Array.from(statuses)[0];
-  }, [currentHighlights, majorPrograms]);
+    return {
+      ...previousOverview,
+      evidenceStatus,
+    };
+  }, [previousHighlights, reviewedOnly]);
 
   const tabContent = useMemo(() => {
+    const renderEmptyTabState = (message: string) => (
+      <div
+        style={{
+          padding: '1.2rem',
+          borderRadius: '18px',
+          background: 'rgba(255,255,255,0.04)',
+          border: '1px solid rgba(148, 163, 184, 0.16)',
+          color: 'var(--text-muted)',
+          lineHeight: 1.7,
+        }}
+      >
+        {message}
+      </div>
+    );
+
     if (!activeEntityId) {
-      return (
-        <div
-          style={{
-            padding: '1.2rem',
-            borderRadius: '18px',
-            background: 'rgba(255,255,255,0.04)',
-            border: '1px solid rgba(148, 163, 184, 0.16)',
-            color: 'var(--text-muted)',
-            lineHeight: 1.7,
-          }}
-        >
-          表示対象の主体が見つかりません。
-        </div>
-      );
+      return renderEmptyTabState('表示対象の主体が見つかりません。');
     }
 
     if (activeTab === 'research_note') {
-      if (currentStructuredFacts.length || currentKnowledgeNotes.length || currentImplementationSites.length) {
+      if (visibleResearchItemCount) {
         return (
           <div style={{ display: 'grid', gap: '1rem' }}>
-            {currentStructuredFacts.length ? (
+            {visibleStructuredFacts.length ? (
               <section style={{ display: 'grid', gap: '0.75rem' }}>
                 <div style={{ fontSize: '0.9rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: TAB_ACCENTS.research_note }}>
                   Structured Facts
                 </div>
-                {renderStructuredFactGrid(currentStructuredFacts, TAB_ACCENTS.research_note)}
+                {renderStructuredFactGrid(visibleStructuredFacts, TAB_ACCENTS.research_note)}
               </section>
             ) : null}
-            {currentKnowledgeNotes.length ? (
+            {visibleKnowledgeNotes.length ? (
               <section style={{ display: 'grid', gap: '0.75rem' }}>
                 <div style={{ fontSize: '0.9rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: TAB_ACCENTS.research_note }}>
                   Research Notes
                 </div>
-                {renderKnowledgeNoteGrid(currentKnowledgeNotes, TAB_ACCENTS.research_note)}
+                {renderKnowledgeNoteGrid(visibleKnowledgeNotes, TAB_ACCENTS.research_note)}
               </section>
             ) : null}
-            {currentImplementationSites.length ? (
+            {visibleImplementationSites.length ? (
               <section style={{ display: 'grid', gap: '0.75rem' }}>
                 <div style={{ fontSize: '0.9rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: TAB_ACCENTS.research_note }}>
                   Implementation Sites
                 </div>
-                {renderImplementationSiteDirectory(currentImplementationSites, TAB_ACCENTS.research_note)}
+                {renderImplementationSiteDirectory(visibleImplementationSites, TAB_ACCENTS.research_note)}
               </section>
             ) : null}
           </div>
         );
       }
 
-      return (
-        <div
-          style={{
-            padding: '1.2rem',
-            borderRadius: '18px',
-            background: 'rgba(255,255,255,0.04)',
-            border: '1px solid rgba(148, 163, 184, 0.16)',
-            color: 'var(--text-muted)',
-            lineHeight: 1.7,
-          }}
-        >
-          {selectedEntityName} の {currentYear} 年度調査ノートは未登録です。
-          {[...new Set([...availableKnowledgeYears, ...availableStructuredFactYears, ...availableImplementationSiteYears])].length > 0
+      return renderEmptyTabState(
+        `${
+          hasHiddenResearchItems
+            ? `${selectedEntityName} の ${currentYear} 年度調査ノートは model-based 項目のみです。実データのみ表示をオフにすると確認できます。`
+            : `${selectedEntityName} の ${currentYear} 年度調査ノートは未登録です。`
+        }${
+          [...new Set([...availableKnowledgeYears, ...availableStructuredFactYears, ...availableImplementationSiteYears])].length > 0
             ? ` 登録済み年度: ${[...new Set([...availableKnowledgeYears, ...availableStructuredFactYears, ...availableImplementationSiteYears])].join(', ')}`
-            : ' 登録済みの調査ノート / structured facts / 実施施設データがありません。'}
-        </div>
+            : ' 登録済みの調査ノート / structured facts / 実施施設データがありません。'
+        }`
       );
     }
 
-    if (!currentHighlights.length) {
-      return (
-        <div
-          style={{
-            padding: '1.2rem',
-            borderRadius: '18px',
-            background: 'rgba(255,255,255,0.04)',
-            border: '1px solid rgba(148, 163, 184, 0.16)',
-            color: 'var(--text-muted)',
-            lineHeight: 1.7,
-          }}
-        >
-          {selectedEntityName} の {currentYear} 年度ハイライトは未登録です。
-          {availableYears.length > 0 ? ` 登録済み年度: ${availableYears.join(', ')}` : ' 登録済みの予算ハイライトがありません。'}
-        </div>
+    if (!hasVisibleBudgetHighlights) {
+      return renderEmptyTabState(
+        `${
+          hasHiddenBudgetHighlights
+            ? `${selectedEntityName} の ${currentYear} 年度ハイライトは model-based 項目のみです。実データのみ表示をオフにすると確認できます。`
+            : `${selectedEntityName} の ${currentYear} 年度ハイライトは未登録です。`
+        }${availableYears.length > 0 ? ` 登録済み年度: ${availableYears.join(', ')}` : ' 登録済みの予算ハイライトがありません。'}`
       );
     }
 
-    if (activeTab === 'overview' && overview) {
+    if (activeTab === 'overview' && visibleOverview) {
       return (
         <section
           style={{
@@ -792,10 +971,11 @@ export const BudgetReportPage: React.FC<BudgetReportPageProps> = ({
           <div style={{ color: TAB_ACCENTS.overview, fontSize: '0.8rem', letterSpacing: '0.16em', textTransform: 'uppercase' }}>
             Overview
           </div>
+          <div style={{ marginTop: '0.7rem' }}>{renderEvidenceBadge(visibleOverview.evidenceStatus)}</div>
           <div style={{ marginTop: '0.6rem', fontSize: '2.4rem', fontWeight: 700, letterSpacing: '-0.04em' }}>
-            {overview.amount_text}
+            {visibleOverview.amount_text}
           </div>
-          {overview.summary && (
+          {visibleOverview.summary && (
             <div
               style={{
                 marginTop: '0.9rem',
@@ -806,29 +986,38 @@ export const BudgetReportPage: React.FC<BudgetReportPageProps> = ({
                 fontSize: '1rem',
               }}
             >
-              {overview.summary}
+              {visibleOverview.summary}
             </div>
           )}
-          {renderSourceLink(overview, TAB_ACCENTS.overview)}
+          {renderSourceLink(visibleOverview, TAB_ACCENTS.overview)}
         </section>
       );
     }
 
     if (activeTab === 'increase_driver') {
-      return renderHighlightGrid(increaseDrivers, TAB_ACCENTS.increase_driver);
+      if (!visibleIncreaseDrivers.length) {
+        return renderEmptyTabState('この年度の増要因は、現在の evidence フィルタ条件では表示できません。');
+      }
+      return renderHighlightGrid(visibleIncreaseDrivers, TAB_ACCENTS.increase_driver);
     }
 
     if (activeTab === 'policy_frame') {
-      return renderHighlightGrid(policyFrames, TAB_ACCENTS.policy_frame);
+      if (!visiblePolicyFrames.length) {
+        return renderEmptyTabState('この年度の政策枠は、現在の evidence フィルタ条件では表示できません。');
+      }
+      return renderHighlightGrid(visiblePolicyFrames, TAB_ACCENTS.policy_frame);
     }
 
     if (activeTab === 'individual_project') {
-      return renderHighlightGrid(individualProjects, TAB_ACCENTS.individual_project);
+      if (!visibleIndividualProjects.length) {
+        return renderEmptyTabState('この年度の個別施策は、現在の evidence フィルタ条件では表示できません。');
+      }
+      return renderHighlightGrid(visibleIndividualProjects, TAB_ACCENTS.individual_project);
     }
 
     if (activeTab === 'year_compare') {
-      const currentOverview = overview;
-      const previousOverview = previousHighlights.find((item) => item.section_key === 'overview');
+      const currentOverview = visibleOverview;
+      const previousOverview = previousOverviewWithEvidence;
       const totalDelta =
         currentOverview?.amount_oku_yen !== null &&
         currentOverview?.amount_oku_yen !== undefined &&
@@ -960,40 +1149,44 @@ export const BudgetReportPage: React.FC<BudgetReportPageProps> = ({
     }
 
     return (
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '0.9rem' }}>
-        {majorPrograms.map((program) => (
-          <article
-            key={`${program.source_id}-${program.target_id}-${program.year}`}
-            style={{
-              padding: '1rem',
-              borderRadius: '18px',
-              background: program.target_id === focusTargetId ? 'rgba(96, 165, 250, 0.12)' : 'rgba(255,255,255,0.04)',
-              border: program.target_id === focusTargetId ? '1px solid rgba(96, 165, 250, 0.38)' : '1px solid rgba(96, 165, 250, 0.18)',
-              boxShadow: program.target_id === focusTargetId ? '0 0 0 1px rgba(191, 219, 254, 0.18) inset' : 'none',
-            }}
-          >
-            <div style={{ marginBottom: '0.55rem' }}>{renderEvidenceBadge(inferEvidenceStatus(program))}</div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem', alignItems: 'baseline' }}>
-              <div style={{ fontWeight: 700, lineHeight: 1.45 }}>{program.sub_category || program.targetName}</div>
-              <div style={{ color: TAB_ACCENTS.major_program, fontWeight: 700, whiteSpace: 'nowrap' }}>
-                {formatExactBudgetAmount(program.value_usd)}
+      visibleMajorPrograms.length ? (
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '0.9rem' }}>
+          {visibleMajorPrograms.map((program) => (
+            <article
+              key={`${program.source_id}-${program.target_id}-${program.year}`}
+              style={{
+                padding: '1rem',
+                borderRadius: '18px',
+                background: program.target_id === focusTargetId ? 'rgba(96, 165, 250, 0.12)' : 'rgba(255,255,255,0.04)',
+                border: program.target_id === focusTargetId ? '1px solid rgba(96, 165, 250, 0.38)' : '1px solid rgba(96, 165, 250, 0.18)',
+                boxShadow: program.target_id === focusTargetId ? '0 0 0 1px rgba(191, 219, 254, 0.18) inset' : 'none',
+              }}
+            >
+              <div style={{ marginBottom: '0.55rem' }}>{renderEvidenceBadge(program.evidenceStatus)}</div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem', alignItems: 'baseline' }}>
+                <div style={{ fontWeight: 700, lineHeight: 1.45 }}>{program.sub_category || program.targetName}</div>
+                <div style={{ color: TAB_ACCENTS.major_program, fontWeight: 700, whiteSpace: 'nowrap' }}>
+                  {formatExactBudgetAmount(program.value_usd)}
+                </div>
               </div>
-            </div>
-            <div style={{ marginTop: '0.35rem', color: 'var(--text-muted)', fontSize: '0.88rem' }}>
-              {program.targetName}
-            </div>
-            {program.description && (
-              <div style={{ marginTop: '0.45rem', color: 'var(--text-muted)', fontSize: '0.88rem', lineHeight: 1.6 }}>
-                {program.description}
+              <div style={{ marginTop: '0.35rem', color: 'var(--text-muted)', fontSize: '0.88rem' }}>
+                {program.targetName}
               </div>
-            )}
-            {renderSourceLink(
-              { source_url: program.source_url, source_title: program.source_title || '元の資料', page_number: program.page_number },
-              TAB_ACCENTS.major_program
-            )}
-          </article>
-        ))}
-      </div>
+              {program.description && (
+                <div style={{ marginTop: '0.45rem', color: 'var(--text-muted)', fontSize: '0.88rem', lineHeight: 1.6 }}>
+                  {program.description}
+                </div>
+              )}
+              {renderSourceLink(
+                { source_url: program.source_url, source_title: program.source_title || '元の資料', page_number: program.page_number },
+                TAB_ACCENTS.major_program
+              )}
+            </article>
+          ))}
+        </div>
+      ) : (
+        renderEmptyTabState('この年度の主な事業 edge は、現在の evidence フィルタ条件では表示できません。')
+      )
     );
   }, [
     activeTab,
@@ -1002,20 +1195,23 @@ export const BudgetReportPage: React.FC<BudgetReportPageProps> = ({
     availableImplementationSiteYears,
     availableStructuredFactYears,
     availableYears,
-    currentHighlights,
-    currentImplementationSites,
-    currentKnowledgeNotes,
-    currentStructuredFacts,
     currentYear,
     focusTargetId,
-    increaseDrivers,
-    individualProjects,
-    majorPrograms,
-    overview,
-    policyFrames,
-    previousHighlights,
+    hasHiddenBudgetHighlights,
+    hasHiddenResearchItems,
+    hasVisibleBudgetHighlights,
+    previousOverviewWithEvidence,
     previousYear,
     selectedEntityName,
+    visibleImplementationSites,
+    visibleIncreaseDrivers,
+    visibleIndividualProjects,
+    visibleKnowledgeNotes,
+    visibleMajorPrograms,
+    visibleOverview,
+    visiblePolicyFrames,
+    visibleResearchItemCount,
+    visibleStructuredFacts,
     yearComparisonRows,
   ]);
 
@@ -1105,6 +1301,64 @@ export const BudgetReportPage: React.FC<BudgetReportPageProps> = ({
               </span>
             </div>
           )}
+        </div>
+
+        <div
+          style={{
+            display: 'grid',
+            gap: '0.8rem',
+            minWidth: '280px',
+            padding: '0.95rem 1rem',
+            borderRadius: '18px',
+            background: 'rgba(255,255,255,0.03)',
+            border: '1px solid rgba(148, 163, 184, 0.12)',
+          }}
+        >
+          <div style={{ display: 'flex', justifyContent: 'space-between', gap: '0.8rem', alignItems: 'center', flexWrap: 'wrap' }}>
+            <div>
+              <div style={{ color: '#cbd5e1', fontSize: '0.76rem', textTransform: 'uppercase', letterSpacing: '0.14em' }}>
+                Evidence Mix
+              </div>
+              <div style={{ marginTop: '0.25rem', color: 'var(--text-muted)', fontSize: '0.82rem' }}>
+                Budget / research に表示する根拠の種類
+              </div>
+            </div>
+            <label style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-main)', fontSize: '0.86rem', cursor: 'pointer' }}>
+              <input
+                type="checkbox"
+                checked={reviewedOnly}
+                onChange={(event) => setReviewedOnly(event.target.checked)}
+                style={{ accentColor: '#86efac' }}
+              />
+              実データのみ表示
+            </label>
+          </div>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+            {(['reviewed', 'model-based'] as const).map((status) => (
+              <div
+                key={status}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  padding: '0.45rem 0.7rem',
+                  borderRadius: '999px',
+                  background: EVIDENCE_BADGE_STYLE[status].background,
+                  border: `1px solid ${EVIDENCE_BADGE_STYLE[status].border}`,
+                }}
+              >
+                {renderEvidenceBadge(status)}
+                <span style={{ color: 'var(--text-main)', fontSize: '0.84rem', fontWeight: 600 }}>
+                  {reviewedOnly ? evidenceSummary.visibleCounts[status] : evidenceSummary.allCounts[status]}件
+                </span>
+              </div>
+            ))}
+          </div>
+          {reviewedOnly && evidenceSummary.hiddenModelBasedCount > 0 ? (
+            <div style={{ color: 'var(--text-muted)', fontSize: '0.82rem', lineHeight: 1.6 }}>
+              model-based 項目 {evidenceSummary.hiddenModelBasedCount} 件を非表示にしています。
+            </div>
+          ) : null}
         </div>
 
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.55rem' }}>
