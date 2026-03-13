@@ -43,6 +43,14 @@ export interface StructuredFactSource {
   display_order: number;
 }
 
+export interface ImplementationSiteSource {
+  source_title: string;
+  source_url: string;
+  source_kind?: string | null;
+  authority_level?: string | null;
+  display_order: number;
+}
+
 export interface StructuredFact {
   entity_id: string;
   fiscal_year: number;
@@ -59,6 +67,22 @@ export interface StructuredFact {
   sources: StructuredFactSource[];
 }
 
+export interface ImplementationSite {
+  entity_id: string;
+  fiscal_year: number;
+  site_key: string;
+  program_key?: string | null;
+  note_key?: string | null;
+  site_name: string;
+  ward?: string | null;
+  site_category?: string | null;
+  operator_name?: string | null;
+  started_on?: string | null;
+  status_note?: string | null;
+  display_order: number;
+  sources: ImplementationSiteSource[];
+}
+
 export interface AppMetadata {
   source: string;
   total_nodes: number;
@@ -69,6 +93,7 @@ export interface AppMetadata {
   budgetHighlights?: BudgetHighlight[];
   knowledgeNotes?: KnowledgeNote[];
   structuredFacts?: StructuredFact[];
+  implementationSites?: ImplementationSite[];
 }
 
 export interface UnifiedData {

@@ -87,6 +87,7 @@ DATASET_TO_SOURCE_ID = {
     "参議院予算委員会調査室 R6": "sangiin_social_security",
     "こども家庭庁 R6/R7予算 オープンデータ": "cfa_budget",
     "こども誰でも通園制度(仮称)の本格実施に向けた制度移行 (想定)": "cfa_budget",
+    "放課後児童クラブ（運営費・処遇改善）運営主体別按分 (令和7年実施状況ベース)": "cfa_budget",
     "厚生労働省 国民医療費 R4": "mhlw_medical",
     "厚生労働省 介護給付費等実態統計 R5": "mhlw_nursing",
     # Regional / corporate
@@ -190,6 +191,8 @@ MINISTRY_BUDGET_DATASETS = {
 }
 
 CFA_DAREDEMO_MODELED_DATASET = "こども誰でも通園制度(仮称)の本格実施に向けた制度移行 (想定)"
+CFA_AFTER_SCHOOL_OP_MODELED_DATASET = "放課後児童クラブ（運営費・処遇改善）運営主体別按分 (令和7年実施状況ベース)"
+CFA_AFTER_SCHOOL_OPERATOR_TOTAL = 25_928
 
 # Keep the reviewed FY2025 program amount intact and only model the second hop.
 # This lets the 2D view show MIN_CFA -> こども誰でも通園制度 -> 配布先.
@@ -231,6 +234,24 @@ CFA_DAREDEMO_DISTRIBUTION_DESTINATIONS = [
     ),
 ]
 
+CFA_AFTER_SCHOOL_OP_DISTRIBUTION_DESTINATIONS = [
+    (
+        "DEST_AFTER_SCHOOL_PUBLIC_PUBLIC",
+        5_800 / CFA_AFTER_SCHOOL_OPERATOR_TOTAL,
+        "公立公営の放課後児童クラブ。令和7年実施状況では 5,800か所（22.4%）です。運営費・処遇改善の reviewed 事業額を、運営主体別クラブ数シェアで按分しています。",
+    ),
+    (
+        "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE",
+        13_543 / CFA_AFTER_SCHOOL_OPERATOR_TOTAL,
+        "公立民営の放課後児童クラブ。令和7年実施状況では 13,543か所（52.2%）で、社会福祉法人、NPO法人、運営委員会・保護者会、株式会社などが運営主体に含まれます。運営費・処遇改善の reviewed 事業額を、運営主体別クラブ数シェアで按分しています。",
+    ),
+    (
+        "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE",
+        6_585 / CFA_AFTER_SCHOOL_OPERATOR_TOTAL,
+        "民立民営の放課後児童クラブ。令和7年実施状況では 6,585か所（25.4%）です。運営費・処遇改善の reviewed 事業額を、運営主体別クラブ数シェアで按分しています。",
+    ),
+]
+
 KOBE_DAREDEMO_BUDGET_DATASET = "神戸市 令和7年度予算説明書"
 KOBE_DAREDEMO_BUDGET_JPY = 137_500_000
 
@@ -253,6 +274,116 @@ MANUAL_REVIEWED_NODES = [
         "type": "recipient",
         "dataset": "manual_reviewed",
     },
+    {
+        "id": "DEST_AFTER_SCHOOL_PUBLIC_PUBLIC",
+        "name": "放課後児童クラブ 公立公営",
+        "lat": 35.64,
+        "lng": 139.64,
+        "region": "Social Security",
+        "type": "recipient",
+        "dataset": "manual_reviewed",
+    },
+    {
+        "id": "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE",
+        "name": "放課後児童クラブ 公立民営",
+        "lat": 35.645,
+        "lng": 139.645,
+        "region": "Social Security",
+        "type": "recipient",
+        "dataset": "manual_reviewed",
+    },
+    {
+        "id": "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE",
+        "name": "放課後児童クラブ 民立民営",
+        "lat": 35.655,
+        "lng": 139.655,
+        "region": "Social Security",
+        "type": "recipient",
+        "dataset": "manual_reviewed",
+    },
+]
+
+KOBE_DAREDEMO_SITE_ROWS = [
+    ("東灘区", "幼保連携型認定こども園渦が森幼稚園"),
+    ("東灘区", "幼保連携型認定こども園神戸夢"),
+    ("東灘区", "御影ちぬっこ保育ルーム"),
+    ("灘区", "幼保連携型認定こども園神戸さくら保育園"),
+    ("灘区", "幼保連携型認定こども園はっとこども園"),
+    ("灘区", "幼保連携型認定こども園光愛児園"),
+    ("灘区", "なのは乳児園"),
+    ("中央区", "幼保連携型認定こども園真生きらきら保育園"),
+    ("中央区", "大慈幼保連携型認定こども園とも分園"),
+    ("中央区", "大慈ほまれ幼保連携型認定こども園"),
+    ("中央区", "幼保連携型認定こども園ポートピア"),
+    ("中央区", "神戸教会いずみ幼稚園"),
+    ("兵庫区", "松原保育所（公立）"),
+    ("兵庫区", "幼保連携型認定こども園宝地院保育園"),
+    ("兵庫区", "幼保連携型認定こども園モーツァルト兵庫こども園"),
+    ("北区", "幼保連携型認定こども園桜の宮こども園"),
+    ("北区", "幼保連携型認定こども園星の杜こども園"),
+    ("北区", "幼稚園型認定こども園鈴蘭台幼稚園"),
+    ("長田区", "神視保育園"),
+    ("長田区", "幼保連携型認定こども園新生こども園"),
+    ("長田区", "幼保連携型認定こども園ほそだ"),
+    ("須磨区", "名谷フォレスト保育園"),
+    ("須磨区", "幼保連携型認定こども園のぞみ保育園"),
+    ("須磨区", "幼保連携型認定こども園村雨こども園"),
+    ("須磨区", "西須磨わかば園"),
+    ("垂水区", "幼保連携型認定こども園彩の森"),
+    ("垂水区", "幼保連携型認定こども園舞子幼稚園"),
+    ("垂水区", "幼保連携型認定こども園明舞幼稚園"),
+    ("垂水区", "幼稚園型認定こども園星陵台めぐみ幼稚園"),
+    ("垂水区", "小規模保育園あんよ"),
+    ("西区", "幼保連携型認定こども園あゆみ幼児園"),
+    ("西区", "幼保連携型認定こども園おっこう山"),
+    ("西区", "幼保連携型認定こども園持子保育園"),
+    ("西区", "幼保連携型認定こども園YMCA保育園 おひさま分園"),
+    ("西区", "学園みどりこども園"),
+]
+
+KOBE_DAREDEMO_IMPLEMENTATION_SOURCE = {
+    "title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充",
+    "url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+    "source_kind": "official_html",
+    "authority_level": "primary",
+}
+
+
+def classify_kobe_site_category(site_name: str) -> str:
+    category_rules = [
+        ("幼保連携型認定こども園", "幼保連携型認定こども園"),
+        ("幼稚園型認定こども園", "幼稚園型認定こども園"),
+        ("小規模保育園", "小規模保育園"),
+        ("保育ルーム", "保育ルーム"),
+        ("乳児園", "乳児園"),
+        ("保育所", "保育所"),
+        ("保育園", "保育園"),
+        ("幼稚園", "幼稚園"),
+        ("こども園", "認定こども園"),
+    ]
+    for marker, category in category_rules:
+        if marker in site_name:
+            return category
+    return "その他"
+
+
+IMPLEMENTATION_SITES = [
+    {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "site_key": f"kobe-daredemo-{index:02d}",
+        "program_key": "kobe-daredemo-tsuen",
+        "note_key": "kobe-daredemo-reviewed-2025",
+        "site_name": site_name,
+        "ward": ward,
+        "site_category": classify_kobe_site_category(site_name),
+        "operator_name": None,
+        "started_on": "2025-07-01",
+        "status_note": "2025年7月1日時点の神戸市実施施設。",
+        "display_order": index * 10,
+        "sources": [dict(KOBE_DAREDEMO_IMPLEMENTATION_SOURCE)],
+    }
+    for index, (ward, site_name) in enumerate(KOBE_DAREDEMO_SITE_ROWS, start=1)
 ]
 
 SOURCE_TITLE_HINTS = [
@@ -544,6 +675,17 @@ BUDGET_HIGHLIGHTS = [
         "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
         "display_order": 220,
     },
+    {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "section_key": "major_program",
+        "title": "施設向け補助ルール",
+        "amount_text": "0歳1,300円 / 1歳1,100円 / 2歳900円",
+        "summary": "障害児・要支援家庭は 400円/時間、医療的ケア児は 2,400円/時間の加算。賃借料補助は 229,000円/月上限、改修費補助は 3,000,000円/施設上限です。",
+        "source_title": "令和７年度神戸市こども誰でも通園制度 実施事業者募集要項",
+        "source_url": "https://www.city.kobe.lg.jp/documents/78828/boshuyoukou_1.pdf",
+        "display_order": 230,
+    },
 ]
 
 
@@ -693,6 +835,59 @@ KNOWLEDGE_NOTES = [
         ],
     },
     {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "note_key": "after-school-club-support-2025",
+        "title": "放課後児童クラブ4事業の支援内容とお金の流れ",
+        "summary": "2025年度の放課後児童クラブ関連4事業は、運営費・処遇改善、施設整備、DX・体制強化、巡回等サポートに分かれ、こども家庭庁から自治体を経て各実施主体や委託先へ流れる構造です。",
+        "key_points": [
+            "放課後児童クラブの関連4事業は、1,209億円、143億円、29億円、11億円の reviewed edge として 2025年度に整理されている。",
+            "運営費・処遇改善はクラブ運営、支援員処遇改善、障害児受入加配、送迎支援を支える予算で、自治体から公営クラブや委託運営主体へ流れる。",
+            "令和7年実施状況では、運営主体別クラブ数は 公立公営 5,800か所、公立民営 13,543か所、民立民営 6,585か所で、アプリではこのシェアを second hop の按分比率として使っている。",
+            "施設整備は改修や新規実施の環境整備、DX・体制強化はオンライン化や第三者評価、巡回等サポートは要支援児対応や巡回アドバイザー配置を支える。",
+        ],
+        "doc_path": "docs/funding-knowledge/ministries/child-and-family-agency/AFTER_SCHOOL_CLUB_SUPPORT_2025.md",
+        "display_order": 40,
+        "sources": [
+            {
+                "title": "令和7年度こども家庭庁予算 事業別資料集",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=74",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+            {
+                "title": "放課後児童健全育成事業について",
+                "url": "https://www.cfa.go.jp/policies/kosodateshien/houkago-jidou/overview",
+                "source_kind": "official_html",
+                "authority_level": "primary",
+            },
+            {
+                "title": "令和7年 放課後児童健全育成事業（放課後児童クラブ）の実施状況",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/69799c33-85cb-44f6-8c70-08ed3a292ab5/c253a682/20251222_policies_kosodateshien_houkago-jidou_80.pdf#page=9",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+            {
+                "title": "令和7年度 こども・子育て支援関係予算のポイント",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/efa58163-4cc2-43d6-ba57-3df41d552a52/857bf219/20241227_policies_kosodateshien_budget_07.pdf#page=18",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+            {
+                "title": "令和7年度 こども・子育て支援関係予算のポイント",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/efa58163-4cc2-43d6-ba57-3df41d552a52/857bf219/20241227_policies_kosodateshien_budget_07.pdf#page=19",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+            {
+                "title": "令和7年度 こども・子育て支援関係予算のポイント",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/efa58163-4cc2-43d6-ba57-3df41d552a52/857bf219/20241227_policies_kosodateshien_budget_07.pdf#page=26",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
         "entity_id": "CITY_KOBE",
         "fiscal_year": 2025,
         "note_key": "kobe-daredemo-reviewed-2025",
@@ -703,6 +898,7 @@ KNOWLEDGE_NOTES = [
             "2025年5月21日の公式発表では、継続21施設に新規14施設を加え、2025年7月1日時点で35施設として開始している。",
             "実施事業者募集要項では、0歳1,300円、1歳1,100円、2歳900円の時間単価に加え、賃借料と改修費の補助上限が示されている。",
             "神戸市の制度ページでは、2026年3月5日時点で44施設、利用者負担は300円/時間として案内されている。",
+            "制度全体では、認可外保育施設も指導監督基準適合と市町村認可を満たせば参加可能だが、神戸市の35施設は保育所・認定こども園・幼稚園中心である。",
         ],
         "doc_path": "docs/funding-knowledge/local-governments/hyogo/KOBE_DAREDEMO_TSUEN_2025.md",
         "display_order": 210,
@@ -729,6 +925,24 @@ KNOWLEDGE_NOTES = [
                 "title": "神戸市こども誰でも通園制度",
                 "url": "https://www.city.kobe.lg.jp/z/kodomokatekyoku/kosodateshien/daredemotuen.html",
                 "source_kind": "official_html",
+                "authority_level": "primary",
+            },
+            {
+                "title": "こども誰でも通園制度の制度化、本格実施に向けた検討状況",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/c53b2923-930e-4490-9ea6-02f1b02f04dc/44d27b3b/20250717_councils_daredemotsuen-kentokai_5ao3a471_12.pdf",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+            {
+                "title": "乳児等通園支援事業の設備及び運営に関する基準の運用上の取扱い",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/0afde15f-8760-4477-806a-ed72b6916696/a054b63b/20260202_policies_hoiku_daredemo-tsuen_58.pdf",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+            {
+                "title": "乳児等通園支援事業の認可について",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/0afde15f-8760-4477-806a-ed72b6916696/64ee3bf1/20250226_policies_hoiku_daredemo-tsuen_09.pdf",
+                "source_kind": "official_pdf",
                 "authority_level": "primary",
             },
         ],
@@ -1003,6 +1217,204 @@ STRUCTURED_FACTS = [
         ],
     },
     {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "after-school-club-op-budget-2025",
+        "fact_group": "after_school_club",
+        "title": "運営費・処遇改善",
+        "value_text": "1,209億円",
+        "numeric_value": 1209,
+        "unit": "億円",
+        "summary": "放課後児童クラブの運営費、放課後児童支援員の処遇改善、障害児受入加配、送迎支援などを支える予算です。",
+        "note_key": "after-school-club-support-2025",
+        "source_excerpt": "放課後児童クラブの運営費、放課後児童支援員の処遇改善（月額9,000円等）、障害児受入加配、送迎支援など",
+        "display_order": 70,
+        "sources": [
+            {
+                "title": "令和7年度こども家庭庁予算 事業別資料集",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=74&search=1%2C209",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+            {
+                "title": "放課後児童健全育成事業について",
+                "url": "https://www.cfa.go.jp/policies/kosodateshien/houkago-jidou/overview",
+                "source_kind": "official_html",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "after-school-club-fac-budget-2025",
+        "fact_group": "after_school_club",
+        "title": "施設整備",
+        "value_text": "143億円",
+        "numeric_value": 143,
+        "unit": "億円",
+        "summary": "既存施設を活用した改修、新たなクラブ実施のための環境整備、アパート等活用費を含む整備予算です。",
+        "note_key": "after-school-club-support-2025",
+        "source_excerpt": "既存施設を活用した改修等、新たなクラブ実施のための環境整備やアパート等活用費（賃借料）",
+        "display_order": 80,
+        "sources": [
+            {
+                "title": "令和7年度こども家庭庁予算 事業別資料集",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=74&search=143",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+            {
+                "title": "令和7年度 こども・子育て支援関係予算のポイント",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/efa58163-4cc2-43d6-ba57-3df41d552a52/857bf219/20241227_policies_kosodateshien_budget_07.pdf#page=19",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "after-school-club-dx-budget-2025",
+        "fact_group": "after_school_club",
+        "title": "DX・体制強化",
+        "value_text": "29億円",
+        "numeric_value": 29,
+        "unit": "億円",
+        "summary": "利用手続きオンライン化、ICT推進実証事業、第三者評価の推進、利用調整支援などを支える予算です。",
+        "note_key": "after-school-club-support-2025",
+        "source_excerpt": "利用手続きオンライン化・ICT推進実証事業、第三者評価の推進、利用調整支援など",
+        "display_order": 90,
+        "sources": [
+            {
+                "title": "令和7年度こども家庭庁予算 事業別資料集",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=74&search=29",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+            {
+                "title": "令和7年度 こども・子育て支援関係予算のポイント",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/efa58163-4cc2-43d6-ba57-3df41d552a52/857bf219/20241227_policies_kosodateshien_budget_07.pdf#page=26",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "after-school-club-support-budget-2025",
+        "fact_group": "after_school_club",
+        "title": "巡回等サポート",
+        "value_text": "11億円",
+        "numeric_value": 11,
+        "unit": "億円",
+        "summary": "要支援児童等対応推進、育成支援体制強化、巡回アドバイザー配置など、現場の伴走支援を支える予算です。",
+        "note_key": "after-school-club-support-2025",
+        "source_excerpt": "要支援児童等対応推進、育成支援体制強化、巡回アドバイザー配置など周辺支援業務",
+        "display_order": 100,
+        "sources": [
+            {
+                "title": "令和7年度こども家庭庁予算 事業別資料集",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=74&search=11",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+            {
+                "title": "令和7年度 こども・子育て支援関係予算のポイント",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/efa58163-4cc2-43d6-ba57-3df41d552a52/857bf219/20241227_policies_kosodateshien_budget_07.pdf#page=19",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "after-school-club-operators-2025",
+        "fact_group": "after_school_club",
+        "title": "制度の受け皿",
+        "value_text": "市区町村、社会福祉法人、保護者会、運営委員会、その他の者",
+        "summary": "こども家庭庁の概要ページでは、放課後児童クラブの設置・運営主体をこのように整理しています。",
+        "note_key": "after-school-club-support-2025",
+        "source_excerpt": "設置・運営主体 市区町村、社会福祉法人、保護者会、運営委員会、その他の者",
+        "display_order": 110,
+        "sources": [
+            {
+                "title": "放課後児童健全育成事業について",
+                "url": "https://www.cfa.go.jp/policies/kosodateshien/houkago-jidou/overview",
+                "source_kind": "official_html",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "after-school-club-public-public-2025",
+        "fact_group": "after_school_club_distribution",
+        "title": "公立公営のクラブ数",
+        "value_text": "5,800か所 / 22.4%",
+        "numeric_value": 5800,
+        "unit": "か所",
+        "summary": "令和7年実施状況での公立公営クラブ数です。アプリでは運営費・処遇改善の出口按分比率として使っています。",
+        "note_key": "after-school-club-support-2025",
+        "source_excerpt": "公立公営 5,800（22.4%）",
+        "display_order": 120,
+        "sources": [
+            {
+                "title": "令和7年 放課後児童健全育成事業（放課後児童クラブ）の実施状況",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/69799c33-85cb-44f6-8c70-08ed3a292ab5/c253a682/20251222_policies_kosodateshien_houkago-jidou_80.pdf#page=9",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "after-school-club-public-private-2025",
+        "fact_group": "after_school_club_distribution",
+        "title": "公立民営のクラブ数",
+        "value_text": "13,543か所 / 52.2%",
+        "numeric_value": 13543,
+        "unit": "か所",
+        "summary": "令和7年実施状況での公立民営クラブ数です。アプリでは運営費・処遇改善の出口按分比率として使っています。",
+        "note_key": "after-school-club-support-2025",
+        "source_excerpt": "公立民営（合計） 13,543（52.2%）",
+        "display_order": 130,
+        "sources": [
+            {
+                "title": "令和7年 放課後児童健全育成事業（放課後児童クラブ）の実施状況",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/69799c33-85cb-44f6-8c70-08ed3a292ab5/c253a682/20251222_policies_kosodateshien_houkago-jidou_80.pdf#page=9",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "after-school-club-private-private-2025",
+        "fact_group": "after_school_club_distribution",
+        "title": "民立民営のクラブ数",
+        "value_text": "6,585か所 / 25.4%",
+        "numeric_value": 6585,
+        "unit": "か所",
+        "summary": "令和7年実施状況での民立民営クラブ数です。アプリでは運営費・処遇改善の出口按分比率として使っています。",
+        "note_key": "after-school-club-support-2025",
+        "source_excerpt": "民立民営（合計） 6,585（25.4%）",
+        "display_order": 140,
+        "sources": [
+            {
+                "title": "令和7年 放課後児童健全育成事業（放課後児童クラブ）の実施状況",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/69799c33-85cb-44f6-8c70-08ed3a292ab5/c253a682/20251222_policies_kosodateshien_houkago-jidou_80.pdf#page=9",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
         "entity_id": "CITY_KOBE",
         "fiscal_year": 2025,
         "fact_key": "kobe-daredemo-budget-2025",
@@ -1101,6 +1513,70 @@ STRUCTURED_FACTS = [
         "note_key": "kobe-daredemo-reviewed-2025",
         "source_excerpt": "0歳児 1,300円、1歳児 1,100円、2歳児 900円",
         "display_order": 250,
+        "sources": [
+            {
+                "title": "令和７年度神戸市こども誰でも通園制度 実施事業者募集要項",
+                "url": "https://www.city.kobe.lg.jp/documents/78828/boshuyoukou_1.pdf",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "fact_key": "kobe-daredemo-add-ons-2025",
+        "fact_group": "subsidy_rule",
+        "title": "主な加算単価",
+        "value_text": "障害児400円 / 要支援家庭400円 / 医療的ケア児2,400円",
+        "summary": "神戸市の募集要項では、対象児童の状態に応じた時間単価の加算が示されています。",
+        "note_key": "kobe-daredemo-reviewed-2025",
+        "source_excerpt": "障害児加算 400円、要支援家庭加算 400円、医療的ケア児加算 2,400円",
+        "display_order": 260,
+        "sources": [
+            {
+                "title": "令和７年度神戸市こども誰でも通園制度 実施事業者募集要項",
+                "url": "https://www.city.kobe.lg.jp/documents/78828/boshuyoukou_1.pdf",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "fact_key": "kobe-daredemo-rent-cap-2025",
+        "fact_group": "subsidy_rule",
+        "title": "賃借料補助上限",
+        "value_text": "229,000円/月",
+        "numeric_value": 229000,
+        "unit": "円/月",
+        "summary": "神戸市の募集要項では、施設向け賃借料補助の上限額を月額 229,000円としています。",
+        "note_key": "kobe-daredemo-reviewed-2025",
+        "source_excerpt": "賃借料補助 1事業所1か月 229,000円上限",
+        "display_order": 270,
+        "sources": [
+            {
+                "title": "令和７年度神戸市こども誰でも通園制度 実施事業者募集要項",
+                "url": "https://www.city.kobe.lg.jp/documents/78828/boshuyoukou_1.pdf",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "fact_key": "kobe-daredemo-renovation-cap-2025",
+        "fact_group": "subsidy_rule",
+        "title": "改修費補助上限",
+        "value_text": "3,000,000円/施設",
+        "numeric_value": 3000000,
+        "unit": "円/施設",
+        "summary": "神戸市の募集要項では、改修費等補助の上限額を 1施設あたり 3,000,000円としています。",
+        "note_key": "kobe-daredemo-reviewed-2025",
+        "source_excerpt": "改修費等補助 1事業所 3,000,000円上限",
+        "display_order": 280,
         "sources": [
             {
                 "title": "令和７年度神戸市こども誰でも通園制度 実施事業者募集要項",
@@ -1887,6 +2363,135 @@ def seed_structured_facts(conn: sqlite3.Connection) -> None:
             )
 
 
+def ensure_implementation_sites_tables(conn: sqlite3.Connection) -> None:
+    conn.executescript(
+        """
+        CREATE TABLE IF NOT EXISTS implementation_sites (
+          id                   INTEGER PRIMARY KEY AUTOINCREMENT,
+          entity_id            TEXT NOT NULL REFERENCES nodes(id),
+          fiscal_year          INTEGER NOT NULL,
+          site_key             TEXT NOT NULL,
+          program_key          TEXT,
+          note_key             TEXT,
+          site_name            TEXT NOT NULL,
+          ward                 TEXT,
+          site_category        TEXT,
+          operator_name        TEXT,
+          started_on           TEXT,
+          status_note          TEXT,
+          display_order        INTEGER DEFAULT 0,
+          created_at           TEXT DEFAULT (datetime('now')),
+          updated_at           TEXT DEFAULT (datetime('now')),
+          UNIQUE(entity_id, fiscal_year, site_key)
+        );
+
+        CREATE TABLE IF NOT EXISTS implementation_site_sources (
+          id                   INTEGER PRIMARY KEY AUTOINCREMENT,
+          site_id              INTEGER NOT NULL REFERENCES implementation_sites(id) ON DELETE CASCADE,
+          source_title         TEXT NOT NULL,
+          source_url           TEXT NOT NULL,
+          source_kind          TEXT,
+          authority_level      TEXT,
+          display_order        INTEGER DEFAULT 0,
+          UNIQUE(site_id, source_url)
+        );
+
+        CREATE INDEX IF NOT EXISTS idx_implementation_sites_entity_year
+          ON implementation_sites(entity_id, fiscal_year, display_order);
+
+        CREATE INDEX IF NOT EXISTS idx_implementation_site_sources_site
+          ON implementation_site_sources(site_id, display_order);
+        """
+    )
+
+
+def seed_implementation_sites(conn: sqlite3.Connection) -> None:
+    ensure_implementation_sites_tables(conn)
+
+    for item in IMPLEMENTATION_SITES:
+        conn.execute(
+            """
+            INSERT INTO implementation_sites (
+              entity_id,
+              fiscal_year,
+              site_key,
+              program_key,
+              note_key,
+              site_name,
+              ward,
+              site_category,
+              operator_name,
+              started_on,
+              status_note,
+              display_order
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ON CONFLICT(entity_id, fiscal_year, site_key) DO UPDATE SET
+              program_key = excluded.program_key,
+              note_key = excluded.note_key,
+              site_name = excluded.site_name,
+              ward = excluded.ward,
+              site_category = excluded.site_category,
+              operator_name = excluded.operator_name,
+              started_on = excluded.started_on,
+              status_note = excluded.status_note,
+              display_order = excluded.display_order,
+              updated_at = datetime('now')
+            """,
+            (
+                item["entity_id"],
+                item["fiscal_year"],
+                item["site_key"],
+                item.get("program_key"),
+                item.get("note_key"),
+                item["site_name"],
+                item.get("ward"),
+                item.get("site_category"),
+                item.get("operator_name"),
+                item.get("started_on"),
+                item.get("status_note"),
+                item.get("display_order", 0),
+            ),
+        )
+
+        site_id_row = conn.execute(
+            """
+            SELECT id
+            FROM implementation_sites
+            WHERE entity_id = ? AND fiscal_year = ? AND site_key = ?
+            """,
+            (item["entity_id"], item["fiscal_year"], item["site_key"]),
+        ).fetchone()
+        if site_id_row is None:
+            continue
+
+        site_id = site_id_row[0]
+        conn.execute("DELETE FROM implementation_site_sources WHERE site_id = ?", (site_id,))
+
+        for index, source in enumerate(item.get("sources", []), start=1):
+            conn.execute(
+                """
+                INSERT INTO implementation_site_sources (
+                  site_id,
+                  source_title,
+                  source_url,
+                  source_kind,
+                  authority_level,
+                  display_order
+                )
+                VALUES (?, ?, ?, ?, ?, ?)
+                """,
+                (
+                    site_id,
+                    source["title"],
+                    source["url"],
+                    source.get("source_kind"),
+                    source.get("authority_level"),
+                    index * 10,
+                ),
+            )
+
+
 def ensure_source_link_health_table(conn: sqlite3.Connection) -> None:
     conn.executescript(
         """
@@ -2052,6 +2657,7 @@ def collect_source_urls_for_validation(conn: sqlite3.Connection) -> list[str]:
         ("budget_highlights", "source_url"),
         ("knowledge_note_sources", "source_url"),
         ("structured_fact_sources", "source_url"),
+        ("implementation_site_sources", "source_url"),
     ]
 
     for table_name, column_name in table_specs:
@@ -2364,6 +2970,137 @@ def seed_cfa_daredemo_distribution_edges(conn: sqlite3.Connection) -> int:
     return inserted_edges
 
 
+def seed_cfa_after_school_operator_distribution_edges(conn: sqlite3.Connection) -> int:
+    destination_nodes = {
+        node["id"]: node
+        for node in MANUAL_REVIEWED_NODES
+        if node["id"] in {target_id for target_id, _, _ in CFA_AFTER_SCHOOL_OP_DISTRIBUTION_DESTINATIONS}
+    }
+    for target_id in destination_nodes:
+        node = destination_nodes[target_id]
+        conn.execute(
+            """
+            INSERT OR IGNORE INTO nodes (id, name, name_en, lat, lng, region, type, dataset)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            """,
+            (
+                node["id"],
+                node["name"],
+                extract_name_en(node["name"]) or None,
+                node["lat"],
+                node["lng"],
+                node["region"],
+                node["type"],
+                node["dataset"],
+            ),
+        )
+
+    parent_edge = conn.execute(
+        """
+        SELECT id, value_usd
+        FROM edges
+        WHERE source_id = 'MIN_CFA'
+          AND target_id = 'REC_AFTER_SCHOOL_OP'
+          AND fiscal_year = 2025
+        ORDER BY id
+        LIMIT 1
+        """
+    ).fetchone()
+
+    if not parent_edge:
+        return 0
+
+    _, parent_value_usd = parent_edge
+    if parent_value_usd is None:
+        return 0
+
+    conn.execute(
+        """
+        DELETE FROM source_provenance
+        WHERE edge_id IN (
+          SELECT id
+          FROM edges
+          WHERE source_id = 'REC_AFTER_SCHOOL_OP'
+            AND fiscal_year = 2025
+        )
+        """
+    )
+    conn.execute(
+        """
+        DELETE FROM edges
+        WHERE source_id = 'REC_AFTER_SCHOOL_OP'
+          AND fiscal_year = 2025
+        """
+    )
+
+    ds_source_id = DATASET_TO_SOURCE_ID.get(CFA_AFTER_SCHOOL_OP_MODELED_DATASET)
+    source_url = "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/69799c33-85cb-44f6-8c70-08ed3a292ab5/c253a682/20251222_policies_kosodateshien_houkago-jidou_80.pdf#page=9"
+    source_title = "令和7年 放課後児童健全育成事業（放課後児童クラブ）の実施状況"
+
+    inserted_edges = 0
+    for target_id, ratio, description in CFA_AFTER_SCHOOL_OP_DISTRIBUTION_DESTINATIONS:
+        value_usd = float(parent_value_usd) * ratio
+        cursor = conn.execute(
+            """
+            INSERT INTO edges (
+              source_id,
+              target_id,
+              category,
+              sub_category,
+              value_usd,
+              value_jpy,
+              fiscal_year,
+              confidence,
+              source_dataset,
+              description
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """,
+            (
+                "REC_AFTER_SCHOOL_OP",
+                target_id,
+                "services",
+                "運営主体別按分モデル",
+                value_usd,
+                value_usd * JPY_PER_USD,
+                2025,
+                0.82,
+                CFA_AFTER_SCHOOL_OP_MODELED_DATASET,
+                description,
+            ),
+        )
+        edge_id = cursor.lastrowid
+        inserted_edges += 1
+
+        conn.execute(
+            """
+            INSERT INTO source_provenance (
+              edge_id,
+              source_id,
+              source_url,
+              source_title,
+              page_number,
+              extracted_text,
+              extraction_method,
+              confidence
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            """,
+            (
+                edge_id,
+                ds_source_id,
+                source_url,
+                source_title,
+                9,
+                f"{description} Reviewed amount reference: 令和7年度こども家庭庁予算 事業別資料集 p.74",
+                "script_generated",
+                0.82,
+            ),
+        )
+
+    return inserted_edges
+
+
 def seed_manual_reviewed_local_gov_entries(conn: sqlite3.Connection) -> tuple[int, int]:
     inserted_nodes = 0
     inserted_edges = 0
@@ -2456,6 +3193,7 @@ def export_frontend_json(conn: sqlite3.Connection) -> Tuple[str, int, int]:
     seed_budget_highlights(conn)
     seed_knowledge_notes(conn)
     seed_structured_facts(conn)
+    seed_implementation_sites(conn)
     validate_source_links(conn)
 
     source_health_by_url: dict[str, str] = {
@@ -2640,6 +3378,56 @@ def export_frontend_json(conn: sqlite3.Connection) -> Tuple[str, int, int]:
             }
         )
 
+    implementation_site_sources_by_site: dict[int, list[dict[str, Any]]] = {}
+    for row in conn.execute(
+        """
+        SELECT site_id, source_title, source_url, source_kind, authority_level, display_order
+        FROM implementation_site_sources
+        ORDER BY site_id, display_order, id
+        """
+    ):
+        if not is_displayable_source(row[2]):
+            continue
+        implementation_site_sources_by_site.setdefault(row[0], []).append(
+            {
+                "source_title": row[1],
+                "source_url": row[2],
+                "source_kind": row[3],
+                "authority_level": row[4],
+                "display_order": row[5],
+            }
+        )
+
+    implementation_sites: list[dict[str, Any]] = []
+    for row in conn.execute(
+        """
+        SELECT id, entity_id, fiscal_year, site_key, program_key, note_key, site_name,
+               ward, site_category, operator_name, started_on, status_note, display_order
+        FROM implementation_sites
+        ORDER BY fiscal_year DESC, entity_id, display_order, id
+        """
+    ):
+        site_sources = implementation_site_sources_by_site.get(row[0], [])
+        if not site_sources:
+            continue
+        implementation_sites.append(
+            {
+                "entity_id": row[1],
+                "fiscal_year": row[2],
+                "site_key": row[3],
+                "program_key": row[4],
+                "note_key": row[5],
+                "site_name": row[6],
+                "ward": row[7],
+                "site_category": row[8],
+                "operator_name": row[9],
+                "started_on": row[10],
+                "status_note": row[11],
+                "display_order": row[12],
+                "sources": site_sources,
+            }
+        )
+
     fiscal_years = sorted(set(e["year"] for e in edges))
     
     output = {
@@ -2655,6 +3443,7 @@ def export_frontend_json(conn: sqlite3.Connection) -> Tuple[str, int, int]:
             "budgetHighlights": highlights,
             "knowledgeNotes": knowledge_notes,
             "structuredFacts": structured_facts,
+            "implementationSites": implementation_sites,
         }
     }
     
@@ -2699,8 +3488,10 @@ def print_summary(conn: sqlite3.Connection) -> None:
     print(f"\n  Source Provenance: {prov_count} records ({prov_linked} linked to data_sources)")
     knowledge_count = conn.execute("SELECT COUNT(*) FROM knowledge_notes").fetchone()[0]
     structured_fact_count = conn.execute("SELECT COUNT(*) FROM structured_facts").fetchone()[0]
+    implementation_site_count = conn.execute("SELECT COUNT(*) FROM implementation_sites").fetchone()[0]
     print(f"  Knowledge Notes:   {knowledge_count} records")
     print(f"  Structured Facts: {structured_fact_count} records")
+    print(f"  Implementation Sites: {implementation_site_count} records")
     try:
         health_counts = conn.execute(
             "SELECT validation_status, COUNT(*) FROM source_link_health GROUP BY validation_status ORDER BY validation_status"
@@ -2758,12 +3549,15 @@ def main():
     # Clear existing data for re-seeding
     ensure_knowledge_notes_tables(conn)
     ensure_structured_facts_tables(conn)
+    ensure_implementation_sites_tables(conn)
     ensure_source_link_health_table(conn)
     conn.execute("DELETE FROM budget_highlights")
     conn.execute("DELETE FROM knowledge_note_sources")
     conn.execute("DELETE FROM knowledge_notes")
     conn.execute("DELETE FROM structured_fact_sources")
     conn.execute("DELETE FROM structured_facts")
+    conn.execute("DELETE FROM implementation_site_sources")
+    conn.execute("DELETE FROM implementation_sites")
     conn.execute("DELETE FROM source_provenance")
     conn.execute("DELETE FROM edges")
     conn.execute("DELETE FROM nodes")
@@ -2788,6 +3582,12 @@ def main():
     if bridged_edges:
         print(f"  ✅ {'CFA こども誰でも通園制度 bridge':45s} → {bridged_edges:>4d} edges")
         total_edges += bridged_edges
+
+    after_school_bridged_edges = seed_cfa_after_school_operator_distribution_edges(conn)
+    conn.commit()
+    if after_school_bridged_edges:
+        print(f"  ✅ {'CFA 放課後児童クラブ運営費 bridge':45s} → {after_school_bridged_edges:>4d} edges")
+        total_edges += after_school_bridged_edges
 
     manual_nodes, manual_edges = seed_manual_reviewed_local_gov_entries(conn)
     conn.commit()

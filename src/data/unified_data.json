@@ -145,6 +145,30 @@
       "type": "local_gov"
     },
     {
+      "id": "DEST_AFTER_SCHOOL_PUBLIC_PUBLIC",
+      "name": "放課後児童クラブ 公立公営",
+      "lat": 35.64,
+      "lng": 139.64,
+      "region": "Social Security",
+      "type": "recipient"
+    },
+    {
+      "id": "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE",
+      "name": "放課後児童クラブ 公立民営",
+      "lat": 35.645,
+      "lng": 139.645,
+      "region": "Social Security",
+      "type": "recipient"
+    },
+    {
+      "id": "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE",
+      "name": "放課後児童クラブ 民立民営",
+      "lat": 35.655,
+      "lng": 139.655,
+      "region": "Social Security",
+      "type": "recipient"
+    },
+    {
       "id": "REC_KOBE_DAREDEMO_SITES",
       "name": "神戸市こども誰でも通園制度 実施施設群",
       "lat": 34.6905,
@@ -19356,6 +19380,51 @@
       "page_number": 3
     },
     {
+      "source_id": "REC_AFTER_SCHOOL_OP",
+      "target_id": "DEST_AFTER_SCHOOL_PUBLIC_PUBLIC",
+      "category": "services",
+      "sub_category": "運営主体別按分モデル",
+      "value_usd": 180299290.3424869,
+      "year": 2025,
+      "confidence": 0.82,
+      "source_dataset": "放課後児童クラブ（運営費・処遇改善）運営主体別按分 (令和7年実施状況ベース)",
+      "description": "公立公営の放課後児童クラブ。令和7年実施状況では 5,800か所（22.4%）です。運営費・処遇改善の reviewed 事業額を、運営主体別クラブ数シェアで按分しています。",
+      "evidence_text": "公立公営の放課後児童クラブ。令和7年実施状況では 5,800か所（22.4%）です。運営費・処遇改善の reviewed 事業額を、運営主体別クラブ数シェアで按分しています。 Reviewed amount reference: 令和7年度こども家庭庁予算 事業別資料集 p.74",
+      "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/69799c33-85cb-44f6-8c70-08ed3a292ab5/c253a682/20251222_policies_kosodateshien_houkago-jidou_80.pdf#page=9",
+      "source_title": "令和7年 放課後児童健全育成事業（放課後児童クラブ）の実施状況",
+      "page_number": 9
+    },
+    {
+      "source_id": "REC_AFTER_SCHOOL_OP",
+      "target_id": "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE",
+      "category": "services",
+      "sub_category": "運営主体別按分モデル",
+      "value_usd": 420998842.94970685,
+      "year": 2025,
+      "confidence": 0.82,
+      "source_dataset": "放課後児童クラブ（運営費・処遇改善）運営主体別按分 (令和7年実施状況ベース)",
+      "description": "公立民営の放課後児童クラブ。令和7年実施状況では 13,543か所（52.2%）で、社会福祉法人、NPO法人、運営委員会・保護者会、株式会社などが運営主体に含まれます。運営費・処遇改善の reviewed 事業額を、運営主体別クラブ数シェアで按分しています。",
+      "evidence_text": "公立民営の放課後児童クラブ。令和7年実施状況では 13,543か所（52.2%）で、社会福祉法人、NPO法人、運営委員会・保護者会、株式会社などが運営主体に含まれます。運営費・処遇改善の reviewed 事業額を、運営主体別クラブ数シェアで按分しています。 Reviewed amount reference: 令和7年度こども家庭庁予算 事業別資料集 p.74",
+      "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/69799c33-85cb-44f6-8c70-08ed3a292ab5/c253a682/20251222_policies_kosodateshien_houkago-jidou_80.pdf#page=9",
+      "source_title": "令和7年 放課後児童健全育成事業（放課後児童クラブ）の実施状況",
+      "page_number": 9
+    },
+    {
+      "source_id": "REC_AFTER_SCHOOL_OP",
+      "target_id": "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE",
+      "category": "services",
+      "sub_category": "運営主体別按分モデル",
+      "value_usd": 204701866.70780623,
+      "year": 2025,
+      "confidence": 0.82,
+      "source_dataset": "放課後児童クラブ（運営費・処遇改善）運営主体別按分 (令和7年実施状況ベース)",
+      "description": "民立民営の放課後児童クラブ。令和7年実施状況では 6,585か所（25.4%）です。運営費・処遇改善の reviewed 事業額を、運営主体別クラブ数シェアで按分しています。",
+      "evidence_text": "民立民営の放課後児童クラブ。令和7年実施状況では 6,585か所（25.4%）です。運営費・処遇改善の reviewed 事業額を、運営主体別クラブ数シェアで按分しています。 Reviewed amount reference: 令和7年度こども家庭庁予算 事業別資料集 p.74",
+      "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/69799c33-85cb-44f6-8c70-08ed3a292ab5/c253a682/20251222_policies_kosodateshien_houkago-jidou_80.pdf#page=9",
+      "source_title": "令和7年 放課後児童健全育成事業（放課後児童クラブ）の実施状況",
+      "page_number": 9
+    },
+    {
       "source_id": "REC_CHILDCARE_ALL",
       "target_id": "DEST_PRIV_NURSERY",
       "category": "services",
@@ -19442,8 +19511,8 @@
   ],
   "metadata": {
     "source": "SQLite DB (money_flow.db)",
-    "total_nodes": 166,
-    "total_edges": 1394,
+    "total_nodes": 169,
+    "total_edges": 1397,
     "fiscal_years": [
       2021,
       2022,
@@ -19479,6 +19548,19 @@
         "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
         "page_number": null,
         "display_order": 220
+      },
+      {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "section_key": "major_program",
+        "title": "施設向け補助ルール",
+        "amount_text": "0歳1,300円 / 1歳1,100円 / 2歳900円",
+        "amount_oku_yen": null,
+        "summary": "障害児・要支援家庭は 400円/時間、医療的ケア児は 2,400円/時間の加算。賃借料補助は 229,000円/月上限、改修費補助は 3,000,000円/施設上限です。",
+        "source_title": "令和７年度神戸市こども誰でも通園制度 実施事業者募集要項",
+        "source_url": "https://www.city.kobe.lg.jp/documents/78828/boshuyoukou_1.pdf",
+        "page_number": null,
+        "display_order": 230
       },
       {
         "entity_id": "MIN_CFA",
@@ -21091,9 +21173,10 @@
           "令和7年度予算説明書の保育振興費では、こども誰でも通園制度 137,500千円が確認できる。",
           "2025年5月21日の公式発表では、継続21施設に新規14施設を加え、2025年7月1日時点で35施設として開始している。",
           "実施事業者募集要項では、0歳1,300円、1歳1,100円、2歳900円の時間単価に加え、賃借料と改修費の補助上限が示されている。",
-          "神戸市の制度ページでは、2026年3月5日時点で44施設、利用者負担は300円/時間として案内されている。"
+          "神戸市の制度ページでは、2026年3月5日時点で44施設、利用者負担は300円/時間として案内されている。",
+          "制度全体では、認可外保育施設も指導監督基準適合と市町村認可を満たせば参加可能だが、神戸市の35施設は保育所・認定こども園・幼稚園中心である。"
         ],
-        "body_markdown": "# 神戸市こども誰でも通園制度 2025\n\n## 結論\n\n- 神戸市の `令和7年度予算説明書` では、保育振興費の内数として `こども誰でも通園制度 137,500千円` を確認できる。\n- 2025年5月21日の神戸市公式発表では、2025年7月1日時点で `35施設` が実施施設として公表されている。\n- 実施事業者募集要項では、施設向け補助単価として `0歳 1,300円/時間`、`1歳 1,100円/時間`、`2歳 900円/時間`、賃借料補助 `229,000円/月上限`、改修費補助 `3,000,000円上限` が示されている。\n\n## 予算\n\n- 神戸市の `令和7年度予算説明書（こども家庭局）` では、`保育振興費 (8) こども誰でも通園制度 137,500千円` と記載されている。\n- 同じ資料の施策説明ページでは、`こども誰でも通園制度の実施 146,524千円`、`23施設 -> 45施設` とも記載されている。\n- 項目粒度が異なるため、アプリの reviewed edge では、事項別の予算説明書に載る `137,500千円` を採用する。\n\n## 制度運用\n\n- 神戸市の制度ページでは、2025年度の利用料を `300円/時間` と案内している。\n- 対象は、市内在住で生後6か月から2歳まで、幼稚園・保育所・認定こども園等に在籍していない児童。\n- 2026年3月5日更新の制度ページでは、神戸市の実施施設は `44施設` に拡充されている。\n\n## 2025年7月1日時点の35施設\n\n### 東灘区\n\n- 幼保連携型認定こども園渦が森幼稚園\n- 幼保連携型認定こども園神戸夢\n- 御影ちぬっこ保育ルーム\n\n### 灘区\n\n- 幼保連携型認定こども園神戸さくら保育園\n- 幼保連携型認定こども園はっとこども園\n- 幼保連携型認定こども園光愛児園\n- なのは乳児園\n\n### 中央区\n\n- 幼保連携型認定こども園真生きらきら保育園\n- 大慈幼保連携型認定こども園とも分園\n- 大慈ほまれ幼保連携型認定こども園\n- 幼保連携型認定こども園ポートピア\n- 神戸教会いずみ幼稚園\n\n### 兵庫区\n\n- 松原保育所（公立）\n- 幼保連携型認定こども園宝地院保育園\n- 幼保連携型認定こども園モーツァルト兵庫こども園\n\n### 北区\n\n- 幼保連携型認定こども園桜の宮こども園\n- 幼保連携型認定こども園星の杜こども園\n- 幼稚園型認定こども園鈴蘭台幼稚園\n\n### 長田区\n\n- 神視保育園\n- 幼保連携型認定こども園新生こども園\n- 幼保連携型認定こども園ほそだ\n\n### 須磨区\n\n- 名谷フォレスト保育園\n- 幼保連携型認定こども園のぞみ保育園\n- 幼保連携型認定こども園村雨こども園\n- 西須磨わかば園\n\n### 垂水区\n\n- 幼保連携型認定こども園彩の森\n- 幼保連携型認定こども園舞子幼稚園\n- 幼保連携型認定こども園明舞幼稚園\n- 幼稚園型認定こども園星陵台めぐみ幼稚園\n- 小規模保育園あんよ\n\n### 西区\n\n- 幼保連携型認定こども園あゆみ幼児園\n- 幼保連携型認定こども園おっこう山\n- 幼保連携型認定こども園持子保育園\n- 幼保連携型認定こども園YMCA保育園 おひさま分園\n- 学園みどりこども園\n\n## 一次資料\n\n- 神戸市 令和7年度予算説明書（こども家庭局）\n- 令和７年度「神戸市こども誰でも通園制度」実施施設の拡充\n- 令和７年度神戸市こども誰でも通園制度 実施事業者募集要項\n- 神戸市こども誰でも通園制度\n",
+        "body_markdown": "# 神戸市こども誰でも通園制度 2025\n\n## 結論\n\n- 神戸市の `令和7年度予算説明書` では、保育振興費の内数として `こども誰でも通園制度 137,500千円` を確認できる。\n- 2025年5月21日の神戸市公式発表では、2025年7月1日時点で `35施設` が実施施設として公表されている。\n- 実施事業者募集要項では、施設向け補助単価として `0歳 1,300円/時間`、`1歳 1,100円/時間`、`2歳 900円/時間`、賃借料補助 `229,000円/月上限`、改修費補助 `3,000,000円上限` が示されている。\n\n## 予算\n\n- 神戸市の `令和7年度予算説明書（こども家庭局）` では、`保育振興費 (8) こども誰でも通園制度 137,500千円` と記載されている。\n- 同じ資料の施策説明ページでは、`こども誰でも通園制度の実施 146,524千円`、`23施設 -> 45施設` とも記載されている。\n- 項目粒度が異なるため、アプリの reviewed edge では、事項別の予算説明書に載る `137,500千円` を採用する。\n\n## 制度運用\n\n- 神戸市の制度ページでは、2025年度の利用料を `300円/時間` と案内している。\n- 対象は、市内在住で生後6か月から2歳まで、幼稚園・保育所・認定こども園等に在籍していない児童。\n- 2026年3月5日更新の制度ページでは、神戸市の実施施設は `44施設` に拡充されている。\n\n## 補助ルールメモ\n\n- 基本単価は `0歳 1,300円/時間`、`1歳 1,100円/時間`、`2歳 900円/時間`。\n- 加算は `障害児 400円/時間`、`要支援家庭 400円/時間`、`医療的ケア児 2,400円/時間`。\n- 賃借料補助は `1事業所1か月 229,000円` が上限。\n- 改修費等補助は `1事業所 3,000,000円` が上限。\n\n## 認可外保育施設の参加要件メモ\n\n- 制度上は、認可外保育施設も実施場所になりうる。\n- ただし `認可外保育施設指導監督基準` を満たしていることが前提で、基準を満たさない施設は対象外。\n- そのうえで、市町村から `乳児等通園支援事業` の認可を受ける必要がある。\n- 設備面では、年齢区分に応じて `乳児室 / ほふく室 / 保育室 / 遊戯室 / 便所` 等が必要で、面積基準もある。\n- 職員配置は一般型で `0歳児 おおむね3:1`、`1-2歳児 おおむね6:1`。職員の半数以上は保育士だが、最低2人は必要。\n- 社会福祉法人や学校法人以外の事業者は、経済的基礎、社会的信望、役員・幹部の知識経験なども審査対象になる。\n- したがって、制度全体では認可外施設も参加可能だが、神戸市の35施設のように既存の保育所・認定こども園・幼稚園が中心になりやすい。\n\n## 2025年7月1日時点の35施設\n\n### 東灘区\n\n- 幼保連携型認定こども園渦が森幼稚園\n- 幼保連携型認定こども園神戸夢\n- 御影ちぬっこ保育ルーム\n\n### 灘区\n\n- 幼保連携型認定こども園神戸さくら保育園\n- 幼保連携型認定こども園はっとこども園\n- 幼保連携型認定こども園光愛児園\n- なのは乳児園\n\n### 中央区\n\n- 幼保連携型認定こども園真生きらきら保育園\n- 大慈幼保連携型認定こども園とも分園\n- 大慈ほまれ幼保連携型認定こども園\n- 幼保連携型認定こども園ポートピア\n- 神戸教会いずみ幼稚園\n\n### 兵庫区\n\n- 松原保育所（公立）\n- 幼保連携型認定こども園宝地院保育園\n- 幼保連携型認定こども園モーツァルト兵庫こども園\n\n### 北区\n\n- 幼保連携型認定こども園桜の宮こども園\n- 幼保連携型認定こども園星の杜こども園\n- 幼稚園型認定こども園鈴蘭台幼稚園\n\n### 長田区\n\n- 神視保育園\n- 幼保連携型認定こども園新生こども園\n- 幼保連携型認定こども園ほそだ\n\n### 須磨区\n\n- 名谷フォレスト保育園\n- 幼保連携型認定こども園のぞみ保育園\n- 幼保連携型認定こども園村雨こども園\n- 西須磨わかば園\n\n### 垂水区\n\n- 幼保連携型認定こども園彩の森\n- 幼保連携型認定こども園舞子幼稚園\n- 幼保連携型認定こども園明舞幼稚園\n- 幼稚園型認定こども園星陵台めぐみ幼稚園\n- 小規模保育園あんよ\n\n### 西区\n\n- 幼保連携型認定こども園あゆみ幼児園\n- 幼保連携型認定こども園おっこう山\n- 幼保連携型認定こども園持子保育園\n- 幼保連携型認定こども園YMCA保育園 おひさま分園\n- 学園みどりこども園\n\n## 一次資料\n\n- 神戸市 令和7年度予算説明書（こども家庭局）\n- 令和７年度「神戸市こども誰でも通園制度」実施施設の拡充\n- 令和７年度神戸市こども誰でも通園制度 実施事業者募集要項\n- 神戸市こども誰でも通園制度\n- こども誰でも通園制度の制度化、本格実施に向けた検討状況\n- 乳児等通園支援事業の設備及び運営に関する基準の運用上の取扱い\n- 乳児等通園支援事業の認可について\n",
         "doc_path": "docs/funding-knowledge/local-governments/hyogo/KOBE_DAREDEMO_TSUEN_2025.md",
         "display_order": 210,
         "sources": [
@@ -21124,6 +21207,27 @@
             "source_kind": "official_html",
             "authority_level": "primary",
             "display_order": 40
+          },
+          {
+            "source_title": "こども誰でも通園制度の制度化、本格実施に向けた検討状況",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/c53b2923-930e-4490-9ea6-02f1b02f04dc/44d27b3b/20250717_councils_daredemotsuen-kentokai_5ao3a471_12.pdf",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 50
+          },
+          {
+            "source_title": "乳児等通園支援事業の設備及び運営に関する基準の運用上の取扱い",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/0afde15f-8760-4477-806a-ed72b6916696/a054b63b/20260202_policies_hoiku_daredemo-tsuen_58.pdf",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 60
+          },
+          {
+            "source_title": "乳児等通園支援事業の認可について",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/0afde15f-8760-4477-806a-ed72b6916696/64ee3bf1/20250226_policies_hoiku_daredemo-tsuen_09.pdf",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 70
           }
         ]
       },
@@ -21285,6 +21389,66 @@
             "source_title": "広島市 乳児等通園支援事業に係る管理運用業務",
             "source_url": "https://www.city.hiroshima.lg.jp/business/nyusatsu/1006046/1006060/1046169/1046854.html",
             "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 60
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "note_key": "after-school-club-support-2025",
+        "title": "放課後児童クラブ4事業の支援内容とお金の流れ",
+        "summary": "2025年度の放課後児童クラブ関連4事業は、運営費・処遇改善、施設整備、DX・体制強化、巡回等サポートに分かれ、こども家庭庁から自治体を経て各実施主体や委託先へ流れる構造です。",
+        "key_points": [
+          "放課後児童クラブの関連4事業は、1,209億円、143億円、29億円、11億円の reviewed edge として 2025年度に整理されている。",
+          "運営費・処遇改善はクラブ運営、支援員処遇改善、障害児受入加配、送迎支援を支える予算で、自治体から公営クラブや委託運営主体へ流れる。",
+          "令和7年実施状況では、運営主体別クラブ数は 公立公営 5,800か所、公立民営 13,543か所、民立民営 6,585か所で、アプリではこのシェアを second hop の按分比率として使っている。",
+          "施設整備は改修や新規実施の環境整備、DX・体制強化はオンライン化や第三者評価、巡回等サポートは要支援児対応や巡回アドバイザー配置を支える。"
+        ],
+        "body_markdown": "# 放課後児童クラブ4事業の支援内容とお金の流れ\n\n## 結論\n\n- 2025年度の放課後児童クラブ関連4事業は、家計への現金給付ではなく、クラブの運営、施設整備、DX、巡回支援を支える予算として整理されている。\n- 基本の流れは、こども家庭庁から自治体へ交付・補助が入り、その先で公営クラブの運営費、委託運営主体、工事、システム導入、巡回支援の委託先などへ支出される構造である。\n\n## 4事業の内訳\n\n- 放課後児童クラブ（運営費・処遇改善）: `1,209億円`\n- 放課後児童クラブ（施設整備）: `143億円`\n- 放課後児童クラブ（DX・体制強化）: `29億円`\n- 放課後児童クラブ（巡回等サポート）: `11億円`\n\n## 事業ごとの見方\n\n### 運営費・処遇改善\n\n- `子ども・子育て支援交付金` として整理され、放課後児童クラブの運営費、放課後児童支援員の処遇改善、障害児受入加配、送迎支援などを支える。\n- お金の流れは、こども家庭庁から自治体へ入り、その先で公営クラブの運営費、または民間運営主体への委託・補助に向かう理解が自然である。\n\n## 運営費・処遇改善の出口モデル\n\n- 主体別の厳密な執行額一覧は確認できていない。\n- ただし、こども家庭庁の `令和7年 放課後児童健全育成事業（放課後児童クラブ）の実施状況` では、クラブ数の運営主体別内訳が確認できる。\n- このためアプリでは、`1,209億円` の reviewed 事業額をそのまま残しつつ、出口は `クラブ数シェア` を比率根拠とする model-based second hop として可視化する。\n\n### 主な出口\n\n- 公立公営: `5,800か所 / 22.4%`\n- 公立民営: `13,543か所 / 52.2%`\n- 民立民営: `6,585か所 / 25.4%`\n\n### 公立民営の主な運営主体\n\n- 社会福祉法人: `3,126か所 / 12.1%`\n- 公益社団法人等: `1,344か所 / 5.2%`\n- NPO法人: `1,681か所 / 6.5%`\n- 運営委員会・保護者会: `2,362か所 / 9.1%`\n- 任意団体: `205か所 / 0.8%`\n- 株式会社: `4,299か所 / 16.6%`\n- 学校法人: `190か所 / 0.7%`\n- その他: `336か所 / 1.3%`\n\n### 民立民営の主な運営主体\n\n- 社会福祉法人: `2,086か所 / 8.0%`\n- 公益社団法人等: `558か所 / 2.2%`\n- NPO法人: `1,208か所 / 4.7%`\n- 運営委員会・保護者会: `1,157か所 / 4.5%`\n- 任意団体: `69か所 / 0.3%`\n- 株式会社: `664か所 / 2.6%`\n- 学校法人: `371か所 / 1.4%`\n- その他: `472か所 / 1.8%`\n\n### 施設整備\n\n- `子ども・子育て支援施設整備交付金` として整理され、既存施設を活用した改修、新たなクラブ実施のための環境整備、アパート等活用費を含む。\n- 運営費ではなく、箱を作る、増やす、改修するための資本的支出に近い。\n\n### DX・体制強化\n\n- `こども政策推進事業費補助金` として整理され、利用手続きオンライン化、ICT推進実証、第三者評価、利用調整支援などを支える。\n- 自治体側の手続き改善や運営基盤強化の性格が強く、支出先は自治体の事務体制、システム導入、評価・支援委託などに分かれる。\n\n### 巡回等サポート\n\n- `保育対策総合支援事業費補助金` として整理され、要支援児童等対応推進、育成支援体制強化、巡回アドバイザー配置などを支える。\n- 現場の困難ケース対応や伴走支援のための予算で、自治体直営配置か外部委託かは地域の実施方法によって変わる。\n\n## 制度の受け皿\n\n- こども家庭庁の概要ページでは、放課後児童クラブの設置・運営主体として `市区町村、社会福祉法人、保護者会、運営委員会、その他の者` が示されている。\n- したがって、国費の出口は一律の単一事業者ではなく、自治体の実施方式に応じて公営運営費、委託先法人、改修工事、ICTベンダー、巡回支援人材などに分かれる。\n\n## 一次資料\n\n- 令和7年度こども家庭庁予算 事業別資料集 `p.74`\n- 放課後児童健全育成事業について\n- 令和7年 放課後児童健全育成事業（放課後児童クラブ）の実施状況 `p.9`\n- 令和7年度 こども・子育て支援関係予算のポイント `p.18-19, p.26`\n",
+        "doc_path": "docs/funding-knowledge/ministries/child-and-family-agency/AFTER_SCHOOL_CLUB_SUPPORT_2025.md",
+        "display_order": 40,
+        "sources": [
+          {
+            "source_title": "令和7年度こども家庭庁予算 事業別資料集",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=74",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          },
+          {
+            "source_title": "放課後児童健全育成事業について",
+            "source_url": "https://www.cfa.go.jp/policies/kosodateshien/houkago-jidou/overview",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 20
+          },
+          {
+            "source_title": "令和7年 放課後児童健全育成事業（放課後児童クラブ）の実施状況",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/69799c33-85cb-44f6-8c70-08ed3a292ab5/c253a682/20251222_policies_kosodateshien_houkago-jidou_80.pdf#page=9",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 30
+          },
+          {
+            "source_title": "令和7年度 こども・子育て支援関係予算のポイント",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/efa58163-4cc2-43d6-ba57-3df41d552a52/857bf219/20241227_policies_kosodateshien_budget_07.pdf#page=18",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 40
+          },
+          {
+            "source_title": "令和7年度 こども・子育て支援関係予算のポイント",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/efa58163-4cc2-43d6-ba57-3df41d552a52/857bf219/20241227_policies_kosodateshien_budget_07.pdf#page=19",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 50
+          },
+          {
+            "source_title": "令和7年度 こども・子育て支援関係予算のポイント",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/efa58163-4cc2-43d6-ba57-3df41d552a52/857bf219/20241227_policies_kosodateshien_budget_07.pdf#page=26",
+            "source_kind": "official_pdf",
             "authority_level": "primary",
             "display_order": 60
           }
@@ -21560,6 +21724,75 @@
         ]
       },
       {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "fact_key": "kobe-daredemo-add-ons-2025",
+        "fact_group": "subsidy_rule",
+        "title": "主な加算単価",
+        "value_text": "障害児400円 / 要支援家庭400円 / 医療的ケア児2,400円",
+        "numeric_value": null,
+        "unit": null,
+        "summary": "神戸市の募集要項では、対象児童の状態に応じた時間単価の加算が示されています。",
+        "note_key": "kobe-daredemo-reviewed-2025",
+        "source_excerpt": "障害児加算 400円、要支援家庭加算 400円、医療的ケア児加算 2,400円",
+        "display_order": 260,
+        "sources": [
+          {
+            "source_title": "令和７年度神戸市こども誰でも通園制度 実施事業者募集要項",
+            "source_url": "https://www.city.kobe.lg.jp/documents/78828/boshuyoukou_1.pdf",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "fact_key": "kobe-daredemo-rent-cap-2025",
+        "fact_group": "subsidy_rule",
+        "title": "賃借料補助上限",
+        "value_text": "229,000円/月",
+        "numeric_value": 229000.0,
+        "unit": "円/月",
+        "summary": "神戸市の募集要項では、施設向け賃借料補助の上限額を月額 229,000円としています。",
+        "note_key": "kobe-daredemo-reviewed-2025",
+        "source_excerpt": "賃借料補助 1事業所1か月 229,000円上限",
+        "display_order": 270,
+        "sources": [
+          {
+            "source_title": "令和７年度神戸市こども誰でも通園制度 実施事業者募集要項",
+            "source_url": "https://www.city.kobe.lg.jp/documents/78828/boshuyoukou_1.pdf",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "fact_key": "kobe-daredemo-renovation-cap-2025",
+        "fact_group": "subsidy_rule",
+        "title": "改修費補助上限",
+        "value_text": "3,000,000円/施設",
+        "numeric_value": 3000000.0,
+        "unit": "円/施設",
+        "summary": "神戸市の募集要項では、改修費等補助の上限額を 1施設あたり 3,000,000円としています。",
+        "note_key": "kobe-daredemo-reviewed-2025",
+        "source_excerpt": "改修費等補助 1事業所 3,000,000円上限",
+        "display_order": 280,
+        "sources": [
+          {
+            "source_title": "令和７年度神戸市こども誰でも通園制度 実施事業者募集要項",
+            "source_url": "https://www.city.kobe.lg.jp/documents/78828/boshuyoukou_1.pdf",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
         "entity_id": "MIN_CFA",
         "fiscal_year": 2025,
         "fact_key": "kodomo-daredemo-tsuen-budget-frame",
@@ -21691,6 +21924,218 @@
           {
             "source_title": "こども誰でも通園制度 令和6年度の実施状況",
             "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/c53b2923-930e-4490-9ea6-02f1b02f04dc/e23e860d/20250717_councils_daredemotsuen-kentokai_5ao3a471_02.pdf",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "after-school-club-op-budget-2025",
+        "fact_group": "after_school_club",
+        "title": "運営費・処遇改善",
+        "value_text": "1,209億円",
+        "numeric_value": 1209.0,
+        "unit": "億円",
+        "summary": "放課後児童クラブの運営費、放課後児童支援員の処遇改善、障害児受入加配、送迎支援などを支える予算です。",
+        "note_key": "after-school-club-support-2025",
+        "source_excerpt": "放課後児童クラブの運営費、放課後児童支援員の処遇改善（月額9,000円等）、障害児受入加配、送迎支援など",
+        "display_order": 70,
+        "sources": [
+          {
+            "source_title": "令和7年度こども家庭庁予算 事業別資料集",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=74&search=1%2C209",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          },
+          {
+            "source_title": "放課後児童健全育成事業について",
+            "source_url": "https://www.cfa.go.jp/policies/kosodateshien/houkago-jidou/overview",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 20
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "after-school-club-fac-budget-2025",
+        "fact_group": "after_school_club",
+        "title": "施設整備",
+        "value_text": "143億円",
+        "numeric_value": 143.0,
+        "unit": "億円",
+        "summary": "既存施設を活用した改修、新たなクラブ実施のための環境整備、アパート等活用費を含む整備予算です。",
+        "note_key": "after-school-club-support-2025",
+        "source_excerpt": "既存施設を活用した改修等、新たなクラブ実施のための環境整備やアパート等活用費（賃借料）",
+        "display_order": 80,
+        "sources": [
+          {
+            "source_title": "令和7年度こども家庭庁予算 事業別資料集",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=74&search=143",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          },
+          {
+            "source_title": "令和7年度 こども・子育て支援関係予算のポイント",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/efa58163-4cc2-43d6-ba57-3df41d552a52/857bf219/20241227_policies_kosodateshien_budget_07.pdf#page=19",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 20
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "after-school-club-dx-budget-2025",
+        "fact_group": "after_school_club",
+        "title": "DX・体制強化",
+        "value_text": "29億円",
+        "numeric_value": 29.0,
+        "unit": "億円",
+        "summary": "利用手続きオンライン化、ICT推進実証事業、第三者評価の推進、利用調整支援などを支える予算です。",
+        "note_key": "after-school-club-support-2025",
+        "source_excerpt": "利用手続きオンライン化・ICT推進実証事業、第三者評価の推進、利用調整支援など",
+        "display_order": 90,
+        "sources": [
+          {
+            "source_title": "令和7年度こども家庭庁予算 事業別資料集",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=74&search=29",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          },
+          {
+            "source_title": "令和7年度 こども・子育て支援関係予算のポイント",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/efa58163-4cc2-43d6-ba57-3df41d552a52/857bf219/20241227_policies_kosodateshien_budget_07.pdf#page=26",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 20
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "after-school-club-support-budget-2025",
+        "fact_group": "after_school_club",
+        "title": "巡回等サポート",
+        "value_text": "11億円",
+        "numeric_value": 11.0,
+        "unit": "億円",
+        "summary": "要支援児童等対応推進、育成支援体制強化、巡回アドバイザー配置など、現場の伴走支援を支える予算です。",
+        "note_key": "after-school-club-support-2025",
+        "source_excerpt": "要支援児童等対応推進、育成支援体制強化、巡回アドバイザー配置など周辺支援業務",
+        "display_order": 100,
+        "sources": [
+          {
+            "source_title": "令和7年度こども家庭庁予算 事業別資料集",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=74&search=11",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          },
+          {
+            "source_title": "令和7年度 こども・子育て支援関係予算のポイント",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/efa58163-4cc2-43d6-ba57-3df41d552a52/857bf219/20241227_policies_kosodateshien_budget_07.pdf#page=19",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 20
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "after-school-club-operators-2025",
+        "fact_group": "after_school_club",
+        "title": "制度の受け皿",
+        "value_text": "市区町村、社会福祉法人、保護者会、運営委員会、その他の者",
+        "numeric_value": null,
+        "unit": null,
+        "summary": "こども家庭庁の概要ページでは、放課後児童クラブの設置・運営主体をこのように整理しています。",
+        "note_key": "after-school-club-support-2025",
+        "source_excerpt": "設置・運営主体 市区町村、社会福祉法人、保護者会、運営委員会、その他の者",
+        "display_order": 110,
+        "sources": [
+          {
+            "source_title": "放課後児童健全育成事業について",
+            "source_url": "https://www.cfa.go.jp/policies/kosodateshien/houkago-jidou/overview",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "after-school-club-public-public-2025",
+        "fact_group": "after_school_club_distribution",
+        "title": "公立公営のクラブ数",
+        "value_text": "5,800か所 / 22.4%",
+        "numeric_value": 5800.0,
+        "unit": "か所",
+        "summary": "令和7年実施状況での公立公営クラブ数です。アプリでは運営費・処遇改善の出口按分比率として使っています。",
+        "note_key": "after-school-club-support-2025",
+        "source_excerpt": "公立公営 5,800（22.4%）",
+        "display_order": 120,
+        "sources": [
+          {
+            "source_title": "令和7年 放課後児童健全育成事業（放課後児童クラブ）の実施状況",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/69799c33-85cb-44f6-8c70-08ed3a292ab5/c253a682/20251222_policies_kosodateshien_houkago-jidou_80.pdf#page=9",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "after-school-club-public-private-2025",
+        "fact_group": "after_school_club_distribution",
+        "title": "公立民営のクラブ数",
+        "value_text": "13,543か所 / 52.2%",
+        "numeric_value": 13543.0,
+        "unit": "か所",
+        "summary": "令和7年実施状況での公立民営クラブ数です。アプリでは運営費・処遇改善の出口按分比率として使っています。",
+        "note_key": "after-school-club-support-2025",
+        "source_excerpt": "公立民営（合計） 13,543（52.2%）",
+        "display_order": 130,
+        "sources": [
+          {
+            "source_title": "令和7年 放課後児童健全育成事業（放課後児童クラブ）の実施状況",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/69799c33-85cb-44f6-8c70-08ed3a292ab5/c253a682/20251222_policies_kosodateshien_houkago-jidou_80.pdf#page=9",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "after-school-club-private-private-2025",
+        "fact_group": "after_school_club_distribution",
+        "title": "民立民営のクラブ数",
+        "value_text": "6,585か所 / 25.4%",
+        "numeric_value": 6585.0,
+        "unit": "か所",
+        "summary": "令和7年実施状況での民立民営クラブ数です。アプリでは運営費・処遇改善の出口按分比率として使っています。",
+        "note_key": "after-school-club-support-2025",
+        "source_excerpt": "民立民営（合計） 6,585（25.4%）",
+        "display_order": 140,
+        "sources": [
+          {
+            "source_title": "令和7年 放課後児童健全育成事業（放課後児童クラブ）の実施状況",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/69799c33-85cb-44f6-8c70-08ed3a292ab5/c253a682/20251222_policies_kosodateshien_houkago-jidou_80.pdf#page=9",
             "source_kind": "official_pdf",
             "authority_level": "primary",
             "display_order": 10
@@ -21968,6 +22413,813 @@
             "source_title": "国土交通省 令和6年度予算概要",
             "source_url": "https://www.mlit.go.jp/page/content/001720593.pdf#page=6&search=%E6%B5%81%E5%9F%9F%E6%B2%BB%E6%B0%B4",
             "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      }
+    ],
+    "implementationSites": [
+      {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "site_key": "kobe-daredemo-01",
+        "program_key": "kobe-daredemo-tsuen",
+        "note_key": "kobe-daredemo-reviewed-2025",
+        "site_name": "幼保連携型認定こども園渦が森幼稚園",
+        "ward": "東灘区",
+        "site_category": "幼保連携型認定こども園",
+        "operator_name": null,
+        "started_on": "2025-07-01",
+        "status_note": "2025年7月1日時点の神戸市実施施設。",
+        "display_order": 10,
+        "sources": [
+          {
+            "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充",
+            "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "site_key": "kobe-daredemo-02",
+        "program_key": "kobe-daredemo-tsuen",
+        "note_key": "kobe-daredemo-reviewed-2025",
+        "site_name": "幼保連携型認定こども園神戸夢",
+        "ward": "東灘区",
+        "site_category": "幼保連携型認定こども園",
+        "operator_name": null,
+        "started_on": "2025-07-01",
+        "status_note": "2025年7月1日時点の神戸市実施施設。",
+        "display_order": 20,
+        "sources": [
+          {
+            "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充",
+            "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "site_key": "kobe-daredemo-03",
+        "program_key": "kobe-daredemo-tsuen",
+        "note_key": "kobe-daredemo-reviewed-2025",
+        "site_name": "御影ちぬっこ保育ルーム",
+        "ward": "東灘区",
+        "site_category": "保育ルーム",
+        "operator_name": null,
+        "started_on": "2025-07-01",
+        "status_note": "2025年7月1日時点の神戸市実施施設。",
+        "display_order": 30,
+        "sources": [
+          {
+            "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充",
+            "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "site_key": "kobe-daredemo-04",
+        "program_key": "kobe-daredemo-tsuen",
+        "note_key": "kobe-daredemo-reviewed-2025",
+        "site_name": "幼保連携型認定こども園神戸さくら保育園",
+        "ward": "灘区",
+        "site_category": "幼保連携型認定こども園",
+        "operator_name": null,
+        "started_on": "2025-07-01",
+        "status_note": "2025年7月1日時点の神戸市実施施設。",
+        "display_order": 40,
+        "sources": [
+          {
+            "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充",
+            "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "site_key": "kobe-daredemo-05",
+        "program_key": "kobe-daredemo-tsuen",
+        "note_key": "kobe-daredemo-reviewed-2025",
+        "site_name": "幼保連携型認定こども園はっとこども園",
+        "ward": "灘区",
+        "site_category": "幼保連携型認定こども園",
+        "operator_name": null,
+        "started_on": "2025-07-01",
+        "status_note": "2025年7月1日時点の神戸市実施施設。",
+        "display_order": 50,
+        "sources": [
+          {
+            "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充",
+            "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "site_key": "kobe-daredemo-06",
+        "program_key": "kobe-daredemo-tsuen",
+        "note_key": "kobe-daredemo-reviewed-2025",
+        "site_name": "幼保連携型認定こども園光愛児園",
+        "ward": "灘区",
+        "site_category": "幼保連携型認定こども園",
+        "operator_name": null,
+        "started_on": "2025-07-01",
+        "status_note": "2025年7月1日時点の神戸市実施施設。",
+        "display_order": 60,
+        "sources": [
+          {
+            "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充",
+            "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "site_key": "kobe-daredemo-07",
+        "program_key": "kobe-daredemo-tsuen",
+        "note_key": "kobe-daredemo-reviewed-2025",
+        "site_name": "なのは乳児園",
+        "ward": "灘区",
+        "site_category": "乳児園",
+        "operator_name": null,
+        "started_on": "2025-07-01",
+        "status_note": "2025年7月1日時点の神戸市実施施設。",
+        "display_order": 70,
+        "sources": [
+          {
+            "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充",
+            "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "site_key": "kobe-daredemo-08",
+        "program_key": "kobe-daredemo-tsuen",
+        "note_key": "kobe-daredemo-reviewed-2025",
+        "site_name": "幼保連携型認定こども園真生きらきら保育園",
+        "ward": "中央区",
+        "site_category": "幼保連携型認定こども園",
+        "operator_name": null,
+        "started_on": "2025-07-01",
+        "status_note": "2025年7月1日時点の神戸市実施施設。",
+        "display_order": 80,
+        "sources": [
+          {
+            "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充",
+            "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "site_key": "kobe-daredemo-09",
+        "program_key": "kobe-daredemo-tsuen",
+        "note_key": "kobe-daredemo-reviewed-2025",
+        "site_name": "大慈幼保連携型認定こども園とも分園",
+        "ward": "中央区",
+        "site_category": "幼保連携型認定こども園",
+        "operator_name": null,
+        "started_on": "2025-07-01",
+        "status_note": "2025年7月1日時点の神戸市実施施設。",
+        "display_order": 90,
+        "sources": [
+          {
+            "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充",
+            "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "site_key": "kobe-daredemo-10",
+        "program_key": "kobe-daredemo-tsuen",
+        "note_key": "kobe-daredemo-reviewed-2025",
+        "site_name": "大慈ほまれ幼保連携型認定こども園",
+        "ward": "中央区",
+        "site_category": "幼保連携型認定こども園",
+        "operator_name": null,
+        "started_on": "2025-07-01",
+        "status_note": "2025年7月1日時点の神戸市実施施設。",
+        "display_order": 100,
+        "sources": [
+          {
+            "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充",
+            "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "site_key": "kobe-daredemo-11",
+        "program_key": "kobe-daredemo-tsuen",
+        "note_key": "kobe-daredemo-reviewed-2025",
+        "site_name": "幼保連携型認定こども園ポートピア",
+        "ward": "中央区",
+        "site_category": "幼保連携型認定こども園",
+        "operator_name": null,
+        "started_on": "2025-07-01",
+        "status_note": "2025年7月1日時点の神戸市実施施設。",
+        "display_order": 110,
+        "sources": [
+          {
+            "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充",
+            "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "site_key": "kobe-daredemo-12",
+        "program_key": "kobe-daredemo-tsuen",
+        "note_key": "kobe-daredemo-reviewed-2025",
+        "site_name": "神戸教会いずみ幼稚園",
+        "ward": "中央区",
+        "site_category": "幼稚園",
+        "operator_name": null,
+        "started_on": "2025-07-01",
+        "status_note": "2025年7月1日時点の神戸市実施施設。",
+        "display_order": 120,
+        "sources": [
+          {
+            "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充",
+            "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "site_key": "kobe-daredemo-13",
+        "program_key": "kobe-daredemo-tsuen",
+        "note_key": "kobe-daredemo-reviewed-2025",
+        "site_name": "松原保育所（公立）",
+        "ward": "兵庫区",
+        "site_category": "保育所",
+        "operator_name": null,
+        "started_on": "2025-07-01",
+        "status_note": "2025年7月1日時点の神戸市実施施設。",
+        "display_order": 130,
+        "sources": [
+          {
+            "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充",
+            "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "site_key": "kobe-daredemo-14",
+        "program_key": "kobe-daredemo-tsuen",
+        "note_key": "kobe-daredemo-reviewed-2025",
+        "site_name": "幼保連携型認定こども園宝地院保育園",
+        "ward": "兵庫区",
+        "site_category": "幼保連携型認定こども園",
+        "operator_name": null,
+        "started_on": "2025-07-01",
+        "status_note": "2025年7月1日時点の神戸市実施施設。",
+        "display_order": 140,
+        "sources": [
+          {
+            "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充",
+            "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "site_key": "kobe-daredemo-15",
+        "program_key": "kobe-daredemo-tsuen",
+        "note_key": "kobe-daredemo-reviewed-2025",
+        "site_name": "幼保連携型認定こども園モーツァルト兵庫こども園",
+        "ward": "兵庫区",
+        "site_category": "幼保連携型認定こども園",
+        "operator_name": null,
+        "started_on": "2025-07-01",
+        "status_note": "2025年7月1日時点の神戸市実施施設。",
+        "display_order": 150,
+        "sources": [
+          {
+            "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充",
+            "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "site_key": "kobe-daredemo-16",
+        "program_key": "kobe-daredemo-tsuen",
+        "note_key": "kobe-daredemo-reviewed-2025",
+        "site_name": "幼保連携型認定こども園桜の宮こども園",
+        "ward": "北区",
+        "site_category": "幼保連携型認定こども園",
+        "operator_name": null,
+        "started_on": "2025-07-01",
+        "status_note": "2025年7月1日時点の神戸市実施施設。",
+        "display_order": 160,
+        "sources": [
+          {
+            "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充",
+            "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "site_key": "kobe-daredemo-17",
+        "program_key": "kobe-daredemo-tsuen",
+        "note_key": "kobe-daredemo-reviewed-2025",
+        "site_name": "幼保連携型認定こども園星の杜こども園",
+        "ward": "北区",
+        "site_category": "幼保連携型認定こども園",
+        "operator_name": null,
+        "started_on": "2025-07-01",
+        "status_note": "2025年7月1日時点の神戸市実施施設。",
+        "display_order": 170,
+        "sources": [
+          {
+            "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充",
+            "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "site_key": "kobe-daredemo-18",
+        "program_key": "kobe-daredemo-tsuen",
+        "note_key": "kobe-daredemo-reviewed-2025",
+        "site_name": "幼稚園型認定こども園鈴蘭台幼稚園",
+        "ward": "北区",
+        "site_category": "幼稚園型認定こども園",
+        "operator_name": null,
+        "started_on": "2025-07-01",
+        "status_note": "2025年7月1日時点の神戸市実施施設。",
+        "display_order": 180,
+        "sources": [
+          {
+            "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充",
+            "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "site_key": "kobe-daredemo-19",
+        "program_key": "kobe-daredemo-tsuen",
+        "note_key": "kobe-daredemo-reviewed-2025",
+        "site_name": "神視保育園",
+        "ward": "長田区",
+        "site_category": "保育園",
+        "operator_name": null,
+        "started_on": "2025-07-01",
+        "status_note": "2025年7月1日時点の神戸市実施施設。",
+        "display_order": 190,
+        "sources": [
+          {
+            "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充",
+            "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "site_key": "kobe-daredemo-20",
+        "program_key": "kobe-daredemo-tsuen",
+        "note_key": "kobe-daredemo-reviewed-2025",
+        "site_name": "幼保連携型認定こども園新生こども園",
+        "ward": "長田区",
+        "site_category": "幼保連携型認定こども園",
+        "operator_name": null,
+        "started_on": "2025-07-01",
+        "status_note": "2025年7月1日時点の神戸市実施施設。",
+        "display_order": 200,
+        "sources": [
+          {
+            "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充",
+            "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "site_key": "kobe-daredemo-21",
+        "program_key": "kobe-daredemo-tsuen",
+        "note_key": "kobe-daredemo-reviewed-2025",
+        "site_name": "幼保連携型認定こども園ほそだ",
+        "ward": "長田区",
+        "site_category": "幼保連携型認定こども園",
+        "operator_name": null,
+        "started_on": "2025-07-01",
+        "status_note": "2025年7月1日時点の神戸市実施施設。",
+        "display_order": 210,
+        "sources": [
+          {
+            "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充",
+            "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "site_key": "kobe-daredemo-22",
+        "program_key": "kobe-daredemo-tsuen",
+        "note_key": "kobe-daredemo-reviewed-2025",
+        "site_name": "名谷フォレスト保育園",
+        "ward": "須磨区",
+        "site_category": "保育園",
+        "operator_name": null,
+        "started_on": "2025-07-01",
+        "status_note": "2025年7月1日時点の神戸市実施施設。",
+        "display_order": 220,
+        "sources": [
+          {
+            "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充",
+            "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "site_key": "kobe-daredemo-23",
+        "program_key": "kobe-daredemo-tsuen",
+        "note_key": "kobe-daredemo-reviewed-2025",
+        "site_name": "幼保連携型認定こども園のぞみ保育園",
+        "ward": "須磨区",
+        "site_category": "幼保連携型認定こども園",
+        "operator_name": null,
+        "started_on": "2025-07-01",
+        "status_note": "2025年7月1日時点の神戸市実施施設。",
+        "display_order": 230,
+        "sources": [
+          {
+            "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充",
+            "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "site_key": "kobe-daredemo-24",
+        "program_key": "kobe-daredemo-tsuen",
+        "note_key": "kobe-daredemo-reviewed-2025",
+        "site_name": "幼保連携型認定こども園村雨こども園",
+        "ward": "須磨区",
+        "site_category": "幼保連携型認定こども園",
+        "operator_name": null,
+        "started_on": "2025-07-01",
+        "status_note": "2025年7月1日時点の神戸市実施施設。",
+        "display_order": 240,
+        "sources": [
+          {
+            "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充",
+            "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "site_key": "kobe-daredemo-25",
+        "program_key": "kobe-daredemo-tsuen",
+        "note_key": "kobe-daredemo-reviewed-2025",
+        "site_name": "西須磨わかば園",
+        "ward": "須磨区",
+        "site_category": "その他",
+        "operator_name": null,
+        "started_on": "2025-07-01",
+        "status_note": "2025年7月1日時点の神戸市実施施設。",
+        "display_order": 250,
+        "sources": [
+          {
+            "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充",
+            "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "site_key": "kobe-daredemo-26",
+        "program_key": "kobe-daredemo-tsuen",
+        "note_key": "kobe-daredemo-reviewed-2025",
+        "site_name": "幼保連携型認定こども園彩の森",
+        "ward": "垂水区",
+        "site_category": "幼保連携型認定こども園",
+        "operator_name": null,
+        "started_on": "2025-07-01",
+        "status_note": "2025年7月1日時点の神戸市実施施設。",
+        "display_order": 260,
+        "sources": [
+          {
+            "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充",
+            "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "site_key": "kobe-daredemo-27",
+        "program_key": "kobe-daredemo-tsuen",
+        "note_key": "kobe-daredemo-reviewed-2025",
+        "site_name": "幼保連携型認定こども園舞子幼稚園",
+        "ward": "垂水区",
+        "site_category": "幼保連携型認定こども園",
+        "operator_name": null,
+        "started_on": "2025-07-01",
+        "status_note": "2025年7月1日時点の神戸市実施施設。",
+        "display_order": 270,
+        "sources": [
+          {
+            "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充",
+            "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "site_key": "kobe-daredemo-28",
+        "program_key": "kobe-daredemo-tsuen",
+        "note_key": "kobe-daredemo-reviewed-2025",
+        "site_name": "幼保連携型認定こども園明舞幼稚園",
+        "ward": "垂水区",
+        "site_category": "幼保連携型認定こども園",
+        "operator_name": null,
+        "started_on": "2025-07-01",
+        "status_note": "2025年7月1日時点の神戸市実施施設。",
+        "display_order": 280,
+        "sources": [
+          {
+            "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充",
+            "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "site_key": "kobe-daredemo-29",
+        "program_key": "kobe-daredemo-tsuen",
+        "note_key": "kobe-daredemo-reviewed-2025",
+        "site_name": "幼稚園型認定こども園星陵台めぐみ幼稚園",
+        "ward": "垂水区",
+        "site_category": "幼稚園型認定こども園",
+        "operator_name": null,
+        "started_on": "2025-07-01",
+        "status_note": "2025年7月1日時点の神戸市実施施設。",
+        "display_order": 290,
+        "sources": [
+          {
+            "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充",
+            "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "site_key": "kobe-daredemo-30",
+        "program_key": "kobe-daredemo-tsuen",
+        "note_key": "kobe-daredemo-reviewed-2025",
+        "site_name": "小規模保育園あんよ",
+        "ward": "垂水区",
+        "site_category": "小規模保育園",
+        "operator_name": null,
+        "started_on": "2025-07-01",
+        "status_note": "2025年7月1日時点の神戸市実施施設。",
+        "display_order": 300,
+        "sources": [
+          {
+            "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充",
+            "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "site_key": "kobe-daredemo-31",
+        "program_key": "kobe-daredemo-tsuen",
+        "note_key": "kobe-daredemo-reviewed-2025",
+        "site_name": "幼保連携型認定こども園あゆみ幼児園",
+        "ward": "西区",
+        "site_category": "幼保連携型認定こども園",
+        "operator_name": null,
+        "started_on": "2025-07-01",
+        "status_note": "2025年7月1日時点の神戸市実施施設。",
+        "display_order": 310,
+        "sources": [
+          {
+            "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充",
+            "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "site_key": "kobe-daredemo-32",
+        "program_key": "kobe-daredemo-tsuen",
+        "note_key": "kobe-daredemo-reviewed-2025",
+        "site_name": "幼保連携型認定こども園おっこう山",
+        "ward": "西区",
+        "site_category": "幼保連携型認定こども園",
+        "operator_name": null,
+        "started_on": "2025-07-01",
+        "status_note": "2025年7月1日時点の神戸市実施施設。",
+        "display_order": 320,
+        "sources": [
+          {
+            "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充",
+            "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "site_key": "kobe-daredemo-33",
+        "program_key": "kobe-daredemo-tsuen",
+        "note_key": "kobe-daredemo-reviewed-2025",
+        "site_name": "幼保連携型認定こども園持子保育園",
+        "ward": "西区",
+        "site_category": "幼保連携型認定こども園",
+        "operator_name": null,
+        "started_on": "2025-07-01",
+        "status_note": "2025年7月1日時点の神戸市実施施設。",
+        "display_order": 330,
+        "sources": [
+          {
+            "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充",
+            "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "site_key": "kobe-daredemo-34",
+        "program_key": "kobe-daredemo-tsuen",
+        "note_key": "kobe-daredemo-reviewed-2025",
+        "site_name": "幼保連携型認定こども園YMCA保育園 おひさま分園",
+        "ward": "西区",
+        "site_category": "幼保連携型認定こども園",
+        "operator_name": null,
+        "started_on": "2025-07-01",
+        "status_note": "2025年7月1日時点の神戸市実施施設。",
+        "display_order": 340,
+        "sources": [
+          {
+            "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充",
+            "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "site_key": "kobe-daredemo-35",
+        "program_key": "kobe-daredemo-tsuen",
+        "note_key": "kobe-daredemo-reviewed-2025",
+        "site_name": "学園みどりこども園",
+        "ward": "西区",
+        "site_category": "認定こども園",
+        "operator_name": null,
+        "started_on": "2025-07-01",
+        "status_note": "2025年7月1日時点の神戸市実施施設。",
+        "display_order": 350,
+        "sources": [
+          {
+            "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充",
+            "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+            "source_kind": "official_html",
             "authority_level": "primary",
             "display_order": 10
           }

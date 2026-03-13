@@ -73,6 +73,12 @@ const getNearestAvailableYear = (years: number[], targetYear: number) => {
 };
 
 const isModeledEdge = (edge: Edge) => MODELED_DATASET_MARKERS.some((marker) => (edge.source_dataset || '').includes(marker));
+const getSankeyDisplayValue = (valueUsd: number, compressScale: boolean) => {
+  if (!compressScale) {
+    return valueUsd;
+  }
+  return Math.sqrt(Math.max(valueUsd, 1));
+};
 
 type SankeyNodeData = {
   id: string;
@@ -116,6 +122,26 @@ const getProvenanceBadge = (edge: Edge) => {
   return null;
 };
 
+const formatSankeyNodeLabel = (nodeId: string) => {
+  if (nodeId.startsWith('IN: ')) return nodeId.replace('IN: ', '');
+  if (nodeId.startsWith('OUT: ')) return nodeId.replace('OUT: ', '');
+  if (nodeId.startsWith('OUT2: ')) return nodeId.replace('OUT2: ', '');
+  if (nodeId.startsWith('SRC: ')) return nodeId.replace('SRC: ', '');
+  if (nodeId.startsWith('TRG: ')) return nodeId.replace('TRG: ', '');
+
+  const categoryMatch = nodeId.match(/^(IN|OUT)\(([^)]+)\): \[(.+)\]$/);
+  if (categoryMatch) {
+    return '';
+  }
+
+  const macroCategoryMatch = nodeId.match(/^CAT\((.+)->(.+)\): \[(.+)\]$/);
+  if (macroCategoryMatch) {
+    return `[${macroCategoryMatch[3]}]`;
+  }
+
+  return nodeId;
+};
+
 export const FlowDashboard: React.FC<FlowDashboardProps> = ({
   nodes,
   edges,
@@ -129,6 +155,7 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
   const [viewLevel, setViewLevel] = useState<'entity' | 'type'>('entity');
   const [selectedLinkDetails, setSelectedLinkDetails] = useState<Edge | null>(null);
   const activeEntityId = nodes.some((node) => node.id === selectedEntityId) ? selectedEntityId : 'MIN_CFA';
+  const useCompressedEntityScale = viewLevel === 'entity';
 
   useEffect(() => {
     if (selectedEntityId !== activeEntityId) {
@@ -191,15 +218,17 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
           const catNodeId = `IN(${edge.source_id}): ${categoryLabel}`;
           addNode(sourceNodeId, '#30363d');
           addNode(catNodeId, catColor);
-          sLinks.push({ source: sourceNodeId, target: catNodeId, value: edge.value_usd, linkColor: catColor, edgeRef: edge });
-          sLinks.push({ source: catNodeId, target: focusNodeName, value: edge.value_usd, linkColor: catColor, edgeRef: edge });
+          const displayValue = getSankeyDisplayValue(edge.value_usd, useCompressedEntityScale);
+          sLinks.push({ source: sourceNodeId, target: catNodeId, value: displayValue, linkColor: catColor, edgeRef: edge });
+          sLinks.push({ source: catNodeId, target: focusNodeName, value: displayValue, linkColor: catColor, edgeRef: edge });
         } else if (edge.source_id === activeEntityId) {
           const targetNodeId = `OUT: ${targetName}`;
           const catNodeId = `OUT(${edge.target_id}): ${categoryLabel}`;
           addNode(targetNodeId, '#30363d');
           addNode(catNodeId, catColor);
-          sLinks.push({ source: focusNodeName, target: catNodeId, value: edge.value_usd, linkColor: catColor, edgeRef: edge });
-          sLinks.push({ source: catNodeId, target: targetNodeId, value: edge.value_usd, linkColor: catColor, edgeRef: edge });
+          const displayValue = getSankeyDisplayValue(edge.value_usd, useCompressedEntityScale);
+          sLinks.push({ source: focusNodeName, target: catNodeId, value: displayValue, linkColor: catColor, edgeRef: edge });
+          sLinks.push({ source: catNodeId, target: targetNodeId, value: displayValue, linkColor: catColor, edgeRef: edge });
         }
       });
 
@@ -226,10 +255,11 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
             // Only add if the source node actually exists
             if (nodeSet.has(childSankeyId)) {
               addNode(grandchildNodeId, '#2dd4bf');
+              const displayValue = getSankeyDisplayValue(ce.value_usd, useCompressedEntityScale);
               sLinks.push({ 
                 source: childSankeyId, 
                 target: grandchildNodeId, 
-                value: ce.value_usd, 
+                value: displayValue, 
                 linkColor: ceCatColor,
                 edgeRef: ce,
               });
@@ -320,12 +350,12 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
     }
 
     return { nodes: sNodes, links: sLinks };
-  }, [activeEntityId, edges, nodes, viewLevel]);
+  }, [activeEntityId, edges, nodes, useCompressedEntityScale, viewLevel]);
 
   const hasData = sankeyData.links.length > 0;
   const researchYearsByEntity = useMemo(() => {
     const mapping = new Map<string, number[]>();
-    [...(metadata.knowledgeNotes || []), ...(metadata.structuredFacts || [])].forEach((item) => {
+    [...(metadata.knowledgeNotes || []), ...(metadata.structuredFacts || []), ...(metadata.implementationSites || [])].forEach((item) => {
       const existing = mapping.get(item.entity_id) || [];
       if (!existing.includes(item.fiscal_year)) {
         existing.push(item.fiscal_year);
@@ -333,7 +363,7 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
       mapping.set(item.entity_id, existing.sort((a, b) => a - b));
     });
     return mapping;
-  }, [metadata.knowledgeNotes, metadata.structuredFacts]);
+  }, [metadata.implementationSites, metadata.knowledgeNotes, metadata.structuredFacts]);
   const budgetYearsByEntity = useMemo(() => {
     const mapping = new Map<string, number[]>();
     (metadata.budgetHighlights || []).forEach((item) => {
@@ -364,6 +394,10 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
     });
     return `${window.location.pathname}?${params.toString()}`;
   }, [activeEntityId, activeEntityResearchYears, currentYear]);
+  const sankeyViewportMinHeight = useMemo(
+    () => (viewLevel === 'entity' ? Math.max(860, sankeyData.nodes.length * 56) : 860),
+    [sankeyData.nodes.length, viewLevel]
+  );
   const budgetDeepLink = useMemo(() => {
     if (!selectedLinkDetails) {
       return null;
@@ -588,6 +622,7 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
                 </a>
               </div>
             )}
+
 	        </div>
 	      </div>
 
@@ -603,10 +638,19 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
           position: 'relative',
           display: 'flex',
           flexDirection: 'column',
-          overflow: 'hidden',
+          overflowX: 'hidden',
+          overflowY: 'auto',
         }}
       >
-        <div style={{ flex: 1, minHeight: 0, minWidth: 0, position: 'relative' }}>
+        <div
+          style={{
+            flex: 1,
+            minHeight: `${sankeyViewportMinHeight}px`,
+            minWidth: 0,
+            width: '100%',
+            position: 'relative',
+          }}
+        >
           {!hasData ? (
             <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', color: 'var(--text-muted)' }}>
               現在のフィルタ条件では、該当する資金フローデータの記録がありません。
@@ -614,7 +658,7 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
           ) : (
             <ResponsiveSankey<SankeyNodeData, SankeyLinkData>
               data={sankeyData}
-              margin={{ top: 20, right: 100, bottom: 20, left: 100 }}
+              margin={{ top: 36, right: 140, bottom: 48, left: 140 }}
               align="justify"
               colors={(node) => node.nodeColor}
               nodeOpacity={1}
@@ -627,9 +671,10 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
               linkHoverOthersOpacity={0.05}
               linkBlendMode="screen"
               enableLinkGradient={true}
+              label={(node) => formatSankeyNodeLabel(node.id)}
               labelPosition="outside"
               labelOrientation="horizontal"
-              labelPadding={16}
+              labelPadding={12}
               labelTextColor="#ffffff"
               theme={{
                 tooltip: {
@@ -741,9 +786,16 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
               return (
                 <div style={{ whiteSpace: 'nowrap', background: '#111', padding: '8px', border: '1px solid #333', borderRadius: '4px' }}>
                   <strong style={{ color: node.color }}>{node.id}</strong>
-                  <div style={{ marginTop: '4px' }}>
-                    合計: {formatCurrency(node.value, currency)}
-                  </div>
+                  {viewLevel !== 'entity' && (
+                    <div style={{ marginTop: '4px' }}>
+                      合計: {formatCurrency(node.value, currency)}
+                    </div>
+                  )}
+                  {viewLevel === 'entity' && (
+                    <div style={{ marginTop: '4px', fontSize: '10px', color: 'var(--text-muted)' }}>
+                      線幅は視認性のため圧縮補正しています。金額は詳細カードで確認してください。
+                    </div>
+                  )}
                   {isClickable && (
                     <div style={{ marginTop: '4px', fontSize: '10px', color: 'var(--accent-color)' }}>
                        {viewLevel === 'type' ? 'クリックしてこのカテゴリの詳細へ' : 'クリックしてこのエンティティの詳細フローを見る'}
@@ -753,10 +805,10 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
               );
             }}
               linkTooltip={({ link }: { link: SankeyLinkRecord }) => (
-              <div style={{ whiteSpace: 'nowrap', background: '#111', padding: '8px', border: '1px solid #333', borderRadius: '4px' }}>
-                <strong style={{ color: link.linkColor }}>{link.source.id} &rarr; {link.target.id}</strong>
-                <br />
-                {formatCurrency(link.value, currency)}
+            <div style={{ whiteSpace: 'nowrap', background: '#111', padding: '8px', border: '1px solid #333', borderRadius: '4px' }}>
+              <strong style={{ color: link.linkColor }}>{link.source.id} &rarr; {link.target.id}</strong>
+              <br />
+                {formatCurrency(link.edgeRef?.value_usd || link.value, currency)}
                 
                 {/* Find original edge data to display description/URL if present */}
                 {(() => {

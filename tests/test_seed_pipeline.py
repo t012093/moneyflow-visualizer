@@ -55,8 +55,11 @@ class SeedPipelineRegressionTests(unittest.TestCase):
         structured_facts = metadata.get("structuredFacts", [])
 
         self.assertTrue(any(note["note_key"] == "kodomo-daredemo-tsuen-official-flow" for note in knowledge_notes))
+        self.assertTrue(any(note["note_key"] == "after-school-club-support-2025" for note in knowledge_notes))
         self.assertTrue(any(fact["fact_key"] == "kodomo-daredemo-tsuen-budget-frame" for fact in structured_facts))
         self.assertTrue(any(fact["fact_key"] == "kodomo-daredemo-tsuen-rollout-sites" for fact in structured_facts))
+        self.assertTrue(any(fact["fact_key"] == "after-school-club-op-budget-2025" for fact in structured_facts))
+        self.assertTrue(any(fact["fact_key"] == "after-school-club-operators-2025" for fact in structured_facts))
 
     def test_unified_export_bridges_cfa_daredemo_to_distribution_targets_in_2025(self) -> None:
         edges = self.unified_data["edges"]
@@ -88,6 +91,42 @@ class SeedPipelineRegressionTests(unittest.TestCase):
         })
         self.assertTrue(
             all(edge["source_dataset"] == seed_db.CFA_DAREDEMO_MODELED_DATASET for edge in child_edges)
+        )
+        self.assertAlmostEqual(
+            sum(edge["value_usd"] for edge in child_edges),
+            parent_edge["value_usd"],
+            delta=1e-6,
+        )
+
+    def test_unified_export_bridges_after_school_op_to_operator_buckets_in_2025(self) -> None:
+        edges = self.unified_data["edges"]
+        parent_edge = next(
+            (
+                edge
+                for edge in edges
+                if edge["year"] == 2025
+                and edge["source_id"] == "MIN_CFA"
+                and edge["target_id"] == "REC_AFTER_SCHOOL_OP"
+            ),
+            None,
+        )
+        self.assertIsNotNone(parent_edge)
+
+        child_edges = [
+            edge
+            for edge in edges
+            if edge["year"] == 2025 and edge["source_id"] == "REC_AFTER_SCHOOL_OP"
+        ]
+        self.assertEqual(
+            {edge["target_id"] for edge in child_edges},
+            {
+                "DEST_AFTER_SCHOOL_PUBLIC_PUBLIC",
+                "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE",
+                "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE",
+            },
+        )
+        self.assertTrue(
+            all(edge["source_dataset"] == seed_db.CFA_AFTER_SCHOOL_OP_MODELED_DATASET for edge in child_edges)
         )
         self.assertAlmostEqual(
             sum(edge["value_usd"] for edge in child_edges),
@@ -137,8 +176,32 @@ class SeedPipelineRegressionTests(unittest.TestCase):
 
         metadata = self.unified_data["metadata"]
         self.assertTrue(any(item["entity_id"] == "CITY_KOBE" for item in metadata.get("budgetHighlights", [])))
+        self.assertTrue(
+            any(
+                item["entity_id"] == "CITY_KOBE" and item["title"] == "施設向け補助ルール"
+                for item in metadata.get("budgetHighlights", [])
+            )
+        )
         self.assertTrue(any(note["note_key"] == "kobe-daredemo-reviewed-2025" for note in metadata.get("knowledgeNotes", [])))
         self.assertTrue(any(fact["fact_key"] == "kobe-daredemo-facilities-2025-07" for fact in metadata.get("structuredFacts", [])))
+        self.assertTrue(any(fact["fact_key"] == "kobe-daredemo-rent-cap-2025" for fact in metadata.get("structuredFacts", [])))
+        self.assertTrue(any(fact["fact_key"] == "kobe-daredemo-renovation-cap-2025" for fact in metadata.get("structuredFacts", [])))
+
+    def test_unified_export_contains_kobe_implementation_sites(self) -> None:
+        implementation_sites = self.unified_data["metadata"].get("implementationSites", [])
+        kobe_sites = [
+            site
+            for site in implementation_sites
+            if site["entity_id"] == "CITY_KOBE" and site["fiscal_year"] == 2025
+        ]
+
+        self.assertEqual(len(kobe_sites), 35)
+        self.assertEqual(
+            {site["ward"] for site in kobe_sites},
+            {"東灘区", "灘区", "中央区", "兵庫区", "北区", "長田区", "須磨区", "垂水区", "西区"},
+        )
+        self.assertTrue(any(site["site_name"] == "御影ちぬっこ保育ルーム" for site in kobe_sites))
+        self.assertTrue(all(site["sources"] for site in kobe_sites))
 
     def test_doc_paths_referenced_by_knowledge_notes_exist(self) -> None:
         for note in self.unified_data["metadata"].get("knowledgeNotes", []):

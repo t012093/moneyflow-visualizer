@@ -99,6 +99,7 @@ function App() {
         ...(unifiedData.metadata.budgetHighlights || []).map((item) => item.entity_id),
         ...(unifiedData.metadata.knowledgeNotes || []).map((item) => item.entity_id),
         ...(unifiedData.metadata.structuredFacts || []).map((item) => item.entity_id),
+        ...(unifiedData.metadata.implementationSites || []).map((item) => item.entity_id),
       ].filter((value, index, array) => array.indexOf(value) === index),
     []
   );
@@ -120,7 +121,8 @@ function App() {
       YEARS.filter((year) =>
         (unifiedData.metadata.budgetHighlights || []).some((item) => item.entity_id === selectedBudgetEntityId && item.fiscal_year === year) ||
         (unifiedData.metadata.knowledgeNotes || []).some((item) => item.entity_id === selectedBudgetEntityId && item.fiscal_year === year) ||
-        (unifiedData.metadata.structuredFacts || []).some((item) => item.entity_id === selectedBudgetEntityId && item.fiscal_year === year)
+        (unifiedData.metadata.structuredFacts || []).some((item) => item.entity_id === selectedBudgetEntityId && item.fiscal_year === year) ||
+        (unifiedData.metadata.implementationSites || []).some((item) => item.entity_id === selectedBudgetEntityId && item.fiscal_year === year)
       ),
     [selectedBudgetEntityId]
   );

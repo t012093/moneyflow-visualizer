@@ -1,6 +1,15 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import type { Edge, Node } from '../data/mockGenerator';
-import type { AppMetadata, BudgetHighlight, KnowledgeNote, KnowledgeNoteSource, StructuredFact, StructuredFactSource } from '../types/frontendData';
+import type {
+  AppMetadata,
+  BudgetHighlight,
+  ImplementationSite,
+  ImplementationSiteSource,
+  KnowledgeNote,
+  KnowledgeNoteSource,
+  StructuredFact,
+  StructuredFactSource,
+} from '../types/frontendData';
 import { JPY_RATE } from '../utils/currencyFormatter';
 
 type BudgetTab = 'overview' | 'increase_driver' | 'policy_frame' | 'major_program' | 'individual_project' | 'research_note' | 'year_compare';
@@ -35,7 +44,7 @@ const TAB_ACCENTS: Record<BudgetTab, string> = {
 };
 
 type BudgetEvidenceStatus = 'reviewed' | 'model-based' | 'hybrid';
-type ReferenceSource = KnowledgeNoteSource | StructuredFactSource;
+type ReferenceSource = KnowledgeNoteSource | StructuredFactSource | ImplementationSiteSource;
 
 const MODEL_BUDGET_DATASET_MARKERS = ['省庁別主要経費推計', '財務省 一般会計（所管別）', '財務省一般会計', 'ministries_data', 'meti_data', '想定', 'Proxy', 'Approximation', 'Estimated'];
 
@@ -364,6 +373,149 @@ function renderKnowledgeNoteGrid(items: KnowledgeNote[], accent: string) {
   );
 }
 
+function renderImplementationSiteDirectory(items: ImplementationSite[], accent: string) {
+  const sitesByWard = new Map<string, ImplementationSite[]>();
+  const categoryCounts = new Map<string, number>();
+
+  items.forEach((item) => {
+    const ward = item.ward || '区未設定';
+    const category = item.site_category || 'その他';
+    const wardSites = sitesByWard.get(ward) || [];
+    wardSites.push(item);
+    sitesByWard.set(ward, wardSites);
+    categoryCounts.set(category, (categoryCounts.get(category) || 0) + 1);
+  });
+
+  return (
+    <div style={{ display: 'grid', gap: '1rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '0.9rem' }}>
+        <article
+          style={{
+            padding: '1rem',
+            borderRadius: '18px',
+            background: 'rgba(255,255,255,0.04)',
+            border: `1px solid ${accent}22`,
+          }}
+        >
+          <div style={{ color: accent, fontSize: '0.76rem', textTransform: 'uppercase', letterSpacing: '0.14em' }}>Total Sites</div>
+          <div style={{ marginTop: '0.4rem', fontSize: '1.8rem', fontWeight: 700 }}>{items.length}施設</div>
+          <div style={{ marginTop: '0.45rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>
+            構造化した実施施設データを ward 単位で一覧表示しています。
+          </div>
+        </article>
+        <article
+          style={{
+            padding: '1rem',
+            borderRadius: '18px',
+            background: 'rgba(255,255,255,0.04)',
+            border: `1px solid ${accent}22`,
+          }}
+        >
+          <div style={{ color: accent, fontSize: '0.76rem', textTransform: 'uppercase', letterSpacing: '0.14em' }}>Coverage</div>
+          <div style={{ marginTop: '0.4rem', fontSize: '1.8rem', fontWeight: 700 }}>{sitesByWard.size}区</div>
+          <div style={{ marginTop: '0.45rem', display: 'flex', flexWrap: 'wrap', gap: '0.45rem' }}>
+            {Array.from(categoryCounts.entries())
+              .sort((a, b) => b[1] - a[1])
+              .map(([category, count]) => (
+                <span
+                  key={category}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    padding: '0.22rem 0.55rem',
+                    borderRadius: '999px',
+                    fontSize: '0.78rem',
+                    color: accent,
+                    background: `${accent}14`,
+                    border: `1px solid ${accent}22`,
+                  }}
+                >
+                  {category} {count}
+                </span>
+              ))}
+          </div>
+        </article>
+      </div>
+
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '0.9rem' }}>
+        {Array.from(sitesByWard.entries()).map(([ward, wardSites]) => (
+          <section
+            key={ward}
+            style={{
+              padding: '1rem',
+              borderRadius: '18px',
+              background: 'rgba(255,255,255,0.04)',
+              border: `1px solid ${accent}22`,
+              display: 'grid',
+              gap: '0.75rem',
+            }}
+          >
+            <div style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem', alignItems: 'baseline' }}>
+              <div style={{ fontWeight: 700, fontSize: '1.05rem' }}>{ward}</div>
+              <div style={{ color: accent, fontSize: '0.84rem', fontWeight: 700 }}>{wardSites.length}施設</div>
+            </div>
+            <div style={{ display: 'grid', gap: '0.65rem' }}>
+              {wardSites.map((site) => (
+                <article
+                  key={site.site_key}
+                  style={{
+                    padding: '0.85rem',
+                    borderRadius: '14px',
+                    background: 'rgba(255,255,255,0.03)',
+                    border: '1px solid rgba(148, 163, 184, 0.12)',
+                  }}
+                >
+                  <div style={{ fontWeight: 700, lineHeight: 1.5 }}>{site.site_name}</div>
+                  <div style={{ marginTop: '0.45rem', display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
+                    {site.site_category ? (
+                      <span
+                        style={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          padding: '0.18rem 0.5rem',
+                          borderRadius: '999px',
+                          fontSize: '0.74rem',
+                          color: accent,
+                          background: `${accent}14`,
+                          border: `1px solid ${accent}22`,
+                        }}
+                      >
+                        {site.site_category}
+                      </span>
+                    ) : null}
+                    {site.started_on ? (
+                      <span
+                        style={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          padding: '0.18rem 0.5rem',
+                          borderRadius: '999px',
+                          fontSize: '0.74rem',
+                          color: '#cbd5e1',
+                          background: 'rgba(148, 163, 184, 0.12)',
+                          border: '1px solid rgba(148, 163, 184, 0.18)',
+                        }}
+                      >
+                        開始 {site.started_on}
+                      </span>
+                    ) : null}
+                  </div>
+                  {site.status_note ? (
+                    <div style={{ marginTop: '0.45rem', color: 'var(--text-muted)', lineHeight: 1.6, fontSize: '0.86rem' }}>
+                      {site.status_note}
+                    </div>
+                  ) : null}
+                  {renderReferenceSources(site.sources || [], accent)}
+                </article>
+              ))}
+            </div>
+          </section>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export const BudgetReportPage: React.FC<BudgetReportPageProps> = ({
   currentYear,
   nodes,
@@ -375,12 +527,14 @@ export const BudgetReportPage: React.FC<BudgetReportPageProps> = ({
   const budgetHighlights = useMemo(() => metadata.budgetHighlights || [], [metadata.budgetHighlights]);
   const knowledgeNotes = useMemo(() => metadata.knowledgeNotes || [], [metadata.knowledgeNotes]);
   const structuredFacts = useMemo(() => metadata.structuredFacts || [], [metadata.structuredFacts]);
+  const implementationSites = useMemo(() => metadata.implementationSites || [], [metadata.implementationSites]);
   const budgetPageParams = useMemo(() => parseBudgetPageParams(), []);
   const entityOptions = useMemo(() => {
     return [...new Set([
       ...budgetHighlights.map((item) => item.entity_id),
       ...knowledgeNotes.map((item) => item.entity_id),
       ...structuredFacts.map((item) => item.entity_id),
+      ...implementationSites.map((item) => item.entity_id),
     ])]
       .map((entityId) => ({
         entityId,
@@ -391,7 +545,7 @@ export const BudgetReportPage: React.FC<BudgetReportPageProps> = ({
         if (b.entityId === metadata.featuredEntityId) return 1;
         return a.name.localeCompare(b.name, 'ja');
       });
-  }, [budgetHighlights, knowledgeNotes, structuredFacts, metadata.featuredEntityId, nodes]);
+  }, [budgetHighlights, implementationSites, knowledgeNotes, structuredFacts, metadata.featuredEntityId, nodes]);
   const fallbackEntityId = budgetPageParams.entityId || metadata.featuredEntityId || entityOptions[0]?.entityId || '';
   const activeEntityId = entityOptions.some((item) => item.entityId === selectedEntityId) ? selectedEntityId : fallbackEntityId;
   const focusTargetId = budgetPageParams.focusTargetId;
@@ -435,6 +589,13 @@ export const BudgetReportPage: React.FC<BudgetReportPageProps> = ({
         .sort((a, b) => a.display_order - b.display_order),
     [activeEntityId, currentYear, structuredFacts]
   );
+  const currentImplementationSites = useMemo(
+    () =>
+      implementationSites
+        .filter((item) => item.entity_id === activeEntityId && item.fiscal_year === currentYear)
+        .sort((a, b) => a.display_order - b.display_order),
+    [activeEntityId, currentYear, implementationSites]
+  );
   const availableKnowledgeYears = useMemo(
     () => [...new Set(knowledgeNotes.filter((item) => item.entity_id === activeEntityId).map((item) => item.fiscal_year))].sort(),
     [activeEntityId, knowledgeNotes]
@@ -442,6 +603,10 @@ export const BudgetReportPage: React.FC<BudgetReportPageProps> = ({
   const availableStructuredFactYears = useMemo(
     () => [...new Set(structuredFacts.filter((item) => item.entity_id === activeEntityId).map((item) => item.fiscal_year))].sort(),
     [activeEntityId, structuredFacts]
+  );
+  const availableImplementationSiteYears = useMemo(
+    () => [...new Set(implementationSites.filter((item) => item.entity_id === activeEntityId).map((item) => item.fiscal_year))].sort(),
+    [activeEntityId, implementationSites]
   );
   const availableYears = useMemo(
     () => [...new Set(budgetHighlights.filter((item) => item.entity_id === activeEntityId).map((item) => item.fiscal_year))].sort(),
@@ -545,7 +710,7 @@ export const BudgetReportPage: React.FC<BudgetReportPageProps> = ({
     }
 
     if (activeTab === 'research_note') {
-      if (currentStructuredFacts.length || currentKnowledgeNotes.length) {
+      if (currentStructuredFacts.length || currentKnowledgeNotes.length || currentImplementationSites.length) {
         return (
           <div style={{ display: 'grid', gap: '1rem' }}>
             {currentStructuredFacts.length ? (
@@ -564,6 +729,14 @@ export const BudgetReportPage: React.FC<BudgetReportPageProps> = ({
                 {renderKnowledgeNoteGrid(currentKnowledgeNotes, TAB_ACCENTS.research_note)}
               </section>
             ) : null}
+            {currentImplementationSites.length ? (
+              <section style={{ display: 'grid', gap: '0.75rem' }}>
+                <div style={{ fontSize: '0.9rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: TAB_ACCENTS.research_note }}>
+                  Implementation Sites
+                </div>
+                {renderImplementationSiteDirectory(currentImplementationSites, TAB_ACCENTS.research_note)}
+              </section>
+            ) : null}
           </div>
         );
       }
@@ -580,9 +753,9 @@ export const BudgetReportPage: React.FC<BudgetReportPageProps> = ({
           }}
         >
           {selectedEntityName} の {currentYear} 年度調査ノートは未登録です。
-          {[...new Set([...availableKnowledgeYears, ...availableStructuredFactYears])].length > 0
-            ? ` 登録済み年度: ${[...new Set([...availableKnowledgeYears, ...availableStructuredFactYears])].join(', ')}`
-            : ' 登録済みの調査ノート / structured facts がありません。'}
+          {[...new Set([...availableKnowledgeYears, ...availableStructuredFactYears, ...availableImplementationSiteYears])].length > 0
+            ? ` 登録済み年度: ${[...new Set([...availableKnowledgeYears, ...availableStructuredFactYears, ...availableImplementationSiteYears])].join(', ')}`
+            : ' 登録済みの調査ノート / structured facts / 実施施設データがありません。'}
         </div>
       );
     }
@@ -824,13 +997,17 @@ export const BudgetReportPage: React.FC<BudgetReportPageProps> = ({
     );
   }, [
     activeTab,
+    activeEntityId,
     availableKnowledgeYears,
+    availableImplementationSiteYears,
     availableStructuredFactYears,
     availableYears,
     currentHighlights,
+    currentImplementationSites,
     currentKnowledgeNotes,
     currentStructuredFacts,
     currentYear,
+    focusTargetId,
     increaseDrivers,
     individualProjects,
     majorPrograms,
@@ -838,10 +1015,8 @@ export const BudgetReportPage: React.FC<BudgetReportPageProps> = ({
     policyFrames,
     previousHighlights,
     previousYear,
-    activeEntityId,
     selectedEntityName,
     yearComparisonRows,
-    focusTargetId,
   ]);
 
   return (

@@ -313,6 +313,39 @@ CREATE TABLE IF NOT EXISTS structured_fact_sources (
 );
 
 -- ============================================================
+-- Implementation Sites (制度の実施施設一覧)
+-- ============================================================
+CREATE TABLE IF NOT EXISTS implementation_sites (
+  id                   INTEGER PRIMARY KEY AUTOINCREMENT,
+  entity_id            TEXT NOT NULL REFERENCES nodes(id),
+  fiscal_year          INTEGER NOT NULL,
+  site_key             TEXT NOT NULL,
+  program_key          TEXT,
+  note_key             TEXT,
+  site_name            TEXT NOT NULL,
+  ward                 TEXT,
+  site_category        TEXT,
+  operator_name        TEXT,
+  started_on           TEXT,
+  status_note          TEXT,
+  display_order        INTEGER DEFAULT 0,
+  created_at           TEXT DEFAULT (datetime('now')),
+  updated_at           TEXT DEFAULT (datetime('now')),
+  UNIQUE(entity_id, fiscal_year, site_key)
+);
+
+CREATE TABLE IF NOT EXISTS implementation_site_sources (
+  id                   INTEGER PRIMARY KEY AUTOINCREMENT,
+  site_id              INTEGER NOT NULL REFERENCES implementation_sites(id) ON DELETE CASCADE,
+  source_title         TEXT NOT NULL,
+  source_url           TEXT NOT NULL,
+  source_kind          TEXT,
+  authority_level      TEXT,
+  display_order        INTEGER DEFAULT 0,
+  UNIQUE(site_id, source_url)
+);
+
+-- ============================================================
 -- Source Link Health (URL健全性)
 -- ============================================================
 CREATE TABLE IF NOT EXISTS source_link_health (
@@ -352,6 +385,8 @@ CREATE INDEX IF NOT EXISTS idx_knowledge_notes_entity_year ON knowledge_notes(en
 CREATE INDEX IF NOT EXISTS idx_knowledge_note_sources_note ON knowledge_note_sources(note_id, display_order);
 CREATE INDEX IF NOT EXISTS idx_structured_facts_entity_year ON structured_facts(entity_id, fiscal_year, display_order);
 CREATE INDEX IF NOT EXISTS idx_structured_fact_sources_fact ON structured_fact_sources(fact_id, display_order);
+CREATE INDEX IF NOT EXISTS idx_implementation_sites_entity_year ON implementation_sites(entity_id, fiscal_year, display_order);
+CREATE INDEX IF NOT EXISTS idx_implementation_site_sources_site ON implementation_site_sources(site_id, display_order);
 CREATE INDEX IF NOT EXISTS idx_source_link_health_status ON source_link_health(validation_status, updated_at DESC);
 """
 

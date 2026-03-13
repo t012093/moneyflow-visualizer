@@ -385,6 +385,36 @@ CREATE TABLE IF NOT EXISTS structured_fact_sources (
   UNIQUE(fact_id, source_url)
 );
 
+CREATE TABLE IF NOT EXISTS implementation_sites (
+  id                   INTEGER PRIMARY KEY AUTOINCREMENT,
+  entity_id            TEXT NOT NULL REFERENCES nodes(id),
+  fiscal_year          INTEGER NOT NULL,
+  site_key             TEXT NOT NULL,
+  program_key          TEXT,
+  note_key             TEXT,
+  site_name            TEXT NOT NULL,
+  ward                 TEXT,
+  site_category        TEXT,
+  operator_name        TEXT,
+  started_on           TEXT,
+  status_note          TEXT,
+  display_order        INTEGER DEFAULT 0,
+  created_at           TEXT DEFAULT (datetime('now')),
+  updated_at           TEXT DEFAULT (datetime('now')),
+  UNIQUE(entity_id, fiscal_year, site_key)
+);
+
+CREATE TABLE IF NOT EXISTS implementation_site_sources (
+  id                   INTEGER PRIMARY KEY AUTOINCREMENT,
+  site_id              INTEGER NOT NULL REFERENCES implementation_sites(id) ON DELETE CASCADE,
+  source_title         TEXT NOT NULL,
+  source_url           TEXT NOT NULL,
+  source_kind          TEXT,
+  authority_level      TEXT,
+  display_order        INTEGER DEFAULT 0,
+  UNIQUE(site_id, source_url)
+);
+
 CREATE TABLE IF NOT EXISTS source_link_health (
   id                   INTEGER PRIMARY KEY AUTOINCREMENT,
   source_url           TEXT NOT NULL UNIQUE,
@@ -424,6 +454,12 @@ CREATE INDEX IF NOT EXISTS idx_structured_facts_entity_year
 
 CREATE INDEX IF NOT EXISTS idx_structured_fact_sources_fact
   ON structured_fact_sources(fact_id, display_order);
+
+CREATE INDEX IF NOT EXISTS idx_implementation_sites_entity_year
+  ON implementation_sites(entity_id, fiscal_year, display_order);
+
+CREATE INDEX IF NOT EXISTS idx_implementation_site_sources_site
+  ON implementation_site_sources(site_id, display_order);
 
 CREATE INDEX IF NOT EXISTS idx_source_link_health_status
   ON source_link_health(validation_status, updated_at DESC);
@@ -4585,10 +4621,12 @@ def _get_db_summary(conn: sqlite3.Connection) -> dict:
     try:
         s["total_knowledge_notes"] = conn.execute("SELECT COUNT(*) FROM knowledge_notes").fetchone()[0]
         s["total_structured_facts"] = conn.execute("SELECT COUNT(*) FROM structured_facts").fetchone()[0]
+        s["total_implementation_sites"] = conn.execute("SELECT COUNT(*) FROM implementation_sites").fetchone()[0]
         s["total_source_link_health"] = conn.execute("SELECT COUNT(*) FROM source_link_health").fetchone()[0]
     except Exception:
         s["total_knowledge_notes"] = 0
         s["total_structured_facts"] = 0
+        s["total_implementation_sites"] = 0
         s["total_source_link_health"] = 0
     s["nodes_by_type"] = {r["type"]: r["count"] for r in conn.execute(
         "SELECT type, COUNT(*) as count FROM nodes GROUP BY type ORDER BY count DESC").fetchall()}
