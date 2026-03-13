@@ -134,6 +134,85 @@ class SeedPipelineRegressionTests(unittest.TestCase):
             delta=1e-6,
         )
 
+    def test_unified_export_bridges_after_school_op_to_operator_subtypes_in_2025(self) -> None:
+        edges = self.unified_data["edges"]
+        public_private_parent = next(
+            (
+                edge
+                for edge in edges
+                if edge["year"] == 2025
+                and edge["source_id"] == "REC_AFTER_SCHOOL_OP"
+                and edge["target_id"] == "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE"
+            ),
+            None,
+        )
+        private_private_parent = next(
+            (
+                edge
+                for edge in edges
+                if edge["year"] == 2025
+                and edge["source_id"] == "REC_AFTER_SCHOOL_OP"
+                and edge["target_id"] == "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE"
+            ),
+            None,
+        )
+        self.assertIsNotNone(public_private_parent)
+        self.assertIsNotNone(private_private_parent)
+
+        public_private_children = [
+            edge
+            for edge in edges
+            if edge["year"] == 2025 and edge["source_id"] == "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE"
+        ]
+        self.assertEqual(
+            {edge["target_id"] for edge in public_private_children},
+            {
+                "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_SOCIAL_WELFARE",
+                "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_PUBLIC_INTEREST",
+                "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_NPO",
+                "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_COMMITTEE",
+                "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_VOLUNTARY",
+                "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_CORPORATION",
+                "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_SCHOOL",
+                "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_OTHER",
+            },
+        )
+        self.assertTrue(
+            all(edge["source_dataset"] == seed_db.CFA_AFTER_SCHOOL_OP_MODELED_DATASET for edge in public_private_children)
+        )
+        self.assertAlmostEqual(
+            sum(edge["value_usd"] for edge in public_private_children),
+            public_private_parent["value_usd"],
+            delta=1e-6,
+        )
+
+        private_private_children = [
+            edge
+            for edge in edges
+            if edge["year"] == 2025 and edge["source_id"] == "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE"
+        ]
+        self.assertEqual(
+            {edge["target_id"] for edge in private_private_children},
+            {
+                "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_SOCIAL_WELFARE",
+                "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_PUBLIC_INTEREST",
+                "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_NPO",
+                "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_COMMITTEE",
+                "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_VOLUNTARY",
+                "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_CORPORATION",
+                "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_SCHOOL",
+                "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_OTHER",
+            },
+        )
+        self.assertTrue(
+            all(edge["source_dataset"] == seed_db.CFA_AFTER_SCHOOL_OP_MODELED_DATASET for edge in private_private_children)
+        )
+        self.assertAlmostEqual(
+            sum(edge["value_usd"] for edge in private_private_children),
+            private_private_parent["value_usd"],
+            delta=1e-6,
+        )
+
     def test_unified_export_contains_reviewed_ministry_knowledge_for_other_agencies(self) -> None:
         metadata = self.unified_data["metadata"]
         knowledge_notes = metadata.get("knowledgeNotes", [])

@@ -193,6 +193,8 @@ MINISTRY_BUDGET_DATASETS = {
 CFA_DAREDEMO_MODELED_DATASET = "こども誰でも通園制度(仮称)の本格実施に向けた制度移行 (想定)"
 CFA_AFTER_SCHOOL_OP_MODELED_DATASET = "放課後児童クラブ（運営費・処遇改善）運営主体別按分 (令和7年実施状況ベース)"
 CFA_AFTER_SCHOOL_OPERATOR_TOTAL = 25_928
+CFA_AFTER_SCHOOL_PUBLIC_PRIVATE_TOTAL = 13_543
+CFA_AFTER_SCHOOL_PRIVATE_PRIVATE_TOTAL = 6_585
 
 # Keep the reviewed FY2025 program amount intact and only model the second hop.
 # This lets the 2D view show MIN_CFA -> こども誰でも通園制度 -> 配布先.
@@ -252,6 +254,92 @@ CFA_AFTER_SCHOOL_OP_DISTRIBUTION_DESTINATIONS = [
     ),
 ]
 
+CFA_AFTER_SCHOOL_PUBLIC_PRIVATE_DISTRIBUTION_DESTINATIONS = [
+    (
+        "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_SOCIAL_WELFARE",
+        3_126 / CFA_AFTER_SCHOOL_PUBLIC_PRIVATE_TOTAL,
+        "公立民営のうち社会福祉法人が運営する放課後児童クラブ 3,126か所。公立民営の modeled amount を、運営主体別クラブ数シェアでさらに按分しています。",
+    ),
+    (
+        "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_PUBLIC_INTEREST",
+        1_344 / CFA_AFTER_SCHOOL_PUBLIC_PRIVATE_TOTAL,
+        "公立民営のうち公益社団法人等が運営する放課後児童クラブ 1,344か所。公立民営の modeled amount を、運営主体別クラブ数シェアでさらに按分しています。",
+    ),
+    (
+        "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_NPO",
+        1_681 / CFA_AFTER_SCHOOL_PUBLIC_PRIVATE_TOTAL,
+        "公立民営のうちNPO法人が運営する放課後児童クラブ 1,681か所。公立民営の modeled amount を、運営主体別クラブ数シェアでさらに按分しています。",
+    ),
+    (
+        "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_COMMITTEE",
+        2_362 / CFA_AFTER_SCHOOL_PUBLIC_PRIVATE_TOTAL,
+        "公立民営のうち運営委員会・保護者会が運営する放課後児童クラブ 2,362か所。公立民営の modeled amount を、運営主体別クラブ数シェアでさらに按分しています。",
+    ),
+    (
+        "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_VOLUNTARY",
+        205 / CFA_AFTER_SCHOOL_PUBLIC_PRIVATE_TOTAL,
+        "公立民営のうち任意団体が運営する放課後児童クラブ 205か所。公立民営の modeled amount を、運営主体別クラブ数シェアでさらに按分しています。",
+    ),
+    (
+        "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_CORPORATION",
+        4_299 / CFA_AFTER_SCHOOL_PUBLIC_PRIVATE_TOTAL,
+        "公立民営のうち株式会社が運営する放課後児童クラブ 4,299か所。公立民営の modeled amount を、運営主体別クラブ数シェアでさらに按分しています。",
+    ),
+    (
+        "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_SCHOOL",
+        190 / CFA_AFTER_SCHOOL_PUBLIC_PRIVATE_TOTAL,
+        "公立民営のうち学校法人が運営する放課後児童クラブ 190か所。公立民営の modeled amount を、運営主体別クラブ数シェアでさらに按分しています。",
+    ),
+    (
+        "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_OTHER",
+        336 / CFA_AFTER_SCHOOL_PUBLIC_PRIVATE_TOTAL,
+        "公立民営のうちその他主体が運営する放課後児童クラブ 336か所。公立民営の modeled amount を、運営主体別クラブ数シェアでさらに按分しています。",
+    ),
+]
+
+CFA_AFTER_SCHOOL_PRIVATE_PRIVATE_DISTRIBUTION_DESTINATIONS = [
+    (
+        "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_SOCIAL_WELFARE",
+        2_086 / CFA_AFTER_SCHOOL_PRIVATE_PRIVATE_TOTAL,
+        "民立民営のうち社会福祉法人が運営する放課後児童クラブ 2,086か所。民立民営の modeled amount を、運営主体別クラブ数シェアでさらに按分しています。",
+    ),
+    (
+        "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_PUBLIC_INTEREST",
+        558 / CFA_AFTER_SCHOOL_PRIVATE_PRIVATE_TOTAL,
+        "民立民営のうち公益社団法人等が運営する放課後児童クラブ 558か所。民立民営の modeled amount を、運営主体別クラブ数シェアでさらに按分しています。",
+    ),
+    (
+        "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_NPO",
+        1_208 / CFA_AFTER_SCHOOL_PRIVATE_PRIVATE_TOTAL,
+        "民立民営のうちNPO法人が運営する放課後児童クラブ 1,208か所。民立民営の modeled amount を、運営主体別クラブ数シェアでさらに按分しています。",
+    ),
+    (
+        "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_COMMITTEE",
+        1_157 / CFA_AFTER_SCHOOL_PRIVATE_PRIVATE_TOTAL,
+        "民立民営のうち運営委員会・保護者会が運営する放課後児童クラブ 1,157か所。民立民営の modeled amount を、運営主体別クラブ数シェアでさらに按分しています。",
+    ),
+    (
+        "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_VOLUNTARY",
+        69 / CFA_AFTER_SCHOOL_PRIVATE_PRIVATE_TOTAL,
+        "民立民営のうち任意団体が運営する放課後児童クラブ 69か所。民立民営の modeled amount を、運営主体別クラブ数シェアでさらに按分しています。",
+    ),
+    (
+        "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_CORPORATION",
+        664 / CFA_AFTER_SCHOOL_PRIVATE_PRIVATE_TOTAL,
+        "民立民営のうち株式会社が運営する放課後児童クラブ 664か所。民立民営の modeled amount を、運営主体別クラブ数シェアでさらに按分しています。",
+    ),
+    (
+        "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_SCHOOL",
+        371 / CFA_AFTER_SCHOOL_PRIVATE_PRIVATE_TOTAL,
+        "民立民営のうち学校法人が運営する放課後児童クラブ 371か所。民立民営の modeled amount を、運営主体別クラブ数シェアでさらに按分しています。",
+    ),
+    (
+        "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_OTHER",
+        472 / CFA_AFTER_SCHOOL_PRIVATE_PRIVATE_TOTAL,
+        "民立民営のうちその他主体が運営する放課後児童クラブ 472か所。民立民営の modeled amount を、運営主体別クラブ数シェアでさらに按分しています。",
+    ),
+]
+
 KOBE_DAREDEMO_BUDGET_DATASET = "神戸市 令和7年度予算説明書"
 KOBE_DAREDEMO_BUDGET_JPY = 137_500_000
 
@@ -297,6 +385,150 @@ MANUAL_REVIEWED_NODES = [
         "name": "放課後児童クラブ 民立民営",
         "lat": 35.655,
         "lng": 139.655,
+        "region": "Social Security",
+        "type": "recipient",
+        "dataset": "manual_reviewed",
+    },
+    {
+        "id": "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_SOCIAL_WELFARE",
+        "name": "放課後児童クラブ 公立民営 / 社会福祉法人",
+        "lat": 35.646,
+        "lng": 139.651,
+        "region": "Social Security",
+        "type": "recipient",
+        "dataset": "manual_reviewed",
+    },
+    {
+        "id": "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_PUBLIC_INTEREST",
+        "name": "放課後児童クラブ 公立民営 / 公益社団法人等",
+        "lat": 35.648,
+        "lng": 139.653,
+        "region": "Social Security",
+        "type": "recipient",
+        "dataset": "manual_reviewed",
+    },
+    {
+        "id": "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_NPO",
+        "name": "放課後児童クラブ 公立民営 / NPO法人",
+        "lat": 35.65,
+        "lng": 139.655,
+        "region": "Social Security",
+        "type": "recipient",
+        "dataset": "manual_reviewed",
+    },
+    {
+        "id": "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_COMMITTEE",
+        "name": "放課後児童クラブ 公立民営 / 運営委員会・保護者会",
+        "lat": 35.652,
+        "lng": 139.657,
+        "region": "Social Security",
+        "type": "recipient",
+        "dataset": "manual_reviewed",
+    },
+    {
+        "id": "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_VOLUNTARY",
+        "name": "放課後児童クラブ 公立民営 / 任意団体",
+        "lat": 35.654,
+        "lng": 139.659,
+        "region": "Social Security",
+        "type": "recipient",
+        "dataset": "manual_reviewed",
+    },
+    {
+        "id": "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_CORPORATION",
+        "name": "放課後児童クラブ 公立民営 / 株式会社",
+        "lat": 35.656,
+        "lng": 139.661,
+        "region": "Social Security",
+        "type": "recipient",
+        "dataset": "manual_reviewed",
+    },
+    {
+        "id": "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_SCHOOL",
+        "name": "放課後児童クラブ 公立民営 / 学校法人",
+        "lat": 35.658,
+        "lng": 139.663,
+        "region": "Social Security",
+        "type": "recipient",
+        "dataset": "manual_reviewed",
+    },
+    {
+        "id": "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_OTHER",
+        "name": "放課後児童クラブ 公立民営 / その他",
+        "lat": 35.66,
+        "lng": 139.665,
+        "region": "Social Security",
+        "type": "recipient",
+        "dataset": "manual_reviewed",
+    },
+    {
+        "id": "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_SOCIAL_WELFARE",
+        "name": "放課後児童クラブ 民立民営 / 社会福祉法人",
+        "lat": 35.662,
+        "lng": 139.667,
+        "region": "Social Security",
+        "type": "recipient",
+        "dataset": "manual_reviewed",
+    },
+    {
+        "id": "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_PUBLIC_INTEREST",
+        "name": "放課後児童クラブ 民立民営 / 公益社団法人等",
+        "lat": 35.664,
+        "lng": 139.669,
+        "region": "Social Security",
+        "type": "recipient",
+        "dataset": "manual_reviewed",
+    },
+    {
+        "id": "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_NPO",
+        "name": "放課後児童クラブ 民立民営 / NPO法人",
+        "lat": 35.666,
+        "lng": 139.671,
+        "region": "Social Security",
+        "type": "recipient",
+        "dataset": "manual_reviewed",
+    },
+    {
+        "id": "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_COMMITTEE",
+        "name": "放課後児童クラブ 民立民営 / 運営委員会・保護者会",
+        "lat": 35.668,
+        "lng": 139.673,
+        "region": "Social Security",
+        "type": "recipient",
+        "dataset": "manual_reviewed",
+    },
+    {
+        "id": "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_VOLUNTARY",
+        "name": "放課後児童クラブ 民立民営 / 任意団体",
+        "lat": 35.67,
+        "lng": 139.675,
+        "region": "Social Security",
+        "type": "recipient",
+        "dataset": "manual_reviewed",
+    },
+    {
+        "id": "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_CORPORATION",
+        "name": "放課後児童クラブ 民立民営 / 株式会社",
+        "lat": 35.672,
+        "lng": 139.677,
+        "region": "Social Security",
+        "type": "recipient",
+        "dataset": "manual_reviewed",
+    },
+    {
+        "id": "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_SCHOOL",
+        "name": "放課後児童クラブ 民立民営 / 学校法人",
+        "lat": 35.674,
+        "lng": 139.679,
+        "region": "Social Security",
+        "type": "recipient",
+        "dataset": "manual_reviewed",
+    },
+    {
+        "id": "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_OTHER",
+        "name": "放課後児童クラブ 民立民営 / その他",
+        "lat": 35.676,
+        "lng": 139.681,
         "region": "Social Security",
         "type": "recipient",
         "dataset": "manual_reviewed",
@@ -3101,6 +3333,152 @@ def seed_cfa_after_school_operator_distribution_edges(conn: sqlite3.Connection) 
     return inserted_edges
 
 
+def seed_cfa_after_school_operator_subtype_distribution_edges(conn: sqlite3.Connection) -> int:
+    subtype_distributions = [
+        (
+            "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE",
+            CFA_AFTER_SCHOOL_PUBLIC_PRIVATE_DISTRIBUTION_DESTINATIONS,
+            "運営主体別按分モデル（公立民営内訳）",
+        ),
+        (
+            "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE",
+            CFA_AFTER_SCHOOL_PRIVATE_PRIVATE_DISTRIBUTION_DESTINATIONS,
+            "運営主体別按分モデル（民立民営内訳）",
+        ),
+    ]
+
+    destination_ids = {
+        target_id
+        for _, destinations, _ in subtype_distributions
+        for target_id, _, _ in destinations
+    }
+    destination_nodes = {
+        node["id"]: node for node in MANUAL_REVIEWED_NODES if node["id"] in destination_ids
+    }
+    for target_id in destination_nodes:
+        node = destination_nodes[target_id]
+        conn.execute(
+            """
+            INSERT OR IGNORE INTO nodes (id, name, name_en, lat, lng, region, type, dataset)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            """,
+            (
+                node["id"],
+                node["name"],
+                extract_name_en(node["name"]) or None,
+                node["lat"],
+                node["lng"],
+                node["region"],
+                node["type"],
+                node["dataset"],
+            ),
+        )
+
+    conn.execute(
+        """
+        DELETE FROM source_provenance
+        WHERE edge_id IN (
+          SELECT id
+          FROM edges
+          WHERE source_id IN ('DEST_AFTER_SCHOOL_PUBLIC_PRIVATE', 'DEST_AFTER_SCHOOL_PRIVATE_PRIVATE')
+            AND fiscal_year = 2025
+        )
+        """
+    )
+    conn.execute(
+        """
+        DELETE FROM edges
+        WHERE source_id IN ('DEST_AFTER_SCHOOL_PUBLIC_PRIVATE', 'DEST_AFTER_SCHOOL_PRIVATE_PRIVATE')
+          AND fiscal_year = 2025
+        """
+    )
+
+    ds_source_id = DATASET_TO_SOURCE_ID.get(CFA_AFTER_SCHOOL_OP_MODELED_DATASET)
+    source_url = "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/69799c33-85cb-44f6-8c70-08ed3a292ab5/c253a682/20251222_policies_kosodateshien_houkago-jidou_80.pdf#page=9"
+    source_title = "令和7年 放課後児童健全育成事業（放課後児童クラブ）の実施状況"
+
+    inserted_edges = 0
+    for source_id, destinations, sub_category in subtype_distributions:
+        parent_edge = conn.execute(
+            """
+            SELECT value_usd
+            FROM edges
+            WHERE source_id = 'REC_AFTER_SCHOOL_OP'
+              AND target_id = ?
+              AND fiscal_year = 2025
+            ORDER BY id
+            LIMIT 1
+            """,
+            (source_id,),
+        ).fetchone()
+
+        if not parent_edge or parent_edge[0] is None:
+            continue
+
+        parent_value_usd = float(parent_edge[0])
+        for target_id, ratio, description in destinations:
+            value_usd = parent_value_usd * ratio
+            cursor = conn.execute(
+                """
+                INSERT INTO edges (
+                  source_id,
+                  target_id,
+                  category,
+                  sub_category,
+                  value_usd,
+                  value_jpy,
+                  fiscal_year,
+                  confidence,
+                  source_dataset,
+                  description
+                )
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """,
+                (
+                    source_id,
+                    target_id,
+                    "services",
+                    sub_category,
+                    value_usd,
+                    value_usd * JPY_PER_USD,
+                    2025,
+                    0.78,
+                    CFA_AFTER_SCHOOL_OP_MODELED_DATASET,
+                    description,
+                ),
+            )
+            edge_id = cursor.lastrowid
+            inserted_edges += 1
+
+            conn.execute(
+                """
+                INSERT INTO source_provenance (
+                  edge_id,
+                  source_id,
+                  source_url,
+                  source_title,
+                  page_number,
+                  extracted_text,
+                  extraction_method,
+                  confidence
+                )
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                """,
+                (
+                    edge_id,
+                    ds_source_id,
+                    source_url,
+                    source_title,
+                    9,
+                    f"{description} Parent bucket reference: {source_title} p.9",
+                    "script_generated",
+                    0.78,
+                ),
+            )
+
+    return inserted_edges
+
+
 def seed_manual_reviewed_local_gov_entries(conn: sqlite3.Connection) -> tuple[int, int]:
     inserted_nodes = 0
     inserted_edges = 0
@@ -3588,6 +3966,12 @@ def main():
     if after_school_bridged_edges:
         print(f"  ✅ {'CFA 放課後児童クラブ運営費 bridge':45s} → {after_school_bridged_edges:>4d} edges")
         total_edges += after_school_bridged_edges
+
+    after_school_subtype_bridged_edges = seed_cfa_after_school_operator_subtype_distribution_edges(conn)
+    conn.commit()
+    if after_school_subtype_bridged_edges:
+        print(f"  ✅ {'CFA 放課後児童クラブ運営主体内訳 bridge':45s} → {after_school_subtype_bridged_edges:>4d} edges")
+        total_edges += after_school_subtype_bridged_edges
 
     manual_nodes, manual_edges = seed_manual_reviewed_local_gov_entries(conn)
     conn.commit()
