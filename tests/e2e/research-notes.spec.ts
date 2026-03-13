@@ -41,4 +41,24 @@ test.describe('2D research note links', () => {
     await expect(page.getByRole('link', { name: '調査ノートを開く' })).toHaveCount(0);
     await expect(page.getByRole('combobox')).toHaveValue('USA');
   });
+
+  test('reviewed-only filter hides model-based downstream flows in 2D', async ({ page }) => {
+    await page.goto('/?view=2d&entity=MIN_CFA&year=2025');
+    const modeledNodeLabel = page.locator('svg text').filter({ hasText: '放課後児童クラブ 公立民営' });
+    const reviewedNodeLabel = page.locator('svg text').filter({ hasText: 'こども誰でも通園制度' });
+
+    await expect(page.getByLabel('実データのみ表示')).toBeVisible();
+    const reviewedCountBefore = await page.getByTestId('evidence-summary-reviewed').textContent();
+    expect(reviewedCountBefore).toMatch(/\d+本/);
+    await expect(page.getByTestId('evidence-summary-model-based')).toContainText('10本');
+    await expect(modeledNodeLabel).toBeVisible();
+
+    await page.getByLabel('実データのみ表示').check();
+
+    await expect(page.getByTestId('evidence-summary-reviewed')).toContainText(reviewedCountBefore ?? '');
+    await expect(page.getByTestId('evidence-summary-model-based')).toContainText('0本');
+    await expect(page.getByTestId('evidence-hidden-modeled')).toContainText('10本');
+    await expect(modeledNodeLabel).toHaveCount(0);
+    await expect(reviewedNodeLabel).toBeVisible();
+  });
 });

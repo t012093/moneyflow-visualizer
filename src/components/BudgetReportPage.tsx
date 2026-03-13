@@ -46,7 +46,7 @@ const TAB_ACCENTS: Record<BudgetTab, string> = {
 type BudgetEvidenceStatus = 'reviewed' | 'model-based' | 'hybrid';
 type ReferenceSource = KnowledgeNoteSource | StructuredFactSource | ImplementationSiteSource;
 
-const MODEL_BUDGET_DATASET_MARKERS = ['省庁別主要経費推計', '財務省 一般会計（所管別）', '財務省一般会計', 'ministries_data', 'meti_data', '想定', 'Proxy', 'Approximation', 'Estimated'];
+const MODEL_BUDGET_DATASET_MARKERS = ['省庁別主要経費推計', '財務省 一般会計（所管別）', '財務省一般会計', 'ministries_data', 'meti_data', '想定', '按分', 'Proxy', 'Approximation', 'Estimated'];
 
 const EVIDENCE_BADGE_STYLE: Record<BudgetEvidenceStatus, { label: string; color: string; background: string; border: string; description: string }> = {
   reviewed: {

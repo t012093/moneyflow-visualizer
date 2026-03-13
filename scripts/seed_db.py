@@ -192,158 +192,42 @@ MINISTRY_BUDGET_DATASETS = {
 
 CFA_DAREDEMO_MODELED_DATASET = "こども誰でも通園制度(仮称)の本格実施に向けた制度移行 (想定)"
 CFA_AFTER_SCHOOL_OP_MODELED_DATASET = "放課後児童クラブ（運営費・処遇改善）運営主体別按分 (令和7年実施状況ベース)"
-CFA_AFTER_SCHOOL_OPERATOR_TOTAL = 25_928
-CFA_AFTER_SCHOOL_PUBLIC_PRIVATE_TOTAL = 13_543
-CFA_AFTER_SCHOOL_PRIVATE_PRIVATE_TOTAL = 6_585
 
-# Keep the reviewed FY2025 program amount intact and only model the second hop.
-# This lets the 2D view show MIN_CFA -> こども誰でも通園制度 -> 配布先.
-CFA_DAREDEMO_DISTRIBUTION_DESTINATIONS = [
-    (
-        "DEST_PRIV_NURSERY",
-        0.60,
-        "民間保育施設等への利用料補助。2025年度の reviewed 事業額を起点に、制度移行モデルの配布先比率で分解しています。",
-    ),
-    (
-        "DEST_MUNI_NURSERY",
-        0.15,
-        "公立保育施設への利用料補助。制度資料の『実施主体は市町村』を前提に、国費部分の配布先として可視化しています。",
-    ),
-    (
-        "DEST_ACCENTURE",
-        0.10,
-        "総合支援システムの運用保守開発。2025年度の reviewed 事業額に対し、既存の制度移行モデル比率を適用しています。",
-    ),
-    (
-        "ICT_CODMON",
-        0.03,
-        "保育ICT 導入枠。2025年度の reviewed 事業額に対し、制度移行モデルの配布先比率を適用しています。",
-    ),
-    (
-        "ICT_LOOKMEE",
-        0.015,
-        "保育ICT 導入枠。2025年度の reviewed 事業額に対し、制度移行モデルの配布先比率を適用しています。",
-    ),
-    (
-        "ICT_OTHERS",
-        0.005,
-        "その他保育ICT。2025年度の reviewed 事業額に対し、制度移行モデルの配布先比率を適用しています。",
-    ),
-    (
-        "DEST_FACILITY_UPGRADE",
-        0.10,
-        "施設整備費の国庫補助。2025年度の reviewed 事業額に対し、制度移行モデルの配布先比率を適用しています。",
-    ),
-]
+DISTRIBUTION_MODELS_CONFIG_PATH = os.path.join(os.path.dirname(__file__), "distribution_models.json")
 
-CFA_AFTER_SCHOOL_OP_DISTRIBUTION_DESTINATIONS = [
-    (
-        "DEST_AFTER_SCHOOL_PUBLIC_PUBLIC",
-        5_800 / CFA_AFTER_SCHOOL_OPERATOR_TOTAL,
-        "公立公営の放課後児童クラブ。令和7年実施状況では 5,800か所（22.4%）です。運営費・処遇改善の reviewed 事業額を、運営主体別クラブ数シェアで按分しています。",
-    ),
-    (
-        "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE",
-        13_543 / CFA_AFTER_SCHOOL_OPERATOR_TOTAL,
-        "公立民営の放課後児童クラブ。令和7年実施状況では 13,543か所（52.2%）で、社会福祉法人、NPO法人、運営委員会・保護者会、株式会社などが運営主体に含まれます。運営費・処遇改善の reviewed 事業額を、運営主体別クラブ数シェアで按分しています。",
-    ),
-    (
-        "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE",
-        6_585 / CFA_AFTER_SCHOOL_OPERATOR_TOTAL,
-        "民立民営の放課後児童クラブ。令和7年実施状況では 6,585か所（25.4%）です。運営費・処遇改善の reviewed 事業額を、運営主体別クラブ数シェアで按分しています。",
-    ),
-]
 
-CFA_AFTER_SCHOOL_PUBLIC_PRIVATE_DISTRIBUTION_DESTINATIONS = [
-    (
-        "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_SOCIAL_WELFARE",
-        3_126 / CFA_AFTER_SCHOOL_PUBLIC_PRIVATE_TOTAL,
-        "公立民営のうち社会福祉法人が運営する放課後児童クラブ 3,126か所。公立民営の modeled amount を、運営主体別クラブ数シェアでさらに按分しています。",
-    ),
-    (
-        "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_PUBLIC_INTEREST",
-        1_344 / CFA_AFTER_SCHOOL_PUBLIC_PRIVATE_TOTAL,
-        "公立民営のうち公益社団法人等が運営する放課後児童クラブ 1,344か所。公立民営の modeled amount を、運営主体別クラブ数シェアでさらに按分しています。",
-    ),
-    (
-        "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_NPO",
-        1_681 / CFA_AFTER_SCHOOL_PUBLIC_PRIVATE_TOTAL,
-        "公立民営のうちNPO法人が運営する放課後児童クラブ 1,681か所。公立民営の modeled amount を、運営主体別クラブ数シェアでさらに按分しています。",
-    ),
-    (
-        "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_COMMITTEE",
-        2_362 / CFA_AFTER_SCHOOL_PUBLIC_PRIVATE_TOTAL,
-        "公立民営のうち運営委員会・保護者会が運営する放課後児童クラブ 2,362か所。公立民営の modeled amount を、運営主体別クラブ数シェアでさらに按分しています。",
-    ),
-    (
-        "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_VOLUNTARY",
-        205 / CFA_AFTER_SCHOOL_PUBLIC_PRIVATE_TOTAL,
-        "公立民営のうち任意団体が運営する放課後児童クラブ 205か所。公立民営の modeled amount を、運営主体別クラブ数シェアでさらに按分しています。",
-    ),
-    (
-        "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_CORPORATION",
-        4_299 / CFA_AFTER_SCHOOL_PUBLIC_PRIVATE_TOTAL,
-        "公立民営のうち株式会社が運営する放課後児童クラブ 4,299か所。公立民営の modeled amount を、運営主体別クラブ数シェアでさらに按分しています。",
-    ),
-    (
-        "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_SCHOOL",
-        190 / CFA_AFTER_SCHOOL_PUBLIC_PRIVATE_TOTAL,
-        "公立民営のうち学校法人が運営する放課後児童クラブ 190か所。公立民営の modeled amount を、運営主体別クラブ数シェアでさらに按分しています。",
-    ),
-    (
-        "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_OTHER",
-        336 / CFA_AFTER_SCHOOL_PUBLIC_PRIVATE_TOTAL,
-        "公立民営のうちその他主体が運営する放課後児童クラブ 336か所。公立民営の modeled amount を、運営主体別クラブ数シェアでさらに按分しています。",
-    ),
-]
+def load_distribution_models_config() -> dict[str, list[dict[str, Any]]]:
+    with open(DISTRIBUTION_MODELS_CONFIG_PATH, "r", encoding="utf-8") as fh:
+        payload = json.load(fh)
 
-CFA_AFTER_SCHOOL_PRIVATE_PRIVATE_DISTRIBUTION_DESTINATIONS = [
-    (
-        "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_SOCIAL_WELFARE",
-        2_086 / CFA_AFTER_SCHOOL_PRIVATE_PRIVATE_TOTAL,
-        "民立民営のうち社会福祉法人が運営する放課後児童クラブ 2,086か所。民立民営の modeled amount を、運営主体別クラブ数シェアでさらに按分しています。",
-    ),
-    (
-        "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_PUBLIC_INTEREST",
-        558 / CFA_AFTER_SCHOOL_PRIVATE_PRIVATE_TOTAL,
-        "民立民営のうち公益社団法人等が運営する放課後児童クラブ 558か所。民立民営の modeled amount を、運営主体別クラブ数シェアでさらに按分しています。",
-    ),
-    (
-        "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_NPO",
-        1_208 / CFA_AFTER_SCHOOL_PRIVATE_PRIVATE_TOTAL,
-        "民立民営のうちNPO法人が運営する放課後児童クラブ 1,208か所。民立民営の modeled amount を、運営主体別クラブ数シェアでさらに按分しています。",
-    ),
-    (
-        "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_COMMITTEE",
-        1_157 / CFA_AFTER_SCHOOL_PRIVATE_PRIVATE_TOTAL,
-        "民立民営のうち運営委員会・保護者会が運営する放課後児童クラブ 1,157か所。民立民営の modeled amount を、運営主体別クラブ数シェアでさらに按分しています。",
-    ),
-    (
-        "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_VOLUNTARY",
-        69 / CFA_AFTER_SCHOOL_PRIVATE_PRIVATE_TOTAL,
-        "民立民営のうち任意団体が運営する放課後児童クラブ 69か所。民立民営の modeled amount を、運営主体別クラブ数シェアでさらに按分しています。",
-    ),
-    (
-        "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_CORPORATION",
-        664 / CFA_AFTER_SCHOOL_PRIVATE_PRIVATE_TOTAL,
-        "民立民営のうち株式会社が運営する放課後児童クラブ 664か所。民立民営の modeled amount を、運営主体別クラブ数シェアでさらに按分しています。",
-    ),
-    (
-        "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_SCHOOL",
-        371 / CFA_AFTER_SCHOOL_PRIVATE_PRIVATE_TOTAL,
-        "民立民営のうち学校法人が運営する放課後児童クラブ 371か所。民立民営の modeled amount を、運営主体別クラブ数シェアでさらに按分しています。",
-    ),
-    (
-        "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_OTHER",
-        472 / CFA_AFTER_SCHOOL_PRIVATE_PRIVATE_TOTAL,
-        "民立民営のうちその他主体が運営する放課後児童クラブ 472か所。民立民営の modeled amount を、運営主体別クラブ数シェアでさらに按分しています。",
-    ),
-]
+    nodes = payload.get("nodes", [])
+    models = payload.get("models", [])
+    if not isinstance(nodes, list) or not isinstance(models, list):
+        raise ValueError("distribution_models.json must contain 'nodes' and 'models' arrays")
+    return {"nodes": nodes, "models": models}
+
+
+def merge_manual_reviewed_nodes(*node_groups: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    merged: list[dict[str, Any]] = []
+    seen_ids: set[str] = set()
+    for group in node_groups:
+        for node in group:
+            node_id = str(node["id"])
+            if node_id in seen_ids:
+                continue
+            seen_ids.add(node_id)
+            merged.append(node)
+    return merged
+
+
+DISTRIBUTION_MODELS_CONFIG = load_distribution_models_config()
+DISTRIBUTION_MODEL_NODES = DISTRIBUTION_MODELS_CONFIG["nodes"]
+DISTRIBUTION_MODELS = DISTRIBUTION_MODELS_CONFIG["models"]
 
 KOBE_DAREDEMO_BUDGET_DATASET = "神戸市 令和7年度予算説明書"
 KOBE_DAREDEMO_BUDGET_JPY = 137_500_000
 
-MANUAL_REVIEWED_NODES = [
+BASE_MANUAL_REVIEWED_NODES = [
     {
         "id": "CITY_KOBE",
         "name": "神戸市",
@@ -362,178 +246,9 @@ MANUAL_REVIEWED_NODES = [
         "type": "recipient",
         "dataset": "manual_reviewed",
     },
-    {
-        "id": "DEST_AFTER_SCHOOL_PUBLIC_PUBLIC",
-        "name": "放課後児童クラブ 公立公営",
-        "lat": 35.64,
-        "lng": 139.64,
-        "region": "Social Security",
-        "type": "recipient",
-        "dataset": "manual_reviewed",
-    },
-    {
-        "id": "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE",
-        "name": "放課後児童クラブ 公立民営",
-        "lat": 35.645,
-        "lng": 139.645,
-        "region": "Social Security",
-        "type": "recipient",
-        "dataset": "manual_reviewed",
-    },
-    {
-        "id": "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE",
-        "name": "放課後児童クラブ 民立民営",
-        "lat": 35.655,
-        "lng": 139.655,
-        "region": "Social Security",
-        "type": "recipient",
-        "dataset": "manual_reviewed",
-    },
-    {
-        "id": "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_SOCIAL_WELFARE",
-        "name": "放課後児童クラブ 公立民営 / 社会福祉法人",
-        "lat": 35.646,
-        "lng": 139.651,
-        "region": "Social Security",
-        "type": "recipient",
-        "dataset": "manual_reviewed",
-    },
-    {
-        "id": "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_PUBLIC_INTEREST",
-        "name": "放課後児童クラブ 公立民営 / 公益社団法人等",
-        "lat": 35.648,
-        "lng": 139.653,
-        "region": "Social Security",
-        "type": "recipient",
-        "dataset": "manual_reviewed",
-    },
-    {
-        "id": "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_NPO",
-        "name": "放課後児童クラブ 公立民営 / NPO法人",
-        "lat": 35.65,
-        "lng": 139.655,
-        "region": "Social Security",
-        "type": "recipient",
-        "dataset": "manual_reviewed",
-    },
-    {
-        "id": "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_COMMITTEE",
-        "name": "放課後児童クラブ 公立民営 / 運営委員会・保護者会",
-        "lat": 35.652,
-        "lng": 139.657,
-        "region": "Social Security",
-        "type": "recipient",
-        "dataset": "manual_reviewed",
-    },
-    {
-        "id": "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_VOLUNTARY",
-        "name": "放課後児童クラブ 公立民営 / 任意団体",
-        "lat": 35.654,
-        "lng": 139.659,
-        "region": "Social Security",
-        "type": "recipient",
-        "dataset": "manual_reviewed",
-    },
-    {
-        "id": "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_CORPORATION",
-        "name": "放課後児童クラブ 公立民営 / 株式会社",
-        "lat": 35.656,
-        "lng": 139.661,
-        "region": "Social Security",
-        "type": "recipient",
-        "dataset": "manual_reviewed",
-    },
-    {
-        "id": "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_SCHOOL",
-        "name": "放課後児童クラブ 公立民営 / 学校法人",
-        "lat": 35.658,
-        "lng": 139.663,
-        "region": "Social Security",
-        "type": "recipient",
-        "dataset": "manual_reviewed",
-    },
-    {
-        "id": "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_OTHER",
-        "name": "放課後児童クラブ 公立民営 / その他",
-        "lat": 35.66,
-        "lng": 139.665,
-        "region": "Social Security",
-        "type": "recipient",
-        "dataset": "manual_reviewed",
-    },
-    {
-        "id": "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_SOCIAL_WELFARE",
-        "name": "放課後児童クラブ 民立民営 / 社会福祉法人",
-        "lat": 35.662,
-        "lng": 139.667,
-        "region": "Social Security",
-        "type": "recipient",
-        "dataset": "manual_reviewed",
-    },
-    {
-        "id": "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_PUBLIC_INTEREST",
-        "name": "放課後児童クラブ 民立民営 / 公益社団法人等",
-        "lat": 35.664,
-        "lng": 139.669,
-        "region": "Social Security",
-        "type": "recipient",
-        "dataset": "manual_reviewed",
-    },
-    {
-        "id": "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_NPO",
-        "name": "放課後児童クラブ 民立民営 / NPO法人",
-        "lat": 35.666,
-        "lng": 139.671,
-        "region": "Social Security",
-        "type": "recipient",
-        "dataset": "manual_reviewed",
-    },
-    {
-        "id": "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_COMMITTEE",
-        "name": "放課後児童クラブ 民立民営 / 運営委員会・保護者会",
-        "lat": 35.668,
-        "lng": 139.673,
-        "region": "Social Security",
-        "type": "recipient",
-        "dataset": "manual_reviewed",
-    },
-    {
-        "id": "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_VOLUNTARY",
-        "name": "放課後児童クラブ 民立民営 / 任意団体",
-        "lat": 35.67,
-        "lng": 139.675,
-        "region": "Social Security",
-        "type": "recipient",
-        "dataset": "manual_reviewed",
-    },
-    {
-        "id": "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_CORPORATION",
-        "name": "放課後児童クラブ 民立民営 / 株式会社",
-        "lat": 35.672,
-        "lng": 139.677,
-        "region": "Social Security",
-        "type": "recipient",
-        "dataset": "manual_reviewed",
-    },
-    {
-        "id": "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_SCHOOL",
-        "name": "放課後児童クラブ 民立民営 / 学校法人",
-        "lat": 35.674,
-        "lng": 139.679,
-        "region": "Social Security",
-        "type": "recipient",
-        "dataset": "manual_reviewed",
-    },
-    {
-        "id": "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_OTHER",
-        "name": "放課後児童クラブ 民立民営 / その他",
-        "lat": 35.676,
-        "lng": 139.681,
-        "region": "Social Security",
-        "type": "recipient",
-        "dataset": "manual_reviewed",
-    },
 ]
+
+MANUAL_REVIEWED_NODES = merge_manual_reviewed_nodes(BASE_MANUAL_REVIEWED_NODES, DISTRIBUTION_MODEL_NODES)
 
 KOBE_DAREDEMO_SITE_ROWS = [
     ("東灘区", "幼保連携型認定こども園渦が森幼稚園"),
@@ -3100,23 +2815,76 @@ def seed_dataset(conn: sqlite3.Connection, dataset_info: Dict[str, str]) -> Tupl
     return node_count, edge_count
 
 
-def seed_cfa_daredemo_distribution_edges(conn: sqlite3.Connection) -> int:
+def ensure_manual_reviewed_nodes(conn: sqlite3.Connection, node_ids: set[str]) -> None:
+    manual_node_lookup = {node["id"]: node for node in MANUAL_REVIEWED_NODES}
+    for node_id in node_ids:
+        node = manual_node_lookup.get(node_id)
+        if not node:
+            continue
+        conn.execute(
+            """
+            INSERT OR IGNORE INTO nodes (id, name, name_en, lat, lng, region, type, dataset)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            """,
+            (
+                node["id"],
+                node["name"],
+                extract_name_en(node["name"]) or None,
+                node["lat"],
+                node["lng"],
+                node["region"],
+                node["type"],
+                node["dataset"],
+            ),
+        )
+
+
+def get_distribution_ratio(model: dict[str, Any], destination: dict[str, Any]) -> float:
+    ratio = destination.get("ratio")
+    if ratio is not None:
+        return float(ratio)
+
+    share_units = destination.get("share_units")
+    ratio_basis_total = model.get("ratio_basis_total")
+    if share_units is None or not ratio_basis_total:
+        raise ValueError(f"distribution model {model.get('key')} requires either ratio or share_units/ratio_basis_total")
+    return float(share_units) / float(ratio_basis_total)
+
+
+def render_distribution_extracted_text(template: str | None, context: dict[str, Any]) -> str | None:
+    if not template:
+        return None
+    safe_context = {key: ("" if value is None else value) for key, value in context.items()}
+    return template.format(**safe_context)
+
+
+def seed_distribution_model(conn: sqlite3.Connection, model: dict[str, Any]) -> int:
+    source_id = str(model["source_id"])
+    fiscal_year = int(model["fiscal_year"])
+    parent_edge_spec = model["parent_edge"]
     parent_edge = conn.execute(
         """
         SELECT e.id, e.value_usd
         FROM edges e
-        WHERE e.source_id = 'MIN_CFA'
-          AND e.target_id = 'REC_CHILDCARE_ALL'
-          AND e.fiscal_year = 2025
+        WHERE e.source_id = ?
+          AND e.target_id = ?
+          AND e.fiscal_year = ?
         ORDER BY e.id
         LIMIT 1
-        """
+        """,
+        (
+            parent_edge_spec["source_id"],
+            parent_edge_spec["target_id"],
+            fiscal_year,
+        ),
     ).fetchone()
 
     if not parent_edge:
         return 0
 
     parent_edge_id, parent_value_usd = parent_edge
+    if parent_value_usd is None:
+        return 0
 
     parent_provenance = conn.execute(
         """
@@ -3129,17 +2897,55 @@ def seed_cfa_daredemo_distribution_edges(conn: sqlite3.Connection) -> int:
         (parent_edge_id,),
     ).fetchone()
 
-    if not parent_provenance:
-        return 0
+    parent_source_url = parent_provenance[0] if parent_provenance else None
+    parent_source_title = (
+        parent_provenance[1]
+        if parent_provenance and parent_provenance[1]
+        else parent_edge_spec.get("fallback_source_title")
+    )
+    parent_page_number = (
+        parent_provenance[2]
+        if parent_provenance and parent_provenance[2] is not None
+        else parent_edge_spec.get("fallback_page_number")
+    )
 
-    _, source_title, page_number = parent_provenance
-    source_title = source_title or "令和7年度こども家庭庁予算 事業別資料集"
-    page_number = page_number if page_number is not None else 95
+    destinations = model.get("destinations", [])
+    ensure_manual_reviewed_nodes(conn, {str(item["target_id"]) for item in destinations})
+
+    conn.execute(
+        """
+        DELETE FROM source_provenance
+        WHERE edge_id IN (
+          SELECT id
+          FROM edges
+          WHERE source_id = ?
+            AND fiscal_year = ?
+        )
+        """,
+        (source_id, fiscal_year),
+    )
+    conn.execute(
+        """
+        DELETE FROM edges
+        WHERE source_id = ?
+          AND fiscal_year = ?
+        """,
+        (source_id, fiscal_year),
+    )
+
+    source_dataset = str(model["source_dataset"])
+    provenance = model.get("provenance", {})
+    provenance_source_url = provenance.get("source_url") or ""
+    provenance_source_title = provenance.get("source_title") or source_dataset
+    provenance_page_number = provenance.get("page_number")
+    confidence = float(model.get("confidence", 0.8))
+    ds_source_id = DATASET_TO_SOURCE_ID.get(source_dataset)
 
     inserted_edges = 0
-    ds_source_id = DATASET_TO_SOURCE_ID.get(CFA_DAREDEMO_MODELED_DATASET)
-
-    for target_id, ratio, description in CFA_DAREDEMO_DISTRIBUTION_DESTINATIONS:
+    for destination in destinations:
+        target_id = str(destination["target_id"])
+        description = destination.get("description")
+        ratio = get_distribution_ratio(model, destination)
         value_usd = float(parent_value_usd) * ratio
         cursor = conn.execute(
             """
@@ -3158,20 +2964,33 @@ def seed_cfa_daredemo_distribution_edges(conn: sqlite3.Connection) -> int:
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """,
             (
-                "REC_CHILDCARE_ALL",
+                source_id,
                 target_id,
-                "services",
-                "委託・助成金",
+                model["category"],
+                model["sub_category"],
                 value_usd,
                 value_usd * JPY_PER_USD,
-                2025,
-                0.85,
-                CFA_DAREDEMO_MODELED_DATASET,
+                fiscal_year,
+                confidence,
+                source_dataset,
                 description,
             ),
         )
         edge_id = cursor.lastrowid
         inserted_edges += 1
+
+        extracted_text = render_distribution_extracted_text(
+            provenance.get("extracted_text_template"),
+            {
+                "description": description or "",
+                "parent_source_title": parent_source_title or "",
+                "parent_source_url": parent_source_url or "",
+                "parent_page_number": parent_page_number if parent_page_number is not None else "",
+                "source_dataset": source_dataset,
+                "source_title": provenance_source_title,
+                "page_number": provenance_page_number if provenance_page_number is not None else "",
+            },
+        )
 
         conn.execute(
             """
@@ -3190,293 +3009,24 @@ def seed_cfa_daredemo_distribution_edges(conn: sqlite3.Connection) -> int:
             (
                 edge_id,
                 ds_source_id,
-                CFA_DAREDEMO_MODELED_DATASET,
-                CFA_DAREDEMO_MODELED_DATASET,
-                None,
-                f"{description} Reviewed amount reference: {source_title} p.{page_number}",
+                provenance_source_url,
+                provenance_source_title,
+                provenance_page_number,
+                extracted_text,
                 "script_generated",
-                0.85,
+                confidence,
             ),
         )
 
     return inserted_edges
 
 
-def seed_cfa_after_school_operator_distribution_edges(conn: sqlite3.Connection) -> int:
-    destination_nodes = {
-        node["id"]: node
-        for node in MANUAL_REVIEWED_NODES
-        if node["id"] in {target_id for target_id, _, _ in CFA_AFTER_SCHOOL_OP_DISTRIBUTION_DESTINATIONS}
-    }
-    for target_id in destination_nodes:
-        node = destination_nodes[target_id]
-        conn.execute(
-            """
-            INSERT OR IGNORE INTO nodes (id, name, name_en, lat, lng, region, type, dataset)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-            """,
-            (
-                node["id"],
-                node["name"],
-                extract_name_en(node["name"]) or None,
-                node["lat"],
-                node["lng"],
-                node["region"],
-                node["type"],
-                node["dataset"],
-            ),
-        )
-
-    parent_edge = conn.execute(
-        """
-        SELECT id, value_usd
-        FROM edges
-        WHERE source_id = 'MIN_CFA'
-          AND target_id = 'REC_AFTER_SCHOOL_OP'
-          AND fiscal_year = 2025
-        ORDER BY id
-        LIMIT 1
-        """
-    ).fetchone()
-
-    if not parent_edge:
-        return 0
-
-    _, parent_value_usd = parent_edge
-    if parent_value_usd is None:
-        return 0
-
-    conn.execute(
-        """
-        DELETE FROM source_provenance
-        WHERE edge_id IN (
-          SELECT id
-          FROM edges
-          WHERE source_id = 'REC_AFTER_SCHOOL_OP'
-            AND fiscal_year = 2025
-        )
-        """
-    )
-    conn.execute(
-        """
-        DELETE FROM edges
-        WHERE source_id = 'REC_AFTER_SCHOOL_OP'
-          AND fiscal_year = 2025
-        """
-    )
-
-    ds_source_id = DATASET_TO_SOURCE_ID.get(CFA_AFTER_SCHOOL_OP_MODELED_DATASET)
-    source_url = "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/69799c33-85cb-44f6-8c70-08ed3a292ab5/c253a682/20251222_policies_kosodateshien_houkago-jidou_80.pdf#page=9"
-    source_title = "令和7年 放課後児童健全育成事業（放課後児童クラブ）の実施状況"
-
-    inserted_edges = 0
-    for target_id, ratio, description in CFA_AFTER_SCHOOL_OP_DISTRIBUTION_DESTINATIONS:
-        value_usd = float(parent_value_usd) * ratio
-        cursor = conn.execute(
-            """
-            INSERT INTO edges (
-              source_id,
-              target_id,
-              category,
-              sub_category,
-              value_usd,
-              value_jpy,
-              fiscal_year,
-              confidence,
-              source_dataset,
-              description
-            )
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-            """,
-            (
-                "REC_AFTER_SCHOOL_OP",
-                target_id,
-                "services",
-                "運営主体別按分モデル",
-                value_usd,
-                value_usd * JPY_PER_USD,
-                2025,
-                0.82,
-                CFA_AFTER_SCHOOL_OP_MODELED_DATASET,
-                description,
-            ),
-        )
-        edge_id = cursor.lastrowid
-        inserted_edges += 1
-
-        conn.execute(
-            """
-            INSERT INTO source_provenance (
-              edge_id,
-              source_id,
-              source_url,
-              source_title,
-              page_number,
-              extracted_text,
-              extraction_method,
-              confidence
-            )
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-            """,
-            (
-                edge_id,
-                ds_source_id,
-                source_url,
-                source_title,
-                9,
-                f"{description} Reviewed amount reference: 令和7年度こども家庭庁予算 事業別資料集 p.74",
-                "script_generated",
-                0.82,
-            ),
-        )
-
-    return inserted_edges
-
-
-def seed_cfa_after_school_operator_subtype_distribution_edges(conn: sqlite3.Connection) -> int:
-    subtype_distributions = [
-        (
-            "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE",
-            CFA_AFTER_SCHOOL_PUBLIC_PRIVATE_DISTRIBUTION_DESTINATIONS,
-            "運営主体別按分モデル（公立民営内訳）",
-        ),
-        (
-            "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE",
-            CFA_AFTER_SCHOOL_PRIVATE_PRIVATE_DISTRIBUTION_DESTINATIONS,
-            "運営主体別按分モデル（民立民営内訳）",
-        ),
-    ]
-
-    destination_ids = {
-        target_id
-        for _, destinations, _ in subtype_distributions
-        for target_id, _, _ in destinations
-    }
-    destination_nodes = {
-        node["id"]: node for node in MANUAL_REVIEWED_NODES if node["id"] in destination_ids
-    }
-    for target_id in destination_nodes:
-        node = destination_nodes[target_id]
-        conn.execute(
-            """
-            INSERT OR IGNORE INTO nodes (id, name, name_en, lat, lng, region, type, dataset)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-            """,
-            (
-                node["id"],
-                node["name"],
-                extract_name_en(node["name"]) or None,
-                node["lat"],
-                node["lng"],
-                node["region"],
-                node["type"],
-                node["dataset"],
-            ),
-        )
-
-    conn.execute(
-        """
-        DELETE FROM source_provenance
-        WHERE edge_id IN (
-          SELECT id
-          FROM edges
-          WHERE source_id IN ('DEST_AFTER_SCHOOL_PUBLIC_PRIVATE', 'DEST_AFTER_SCHOOL_PRIVATE_PRIVATE')
-            AND fiscal_year = 2025
-        )
-        """
-    )
-    conn.execute(
-        """
-        DELETE FROM edges
-        WHERE source_id IN ('DEST_AFTER_SCHOOL_PUBLIC_PRIVATE', 'DEST_AFTER_SCHOOL_PRIVATE_PRIVATE')
-          AND fiscal_year = 2025
-        """
-    )
-
-    ds_source_id = DATASET_TO_SOURCE_ID.get(CFA_AFTER_SCHOOL_OP_MODELED_DATASET)
-    source_url = "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/69799c33-85cb-44f6-8c70-08ed3a292ab5/c253a682/20251222_policies_kosodateshien_houkago-jidou_80.pdf#page=9"
-    source_title = "令和7年 放課後児童健全育成事業（放課後児童クラブ）の実施状況"
-
-    inserted_edges = 0
-    for source_id, destinations, sub_category in subtype_distributions:
-        parent_edge = conn.execute(
-            """
-            SELECT value_usd
-            FROM edges
-            WHERE source_id = 'REC_AFTER_SCHOOL_OP'
-              AND target_id = ?
-              AND fiscal_year = 2025
-            ORDER BY id
-            LIMIT 1
-            """,
-            (source_id,),
-        ).fetchone()
-
-        if not parent_edge or parent_edge[0] is None:
-            continue
-
-        parent_value_usd = float(parent_edge[0])
-        for target_id, ratio, description in destinations:
-            value_usd = parent_value_usd * ratio
-            cursor = conn.execute(
-                """
-                INSERT INTO edges (
-                  source_id,
-                  target_id,
-                  category,
-                  sub_category,
-                  value_usd,
-                  value_jpy,
-                  fiscal_year,
-                  confidence,
-                  source_dataset,
-                  description
-                )
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-                """,
-                (
-                    source_id,
-                    target_id,
-                    "services",
-                    sub_category,
-                    value_usd,
-                    value_usd * JPY_PER_USD,
-                    2025,
-                    0.78,
-                    CFA_AFTER_SCHOOL_OP_MODELED_DATASET,
-                    description,
-                ),
-            )
-            edge_id = cursor.lastrowid
-            inserted_edges += 1
-
-            conn.execute(
-                """
-                INSERT INTO source_provenance (
-                  edge_id,
-                  source_id,
-                  source_url,
-                  source_title,
-                  page_number,
-                  extracted_text,
-                  extraction_method,
-                  confidence
-                )
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-                """,
-                (
-                    edge_id,
-                    ds_source_id,
-                    source_url,
-                    source_title,
-                    9,
-                    f"{description} Parent bucket reference: {source_title} p.9",
-                    "script_generated",
-                    0.78,
-                ),
-            )
-
-    return inserted_edges
+def seed_distribution_models(conn: sqlite3.Connection) -> list[tuple[str, int]]:
+    results: list[tuple[str, int]] = []
+    for model in DISTRIBUTION_MODELS:
+        inserted_edges = seed_distribution_model(conn, model)
+        results.append((str(model.get("label") or model.get("key") or model["source_id"]), inserted_edges))
+    return results
 
 
 def seed_manual_reviewed_local_gov_entries(conn: sqlite3.Connection) -> tuple[int, int]:
@@ -3955,23 +3505,11 @@ def main():
         total_nodes += n
         total_edges += e
 
-    bridged_edges = seed_cfa_daredemo_distribution_edges(conn)
-    conn.commit()
-    if bridged_edges:
-        print(f"  ✅ {'CFA こども誰でも通園制度 bridge':45s} → {bridged_edges:>4d} edges")
-        total_edges += bridged_edges
-
-    after_school_bridged_edges = seed_cfa_after_school_operator_distribution_edges(conn)
-    conn.commit()
-    if after_school_bridged_edges:
-        print(f"  ✅ {'CFA 放課後児童クラブ運営費 bridge':45s} → {after_school_bridged_edges:>4d} edges")
-        total_edges += after_school_bridged_edges
-
-    after_school_subtype_bridged_edges = seed_cfa_after_school_operator_subtype_distribution_edges(conn)
-    conn.commit()
-    if after_school_subtype_bridged_edges:
-        print(f"  ✅ {'CFA 放課後児童クラブ運営主体内訳 bridge':45s} → {after_school_subtype_bridged_edges:>4d} edges")
-        total_edges += after_school_subtype_bridged_edges
+    for label, inserted_edges in seed_distribution_models(conn):
+        conn.commit()
+        if inserted_edges:
+            print(f"  ✅ {label:45s} → {inserted_edges:>4d} edges")
+            total_edges += inserted_edges
 
     manual_nodes, manual_edges = seed_manual_reviewed_local_gov_entries(conn)
     conn.commit()

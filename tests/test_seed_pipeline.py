@@ -18,6 +18,15 @@ class SeedPipelineRegressionTests(unittest.TestCase):
         unified_path = ROOT / "src" / "data" / "unified_data.json"
         cls.unified_data = json.loads(unified_path.read_text(encoding="utf-8"))
 
+    def test_distribution_models_config_is_loaded(self) -> None:
+        self.assertGreaterEqual(len(seed_db.DISTRIBUTION_MODELS), 4)
+        self.assertTrue(
+            any(model["source_id"] == "REC_CHILDCARE_ALL" for model in seed_db.DISTRIBUTION_MODELS)
+        )
+        self.assertTrue(
+            any(node["id"] == "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE" for node in seed_db.DISTRIBUTION_MODEL_NODES)
+        )
+
     def test_legacy_source_rewrites_cover_known_404s(self) -> None:
         self.assertEqual(
             seed_db.rewrite_source_url("https://www.mhlw.go.jp/toukei/saikin/hw/k-iryohi/"),

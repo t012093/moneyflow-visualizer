@@ -60,7 +60,38 @@ const CATEGORY_LABELS: Record<string, string> = {
   tax: '税金'
 };
 
-const MODELED_DATASET_MARKERS = ['省庁別主要経費推計', '想定', 'Proxy', 'Approximation', 'Estimated', 'meti_data'];
+const MODELED_DATASET_MARKERS = ['省庁別主要経費推計', '想定', '按分', 'Proxy', 'Approximation', 'Estimated', 'meti_data'];
+type EdgeEvidenceStatus = 'reviewed' | 'model-based';
+type EdgeEvidenceCounts = Record<EdgeEvidenceStatus, number>;
+
+const EVIDENCE_STYLES: Record<
+  EdgeEvidenceStatus,
+  {
+    label: string;
+    description: string;
+    linkColor: string;
+    background: string;
+    border: string;
+    color: string;
+  }
+> = {
+  reviewed: {
+    label: 'reviewed',
+    description: '実データ',
+    linkColor: '#4ade80',
+    background: 'rgba(74, 222, 128, 0.14)',
+    border: '1px solid rgba(74, 222, 128, 0.32)',
+    color: '#bbf7d0',
+  },
+  'model-based': {
+    label: 'model-based',
+    description: '配分モデル',
+    linkColor: '#c084fc',
+    background: 'rgba(192, 132, 252, 0.14)',
+    border: '1px solid rgba(192, 132, 252, 0.32)',
+    color: '#e9d5ff',
+  },
+};
 
 const getNearestAvailableYear = (years: number[], targetYear: number) => {
   if (!years.length) {
@@ -73,6 +104,45 @@ const getNearestAvailableYear = (years: number[], targetYear: number) => {
 };
 
 const isModeledEdge = (edge: Edge) => MODELED_DATASET_MARKERS.some((marker) => (edge.source_dataset || '').includes(marker));
+const getEdgeEvidenceStatus = (edge: Edge): EdgeEvidenceStatus => (isModeledEdge(edge) ? 'model-based' : 'reviewed');
+const getEdgeDisplayKey = (edge: Edge) => [
+  edge.year,
+  edge.source_id,
+  edge.target_id,
+  edge.value_usd,
+  edge.source_dataset,
+  edge.page_number || '',
+].join(':');
+const createEmptyEvidenceCounts = (): EdgeEvidenceCounts => ({ reviewed: 0, 'model-based': 0 });
+const countEdgeEvidence = (edges: Edge[]): EdgeEvidenceCounts =>
+  edges.reduce<EdgeEvidenceCounts>((counts, edge) => {
+    counts[getEdgeEvidenceStatus(edge)] += 1;
+    return counts;
+  }, createEmptyEvidenceCounts());
+const getEntityScopeEdges = (edges: Edge[], activeEntityId: string) => {
+  const scoped = new Map<string, Edge>();
+  const directEdges = edges.filter((edge) => edge.source_id === activeEntityId || edge.target_id === activeEntityId);
+
+  directEdges.forEach((edge) => {
+    scoped.set(getEdgeDisplayKey(edge), edge);
+  });
+
+  const directTargetIds = [...new Set(
+    directEdges
+      .filter((edge) => edge.source_id === activeEntityId)
+      .map((edge) => edge.target_id)
+  )];
+
+  directTargetIds.forEach((childId) => {
+    edges
+      .filter((edge) => edge.source_id === childId)
+      .forEach((edge) => {
+        scoped.set(getEdgeDisplayKey(edge), edge);
+      });
+  });
+
+  return [...scoped.values()];
+};
 const getSankeyDisplayValue = (valueUsd: number, compressScale: boolean) => {
   if (!compressScale) {
     return valueUsd;
@@ -98,28 +168,13 @@ type SankeyLinkRecord = SankeyLinkDatum<SankeyNodeData, SankeyLinkData>;
 type SankeyInteractionRecord = SankeyNodeRecord | SankeyLinkRecord;
 
 const getProvenanceBadge = (edge: Edge) => {
-  const dataset = edge.source_dataset || '';
-  const sourceUrl = edge.source_url || '';
-
-  if (MODELED_DATASET_MARKERS.some((marker) => dataset.includes(marker))) {
-    return {
-      label: '推計配分',
-      background: 'rgba(192, 132, 252, 0.14)',
-      border: '1px solid rgba(192, 132, 252, 0.32)',
-      color: '#e9d5ff',
-    };
-  }
-
-  if (sourceUrl.includes('.pdf')) {
-    return {
-      label: '公式PDF',
-      background: 'rgba(74, 222, 128, 0.14)',
-      border: '1px solid rgba(74, 222, 128, 0.32)',
-      color: '#bbf7d0',
-    };
-  }
-
-  return null;
+  const evidence = EVIDENCE_STYLES[getEdgeEvidenceStatus(edge)];
+  return {
+    label: evidence.label,
+    background: evidence.background,
+    border: evidence.border,
+    color: evidence.color,
+  };
 };
 
 const formatSankeyNodeLabel = (nodeId: string) => {
@@ -153,9 +208,35 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
   onSelectedEntityChange,
 }) => {
   const [viewLevel, setViewLevel] = useState<'entity' | 'type'>('entity');
+  const [reviewedOnly, setReviewedOnly] = useState(false);
   const [selectedLinkDetails, setSelectedLinkDetails] = useState<Edge | null>(null);
   const activeEntityId = nodes.some((node) => node.id === selectedEntityId) ? selectedEntityId : 'MIN_CFA';
   const useCompressedEntityScale = viewLevel === 'entity';
+  const evidenceFilteredEdges = useMemo(
+    () => (reviewedOnly ? edges.filter((edge) => !isModeledEdge(edge)) : edges),
+    [edges, reviewedOnly]
+  );
+
+  const evidenceSummary = useMemo(() => {
+    const fullScopeEdges = viewLevel === 'entity' ? getEntityScopeEdges(edges, activeEntityId) : edges;
+    const visibleScopeEdges = viewLevel === 'entity' ? getEntityScopeEdges(evidenceFilteredEdges, activeEntityId) : evidenceFilteredEdges;
+    const allCounts = countEdgeEvidence(fullScopeEdges);
+    const visibleCounts = countEdgeEvidence(visibleScopeEdges);
+
+    return {
+      allCounts,
+      visibleCounts,
+      hiddenModeledCount: Math.max(0, allCounts['model-based'] - visibleCounts['model-based']),
+      scopeLabel: viewLevel === 'entity' ? 'この主体の表示フロー' : 'この年度の表示フロー',
+    };
+  }, [activeEntityId, edges, evidenceFilteredEdges, viewLevel]);
+  const activeSelectedLinkDetails = useMemo(() => {
+    if (!selectedLinkDetails) {
+      return null;
+    }
+    const selectedKey = getEdgeDisplayKey(selectedLinkDetails);
+    return evidenceFilteredEdges.find((edge) => getEdgeDisplayKey(edge) === selectedKey) || null;
+  }, [evidenceFilteredEdges, selectedLinkDetails]);
 
   useEffect(() => {
     if (selectedEntityId !== activeEntityId) {
@@ -203,7 +284,7 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
     };
 
     if (viewLevel === 'entity') {
-      const selectedEdges = edges.filter(e => e.source_id === activeEntityId || e.target_id === activeEntityId);
+      const selectedEdges = evidenceFilteredEdges.filter(e => e.source_id === activeEntityId || e.target_id === activeEntityId);
       const focusNodeName = nodes.find(n => n.id === activeEntityId)?.name || activeEntityId;
       addNode(focusNodeName, '#ffffff');
 
@@ -212,6 +293,7 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
         const targetName = nodes.find(n => n.id === edge.target_id)?.name || edge.target_id;
         const categoryLabel = `[${CATEGORY_LABELS[edge.category] || edge.category.toUpperCase()}]`;
         const catColor = CATEGORY_COLORS[edge.category] || '#aaa';
+        const evidenceColor = EVIDENCE_STYLES[getEdgeEvidenceStatus(edge)].linkColor;
 
         if (edge.target_id === activeEntityId) {
           const sourceNodeId = `IN: ${sourceName}`;
@@ -219,16 +301,16 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
           addNode(sourceNodeId, '#30363d');
           addNode(catNodeId, catColor);
           const displayValue = getSankeyDisplayValue(edge.value_usd, useCompressedEntityScale);
-          sLinks.push({ source: sourceNodeId, target: catNodeId, value: displayValue, linkColor: catColor, edgeRef: edge });
-          sLinks.push({ source: catNodeId, target: focusNodeName, value: displayValue, linkColor: catColor, edgeRef: edge });
+          sLinks.push({ source: sourceNodeId, target: catNodeId, value: displayValue, linkColor: evidenceColor, edgeRef: edge });
+          sLinks.push({ source: catNodeId, target: focusNodeName, value: displayValue, linkColor: evidenceColor, edgeRef: edge });
         } else if (edge.source_id === activeEntityId) {
           const targetNodeId = `OUT: ${targetName}`;
           const catNodeId = `OUT(${edge.target_id}): ${categoryLabel}`;
           addNode(targetNodeId, '#30363d');
           addNode(catNodeId, catColor);
           const displayValue = getSankeyDisplayValue(edge.value_usd, useCompressedEntityScale);
-          sLinks.push({ source: focusNodeName, target: catNodeId, value: displayValue, linkColor: catColor, edgeRef: edge });
-          sLinks.push({ source: catNodeId, target: targetNodeId, value: displayValue, linkColor: catColor, edgeRef: edge });
+          sLinks.push({ source: focusNodeName, target: catNodeId, value: displayValue, linkColor: evidenceColor, edgeRef: edge });
+          sLinks.push({ source: catNodeId, target: targetNodeId, value: displayValue, linkColor: evidenceColor, edgeRef: edge });
         }
       });
 
@@ -241,7 +323,7 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
       )];
 
       directTargetIds.forEach(childId => {
-        const childEdges = edges.filter(e => e.source_id === childId);
+        const childEdges = evidenceFilteredEdges.filter(e => e.source_id === childId);
         if (childEdges.length > 0) {
           const childName = nodes.find(n => n.id === childId)?.name || childId;
           // The parent entity view created this node as `OUT: ${childName}`
@@ -249,7 +331,7 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
           
           childEdges.forEach(ce => {
             const grandchildName = nodes.find(n => n.id === ce.target_id)?.name || ce.target_id;
-            const ceCatColor = CATEGORY_COLORS[ce.category] || '#aaa';
+            const evidenceColor = EVIDENCE_STYLES[getEdgeEvidenceStatus(ce)].linkColor;
             const grandchildNodeId = `OUT2: ${grandchildName}`;
             
             // Only add if the source node actually exists
@@ -260,7 +342,7 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
                 source: childSankeyId, 
                 target: grandchildNodeId, 
                 value: displayValue, 
-                linkColor: ceCatColor,
+                linkColor: evidenceColor,
                 edgeRef: ce,
               });
             }
@@ -304,7 +386,7 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
       // Aggregate edges by source_type -> category -> target_type
       const aggFlows: Record<string, number> = {};
 
-      edges.forEach(edge => {
+      evidenceFilteredEdges.forEach(edge => {
         const sourceNode = nodes.find(n => n.id === edge.source_id);
         const targetNode = nodes.find(n => n.id === edge.target_id);
         if (!sourceNode || !targetNode) return;
@@ -350,7 +432,7 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
     }
 
     return { nodes: sNodes, links: sLinks };
-  }, [activeEntityId, edges, nodes, useCompressedEntityScale, viewLevel]);
+  }, [activeEntityId, evidenceFilteredEdges, nodes, useCompressedEntityScale, viewLevel]);
 
   const hasData = sankeyData.links.length > 0;
   const researchYearsByEntity = useMemo(() => {
@@ -399,13 +481,13 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
     [sankeyData.nodes.length, viewLevel]
   );
   const budgetDeepLink = useMemo(() => {
-    if (!selectedLinkDetails) {
+    if (!activeSelectedLinkDetails) {
       return null;
     }
-    if (isModeledEdge(selectedLinkDetails)) {
+    if (isModeledEdge(activeSelectedLinkDetails)) {
       return null;
     }
-    const preferredEntityId = [selectedLinkDetails.source_id, activeEntityId, selectedLinkDetails.target_id].find((id) =>
+    const preferredEntityId = [activeSelectedLinkDetails.source_id, activeEntityId, activeSelectedLinkDetails.target_id].find((id) =>
       budgetEntityIds.includes(id) && (budgetYearsByEntity.get(id) || []).length > 0
     );
     if (!preferredEntityId) {
@@ -420,15 +502,15 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
       year: String(targetYear),
       entity: preferredEntityId,
       tab: 'major_program',
-      focus: selectedLinkDetails.target_id,
+      focus: activeSelectedLinkDetails.target_id,
     });
     return `${window.location.pathname}?${params.toString()}`;
-  }, [activeEntityId, budgetEntityIds, budgetYearsByEntity, currentYear, selectedLinkDetails]);
+  }, [activeEntityId, activeSelectedLinkDetails, budgetEntityIds, budgetYearsByEntity, currentYear]);
   const researchDeepLink = useMemo(() => {
-    if (!selectedLinkDetails) {
+    if (!activeSelectedLinkDetails) {
       return activeEntityResearchLink;
     }
-    const preferredEntityId = [activeEntityId, selectedLinkDetails.source_id, selectedLinkDetails.target_id].find((id) =>
+    const preferredEntityId = [activeEntityId, activeSelectedLinkDetails.source_id, activeSelectedLinkDetails.target_id].find((id) =>
       (researchYearsByEntity.get(id) || []).length > 0
     );
     if (!preferredEntityId) {
@@ -445,7 +527,7 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
       tab: 'research_note',
     });
     return `${window.location.pathname}?${params.toString()}`;
-  }, [activeEntityId, activeEntityResearchLink, currentYear, researchYearsByEntity, selectedLinkDetails]);
+  }, [activeEntityId, activeEntityResearchLink, activeSelectedLinkDetails, currentYear, researchYearsByEntity]);
   const renderSourceMeta = (edge: Edge, labelColor: string) => {
     const sourceLabel = edge.source_title || edge.source_dataset;
     const pageSuffix = edge.page_number ? ` p.${edge.page_number}` : '';
@@ -594,6 +676,88 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
 	              </select>
 	            </div>
 	          )}
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', background: 'rgba(255,255,255,0.05)', padding: '1rem', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.1)', minWidth: '260px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem' }}>
+              <label style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Evidence</label>
+              <div style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>{evidenceSummary.scopeLabel}</div>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem' }}>
+              {(['reviewed', 'model-based'] as const).map((status) => (
+                <div
+                  key={status}
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    gap: '0.75rem',
+                    padding: '0.45rem 0.6rem',
+                    borderRadius: '10px',
+                    background: EVIDENCE_STYLES[status].background,
+                    border: EVIDENCE_STYLES[status].border,
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
+                    <span
+                      style={{
+                        width: '10px',
+                        height: '10px',
+                        borderRadius: '999px',
+                        background: EVIDENCE_STYLES[status].linkColor,
+                        boxShadow: `0 0 12px ${EVIDENCE_STYLES[status].linkColor}`,
+                      }}
+                    />
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.1rem' }}>
+                      <span style={{ fontSize: '0.82rem', fontWeight: 700, color: EVIDENCE_STYLES[status].color }}>
+                        {EVIDENCE_STYLES[status].label}
+                      </span>
+                      <span style={{ fontSize: '0.76rem', color: 'var(--text-muted)' }}>
+                        {EVIDENCE_STYLES[status].description}
+                      </span>
+                    </div>
+                  </div>
+                  <div style={{ textAlign: 'right' }}>
+                    <div
+                      data-testid={`evidence-summary-${status}`}
+                      style={{ fontSize: '0.92rem', fontWeight: 700, color: '#fff' }}
+                    >
+                      {evidenceSummary.visibleCounts[status]}本
+                    </div>
+                    {status === 'model-based' && reviewedOnly && evidenceSummary.hiddenModeledCount > 0 && (
+                      <div
+                        data-testid="evidence-hidden-modeled"
+                        style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}
+                      >
+                        非表示 {evidenceSummary.hiddenModeledCount}本
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+            <label
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.6rem',
+                fontSize: '0.84rem',
+                color: '#fff',
+                cursor: 'pointer',
+              }}
+            >
+              <input
+                type="checkbox"
+                checked={reviewedOnly}
+                onChange={(event) => setReviewedOnly(event.target.checked)}
+                aria-label="実データのみ表示"
+                style={{ accentColor: '#4ade80' }}
+              />
+              実データのみ表示
+            </label>
+            <div style={{ fontSize: '0.76rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>
+              `reviewed` は一次資料ベース、`model-based` は配分モデルです。線色と件数はこの区分で統一しています。
+            </div>
+          </div>
 
             {viewLevel === 'entity' && activeEntityResearchLink && (
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', background: 'rgba(163, 230, 53, 0.08)', padding: '1rem', borderRadius: '12px', border: '1px solid rgba(163, 230, 53, 0.2)', minWidth: '240px' }}>
@@ -870,7 +1034,7 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
       </div>
 
       {/* Selected Link Details Overlay */}
-      {selectedLinkDetails && (
+      {activeSelectedLinkDetails && (
         <div style={{
           position: 'absolute',
           bottom: '2rem',
@@ -901,15 +1065,15 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
           </div>
           
           <div style={{ fontSize: '1.1rem', fontWeight: 600 }}>
-             {nodes.find(n => n.id === selectedLinkDetails.source_id)?.name || selectedLinkDetails.source_id} <span style={{ color: 'var(--text-muted)' }}>&rarr;</span> {nodes.find(n => n.id === selectedLinkDetails.target_id)?.name || selectedLinkDetails.target_id}
+             {nodes.find(n => n.id === activeSelectedLinkDetails.source_id)?.name || activeSelectedLinkDetails.source_id} <span style={{ color: 'var(--text-muted)' }}>&rarr;</span> {nodes.find(n => n.id === activeSelectedLinkDetails.target_id)?.name || activeSelectedLinkDetails.target_id}
           </div>
 
           <div style={{ fontSize: '1.4rem', fontWeight: 700, color: 'var(--accent-color)' }}>
-            {formatCurrency(selectedLinkDetails.value_usd, currency)}
+            {formatCurrency(activeSelectedLinkDetails.value_usd, currency)}
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginTop: '0.5rem', fontSize: '0.9rem' }}>
-            {getProvenanceBadge(selectedLinkDetails) && (
+            {getProvenanceBadge(activeSelectedLinkDetails) && (
               <div>
                 <span
                   style={{
@@ -921,44 +1085,44 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
                     fontWeight: 700,
                     letterSpacing: '0.04em',
                     textTransform: 'uppercase',
-                    background: getProvenanceBadge(selectedLinkDetails)?.background,
-                    border: getProvenanceBadge(selectedLinkDetails)?.border,
-                    color: getProvenanceBadge(selectedLinkDetails)?.color,
+                    background: getProvenanceBadge(activeSelectedLinkDetails)?.background,
+                    border: getProvenanceBadge(activeSelectedLinkDetails)?.border,
+                    color: getProvenanceBadge(activeSelectedLinkDetails)?.color,
                   }}
                 >
-                  {getProvenanceBadge(selectedLinkDetails)?.label}
+                  {getProvenanceBadge(activeSelectedLinkDetails)?.label}
                 </span>
               </div>
             )}
-            {(selectedLinkDetails.source_title || selectedLinkDetails.source_dataset) && (
+            {(activeSelectedLinkDetails.source_title || activeSelectedLinkDetails.source_dataset) && (
               <div>
                 <span style={{ color: 'var(--text-muted)', fontSize: '0.8rem', display: 'block' }}>出典資料</span>
-                {(selectedLinkDetails.source_title || selectedLinkDetails.source_dataset)}
-                {selectedLinkDetails.page_number ? ` p.${selectedLinkDetails.page_number}` : ''}
+                {(activeSelectedLinkDetails.source_title || activeSelectedLinkDetails.source_dataset)}
+                {activeSelectedLinkDetails.page_number ? ` p.${activeSelectedLinkDetails.page_number}` : ''}
               </div>
             )}
             
-            {(selectedLinkDetails.evidence_text || selectedLinkDetails.description) && (
+            {(activeSelectedLinkDetails.evidence_text || activeSelectedLinkDetails.description) && (
               <div>
                 <span style={{ color: 'var(--text-muted)', fontSize: '0.8rem', display: 'block', marginBottom: '4px' }}>AI抽出・根拠テキスト</span>
                 <div style={{ background: 'rgba(255,255,255,0.05)', padding: '0.75rem', borderRadius: '6px', borderLeft: '3px solid var(--accent-color)' }}>
-                  {selectedLinkDetails.evidence_text && <div style={{ fontStyle: 'italic', marginBottom: selectedLinkDetails.description ? '0.5rem' : '0' }}>"{selectedLinkDetails.evidence_text}"</div>}
-                  {selectedLinkDetails.description && <div style={{ color: '#ccc' }}>{selectedLinkDetails.description}</div>}
+                  {activeSelectedLinkDetails.evidence_text && <div style={{ fontStyle: 'italic', marginBottom: activeSelectedLinkDetails.description ? '0.5rem' : '0' }}>"{activeSelectedLinkDetails.evidence_text}"</div>}
+                  {activeSelectedLinkDetails.description && <div style={{ color: '#ccc' }}>{activeSelectedLinkDetails.description}</div>}
                 </div>
               </div>
             )}
 
-            {isModeledEdge(selectedLinkDetails) && (
+            {isModeledEdge(activeSelectedLinkDetails) && (
               <div style={{ background: 'rgba(192, 132, 252, 0.12)', border: '1px solid rgba(192, 132, 252, 0.22)', borderRadius: '8px', padding: '0.8rem', color: '#e9d5ff', lineHeight: 1.55 }}>
                 このフローは model-based データです。Budget ページの reviewed 主要事業とは分けて扱っています。
               </div>
             )}
 
-            {(selectedLinkDetails.source_url || budgetDeepLink || researchDeepLink) && (
+            {(activeSelectedLinkDetails.source_url || budgetDeepLink || researchDeepLink) && (
               <div style={{ display: 'flex', gap: '0.65rem', flexWrap: 'wrap', marginTop: '0.5rem' }}>
-                {selectedLinkDetails.source_url && (
+                {activeSelectedLinkDetails.source_url && (
                   <a
-                    href={selectedLinkDetails.source_url}
+                    href={activeSelectedLinkDetails.source_url}
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{

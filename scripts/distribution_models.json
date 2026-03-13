@@ -1,0 +1,398 @@
+{
+  "nodes": [
+    {
+      "id": "DEST_AFTER_SCHOOL_PUBLIC_PUBLIC",
+      "name": "放課後児童クラブ 公立公営",
+      "lat": 35.64,
+      "lng": 139.64,
+      "region": "Social Security",
+      "type": "recipient",
+      "dataset": "manual_reviewed"
+    },
+    {
+      "id": "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE",
+      "name": "放課後児童クラブ 公立民営",
+      "lat": 35.645,
+      "lng": 139.645,
+      "region": "Social Security",
+      "type": "recipient",
+      "dataset": "manual_reviewed"
+    },
+    {
+      "id": "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE",
+      "name": "放課後児童クラブ 民立民営",
+      "lat": 35.655,
+      "lng": 139.655,
+      "region": "Social Security",
+      "type": "recipient",
+      "dataset": "manual_reviewed"
+    },
+    {
+      "id": "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_SOCIAL_WELFARE",
+      "name": "放課後児童クラブ 公立民営 / 社会福祉法人",
+      "lat": 35.646,
+      "lng": 139.651,
+      "region": "Social Security",
+      "type": "recipient",
+      "dataset": "manual_reviewed"
+    },
+    {
+      "id": "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_PUBLIC_INTEREST",
+      "name": "放課後児童クラブ 公立民営 / 公益社団法人等",
+      "lat": 35.648,
+      "lng": 139.653,
+      "region": "Social Security",
+      "type": "recipient",
+      "dataset": "manual_reviewed"
+    },
+    {
+      "id": "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_NPO",
+      "name": "放課後児童クラブ 公立民営 / NPO法人",
+      "lat": 35.65,
+      "lng": 139.655,
+      "region": "Social Security",
+      "type": "recipient",
+      "dataset": "manual_reviewed"
+    },
+    {
+      "id": "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_COMMITTEE",
+      "name": "放課後児童クラブ 公立民営 / 運営委員会・保護者会",
+      "lat": 35.652,
+      "lng": 139.657,
+      "region": "Social Security",
+      "type": "recipient",
+      "dataset": "manual_reviewed"
+    },
+    {
+      "id": "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_VOLUNTARY",
+      "name": "放課後児童クラブ 公立民営 / 任意団体",
+      "lat": 35.654,
+      "lng": 139.659,
+      "region": "Social Security",
+      "type": "recipient",
+      "dataset": "manual_reviewed"
+    },
+    {
+      "id": "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_CORPORATION",
+      "name": "放課後児童クラブ 公立民営 / 株式会社",
+      "lat": 35.656,
+      "lng": 139.661,
+      "region": "Social Security",
+      "type": "recipient",
+      "dataset": "manual_reviewed"
+    },
+    {
+      "id": "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_SCHOOL",
+      "name": "放課後児童クラブ 公立民営 / 学校法人",
+      "lat": 35.658,
+      "lng": 139.663,
+      "region": "Social Security",
+      "type": "recipient",
+      "dataset": "manual_reviewed"
+    },
+    {
+      "id": "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_OTHER",
+      "name": "放課後児童クラブ 公立民営 / その他",
+      "lat": 35.66,
+      "lng": 139.665,
+      "region": "Social Security",
+      "type": "recipient",
+      "dataset": "manual_reviewed"
+    },
+    {
+      "id": "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_SOCIAL_WELFARE",
+      "name": "放課後児童クラブ 民立民営 / 社会福祉法人",
+      "lat": 35.662,
+      "lng": 139.667,
+      "region": "Social Security",
+      "type": "recipient",
+      "dataset": "manual_reviewed"
+    },
+    {
+      "id": "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_PUBLIC_INTEREST",
+      "name": "放課後児童クラブ 民立民営 / 公益社団法人等",
+      "lat": 35.664,
+      "lng": 139.669,
+      "region": "Social Security",
+      "type": "recipient",
+      "dataset": "manual_reviewed"
+    },
+    {
+      "id": "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_NPO",
+      "name": "放課後児童クラブ 民立民営 / NPO法人",
+      "lat": 35.666,
+      "lng": 139.671,
+      "region": "Social Security",
+      "type": "recipient",
+      "dataset": "manual_reviewed"
+    },
+    {
+      "id": "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_COMMITTEE",
+      "name": "放課後児童クラブ 民立民営 / 運営委員会・保護者会",
+      "lat": 35.668,
+      "lng": 139.673,
+      "region": "Social Security",
+      "type": "recipient",
+      "dataset": "manual_reviewed"
+    },
+    {
+      "id": "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_VOLUNTARY",
+      "name": "放課後児童クラブ 民立民営 / 任意団体",
+      "lat": 35.67,
+      "lng": 139.675,
+      "region": "Social Security",
+      "type": "recipient",
+      "dataset": "manual_reviewed"
+    },
+    {
+      "id": "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_CORPORATION",
+      "name": "放課後児童クラブ 民立民営 / 株式会社",
+      "lat": 35.672,
+      "lng": 139.677,
+      "region": "Social Security",
+      "type": "recipient",
+      "dataset": "manual_reviewed"
+    },
+    {
+      "id": "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_SCHOOL",
+      "name": "放課後児童クラブ 民立民営 / 学校法人",
+      "lat": 35.674,
+      "lng": 139.679,
+      "region": "Social Security",
+      "type": "recipient",
+      "dataset": "manual_reviewed"
+    },
+    {
+      "id": "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_OTHER",
+      "name": "放課後児童クラブ 民立民営 / その他",
+      "lat": 35.676,
+      "lng": 139.681,
+      "region": "Social Security",
+      "type": "recipient",
+      "dataset": "manual_reviewed"
+    }
+  ],
+  "models": [
+    {
+      "key": "cfa-daredemo-distribution-2025",
+      "label": "CFA こども誰でも通園制度 bridge",
+      "source_id": "REC_CHILDCARE_ALL",
+      "fiscal_year": 2025,
+      "parent_edge": {
+        "source_id": "MIN_CFA",
+        "target_id": "REC_CHILDCARE_ALL",
+        "fallback_source_title": "令和7年度こども家庭庁予算 事業別資料集",
+        "fallback_page_number": 95
+      },
+      "category": "services",
+      "sub_category": "委託・助成金",
+      "confidence": 0.85,
+      "source_dataset": "こども誰でも通園制度(仮称)の本格実施に向けた制度移行 (想定)",
+      "provenance": {
+        "source_title": "こども誰でも通園制度(仮称)の本格実施に向けた制度移行 (想定)",
+        "extracted_text_template": "{description} Reviewed amount reference: {parent_source_title} p.{parent_page_number}"
+      },
+      "destinations": [
+        {
+          "target_id": "DEST_PRIV_NURSERY",
+          "ratio": 0.6,
+          "description": "民間保育施設等への利用料補助。2025年度の reviewed 事業額を起点に、制度移行モデルの配布先比率で分解しています。"
+        },
+        {
+          "target_id": "DEST_MUNI_NURSERY",
+          "ratio": 0.15,
+          "description": "公立保育施設への利用料補助。制度資料の『実施主体は市町村』を前提に、国費部分の配布先として可視化しています。"
+        },
+        {
+          "target_id": "DEST_ACCENTURE",
+          "ratio": 0.1,
+          "description": "総合支援システムの運用保守開発。2025年度の reviewed 事業額に対し、既存の制度移行モデル比率を適用しています。"
+        },
+        {
+          "target_id": "ICT_CODMON",
+          "ratio": 0.03,
+          "description": "保育ICT 導入枠。2025年度の reviewed 事業額に対し、制度移行モデルの配布先比率を適用しています。"
+        },
+        {
+          "target_id": "ICT_LOOKMEE",
+          "ratio": 0.015,
+          "description": "保育ICT 導入枠。2025年度の reviewed 事業額に対し、制度移行モデルの配布先比率を適用しています。"
+        },
+        {
+          "target_id": "ICT_OTHERS",
+          "ratio": 0.005,
+          "description": "その他保育ICT。2025年度の reviewed 事業額に対し、制度移行モデルの配布先比率を適用しています。"
+        },
+        {
+          "target_id": "DEST_FACILITY_UPGRADE",
+          "ratio": 0.1,
+          "description": "施設整備費の国庫補助。2025年度の reviewed 事業額に対し、制度移行モデルの配布先比率を適用しています。"
+        }
+      ]
+    },
+    {
+      "key": "cfa-after-school-operator-distribution-2025",
+      "label": "CFA 放課後児童クラブ運営費 bridge",
+      "source_id": "REC_AFTER_SCHOOL_OP",
+      "fiscal_year": 2025,
+      "parent_edge": {
+        "source_id": "MIN_CFA",
+        "target_id": "REC_AFTER_SCHOOL_OP"
+      },
+      "category": "services",
+      "sub_category": "運営主体別按分モデル",
+      "confidence": 0.82,
+      "source_dataset": "放課後児童クラブ（運営費・処遇改善）運営主体別按分 (令和7年実施状況ベース)",
+      "provenance": {
+        "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/69799c33-85cb-44f6-8c70-08ed3a292ab5/c253a682/20251222_policies_kosodateshien_houkago-jidou_80.pdf#page=9",
+        "source_title": "令和7年 放課後児童健全育成事業（放課後児童クラブ）の実施状況",
+        "page_number": 9,
+        "extracted_text_template": "{description} Reviewed amount reference: 令和7年度こども家庭庁予算 事業別資料集 p.74"
+      },
+      "ratio_basis_total": 25928,
+      "destinations": [
+        {
+          "target_id": "DEST_AFTER_SCHOOL_PUBLIC_PUBLIC",
+          "share_units": 5800,
+          "description": "公立公営の放課後児童クラブ。令和7年実施状況では 5,800か所（22.4%）です。運営費・処遇改善の reviewed 事業額を、運営主体別クラブ数シェアで按分しています。"
+        },
+        {
+          "target_id": "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE",
+          "share_units": 13543,
+          "description": "公立民営の放課後児童クラブ。令和7年実施状況では 13,543か所（52.2%）で、社会福祉法人、NPO法人、運営委員会・保護者会、株式会社などが運営主体に含まれます。運営費・処遇改善の reviewed 事業額を、運営主体別クラブ数シェアで按分しています。"
+        },
+        {
+          "target_id": "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE",
+          "share_units": 6585,
+          "description": "民立民営の放課後児童クラブ。令和7年実施状況では 6,585か所（25.4%）です。運営費・処遇改善の reviewed 事業額を、運営主体別クラブ数シェアで按分しています。"
+        }
+      ]
+    },
+    {
+      "key": "cfa-after-school-operator-subtype-distribution-2025-public-private",
+      "label": "CFA 放課後児童クラブ運営主体内訳 bridge",
+      "source_id": "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE",
+      "fiscal_year": 2025,
+      "parent_edge": {
+        "source_id": "REC_AFTER_SCHOOL_OP",
+        "target_id": "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE"
+      },
+      "category": "services",
+      "sub_category": "運営主体別按分モデル（公立民営内訳）",
+      "confidence": 0.78,
+      "source_dataset": "放課後児童クラブ（運営費・処遇改善）運営主体別按分 (令和7年実施状況ベース)",
+      "provenance": {
+        "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/69799c33-85cb-44f6-8c70-08ed3a292ab5/c253a682/20251222_policies_kosodateshien_houkago-jidou_80.pdf#page=9",
+        "source_title": "令和7年 放課後児童健全育成事業（放課後児童クラブ）の実施状況",
+        "page_number": 9,
+        "extracted_text_template": "{description} Parent bucket reference: 令和7年 放課後児童健全育成事業（放課後児童クラブ）の実施状況 p.9"
+      },
+      "ratio_basis_total": 13543,
+      "destinations": [
+        {
+          "target_id": "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_SOCIAL_WELFARE",
+          "share_units": 3126,
+          "description": "公立民営のうち社会福祉法人が運営する放課後児童クラブ 3,126か所。公立民営の modeled amount を、運営主体別クラブ数シェアでさらに按分しています。"
+        },
+        {
+          "target_id": "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_PUBLIC_INTEREST",
+          "share_units": 1344,
+          "description": "公立民営のうち公益社団法人等が運営する放課後児童クラブ 1,344か所。公立民営の modeled amount を、運営主体別クラブ数シェアでさらに按分しています。"
+        },
+        {
+          "target_id": "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_NPO",
+          "share_units": 1681,
+          "description": "公立民営のうちNPO法人が運営する放課後児童クラブ 1,681か所。公立民営の modeled amount を、運営主体別クラブ数シェアでさらに按分しています。"
+        },
+        {
+          "target_id": "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_COMMITTEE",
+          "share_units": 2362,
+          "description": "公立民営のうち運営委員会・保護者会が運営する放課後児童クラブ 2,362か所。公立民営の modeled amount を、運営主体別クラブ数シェアでさらに按分しています。"
+        },
+        {
+          "target_id": "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_VOLUNTARY",
+          "share_units": 205,
+          "description": "公立民営のうち任意団体が運営する放課後児童クラブ 205か所。公立民営の modeled amount を、運営主体別クラブ数シェアでさらに按分しています。"
+        },
+        {
+          "target_id": "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_CORPORATION",
+          "share_units": 4299,
+          "description": "公立民営のうち株式会社が運営する放課後児童クラブ 4,299か所。公立民営の modeled amount を、運営主体別クラブ数シェアでさらに按分しています。"
+        },
+        {
+          "target_id": "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_SCHOOL",
+          "share_units": 190,
+          "description": "公立民営のうち学校法人が運営する放課後児童クラブ 190か所。公立民営の modeled amount を、運営主体別クラブ数シェアでさらに按分しています。"
+        },
+        {
+          "target_id": "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE_OTHER",
+          "share_units": 336,
+          "description": "公立民営のうちその他主体が運営する放課後児童クラブ 336か所。公立民営の modeled amount を、運営主体別クラブ数シェアでさらに按分しています。"
+        }
+      ]
+    },
+    {
+      "key": "cfa-after-school-operator-subtype-distribution-2025-private-private",
+      "label": "CFA 放課後児童クラブ運営主体内訳 bridge",
+      "source_id": "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE",
+      "fiscal_year": 2025,
+      "parent_edge": {
+        "source_id": "REC_AFTER_SCHOOL_OP",
+        "target_id": "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE"
+      },
+      "category": "services",
+      "sub_category": "運営主体別按分モデル（民立民営内訳）",
+      "confidence": 0.78,
+      "source_dataset": "放課後児童クラブ（運営費・処遇改善）運営主体別按分 (令和7年実施状況ベース)",
+      "provenance": {
+        "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/69799c33-85cb-44f6-8c70-08ed3a292ab5/c253a682/20251222_policies_kosodateshien_houkago-jidou_80.pdf#page=9",
+        "source_title": "令和7年 放課後児童健全育成事業（放課後児童クラブ）の実施状況",
+        "page_number": 9,
+        "extracted_text_template": "{description} Parent bucket reference: 令和7年 放課後児童健全育成事業（放課後児童クラブ）の実施状況 p.9"
+      },
+      "ratio_basis_total": 6585,
+      "destinations": [
+        {
+          "target_id": "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_SOCIAL_WELFARE",
+          "share_units": 2086,
+          "description": "民立民営のうち社会福祉法人が運営する放課後児童クラブ 2,086か所。民立民営の modeled amount を、運営主体別クラブ数シェアでさらに按分しています。"
+        },
+        {
+          "target_id": "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_PUBLIC_INTEREST",
+          "share_units": 558,
+          "description": "民立民営のうち公益社団法人等が運営する放課後児童クラブ 558か所。民立民営の modeled amount を、運営主体別クラブ数シェアでさらに按分しています。"
+        },
+        {
+          "target_id": "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_NPO",
+          "share_units": 1208,
+          "description": "民立民営のうちNPO法人が運営する放課後児童クラブ 1,208か所。民立民営の modeled amount を、運営主体別クラブ数シェアでさらに按分しています。"
+        },
+        {
+          "target_id": "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_COMMITTEE",
+          "share_units": 1157,
+          "description": "民立民営のうち運営委員会・保護者会が運営する放課後児童クラブ 1,157か所。民立民営の modeled amount を、運営主体別クラブ数シェアでさらに按分しています。"
+        },
+        {
+          "target_id": "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_VOLUNTARY",
+          "share_units": 69,
+          "description": "民立民営のうち任意団体が運営する放課後児童クラブ 69か所。民立民営の modeled amount を、運営主体別クラブ数シェアでさらに按分しています。"
+        },
+        {
+          "target_id": "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_CORPORATION",
+          "share_units": 664,
+          "description": "民立民営のうち株式会社が運営する放課後児童クラブ 664か所。民立民営の modeled amount を、運営主体別クラブ数シェアでさらに按分しています。"
+        },
+        {
+          "target_id": "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_SCHOOL",
+          "share_units": 371,
+          "description": "民立民営のうち学校法人が運営する放課後児童クラブ 371か所。民立民営の modeled amount を、運営主体別クラブ数シェアでさらに按分しています。"
+        },
+        {
+          "target_id": "DEST_AFTER_SCHOOL_PRIVATE_PRIVATE_OTHER",
+          "share_units": 472,
+          "description": "民立民営のうちその他主体が運営する放課後児童クラブ 472か所。民立民営の modeled amount を、運営主体別クラブ数シェアでさらに按分しています。"
+        }
+      ]
+    }
+  ]
+}

@@ -12,7 +12,7 @@ import type { UnifiedData } from './types/frontendData';
 import './index.css';
 
 const CATEGORIES = ['trade', 'banking', 'crypto', 'remittance', 'bop', 'welfare', 'services', 'technology', 'education', 'infrastructure', 'tax'];
-const MODELED_DATASET_MARKERS = ['省庁別主要経費推計', '想定', 'Proxy', 'Approximation', 'Estimated', 'ministries_data', '財務省 一般会計（所管別）', '財務省一般会計', 'meti_data'];
+const MODELED_DATASET_MARKERS = ['省庁別主要経費推計', '想定', '按分', 'Proxy', 'Approximation', 'Estimated', 'ministries_data', '財務省 一般会計（所管別）', '財務省一般会計', 'meti_data'];
 
 // Type assertion for the imported unified JSON (from SQLite DB export)
 const unifiedData = unifiedDataRaw as unknown as UnifiedData;
