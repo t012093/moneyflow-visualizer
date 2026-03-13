@@ -58,6 +58,43 @@ class SeedPipelineRegressionTests(unittest.TestCase):
         self.assertTrue(any(fact["fact_key"] == "kodomo-daredemo-tsuen-budget-frame" for fact in structured_facts))
         self.assertTrue(any(fact["fact_key"] == "kodomo-daredemo-tsuen-rollout-sites" for fact in structured_facts))
 
+    def test_unified_export_bridges_cfa_daredemo_to_distribution_targets_in_2025(self) -> None:
+        edges = self.unified_data["edges"]
+        parent_edge = next(
+            (
+                edge
+                for edge in edges
+                if edge["year"] == 2025
+                and edge["source_id"] == "MIN_CFA"
+                and edge["target_id"] == "REC_CHILDCARE_ALL"
+            ),
+            None,
+        )
+        self.assertIsNotNone(parent_edge)
+
+        child_edges = [
+            edge
+            for edge in edges
+            if edge["year"] == 2025 and edge["source_id"] == "REC_CHILDCARE_ALL"
+        ]
+        self.assertEqual({edge["target_id"] for edge in child_edges}, {
+            "DEST_PRIV_NURSERY",
+            "DEST_MUNI_NURSERY",
+            "DEST_ACCENTURE",
+            "ICT_CODMON",
+            "ICT_LOOKMEE",
+            "ICT_OTHERS",
+            "DEST_FACILITY_UPGRADE",
+        })
+        self.assertTrue(
+            all(edge["source_dataset"] == seed_db.CFA_DAREDEMO_MODELED_DATASET for edge in child_edges)
+        )
+        self.assertAlmostEqual(
+            sum(edge["value_usd"] for edge in child_edges),
+            parent_edge["value_usd"],
+            delta=1e-6,
+        )
+
     def test_unified_export_contains_reviewed_ministry_knowledge_for_other_agencies(self) -> None:
         metadata = self.unified_data["metadata"]
         knowledge_notes = metadata.get("knowledgeNotes", [])

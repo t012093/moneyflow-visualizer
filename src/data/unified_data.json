@@ -19323,12 +19323,96 @@
       "source_url": "https://www.mhlw.go.jp/wp/yosan/yosan/25syokanyosan/dl/01-01.pdf#page=3&search=%E9%9B%87%E7%94%A8",
       "source_title": "厚生労働省 令和7年度予算案の概要",
       "page_number": 3
+    },
+    {
+      "source_id": "REC_CHILDCARE_ALL",
+      "target_id": "DEST_PRIV_NURSERY",
+      "category": "services",
+      "sub_category": "委託・助成金",
+      "value_usd": 972399999.5999999,
+      "year": 2025,
+      "confidence": 0.85,
+      "source_dataset": "こども誰でも通園制度(仮称)の本格実施に向けた制度移行 (想定)",
+      "description": "民間保育施設等への利用料補助。2025年度の reviewed 事業額を起点に、制度移行モデルの配布先比率で分解しています。",
+      "evidence_text": "民間保育施設等への利用料補助。2025年度の reviewed 事業額を起点に、制度移行モデルの配布先比率で分解しています。 Reviewed amount reference: 令和7年度こども家庭庁予算 事業別資料集 p.95"
+    },
+    {
+      "source_id": "REC_CHILDCARE_ALL",
+      "target_id": "DEST_MUNI_NURSERY",
+      "category": "services",
+      "sub_category": "委託・助成金",
+      "value_usd": 243099999.89999998,
+      "year": 2025,
+      "confidence": 0.85,
+      "source_dataset": "こども誰でも通園制度(仮称)の本格実施に向けた制度移行 (想定)",
+      "description": "公立保育施設への利用料補助。制度資料の『実施主体は市町村』を前提に、国費部分の配布先として可視化しています。",
+      "evidence_text": "公立保育施設への利用料補助。制度資料の『実施主体は市町村』を前提に、国費部分の配布先として可視化しています。 Reviewed amount reference: 令和7年度こども家庭庁予算 事業別資料集 p.95"
+    },
+    {
+      "source_id": "REC_CHILDCARE_ALL",
+      "target_id": "DEST_ACCENTURE",
+      "category": "services",
+      "sub_category": "委託・助成金",
+      "value_usd": 162066666.60000002,
+      "year": 2025,
+      "confidence": 0.85,
+      "source_dataset": "こども誰でも通園制度(仮称)の本格実施に向けた制度移行 (想定)",
+      "description": "総合支援システムの運用保守開発。2025年度の reviewed 事業額に対し、既存の制度移行モデル比率を適用しています。",
+      "evidence_text": "総合支援システムの運用保守開発。2025年度の reviewed 事業額に対し、既存の制度移行モデル比率を適用しています。 Reviewed amount reference: 令和7年度こども家庭庁予算 事業別資料集 p.95"
+    },
+    {
+      "source_id": "REC_CHILDCARE_ALL",
+      "target_id": "ICT_CODMON",
+      "category": "services",
+      "sub_category": "委託・助成金",
+      "value_usd": 48619999.98,
+      "year": 2025,
+      "confidence": 0.85,
+      "source_dataset": "こども誰でも通園制度(仮称)の本格実施に向けた制度移行 (想定)",
+      "description": "保育ICT 導入枠。2025年度の reviewed 事業額に対し、制度移行モデルの配布先比率を適用しています。",
+      "evidence_text": "保育ICT 導入枠。2025年度の reviewed 事業額に対し、制度移行モデルの配布先比率を適用しています。 Reviewed amount reference: 令和7年度こども家庭庁予算 事業別資料集 p.95"
+    },
+    {
+      "source_id": "REC_CHILDCARE_ALL",
+      "target_id": "ICT_LOOKMEE",
+      "category": "services",
+      "sub_category": "委託・助成金",
+      "value_usd": 24309999.99,
+      "year": 2025,
+      "confidence": 0.85,
+      "source_dataset": "こども誰でも通園制度(仮称)の本格実施に向けた制度移行 (想定)",
+      "description": "保育ICT 導入枠。2025年度の reviewed 事業額に対し、制度移行モデルの配布先比率を適用しています。",
+      "evidence_text": "保育ICT 導入枠。2025年度の reviewed 事業額に対し、制度移行モデルの配布先比率を適用しています。 Reviewed amount reference: 令和7年度こども家庭庁予算 事業別資料集 p.95"
+    },
+    {
+      "source_id": "REC_CHILDCARE_ALL",
+      "target_id": "ICT_OTHERS",
+      "category": "services",
+      "sub_category": "委託・助成金",
+      "value_usd": 8103333.33,
+      "year": 2025,
+      "confidence": 0.85,
+      "source_dataset": "こども誰でも通園制度(仮称)の本格実施に向けた制度移行 (想定)",
+      "description": "その他保育ICT。2025年度の reviewed 事業額に対し、制度移行モデルの配布先比率を適用しています。",
+      "evidence_text": "その他保育ICT。2025年度の reviewed 事業額に対し、制度移行モデルの配布先比率を適用しています。 Reviewed amount reference: 令和7年度こども家庭庁予算 事業別資料集 p.95"
+    },
+    {
+      "source_id": "REC_CHILDCARE_ALL",
+      "target_id": "DEST_FACILITY_UPGRADE",
+      "category": "services",
+      "sub_category": "委託・助成金",
+      "value_usd": 162066666.60000002,
+      "year": 2025,
+      "confidence": 0.85,
+      "source_dataset": "こども誰でも通園制度(仮称)の本格実施に向けた制度移行 (想定)",
+      "description": "施設整備費の国庫補助。2025年度の reviewed 事業額に対し、制度移行モデルの配布先比率を適用しています。",
+      "evidence_text": "施設整備費の国庫補助。2025年度の reviewed 事業額に対し、制度移行モデルの配布先比率を適用しています。 Reviewed amount reference: 令和7年度こども家庭庁予算 事業別資料集 p.95"
     }
   ],
   "metadata": {
     "source": "SQLite DB (money_flow.db)",
     "total_nodes": 164,
-    "total_edges": 1386,
+    "total_edges": 1393,
     "fiscal_years": [
       2021,
       2022,

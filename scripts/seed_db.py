@@ -189,6 +189,48 @@ MINISTRY_BUDGET_DATASETS = {
     "省庁別主要経費推計",
 }
 
+CFA_DAREDEMO_MODELED_DATASET = "こども誰でも通園制度(仮称)の本格実施に向けた制度移行 (想定)"
+
+# Keep the reviewed FY2025 program amount intact and only model the second hop.
+# This lets the 2D view show MIN_CFA -> こども誰でも通園制度 -> 配布先.
+CFA_DAREDEMO_DISTRIBUTION_DESTINATIONS = [
+    (
+        "DEST_PRIV_NURSERY",
+        0.60,
+        "民間保育施設等への利用料補助。2025年度の reviewed 事業額を起点に、制度移行モデルの配布先比率で分解しています。",
+    ),
+    (
+        "DEST_MUNI_NURSERY",
+        0.15,
+        "公立保育施設への利用料補助。制度資料の『実施主体は市町村』を前提に、国費部分の配布先として可視化しています。",
+    ),
+    (
+        "DEST_ACCENTURE",
+        0.10,
+        "総合支援システムの運用保守開発。2025年度の reviewed 事業額に対し、既存の制度移行モデル比率を適用しています。",
+    ),
+    (
+        "ICT_CODMON",
+        0.03,
+        "保育ICT 導入枠。2025年度の reviewed 事業額に対し、制度移行モデルの配布先比率を適用しています。",
+    ),
+    (
+        "ICT_LOOKMEE",
+        0.015,
+        "保育ICT 導入枠。2025年度の reviewed 事業額に対し、制度移行モデルの配布先比率を適用しています。",
+    ),
+    (
+        "ICT_OTHERS",
+        0.005,
+        "その他保育ICT。2025年度の reviewed 事業額に対し、制度移行モデルの配布先比率を適用しています。",
+    ),
+    (
+        "DEST_FACILITY_UPGRADE",
+        0.10,
+        "施設整備費の国庫補助。2025年度の reviewed 事業額に対し、制度移行モデルの配布先比率を適用しています。",
+    ),
+]
+
 SOURCE_TITLE_HINTS = [
     (
         "20250326_policies_budget_67.pdf",
@@ -2023,6 +2065,108 @@ def seed_dataset(conn: sqlite3.Connection, dataset_info: Dict[str, str]) -> Tupl
     return node_count, edge_count
 
 
+def seed_cfa_daredemo_distribution_edges(conn: sqlite3.Connection) -> int:
+    parent_edge = conn.execute(
+        """
+        SELECT e.id, e.value_usd
+        FROM edges e
+        WHERE e.source_id = 'MIN_CFA'
+          AND e.target_id = 'REC_CHILDCARE_ALL'
+          AND e.fiscal_year = 2025
+        ORDER BY e.id
+        LIMIT 1
+        """
+    ).fetchone()
+
+    if not parent_edge:
+        return 0
+
+    parent_edge_id, parent_value_usd = parent_edge
+
+    parent_provenance = conn.execute(
+        """
+        SELECT source_url, source_title, page_number
+        FROM source_provenance
+        WHERE edge_id = ?
+        ORDER BY id
+        LIMIT 1
+        """,
+        (parent_edge_id,),
+    ).fetchone()
+
+    if not parent_provenance:
+        return 0
+
+    _, source_title, page_number = parent_provenance
+    source_title = source_title or "令和7年度こども家庭庁予算 事業別資料集"
+    page_number = page_number if page_number is not None else 95
+
+    inserted_edges = 0
+    ds_source_id = DATASET_TO_SOURCE_ID.get(CFA_DAREDEMO_MODELED_DATASET)
+
+    for target_id, ratio, description in CFA_DAREDEMO_DISTRIBUTION_DESTINATIONS:
+        value_usd = float(parent_value_usd) * ratio
+        cursor = conn.execute(
+            """
+            INSERT INTO edges (
+              source_id,
+              target_id,
+              category,
+              sub_category,
+              value_usd,
+              value_jpy,
+              fiscal_year,
+              confidence,
+              source_dataset,
+              description
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """,
+            (
+                "REC_CHILDCARE_ALL",
+                target_id,
+                "services",
+                "委託・助成金",
+                value_usd,
+                value_usd * JPY_PER_USD,
+                2025,
+                0.85,
+                CFA_DAREDEMO_MODELED_DATASET,
+                description,
+            ),
+        )
+        edge_id = cursor.lastrowid
+        inserted_edges += 1
+
+        conn.execute(
+            """
+            INSERT INTO source_provenance (
+              edge_id,
+              source_id,
+              source_url,
+              source_title,
+              page_number,
+              extracted_text,
+              extraction_method,
+              confidence
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            """,
+            (
+                edge_id,
+                ds_source_id,
+                CFA_DAREDEMO_MODELED_DATASET,
+                CFA_DAREDEMO_MODELED_DATASET,
+                None,
+                f"{description} Reviewed amount reference: {source_title} p.{page_number}",
+                "script_generated",
+                0.85,
+            ),
+        )
+
+    return inserted_edges
+
+
 def export_frontend_json(conn: sqlite3.Connection) -> Tuple[str, int, int]:
     """Export the unified DB back to a single JSON for the frontend"""
     export_path = os.path.join(DATA_DIR, "unified_data.json")
@@ -2355,7 +2499,13 @@ def main():
         print(f"  ✅ {ds['label']:45s} → {n:>3d} nodes, {e:>4d} edges")
         total_nodes += n
         total_edges += e
-    
+
+    bridged_edges = seed_cfa_daredemo_distribution_edges(conn)
+    conn.commit()
+    if bridged_edges:
+        print(f"  ✅ {'CFA こども誰でも通園制度 bridge':45s} → {bridged_edges:>4d} edges")
+        total_edges += bridged_edges
+
     print(f"\n  Total imported: {total_nodes} nodes, {total_edges} edges")
 
     normalize_source_provenance(conn)
