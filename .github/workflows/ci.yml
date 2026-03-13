@@ -29,6 +29,9 @@ jobs:
       - name: Install frontend dependencies
         run: npm ci
 
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+
       - name: Rebuild seeded data export
         env:
           VALIDATE_SOURCE_URLS: "false"
@@ -45,3 +48,6 @@ jobs:
 
       - name: Build frontend
         run: npm run build
+
+      - name: Run E2E tests
+        run: npm run test:e2e

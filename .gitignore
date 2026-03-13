@@ -24,6 +24,8 @@ database.sqlite
 eval/latest_results.json
 eval/latest_report.md
 eval/latest_daily_pipeline.json
+playwright-report
+test-results
 
 # Editor directories and files
 .vscode/*
