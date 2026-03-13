@@ -116,6 +116,30 @@ class SeedPipelineRegressionTests(unittest.TestCase):
         self.assertTrue(expected_note_keys.issubset({note["note_key"] for note in knowledge_notes}))
         self.assertTrue(expected_fact_keys.issubset({fact["fact_key"] for fact in structured_facts}))
 
+    def test_unified_export_contains_kobe_reviewed_local_gov_data(self) -> None:
+        node_ids = {node["id"] for node in self.unified_data["nodes"]}
+        self.assertIn("CITY_KOBE", node_ids)
+        self.assertIn("REC_KOBE_DAREDEMO_SITES", node_ids)
+
+        kobe_edge = next(
+            (
+                edge
+                for edge in self.unified_data["edges"]
+                if edge["year"] == 2025
+                and edge["source_id"] == "CITY_KOBE"
+                and edge["target_id"] == "REC_KOBE_DAREDEMO_SITES"
+            ),
+            None,
+        )
+        self.assertIsNotNone(kobe_edge)
+        self.assertEqual(kobe_edge["source_dataset"], seed_db.KOBE_DAREDEMO_BUDGET_DATASET)
+        self.assertAlmostEqual(kobe_edge["value_usd"], seed_db.KOBE_DAREDEMO_BUDGET_JPY / seed_db.JPY_PER_USD)
+
+        metadata = self.unified_data["metadata"]
+        self.assertTrue(any(item["entity_id"] == "CITY_KOBE" for item in metadata.get("budgetHighlights", [])))
+        self.assertTrue(any(note["note_key"] == "kobe-daredemo-reviewed-2025" for note in metadata.get("knowledgeNotes", [])))
+        self.assertTrue(any(fact["fact_key"] == "kobe-daredemo-facilities-2025-07" for fact in metadata.get("structuredFacts", [])))
+
     def test_doc_paths_referenced_by_knowledge_notes_exist(self) -> None:
         for note in self.unified_data["metadata"].get("knowledgeNotes", []):
             doc_path = note.get("doc_path")

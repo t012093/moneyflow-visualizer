@@ -231,6 +231,30 @@ CFA_DAREDEMO_DISTRIBUTION_DESTINATIONS = [
     ),
 ]
 
+KOBE_DAREDEMO_BUDGET_DATASET = "神戸市 令和7年度予算説明書"
+KOBE_DAREDEMO_BUDGET_JPY = 137_500_000
+
+MANUAL_REVIEWED_NODES = [
+    {
+        "id": "CITY_KOBE",
+        "name": "神戸市",
+        "lat": 34.6901,
+        "lng": 135.1955,
+        "region": "Hyogo",
+        "type": "local_gov",
+        "dataset": "manual_reviewed",
+    },
+    {
+        "id": "REC_KOBE_DAREDEMO_SITES",
+        "name": "神戸市こども誰でも通園制度 実施施設群",
+        "lat": 34.6905,
+        "lng": 135.1947,
+        "region": "Hyogo",
+        "type": "recipient",
+        "dataset": "manual_reviewed",
+    },
+]
+
 SOURCE_TITLE_HINTS = [
     (
         "20250326_policies_budget_67.pdf",
@@ -496,6 +520,30 @@ BUDGET_HIGHLIGHTS = [
         "page_number": 11,
         "display_order": 130,
     },
+    {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "section_key": "overview",
+        "title": "神戸市こども誰でも通園制度",
+        "amount_text": "1.375億円",
+        "amount_oku_yen": 1.375,
+        "summary": "神戸市の令和7年度予算説明書では、保育振興費の内数として「こども誰でも通園制度 137,500千円」を計上しています。",
+        "source_title": "神戸市 令和7年度予算説明書（こども家庭局）",
+        "source_url": "https://www.city.kobe.lg.jp/documents/77626/r7kodomo.pdf#page=20&search=%E3%81%93%E3%81%A9%E3%82%82%E8%AA%B0%E3%81%A7%E3%82%82%E9%80%9A%E5%9C%92%E5%88%B6%E5%BA%A6",
+        "page_number": 20,
+        "display_order": 210,
+    },
+    {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "section_key": "major_program",
+        "title": "2025年7月1日時点の実施施設",
+        "amount_text": "35施設",
+        "summary": "2024年度から継続する21施設に、新規選定14施設を加えた35施設で開始しています。",
+        "source_title": "令和7年度「神戸市こども誰でも通園制度」実施施設の拡充",
+        "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+        "display_order": 220,
+    },
 ]
 
 
@@ -639,6 +687,47 @@ KNOWLEDGE_NOTES = [
             {
                 "title": "広島市 乳児等通園支援事業に係る管理運用業務",
                 "url": "https://www.city.hiroshima.lg.jp/business/nyusatsu/1006046/1006060/1046169/1046854.html",
+                "source_kind": "official_html",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "note_key": "kobe-daredemo-reviewed-2025",
+        "title": "神戸市こども誰でも通園制度の reviewed メモ",
+        "summary": "神戸市では令和7年度予算説明書で 137,500千円を計上し、2025年7月1日時点で35施設、2026年3月5日時点で44施設へ拡充しています。",
+        "key_points": [
+            "令和7年度予算説明書の保育振興費では、こども誰でも通園制度 137,500千円が確認できる。",
+            "2025年5月21日の公式発表では、継続21施設に新規14施設を加え、2025年7月1日時点で35施設として開始している。",
+            "実施事業者募集要項では、0歳1,300円、1歳1,100円、2歳900円の時間単価に加え、賃借料と改修費の補助上限が示されている。",
+            "神戸市の制度ページでは、2026年3月5日時点で44施設、利用者負担は300円/時間として案内されている。",
+        ],
+        "doc_path": "docs/funding-knowledge/local-governments/hyogo/KOBE_DAREDEMO_TSUEN_2025.md",
+        "display_order": 210,
+        "sources": [
+            {
+                "title": "神戸市 令和7年度予算説明書（こども家庭局）",
+                "url": "https://www.city.kobe.lg.jp/documents/77626/r7kodomo.pdf#page=20&search=%E3%81%93%E3%81%A9%E3%82%82%E8%AA%B0%E3%81%A7%E3%82%82%E9%80%9A%E5%9C%92%E5%88%B6%E5%BA%A6",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+            {
+                "title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充",
+                "url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+                "source_kind": "official_html",
+                "authority_level": "primary",
+            },
+            {
+                "title": "令和７年度神戸市こども誰でも通園制度 実施事業者募集要項",
+                "url": "https://www.city.kobe.lg.jp/documents/78828/boshuyoukou_1.pdf",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+            {
+                "title": "神戸市こども誰でも通園制度",
+                "url": "https://www.city.kobe.lg.jp/z/kodomokatekyoku/kosodateshien/daredemotuen.html",
                 "source_kind": "official_html",
                 "authority_level": "primary",
             },
@@ -908,6 +997,114 @@ STRUCTURED_FACTS = [
             {
                 "title": "こども誰でも通園制度 令和6年度の実施状況",
                 "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/c53b2923-930e-4490-9ea6-02f1b02f04dc/e23e860d/20250717_councils_daredemotsuen-kentokai_5ao3a471_02.pdf",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "fact_key": "kobe-daredemo-budget-2025",
+        "fact_group": "budget",
+        "title": "令和7年度予算説明書の計上額",
+        "value_text": "137,500千円",
+        "numeric_value": 137500,
+        "unit": "千円",
+        "summary": "神戸市の令和7年度予算説明書では、保育振興費の内数として「こども誰でも通園制度 137,500千円」を計上しています。",
+        "note_key": "kobe-daredemo-reviewed-2025",
+        "source_excerpt": "保育振興費 (8) こども誰でも通園制度 137,500千円",
+        "display_order": 210,
+        "sources": [
+            {
+                "title": "神戸市 令和7年度予算説明書（こども家庭局）",
+                "url": "https://www.city.kobe.lg.jp/documents/77626/r7kodomo.pdf#page=20&search=%E3%81%93%E3%81%A9%E3%82%82%E8%AA%B0%E3%81%A7%E3%82%82%E9%80%9A%E5%9C%92%E5%88%B6%E5%BA%A6",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "fact_key": "kobe-daredemo-facilities-2025-07",
+        "fact_group": "rollout",
+        "title": "2025年7月1日時点の実施施設数",
+        "value_text": "35施設",
+        "numeric_value": 35,
+        "unit": "施設",
+        "summary": "継続21施設に新規14施設を加えた35施設で、2025年7月1日から利用可能と公表されています。",
+        "note_key": "kobe-daredemo-reviewed-2025",
+        "source_excerpt": "継続実施している21施設に今回選定した14施設が加わり、計35施設で利用できます。",
+        "display_order": 220,
+        "sources": [
+            {
+                "title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充",
+                "url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+                "source_kind": "official_html",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "fact_key": "kobe-daredemo-new-facilities-2025-07",
+        "fact_group": "rollout",
+        "title": "2025年度の新規選定施設数",
+        "value_text": "14施設",
+        "numeric_value": 14,
+        "unit": "施設",
+        "summary": "2025年度の公募では21施設の応募があり、そのうち14施設が新たに選定されています。",
+        "note_key": "kobe-daredemo-reviewed-2025",
+        "source_excerpt": "21施設から応募があったところ、新たに14施設を選定しました。",
+        "display_order": 230,
+        "sources": [
+            {
+                "title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充",
+                "url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+                "source_kind": "official_html",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "fact_key": "kobe-daredemo-user-fee-2025",
+        "fact_group": "user_fee",
+        "title": "利用者負担",
+        "value_text": "300円/時間",
+        "numeric_value": 300,
+        "unit": "円/時間",
+        "summary": "神戸市の制度ページでは、2025年度の基本利用料を300円/時間と案内しています。",
+        "note_key": "kobe-daredemo-reviewed-2025",
+        "source_excerpt": "子ども1人1時間あたり300円",
+        "display_order": 240,
+        "sources": [
+            {
+                "title": "神戸市こども誰でも通園制度",
+                "url": "https://www.city.kobe.lg.jp/z/kodomokatekyoku/kosodateshien/daredemotuen.html",
+                "source_kind": "official_html",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "CITY_KOBE",
+        "fiscal_year": 2025,
+        "fact_key": "kobe-daredemo-subsidy-unit-rates-2025",
+        "fact_group": "subsidy_rule",
+        "title": "施設向け基本単価",
+        "value_text": "0歳1,300円 / 1歳1,100円 / 2歳900円",
+        "summary": "実施事業者募集要項では、年齢別の時間単価に基づいて実施施設へ補助する設計が示されています。",
+        "note_key": "kobe-daredemo-reviewed-2025",
+        "source_excerpt": "0歳児 1,300円、1歳児 1,100円、2歳児 900円",
+        "display_order": 250,
+        "sources": [
+            {
+                "title": "令和７年度神戸市こども誰でも通園制度 実施事業者募集要項",
+                "url": "https://www.city.kobe.lg.jp/documents/78828/boshuyoukou_1.pdf",
                 "source_kind": "official_pdf",
                 "authority_level": "primary",
             },
@@ -2167,6 +2364,92 @@ def seed_cfa_daredemo_distribution_edges(conn: sqlite3.Connection) -> int:
     return inserted_edges
 
 
+def seed_manual_reviewed_local_gov_entries(conn: sqlite3.Connection) -> tuple[int, int]:
+    inserted_nodes = 0
+    inserted_edges = 0
+
+    for node in MANUAL_REVIEWED_NODES:
+        cursor = conn.execute(
+            """
+            INSERT OR IGNORE INTO nodes (id, name, name_en, lat, lng, region, type, dataset)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            """,
+            (
+                node["id"],
+                node["name"],
+                extract_name_en(node["name"]) or None,
+                node["lat"],
+                node["lng"],
+                node["region"],
+                node["type"],
+                node["dataset"],
+            ),
+        )
+        if cursor.rowcount:
+            inserted_nodes += 1
+
+    value_usd = KOBE_DAREDEMO_BUDGET_JPY / JPY_PER_USD
+    cursor = conn.execute(
+        """
+        INSERT INTO edges (
+          source_id,
+          target_id,
+          category,
+          sub_category,
+          value_usd,
+          value_jpy,
+          fiscal_year,
+          confidence,
+          source_dataset,
+          description
+        )
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        """,
+        (
+            "CITY_KOBE",
+            "REC_KOBE_DAREDEMO_SITES",
+            "welfare",
+            "乳児等通園支援事業",
+            value_usd,
+            KOBE_DAREDEMO_BUDGET_JPY,
+            2025,
+            0.98,
+            KOBE_DAREDEMO_BUDGET_DATASET,
+            "神戸市の令和7年度予算説明書では、保育振興費の内数として「こども誰でも通園制度 137,500千円」を計上。実施事業者募集要項では、施設補助と賃借料・改修費補助の枠組みが示されている。",
+        ),
+    )
+    edge_id = cursor.lastrowid
+    inserted_edges += 1
+
+    conn.execute(
+        """
+        INSERT INTO source_provenance (
+          edge_id,
+          source_id,
+          source_url,
+          source_title,
+          page_number,
+          extracted_text,
+          extraction_method,
+          confidence
+        )
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+        """,
+        (
+            edge_id,
+            None,
+            "https://www.city.kobe.lg.jp/documents/77626/r7kodomo.pdf#page=20&search=%E3%81%93%E3%81%A9%E3%82%82%E8%AA%B0%E3%81%A7%E3%82%82%E9%80%9A%E5%9C%92%E5%88%B6%E5%BA%A6",
+            "神戸市 令和7年度予算説明書（こども家庭局）",
+            20,
+            "保育振興費 (8) こども誰でも通園制度 137,500千円",
+            "script_generated",
+            0.98,
+        ),
+    )
+
+    return inserted_nodes, inserted_edges
+
+
 def export_frontend_json(conn: sqlite3.Connection) -> Tuple[str, int, int]:
     """Export the unified DB back to a single JSON for the frontend"""
     export_path = os.path.join(DATA_DIR, "unified_data.json")
@@ -2505,6 +2788,13 @@ def main():
     if bridged_edges:
         print(f"  ✅ {'CFA こども誰でも通園制度 bridge':45s} → {bridged_edges:>4d} edges")
         total_edges += bridged_edges
+
+    manual_nodes, manual_edges = seed_manual_reviewed_local_gov_entries(conn)
+    conn.commit()
+    if manual_nodes or manual_edges:
+        print(f"  ✅ {'Manual reviewed local-gov entries':45s} → {manual_nodes:>3d} nodes, {manual_edges:>4d} edges")
+        total_nodes += manual_nodes
+        total_edges += manual_edges
 
     print(f"\n  Total imported: {total_nodes} nodes, {total_edges} edges")
 
