@@ -218,9 +218,17 @@
     },
     {
       "id": "REC_AFTER_SCHOOL_DX",
-      "name": "放課後児童クラブ (DX・体制強化)",
+      "name": "放課後児童クラブ (研修関係)",
       "lat": 35.67,
       "lng": 139.67,
+      "region": "Social Security",
+      "type": "recipient"
+    },
+    {
+      "id": "REC_AFTER_SCHOOL_DX_PILOT",
+      "name": "放課後児童クラブ (DX推進実証)",
+      "lat": 35.675,
+      "lng": 139.675,
       "region": "Social Security",
       "type": "recipient"
     },
@@ -1853,9 +1861,22 @@
       "year": 2025,
       "confidence": 0.98,
       "source_dataset": "こども家庭庁 令和7年度予算 概算要求（事業別の資料集）",
-      "description": "利用手続きオンライン化・ICT推進実証事業、第三者評価の推進、利用調整支援など",
+      "description": "放課後児童支援員認定資格研修事業、放課後児童支援員等資質向上研修事業",
       "evidence_text": "＜こども政策推進事業費補助金（放課後関係）＞令和７年度概算要求額 29億円",
-      "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=74&search=29"
+      "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=75&search=%E7%A0%94%E4%BF%AE"
+    },
+    {
+      "source_id": "MIN_CFA",
+      "target_id": "REC_AFTER_SCHOOL_DX_PILOT",
+      "category": "welfare",
+      "sub_category": "放課後児童クラブ利用手続き等に関わるDX推進実証事業 (R7)",
+      "value_usd": 733333,
+      "year": 2025,
+      "confidence": 0.98,
+      "source_dataset": "こども家庭庁 令和7年度予算 概算要求（事業別の資料集）",
+      "description": "利用申請のオンライン化、利用調整、保護者連絡、請求、出欠管理、育成支援記録などをつなぐ市町村DX実証",
+      "evidence_text": "放課後児童クラブ利用手続き等に関わるDX推進実証事業（仮称） 令和７年度概算要求額 1.1億円",
+      "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=19&search=1.1%E5%84%84%E5%86%86"
     },
     {
       "source_id": "MIN_CFA",

@@ -8,10 +8,10 @@ Usage:
   python scripts/seed_db.py
 """
 
-import sqlite3
 import json
 import os
 import re
+import sqlite3
 from datetime import datetime, timedelta, timezone
 from typing import Any, Dict, Tuple
 from urllib.error import HTTPError, URLError
@@ -192,6 +192,7 @@ MINISTRY_BUDGET_DATASETS = {
 
 CFA_DAREDEMO_MODELED_DATASET = "こども誰でも通園制度(仮称)の本格実施に向けた制度移行 (想定)"
 CFA_AFTER_SCHOOL_OP_MODELED_DATASET = "放課後児童クラブ（運営費・処遇改善）運営主体別按分 (令和7年実施状況ベース)"
+CFA_AFTER_SCHOOL_FAC_MODELED_DATASET = "放課後児童クラブ（施設整備）公立・民間整備按分 (令和7年実施状況ベース)"
 
 DISTRIBUTION_MODELS_CONFIG_PATH = os.path.join(os.path.dirname(__file__), "distribution_models.json")
 
@@ -202,9 +203,10 @@ def load_distribution_models_config() -> dict[str, list[dict[str, Any]]]:
 
     nodes = payload.get("nodes", [])
     models = payload.get("models", [])
-    if not isinstance(nodes, list) or not isinstance(models, list):
-        raise ValueError("distribution_models.json must contain 'nodes' and 'models' arrays")
-    return {"nodes": nodes, "models": models}
+    implementation_site_models = payload.get("implementation_site_models", [])
+    if not isinstance(nodes, list) or not isinstance(models, list) or not isinstance(implementation_site_models, list):
+        raise ValueError("distribution_models.json must contain 'nodes', 'models', and optional 'implementation_site_models' arrays")
+    return {"nodes": nodes, "models": models, "implementation_site_models": implementation_site_models}
 
 
 def merge_manual_reviewed_nodes(*node_groups: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -223,6 +225,7 @@ def merge_manual_reviewed_nodes(*node_groups: list[dict[str, Any]]) -> list[dict
 DISTRIBUTION_MODELS_CONFIG = load_distribution_models_config()
 DISTRIBUTION_MODEL_NODES = DISTRIBUTION_MODELS_CONFIG["nodes"]
 DISTRIBUTION_MODELS = DISTRIBUTION_MODELS_CONFIG["models"]
+IMPLEMENTATION_SITE_FLOW_MODELS = DISTRIBUTION_MODELS_CONFIG["implementation_site_models"]
 
 KOBE_DAREDEMO_BUDGET_DATASET = "神戸市 令和7年度予算説明書"
 KOBE_DAREDEMO_BUDGET_JPY = 137_500_000
@@ -320,6 +323,7 @@ IMPLEMENTATION_SITES = [
         "fiscal_year": 2025,
         "site_key": f"kobe-daredemo-{index:02d}",
         "program_key": "kobe-daredemo-tsuen",
+        "flow_parent_id": "REC_KOBE_DAREDEMO_SITES",
         "note_key": "kobe-daredemo-reviewed-2025",
         "site_name": site_name,
         "ward": ward,
@@ -332,6 +336,20 @@ IMPLEMENTATION_SITES = [
     }
     for index, (ward, site_name) in enumerate(KOBE_DAREDEMO_SITE_ROWS, start=1)
 ]
+
+IMPLEMENTATION_SITE_COORDINATE_HINTS: dict[str, dict[str, tuple[float, float]]] = {
+    "CITY_KOBE": {
+        "東灘区": (34.7206, 135.2661),
+        "灘区": (34.7084, 135.2403),
+        "中央区": (34.6908, 135.1954),
+        "兵庫区": (34.6769, 135.1652),
+        "北区": (34.7274, 135.1445),
+        "長田区": (34.6659, 135.1447),
+        "須磨区": (34.6566, 135.0957),
+        "垂水区": (34.6390, 135.0504),
+        "西区": (34.6765, 134.9933),
+    }
+}
 
 SOURCE_TITLE_HINTS = [
     (
@@ -785,13 +803,23 @@ KNOWLEDGE_NOTES = [
         "entity_id": "MIN_CFA",
         "fiscal_year": 2025,
         "note_key": "after-school-club-support-2025",
-        "title": "放課後児童クラブ4事業の支援内容とお金の流れ",
-        "summary": "2025年度の放課後児童クラブ関連4事業は、運営費・処遇改善、施設整備、DX・体制強化、巡回等サポートに分かれ、こども家庭庁から自治体を経て各実施主体や委託先へ流れる構造です。",
+        "title": "放課後児童クラブ関係予算の支援内容とお金の流れ",
+        "summary": "2025年度の放課後児童クラブ関係予算は、運営費・処遇改善、施設整備、研修、DX推進実証、巡回等サポートなどに分かれ、こども家庭庁から自治体や実施主体へ流れる構造です。",
         "key_points": [
-            "放課後児童クラブの関連4事業は、1,209億円、143億円、29億円、11億円の reviewed edge として 2025年度に整理されている。",
+            "放課後児童クラブ関係の主要 reviewed edge は、運営費・処遇改善 1,209億円、施設整備 143億円、研修関係 29億円、DX推進実証 1.1億円、巡回等サポート 11億円として 2025年度に整理されている。",
             "運営費・処遇改善はクラブ運営、支援員処遇改善、障害児受入加配、送迎支援を支える予算で、自治体から公営クラブや委託運営主体へ流れる。",
             "令和7年実施状況では、運営主体別クラブ数は 公立公営 5,800か所、公立民営 13,543か所、民立民営 6,585か所で、アプリではこのシェアを second hop の按分比率として使っている。",
-            "施設整備は改修や新規実施の環境整備、DX・体制強化はオンライン化や第三者評価、巡回等サポートは要支援児対応や巡回アドバイザー配置を支える。",
+            "施設整備は市町村主体の公立整備と社会福祉法人等主体の民間整備に分かれるが、執行額内訳は未公表のため、アプリではクラブ数シェアを proxy に second hop で按分している。",
+            "公立整備ルートは市町村が設置主体であることが条件で、PFI整備後に市町村が買い取る方式も含まれる。",
+            "創設では、本体工事費、工事請負費、工事事務費、既存建物買収費、賃借料加算等が対象になりうる一方、土地買収費や整地費、外構などは対象外とされる。",
+            "創設の基準として、専用区画 1.65㎡/人以上、支援の単位ごとに職員2人以上、うち1人以上は放課後児童支援員、1単位おおむね40人以下が示されている。",
+            "29億円の `こども政策推進事業費補助金（放課後関係）` のページで明示されているのは、放課後児童支援員認定資格研修事業と放課後児童支援員等資質向上研修事業であり、以前の `DX・体制強化 29億円` 表示より `研修関係 29億円` と読む方が正確である。",
+            "研修関係の出口は、認定資格研修と資質向上研修の2本が確認できる。前者は都道府県・指定都市・中核市、後者は都道府県又は市町村が実施主体で、いずれも民間団体等への委託が可能である。",
+            "研修関係の third-hop は、金額比率未公表のため `実施主体 / 受託事業者` の二系統を均等按分する model-based 表示にしている。東京都では株式会社東京リーガルマインド、山口県では特定非営利活動法人学童保育協会、新潟県では株式会社東京リーガルマインドへの委託例が確認できる。",
+            "DXそのものは別建てで、放課後児童クラブ利用手続き等に関わるDX推進実証事業（仮称） 1.1億円が確認できる。市町村・運営法人/事業所・開発ベンダーで構成するコンソーシアム方式で、アプリでは費目別内訳未公表のため3者均等按分の model-based second hop を置いている。",
+            "ICT化推進は 2,431億円の内数で、システム導入 50万円/か所、翻訳機等 15万円/か所の単価が示されている。",
+            "千葉県の令和7年度協議施設一覧では、公立ルートの例として 船橋市 中野木第2放課後ルームや柏市立光ケ丘小こどもルーム第三保育室、民間ルートの例として シダックス大新東ヒューマンサービス株式会社、学校法人アゼリー学園、社会福祉法人佐原めぐみ会が確認できる。",
+            "第三者評価受審推進事業と利用調整支援事業は 1,209億円 の運営費等の並びで確認できるが、個別金額は切れていない。巡回等サポートは要支援児対応や巡回アドバイザー配置を支える。",
         ],
         "doc_path": "docs/funding-knowledge/ministries/child-and-family-agency/AFTER_SCHOOL_CLUB_SUPPORT_2025.md",
         "display_order": 40,
@@ -821,14 +849,86 @@ KNOWLEDGE_NOTES = [
                 "authority_level": "primary",
             },
             {
-                "title": "令和7年度 こども・子育て支援関係予算のポイント",
-                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/efa58163-4cc2-43d6-ba57-3df41d552a52/857bf219/20241227_policies_kosodateshien_budget_07.pdf#page=19",
+                "title": "令和7年度こども家庭庁予算 事業別資料集",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=19",
                 "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+            {
+                "title": "令和7年度こども家庭庁予算 事業別資料集",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=20",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+            {
+                "title": "令和7年度こども家庭庁予算 事業別資料集",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=75",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+            {
+                "title": "放課後児童支援員等研修事業実施要綱",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/e28ec5c7-3af2-465e-82fa-040a88ce0ba2/950b9dad/20251125_councils_shingikai_kodomo_ibasho_jidoukan_e28ec5c7_17.pdf#page=1",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+            {
+                "title": "東京都 放課後児童支援員認定資格研修",
+                "url": "https://www.fukushi.metro.tokyo.lg.jp/kodomo/hoiku/gakudou_jidoukan/houkagojidoushienin_nintei",
+                "source_kind": "official_html",
+                "authority_level": "primary",
+            },
+            {
+                "title": "山口県 令和7年度放課後児童支援員認定資格研修",
+                "url": "https://www.pref.yamaguchi.lg.jp/soshiki/51/152717.html",
+                "source_kind": "official_html",
+                "authority_level": "primary",
+            },
+            {
+                "title": "新潟県 放課後児童支援員研修（認定資格研修・資質向上研修）開催案内",
+                "url": "https://www.pref.niigata.lg.jp/sec/kodomokatei/13569249670772.html",
+                "source_kind": "official_html",
                 "authority_level": "primary",
             },
             {
                 "title": "令和7年度 こども・子育て支援関係予算のポイント",
                 "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/efa58163-4cc2-43d6-ba57-3df41d552a52/857bf219/20241227_policies_kosodateshien_budget_07.pdf#page=26",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+            {
+                "title": "千葉県 放課後児童健全育成事業について",
+                "url": "https://www.pref.chiba.lg.jp/kosodate/hoikusho/houkago/shishin.html",
+                "source_kind": "official_html",
+                "authority_level": "primary",
+            },
+            {
+                "title": "令和7年度子ども・子育て支援施設整備交付金協議施設一覧",
+                "url": "https://www.pref.chiba.lg.jp/kosodate/hoikusho/houkago/documents/seibiitiran.pdf",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+            {
+                "title": "子ども・子育て支援施設整備交付金の交付について",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/0abf2f27-1ebe-4fa2-bab8-362dd67ffc4b/f0bce416/20250425_policies_kosodateshien_houkago-jidou_hourei-tsuuti_65.pdf",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+            {
+                "title": "子ども・子育て支援施設整備交付金に係る施設整備の取扱い",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/0abf2f27-1ebe-4fa2-bab8-362dd67ffc4b/01d80820/20250425_policies_kosodateshien_houkago-jidou_hourei-tsuuti_66.pdf",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+            {
+                "title": "放課後児童健全育成事業の設備及び運営に関する基準について",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/27f4a5b4-53c9-446d-ab3d-7c7055949a26/6ad7465b/20230929_policies_kokoseido_law_tsuuchi_tsuuchi-h24-h29_635.pdf",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+            {
+                "title": "放課後児童健全育成事業の「児童の数」の具体的な算出方法の例",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/0abf2f27-1ebe-4fa2-bab8-362dd67ffc4b/f4bc9772/20250513_policies_kosodateshien_houkago-jidou_hourei-tsuuti_67.pdf",
                 "source_kind": "official_pdf",
                 "authority_level": "primary",
             },
@@ -1222,26 +1322,182 @@ STRUCTURED_FACTS = [
     {
         "entity_id": "MIN_CFA",
         "fiscal_year": 2025,
-        "fact_key": "after-school-club-dx-budget-2025",
+        "fact_key": "after-school-club-training-budget-2025",
         "fact_group": "after_school_club",
-        "title": "DX・体制強化",
+        "title": "研修関係",
         "value_text": "29億円",
         "numeric_value": 29,
         "unit": "億円",
-        "summary": "利用手続きオンライン化、ICT推進実証事業、第三者評価の推進、利用調整支援などを支える予算です。",
+        "summary": "こども政策推進事業費補助金（放課後関係）29億円のページで明示されているのは、放課後児童支援員認定資格研修事業と放課後児童支援員等資質向上研修事業です。",
         "note_key": "after-school-club-support-2025",
-        "source_excerpt": "利用手続きオンライン化・ICT推進実証事業、第三者評価の推進、利用調整支援など",
+        "source_excerpt": "放課後児童支援員認定資格研修事業、放課後児童支援員等資質向上研修事業",
         "display_order": 90,
         "sources": [
             {
                 "title": "令和7年度こども家庭庁予算 事業別資料集",
-                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=74&search=29",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=75&search=%E7%A0%94%E4%BF%AE",
                 "source_kind": "official_pdf",
                 "authority_level": "primary",
             },
+        ],
+    },
+    {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "after-school-club-dx-pilot-budget-2025",
+        "fact_group": "after_school_club",
+        "title": "DX推進実証",
+        "value_text": "1.1億円",
+        "numeric_value": 1.1,
+        "unit": "億円",
+        "summary": "放課後児童クラブ利用手続き等に関わるDX推進実証事業は、市町村による総合的なDX実証を支える別建て事業です。",
+        "note_key": "after-school-club-support-2025",
+        "source_excerpt": "放課後児童クラブ利用手続き等に関わるDX推進実証事業（仮称） 令和７年度概算要求額 1.1億円",
+        "display_order": 95,
+        "sources": [
             {
-                "title": "令和7年度 こども・子育て支援関係予算のポイント",
-                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/efa58163-4cc2-43d6-ba57-3df41d552a52/857bf219/20241227_policies_kosodateshien_budget_07.pdf#page=26",
+                "title": "令和7年度こども家庭庁予算 事業別資料集",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=19&search=1.1%E5%84%84%E5%86%86",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "after-school-club-training-certification-2025",
+        "fact_group": "after_school_club",
+        "title": "認定資格研修",
+        "value_text": "都道府県・指定都市・中核市が実施、市町村や民間団体等へ一部委託可",
+        "summary": "放課後児童支援員として認定されるために修了が義務づけられている研修です。",
+        "note_key": "after-school-club-support-2025",
+        "source_excerpt": "放課後児童支援員認定資格研修事業。都道府県・指定都市・中核市が実施主体。一部委託可能。",
+        "display_order": 92,
+        "sources": [
+            {
+                "title": "放課後児童支援員等研修事業実施要綱",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/e28ec5c7-3af2-465e-82fa-040a88ce0ba2/950b9dad/20251125_councils_shingikai_kodomo_ibasho_jidoukan_e28ec5c7_17.pdf#page=1",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "after-school-club-training-upskilling-2025",
+        "fact_group": "after_school_club",
+        "title": "資質向上研修",
+        "value_text": "都道府県又は市町村が実施、民間団体等へ全部又は一部委託可",
+        "summary": "放課後児童クラブの現任職員向けに実施する資質向上研修です。",
+        "note_key": "after-school-club-support-2025",
+        "source_excerpt": "放課後児童支援員等資質向上研修事業。都道府県又は市町村が実施主体。全部又は一部委託可能。",
+        "display_order": 93,
+        "sources": [
+            {
+                "title": "放課後児童支援員等研修事業実施要綱",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/e28ec5c7-3af2-465e-82fa-040a88ce0ba2/950b9dad/20251125_councils_shingikai_kodomo_ibasho_jidoukan_e28ec5c7_17.pdf#page=1",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "after-school-club-training-certification-examples-2025",
+        "fact_group": "after_school_club",
+        "title": "認定資格研修の受け皿例",
+        "value_text": "東京都=東京リーガルマインド、山口県=NPO法人学童保育協会、新潟県=東京リーガルマインド",
+        "summary": "認定資格研修では、都道府県等が実施主体となり、民間事業者やNPOに委託するルートが自治体公表資料で確認できます。",
+        "note_key": "after-school-club-support-2025",
+        "source_excerpt": "東京都では株式会社東京リーガルマインド、山口県では特定非営利活動法人学童保育協会、新潟県では株式会社東京リーガルマインドへの委託例が確認できる。",
+        "display_order": 94,
+        "sources": [
+            {
+                "title": "東京都 放課後児童支援員認定資格研修",
+                "url": "https://www.fukushi.metro.tokyo.lg.jp/kodomo/hoiku/gakudou_jidoukan/houkagojidoushienin_nintei",
+                "source_kind": "official_html",
+                "authority_level": "primary",
+            },
+            {
+                "title": "山口県 令和7年度放課後児童支援員認定資格研修",
+                "url": "https://www.pref.yamaguchi.lg.jp/soshiki/51/152717.html",
+                "source_kind": "official_html",
+                "authority_level": "primary",
+            },
+            {
+                "title": "新潟県 放課後児童支援員研修（認定資格研修・資質向上研修）開催案内",
+                "url": "https://www.pref.niigata.lg.jp/sec/kodomokatei/13569249670772.html",
+                "source_kind": "official_html",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "after-school-club-training-upskilling-examples-2025",
+        "fact_group": "after_school_club",
+        "title": "資質向上研修の受け皿例",
+        "value_text": "新潟県=東京リーガルマインド、千葉県・福島県=委託仕様書/公募資料あり",
+        "summary": "資質向上研修では、都道府県又は市町村が実施主体となり、民間事業者へ委託するルートが自治体資料で確認できます。",
+        "note_key": "after-school-club-support-2025",
+        "source_excerpt": "新潟県では株式会社東京リーガルマインドへの委託例が確認でき、千葉県や福島県でも委託仕様書・公募資料が公表されている。",
+        "display_order": 95,
+        "sources": [
+            {
+                "title": "新潟県 放課後児童支援員研修（認定資格研修・資質向上研修）開催案内",
+                "url": "https://www.pref.niigata.lg.jp/sec/kodomokatei/13569249670772.html",
+                "source_kind": "official_html",
+                "authority_level": "primary",
+            },
+            {
+                "title": "放課後児童支援員等研修事業実施要綱",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/e28ec5c7-3af2-465e-82fa-040a88ce0ba2/950b9dad/20251125_councils_shingikai_kodomo_ibasho_jidoukan_e28ec5c7_17.pdf#page=1",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "after-school-club-dx-pilot-consortium-2025",
+        "fact_group": "after_school_club",
+        "title": "DX推進実証の受け皿",
+        "value_text": "市町村、放課後児童クラブ運営法人・事業所、開発ベンダー",
+        "summary": "DX推進実証は、市町村が設置するコンソーシアム方式で行われ、構成員として運営法人・事業所と開発ベンダーが明示されています。",
+        "note_key": "after-school-club-support-2025",
+        "source_excerpt": "放課後児童クラブＤＸを推進するためのコンソーシアム（構成員：市町村、放課後児童クラブ運営法人・事業所、開発ベンダー等）",
+        "display_order": 96,
+        "sources": [
+            {
+                "title": "令和7年度こども家庭庁予算 事業別資料集",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=19",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "after-school-club-ict-inner-frame-2025",
+        "fact_group": "after_school_club",
+        "title": "ICT化推進の予算枠",
+        "value_text": "2,431億円の内数",
+        "numeric_value": 2431,
+        "unit": "億円",
+        "summary": "放課後児童クラブ等におけるICT化推進事業は、子ども・子育て支援交付金 2,431億円の内数として示されており、放課後児童クラブ分だけの厳密額は切れていません。",
+        "note_key": "after-school-club-support-2025",
+        "source_excerpt": "＜子ども・子育て支援交付金＞ 令和７年度概算要求額 2,431億円の内数",
+        "display_order": 97,
+        "sources": [
+            {
+                "title": "令和7年度こども家庭庁予算 事業別資料集",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=20",
                 "source_kind": "official_pdf",
                 "authority_level": "primary",
             },
@@ -1356,6 +1612,222 @@ STRUCTURED_FACTS = [
             {
                 "title": "令和7年 放課後児童健全育成事業（放課後児童クラブ）の実施状況",
                 "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/69799c33-85cb-44f6-8c70-08ed3a292ab5/c253a682/20251222_policies_kosodateshien_houkago-jidou_80.pdf#page=9",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "after-school-club-fac-public-route-2025",
+        "fact_group": "after_school_club_distribution",
+        "title": "施設整備の公立ルート",
+        "value_text": "市町村 / 国1/3・都道府県1/3・市町村1/3",
+        "summary": "施設整備の公立ルートでは、設置主体は市町村で、基本の補助率は国1/3・都道府県1/3・市町村1/3です。待機児童市町村等では国2/3・都道府県1/6・市町村1/6へ嵩上げされます。",
+        "note_key": "after-school-club-support-2025",
+        "source_excerpt": "公立の場合 設置主体 市町村 補助率（嵩上げ前）国1/3・都道府県1/3・市町村1/3",
+        "display_order": 145,
+        "sources": [
+            {
+                "title": "令和7年度 こども・子育て支援関係予算のポイント",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/efa58163-4cc2-43d6-ba57-3df41d552a52/857bf219/20241227_policies_kosodateshien_budget_07.pdf#page=19",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "after-school-club-fac-public-eligibility-2025",
+        "fact_group": "after_school_club_distribution",
+        "title": "公立整備ルートの条件",
+        "value_text": "設置主体が市町村であること",
+        "summary": "施設整備で公立ルートに入るのは、市町村が設置主体である案件です。PFI整備後に市町村が買い取る方式も含まれます。",
+        "note_key": "after-school-club-support-2025",
+        "source_excerpt": "公立の場合 設置主体 市町村。PFI事業者が整備し市町村が買収する場合を含む。",
+        "display_order": 147,
+        "sources": [
+            {
+                "title": "子ども・子育て支援施設整備交付金の交付について",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/0abf2f27-1ebe-4fa2-bab8-362dd67ffc4b/f0bce416/20250425_policies_kosodateshien_houkago-jidou_hourei-tsuuti_65.pdf",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "after-school-club-fac-private-route-2025",
+        "fact_group": "after_school_club_distribution",
+        "title": "施設整備の民間ルート",
+        "value_text": "社会福祉法人、学校法人、市町村が認めた者等 / 国2/9・都道府県2/9・市町村2/9・社会福祉法人等1/3",
+        "summary": "施設整備の民間ルートでは、設置主体は社会福祉法人、学校法人、市町村が認めた者等で、基本の補助率は国2/9・都道府県2/9・市町村2/9・社会福祉法人等1/3です。待機児童市町村等では国1/2・都道府県1/8・市町村1/8・社会福祉法人等1/4へ嵩上げされます。",
+        "note_key": "after-school-club-support-2025",
+        "source_excerpt": "民立の場合 設置主体 社会福祉法人、学校法人、市町村が認めた者等 補助率（嵩上げ前）国2/9・都道府県2/9・市町村2/9・社会福祉法人等1/3",
+        "display_order": 150,
+        "sources": [
+            {
+                "title": "令和7年度 こども・子育て支援関係予算のポイント",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/efa58163-4cc2-43d6-ba57-3df41d552a52/857bf219/20241227_policies_kosodateshien_budget_07.pdf#page=19",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "after-school-club-fac-creation-eligible-costs-2025",
+        "fact_group": "after_school_club_distribution",
+        "title": "創設で使える主な費用",
+        "value_text": "本体工事費、工事請負費、工事事務費、特殊附帯工事費、既存建物買収費、賃借料加算",
+        "summary": "創設では、新設に必要な工事費や事務費、条件付きの既存建物買収費、土地賃借に伴う加算などが対象になります。",
+        "note_key": "after-school-club-support-2025",
+        "source_excerpt": "対象経費は本体工事費、工事請負費、工事事務費等。既存建物買収費は新築より効率的な場合に対象。賃借料加算あり。",
+        "display_order": 152,
+        "sources": [
+            {
+                "title": "子ども・子育て支援施設整備交付金の交付について",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/0abf2f27-1ebe-4fa2-bab8-362dd67ffc4b/f0bce416/20250425_policies_kosodateshien_houkago-jidou_hourei-tsuuti_65.pdf",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+            {
+                "title": "子ども・子育て支援施設整備交付金に係る施設整備の取扱い",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/0abf2f27-1ebe-4fa2-bab8-362dd67ffc4b/01d80820/20250425_policies_kosodateshien_houkago-jidou_hourei-tsuuti_66.pdf",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "after-school-club-fac-creation-ineligible-costs-2025",
+        "fact_group": "after_school_club_distribution",
+        "title": "創設で対象外になる費用",
+        "value_text": "土地買収費、整地費、職員宿舎、外構等",
+        "summary": "創設でも、土地買収や整地、職員宿舎、門・囲障・構内通路などの外構は対象外です。",
+        "note_key": "after-school-club-support-2025",
+        "source_excerpt": "土地買収費、整地費、職員宿舎、門、囲障、構内雨水排水、構内通路等は対象外。",
+        "display_order": 153,
+        "sources": [
+            {
+                "title": "子ども・子育て支援施設整備交付金の交付について",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/0abf2f27-1ebe-4fa2-bab8-362dd67ffc4b/f0bce416/20250425_policies_kosodateshien_houkago-jidou_hourei-tsuuti_65.pdf",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "after-school-club-fac-creation-requirements-2025",
+        "fact_group": "after_school_club_distribution",
+        "title": "創設の主な要件",
+        "value_text": "専用区画1.65㎡/人以上、職員2人以上、うち1人以上支援員、1単位おおむね40人以下",
+        "summary": "創設後のクラブは、専用区画面積、職員配置、支援の単位などの設備・運営基準を満たす必要があります。",
+        "note_key": "after-school-club-support-2025",
+        "source_excerpt": "専用区画は児童1人につきおおむね1.65㎡以上。支援の単位ごとに2人以上、うち1人以上は放課後児童支援員。1単位はおおむね40人以下。",
+        "display_order": 154,
+        "sources": [
+            {
+                "title": "放課後児童健全育成事業の設備及び運営に関する基準について",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/27f4a5b4-53c9-446d-ab3d-7c7055949a26/6ad7465b/20230929_policies_kokoseido_law_tsuuchi_tsuuchi-h24-h29_635.pdf",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+            {
+                "title": "放課後児童健全育成事業の「児童の数」の具体的な算出方法の例",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/0abf2f27-1ebe-4fa2-bab8-362dd67ffc4b/f4bc9772/20250513_policies_kosodateshien_houkago-jidou_hourei-tsuuti_67.pdf",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "after-school-club-fac-public-proxy-2025",
+        "fact_group": "after_school_club_distribution",
+        "title": "施設整備按分の公立側 proxy",
+        "value_text": "19,343か所 / 74.6%",
+        "numeric_value": 19343,
+        "unit": "か所",
+        "summary": "アプリでは施設整備 143億円の second hop を、公立公営と公立民営の合計クラブ数 19,343か所を proxy に按分しています。",
+        "note_key": "after-school-club-support-2025",
+        "source_excerpt": "公立公営 5,800 と 公立民営 13,543 の合計 19,343",
+        "display_order": 155,
+        "sources": [
+            {
+                "title": "令和7年 放課後児童健全育成事業（放課後児童クラブ）の実施状況",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/69799c33-85cb-44f6-8c70-08ed3a292ab5/c253a682/20251222_policies_kosodateshien_houkago-jidou_80.pdf#page=9",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "after-school-club-fac-private-proxy-2025",
+        "fact_group": "after_school_club_distribution",
+        "title": "施設整備按分の民間側 proxy",
+        "value_text": "6,585か所 / 25.4%",
+        "numeric_value": 6585,
+        "unit": "か所",
+        "summary": "アプリでは施設整備 143億円の second hop を、民立民営クラブ数 6,585か所を proxy に按分しています。",
+        "note_key": "after-school-club-support-2025",
+        "source_excerpt": "民立民営（合計） 6,585（25.4%）",
+        "display_order": 160,
+        "sources": [
+            {
+                "title": "令和7年 放課後児童健全育成事業（放課後児童クラブ）の実施状況",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/69799c33-85cb-44f6-8c70-08ed3a292ab5/c253a682/20251222_policies_kosodateshien_houkago-jidou_80.pdf#page=9",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "after-school-club-fac-public-examples-2025",
+        "fact_group": "after_school_club_distribution",
+        "title": "施設整備の公立具体例",
+        "value_text": "船橋市 中野木第2放課後ルーム、松戸市 稔台放課後児童クラブ1/2、柏市立光ケ丘小こどもルーム第三/第四保育室 など",
+        "summary": "千葉県の令和7年度協議施設一覧では、公立ルートの具体例として市町村直営の放課後ルーム、こどもルーム、学童保育所の整備案件が確認できます。",
+        "note_key": "after-school-club-support-2025",
+        "source_excerpt": "船橋市 中野木第2放課後ルーム、松戸市 稔台放課後児童クラブ1/2、柏市立光ケ丘小こどもルーム第三保育室/第四保育室、八千代台学童保育所A/B/C、西部小学校第1放課後児童クラブ",
+        "display_order": 165,
+        "sources": [
+            {
+                "title": "令和7年度子ども・子育て支援施設整備交付金協議施設一覧",
+                "url": "https://www.pref.chiba.lg.jp/kosodate/hoikusho/houkago/documents/seibiitiran.pdf",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "after-school-club-fac-private-examples-2025",
+        "fact_group": "after_school_club_distribution",
+        "title": "施設整備の民間具体例",
+        "value_text": "シダックス大新東ヒューマンサービス株式会社、保護者会レインボーキッズ、学校法人アゼリー学園、社会福祉法人佐原めぐみ会 など",
+        "summary": "千葉県の令和7年度協議施設一覧では、民間ルートの具体例として株式会社系受託事業者、保護者会、学校法人、社会福祉法人が関わる整備案件が確認できます。",
+        "note_key": "after-school-club-support-2025",
+        "source_excerpt": "館山学童クラブA-D、上野小学校放課後ルーム、勝浦小学校放課後ルーム1/2、学童クラブ レインボーキッズ(1)(2)、学童クラブ アゼリーアカデミア千葉ニュータウン、学童クラブめぐみ(1)(2)",
+        "display_order": 170,
+        "sources": [
+            {
+                "title": "令和7年度子ども・子育て支援施設整備交付金協議施設一覧",
+                "url": "https://www.pref.chiba.lg.jp/kosodate/hoikusho/houkago/documents/seibiitiran.pdf",
                 "source_kind": "official_pdf",
                 "authority_level": "primary",
             },
@@ -2858,10 +3330,11 @@ def render_distribution_extracted_text(template: str | None, context: dict[str, 
     return template.format(**safe_context)
 
 
-def seed_distribution_model(conn: sqlite3.Connection, model: dict[str, Any]) -> int:
-    source_id = str(model["source_id"])
-    fiscal_year = int(model["fiscal_year"])
-    parent_edge_spec = model["parent_edge"]
+def resolve_parent_edge_reference(
+    conn: sqlite3.Connection,
+    parent_edge_spec: dict[str, Any],
+    fiscal_year: int,
+) -> tuple[int, float, str | None, str | None, int | None] | None:
     parent_edge = conn.execute(
         """
         SELECT e.id, e.value_usd
@@ -2879,13 +3352,11 @@ def seed_distribution_model(conn: sqlite3.Connection, model: dict[str, Any]) -> 
         ),
     ).fetchone()
 
-    if not parent_edge:
-        return 0
+    if not parent_edge or parent_edge[1] is None:
+        return None
 
-    parent_edge_id, parent_value_usd = parent_edge
-    if parent_value_usd is None:
-        return 0
-
+    parent_edge_id = int(parent_edge[0])
+    parent_value_usd = float(parent_edge[1])
     parent_provenance = conn.execute(
         """
         SELECT source_url, source_title, page_number
@@ -2908,6 +3379,71 @@ def seed_distribution_model(conn: sqlite3.Connection, model: dict[str, Any]) -> 
         if parent_provenance and parent_provenance[2] is not None
         else parent_edge_spec.get("fallback_page_number")
     )
+    return parent_edge_id, parent_value_usd, parent_source_url, parent_source_title, parent_page_number
+
+
+def build_implementation_site_node_id(site_key: str) -> str:
+    normalized = re.sub(r"[^A-Z0-9]+", "_", site_key.upper()).strip("_")
+    return f"IMPL_SITE_{normalized}"
+
+
+def resolve_implementation_site_coordinates(
+    conn: sqlite3.Connection,
+    entity_id: str,
+    ward: str | None,
+    ward_site_index: int,
+) -> tuple[float, float]:
+    ward_hints = IMPLEMENTATION_SITE_COORDINATE_HINTS.get(entity_id, {})
+    base_lat, base_lng = ward_hints.get(ward or "", (0.0, 0.0))
+    if base_lat == 0.0 and base_lng == 0.0:
+        entity_row = conn.execute(
+            "SELECT lat, lng FROM nodes WHERE id = ? LIMIT 1",
+            (entity_id,),
+        ).fetchone()
+        if entity_row and entity_row[0] is not None and entity_row[1] is not None:
+            base_lat, base_lng = float(entity_row[0]), float(entity_row[1])
+        else:
+            base_lat, base_lng = 35.0, 135.0
+
+    row_offset = ward_site_index // 4
+    column_offset = ward_site_index % 4
+    lat = base_lat + (row_offset - 0.5) * 0.003
+    lng = base_lng + (column_offset - 1.5) * 0.003
+    return round(lat, 6), round(lng, 6)
+
+
+def ensure_generated_nodes(conn: sqlite3.Connection, nodes: list[dict[str, Any]]) -> int:
+    inserted_nodes = 0
+    for node in nodes:
+        cursor = conn.execute(
+            """
+            INSERT OR IGNORE INTO nodes (id, name, name_en, lat, lng, region, type, dataset)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            """,
+            (
+                node["id"],
+                node["name"],
+                extract_name_en(node["name"]) or None,
+                node["lat"],
+                node["lng"],
+                node["region"],
+                node["type"],
+                node["dataset"],
+            ),
+        )
+        inserted_nodes += cursor.rowcount
+    return inserted_nodes
+
+
+def seed_distribution_model(conn: sqlite3.Connection, model: dict[str, Any]) -> int:
+    source_id = str(model["source_id"])
+    fiscal_year = int(model["fiscal_year"])
+    parent_edge_spec = model["parent_edge"]
+    parent_reference = resolve_parent_edge_reference(conn, parent_edge_spec, fiscal_year)
+    if not parent_reference:
+        return 0
+
+    _, parent_value_usd, parent_source_url, parent_source_title, parent_page_number = parent_reference
 
     destinations = model.get("destinations", [])
     ensure_manual_reviewed_nodes(conn, {str(item["target_id"]) for item in destinations})
@@ -3026,6 +3562,179 @@ def seed_distribution_models(conn: sqlite3.Connection) -> list[tuple[str, int]]:
     for model in DISTRIBUTION_MODELS:
         inserted_edges = seed_distribution_model(conn, model)
         results.append((str(model.get("label") or model.get("key") or model["source_id"]), inserted_edges))
+    return results
+
+
+def seed_implementation_site_flow_model(conn: sqlite3.Connection, model: dict[str, Any]) -> tuple[int, int]:
+    source_id = str(model["source_id"])
+    entity_id = str(model["entity_id"])
+    fiscal_year = int(model["fiscal_year"])
+    parent_reference = resolve_parent_edge_reference(conn, model["parent_edge"], fiscal_year)
+    if not parent_reference:
+        return 0, 0
+
+    _, parent_value_usd, parent_source_url, parent_source_title, parent_page_number = parent_reference
+    site_items = [
+        item
+        for item in IMPLEMENTATION_SITES
+        if str(item.get("entity_id")) == entity_id
+        and int(item.get("fiscal_year", 0)) == fiscal_year
+        and str(item.get("program_key") or "") == str(model.get("program_key") or "")
+        and str(item.get("flow_parent_id") or "") == source_id
+    ]
+    if not site_items:
+        return 0, 0
+
+    conn.execute(
+        """
+        DELETE FROM source_provenance
+        WHERE edge_id IN (
+          SELECT id
+          FROM edges
+          WHERE source_id = ?
+            AND fiscal_year = ?
+        )
+        """,
+        (source_id, fiscal_year),
+    )
+    conn.execute(
+        """
+        DELETE FROM edges
+        WHERE source_id = ?
+          AND fiscal_year = ?
+        """,
+        (source_id, fiscal_year),
+    )
+
+    per_site_value_usd = parent_value_usd / float(len(site_items))
+    confidence = float(model.get("confidence", 0.7))
+    source_dataset = str(model["source_dataset"])
+    provenance = model.get("provenance", {})
+    provenance_source_url = str(provenance.get("source_url") or "")
+    provenance_source_title = str(provenance.get("source_title") or source_dataset)
+    provenance_page_number = provenance.get("page_number")
+    ds_source_id = DATASET_TO_SOURCE_ID.get(source_dataset)
+    description_template = str(model.get("description_template") or "")
+    node_type = str(model.get("node_type") or "implementation_site")
+    node_region = str(model.get("node_region") or "Japan")
+    node_dataset = str(model.get("node_dataset") or "manual_reviewed")
+
+    generated_nodes: list[dict[str, Any]] = []
+    ward_indexes: dict[str, int] = {}
+    inserted_edges = 0
+    for site in site_items:
+        ward = str(site.get("ward") or "区未設定")
+        ward_site_index = ward_indexes.get(ward, 0)
+        ward_indexes[ward] = ward_site_index + 1
+        node_id = build_implementation_site_node_id(str(site["site_key"]))
+        lat, lng = resolve_implementation_site_coordinates(conn, entity_id, site.get("ward"), ward_site_index)
+        generated_nodes.append(
+            {
+                "id": node_id,
+                "name": str(site["site_name"]),
+                "lat": lat,
+                "lng": lng,
+                "region": node_region,
+                "type": node_type,
+                "dataset": node_dataset,
+            }
+        )
+
+    inserted_nodes = ensure_generated_nodes(conn, generated_nodes)
+
+    for site in site_items:
+        target_id = build_implementation_site_node_id(str(site["site_key"]))
+        description = description_template.format(
+            site_name=site["site_name"],
+            ward=site.get("ward") or "区未設定",
+            site_category=site.get("site_category") or "施設",
+            site_count=len(site_items),
+            parent_source_title=parent_source_title or "",
+            parent_page_number=parent_page_number if parent_page_number is not None else "",
+        )
+        cursor = conn.execute(
+            """
+            INSERT INTO edges (
+              source_id,
+              target_id,
+              category,
+              sub_category,
+              value_usd,
+              value_jpy,
+              fiscal_year,
+              confidence,
+              source_dataset,
+              description
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """,
+            (
+                source_id,
+                target_id,
+                model["category"],
+                model["sub_category"],
+                per_site_value_usd,
+                per_site_value_usd * JPY_PER_USD,
+                fiscal_year,
+                confidence,
+                source_dataset,
+                description,
+            ),
+        )
+        edge_id = cursor.lastrowid
+        inserted_edges += 1
+
+        extracted_text = render_distribution_extracted_text(
+            provenance.get("extracted_text_template"),
+            {
+                "description": description,
+                "site_name": site["site_name"],
+                "ward": site.get("ward") or "区未設定",
+                "site_category": site.get("site_category") or "施設",
+                "site_count": len(site_items),
+                "parent_source_title": parent_source_title or "",
+                "parent_source_url": parent_source_url or "",
+                "parent_page_number": parent_page_number if parent_page_number is not None else "",
+                "source_dataset": source_dataset,
+                "source_title": provenance_source_title,
+                "page_number": provenance_page_number if provenance_page_number is not None else "",
+            },
+        )
+
+        conn.execute(
+            """
+            INSERT INTO source_provenance (
+              edge_id,
+              source_id,
+              source_url,
+              source_title,
+              page_number,
+              extracted_text,
+              extraction_method,
+              confidence
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            """,
+            (
+                edge_id,
+                ds_source_id,
+                provenance_source_url,
+                provenance_source_title,
+                provenance_page_number,
+                extracted_text,
+                "script_generated",
+                confidence,
+            ),
+        )
+
+    return inserted_nodes, inserted_edges
+
+
+def seed_implementation_site_flow_models(conn: sqlite3.Connection) -> list[tuple[str, int, int]]:
+    results: list[tuple[str, int, int]] = []
+    for model in IMPLEMENTATION_SITE_FLOW_MODELS:
+        inserted_nodes, inserted_edges = seed_implementation_site_flow_model(conn, model)
+        results.append((str(model.get("label") or model.get("key") or model["source_id"]), inserted_nodes, inserted_edges))
     return results
 
 
@@ -3517,6 +4226,13 @@ def main():
         print(f"  ✅ {'Manual reviewed local-gov entries':45s} → {manual_nodes:>3d} nodes, {manual_edges:>4d} edges")
         total_nodes += manual_nodes
         total_edges += manual_edges
+
+    for label, inserted_nodes, inserted_edges in seed_implementation_site_flow_models(conn):
+        conn.commit()
+        if inserted_nodes or inserted_edges:
+            print(f"  ✅ {label:45s} → {inserted_nodes:>3d} nodes, {inserted_edges:>4d} edges")
+            total_nodes += inserted_nodes
+            total_edges += inserted_edges
 
     print(f"\n  Total imported: {total_nodes} nodes, {total_edges} edges")
 

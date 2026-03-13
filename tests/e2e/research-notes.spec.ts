@@ -1,6 +1,26 @@
-import { expect, test } from '@playwright/test';
+import { expect, test, type Page } from '@playwright/test';
 
 test.describe('2D research note links', () => {
+  const clickSankeyNode = async (page: Page, label: string) => {
+    const nodePosition = await page.evaluate((targetLabel) => {
+      const match = Array.from(document.querySelectorAll('svg text')).find((element) =>
+        (element.textContent || '').includes(targetLabel)
+      );
+      if (!match) {
+        return null;
+      }
+      match.scrollIntoView({ block: 'center' });
+      const rect = match.getBoundingClientRect();
+      return {
+        x: rect.x - 12,
+        y: rect.y + rect.height / 2,
+      };
+    }, label);
+
+    expect(nodePosition).not.toBeNull();
+    await page.mouse.click(nodePosition!.x, nodePosition!.y);
+  };
+
   test('CFA exposes a research-note deep link and lands on the official-flow note', async ({ page }) => {
     await page.goto('/?view=2d&entity=MIN_CFA&year=2025');
 
@@ -50,14 +70,22 @@ test.describe('2D research note links', () => {
     await expect(page.getByLabel('実データのみ表示')).toBeVisible();
     const reviewedCountBefore = await page.getByTestId('evidence-summary-reviewed').textContent();
     expect(reviewedCountBefore).toMatch(/\d+本/);
-    await expect(page.getByTestId('evidence-summary-model-based')).toContainText('10本');
+    await expect(page.getByTestId('evidence-summary-model-based')).toContainText('0本');
+    await expect(modeledNodeLabel).toHaveCount(0);
+
+    await clickSankeyNode(page, '放課後児童クラブ (運営費・処遇改善) ▸');
+
+    const modeledCountBefore = await page.getByTestId('evidence-summary-model-based').textContent();
+    expect(modeledCountBefore).toMatch(/[1-9]\d*本/);
+    const modeledCountToken = modeledCountBefore?.match(/\d+本/)?.[0];
+    expect(modeledCountToken).toBeTruthy();
     await expect(modeledNodeLabel).toBeVisible();
 
     await page.getByLabel('実データのみ表示').check();
 
     await expect(page.getByTestId('evidence-summary-reviewed')).toContainText(reviewedCountBefore ?? '');
     await expect(page.getByTestId('evidence-summary-model-based')).toContainText('0本');
-    await expect(page.getByTestId('evidence-hidden-modeled')).toContainText('10本');
+    await expect(page.getByTestId('evidence-hidden-modeled')).toContainText(modeledCountToken!);
     await expect(modeledNodeLabel).toHaveCount(0);
     await expect(reviewedNodeLabel).toBeVisible();
   });

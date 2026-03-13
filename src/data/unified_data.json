@@ -137,6 +137,286 @@
       "type": "prefecture"
     },
     {
+      "id": "IMPL_SITE_KOBE_DAREDEMO_07",
+      "name": "なのは乳児園",
+      "lat": 34.7069,
+      "lng": 135.2448,
+      "region": "Hyogo",
+      "type": "implementation_site"
+    },
+    {
+      "id": "IMPL_SITE_KOBE_DAREDEMO_22",
+      "name": "名谷フォレスト保育園",
+      "lat": 34.6551,
+      "lng": 135.0912,
+      "region": "Hyogo",
+      "type": "implementation_site"
+    },
+    {
+      "id": "IMPL_SITE_KOBE_DAREDEMO_10",
+      "name": "大慈ほまれ幼保連携型認定こども園",
+      "lat": 34.6893,
+      "lng": 135.1969,
+      "region": "Hyogo",
+      "type": "implementation_site"
+    },
+    {
+      "id": "IMPL_SITE_KOBE_DAREDEMO_09",
+      "name": "大慈幼保連携型認定こども園とも分園",
+      "lat": 34.6893,
+      "lng": 135.1939,
+      "region": "Hyogo",
+      "type": "implementation_site"
+    },
+    {
+      "id": "IMPL_SITE_KOBE_DAREDEMO_35",
+      "name": "学園みどりこども園",
+      "lat": 34.678,
+      "lng": 134.9888,
+      "region": "Hyogo",
+      "type": "implementation_site"
+    },
+    {
+      "id": "IMPL_SITE_KOBE_DAREDEMO_30",
+      "name": "小規模保育園あんよ",
+      "lat": 34.6405,
+      "lng": 135.0459,
+      "region": "Hyogo",
+      "type": "implementation_site"
+    },
+    {
+      "id": "IMPL_SITE_KOBE_DAREDEMO_34",
+      "name": "幼保連携型認定こども園YMCA保育園 おひさま分園",
+      "lat": 34.675,
+      "lng": 134.9978,
+      "region": "Hyogo",
+      "type": "implementation_site"
+    },
+    {
+      "id": "IMPL_SITE_KOBE_DAREDEMO_31",
+      "name": "幼保連携型認定こども園あゆみ幼児園",
+      "lat": 34.675,
+      "lng": 134.9888,
+      "region": "Hyogo",
+      "type": "implementation_site"
+    },
+    {
+      "id": "IMPL_SITE_KOBE_DAREDEMO_32",
+      "name": "幼保連携型認定こども園おっこう山",
+      "lat": 34.675,
+      "lng": 134.9918,
+      "region": "Hyogo",
+      "type": "implementation_site"
+    },
+    {
+      "id": "IMPL_SITE_KOBE_DAREDEMO_23",
+      "name": "幼保連携型認定こども園のぞみ保育園",
+      "lat": 34.6551,
+      "lng": 135.0942,
+      "region": "Hyogo",
+      "type": "implementation_site"
+    },
+    {
+      "id": "IMPL_SITE_KOBE_DAREDEMO_05",
+      "name": "幼保連携型認定こども園はっとこども園",
+      "lat": 34.7069,
+      "lng": 135.2388,
+      "region": "Hyogo",
+      "type": "implementation_site"
+    },
+    {
+      "id": "IMPL_SITE_KOBE_DAREDEMO_21",
+      "name": "幼保連携型認定こども園ほそだ",
+      "lat": 34.6644,
+      "lng": 135.1462,
+      "region": "Hyogo",
+      "type": "implementation_site"
+    },
+    {
+      "id": "IMPL_SITE_KOBE_DAREDEMO_11",
+      "name": "幼保連携型認定こども園ポートピア",
+      "lat": 34.6893,
+      "lng": 135.1999,
+      "region": "Hyogo",
+      "type": "implementation_site"
+    },
+    {
+      "id": "IMPL_SITE_KOBE_DAREDEMO_15",
+      "name": "幼保連携型認定こども園モーツァルト兵庫こども園",
+      "lat": 34.6754,
+      "lng": 135.1667,
+      "region": "Hyogo",
+      "type": "implementation_site"
+    },
+    {
+      "id": "IMPL_SITE_KOBE_DAREDEMO_06",
+      "name": "幼保連携型認定こども園光愛児園",
+      "lat": 34.7069,
+      "lng": 135.2418,
+      "region": "Hyogo",
+      "type": "implementation_site"
+    },
+    {
+      "id": "IMPL_SITE_KOBE_DAREDEMO_14",
+      "name": "幼保連携型認定こども園宝地院保育園",
+      "lat": 34.6754,
+      "lng": 135.1637,
+      "region": "Hyogo",
+      "type": "implementation_site"
+    },
+    {
+      "id": "IMPL_SITE_KOBE_DAREDEMO_26",
+      "name": "幼保連携型認定こども園彩の森",
+      "lat": 34.6375,
+      "lng": 135.0459,
+      "region": "Hyogo",
+      "type": "implementation_site"
+    },
+    {
+      "id": "IMPL_SITE_KOBE_DAREDEMO_33",
+      "name": "幼保連携型認定こども園持子保育園",
+      "lat": 34.675,
+      "lng": 134.9948,
+      "region": "Hyogo",
+      "type": "implementation_site"
+    },
+    {
+      "id": "IMPL_SITE_KOBE_DAREDEMO_20",
+      "name": "幼保連携型認定こども園新生こども園",
+      "lat": 34.6644,
+      "lng": 135.1432,
+      "region": "Hyogo",
+      "type": "implementation_site"
+    },
+    {
+      "id": "IMPL_SITE_KOBE_DAREDEMO_28",
+      "name": "幼保連携型認定こども園明舞幼稚園",
+      "lat": 34.6375,
+      "lng": 135.0519,
+      "region": "Hyogo",
+      "type": "implementation_site"
+    },
+    {
+      "id": "IMPL_SITE_KOBE_DAREDEMO_17",
+      "name": "幼保連携型認定こども園星の杜こども園",
+      "lat": 34.7259,
+      "lng": 135.143,
+      "region": "Hyogo",
+      "type": "implementation_site"
+    },
+    {
+      "id": "IMPL_SITE_KOBE_DAREDEMO_24",
+      "name": "幼保連携型認定こども園村雨こども園",
+      "lat": 34.6551,
+      "lng": 135.0972,
+      "region": "Hyogo",
+      "type": "implementation_site"
+    },
+    {
+      "id": "IMPL_SITE_KOBE_DAREDEMO_16",
+      "name": "幼保連携型認定こども園桜の宮こども園",
+      "lat": 34.7259,
+      "lng": 135.14,
+      "region": "Hyogo",
+      "type": "implementation_site"
+    },
+    {
+      "id": "IMPL_SITE_KOBE_DAREDEMO_01",
+      "name": "幼保連携型認定こども園渦が森幼稚園",
+      "lat": 34.7191,
+      "lng": 135.2616,
+      "region": "Hyogo",
+      "type": "implementation_site"
+    },
+    {
+      "id": "IMPL_SITE_KOBE_DAREDEMO_08",
+      "name": "幼保連携型認定こども園真生きらきら保育園",
+      "lat": 34.6893,
+      "lng": 135.1909,
+      "region": "Hyogo",
+      "type": "implementation_site"
+    },
+    {
+      "id": "IMPL_SITE_KOBE_DAREDEMO_04",
+      "name": "幼保連携型認定こども園神戸さくら保育園",
+      "lat": 34.7069,
+      "lng": 135.2358,
+      "region": "Hyogo",
+      "type": "implementation_site"
+    },
+    {
+      "id": "IMPL_SITE_KOBE_DAREDEMO_02",
+      "name": "幼保連携型認定こども園神戸夢",
+      "lat": 34.7191,
+      "lng": 135.2646,
+      "region": "Hyogo",
+      "type": "implementation_site"
+    },
+    {
+      "id": "IMPL_SITE_KOBE_DAREDEMO_27",
+      "name": "幼保連携型認定こども園舞子幼稚園",
+      "lat": 34.6375,
+      "lng": 135.0489,
+      "region": "Hyogo",
+      "type": "implementation_site"
+    },
+    {
+      "id": "IMPL_SITE_KOBE_DAREDEMO_29",
+      "name": "幼稚園型認定こども園星陵台めぐみ幼稚園",
+      "lat": 34.6375,
+      "lng": 135.0549,
+      "region": "Hyogo",
+      "type": "implementation_site"
+    },
+    {
+      "id": "IMPL_SITE_KOBE_DAREDEMO_18",
+      "name": "幼稚園型認定こども園鈴蘭台幼稚園",
+      "lat": 34.7259,
+      "lng": 135.146,
+      "region": "Hyogo",
+      "type": "implementation_site"
+    },
+    {
+      "id": "IMPL_SITE_KOBE_DAREDEMO_03",
+      "name": "御影ちぬっこ保育ルーム",
+      "lat": 34.7191,
+      "lng": 135.2676,
+      "region": "Hyogo",
+      "type": "implementation_site"
+    },
+    {
+      "id": "IMPL_SITE_KOBE_DAREDEMO_13",
+      "name": "松原保育所（公立）",
+      "lat": 34.6754,
+      "lng": 135.1607,
+      "region": "Hyogo",
+      "type": "implementation_site"
+    },
+    {
+      "id": "IMPL_SITE_KOBE_DAREDEMO_12",
+      "name": "神戸教会いずみ幼稚園",
+      "lat": 34.6923,
+      "lng": 135.1909,
+      "region": "Hyogo",
+      "type": "implementation_site"
+    },
+    {
+      "id": "IMPL_SITE_KOBE_DAREDEMO_19",
+      "name": "神視保育園",
+      "lat": 34.6644,
+      "lng": 135.1402,
+      "region": "Hyogo",
+      "type": "implementation_site"
+    },
+    {
+      "id": "IMPL_SITE_KOBE_DAREDEMO_25",
+      "name": "西須磨わかば園",
+      "lat": 34.6551,
+      "lng": 135.1002,
+      "region": "Hyogo",
+      "type": "implementation_site"
+    },
+    {
       "id": "CITY_KOBE",
       "name": "神戸市",
       "lat": 34.6901,
@@ -297,11 +577,99 @@
       "type": "recipient"
     },
     {
+      "id": "DEST_AFTER_SCHOOL_DX_MUNICIPAL",
+      "name": "放課後児童クラブDX 市町村担当部局",
+      "lat": 35.682,
+      "lng": 139.687,
+      "region": "Social Security",
+      "type": "recipient"
+    },
+    {
+      "id": "DEST_AFTER_SCHOOL_DX_OPERATORS",
+      "name": "放課後児童クラブDX 運営法人・事業所",
+      "lat": 35.684,
+      "lng": 139.689,
+      "region": "Social Security",
+      "type": "recipient"
+    },
+    {
+      "id": "DEST_AFTER_SCHOOL_DX_VENDOR",
+      "name": "放課後児童クラブDX 開発ベンダー",
+      "lat": 35.686,
+      "lng": 139.691,
+      "region": "Social Security",
+      "type": "recipient"
+    },
+    {
+      "id": "DEST_AFTER_SCHOOL_FAC_PUBLIC",
+      "name": "放課後児童クラブ整備 公立主体",
+      "lat": 35.678,
+      "lng": 139.683,
+      "region": "Social Security",
+      "type": "recipient"
+    },
+    {
+      "id": "DEST_AFTER_SCHOOL_FAC_PRIVATE",
+      "name": "放課後児童クラブ整備 民間主体",
+      "lat": 35.68,
+      "lng": 139.685,
+      "region": "Social Security",
+      "type": "recipient"
+    },
+    {
+      "id": "DEST_AFTER_SCHOOL_TRAINING_CERTIFICATION",
+      "name": "放課後児童クラブ研修 認定資格研修",
+      "lat": 35.688,
+      "lng": 139.693,
+      "region": "Social Security",
+      "type": "recipient"
+    },
+    {
+      "id": "DEST_AFTER_SCHOOL_TRAINING_UPSKILLING",
+      "name": "放課後児童クラブ研修 資質向上研修",
+      "lat": 35.69,
+      "lng": 139.695,
+      "region": "Social Security",
+      "type": "recipient"
+    },
+    {
       "id": "REC_KOBE_DAREDEMO_SITES",
       "name": "神戸市こども誰でも通園制度 実施施設群",
       "lat": 34.6905,
       "lng": 135.1947,
       "region": "Hyogo",
+      "type": "recipient"
+    },
+    {
+      "id": "DEST_AFTER_SCHOOL_TRAINING_CERT_VENDOR",
+      "name": "認定資格研修 受託事業者",
+      "lat": 35.694,
+      "lng": 139.699,
+      "region": "Social Security",
+      "type": "recipient"
+    },
+    {
+      "id": "DEST_AFTER_SCHOOL_TRAINING_CERT_PUBLIC",
+      "name": "認定資格研修 実施主体（都道府県等）",
+      "lat": 35.692,
+      "lng": 139.697,
+      "region": "Social Security",
+      "type": "recipient"
+    },
+    {
+      "id": "DEST_AFTER_SCHOOL_TRAINING_UPSKILL_VENDOR",
+      "name": "資質向上研修 受託事業者",
+      "lat": 35.698,
+      "lng": 139.703,
+      "region": "Social Security",
+      "type": "recipient"
+    },
+    {
+      "id": "DEST_AFTER_SCHOOL_TRAINING_UPSKILL_PUBLIC",
+      "name": "資質向上研修 実施主体（都道府県・市町村）",
+      "lat": 35.696,
+      "lng": 139.701,
+      "region": "Social Security",
       "type": "recipient"
     },
     {
@@ -905,10 +1273,10 @@
       "type": "recipient"
     },
     {
-      "id": "REC_AFTER_SCHOOL_DX",
-      "name": "放課後児童クラブ (DX・体制強化)",
-      "lat": 35.67,
-      "lng": 139.67,
+      "id": "REC_AFTER_SCHOOL_DX_PILOT",
+      "name": "放課後児童クラブ (DX推進実証)",
+      "lat": 35.675,
+      "lng": 139.675,
       "region": "Social Security",
       "type": "recipient"
     },
@@ -925,6 +1293,14 @@
       "name": "放課後児童クラブ (施設整備)",
       "lat": 35.66,
       "lng": 139.66,
+      "region": "Social Security",
+      "type": "recipient"
+    },
+    {
+      "id": "REC_AFTER_SCHOOL_DX",
+      "name": "放課後児童クラブ (研修関係)",
+      "lat": 35.67,
+      "lng": 139.67,
       "region": "Social Security",
       "type": "recipient"
     },
@@ -19359,6 +19735,66 @@
       "page_number": 9
     },
     {
+      "source_id": "DEST_AFTER_SCHOOL_TRAINING_CERTIFICATION",
+      "target_id": "DEST_AFTER_SCHOOL_TRAINING_CERT_PUBLIC",
+      "category": "services",
+      "sub_category": "認定資格研修 実施主体・受託先二系統均等按分モデル",
+      "value_usd": 4833333.25,
+      "year": 2025,
+      "confidence": 0.41,
+      "source_dataset": "放課後児童認定資格研修 実施主体・受託先二系統均等按分 (実施要綱・自治体公表ベース)",
+      "description": "認定資格研修の実施主体。公式要綱では都道府県・指定都市・中核市が担当します。東京都、山口県、新潟県などが公式に開催案内を出しています。認定資格研修額の内訳や委託割合は未公表のため、受託先ルートと均等按分した model-based 表示です。",
+      "evidence_text": "認定資格研修の実施主体。公式要綱では都道府県・指定都市・中核市が担当します。東京都、山口県、新潟県などが公式に開催案内を出しています。認定資格研修額の内訳や委託割合は未公表のため、受託先ルートと均等按分した model-based 表示です。 Parent bucket reference: 令和7年度こども家庭庁予算 事業別資料集 p.75",
+      "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/e28ec5c7-3af2-465e-82fa-040a88ce0ba2/950b9dad/20251125_councils_shingikai_kodomo_ibasho_jidoukan_e28ec5c7_17.pdf#page=1",
+      "source_title": "放課後児童支援員等研修事業実施要綱",
+      "page_number": 1
+    },
+    {
+      "source_id": "DEST_AFTER_SCHOOL_TRAINING_CERTIFICATION",
+      "target_id": "DEST_AFTER_SCHOOL_TRAINING_CERT_VENDOR",
+      "category": "services",
+      "sub_category": "認定資格研修 実施主体・受託先二系統均等按分モデル",
+      "value_usd": 4833333.25,
+      "year": 2025,
+      "confidence": 0.41,
+      "source_dataset": "放課後児童認定資格研修 実施主体・受託先二系統均等按分 (実施要綱・自治体公表ベース)",
+      "description": "認定資格研修の受託事業者。公式要綱では市町村や民間団体等への一部委託が可能です。東京都では株式会社東京リーガルマインド、山口県では特定非営利活動法人学童保育協会、新潟県では株式会社東京リーガルマインドへの委託例が確認できます。認定資格研修額の内訳や委託割合は未公表のため、実施主体ルートと均等按分した model-based 表示です。",
+      "evidence_text": "認定資格研修の受託事業者。公式要綱では市町村や民間団体等への一部委託が可能です。東京都では株式会社東京リーガルマインド、山口県では特定非営利活動法人学童保育協会、新潟県では株式会社東京リーガルマインドへの委託例が確認できます。認定資格研修額の内訳や委託割合は未公表のため、実施主体ルートと均等按分した model-based 表示です。 Parent bucket reference: 令和7年度こども家庭庁予算 事業別資料集 p.75",
+      "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/e28ec5c7-3af2-465e-82fa-040a88ce0ba2/950b9dad/20251125_councils_shingikai_kodomo_ibasho_jidoukan_e28ec5c7_17.pdf#page=1",
+      "source_title": "放課後児童支援員等研修事業実施要綱",
+      "page_number": 1
+    },
+    {
+      "source_id": "DEST_AFTER_SCHOOL_TRAINING_UPSKILLING",
+      "target_id": "DEST_AFTER_SCHOOL_TRAINING_UPSKILL_PUBLIC",
+      "category": "services",
+      "sub_category": "資質向上研修 実施主体・受託先二系統均等按分モデル",
+      "value_usd": 4833333.25,
+      "year": 2025,
+      "confidence": 0.41,
+      "source_dataset": "放課後児童資質向上研修 実施主体・受託先二系統均等按分 (実施要綱・自治体公表ベース)",
+      "description": "資質向上研修の実施主体。公式要綱では都道府県又は市町村が担当します。新潟県などが公式に開催案内を出しており、市町村担当課を通じた申込が示されています。資質向上研修額の内訳や委託割合は未公表のため、受託先ルートと均等按分した model-based 表示です。",
+      "evidence_text": "資質向上研修の実施主体。公式要綱では都道府県又は市町村が担当します。新潟県などが公式に開催案内を出しており、市町村担当課を通じた申込が示されています。資質向上研修額の内訳や委託割合は未公表のため、受託先ルートと均等按分した model-based 表示です。 Parent bucket reference: 令和7年度こども家庭庁予算 事業別資料集 p.75",
+      "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/e28ec5c7-3af2-465e-82fa-040a88ce0ba2/950b9dad/20251125_councils_shingikai_kodomo_ibasho_jidoukan_e28ec5c7_17.pdf#page=1",
+      "source_title": "放課後児童支援員等研修事業実施要綱",
+      "page_number": 1
+    },
+    {
+      "source_id": "DEST_AFTER_SCHOOL_TRAINING_UPSKILLING",
+      "target_id": "DEST_AFTER_SCHOOL_TRAINING_UPSKILL_VENDOR",
+      "category": "services",
+      "sub_category": "資質向上研修 実施主体・受託先二系統均等按分モデル",
+      "value_usd": 4833333.25,
+      "year": 2025,
+      "confidence": 0.41,
+      "source_dataset": "放課後児童資質向上研修 実施主体・受託先二系統均等按分 (実施要綱・自治体公表ベース)",
+      "description": "資質向上研修の受託事業者。公式要綱では民間団体等へ全部又は一部委託可能です。新潟県では株式会社東京リーガルマインドへの委託例が確認でき、千葉県や福島県でも委託仕様書・公募資料が公表されています。資質向上研修額の内訳や委託割合は未公表のため、実施主体ルートと均等按分した model-based 表示です。",
+      "evidence_text": "資質向上研修の受託事業者。公式要綱では民間団体等へ全部又は一部委託可能です。新潟県では株式会社東京リーガルマインドへの委託例が確認でき、千葉県や福島県でも委託仕様書・公募資料が公表されています。資質向上研修額の内訳や委託割合は未公表のため、実施主体ルートと均等按分した model-based 表示です。 Parent bucket reference: 令和7年度こども家庭庁予算 事業別資料集 p.75",
+      "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/e28ec5c7-3af2-465e-82fa-040a88ce0ba2/950b9dad/20251125_councils_shingikai_kodomo_ibasho_jidoukan_e28ec5c7_17.pdf#page=1",
+      "source_title": "放課後児童支援員等研修事業実施要綱",
+      "page_number": 1
+    },
+    {
       "source_id": "MIN_CFA",
       "target_id": "REC_AFTER_SCHOOL_OP",
       "category": "welfare",
@@ -19397,11 +19833,26 @@
       "year": 2025,
       "confidence": 0.98,
       "source_dataset": "こども家庭庁 令和7年度予算 概算要求（事業別の資料集）",
-      "description": "利用手続きオンライン化・ICT推進実証事業、第三者評価の推進、利用調整支援など",
-      "evidence_text": "利用手続きオンライン化・ICT推進実証事業、第三者評価の推進、利用調整支援など",
-      "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=74&search=29",
+      "description": "放課後児童支援員認定資格研修事業、放課後児童支援員等資質向上研修事業",
+      "evidence_text": "放課後児童支援員認定資格研修事業、放課後児童支援員等資質向上研修事業",
+      "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=75&search=%E7%A0%94%E4%BF%AE",
       "source_title": "令和7年度こども家庭庁予算 事業別資料集",
-      "page_number": 74
+      "page_number": 75
+    },
+    {
+      "source_id": "MIN_CFA",
+      "target_id": "REC_AFTER_SCHOOL_DX_PILOT",
+      "category": "welfare",
+      "sub_category": "放課後児童クラブ利用手続き等に関わるDX推進実証事業 (R7)",
+      "value_usd": 733333.0,
+      "year": 2025,
+      "confidence": 0.98,
+      "source_dataset": "こども家庭庁 令和7年度予算 概算要求（事業別の資料集）",
+      "description": "利用申請のオンライン化、利用調整、保護者連絡、請求、出欠管理、育成支援記録などをつなぐ市町村DX実証",
+      "evidence_text": "利用申請のオンライン化、利用調整、保護者連絡、請求、出欠管理、育成支援記録などをつなぐ市町村DX実証",
+      "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=19&search=1.1%E5%84%84%E5%86%86",
+      "source_title": "令和7年度こども家庭庁予算 事業別資料集",
+      "page_number": 19
     },
     {
       "source_id": "MIN_CFA",
@@ -19748,6 +20199,111 @@
       "page_number": 3
     },
     {
+      "source_id": "REC_AFTER_SCHOOL_DX",
+      "target_id": "DEST_AFTER_SCHOOL_TRAINING_CERTIFICATION",
+      "category": "services",
+      "sub_category": "研修区分別均等按分モデル",
+      "value_usd": 9666666.5,
+      "year": 2025,
+      "confidence": 0.44,
+      "source_dataset": "放課後児童クラブ研修関係 研修区分別均等按分 (事業別資料集ベース)",
+      "description": "放課後児童支援員認定資格研修。公式の研修事業実施要綱では、都道府県・指定都市・中核市が実施主体で、市町村や民間団体等へ一部委託可能です。個別の予算額は未公表のため、29億円を研修区分2本で均等按分した model-based 表示です。",
+      "evidence_text": "放課後児童支援員認定資格研修。公式の研修事業実施要綱では、都道府県・指定都市・中核市が実施主体で、市町村や民間団体等へ一部委託可能です。個別の予算額は未公表のため、29億円を研修区分2本で均等按分した model-based 表示です。 Reviewed amount reference: 令和7年度こども家庭庁予算 事業別資料集 p.75",
+      "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/e28ec5c7-3af2-465e-82fa-040a88ce0ba2/950b9dad/20251125_councils_shingikai_kodomo_ibasho_jidoukan_e28ec5c7_17.pdf#page=1",
+      "source_title": "放課後児童支援員等研修事業実施要綱",
+      "page_number": 1
+    },
+    {
+      "source_id": "REC_AFTER_SCHOOL_DX",
+      "target_id": "DEST_AFTER_SCHOOL_TRAINING_UPSKILLING",
+      "category": "services",
+      "sub_category": "研修区分別均等按分モデル",
+      "value_usd": 9666666.5,
+      "year": 2025,
+      "confidence": 0.44,
+      "source_dataset": "放課後児童クラブ研修関係 研修区分別均等按分 (事業別資料集ベース)",
+      "description": "放課後児童支援員等資質向上研修。公式の研修事業実施要綱では、都道府県又は市町村が実施主体で、民間団体等へ全部又は一部委託可能です。個別の予算額は未公表のため、29億円を研修区分2本で均等按分した model-based 表示です。",
+      "evidence_text": "放課後児童支援員等資質向上研修。公式の研修事業実施要綱では、都道府県又は市町村が実施主体で、民間団体等へ全部又は一部委託可能です。個別の予算額は未公表のため、29億円を研修区分2本で均等按分した model-based 表示です。 Reviewed amount reference: 令和7年度こども家庭庁予算 事業別資料集 p.75",
+      "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/e28ec5c7-3af2-465e-82fa-040a88ce0ba2/950b9dad/20251125_councils_shingikai_kodomo_ibasho_jidoukan_e28ec5c7_17.pdf#page=1",
+      "source_title": "放課後児童支援員等研修事業実施要綱",
+      "page_number": 1
+    },
+    {
+      "source_id": "REC_AFTER_SCHOOL_DX_PILOT",
+      "target_id": "DEST_AFTER_SCHOOL_DX_MUNICIPAL",
+      "category": "services",
+      "sub_category": "DX推進実証 構成員別均等按分モデル",
+      "value_usd": 244444.3333333333,
+      "year": 2025,
+      "confidence": 0.46,
+      "source_dataset": "放課後児童クラブDX推進実証 構成員別均等按分 (事業別資料集ベース)",
+      "description": "市町村の放課後児童クラブ担当部局。公式資料ではDX推進コンソーシアムの構成員で、利用申請のオンライン化、利用調整、事業所との情報連携の主担当です。費目別内訳は未公表のため、1.1億円を構成員3者で均等按分した model-based 表示です。",
+      "evidence_text": "市町村の放課後児童クラブ担当部局。公式資料ではDX推進コンソーシアムの構成員で、利用申請のオンライン化、利用調整、事業所との情報連携の主担当です。費目別内訳は未公表のため、1.1億円を構成員3者で均等按分した model-based 表示です。 Reviewed amount reference: 令和7年度こども家庭庁予算 事業別資料集 p.19",
+      "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=19",
+      "source_title": "令和7年度こども家庭庁予算 事業別資料集",
+      "page_number": 19
+    },
+    {
+      "source_id": "REC_AFTER_SCHOOL_DX_PILOT",
+      "target_id": "DEST_AFTER_SCHOOL_DX_OPERATORS",
+      "category": "services",
+      "sub_category": "DX推進実証 構成員別均等按分モデル",
+      "value_usd": 244444.3333333333,
+      "year": 2025,
+      "confidence": 0.46,
+      "source_dataset": "放課後児童クラブDX推進実証 構成員別均等按分 (事業別資料集ベース)",
+      "description": "放課後児童クラブ運営法人・事業所。公式資料ではDX推進コンソーシアムの構成員で、出欠管理、保護者連絡、請求、育成支援記録など現場運用側の要件を担います。費目別内訳は未公表のため、1.1億円を構成員3者で均等按分した model-based 表示です。",
+      "evidence_text": "放課後児童クラブ運営法人・事業所。公式資料ではDX推進コンソーシアムの構成員で、出欠管理、保護者連絡、請求、育成支援記録など現場運用側の要件を担います。費目別内訳は未公表のため、1.1億円を構成員3者で均等按分した model-based 表示です。 Reviewed amount reference: 令和7年度こども家庭庁予算 事業別資料集 p.19",
+      "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=19",
+      "source_title": "令和7年度こども家庭庁予算 事業別資料集",
+      "page_number": 19
+    },
+    {
+      "source_id": "REC_AFTER_SCHOOL_DX_PILOT",
+      "target_id": "DEST_AFTER_SCHOOL_DX_VENDOR",
+      "category": "services",
+      "sub_category": "DX推進実証 構成員別均等按分モデル",
+      "value_usd": 244444.3333333333,
+      "year": 2025,
+      "confidence": 0.46,
+      "source_dataset": "放課後児童クラブDX推進実証 構成員別均等按分 (事業別資料集ベース)",
+      "description": "開発ベンダー。公式資料ではDX推進コンソーシアムの構成員で、業務要件定義、ツール開発、既存システム改修、検証を担います。費目別内訳は未公表のため、1.1億円を構成員3者で均等按分した model-based 表示です。",
+      "evidence_text": "開発ベンダー。公式資料ではDX推進コンソーシアムの構成員で、業務要件定義、ツール開発、既存システム改修、検証を担います。費目別内訳は未公表のため、1.1億円を構成員3者で均等按分した model-based 表示です。 Reviewed amount reference: 令和7年度こども家庭庁予算 事業別資料集 p.19",
+      "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=19",
+      "source_title": "令和7年度こども家庭庁予算 事業別資料集",
+      "page_number": 19
+    },
+    {
+      "source_id": "REC_AFTER_SCHOOL_FAC",
+      "target_id": "DEST_AFTER_SCHOOL_FAC_PUBLIC",
+      "category": "services",
+      "sub_category": "施設整備主体別按分モデル",
+      "value_usd": 71121284.33427183,
+      "year": 2025,
+      "confidence": 0.71,
+      "source_dataset": "放課後児童クラブ（施設整備）公立・民間整備按分 (令和7年実施状況ベース)",
+      "description": "公立主体の放課後児童クラブ整備。公立公営と公立民営を合わせた 19,343か所を proxy に、施設整備の reviewed 143億円を按分しています。制度資料では公立の場合、設置主体は市町村で、補助率は嵩上げ前 国1/3・都道府県1/3・市町村1/3、嵩上げ後 国2/3・都道府県1/6・市町村1/6 です。支援内容は放課後ルーム・こどもルーム・学童保育所の創設、改築、大規模修繕です。千葉県の協議施設一覧では、船橋市 中野木第2放課後ルームの大規模修繕、松戸市 稔台放課後児童クラブ1/2 の改築、柏市立光ケ丘小こどもルーム第三/第四保育室の創設、八千代台学童保育所A/B/C の改築が確認できます。",
+      "evidence_text": "公立主体の放課後児童クラブ整備。公立公営と公立民営を合わせた 19,343か所を proxy に、施設整備の reviewed 143億円を按分しています。制度資料では公立の場合、設置主体は市町村で、補助率は嵩上げ前 国1/3・都道府県1/3・市町村1/3、嵩上げ後 国2/3・都道府県1/6・市町村1/6 です。支援内容は放課後ルーム・こどもルーム・学童保育所の創設、改築、大規模修繕です。千葉県の協議施設一覧では、船橋市 中野木第2放課後ルームの大規模修繕、松戸市 稔台放課後児童クラブ1/2 の改築、柏市立光ケ丘小こどもルーム第三/第四保育室の創設、八千代台学童保育所A/B/C の改築が確認できます。 Reviewed amount reference: 令和7年度こども家庭庁予算 事業別資料集 p.74",
+      "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/efa58163-4cc2-43d6-ba57-3df41d552a52/857bf219/20241227_policies_kosodateshien_budget_07.pdf#page=19",
+      "source_title": "令和7年度 こども・子育て支援関係予算のポイント",
+      "page_number": 19
+    },
+    {
+      "source_id": "REC_AFTER_SCHOOL_FAC",
+      "target_id": "DEST_AFTER_SCHOOL_FAC_PRIVATE",
+      "category": "services",
+      "sub_category": "施設整備主体別按分モデル",
+      "value_usd": 24212048.66572817,
+      "year": 2025,
+      "confidence": 0.71,
+      "source_dataset": "放課後児童クラブ（施設整備）公立・民間整備按分 (令和7年実施状況ベース)",
+      "description": "民間主体の放課後児童クラブ整備。民立民営 6,585か所を proxy に、施設整備の reviewed 143億円を按分しています。制度資料では民立の場合、設置主体は社会福祉法人、学校法人、市町村が認めた者等で、補助率は嵩上げ前 国2/9・都道府県2/9・市町村2/9・社会福祉法人等1/3、嵩上げ後 国1/2・都道府県1/8・市町村1/8・社会福祉法人等1/4 です。支援内容は民間運営の学童クラブの創設、改築、大規模修繕です。千葉県の協議施設一覧では、シダックス大新東ヒューマンサービス株式会社が関わる館山学童クラブA-D、上野小学校放課後ルーム、勝浦小学校放課後ルーム1/2、保護者会が運営する学童クラブ レインボーキッズ(1)(2)、学校法人アゼリー学園の学童クラブ アゼリーアカデミア千葉ニュータウン、社会福祉法人佐原めぐみ会の学童クラブめぐみ(1)(2)が確認できます。",
+      "evidence_text": "民間主体の放課後児童クラブ整備。民立民営 6,585か所を proxy に、施設整備の reviewed 143億円を按分しています。制度資料では民立の場合、設置主体は社会福祉法人、学校法人、市町村が認めた者等で、補助率は嵩上げ前 国2/9・都道府県2/9・市町村2/9・社会福祉法人等1/3、嵩上げ後 国1/2・都道府県1/8・市町村1/8・社会福祉法人等1/4 です。支援内容は民間運営の学童クラブの創設、改築、大規模修繕です。千葉県の協議施設一覧では、シダックス大新東ヒューマンサービス株式会社が関わる館山学童クラブA-D、上野小学校放課後ルーム、勝浦小学校放課後ルーム1/2、保護者会が運営する学童クラブ レインボーキッズ(1)(2)、学校法人アゼリー学園の学童クラブ アゼリーアカデミア千葉ニュータウン、社会福祉法人佐原めぐみ会の学童クラブめぐみ(1)(2)が確認できます。 Reviewed amount reference: 令和7年度こども家庭庁予算 事業別資料集 p.74",
+      "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/efa58163-4cc2-43d6-ba57-3df41d552a52/857bf219/20241227_policies_kosodateshien_budget_07.pdf#page=19",
+      "source_title": "令和7年度 こども・子育て支援関係予算のポイント",
+      "page_number": 19
+    },
+    {
       "source_id": "REC_AFTER_SCHOOL_OP",
       "target_id": "DEST_AFTER_SCHOOL_PUBLIC_PUBLIC",
       "category": "services",
@@ -19882,12 +20438,502 @@
       "description": "施設整備費の国庫補助。2025年度の reviewed 事業額に対し、制度移行モデルの配布先比率を適用しています。",
       "evidence_text": "施設整備費の国庫補助。2025年度の reviewed 事業額に対し、制度移行モデルの配布先比率を適用しています。 Reviewed amount reference: 令和7年度こども家庭庁予算 事業別資料集 p.95",
       "source_title": "こども誰でも通園制度(仮称)の本格実施に向けた制度移行 (想定)"
+    },
+    {
+      "source_id": "REC_KOBE_DAREDEMO_SITES",
+      "target_id": "IMPL_SITE_KOBE_DAREDEMO_01",
+      "category": "welfare",
+      "sub_category": "実施施設別按分モデル",
+      "value_usd": 26190.47619047619,
+      "year": 2025,
+      "confidence": 0.62,
+      "source_dataset": "神戸市こども誰でも通園制度 実施施設別按分 (35施設均等)",
+      "description": "東灘区 の実施施設 幼保連携型認定こども園渦が森幼稚園。施設別の交付額は公表されていないため、神戸市の実施施設一覧 35施設で均等按分した model-based 表示です。",
+      "evidence_text": "幼保連携型認定こども園渦が森幼稚園 は 東灘区 の実施施設。施設別の交付額は未公表のため、35施設均等按分で可視化しています。 Reviewed amount reference: 神戸市 令和7年度予算説明書（こども家庭局） p.20",
+      "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+      "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充"
+    },
+    {
+      "source_id": "REC_KOBE_DAREDEMO_SITES",
+      "target_id": "IMPL_SITE_KOBE_DAREDEMO_02",
+      "category": "welfare",
+      "sub_category": "実施施設別按分モデル",
+      "value_usd": 26190.47619047619,
+      "year": 2025,
+      "confidence": 0.62,
+      "source_dataset": "神戸市こども誰でも通園制度 実施施設別按分 (35施設均等)",
+      "description": "東灘区 の実施施設 幼保連携型認定こども園神戸夢。施設別の交付額は公表されていないため、神戸市の実施施設一覧 35施設で均等按分した model-based 表示です。",
+      "evidence_text": "幼保連携型認定こども園神戸夢 は 東灘区 の実施施設。施設別の交付額は未公表のため、35施設均等按分で可視化しています。 Reviewed amount reference: 神戸市 令和7年度予算説明書（こども家庭局） p.20",
+      "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+      "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充"
+    },
+    {
+      "source_id": "REC_KOBE_DAREDEMO_SITES",
+      "target_id": "IMPL_SITE_KOBE_DAREDEMO_03",
+      "category": "welfare",
+      "sub_category": "実施施設別按分モデル",
+      "value_usd": 26190.47619047619,
+      "year": 2025,
+      "confidence": 0.62,
+      "source_dataset": "神戸市こども誰でも通園制度 実施施設別按分 (35施設均等)",
+      "description": "東灘区 の実施施設 御影ちぬっこ保育ルーム。施設別の交付額は公表されていないため、神戸市の実施施設一覧 35施設で均等按分した model-based 表示です。",
+      "evidence_text": "御影ちぬっこ保育ルーム は 東灘区 の実施施設。施設別の交付額は未公表のため、35施設均等按分で可視化しています。 Reviewed amount reference: 神戸市 令和7年度予算説明書（こども家庭局） p.20",
+      "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+      "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充"
+    },
+    {
+      "source_id": "REC_KOBE_DAREDEMO_SITES",
+      "target_id": "IMPL_SITE_KOBE_DAREDEMO_04",
+      "category": "welfare",
+      "sub_category": "実施施設別按分モデル",
+      "value_usd": 26190.47619047619,
+      "year": 2025,
+      "confidence": 0.62,
+      "source_dataset": "神戸市こども誰でも通園制度 実施施設別按分 (35施設均等)",
+      "description": "灘区 の実施施設 幼保連携型認定こども園神戸さくら保育園。施設別の交付額は公表されていないため、神戸市の実施施設一覧 35施設で均等按分した model-based 表示です。",
+      "evidence_text": "幼保連携型認定こども園神戸さくら保育園 は 灘区 の実施施設。施設別の交付額は未公表のため、35施設均等按分で可視化しています。 Reviewed amount reference: 神戸市 令和7年度予算説明書（こども家庭局） p.20",
+      "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+      "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充"
+    },
+    {
+      "source_id": "REC_KOBE_DAREDEMO_SITES",
+      "target_id": "IMPL_SITE_KOBE_DAREDEMO_05",
+      "category": "welfare",
+      "sub_category": "実施施設別按分モデル",
+      "value_usd": 26190.47619047619,
+      "year": 2025,
+      "confidence": 0.62,
+      "source_dataset": "神戸市こども誰でも通園制度 実施施設別按分 (35施設均等)",
+      "description": "灘区 の実施施設 幼保連携型認定こども園はっとこども園。施設別の交付額は公表されていないため、神戸市の実施施設一覧 35施設で均等按分した model-based 表示です。",
+      "evidence_text": "幼保連携型認定こども園はっとこども園 は 灘区 の実施施設。施設別の交付額は未公表のため、35施設均等按分で可視化しています。 Reviewed amount reference: 神戸市 令和7年度予算説明書（こども家庭局） p.20",
+      "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+      "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充"
+    },
+    {
+      "source_id": "REC_KOBE_DAREDEMO_SITES",
+      "target_id": "IMPL_SITE_KOBE_DAREDEMO_06",
+      "category": "welfare",
+      "sub_category": "実施施設別按分モデル",
+      "value_usd": 26190.47619047619,
+      "year": 2025,
+      "confidence": 0.62,
+      "source_dataset": "神戸市こども誰でも通園制度 実施施設別按分 (35施設均等)",
+      "description": "灘区 の実施施設 幼保連携型認定こども園光愛児園。施設別の交付額は公表されていないため、神戸市の実施施設一覧 35施設で均等按分した model-based 表示です。",
+      "evidence_text": "幼保連携型認定こども園光愛児園 は 灘区 の実施施設。施設別の交付額は未公表のため、35施設均等按分で可視化しています。 Reviewed amount reference: 神戸市 令和7年度予算説明書（こども家庭局） p.20",
+      "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+      "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充"
+    },
+    {
+      "source_id": "REC_KOBE_DAREDEMO_SITES",
+      "target_id": "IMPL_SITE_KOBE_DAREDEMO_07",
+      "category": "welfare",
+      "sub_category": "実施施設別按分モデル",
+      "value_usd": 26190.47619047619,
+      "year": 2025,
+      "confidence": 0.62,
+      "source_dataset": "神戸市こども誰でも通園制度 実施施設別按分 (35施設均等)",
+      "description": "灘区 の実施施設 なのは乳児園。施設別の交付額は公表されていないため、神戸市の実施施設一覧 35施設で均等按分した model-based 表示です。",
+      "evidence_text": "なのは乳児園 は 灘区 の実施施設。施設別の交付額は未公表のため、35施設均等按分で可視化しています。 Reviewed amount reference: 神戸市 令和7年度予算説明書（こども家庭局） p.20",
+      "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+      "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充"
+    },
+    {
+      "source_id": "REC_KOBE_DAREDEMO_SITES",
+      "target_id": "IMPL_SITE_KOBE_DAREDEMO_08",
+      "category": "welfare",
+      "sub_category": "実施施設別按分モデル",
+      "value_usd": 26190.47619047619,
+      "year": 2025,
+      "confidence": 0.62,
+      "source_dataset": "神戸市こども誰でも通園制度 実施施設別按分 (35施設均等)",
+      "description": "中央区 の実施施設 幼保連携型認定こども園真生きらきら保育園。施設別の交付額は公表されていないため、神戸市の実施施設一覧 35施設で均等按分した model-based 表示です。",
+      "evidence_text": "幼保連携型認定こども園真生きらきら保育園 は 中央区 の実施施設。施設別の交付額は未公表のため、35施設均等按分で可視化しています。 Reviewed amount reference: 神戸市 令和7年度予算説明書（こども家庭局） p.20",
+      "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+      "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充"
+    },
+    {
+      "source_id": "REC_KOBE_DAREDEMO_SITES",
+      "target_id": "IMPL_SITE_KOBE_DAREDEMO_09",
+      "category": "welfare",
+      "sub_category": "実施施設別按分モデル",
+      "value_usd": 26190.47619047619,
+      "year": 2025,
+      "confidence": 0.62,
+      "source_dataset": "神戸市こども誰でも通園制度 実施施設別按分 (35施設均等)",
+      "description": "中央区 の実施施設 大慈幼保連携型認定こども園とも分園。施設別の交付額は公表されていないため、神戸市の実施施設一覧 35施設で均等按分した model-based 表示です。",
+      "evidence_text": "大慈幼保連携型認定こども園とも分園 は 中央区 の実施施設。施設別の交付額は未公表のため、35施設均等按分で可視化しています。 Reviewed amount reference: 神戸市 令和7年度予算説明書（こども家庭局） p.20",
+      "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+      "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充"
+    },
+    {
+      "source_id": "REC_KOBE_DAREDEMO_SITES",
+      "target_id": "IMPL_SITE_KOBE_DAREDEMO_10",
+      "category": "welfare",
+      "sub_category": "実施施設別按分モデル",
+      "value_usd": 26190.47619047619,
+      "year": 2025,
+      "confidence": 0.62,
+      "source_dataset": "神戸市こども誰でも通園制度 実施施設別按分 (35施設均等)",
+      "description": "中央区 の実施施設 大慈ほまれ幼保連携型認定こども園。施設別の交付額は公表されていないため、神戸市の実施施設一覧 35施設で均等按分した model-based 表示です。",
+      "evidence_text": "大慈ほまれ幼保連携型認定こども園 は 中央区 の実施施設。施設別の交付額は未公表のため、35施設均等按分で可視化しています。 Reviewed amount reference: 神戸市 令和7年度予算説明書（こども家庭局） p.20",
+      "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+      "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充"
+    },
+    {
+      "source_id": "REC_KOBE_DAREDEMO_SITES",
+      "target_id": "IMPL_SITE_KOBE_DAREDEMO_11",
+      "category": "welfare",
+      "sub_category": "実施施設別按分モデル",
+      "value_usd": 26190.47619047619,
+      "year": 2025,
+      "confidence": 0.62,
+      "source_dataset": "神戸市こども誰でも通園制度 実施施設別按分 (35施設均等)",
+      "description": "中央区 の実施施設 幼保連携型認定こども園ポートピア。施設別の交付額は公表されていないため、神戸市の実施施設一覧 35施設で均等按分した model-based 表示です。",
+      "evidence_text": "幼保連携型認定こども園ポートピア は 中央区 の実施施設。施設別の交付額は未公表のため、35施設均等按分で可視化しています。 Reviewed amount reference: 神戸市 令和7年度予算説明書（こども家庭局） p.20",
+      "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+      "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充"
+    },
+    {
+      "source_id": "REC_KOBE_DAREDEMO_SITES",
+      "target_id": "IMPL_SITE_KOBE_DAREDEMO_12",
+      "category": "welfare",
+      "sub_category": "実施施設別按分モデル",
+      "value_usd": 26190.47619047619,
+      "year": 2025,
+      "confidence": 0.62,
+      "source_dataset": "神戸市こども誰でも通園制度 実施施設別按分 (35施設均等)",
+      "description": "中央区 の実施施設 神戸教会いずみ幼稚園。施設別の交付額は公表されていないため、神戸市の実施施設一覧 35施設で均等按分した model-based 表示です。",
+      "evidence_text": "神戸教会いずみ幼稚園 は 中央区 の実施施設。施設別の交付額は未公表のため、35施設均等按分で可視化しています。 Reviewed amount reference: 神戸市 令和7年度予算説明書（こども家庭局） p.20",
+      "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+      "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充"
+    },
+    {
+      "source_id": "REC_KOBE_DAREDEMO_SITES",
+      "target_id": "IMPL_SITE_KOBE_DAREDEMO_13",
+      "category": "welfare",
+      "sub_category": "実施施設別按分モデル",
+      "value_usd": 26190.47619047619,
+      "year": 2025,
+      "confidence": 0.62,
+      "source_dataset": "神戸市こども誰でも通園制度 実施施設別按分 (35施設均等)",
+      "description": "兵庫区 の実施施設 松原保育所（公立）。施設別の交付額は公表されていないため、神戸市の実施施設一覧 35施設で均等按分した model-based 表示です。",
+      "evidence_text": "松原保育所（公立） は 兵庫区 の実施施設。施設別の交付額は未公表のため、35施設均等按分で可視化しています。 Reviewed amount reference: 神戸市 令和7年度予算説明書（こども家庭局） p.20",
+      "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+      "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充"
+    },
+    {
+      "source_id": "REC_KOBE_DAREDEMO_SITES",
+      "target_id": "IMPL_SITE_KOBE_DAREDEMO_14",
+      "category": "welfare",
+      "sub_category": "実施施設別按分モデル",
+      "value_usd": 26190.47619047619,
+      "year": 2025,
+      "confidence": 0.62,
+      "source_dataset": "神戸市こども誰でも通園制度 実施施設別按分 (35施設均等)",
+      "description": "兵庫区 の実施施設 幼保連携型認定こども園宝地院保育園。施設別の交付額は公表されていないため、神戸市の実施施設一覧 35施設で均等按分した model-based 表示です。",
+      "evidence_text": "幼保連携型認定こども園宝地院保育園 は 兵庫区 の実施施設。施設別の交付額は未公表のため、35施設均等按分で可視化しています。 Reviewed amount reference: 神戸市 令和7年度予算説明書（こども家庭局） p.20",
+      "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+      "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充"
+    },
+    {
+      "source_id": "REC_KOBE_DAREDEMO_SITES",
+      "target_id": "IMPL_SITE_KOBE_DAREDEMO_15",
+      "category": "welfare",
+      "sub_category": "実施施設別按分モデル",
+      "value_usd": 26190.47619047619,
+      "year": 2025,
+      "confidence": 0.62,
+      "source_dataset": "神戸市こども誰でも通園制度 実施施設別按分 (35施設均等)",
+      "description": "兵庫区 の実施施設 幼保連携型認定こども園モーツァルト兵庫こども園。施設別の交付額は公表されていないため、神戸市の実施施設一覧 35施設で均等按分した model-based 表示です。",
+      "evidence_text": "幼保連携型認定こども園モーツァルト兵庫こども園 は 兵庫区 の実施施設。施設別の交付額は未公表のため、35施設均等按分で可視化しています。 Reviewed amount reference: 神戸市 令和7年度予算説明書（こども家庭局） p.20",
+      "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+      "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充"
+    },
+    {
+      "source_id": "REC_KOBE_DAREDEMO_SITES",
+      "target_id": "IMPL_SITE_KOBE_DAREDEMO_16",
+      "category": "welfare",
+      "sub_category": "実施施設別按分モデル",
+      "value_usd": 26190.47619047619,
+      "year": 2025,
+      "confidence": 0.62,
+      "source_dataset": "神戸市こども誰でも通園制度 実施施設別按分 (35施設均等)",
+      "description": "北区 の実施施設 幼保連携型認定こども園桜の宮こども園。施設別の交付額は公表されていないため、神戸市の実施施設一覧 35施設で均等按分した model-based 表示です。",
+      "evidence_text": "幼保連携型認定こども園桜の宮こども園 は 北区 の実施施設。施設別の交付額は未公表のため、35施設均等按分で可視化しています。 Reviewed amount reference: 神戸市 令和7年度予算説明書（こども家庭局） p.20",
+      "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+      "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充"
+    },
+    {
+      "source_id": "REC_KOBE_DAREDEMO_SITES",
+      "target_id": "IMPL_SITE_KOBE_DAREDEMO_17",
+      "category": "welfare",
+      "sub_category": "実施施設別按分モデル",
+      "value_usd": 26190.47619047619,
+      "year": 2025,
+      "confidence": 0.62,
+      "source_dataset": "神戸市こども誰でも通園制度 実施施設別按分 (35施設均等)",
+      "description": "北区 の実施施設 幼保連携型認定こども園星の杜こども園。施設別の交付額は公表されていないため、神戸市の実施施設一覧 35施設で均等按分した model-based 表示です。",
+      "evidence_text": "幼保連携型認定こども園星の杜こども園 は 北区 の実施施設。施設別の交付額は未公表のため、35施設均等按分で可視化しています。 Reviewed amount reference: 神戸市 令和7年度予算説明書（こども家庭局） p.20",
+      "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+      "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充"
+    },
+    {
+      "source_id": "REC_KOBE_DAREDEMO_SITES",
+      "target_id": "IMPL_SITE_KOBE_DAREDEMO_18",
+      "category": "welfare",
+      "sub_category": "実施施設別按分モデル",
+      "value_usd": 26190.47619047619,
+      "year": 2025,
+      "confidence": 0.62,
+      "source_dataset": "神戸市こども誰でも通園制度 実施施設別按分 (35施設均等)",
+      "description": "北区 の実施施設 幼稚園型認定こども園鈴蘭台幼稚園。施設別の交付額は公表されていないため、神戸市の実施施設一覧 35施設で均等按分した model-based 表示です。",
+      "evidence_text": "幼稚園型認定こども園鈴蘭台幼稚園 は 北区 の実施施設。施設別の交付額は未公表のため、35施設均等按分で可視化しています。 Reviewed amount reference: 神戸市 令和7年度予算説明書（こども家庭局） p.20",
+      "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+      "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充"
+    },
+    {
+      "source_id": "REC_KOBE_DAREDEMO_SITES",
+      "target_id": "IMPL_SITE_KOBE_DAREDEMO_19",
+      "category": "welfare",
+      "sub_category": "実施施設別按分モデル",
+      "value_usd": 26190.47619047619,
+      "year": 2025,
+      "confidence": 0.62,
+      "source_dataset": "神戸市こども誰でも通園制度 実施施設別按分 (35施設均等)",
+      "description": "長田区 の実施施設 神視保育園。施設別の交付額は公表されていないため、神戸市の実施施設一覧 35施設で均等按分した model-based 表示です。",
+      "evidence_text": "神視保育園 は 長田区 の実施施設。施設別の交付額は未公表のため、35施設均等按分で可視化しています。 Reviewed amount reference: 神戸市 令和7年度予算説明書（こども家庭局） p.20",
+      "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+      "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充"
+    },
+    {
+      "source_id": "REC_KOBE_DAREDEMO_SITES",
+      "target_id": "IMPL_SITE_KOBE_DAREDEMO_20",
+      "category": "welfare",
+      "sub_category": "実施施設別按分モデル",
+      "value_usd": 26190.47619047619,
+      "year": 2025,
+      "confidence": 0.62,
+      "source_dataset": "神戸市こども誰でも通園制度 実施施設別按分 (35施設均等)",
+      "description": "長田区 の実施施設 幼保連携型認定こども園新生こども園。施設別の交付額は公表されていないため、神戸市の実施施設一覧 35施設で均等按分した model-based 表示です。",
+      "evidence_text": "幼保連携型認定こども園新生こども園 は 長田区 の実施施設。施設別の交付額は未公表のため、35施設均等按分で可視化しています。 Reviewed amount reference: 神戸市 令和7年度予算説明書（こども家庭局） p.20",
+      "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+      "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充"
+    },
+    {
+      "source_id": "REC_KOBE_DAREDEMO_SITES",
+      "target_id": "IMPL_SITE_KOBE_DAREDEMO_21",
+      "category": "welfare",
+      "sub_category": "実施施設別按分モデル",
+      "value_usd": 26190.47619047619,
+      "year": 2025,
+      "confidence": 0.62,
+      "source_dataset": "神戸市こども誰でも通園制度 実施施設別按分 (35施設均等)",
+      "description": "長田区 の実施施設 幼保連携型認定こども園ほそだ。施設別の交付額は公表されていないため、神戸市の実施施設一覧 35施設で均等按分した model-based 表示です。",
+      "evidence_text": "幼保連携型認定こども園ほそだ は 長田区 の実施施設。施設別の交付額は未公表のため、35施設均等按分で可視化しています。 Reviewed amount reference: 神戸市 令和7年度予算説明書（こども家庭局） p.20",
+      "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+      "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充"
+    },
+    {
+      "source_id": "REC_KOBE_DAREDEMO_SITES",
+      "target_id": "IMPL_SITE_KOBE_DAREDEMO_22",
+      "category": "welfare",
+      "sub_category": "実施施設別按分モデル",
+      "value_usd": 26190.47619047619,
+      "year": 2025,
+      "confidence": 0.62,
+      "source_dataset": "神戸市こども誰でも通園制度 実施施設別按分 (35施設均等)",
+      "description": "須磨区 の実施施設 名谷フォレスト保育園。施設別の交付額は公表されていないため、神戸市の実施施設一覧 35施設で均等按分した model-based 表示です。",
+      "evidence_text": "名谷フォレスト保育園 は 須磨区 の実施施設。施設別の交付額は未公表のため、35施設均等按分で可視化しています。 Reviewed amount reference: 神戸市 令和7年度予算説明書（こども家庭局） p.20",
+      "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+      "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充"
+    },
+    {
+      "source_id": "REC_KOBE_DAREDEMO_SITES",
+      "target_id": "IMPL_SITE_KOBE_DAREDEMO_23",
+      "category": "welfare",
+      "sub_category": "実施施設別按分モデル",
+      "value_usd": 26190.47619047619,
+      "year": 2025,
+      "confidence": 0.62,
+      "source_dataset": "神戸市こども誰でも通園制度 実施施設別按分 (35施設均等)",
+      "description": "須磨区 の実施施設 幼保連携型認定こども園のぞみ保育園。施設別の交付額は公表されていないため、神戸市の実施施設一覧 35施設で均等按分した model-based 表示です。",
+      "evidence_text": "幼保連携型認定こども園のぞみ保育園 は 須磨区 の実施施設。施設別の交付額は未公表のため、35施設均等按分で可視化しています。 Reviewed amount reference: 神戸市 令和7年度予算説明書（こども家庭局） p.20",
+      "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+      "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充"
+    },
+    {
+      "source_id": "REC_KOBE_DAREDEMO_SITES",
+      "target_id": "IMPL_SITE_KOBE_DAREDEMO_24",
+      "category": "welfare",
+      "sub_category": "実施施設別按分モデル",
+      "value_usd": 26190.47619047619,
+      "year": 2025,
+      "confidence": 0.62,
+      "source_dataset": "神戸市こども誰でも通園制度 実施施設別按分 (35施設均等)",
+      "description": "須磨区 の実施施設 幼保連携型認定こども園村雨こども園。施設別の交付額は公表されていないため、神戸市の実施施設一覧 35施設で均等按分した model-based 表示です。",
+      "evidence_text": "幼保連携型認定こども園村雨こども園 は 須磨区 の実施施設。施設別の交付額は未公表のため、35施設均等按分で可視化しています。 Reviewed amount reference: 神戸市 令和7年度予算説明書（こども家庭局） p.20",
+      "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+      "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充"
+    },
+    {
+      "source_id": "REC_KOBE_DAREDEMO_SITES",
+      "target_id": "IMPL_SITE_KOBE_DAREDEMO_25",
+      "category": "welfare",
+      "sub_category": "実施施設別按分モデル",
+      "value_usd": 26190.47619047619,
+      "year": 2025,
+      "confidence": 0.62,
+      "source_dataset": "神戸市こども誰でも通園制度 実施施設別按分 (35施設均等)",
+      "description": "須磨区 の実施施設 西須磨わかば園。施設別の交付額は公表されていないため、神戸市の実施施設一覧 35施設で均等按分した model-based 表示です。",
+      "evidence_text": "西須磨わかば園 は 須磨区 の実施施設。施設別の交付額は未公表のため、35施設均等按分で可視化しています。 Reviewed amount reference: 神戸市 令和7年度予算説明書（こども家庭局） p.20",
+      "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+      "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充"
+    },
+    {
+      "source_id": "REC_KOBE_DAREDEMO_SITES",
+      "target_id": "IMPL_SITE_KOBE_DAREDEMO_26",
+      "category": "welfare",
+      "sub_category": "実施施設別按分モデル",
+      "value_usd": 26190.47619047619,
+      "year": 2025,
+      "confidence": 0.62,
+      "source_dataset": "神戸市こども誰でも通園制度 実施施設別按分 (35施設均等)",
+      "description": "垂水区 の実施施設 幼保連携型認定こども園彩の森。施設別の交付額は公表されていないため、神戸市の実施施設一覧 35施設で均等按分した model-based 表示です。",
+      "evidence_text": "幼保連携型認定こども園彩の森 は 垂水区 の実施施設。施設別の交付額は未公表のため、35施設均等按分で可視化しています。 Reviewed amount reference: 神戸市 令和7年度予算説明書（こども家庭局） p.20",
+      "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+      "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充"
+    },
+    {
+      "source_id": "REC_KOBE_DAREDEMO_SITES",
+      "target_id": "IMPL_SITE_KOBE_DAREDEMO_27",
+      "category": "welfare",
+      "sub_category": "実施施設別按分モデル",
+      "value_usd": 26190.47619047619,
+      "year": 2025,
+      "confidence": 0.62,
+      "source_dataset": "神戸市こども誰でも通園制度 実施施設別按分 (35施設均等)",
+      "description": "垂水区 の実施施設 幼保連携型認定こども園舞子幼稚園。施設別の交付額は公表されていないため、神戸市の実施施設一覧 35施設で均等按分した model-based 表示です。",
+      "evidence_text": "幼保連携型認定こども園舞子幼稚園 は 垂水区 の実施施設。施設別の交付額は未公表のため、35施設均等按分で可視化しています。 Reviewed amount reference: 神戸市 令和7年度予算説明書（こども家庭局） p.20",
+      "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+      "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充"
+    },
+    {
+      "source_id": "REC_KOBE_DAREDEMO_SITES",
+      "target_id": "IMPL_SITE_KOBE_DAREDEMO_28",
+      "category": "welfare",
+      "sub_category": "実施施設別按分モデル",
+      "value_usd": 26190.47619047619,
+      "year": 2025,
+      "confidence": 0.62,
+      "source_dataset": "神戸市こども誰でも通園制度 実施施設別按分 (35施設均等)",
+      "description": "垂水区 の実施施設 幼保連携型認定こども園明舞幼稚園。施設別の交付額は公表されていないため、神戸市の実施施設一覧 35施設で均等按分した model-based 表示です。",
+      "evidence_text": "幼保連携型認定こども園明舞幼稚園 は 垂水区 の実施施設。施設別の交付額は未公表のため、35施設均等按分で可視化しています。 Reviewed amount reference: 神戸市 令和7年度予算説明書（こども家庭局） p.20",
+      "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+      "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充"
+    },
+    {
+      "source_id": "REC_KOBE_DAREDEMO_SITES",
+      "target_id": "IMPL_SITE_KOBE_DAREDEMO_29",
+      "category": "welfare",
+      "sub_category": "実施施設別按分モデル",
+      "value_usd": 26190.47619047619,
+      "year": 2025,
+      "confidence": 0.62,
+      "source_dataset": "神戸市こども誰でも通園制度 実施施設別按分 (35施設均等)",
+      "description": "垂水区 の実施施設 幼稚園型認定こども園星陵台めぐみ幼稚園。施設別の交付額は公表されていないため、神戸市の実施施設一覧 35施設で均等按分した model-based 表示です。",
+      "evidence_text": "幼稚園型認定こども園星陵台めぐみ幼稚園 は 垂水区 の実施施設。施設別の交付額は未公表のため、35施設均等按分で可視化しています。 Reviewed amount reference: 神戸市 令和7年度予算説明書（こども家庭局） p.20",
+      "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+      "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充"
+    },
+    {
+      "source_id": "REC_KOBE_DAREDEMO_SITES",
+      "target_id": "IMPL_SITE_KOBE_DAREDEMO_30",
+      "category": "welfare",
+      "sub_category": "実施施設別按分モデル",
+      "value_usd": 26190.47619047619,
+      "year": 2025,
+      "confidence": 0.62,
+      "source_dataset": "神戸市こども誰でも通園制度 実施施設別按分 (35施設均等)",
+      "description": "垂水区 の実施施設 小規模保育園あんよ。施設別の交付額は公表されていないため、神戸市の実施施設一覧 35施設で均等按分した model-based 表示です。",
+      "evidence_text": "小規模保育園あんよ は 垂水区 の実施施設。施設別の交付額は未公表のため、35施設均等按分で可視化しています。 Reviewed amount reference: 神戸市 令和7年度予算説明書（こども家庭局） p.20",
+      "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+      "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充"
+    },
+    {
+      "source_id": "REC_KOBE_DAREDEMO_SITES",
+      "target_id": "IMPL_SITE_KOBE_DAREDEMO_31",
+      "category": "welfare",
+      "sub_category": "実施施設別按分モデル",
+      "value_usd": 26190.47619047619,
+      "year": 2025,
+      "confidence": 0.62,
+      "source_dataset": "神戸市こども誰でも通園制度 実施施設別按分 (35施設均等)",
+      "description": "西区 の実施施設 幼保連携型認定こども園あゆみ幼児園。施設別の交付額は公表されていないため、神戸市の実施施設一覧 35施設で均等按分した model-based 表示です。",
+      "evidence_text": "幼保連携型認定こども園あゆみ幼児園 は 西区 の実施施設。施設別の交付額は未公表のため、35施設均等按分で可視化しています。 Reviewed amount reference: 神戸市 令和7年度予算説明書（こども家庭局） p.20",
+      "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+      "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充"
+    },
+    {
+      "source_id": "REC_KOBE_DAREDEMO_SITES",
+      "target_id": "IMPL_SITE_KOBE_DAREDEMO_32",
+      "category": "welfare",
+      "sub_category": "実施施設別按分モデル",
+      "value_usd": 26190.47619047619,
+      "year": 2025,
+      "confidence": 0.62,
+      "source_dataset": "神戸市こども誰でも通園制度 実施施設別按分 (35施設均等)",
+      "description": "西区 の実施施設 幼保連携型認定こども園おっこう山。施設別の交付額は公表されていないため、神戸市の実施施設一覧 35施設で均等按分した model-based 表示です。",
+      "evidence_text": "幼保連携型認定こども園おっこう山 は 西区 の実施施設。施設別の交付額は未公表のため、35施設均等按分で可視化しています。 Reviewed amount reference: 神戸市 令和7年度予算説明書（こども家庭局） p.20",
+      "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+      "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充"
+    },
+    {
+      "source_id": "REC_KOBE_DAREDEMO_SITES",
+      "target_id": "IMPL_SITE_KOBE_DAREDEMO_33",
+      "category": "welfare",
+      "sub_category": "実施施設別按分モデル",
+      "value_usd": 26190.47619047619,
+      "year": 2025,
+      "confidence": 0.62,
+      "source_dataset": "神戸市こども誰でも通園制度 実施施設別按分 (35施設均等)",
+      "description": "西区 の実施施設 幼保連携型認定こども園持子保育園。施設別の交付額は公表されていないため、神戸市の実施施設一覧 35施設で均等按分した model-based 表示です。",
+      "evidence_text": "幼保連携型認定こども園持子保育園 は 西区 の実施施設。施設別の交付額は未公表のため、35施設均等按分で可視化しています。 Reviewed amount reference: 神戸市 令和7年度予算説明書（こども家庭局） p.20",
+      "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+      "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充"
+    },
+    {
+      "source_id": "REC_KOBE_DAREDEMO_SITES",
+      "target_id": "IMPL_SITE_KOBE_DAREDEMO_34",
+      "category": "welfare",
+      "sub_category": "実施施設別按分モデル",
+      "value_usd": 26190.47619047619,
+      "year": 2025,
+      "confidence": 0.62,
+      "source_dataset": "神戸市こども誰でも通園制度 実施施設別按分 (35施設均等)",
+      "description": "西区 の実施施設 幼保連携型認定こども園YMCA保育園 おひさま分園。施設別の交付額は公表されていないため、神戸市の実施施設一覧 35施設で均等按分した model-based 表示です。",
+      "evidence_text": "幼保連携型認定こども園YMCA保育園 おひさま分園 は 西区 の実施施設。施設別の交付額は未公表のため、35施設均等按分で可視化しています。 Reviewed amount reference: 神戸市 令和7年度予算説明書（こども家庭局） p.20",
+      "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+      "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充"
+    },
+    {
+      "source_id": "REC_KOBE_DAREDEMO_SITES",
+      "target_id": "IMPL_SITE_KOBE_DAREDEMO_35",
+      "category": "welfare",
+      "sub_category": "実施施設別按分モデル",
+      "value_usd": 26190.47619047619,
+      "year": 2025,
+      "confidence": 0.62,
+      "source_dataset": "神戸市こども誰でも通園制度 実施施設別按分 (35施設均等)",
+      "description": "西区 の実施施設 学園みどりこども園。施設別の交付額は公表されていないため、神戸市の実施施設一覧 35施設で均等按分した model-based 表示です。",
+      "evidence_text": "学園みどりこども園 は 西区 の実施施設。施設別の交付額は未公表のため、35施設均等按分で可視化しています。 Reviewed amount reference: 神戸市 令和7年度予算説明書（こども家庭局） p.20",
+      "source_url": "https://www.city.kobe.lg.jp/a36812/610318071003.html",
+      "source_title": "令和７年度「神戸市こども誰でも通園制度」実施施設の拡充"
     }
   ],
   "metadata": {
     "source": "SQLite DB (money_flow.db)",
-    "total_nodes": 185,
-    "total_edges": 1413,
+    "total_nodes": 232,
+    "total_edges": 1460,
     "fiscal_years": [
       2021,
       2022,
@@ -21773,15 +22819,25 @@
         "entity_id": "MIN_CFA",
         "fiscal_year": 2025,
         "note_key": "after-school-club-support-2025",
-        "title": "放課後児童クラブ4事業の支援内容とお金の流れ",
-        "summary": "2025年度の放課後児童クラブ関連4事業は、運営費・処遇改善、施設整備、DX・体制強化、巡回等サポートに分かれ、こども家庭庁から自治体を経て各実施主体や委託先へ流れる構造です。",
+        "title": "放課後児童クラブ関係予算の支援内容とお金の流れ",
+        "summary": "2025年度の放課後児童クラブ関係予算は、運営費・処遇改善、施設整備、研修、DX推進実証、巡回等サポートなどに分かれ、こども家庭庁から自治体や実施主体へ流れる構造です。",
         "key_points": [
-          "放課後児童クラブの関連4事業は、1,209億円、143億円、29億円、11億円の reviewed edge として 2025年度に整理されている。",
+          "放課後児童クラブ関係の主要 reviewed edge は、運営費・処遇改善 1,209億円、施設整備 143億円、研修関係 29億円、DX推進実証 1.1億円、巡回等サポート 11億円として 2025年度に整理されている。",
           "運営費・処遇改善はクラブ運営、支援員処遇改善、障害児受入加配、送迎支援を支える予算で、自治体から公営クラブや委託運営主体へ流れる。",
           "令和7年実施状況では、運営主体別クラブ数は 公立公営 5,800か所、公立民営 13,543か所、民立民営 6,585か所で、アプリではこのシェアを second hop の按分比率として使っている。",
-          "施設整備は改修や新規実施の環境整備、DX・体制強化はオンライン化や第三者評価、巡回等サポートは要支援児対応や巡回アドバイザー配置を支える。"
+          "施設整備は市町村主体の公立整備と社会福祉法人等主体の民間整備に分かれるが、執行額内訳は未公表のため、アプリではクラブ数シェアを proxy に second hop で按分している。",
+          "公立整備ルートは市町村が設置主体であることが条件で、PFI整備後に市町村が買い取る方式も含まれる。",
+          "創設では、本体工事費、工事請負費、工事事務費、既存建物買収費、賃借料加算等が対象になりうる一方、土地買収費や整地費、外構などは対象外とされる。",
+          "創設の基準として、専用区画 1.65㎡/人以上、支援の単位ごとに職員2人以上、うち1人以上は放課後児童支援員、1単位おおむね40人以下が示されている。",
+          "29億円の `こども政策推進事業費補助金（放課後関係）` のページで明示されているのは、放課後児童支援員認定資格研修事業と放課後児童支援員等資質向上研修事業であり、以前の `DX・体制強化 29億円` 表示より `研修関係 29億円` と読む方が正確である。",
+          "研修関係の出口は、認定資格研修と資質向上研修の2本が確認できる。前者は都道府県・指定都市・中核市、後者は都道府県又は市町村が実施主体で、いずれも民間団体等への委託が可能である。",
+          "研修関係の third-hop は、金額比率未公表のため `実施主体 / 受託事業者` の二系統を均等按分する model-based 表示にしている。東京都では株式会社東京リーガルマインド、山口県では特定非営利活動法人学童保育協会、新潟県では株式会社東京リーガルマインドへの委託例が確認できる。",
+          "DXそのものは別建てで、放課後児童クラブ利用手続き等に関わるDX推進実証事業（仮称） 1.1億円が確認できる。市町村・運営法人/事業所・開発ベンダーで構成するコンソーシアム方式で、アプリでは費目別内訳未公表のため3者均等按分の model-based second hop を置いている。",
+          "ICT化推進は 2,431億円の内数で、システム導入 50万円/か所、翻訳機等 15万円/か所の単価が示されている。",
+          "千葉県の令和7年度協議施設一覧では、公立ルートの例として 船橋市 中野木第2放課後ルームや柏市立光ケ丘小こどもルーム第三保育室、民間ルートの例として シダックス大新東ヒューマンサービス株式会社、学校法人アゼリー学園、社会福祉法人佐原めぐみ会が確認できる。",
+          "第三者評価受審推進事業と利用調整支援事業は 1,209億円 の運営費等の並びで確認できるが、個別金額は切れていない。巡回等サポートは要支援児対応や巡回アドバイザー配置を支える。"
         ],
-        "body_markdown": "# 放課後児童クラブ4事業の支援内容とお金の流れ\n\n## 結論\n\n- 2025年度の放課後児童クラブ関連4事業は、家計への現金給付ではなく、クラブの運営、施設整備、DX、巡回支援を支える予算として整理されている。\n- 基本の流れは、こども家庭庁から自治体へ交付・補助が入り、その先で公営クラブの運営費、委託運営主体、工事、システム導入、巡回支援の委託先などへ支出される構造である。\n\n## 4事業の内訳\n\n- 放課後児童クラブ（運営費・処遇改善）: `1,209億円`\n- 放課後児童クラブ（施設整備）: `143億円`\n- 放課後児童クラブ（DX・体制強化）: `29億円`\n- 放課後児童クラブ（巡回等サポート）: `11億円`\n\n## 事業ごとの見方\n\n### 運営費・処遇改善\n\n- `子ども・子育て支援交付金` として整理され、放課後児童クラブの運営費、放課後児童支援員の処遇改善、障害児受入加配、送迎支援などを支える。\n- お金の流れは、こども家庭庁から自治体へ入り、その先で公営クラブの運営費、または民間運営主体への委託・補助に向かう理解が自然である。\n\n## 運営費・処遇改善の出口モデル\n\n- 主体別の厳密な執行額一覧は確認できていない。\n- ただし、こども家庭庁の `令和7年 放課後児童健全育成事業（放課後児童クラブ）の実施状況` では、クラブ数の運営主体別内訳が確認できる。\n- このためアプリでは、`1,209億円` の reviewed 事業額をそのまま残しつつ、出口は `クラブ数シェア` を比率根拠とする model-based second hop として可視化する。\n- さらに `公立民営` と `民立民営` については、同じ一次資料の運営主体別クラブ数を使って third hop まで分解している。\n\n### 主な出口\n\n- 公立公営: `5,800か所 / 22.4%`\n- 公立民営: `13,543か所 / 52.2%`\n- 民立民営: `6,585か所 / 25.4%`\n\n### 公立民営の主な運営主体\n\n- 社会福祉法人: `3,126か所 / 12.1%`\n- 公益社団法人等: `1,344か所 / 5.2%`\n- NPO法人: `1,681か所 / 6.5%`\n- 運営委員会・保護者会: `2,362か所 / 9.1%`\n- 任意団体: `205か所 / 0.8%`\n- 株式会社: `4,299か所 / 16.6%`\n- 学校法人: `190か所 / 0.7%`\n- その他: `336か所 / 1.3%`\n\n### 民立民営の主な運営主体\n\n- 社会福祉法人: `2,086か所 / 8.0%`\n- 公益社団法人等: `558か所 / 2.2%`\n- NPO法人: `1,208か所 / 4.7%`\n- 運営委員会・保護者会: `1,157か所 / 4.5%`\n- 任意団体: `69か所 / 0.3%`\n- 株式会社: `664か所 / 2.6%`\n- 学校法人: `371か所 / 1.4%`\n- その他: `472か所 / 1.8%`\n\n### 施設整備\n\n- `子ども・子育て支援施設整備交付金` として整理され、既存施設を活用した改修、新たなクラブ実施のための環境整備、アパート等活用費を含む。\n- 運営費ではなく、箱を作る、増やす、改修するための資本的支出に近い。\n\n### DX・体制強化\n\n- `こども政策推進事業費補助金` として整理され、利用手続きオンライン化、ICT推進実証、第三者評価、利用調整支援などを支える。\n- 自治体側の手続き改善や運営基盤強化の性格が強く、支出先は自治体の事務体制、システム導入、評価・支援委託などに分かれる。\n\n### 巡回等サポート\n\n- `保育対策総合支援事業費補助金` として整理され、要支援児童等対応推進、育成支援体制強化、巡回アドバイザー配置などを支える。\n- 現場の困難ケース対応や伴走支援のための予算で、自治体直営配置か外部委託かは地域の実施方法によって変わる。\n\n## 制度の受け皿\n\n- こども家庭庁の概要ページでは、放課後児童クラブの設置・運営主体として `市区町村、社会福祉法人、保護者会、運営委員会、その他の者` が示されている。\n- したがって、国費の出口は一律の単一事業者ではなく、自治体の実施方式に応じて公営運営費、委託先法人、改修工事、ICTベンダー、巡回支援人材などに分かれる。\n\n## 一次資料\n\n- 令和7年度こども家庭庁予算 事業別資料集 `p.74`\n- 放課後児童健全育成事業について\n- 令和7年 放課後児童健全育成事業（放課後児童クラブ）の実施状況 `p.9`\n- 令和7年度 こども・子育て支援関係予算のポイント `p.18-19, p.26`\n",
+        "body_markdown": "# 放課後児童クラブ関係予算の支援内容とお金の流れ\n\n## 結論\n\n- 2025年度の放課後児童クラブ関係予算は、家計への現金給付ではなく、クラブの運営、施設整備、研修、DX実証、巡回支援を支える予算として整理されている。\n- 基本の流れは、こども家庭庁から自治体へ交付・補助が入り、その先で公営クラブの運営費、委託運営主体、工事、システム導入、巡回支援の委託先などへ支出される構造である。\n\n## 主要な予算項目\n\n- 放課後児童クラブ（運営費・処遇改善）: `1,209億円`\n- 放課後児童クラブ（施設整備）: `143億円`\n- 放課後児童クラブ（研修関係）: `29億円`\n- 放課後児童クラブ（DX推進実証）: `1.1億円`\n- 放課後児童クラブ（巡回等サポート）: `11億円`\n- 放課後児童クラブ等におけるICT化推進事業: `2,431億円の内数`\n\n## 事業ごとの見方\n\n### 運営費・処遇改善\n\n- `子ども・子育て支援交付金` として整理され、放課後児童クラブの運営費、放課後児童支援員の処遇改善、障害児受入加配、送迎支援などを支える。\n- お金の流れは、こども家庭庁から自治体へ入り、その先で公営クラブの運営費、または民間運営主体への委託・補助に向かう理解が自然である。\n\n## 運営費・処遇改善の出口モデル\n\n- 主体別の厳密な執行額一覧は確認できていない。\n- ただし、こども家庭庁の `令和7年 放課後児童健全育成事業（放課後児童クラブ）の実施状況` では、クラブ数の運営主体別内訳が確認できる。\n- このためアプリでは、`1,209億円` の reviewed 事業額をそのまま残しつつ、出口は `クラブ数シェア` を比率根拠とする model-based second hop として可視化する。\n- さらに `公立民営` と `民立民営` については、同じ一次資料の運営主体別クラブ数を使って third hop まで分解している。\n\n### 主な出口\n\n- 公立公営: `5,800か所 / 22.4%`\n- 公立民営: `13,543か所 / 52.2%`\n- 民立民営: `6,585か所 / 25.4%`\n\n### 公立民営の主な運営主体\n\n- 社会福祉法人: `3,126か所 / 12.1%`\n- 公益社団法人等: `1,344か所 / 5.2%`\n- NPO法人: `1,681か所 / 6.5%`\n- 運営委員会・保護者会: `2,362か所 / 9.1%`\n- 任意団体: `205か所 / 0.8%`\n- 株式会社: `4,299か所 / 16.6%`\n- 学校法人: `190か所 / 0.7%`\n- その他: `336か所 / 1.3%`\n\n### 民立民営の主な運営主体\n\n- 社会福祉法人: `2,086か所 / 8.0%`\n- 公益社団法人等: `558か所 / 2.2%`\n- NPO法人: `1,208か所 / 4.7%`\n- 運営委員会・保護者会: `1,157か所 / 4.5%`\n- 任意団体: `69か所 / 0.3%`\n- 株式会社: `664か所 / 2.6%`\n- 学校法人: `371か所 / 1.4%`\n- その他: `472か所 / 1.8%`\n\n### 施設整備\n\n- `子ども・子育て支援施設整備交付金` として整理され、既存施設を活用した改修、新たなクラブ実施のための環境整備、アパート等活用費を含む。\n- 運営費ではなく、箱を作る、増やす、改修するための資本的支出に近い。\n\n## 施設整備の出口モデル\n\n- 施設整備についても、主体別の厳密な執行額一覧は確認できていない。\n- ただし、こども家庭庁の `令和7年度 こども・子育て支援関係予算のポイント` では、公立整備と民間整備で設置主体と補助率が分かれている。\n- このためアプリでは、`143億円` の reviewed 事業額をそのまま残しつつ、出口は `公立主体` と `民間主体` の二系統に分けて可視化する。\n- ただし公立・民間の配分比率そのものは公表されていないため、`令和7年実施状況` のクラブ数シェアを proxy にした model-based second hop として扱っている。\n\n### 主な出口\n\n- 公立主体整備: `19,343か所 / 74.6%` を proxy\n- 民間主体整備: `6,585か所 / 25.4%` を proxy\n\n### 公立整備ルート\n\n- 設置主体: `市町村`\n- 補助率（嵩上げ前）: `国1/3・都道府県1/3・市町村1/3`\n- 補助率（待機児童市町村等の嵩上げ後）: `国2/3・都道府県1/6・市町村1/6`\n- 公立として扱われる条件は、`市町村が設置主体` であること。PFI 等で整備して後に市町村が買い取る方式も、このルートに含まれる。\n\n### 民間整備ルート\n\n- 設置主体: `社会福祉法人、学校法人、市町村が認めた者等`\n- 補助率（嵩上げ前）: `国2/9・都道府県2/9・市町村2/9・社会福祉法人等1/3`\n- 補助率（待機児童市町村等の嵩上げ後）: `国1/2・都道府県1/8・市町村1/8・社会福祉法人等1/4`\n\n### 具体例（公式協議一覧で確認できる受給先）\n\n- ここでいう `受給先` は、国から直接ではなく、`子ども・子育て支援施設整備交付金` の協議対象として公式資料に載っている整備対象施設・団体のことを指す。\n- 千葉県の `令和7年度子ども・子育て支援施設整備交付金協議施設一覧` では、公立ルートと民間ルートの具体例が確認できる。\n\n#### 公立ルートの例\n\n- 船橋市 `中野木第2放課後ルーム` `大規模修繕`\n- 松戸市 `稔台放課後児童クラブ1/2` `創設`\n- 柏市 `柏市立光ケ丘小こどもルーム第三保育室/第四保育室` `創設`\n- 八千代市 `八千代台学童保育所A/B/C` `改築`\n- 鎌ケ谷市 `西部小学校第1放課後児童クラブ` `大規模修繕`\n\n#### 民間ルートの例\n\n- `館山学童クラブA-D` `シダックス大新東ヒューマンサービス株式会社`\n- `上野小学校放課後ルーム` `シダックス大新東ヒューマンサービス株式会社`\n- `勝浦小学校放課後ルーム1/2` `シダックス大新東ヒューマンサービス株式会社`\n- `学童クラブ レインボーキッズ(1)(2)` `保護者会`\n- `学童クラブ アゼリーアカデミア千葉ニュータウン` `学校法人アゼリー学園`\n- `学童クラブめぐみ(1)(2)` `社会福祉法人佐原めぐみ会`\n\n- したがって、民間ルートの実際の受け皿は `株式会社系受託事業者・保護者会・学校法人・社会福祉法人` などで、公立ルートでは `市町村直営の放課後ルーム・こどもルーム・学童保育所` が確認できる。\n\n## 施設整備の創設で使える費用\n\n- `創設` は、新たに放課後児童クラブ施設を整備することを指す。\n- 対象経費には、`本体工事費`、`工事請負費`、`工事事務費`、`特殊附帯工事費` が含まれる。\n- `既存建物の買収費` も、新築より効率的と認められる場合は対象になりうる。\n- `賃借料加算` は、新たに土地を借りて整備する場合などに設定されている。\n- `校内交流型`、`過疎・山村・離島等` では、条件付きで加算措置がある。\n\n## 創設で対象外になる費用\n\n- `土地買収費`\n- `整地費`\n- `職員宿舎`\n- `門・囲障・構内雨水排水・構内通路` などの外構\n- その他、施設整備費として不適当とされる費用\n\n## 創設の主な要件\n\n- 公立ルートでは `市町村が設置主体`、民間ルートでは `社会福祉法人・学校法人・公益法人・その他市町村が認めた者` が設置主体になる。\n- 専用区画は `児童1人あたりおおむね1.65㎡以上` が必要で、開所時間中は原則専用利用とされる。\n- 支援の単位ごとに `2人以上` の職員配置が必要で、`1人以上` は放課後児童支援員とされる。\n- 支援の単位は原則 `おおむね40人以下`。\n- 待機児童解消のための嵩上げは、`創設` または `定員増を伴う整備` で、待機児童が既にいるか発生見込みがある市町村が前提になる。\n- `校内交流型` は、小学校敷地内等で放課後子供教室と一体的に実施し、市町村計画に受け皿整備量があり、余裕教室活用が困難で、待機児童があるか発生見込みがある場合に対象となる。\n\n### 研修関係\n\n- `こども政策推進事業費補助金（放課後関係） 29億円` のページで明示されているのは、`放課後児童支援員認定資格研修事業` と `放課後児童支援員等資質向上研修事業` である。\n- したがって、アプリで以前 `DX・体制強化 29億円` としていたものは、厳密には `研修関係 29億円` と読むのが正確である。\n\n#### 研修関係の出口モデル\n\n- `認定資格研修` は、`都道府県・指定都市・中核市` が実施主体で、市町村や民間団体等へ一部委託可能。\n- `資質向上研修` は、`都道府県又は市町村` が実施主体で、民間団体等へ全部又は一部委託可能。\n- ただし、`29億円` の中でこの2研修にいくらずつ配分されるかは公表されていない。\n- そのためアプリでは、まず `認定資格研修 / 資質向上研修` の2本に均等按分する model-based second hop として可視化している。\n\n#### 研修関係の third-hop\n\n- `認定資格研修` の先は、`実施主体（都道府県・指定都市・中核市）` と `受託事業者` の2系統で見るのが自然。\n- `資質向上研修` の先は、`実施主体（都道府県又は市町村）` と `受託事業者` の2系統で見るのが自然。\n- ただし、自治体がどれだけ直営で持ち、どれだけ委託に出しているかの金額比率は公表されていない。\n- そのためアプリでは、third-hop は `実施主体 / 受託事業者` の二系統を均等按分する model-based 表示にしている。\n\n#### 自治体の公表例\n\n- `東京都` の認定資格研修は、都が実施主体で、運営業務を `株式会社東京リーガルマインド` に委託している。\n- `山口県` の認定資格研修は、`特定非営利活動法人学童保育協会` を委託先として公表している。\n- `新潟県` では、認定資格研修・資質向上研修の両方について `株式会社東京リーガルマインド` が受託先として確認できる。\n- `千葉県` や `福島県` でも、資質向上研修を含む委託仕様書・公募資料が公表されており、委託ルート自体は公式資料で確認できる。\n\n### DX推進実証\n\n- `放課後児童クラブ利用手続き等に関わるDX推進実証事業（仮称）` は、`1.1億円` の別建て事業として確認できる。\n- 実施主体は `市町村` で、`国10/10`、`1自治体あたり 10,574千円`。\n- 内容は、利用申請のオンライン化、利用調整、事業所と自治体の情報連携、保護者連絡、請求、出欠管理、育成支援記録などをつなぐ総合的なDX実証である。\n- 公式資料では、`市町村・放課後児童クラブ運営法人/事業所・開発ベンダー` で構成するコンソーシアムを設置するとされている。\n- ただし、`1.1億円` の費目別内訳は公表されていないため、アプリではこの3者を均等按分する model-based second hop として可視化している。\n\n### ICT化推進\n\n- `放課後児童クラブ等におけるICT化推進事業` は、`2,431億円の内数` として示されているため、放課後児童クラブ向けの厳密な額までは切れない。\n- ただし、補助単価として、`システム導入 1か所あたり 50万円`、`翻訳機等の購入 1か所あたり 15万円` が示されている。\n- この事業は、職員の業務負担軽減、保護者連絡、オンライン研修、多言語対応などの利用環境整備を支える。\n\n### 第三者評価・利用調整支援\n\n- `放課後児童クラブ第三者評価受審推進事業` と `放課後児童クラブ利用調整支援事業` は、`1,209億円` の運営費等の並びで確認できる。\n- ただし、この2事業だけの個別金額は資料上では切れていない。\n\n### 巡回等サポート\n\n- `保育対策総合支援事業費補助金` として整理され、要支援児童等対応推進、育成支援体制強化、巡回アドバイザー配置などを支える。\n- 現場の困難ケース対応や伴走支援のための予算で、自治体直営配置か外部委託かは地域の実施方法によって変わる。\n\n## 制度の受け皿\n\n- こども家庭庁の概要ページでは、放課後児童クラブの設置・運営主体として `市区町村、社会福祉法人、保護者会、運営委員会、その他の者` が示されている。\n- したがって、国費の出口は一律の単一事業者ではなく、自治体の実施方式に応じて公営運営費、委託先法人、改修工事、ICTベンダー、巡回支援人材などに分かれる。\n\n## 一次資料\n\n- 令和7年度こども家庭庁予算 事業別資料集 `p.74`\n- 放課後児童健全育成事業について\n- 令和7年 放課後児童健全育成事業（放課後児童クラブ）の実施状況 `p.9`\n- 令和7年度こども家庭庁予算 事業別資料集 `p.19-20, p.75`\n- 令和7年度 こども・子育て支援関係予算のポイント `p.19, p.26`\n- 子ども・子育て支援施設整備交付金の交付について `2025-04-24`\n- 子ども・子育て支援施設整備交付金に係る施設整備の取扱い `2025-04-24`\n- 放課後児童健全育成事業の設備及び運営に関する基準について\n",
         "doc_path": "docs/funding-knowledge/ministries/child-and-family-agency/AFTER_SCHOOL_CLUB_SUPPORT_2025.md",
         "display_order": 40,
         "sources": [
@@ -21814,18 +22870,102 @@
             "display_order": 40
           },
           {
-            "source_title": "令和7年度 こども・子育て支援関係予算のポイント",
-            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/efa58163-4cc2-43d6-ba57-3df41d552a52/857bf219/20241227_policies_kosodateshien_budget_07.pdf#page=19",
+            "source_title": "令和7年度こども家庭庁予算 事業別資料集",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=19",
             "source_kind": "official_pdf",
             "authority_level": "primary",
             "display_order": 50
+          },
+          {
+            "source_title": "令和7年度こども家庭庁予算 事業別資料集",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=20",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 60
+          },
+          {
+            "source_title": "令和7年度こども家庭庁予算 事業別資料集",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=75",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 70
+          },
+          {
+            "source_title": "放課後児童支援員等研修事業実施要綱",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/e28ec5c7-3af2-465e-82fa-040a88ce0ba2/950b9dad/20251125_councils_shingikai_kodomo_ibasho_jidoukan_e28ec5c7_17.pdf#page=1",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 80
+          },
+          {
+            "source_title": "東京都 放課後児童支援員認定資格研修",
+            "source_url": "https://www.fukushi.metro.tokyo.lg.jp/kodomo/hoiku/gakudou_jidoukan/houkagojidoushienin_nintei",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 90
+          },
+          {
+            "source_title": "山口県 令和7年度放課後児童支援員認定資格研修",
+            "source_url": "https://www.pref.yamaguchi.lg.jp/soshiki/51/152717.html",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 100
+          },
+          {
+            "source_title": "新潟県 放課後児童支援員研修（認定資格研修・資質向上研修）開催案内",
+            "source_url": "https://www.pref.niigata.lg.jp/sec/kodomokatei/13569249670772.html",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 110
           },
           {
             "source_title": "令和7年度 こども・子育て支援関係予算のポイント",
             "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/efa58163-4cc2-43d6-ba57-3df41d552a52/857bf219/20241227_policies_kosodateshien_budget_07.pdf#page=26",
             "source_kind": "official_pdf",
             "authority_level": "primary",
-            "display_order": 60
+            "display_order": 120
+          },
+          {
+            "source_title": "千葉県 放課後児童健全育成事業について",
+            "source_url": "https://www.pref.chiba.lg.jp/kosodate/hoikusho/houkago/shishin.html",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 130
+          },
+          {
+            "source_title": "令和7年度子ども・子育て支援施設整備交付金協議施設一覧",
+            "source_url": "https://www.pref.chiba.lg.jp/kosodate/hoikusho/houkago/documents/seibiitiran.pdf",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 140
+          },
+          {
+            "source_title": "子ども・子育て支援施設整備交付金の交付について",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/0abf2f27-1ebe-4fa2-bab8-362dd67ffc4b/f0bce416/20250425_policies_kosodateshien_houkago-jidou_hourei-tsuuti_65.pdf",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 150
+          },
+          {
+            "source_title": "子ども・子育て支援施設整備交付金に係る施設整備の取扱い",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/0abf2f27-1ebe-4fa2-bab8-362dd67ffc4b/01d80820/20250425_policies_kosodateshien_houkago-jidou_hourei-tsuuti_66.pdf",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 160
+          },
+          {
+            "source_title": "放課後児童健全育成事業の設備及び運営に関する基準について",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/27f4a5b4-53c9-446d-ab3d-7c7055949a26/6ad7465b/20230929_policies_kokoseido_law_tsuuchi_tsuuchi-h24-h29_635.pdf",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 170
+          },
+          {
+            "source_title": "放課後児童健全育成事業の「児童の数」の具体的な算出方法の例",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/0abf2f27-1ebe-4fa2-bab8-362dd67ffc4b/f4bc9772/20250513_policies_kosodateshien_houkago-jidou_hourei-tsuuti_67.pdf",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 180
           }
         ]
       },
@@ -22368,30 +23508,205 @@
       {
         "entity_id": "MIN_CFA",
         "fiscal_year": 2025,
-        "fact_key": "after-school-club-dx-budget-2025",
+        "fact_key": "after-school-club-training-budget-2025",
         "fact_group": "after_school_club",
-        "title": "DX・体制強化",
+        "title": "研修関係",
         "value_text": "29億円",
         "numeric_value": 29.0,
         "unit": "億円",
-        "summary": "利用手続きオンライン化、ICT推進実証事業、第三者評価の推進、利用調整支援などを支える予算です。",
+        "summary": "こども政策推進事業費補助金（放課後関係）29億円のページで明示されているのは、放課後児童支援員認定資格研修事業と放課後児童支援員等資質向上研修事業です。",
         "note_key": "after-school-club-support-2025",
-        "source_excerpt": "利用手続きオンライン化・ICT推進実証事業、第三者評価の推進、利用調整支援など",
+        "source_excerpt": "放課後児童支援員認定資格研修事業、放課後児童支援員等資質向上研修事業",
         "display_order": 90,
         "sources": [
           {
             "source_title": "令和7年度こども家庭庁予算 事業別資料集",
-            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=74&search=29",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=75&search=%E7%A0%94%E4%BF%AE",
             "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "after-school-club-training-certification-2025",
+        "fact_group": "after_school_club",
+        "title": "認定資格研修",
+        "value_text": "都道府県・指定都市・中核市が実施、市町村や民間団体等へ一部委託可",
+        "numeric_value": null,
+        "unit": null,
+        "summary": "放課後児童支援員として認定されるために修了が義務づけられている研修です。",
+        "note_key": "after-school-club-support-2025",
+        "source_excerpt": "放課後児童支援員認定資格研修事業。都道府県・指定都市・中核市が実施主体。一部委託可能。",
+        "display_order": 92,
+        "sources": [
+          {
+            "source_title": "放課後児童支援員等研修事業実施要綱",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/e28ec5c7-3af2-465e-82fa-040a88ce0ba2/950b9dad/20251125_councils_shingikai_kodomo_ibasho_jidoukan_e28ec5c7_17.pdf#page=1",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "after-school-club-training-upskilling-2025",
+        "fact_group": "after_school_club",
+        "title": "資質向上研修",
+        "value_text": "都道府県又は市町村が実施、民間団体等へ全部又は一部委託可",
+        "numeric_value": null,
+        "unit": null,
+        "summary": "放課後児童クラブの現任職員向けに実施する資質向上研修です。",
+        "note_key": "after-school-club-support-2025",
+        "source_excerpt": "放課後児童支援員等資質向上研修事業。都道府県又は市町村が実施主体。全部又は一部委託可能。",
+        "display_order": 93,
+        "sources": [
+          {
+            "source_title": "放課後児童支援員等研修事業実施要綱",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/e28ec5c7-3af2-465e-82fa-040a88ce0ba2/950b9dad/20251125_councils_shingikai_kodomo_ibasho_jidoukan_e28ec5c7_17.pdf#page=1",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "after-school-club-training-certification-examples-2025",
+        "fact_group": "after_school_club",
+        "title": "認定資格研修の受け皿例",
+        "value_text": "東京都=東京リーガルマインド、山口県=NPO法人学童保育協会、新潟県=東京リーガルマインド",
+        "numeric_value": null,
+        "unit": null,
+        "summary": "認定資格研修では、都道府県等が実施主体となり、民間事業者やNPOに委託するルートが自治体公表資料で確認できます。",
+        "note_key": "after-school-club-support-2025",
+        "source_excerpt": "東京都では株式会社東京リーガルマインド、山口県では特定非営利活動法人学童保育協会、新潟県では株式会社東京リーガルマインドへの委託例が確認できる。",
+        "display_order": 94,
+        "sources": [
+          {
+            "source_title": "東京都 放課後児童支援員認定資格研修",
+            "source_url": "https://www.fukushi.metro.tokyo.lg.jp/kodomo/hoiku/gakudou_jidoukan/houkagojidoushienin_nintei",
+            "source_kind": "official_html",
             "authority_level": "primary",
             "display_order": 10
           },
           {
-            "source_title": "令和7年度 こども・子育て支援関係予算のポイント",
-            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/efa58163-4cc2-43d6-ba57-3df41d552a52/857bf219/20241227_policies_kosodateshien_budget_07.pdf#page=26",
+            "source_title": "山口県 令和7年度放課後児童支援員認定資格研修",
+            "source_url": "https://www.pref.yamaguchi.lg.jp/soshiki/51/152717.html",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 20
+          },
+          {
+            "source_title": "新潟県 放課後児童支援員研修（認定資格研修・資質向上研修）開催案内",
+            "source_url": "https://www.pref.niigata.lg.jp/sec/kodomokatei/13569249670772.html",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 30
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "after-school-club-dx-pilot-budget-2025",
+        "fact_group": "after_school_club",
+        "title": "DX推進実証",
+        "value_text": "1.1億円",
+        "numeric_value": 1.1,
+        "unit": "億円",
+        "summary": "放課後児童クラブ利用手続き等に関わるDX推進実証事業は、市町村による総合的なDX実証を支える別建て事業です。",
+        "note_key": "after-school-club-support-2025",
+        "source_excerpt": "放課後児童クラブ利用手続き等に関わるDX推進実証事業（仮称） 令和７年度概算要求額 1.1億円",
+        "display_order": 95,
+        "sources": [
+          {
+            "source_title": "令和7年度こども家庭庁予算 事業別資料集",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=19&search=1.1%E5%84%84%E5%86%86",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "after-school-club-training-upskilling-examples-2025",
+        "fact_group": "after_school_club",
+        "title": "資質向上研修の受け皿例",
+        "value_text": "新潟県=東京リーガルマインド、千葉県・福島県=委託仕様書/公募資料あり",
+        "numeric_value": null,
+        "unit": null,
+        "summary": "資質向上研修では、都道府県又は市町村が実施主体となり、民間事業者へ委託するルートが自治体資料で確認できます。",
+        "note_key": "after-school-club-support-2025",
+        "source_excerpt": "新潟県では株式会社東京リーガルマインドへの委託例が確認でき、千葉県や福島県でも委託仕様書・公募資料が公表されている。",
+        "display_order": 95,
+        "sources": [
+          {
+            "source_title": "新潟県 放課後児童支援員研修（認定資格研修・資質向上研修）開催案内",
+            "source_url": "https://www.pref.niigata.lg.jp/sec/kodomokatei/13569249670772.html",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 10
+          },
+          {
+            "source_title": "放課後児童支援員等研修事業実施要綱",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/e28ec5c7-3af2-465e-82fa-040a88ce0ba2/950b9dad/20251125_councils_shingikai_kodomo_ibasho_jidoukan_e28ec5c7_17.pdf#page=1",
             "source_kind": "official_pdf",
             "authority_level": "primary",
             "display_order": 20
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "after-school-club-dx-pilot-consortium-2025",
+        "fact_group": "after_school_club",
+        "title": "DX推進実証の受け皿",
+        "value_text": "市町村、放課後児童クラブ運営法人・事業所、開発ベンダー",
+        "numeric_value": null,
+        "unit": null,
+        "summary": "DX推進実証は、市町村が設置するコンソーシアム方式で行われ、構成員として運営法人・事業所と開発ベンダーが明示されています。",
+        "note_key": "after-school-club-support-2025",
+        "source_excerpt": "放課後児童クラブＤＸを推進するためのコンソーシアム（構成員：市町村、放課後児童クラブ運営法人・事業所、開発ベンダー等）",
+        "display_order": 96,
+        "sources": [
+          {
+            "source_title": "令和7年度こども家庭庁予算 事業別資料集",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=19",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "after-school-club-ict-inner-frame-2025",
+        "fact_group": "after_school_club",
+        "title": "ICT化推進の予算枠",
+        "value_text": "2,431億円の内数",
+        "numeric_value": 2431.0,
+        "unit": "億円",
+        "summary": "放課後児童クラブ等におけるICT化推進事業は、子ども・子育て支援交付金 2,431億円の内数として示されており、放課後児童クラブ分だけの厳密額は切れていません。",
+        "note_key": "after-school-club-support-2025",
+        "source_excerpt": "＜子ども・子育て支援交付金＞ 令和７年度概算要求額 2,431億円の内数",
+        "display_order": 97,
+        "sources": [
+          {
+            "source_title": "令和7年度こども家庭庁予算 事業別資料集",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=20",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
           }
         ]
       },
@@ -22511,6 +23826,250 @@
           {
             "source_title": "令和7年 放課後児童健全育成事業（放課後児童クラブ）の実施状況",
             "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/69799c33-85cb-44f6-8c70-08ed3a292ab5/c253a682/20251222_policies_kosodateshien_houkago-jidou_80.pdf#page=9",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "after-school-club-fac-public-route-2025",
+        "fact_group": "after_school_club_distribution",
+        "title": "施設整備の公立ルート",
+        "value_text": "市町村 / 国1/3・都道府県1/3・市町村1/3",
+        "numeric_value": null,
+        "unit": null,
+        "summary": "施設整備の公立ルートでは、設置主体は市町村で、基本の補助率は国1/3・都道府県1/3・市町村1/3です。待機児童市町村等では国2/3・都道府県1/6・市町村1/6へ嵩上げされます。",
+        "note_key": "after-school-club-support-2025",
+        "source_excerpt": "公立の場合 設置主体 市町村 補助率（嵩上げ前）国1/3・都道府県1/3・市町村1/3",
+        "display_order": 145,
+        "sources": [
+          {
+            "source_title": "令和7年度 こども・子育て支援関係予算のポイント",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/efa58163-4cc2-43d6-ba57-3df41d552a52/857bf219/20241227_policies_kosodateshien_budget_07.pdf#page=19",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "after-school-club-fac-public-eligibility-2025",
+        "fact_group": "after_school_club_distribution",
+        "title": "公立整備ルートの条件",
+        "value_text": "設置主体が市町村であること",
+        "numeric_value": null,
+        "unit": null,
+        "summary": "施設整備で公立ルートに入るのは、市町村が設置主体である案件です。PFI整備後に市町村が買い取る方式も含まれます。",
+        "note_key": "after-school-club-support-2025",
+        "source_excerpt": "公立の場合 設置主体 市町村。PFI事業者が整備し市町村が買収する場合を含む。",
+        "display_order": 147,
+        "sources": [
+          {
+            "source_title": "子ども・子育て支援施設整備交付金の交付について",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/0abf2f27-1ebe-4fa2-bab8-362dd67ffc4b/f0bce416/20250425_policies_kosodateshien_houkago-jidou_hourei-tsuuti_65.pdf",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "after-school-club-fac-private-route-2025",
+        "fact_group": "after_school_club_distribution",
+        "title": "施設整備の民間ルート",
+        "value_text": "社会福祉法人、学校法人、市町村が認めた者等 / 国2/9・都道府県2/9・市町村2/9・社会福祉法人等1/3",
+        "numeric_value": null,
+        "unit": null,
+        "summary": "施設整備の民間ルートでは、設置主体は社会福祉法人、学校法人、市町村が認めた者等で、基本の補助率は国2/9・都道府県2/9・市町村2/9・社会福祉法人等1/3です。待機児童市町村等では国1/2・都道府県1/8・市町村1/8・社会福祉法人等1/4へ嵩上げされます。",
+        "note_key": "after-school-club-support-2025",
+        "source_excerpt": "民立の場合 設置主体 社会福祉法人、学校法人、市町村が認めた者等 補助率（嵩上げ前）国2/9・都道府県2/9・市町村2/9・社会福祉法人等1/3",
+        "display_order": 150,
+        "sources": [
+          {
+            "source_title": "令和7年度 こども・子育て支援関係予算のポイント",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/efa58163-4cc2-43d6-ba57-3df41d552a52/857bf219/20241227_policies_kosodateshien_budget_07.pdf#page=19",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "after-school-club-fac-creation-eligible-costs-2025",
+        "fact_group": "after_school_club_distribution",
+        "title": "創設で使える主な費用",
+        "value_text": "本体工事費、工事請負費、工事事務費、特殊附帯工事費、既存建物買収費、賃借料加算",
+        "numeric_value": null,
+        "unit": null,
+        "summary": "創設では、新設に必要な工事費や事務費、条件付きの既存建物買収費、土地賃借に伴う加算などが対象になります。",
+        "note_key": "after-school-club-support-2025",
+        "source_excerpt": "対象経費は本体工事費、工事請負費、工事事務費等。既存建物買収費は新築より効率的な場合に対象。賃借料加算あり。",
+        "display_order": 152,
+        "sources": [
+          {
+            "source_title": "子ども・子育て支援施設整備交付金の交付について",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/0abf2f27-1ebe-4fa2-bab8-362dd67ffc4b/f0bce416/20250425_policies_kosodateshien_houkago-jidou_hourei-tsuuti_65.pdf",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          },
+          {
+            "source_title": "子ども・子育て支援施設整備交付金に係る施設整備の取扱い",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/0abf2f27-1ebe-4fa2-bab8-362dd67ffc4b/01d80820/20250425_policies_kosodateshien_houkago-jidou_hourei-tsuuti_66.pdf",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 20
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "after-school-club-fac-creation-ineligible-costs-2025",
+        "fact_group": "after_school_club_distribution",
+        "title": "創設で対象外になる費用",
+        "value_text": "土地買収費、整地費、職員宿舎、外構等",
+        "numeric_value": null,
+        "unit": null,
+        "summary": "創設でも、土地買収や整地、職員宿舎、門・囲障・構内通路などの外構は対象外です。",
+        "note_key": "after-school-club-support-2025",
+        "source_excerpt": "土地買収費、整地費、職員宿舎、門、囲障、構内雨水排水、構内通路等は対象外。",
+        "display_order": 153,
+        "sources": [
+          {
+            "source_title": "子ども・子育て支援施設整備交付金の交付について",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/0abf2f27-1ebe-4fa2-bab8-362dd67ffc4b/f0bce416/20250425_policies_kosodateshien_houkago-jidou_hourei-tsuuti_65.pdf",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "after-school-club-fac-creation-requirements-2025",
+        "fact_group": "after_school_club_distribution",
+        "title": "創設の主な要件",
+        "value_text": "専用区画1.65㎡/人以上、職員2人以上、うち1人以上支援員、1単位おおむね40人以下",
+        "numeric_value": null,
+        "unit": null,
+        "summary": "創設後のクラブは、専用区画面積、職員配置、支援の単位などの設備・運営基準を満たす必要があります。",
+        "note_key": "after-school-club-support-2025",
+        "source_excerpt": "専用区画は児童1人につきおおむね1.65㎡以上。支援の単位ごとに2人以上、うち1人以上は放課後児童支援員。1単位はおおむね40人以下。",
+        "display_order": 154,
+        "sources": [
+          {
+            "source_title": "放課後児童健全育成事業の設備及び運営に関する基準について",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/27f4a5b4-53c9-446d-ab3d-7c7055949a26/6ad7465b/20230929_policies_kokoseido_law_tsuuchi_tsuuchi-h24-h29_635.pdf",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          },
+          {
+            "source_title": "放課後児童健全育成事業の「児童の数」の具体的な算出方法の例",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/0abf2f27-1ebe-4fa2-bab8-362dd67ffc4b/f4bc9772/20250513_policies_kosodateshien_houkago-jidou_hourei-tsuuti_67.pdf",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 20
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "after-school-club-fac-public-proxy-2025",
+        "fact_group": "after_school_club_distribution",
+        "title": "施設整備按分の公立側 proxy",
+        "value_text": "19,343か所 / 74.6%",
+        "numeric_value": 19343.0,
+        "unit": "か所",
+        "summary": "アプリでは施設整備 143億円の second hop を、公立公営と公立民営の合計クラブ数 19,343か所を proxy に按分しています。",
+        "note_key": "after-school-club-support-2025",
+        "source_excerpt": "公立公営 5,800 と 公立民営 13,543 の合計 19,343",
+        "display_order": 155,
+        "sources": [
+          {
+            "source_title": "令和7年 放課後児童健全育成事業（放課後児童クラブ）の実施状況",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/69799c33-85cb-44f6-8c70-08ed3a292ab5/c253a682/20251222_policies_kosodateshien_houkago-jidou_80.pdf#page=9",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "after-school-club-fac-private-proxy-2025",
+        "fact_group": "after_school_club_distribution",
+        "title": "施設整備按分の民間側 proxy",
+        "value_text": "6,585か所 / 25.4%",
+        "numeric_value": 6585.0,
+        "unit": "か所",
+        "summary": "アプリでは施設整備 143億円の second hop を、民立民営クラブ数 6,585か所を proxy に按分しています。",
+        "note_key": "after-school-club-support-2025",
+        "source_excerpt": "民立民営（合計） 6,585（25.4%）",
+        "display_order": 160,
+        "sources": [
+          {
+            "source_title": "令和7年 放課後児童健全育成事業（放課後児童クラブ）の実施状況",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/69799c33-85cb-44f6-8c70-08ed3a292ab5/c253a682/20251222_policies_kosodateshien_houkago-jidou_80.pdf#page=9",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "after-school-club-fac-public-examples-2025",
+        "fact_group": "after_school_club_distribution",
+        "title": "施設整備の公立具体例",
+        "value_text": "船橋市 中野木第2放課後ルーム、松戸市 稔台放課後児童クラブ1/2、柏市立光ケ丘小こどもルーム第三/第四保育室 など",
+        "numeric_value": null,
+        "unit": null,
+        "summary": "千葉県の令和7年度協議施設一覧では、公立ルートの具体例として市町村直営の放課後ルーム、こどもルーム、学童保育所の整備案件が確認できます。",
+        "note_key": "after-school-club-support-2025",
+        "source_excerpt": "船橋市 中野木第2放課後ルーム、松戸市 稔台放課後児童クラブ1/2、柏市立光ケ丘小こどもルーム第三保育室/第四保育室、八千代台学童保育所A/B/C、西部小学校第1放課後児童クラブ",
+        "display_order": 165,
+        "sources": [
+          {
+            "source_title": "令和7年度子ども・子育て支援施設整備交付金協議施設一覧",
+            "source_url": "https://www.pref.chiba.lg.jp/kosodate/hoikusho/houkago/documents/seibiitiran.pdf",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "after-school-club-fac-private-examples-2025",
+        "fact_group": "after_school_club_distribution",
+        "title": "施設整備の民間具体例",
+        "value_text": "シダックス大新東ヒューマンサービス株式会社、保護者会レインボーキッズ、学校法人アゼリー学園、社会福祉法人佐原めぐみ会 など",
+        "numeric_value": null,
+        "unit": null,
+        "summary": "千葉県の令和7年度協議施設一覧では、民間ルートの具体例として株式会社系受託事業者、保護者会、学校法人、社会福祉法人が関わる整備案件が確認できます。",
+        "note_key": "after-school-club-support-2025",
+        "source_excerpt": "館山学童クラブA-D、上野小学校放課後ルーム、勝浦小学校放課後ルーム1/2、学童クラブ レインボーキッズ(1)(2)、学童クラブ アゼリーアカデミア千葉ニュータウン、学童クラブめぐみ(1)(2)",
+        "display_order": 170,
+        "sources": [
+          {
+            "source_title": "令和7年度子ども・子育て支援施設整備交付金協議施設一覧",
+            "source_url": "https://www.pref.chiba.lg.jp/kosodate/hoikusho/houkago/documents/seibiitiran.pdf",
             "source_kind": "official_pdf",
             "authority_level": "primary",
             "display_order": 10

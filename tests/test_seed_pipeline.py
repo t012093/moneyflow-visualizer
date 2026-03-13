@@ -19,12 +19,27 @@ class SeedPipelineRegressionTests(unittest.TestCase):
         cls.unified_data = json.loads(unified_path.read_text(encoding="utf-8"))
 
     def test_distribution_models_config_is_loaded(self) -> None:
-        self.assertGreaterEqual(len(seed_db.DISTRIBUTION_MODELS), 4)
+        self.assertGreaterEqual(len(seed_db.DISTRIBUTION_MODELS), 9)
         self.assertTrue(
             any(model["source_id"] == "REC_CHILDCARE_ALL" for model in seed_db.DISTRIBUTION_MODELS)
         )
         self.assertTrue(
             any(node["id"] == "DEST_AFTER_SCHOOL_PUBLIC_PRIVATE" for node in seed_db.DISTRIBUTION_MODEL_NODES)
+        )
+        self.assertTrue(
+            any(node["id"] == "DEST_AFTER_SCHOOL_FAC_PUBLIC" for node in seed_db.DISTRIBUTION_MODEL_NODES)
+        )
+        self.assertTrue(
+            any(node["id"] == "DEST_AFTER_SCHOOL_DX_VENDOR" for node in seed_db.DISTRIBUTION_MODEL_NODES)
+        )
+        self.assertTrue(
+            any(node["id"] == "DEST_AFTER_SCHOOL_TRAINING_CERTIFICATION" for node in seed_db.DISTRIBUTION_MODEL_NODES)
+        )
+        self.assertTrue(
+            any(node["id"] == "DEST_AFTER_SCHOOL_TRAINING_CERT_VENDOR" for node in seed_db.DISTRIBUTION_MODEL_NODES)
+        )
+        self.assertTrue(
+            any(model["source_id"] == "REC_KOBE_DAREDEMO_SITES" for model in seed_db.IMPLEMENTATION_SITE_FLOW_MODELS)
         )
 
     def test_legacy_source_rewrites_cover_known_404s(self) -> None:
@@ -68,7 +83,26 @@ class SeedPipelineRegressionTests(unittest.TestCase):
         self.assertTrue(any(fact["fact_key"] == "kodomo-daredemo-tsuen-budget-frame" for fact in structured_facts))
         self.assertTrue(any(fact["fact_key"] == "kodomo-daredemo-tsuen-rollout-sites" for fact in structured_facts))
         self.assertTrue(any(fact["fact_key"] == "after-school-club-op-budget-2025" for fact in structured_facts))
+        self.assertTrue(any(fact["fact_key"] == "after-school-club-training-budget-2025" for fact in structured_facts))
+        self.assertTrue(any(fact["fact_key"] == "after-school-club-training-certification-2025" for fact in structured_facts))
+        self.assertTrue(any(fact["fact_key"] == "after-school-club-training-upskilling-2025" for fact in structured_facts))
+        self.assertTrue(any(fact["fact_key"] == "after-school-club-training-certification-examples-2025" for fact in structured_facts))
+        self.assertTrue(any(fact["fact_key"] == "after-school-club-training-upskilling-examples-2025" for fact in structured_facts))
+        self.assertTrue(any(fact["fact_key"] == "after-school-club-dx-pilot-budget-2025" for fact in structured_facts))
+        self.assertTrue(any(fact["fact_key"] == "after-school-club-dx-pilot-consortium-2025" for fact in structured_facts))
+        self.assertTrue(any(fact["fact_key"] == "after-school-club-ict-inner-frame-2025" for fact in structured_facts))
         self.assertTrue(any(fact["fact_key"] == "after-school-club-operators-2025" for fact in structured_facts))
+        self.assertTrue(any(fact["fact_key"] == "after-school-club-fac-public-route-2025" for fact in structured_facts))
+        self.assertTrue(any(fact["fact_key"] == "after-school-club-fac-public-eligibility-2025" for fact in structured_facts))
+        self.assertTrue(any(fact["fact_key"] == "after-school-club-fac-private-route-2025" for fact in structured_facts))
+        self.assertTrue(any(fact["fact_key"] == "after-school-club-fac-creation-eligible-costs-2025" for fact in structured_facts))
+        self.assertTrue(any(fact["fact_key"] == "after-school-club-fac-creation-ineligible-costs-2025" for fact in structured_facts))
+        self.assertTrue(any(fact["fact_key"] == "after-school-club-fac-creation-requirements-2025" for fact in structured_facts))
+        self.assertTrue(any(fact["fact_key"] == "after-school-club-fac-public-examples-2025" for fact in structured_facts))
+        self.assertTrue(any(fact["fact_key"] == "after-school-club-fac-private-examples-2025" for fact in structured_facts))
+
+        edges = self.unified_data["edges"]
+        self.assertTrue(any(edge["year"] == 2025 and edge["target_id"] == "REC_AFTER_SCHOOL_DX_PILOT" for edge in edges))
 
     def test_unified_export_bridges_cfa_daredemo_to_distribution_targets_in_2025(self) -> None:
         edges = self.unified_data["edges"]
@@ -222,6 +256,179 @@ class SeedPipelineRegressionTests(unittest.TestCase):
             delta=1e-6,
         )
 
+    def test_unified_export_bridges_after_school_fac_to_public_private_buckets_in_2025(self) -> None:
+        edges = self.unified_data["edges"]
+        parent_edge = next(
+            (
+                edge
+                for edge in edges
+                if edge["year"] == 2025
+                and edge["source_id"] == "MIN_CFA"
+                and edge["target_id"] == "REC_AFTER_SCHOOL_FAC"
+            ),
+            None,
+        )
+        self.assertIsNotNone(parent_edge)
+
+        child_edges = [
+            edge
+            for edge in edges
+            if edge["year"] == 2025 and edge["source_id"] == "REC_AFTER_SCHOOL_FAC"
+        ]
+        self.assertEqual(
+            {edge["target_id"] for edge in child_edges},
+            {
+                "DEST_AFTER_SCHOOL_FAC_PUBLIC",
+                "DEST_AFTER_SCHOOL_FAC_PRIVATE",
+            },
+        )
+        self.assertTrue(
+            all(edge["source_dataset"] == seed_db.CFA_AFTER_SCHOOL_FAC_MODELED_DATASET for edge in child_edges)
+        )
+        self.assertAlmostEqual(
+            sum(edge["value_usd"] for edge in child_edges),
+            parent_edge["value_usd"],
+            delta=1e-6,
+        )
+
+    def test_unified_export_bridges_after_school_dx_pilot_to_consortium_roles_in_2025(self) -> None:
+        edges = self.unified_data["edges"]
+        parent_edge = next(
+            (
+                edge
+                for edge in edges
+                if edge["year"] == 2025
+                and edge["source_id"] == "MIN_CFA"
+                and edge["target_id"] == "REC_AFTER_SCHOOL_DX_PILOT"
+            ),
+            None,
+        )
+        self.assertIsNotNone(parent_edge)
+
+        child_edges = [
+            edge
+            for edge in edges
+            if edge["year"] == 2025 and edge["source_id"] == "REC_AFTER_SCHOOL_DX_PILOT"
+        ]
+        self.assertEqual(
+            {edge["target_id"] for edge in child_edges},
+            {
+                "DEST_AFTER_SCHOOL_DX_MUNICIPAL",
+                "DEST_AFTER_SCHOOL_DX_OPERATORS",
+                "DEST_AFTER_SCHOOL_DX_VENDOR",
+            },
+        )
+        self.assertTrue(
+            all(
+                edge["source_dataset"] == "放課後児童クラブDX推進実証 構成員別均等按分 (事業別資料集ベース)"
+                for edge in child_edges
+            )
+        )
+        self.assertAlmostEqual(
+            sum(edge["value_usd"] for edge in child_edges),
+            parent_edge["value_usd"],
+            delta=1e-6,
+        )
+
+    def test_unified_export_bridges_after_school_training_to_two_training_types_in_2025(self) -> None:
+        edges = self.unified_data["edges"]
+        parent_edge = next(
+            (
+                edge
+                for edge in edges
+                if edge["year"] == 2025
+                and edge["source_id"] == "MIN_CFA"
+                and edge["target_id"] == "REC_AFTER_SCHOOL_DX"
+            ),
+            None,
+        )
+        self.assertIsNotNone(parent_edge)
+
+        child_edges = [
+            edge
+            for edge in edges
+            if edge["year"] == 2025 and edge["source_id"] == "REC_AFTER_SCHOOL_DX"
+        ]
+        self.assertEqual(
+            {edge["target_id"] for edge in child_edges},
+            {
+                "DEST_AFTER_SCHOOL_TRAINING_CERTIFICATION",
+                "DEST_AFTER_SCHOOL_TRAINING_UPSKILLING",
+            },
+        )
+        self.assertTrue(
+            all(
+                edge["source_dataset"] == "放課後児童クラブ研修関係 研修区分別均等按分 (事業別資料集ベース)"
+                for edge in child_edges
+            )
+        )
+        self.assertAlmostEqual(
+            sum(edge["value_usd"] for edge in child_edges),
+            parent_edge["value_usd"],
+            delta=1e-6,
+        )
+
+    def test_unified_export_bridges_training_types_to_public_and_vendor_routes_in_2025(self) -> None:
+        edges = self.unified_data["edges"]
+
+        cert_parent = next(
+            (
+                edge
+                for edge in edges
+                if edge["year"] == 2025
+                and edge["source_id"] == "REC_AFTER_SCHOOL_DX"
+                and edge["target_id"] == "DEST_AFTER_SCHOOL_TRAINING_CERTIFICATION"
+            ),
+            None,
+        )
+        self.assertIsNotNone(cert_parent)
+        cert_children = [
+            edge
+            for edge in edges
+            if edge["year"] == 2025 and edge["source_id"] == "DEST_AFTER_SCHOOL_TRAINING_CERTIFICATION"
+        ]
+        self.assertEqual(
+            {edge["target_id"] for edge in cert_children},
+            {
+                "DEST_AFTER_SCHOOL_TRAINING_CERT_PUBLIC",
+                "DEST_AFTER_SCHOOL_TRAINING_CERT_VENDOR",
+            },
+        )
+        self.assertAlmostEqual(
+            sum(edge["value_usd"] for edge in cert_children),
+            cert_parent["value_usd"],
+            delta=1e-6,
+        )
+
+        upskill_parent = next(
+            (
+                edge
+                for edge in edges
+                if edge["year"] == 2025
+                and edge["source_id"] == "REC_AFTER_SCHOOL_DX"
+                and edge["target_id"] == "DEST_AFTER_SCHOOL_TRAINING_UPSKILLING"
+            ),
+            None,
+        )
+        self.assertIsNotNone(upskill_parent)
+        upskill_children = [
+            edge
+            for edge in edges
+            if edge["year"] == 2025 and edge["source_id"] == "DEST_AFTER_SCHOOL_TRAINING_UPSKILLING"
+        ]
+        self.assertEqual(
+            {edge["target_id"] for edge in upskill_children},
+            {
+                "DEST_AFTER_SCHOOL_TRAINING_UPSKILL_PUBLIC",
+                "DEST_AFTER_SCHOOL_TRAINING_UPSKILL_VENDOR",
+            },
+        )
+        self.assertAlmostEqual(
+            sum(edge["value_usd"] for edge in upskill_children),
+            upskill_parent["value_usd"],
+            delta=1e-6,
+        )
+
     def test_unified_export_contains_reviewed_ministry_knowledge_for_other_agencies(self) -> None:
         metadata = self.unified_data["metadata"]
         knowledge_notes = metadata.get("knowledgeNotes", [])
@@ -290,6 +497,38 @@ class SeedPipelineRegressionTests(unittest.TestCase):
         )
         self.assertTrue(any(site["site_name"] == "御影ちぬっこ保育ルーム" for site in kobe_sites))
         self.assertTrue(all(site["sources"] for site in kobe_sites))
+
+    def test_unified_export_bridges_kobe_to_implementation_sites(self) -> None:
+        edges = self.unified_data["edges"]
+        parent_edge = next(
+            (
+                edge
+                for edge in edges
+                if edge["year"] == 2025
+                and edge["source_id"] == "CITY_KOBE"
+                and edge["target_id"] == "REC_KOBE_DAREDEMO_SITES"
+            ),
+            None,
+        )
+        self.assertIsNotNone(parent_edge)
+
+        child_edges = [
+            edge
+            for edge in edges
+            if edge["year"] == 2025 and edge["source_id"] == "REC_KOBE_DAREDEMO_SITES"
+        ]
+        self.assertEqual(len(child_edges), 35)
+        self.assertTrue(all(edge["target_id"].startswith("IMPL_SITE_KOBE_DAREDEMO_") for edge in child_edges))
+        self.assertTrue(
+            all(edge["source_dataset"] == "神戸市こども誰でも通園制度 実施施設別按分 (35施設均等)" for edge in child_edges)
+        )
+        self.assertAlmostEqual(
+            sum(edge["value_usd"] for edge in child_edges),
+            parent_edge["value_usd"],
+            delta=1e-6,
+        )
+        target_node_ids = {node["id"] for node in self.unified_data["nodes"]}
+        self.assertIn("IMPL_SITE_KOBE_DAREDEMO_01", target_node_ids)
 
     def test_doc_paths_referenced_by_knowledge_notes_exist(self) -> None:
         for note in self.unified_data["metadata"].get("knowledgeNotes", []):

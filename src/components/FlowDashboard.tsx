@@ -63,6 +63,11 @@ const CATEGORY_LABELS: Record<string, string> = {
 const MODELED_DATASET_MARKERS = ['省庁別主要経費推計', '想定', '按分', 'Proxy', 'Approximation', 'Estimated', 'meti_data'];
 type EdgeEvidenceStatus = 'reviewed' | 'model-based';
 type EdgeEvidenceCounts = Record<EdgeEvidenceStatus, number>;
+type EntityDrilldownState = {
+  visibleEdges: Edge[];
+  outboundDepthByNodeId: Map<string, number>;
+  expandableNodeIds: Set<string>;
+};
 
 const EVIDENCE_STYLES: Record<
   EdgeEvidenceStatus,
@@ -119,9 +124,15 @@ const countEdgeEvidence = (edges: Edge[]): EdgeEvidenceCounts =>
     counts[getEdgeEvidenceStatus(edge)] += 1;
     return counts;
   }, createEmptyEvidenceCounts());
-const getEntityScopeEdges = (edges: Edge[], activeEntityId: string) => {
+const getEntityDrilldownState = (
+  edges: Edge[],
+  activeEntityId: string,
+  expandedNodeIds: Set<string>
+): EntityDrilldownState => {
   const scoped = new Map<string, Edge>();
   const directEdges = edges.filter((edge) => edge.source_id === activeEntityId || edge.target_id === activeEntityId);
+  const outboundDepthByNodeId = new Map<string, number>();
+  const expandableNodeIds = new Set<string>();
 
   directEdges.forEach((edge) => {
     scoped.set(getEdgeDisplayKey(edge), edge);
@@ -133,15 +144,46 @@ const getEntityScopeEdges = (edges: Edge[], activeEntityId: string) => {
       .map((edge) => edge.target_id)
   )];
 
-  directTargetIds.forEach((childId) => {
-    edges
-      .filter((edge) => edge.source_id === childId)
-      .forEach((edge) => {
-        scoped.set(getEdgeDisplayKey(edge), edge);
-      });
+  directTargetIds.forEach((targetId) => {
+    outboundDepthByNodeId.set(targetId, 1);
+    if (edges.some((edge) => edge.source_id === targetId)) {
+      expandableNodeIds.add(targetId);
+    }
   });
 
-  return [...scoped.values()];
+  const queue = directTargetIds.filter((targetId) => expandedNodeIds.has(targetId));
+  const visited = new Set<string>();
+
+  while (queue.length > 0) {
+    const currentNodeId = queue.shift();
+    if (!currentNodeId || visited.has(currentNodeId)) {
+      continue;
+    }
+    visited.add(currentNodeId);
+
+    const currentDepth = outboundDepthByNodeId.get(currentNodeId) || 1;
+    const childEdges = edges.filter((edge) => edge.source_id === currentNodeId);
+    childEdges.forEach((edge) => {
+      scoped.set(getEdgeDisplayKey(edge), edge);
+      const nextDepth = currentDepth + 1;
+      const existingDepth = outboundDepthByNodeId.get(edge.target_id);
+      if (existingDepth === undefined || nextDepth < existingDepth) {
+        outboundDepthByNodeId.set(edge.target_id, nextDepth);
+      }
+      if (edges.some((candidate) => candidate.source_id === edge.target_id)) {
+        expandableNodeIds.add(edge.target_id);
+      }
+      if (expandedNodeIds.has(edge.target_id)) {
+        queue.push(edge.target_id);
+      }
+    });
+  }
+
+  return {
+    visibleEdges: [...scoped.values()],
+    outboundDepthByNodeId,
+    expandableNodeIds,
+  };
 };
 const getSankeyDisplayValue = (valueUsd: number, compressScale: boolean) => {
   if (!compressScale) {
@@ -153,6 +195,13 @@ const getSankeyDisplayValue = (valueUsd: number, compressScale: boolean) => {
 type SankeyNodeData = {
   id: string;
   nodeColor: string;
+  label: string;
+  actualNodeId?: string;
+  kind?: 'root' | 'entity' | 'category' | 'aggregate';
+  direction?: 'in' | 'out' | 'aggregate';
+  depth?: number;
+  expandable?: boolean;
+  expanded?: boolean;
 };
 
 type SankeyLinkData = {
@@ -181,6 +230,7 @@ const formatSankeyNodeLabel = (nodeId: string) => {
   if (nodeId.startsWith('IN: ')) return nodeId.replace('IN: ', '');
   if (nodeId.startsWith('OUT: ')) return nodeId.replace('OUT: ', '');
   if (nodeId.startsWith('OUT2: ')) return nodeId.replace('OUT2: ', '');
+  if (nodeId.startsWith('OUT3: ')) return nodeId.replace('OUT3: ', '');
   if (nodeId.startsWith('SRC: ')) return nodeId.replace('SRC: ', '');
   if (nodeId.startsWith('TRG: ')) return nodeId.replace('TRG: ', '');
 
@@ -196,6 +246,41 @@ const formatSankeyNodeLabel = (nodeId: string) => {
 
   return nodeId;
 };
+const ENTITY_ROOT_NODE_ID = 'ENTITY_ROOT';
+const getOutboundNodeId = (depth: number, nodeId: string) => `OUTNODE|${depth}|${nodeId}`;
+const getInboundNodeId = (nodeId: string) => `INNODE|${nodeId}`;
+const getCategoryNodeId = (
+  direction: 'in' | 'out',
+  depth: number,
+  sourceId: string,
+  targetId: string,
+  category: string
+) => `CATNODE|${direction}|${depth}|${sourceId}|${targetId}|${category}`;
+const getDrilldownNodeColor = (depth: number) => {
+  const palette = ['#30363d', '#2dd4bf', '#f59e0b', '#fb7185', '#60a5fa'];
+  return palette[Math.max(0, (depth - 1) % palette.length)];
+};
+const getCollapsedBranchNodeIds = (edges: Edge[], rootNodeId: string) => {
+  const removedIds = new Set<string>([rootNodeId]);
+  const queue = [rootNodeId];
+
+  while (queue.length > 0) {
+    const currentNodeId = queue.shift();
+    if (!currentNodeId) {
+      continue;
+    }
+    edges
+      .filter((edge) => edge.source_id === currentNodeId)
+      .forEach((edge) => {
+        if (!removedIds.has(edge.target_id)) {
+          removedIds.add(edge.target_id);
+          queue.push(edge.target_id);
+        }
+      });
+  }
+
+  return removedIds;
+};
 
 export const FlowDashboard: React.FC<FlowDashboardProps> = ({
   nodes,
@@ -210,16 +295,37 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
   const [viewLevel, setViewLevel] = useState<'entity' | 'type'>('entity');
   const [reviewedOnly, setReviewedOnly] = useState(false);
   const [selectedLinkDetails, setSelectedLinkDetails] = useState<Edge | null>(null);
+  const [expandedNodeIdsByScope, setExpandedNodeIdsByScope] = useState<Record<string, string[]>>({});
   const activeEntityId = nodes.some((node) => node.id === selectedEntityId) ? selectedEntityId : 'MIN_CFA';
   const useCompressedEntityScale = viewLevel === 'entity';
+  const drilldownScopeKey = `${viewLevel}:${activeEntityId}`;
+  const expandedNodeIds = useMemo(
+    () => expandedNodeIdsByScope[drilldownScopeKey] || [],
+    [drilldownScopeKey, expandedNodeIdsByScope]
+  );
   const evidenceFilteredEdges = useMemo(
     () => (reviewedOnly ? edges.filter((edge) => !isModeledEdge(edge)) : edges),
     [edges, reviewedOnly]
   );
+  const expandedNodeIdSet = useMemo(() => new Set(expandedNodeIds), [expandedNodeIds]);
+  const nodeNameById = useMemo(
+    () => new Map(nodes.map((node) => [node.id, node.name])),
+    [nodes]
+  );
+  const entityDrilldownState = useMemo(
+    () => getEntityDrilldownState(evidenceFilteredEdges, activeEntityId, expandedNodeIdSet),
+    [activeEntityId, evidenceFilteredEdges, expandedNodeIdSet]
+  );
+  const visibleExpandedNodeCount = useMemo(
+    () => expandedNodeIds.filter((nodeId) => entityDrilldownState.outboundDepthByNodeId.has(nodeId)).length,
+    [entityDrilldownState.outboundDepthByNodeId, expandedNodeIds]
+  );
 
   const evidenceSummary = useMemo(() => {
-    const fullScopeEdges = viewLevel === 'entity' ? getEntityScopeEdges(edges, activeEntityId) : edges;
-    const visibleScopeEdges = viewLevel === 'entity' ? getEntityScopeEdges(evidenceFilteredEdges, activeEntityId) : evidenceFilteredEdges;
+    const fullScopeEdges = viewLevel === 'entity'
+      ? getEntityDrilldownState(edges, activeEntityId, expandedNodeIdSet).visibleEdges
+      : edges;
+    const visibleScopeEdges = viewLevel === 'entity' ? entityDrilldownState.visibleEdges : evidenceFilteredEdges;
     const allCounts = countEdgeEvidence(fullScopeEdges);
     const visibleCounts = countEdgeEvidence(visibleScopeEdges);
 
@@ -229,7 +335,7 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
       hiddenModeledCount: Math.max(0, allCounts['model-based'] - visibleCounts['model-based']),
       scopeLabel: viewLevel === 'entity' ? 'この主体の表示フロー' : 'この年度の表示フロー',
     };
-  }, [activeEntityId, edges, evidenceFilteredEdges, viewLevel]);
+  }, [activeEntityId, edges, entityDrilldownState.visibleEdges, evidenceFilteredEdges, expandedNodeIdSet, viewLevel]);
   const activeSelectedLinkDetails = useMemo(() => {
     if (!selectedLinkDetails) {
       return null;
@@ -243,6 +349,20 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
       onSelectedEntityChange(activeEntityId);
     }
   }, [activeEntityId, onSelectedEntityChange, selectedEntityId]);
+  const updateExpandedNodeIds = (updater: (current: string[]) => string[]) => {
+    setExpandedNodeIdsByScope((current) => {
+      const nextExpandedNodeIds = updater(current[drilldownScopeKey] || []);
+      if (nextExpandedNodeIds.length === 0) {
+        const rest = { ...current };
+        delete rest[drilldownScopeKey];
+        return rest;
+      }
+      return {
+        ...current,
+        [drilldownScopeKey]: nextExpandedNodeIds,
+      };
+    });
+  };
 
   // Group nodes by type for the dropdown
   const groupedNodes = useMemo(() => {
@@ -272,81 +392,133 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
 
   // Construct Sankey Data based on viewLevel
   const sankeyData = useMemo(() => {
-    const sNodes: SankeyNodeData[] = [];
+    const nodeMap = new Map<string, SankeyNodeData>();
     const sLinks: SankeyLinkData[] = [];
-    const nodeSet = new Set<string>();
-    
-    const addNode = (id: string, color: string = '#888') => {
-      if (!nodeSet.has(id)) {
-        nodeSet.add(id);
-        sNodes.push({ id, nodeColor: color });
+    const addNode = (node: SankeyNodeData) => {
+      const existing = nodeMap.get(node.id);
+      if (existing) {
+        nodeMap.set(node.id, { ...existing, ...node });
+        return;
       }
+      nodeMap.set(node.id, node);
     };
 
     if (viewLevel === 'entity') {
-      const selectedEdges = evidenceFilteredEdges.filter(e => e.source_id === activeEntityId || e.target_id === activeEntityId);
-      const focusNodeName = nodes.find(n => n.id === activeEntityId)?.name || activeEntityId;
-      addNode(focusNodeName, '#ffffff');
+      const selectedEdges = entityDrilldownState.visibleEdges;
+      const focusNodeName = nodeNameById.get(activeEntityId) || activeEntityId;
+      addNode({
+        id: ENTITY_ROOT_NODE_ID,
+        nodeColor: '#ffffff',
+        label: focusNodeName,
+        actualNodeId: activeEntityId,
+        kind: 'root',
+        depth: 0,
+      });
 
-      selectedEdges.forEach(edge => {
-        const sourceName = nodes.find(n => n.id === edge.source_id)?.name || edge.source_id;
-        const targetName = nodes.find(n => n.id === edge.target_id)?.name || edge.target_id;
+      selectedEdges.forEach((edge) => {
+        const sourceName = nodeNameById.get(edge.source_id) || edge.source_id;
+        const targetName = nodeNameById.get(edge.target_id) || edge.target_id;
         const categoryLabel = `[${CATEGORY_LABELS[edge.category] || edge.category.toUpperCase()}]`;
         const catColor = CATEGORY_COLORS[edge.category] || '#aaa';
         const evidenceColor = EVIDENCE_STYLES[getEdgeEvidenceStatus(edge)].linkColor;
+        const displayValue = getSankeyDisplayValue(edge.value_usd, useCompressedEntityScale);
 
         if (edge.target_id === activeEntityId) {
-          const sourceNodeId = `IN: ${sourceName}`;
-          const catNodeId = `IN(${edge.source_id}): ${categoryLabel}`;
-          addNode(sourceNodeId, '#30363d');
-          addNode(catNodeId, catColor);
-          const displayValue = getSankeyDisplayValue(edge.value_usd, useCompressedEntityScale);
-          sLinks.push({ source: sourceNodeId, target: catNodeId, value: displayValue, linkColor: evidenceColor, edgeRef: edge });
-          sLinks.push({ source: catNodeId, target: focusNodeName, value: displayValue, linkColor: evidenceColor, edgeRef: edge });
-        } else if (edge.source_id === activeEntityId) {
-          const targetNodeId = `OUT: ${targetName}`;
-          const catNodeId = `OUT(${edge.target_id}): ${categoryLabel}`;
-          addNode(targetNodeId, '#30363d');
-          addNode(catNodeId, catColor);
-          const displayValue = getSankeyDisplayValue(edge.value_usd, useCompressedEntityScale);
-          sLinks.push({ source: focusNodeName, target: catNodeId, value: displayValue, linkColor: evidenceColor, edgeRef: edge });
-          sLinks.push({ source: catNodeId, target: targetNodeId, value: displayValue, linkColor: evidenceColor, edgeRef: edge });
-        }
-      });
-
-      // Auto-expand: show next-hop flows for downstream targets
-      // Only expands if the child itself has outgoing edges (hub nodes like EXP_SOCIAL)
-        const directTargetIds = [...new Set(
-        selectedEdges
-          .filter(e => e.source_id === activeEntityId)
-          .map(e => e.target_id)
-      )];
-
-      directTargetIds.forEach(childId => {
-        const childEdges = evidenceFilteredEdges.filter(e => e.source_id === childId);
-        if (childEdges.length > 0) {
-          const childName = nodes.find(n => n.id === childId)?.name || childId;
-          // The parent entity view created this node as `OUT: ${childName}`
-          const childSankeyId = `OUT: ${childName}`;
-          
-          childEdges.forEach(ce => {
-            const grandchildName = nodes.find(n => n.id === ce.target_id)?.name || ce.target_id;
-            const evidenceColor = EVIDENCE_STYLES[getEdgeEvidenceStatus(ce)].linkColor;
-            const grandchildNodeId = `OUT2: ${grandchildName}`;
-            
-            // Only add if the source node actually exists
-            if (nodeSet.has(childSankeyId)) {
-              addNode(grandchildNodeId, '#2dd4bf');
-              const displayValue = getSankeyDisplayValue(ce.value_usd, useCompressedEntityScale);
-              sLinks.push({ 
-                source: childSankeyId, 
-                target: grandchildNodeId, 
-                value: displayValue, 
-                linkColor: evidenceColor,
-                edgeRef: ce,
-              });
-            }
+          const sourceNodeId = getInboundNodeId(edge.source_id);
+          const catNodeId = getCategoryNodeId('in', 1, edge.source_id, edge.target_id, edge.category);
+          addNode({
+            id: sourceNodeId,
+            nodeColor: '#30363d',
+            label: sourceName,
+            actualNodeId: edge.source_id,
+            kind: 'entity',
+            direction: 'in',
+            depth: 1,
+            expandable: false,
+            expanded: false,
           });
+          addNode({
+            id: catNodeId,
+            nodeColor: catColor,
+            label: categoryLabel,
+            kind: 'category',
+            direction: 'in',
+            depth: 1,
+          });
+          sLinks.push({ source: sourceNodeId, target: catNodeId, value: displayValue, linkColor: evidenceColor, edgeRef: edge });
+          sLinks.push({ source: catNodeId, target: ENTITY_ROOT_NODE_ID, value: displayValue, linkColor: evidenceColor, edgeRef: edge });
+        } else if (edge.source_id === activeEntityId) {
+          const targetDepth = entityDrilldownState.outboundDepthByNodeId.get(edge.target_id) || 1;
+          const targetNodeId = getOutboundNodeId(targetDepth, edge.target_id);
+          const catNodeId = getCategoryNodeId('out', targetDepth, edge.source_id, edge.target_id, edge.category);
+          const isExpanded = expandedNodeIdSet.has(edge.target_id);
+          const isExpandable = entityDrilldownState.expandableNodeIds.has(edge.target_id);
+          addNode({
+            id: targetNodeId,
+            nodeColor: getDrilldownNodeColor(targetDepth),
+            label: isExpandable ? `${targetName} ${isExpanded ? '▾' : '▸'}` : targetName,
+            actualNodeId: edge.target_id,
+            kind: 'entity',
+            direction: 'out',
+            depth: targetDepth,
+            expandable: isExpandable,
+            expanded: isExpanded,
+          });
+          addNode({
+            id: catNodeId,
+            nodeColor: catColor,
+            label: categoryLabel,
+            kind: 'category',
+            direction: 'out',
+            depth: targetDepth,
+          });
+          sLinks.push({ source: ENTITY_ROOT_NODE_ID, target: catNodeId, value: displayValue, linkColor: evidenceColor, edgeRef: edge });
+          sLinks.push({ source: catNodeId, target: targetNodeId, value: displayValue, linkColor: evidenceColor, edgeRef: edge });
+        } else {
+          const sourceDepth = entityDrilldownState.outboundDepthByNodeId.get(edge.source_id);
+          if (!sourceDepth) {
+            return;
+          }
+          const sourceNodeId = getOutboundNodeId(sourceDepth, edge.source_id);
+          const targetDepth = entityDrilldownState.outboundDepthByNodeId.get(edge.target_id) || (sourceDepth + 1);
+          const targetNodeId = getOutboundNodeId(targetDepth, edge.target_id);
+          const catNodeId = getCategoryNodeId('out', targetDepth, edge.source_id, edge.target_id, edge.category);
+          const sourceExpanded = expandedNodeIdSet.has(edge.source_id);
+          const sourceExpandable = entityDrilldownState.expandableNodeIds.has(edge.source_id);
+          const targetExpanded = expandedNodeIdSet.has(edge.target_id);
+          const targetExpandable = entityDrilldownState.expandableNodeIds.has(edge.target_id);
+          addNode({
+            id: sourceNodeId,
+            nodeColor: getDrilldownNodeColor(sourceDepth),
+            label: sourceExpandable ? `${sourceName} ${sourceExpanded ? '▾' : '▸'}` : sourceName,
+            actualNodeId: edge.source_id,
+            kind: 'entity',
+            direction: 'out',
+            depth: sourceDepth,
+            expandable: sourceExpandable,
+            expanded: sourceExpanded,
+          });
+          addNode({
+            id: targetNodeId,
+            nodeColor: getDrilldownNodeColor(targetDepth),
+            label: targetExpandable ? `${targetName} ${targetExpanded ? '▾' : '▸'}` : targetName,
+            actualNodeId: edge.target_id,
+            kind: 'entity',
+            direction: 'out',
+            depth: targetDepth,
+            expandable: targetExpandable,
+            expanded: targetExpanded,
+          });
+          addNode({
+            id: catNodeId,
+            nodeColor: catColor,
+            label: categoryLabel,
+            kind: 'category',
+            direction: 'out',
+            depth: targetDepth,
+          });
+          sLinks.push({ source: sourceNodeId, target: catNodeId, value: displayValue, linkColor: evidenceColor, edgeRef: edge });
+          sLinks.push({ source: catNodeId, target: targetNodeId, value: displayValue, linkColor: evidenceColor, edgeRef: edge });
         }
       });
     } else {
@@ -425,14 +597,37 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
           nodeColorTarget = catColor;
         }
 
-        addNode(source, nodeColorSource);
-        addNode(target, nodeColorTarget);
+        addNode({
+          id: source,
+          nodeColor: nodeColorSource,
+          label: formatSankeyNodeLabel(source),
+          kind: 'aggregate',
+          direction: 'aggregate',
+        });
+        addNode({
+          id: target,
+          nodeColor: nodeColorTarget,
+          label: formatSankeyNodeLabel(target),
+          kind: 'aggregate',
+          direction: 'aggregate',
+        });
         sLinks.push({ source, target, value, linkColor: catColor });
       });
     }
 
-    return { nodes: sNodes, links: sLinks };
-  }, [activeEntityId, evidenceFilteredEdges, nodes, useCompressedEntityScale, viewLevel]);
+    return { nodes: [...nodeMap.values()], links: sLinks };
+  }, [
+    activeEntityId,
+    entityDrilldownState.expandableNodeIds,
+    entityDrilldownState.outboundDepthByNodeId,
+    entityDrilldownState.visibleEdges,
+    evidenceFilteredEdges,
+    expandedNodeIdSet,
+    nodeNameById,
+    nodes,
+    useCompressedEntityScale,
+    viewLevel,
+  ]);
 
   const hasData = sankeyData.links.length > 0;
   const researchYearsByEntity = useMemo(() => {
@@ -581,27 +776,36 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
     );
   };
 
+  const compactPanelStyle: React.CSSProperties = {
+    display: 'grid',
+    gap: '0.3rem',
+    background: 'rgba(255,255,255,0.05)',
+    padding: '0.45rem 0.6rem',
+    borderRadius: '10px',
+    border: '1px solid rgba(255,255,255,0.1)',
+  };
+
   return (
     <div style={{ width: '100vw', height: '100vh', display: 'flex', flexDirection: 'column', padding: '2rem', paddingTop: '5rem', background: 'radial-gradient(circle at center, #111 0%, #000 100%)' }}>
       
 	      {/* Entity Selector Header */}
-	      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '2rem', zIndex: 10 }}>
+	      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '0.75rem', marginBottom: '0.8rem', zIndex: 10, flexWrap: 'wrap' }}>
 	        <div>
-	          <h1 style={{ margin: 0, fontSize: '2rem', fontWeight: 600 }}>エンティティ別 資金フロー解析</h1>
-	          <p style={{ margin: 0, color: 'var(--text-muted)' }}>{currentYear}年における詳細な資金の流入と流出を分析</p>
+	          <h1 style={{ margin: 0, fontSize: '1.55rem', fontWeight: 600, lineHeight: 1.15 }}>エンティティ別 資金フロー解析</h1>
+	          <p style={{ margin: '0.12rem 0 0', color: 'var(--text-muted)', fontSize: '0.84rem' }}>{currentYear}年における詳細な資金の流入と流出を分析</p>
         </div>
         
-        <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-end' }}>
+        <div style={{ display: 'flex', gap: '0.55rem', alignItems: 'stretch', flexWrap: 'wrap', justifyContent: 'flex-end' }}>
           {/* View Level Toggle */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', background: 'rgba(255,255,255,0.05)', padding: '1rem', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.1)' }}>
-            <label style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>集計レベル</label>
-            <div style={{ display: 'flex', gap: '0.25rem', background: '#000', padding: '0.25rem', borderRadius: '8px', border: '1px solid #333' }}>
+          <div style={{ ...compactPanelStyle, minWidth: '190px' }}>
+            <label style={{ fontSize: '0.72rem', color: 'var(--text-muted)', letterSpacing: '0.04em' }}>集計レベル</label>
+            <div style={{ display: 'flex', gap: '0.15rem', background: '#000', padding: '0.15rem', borderRadius: '7px', border: '1px solid #333' }}>
               <button 
                 onClick={() => setViewLevel('entity')}
                 style={{ 
                   background: viewLevel === 'entity' ? '#fff' : 'transparent', 
                   color: viewLevel === 'entity' ? '#000' : 'var(--text-muted)',
-                  border: 'none', padding: '0.25rem 0.75rem', borderRadius: '4px', cursor: 'pointer', fontSize: '0.9rem', fontWeight: 500
+                  border: 'none', padding: '0.18rem 0.5rem', borderRadius: '5px', cursor: 'pointer', fontSize: '0.76rem', fontWeight: 500
                 }}
               >
                 特定エンティティ
@@ -611,7 +815,7 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
                 style={{ 
                   background: viewLevel === 'type' ? '#fff' : 'transparent', 
                   color: viewLevel === 'type' ? '#000' : 'var(--text-muted)',
-                  border: 'none', padding: '0.25rem 0.75rem', borderRadius: '4px', cursor: 'pointer', fontSize: '0.9rem', fontWeight: 500
+                  border: 'none', padding: '0.18rem 0.5rem', borderRadius: '5px', cursor: 'pointer', fontSize: '0.76rem', fontWeight: 500
                 }}
               >
                 マクロカテゴリ別
@@ -621,8 +825,8 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
 
           {/* Entity Selector (Only visible in entity mode) */}
 	          {viewLevel === 'entity' && (
-	            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', background: 'rgba(255,255,255,0.05)', padding: '1rem', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.1)' }}>
-              <label style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>対象エンティティ</label>
+	            <div style={{ ...compactPanelStyle, minWidth: '220px' }}>
+              <label style={{ fontSize: '0.72rem', color: 'var(--text-muted)', letterSpacing: '0.04em' }}>対象エンティティ</label>
               <select 
                 value={activeEntityId} 
                 onChange={(e) => onSelectedEntityChange(e.target.value)}
@@ -630,11 +834,12 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
                   background: '#000',
                   color: '#fff',
                   border: '1px solid #333',
-                  padding: '0.5rem',
-                  borderRadius: '8px',
+                  padding: '0.34rem 0.45rem',
+                  borderRadius: '7px',
                   fontFamily: 'inherit',
                   cursor: 'pointer',
-                  minWidth: '200px'
+                  minWidth: '200px',
+                  fontSize: '0.82rem'
                 }}
               >
                 <optgroup label="国家">
@@ -677,115 +882,150 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
 	            </div>
 	          )}
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', background: 'rgba(255,255,255,0.05)', padding: '1rem', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.1)', minWidth: '260px' }}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem' }}>
-              <label style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Evidence</label>
-              <div style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>{evidenceSummary.scopeLabel}</div>
+	          <div style={{ ...compactPanelStyle, minWidth: '290px', maxWidth: '390px' }}>
+	            <div style={{ display: 'flex', justifyContent: 'space-between', gap: '0.55rem', alignItems: 'center', flexWrap: 'wrap' }}>
+	              <div style={{ display: 'grid', gap: '0.12rem' }}>
+	                <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', letterSpacing: '0.04em' }}>表示情報</div>
+	                <div style={{ color: 'var(--text-muted)', fontSize: '0.7rem' }}>{evidenceSummary.scopeLabel}</div>
+	              </div>
+              <label
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.35rem',
+                  fontSize: '0.74rem',
+                  color: '#fff',
+                  cursor: 'pointer',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                <input
+                  type="checkbox"
+                  checked={reviewedOnly}
+                  onChange={(event) => setReviewedOnly(event.target.checked)}
+                  aria-label="実データのみ表示"
+                  style={{ accentColor: '#4ade80' }}
+                />
+                実データのみ表示
+              </label>
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem' }}>
+	            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.32rem' }}>
               {(['reviewed', 'model-based'] as const).map((status) => (
                 <div
                   key={status}
                   style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
+                    display: 'inline-flex',
                     alignItems: 'center',
-                    gap: '0.75rem',
-                    padding: '0.45rem 0.6rem',
-                    borderRadius: '10px',
+                    gap: '0.35rem',
+                    padding: '0.24rem 0.45rem',
+                    borderRadius: '999px',
                     background: EVIDENCE_STYLES[status].background,
                     border: EVIDENCE_STYLES[status].border,
                   }}
                 >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
+                  <span
+                    style={{
+                      width: '9px',
+                      height: '9px',
+                      borderRadius: '999px',
+                      background: EVIDENCE_STYLES[status].linkColor,
+                      boxShadow: `0 0 10px ${EVIDENCE_STYLES[status].linkColor}`,
+                    }}
+                  />
+                  <span style={{ fontSize: '0.78rem', fontWeight: 700, color: EVIDENCE_STYLES[status].color }}>
+                    {status === 'reviewed' ? 'R' : 'M'}
+                  </span>
+                  <span style={{ fontSize: '0.72rem', fontWeight: 700, color: EVIDENCE_STYLES[status].color }}>
+                    {EVIDENCE_STYLES[status].label}
+                  </span>
+                  <span
+                    data-testid={`evidence-summary-${status}`}
+                    style={{ fontSize: '0.76rem', fontWeight: 700, color: '#fff' }}
+                  >
+                    {evidenceSummary.visibleCounts[status]}本
+                  </span>
+                  {status === 'model-based' && reviewedOnly && evidenceSummary.hiddenModeledCount > 0 && (
                     <span
-                      style={{
-                        width: '10px',
-                        height: '10px',
-                        borderRadius: '999px',
-                        background: EVIDENCE_STYLES[status].linkColor,
-                        boxShadow: `0 0 12px ${EVIDENCE_STYLES[status].linkColor}`,
-                      }}
-                    />
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.1rem' }}>
-                      <span style={{ fontSize: '0.82rem', fontWeight: 700, color: EVIDENCE_STYLES[status].color }}>
-                        {EVIDENCE_STYLES[status].label}
-                      </span>
-                      <span style={{ fontSize: '0.76rem', color: 'var(--text-muted)' }}>
-                        {EVIDENCE_STYLES[status].description}
-                      </span>
-                    </div>
-                  </div>
-                  <div style={{ textAlign: 'right' }}>
-                    <div
-                      data-testid={`evidence-summary-${status}`}
-                      style={{ fontSize: '0.92rem', fontWeight: 700, color: '#fff' }}
+                      data-testid="evidence-hidden-modeled"
+                      style={{ fontSize: '0.66rem', color: 'var(--text-muted)' }}
                     >
-                      {evidenceSummary.visibleCounts[status]}本
-                    </div>
-                    {status === 'model-based' && reviewedOnly && evidenceSummary.hiddenModeledCount > 0 && (
-                      <div
-                        data-testid="evidence-hidden-modeled"
-                        style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}
-                      >
-                        非表示 {evidenceSummary.hiddenModeledCount}本
-                      </div>
-                    )}
-                  </div>
+                      非表示 {evidenceSummary.hiddenModeledCount}本
+                    </span>
+                  )}
                 </div>
               ))}
-            </div>
-            <label
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.6rem',
-                fontSize: '0.84rem',
-                color: '#fff',
-                cursor: 'pointer',
-              }}
-            >
-              <input
-                type="checkbox"
-                checked={reviewedOnly}
-                onChange={(event) => setReviewedOnly(event.target.checked)}
-                aria-label="実データのみ表示"
-                style={{ accentColor: '#4ade80' }}
-              />
-              実データのみ表示
-            </label>
-            <div style={{ fontSize: '0.76rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>
-              `reviewed` は一次資料ベース、`model-based` は配分モデルです。線色と件数はこの区分で統一しています。
-            </div>
-          </div>
-
-            {viewLevel === 'entity' && activeEntityResearchLink && (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', background: 'rgba(163, 230, 53, 0.08)', padding: '1rem', borderRadius: '12px', border: '1px solid rgba(163, 230, 53, 0.2)', minWidth: '240px' }}>
-                <label style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>調査ナレッジ</label>
-                <div style={{ color: '#d9f99d', fontWeight: 600 }}>Structured Facts / 調査ノートあり</div>
-                <div style={{ color: 'var(--text-muted)', fontSize: '0.84rem', lineHeight: 1.5 }}>
-                  {activeEntityResearchYears.includes(currentYear)
-                    ? `${currentYear}年の調査ノートを参照できます。`
-                    : `登録年: ${activeEntityResearchYears.join(', ')} `}
-                </div>
-                <a
-                  href={activeEntityResearchLink}
-                  style={{
-                    display: 'inline-block',
-                    padding: '0.55rem 0.9rem',
-                    background: 'rgba(163, 230, 53, 0.14)',
-                    color: '#d9f99d',
-                    textDecoration: 'none',
-                    borderRadius: '18px',
-                    fontWeight: 600,
-                    textAlign: 'center',
-                    border: '1px solid rgba(163, 230, 53, 0.28)',
-                  }}
-                >
-                  調査ノートを開く
-                </a>
-              </div>
-            )}
+	            </div>
+	            <div style={{ display: 'flex', justifyContent: 'space-between', gap: '0.45rem', alignItems: 'center', flexWrap: 'wrap' }}>
+	              <div style={{ display: 'grid', gap: '0.08rem', fontSize: '0.68rem', color: 'var(--text-muted)', lineHeight: 1.35 }}>
+	                <span>緑=一次資料ベース、紫=配分モデル</span>
+	                {viewLevel === 'entity' && (
+	                  <span>
+	                    下流ノードをクリックすると次段を展開
+	                    {visibleExpandedNodeCount > 0 ? `（展開中 ${visibleExpandedNodeCount}）` : ''}
+	                  </span>
+	                )}
+	              </div>
+	              <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', flexWrap: 'wrap', justifyContent: 'flex-end' }}>
+	                {viewLevel === 'entity' && visibleExpandedNodeCount > 0 ? (
+	                  <button
+	                    type="button"
+	                    onClick={() => updateExpandedNodeIds(() => [])}
+	                    style={{
+	                      padding: '0.24rem 0.55rem',
+	                      background: 'rgba(255,255,255,0.06)',
+	                      color: '#fff',
+	                      borderRadius: '999px',
+	                      border: '1px solid rgba(255,255,255,0.16)',
+	                      fontWeight: 600,
+	                      fontSize: '0.72rem',
+	                      cursor: 'pointer',
+	                    }}
+	                  >
+	                    展開をリセット
+	                  </button>
+	                ) : null}
+	                {viewLevel === 'entity' && activeEntityResearchLink ? (
+	                  <>
+	                    <span
+	                      style={{
+	                        display: 'inline-flex',
+	                        alignItems: 'center',
+	                        padding: '0.18rem 0.42rem',
+	                        borderRadius: '999px',
+	                        fontSize: '0.68rem',
+	                        fontWeight: 700,
+	                        color: '#d9f99d',
+	                        background: 'rgba(163, 230, 53, 0.1)',
+	                        border: '1px solid rgba(163, 230, 53, 0.22)',
+	                      }}
+	                    >
+	                      調査ノートあり
+	                    </span>
+	                    <span style={{ fontSize: '0.68rem', color: 'var(--text-muted)' }}>
+	                      {activeEntityResearchYears.includes(currentYear) ? `${currentYear}年対応` : `登録年 ${activeEntityResearchYears.join(', ')}`}
+	                    </span>
+	                    <a
+	                      href={activeEntityResearchLink}
+	                      style={{
+	                        display: 'inline-block',
+	                        padding: '0.24rem 0.55rem',
+	                        background: 'rgba(163, 230, 53, 0.14)',
+	                        color: '#d9f99d',
+	                        textDecoration: 'none',
+	                        borderRadius: '999px',
+	                        fontWeight: 600,
+	                        fontSize: '0.72rem',
+	                        textAlign: 'center',
+	                        border: '1px solid rgba(163, 230, 53, 0.28)',
+	                      }}
+	                    >
+	                      調査ノートを開く
+	                    </a>
+	                  </>
+	                ) : null}
+	              </div>
+	            </div>
+	          </div>
 
 	        </div>
 	      </div>
@@ -835,7 +1075,7 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
               linkHoverOthersOpacity={0.05}
               linkBlendMode="screen"
               enableLinkGradient={true}
-              label={(node) => formatSankeyNodeLabel(node.id)}
+	              label={(node) => sankeyData.nodes.find((candidate) => candidate.id === node.id)?.label || formatSankeyNodeLabel(node.id)}
               labelPosition="outside"
               labelOrientation="horizontal"
               labelPadding={12}
@@ -845,165 +1085,103 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
                   container: { background: '#111', color: '#fff', fontSize: '12px', border: '1px solid #333' }
                 }
               }}
-              onClick={(datum: SankeyInteractionRecord) => {
-              // Clicked on a Link
-              if ('source' in datum && 'target' in datum) {
-                  let edgeSrc = datum.source.id;
-                  let edgeTgt = datum.target.id;
-                  
-                  if (edgeSrc.startsWith('IN: ')) edgeSrc = edgeSrc.replace('IN: ', '');
-                  if (edgeSrc.startsWith('OUT: ')) edgeSrc = edgeSrc.replace('OUT: ', '');
-                  if (edgeTgt.startsWith('IN: ')) edgeTgt = edgeTgt.replace('IN: ', '');
-                  if (edgeTgt.startsWith('OUT: ')) edgeTgt = edgeTgt.replace('OUT: ', '');
-                  if (edgeTgt.startsWith('OUT2: ')) edgeTgt = edgeTgt.replace('OUT2: ', '');
-                  
-                  const srcMatch = edgeSrc.match(/^(IN|OUT)\(([^)]+)\)/);
-                  if (srcMatch && srcMatch[2]) edgeSrc = srcMatch[2];
-                  
-                  const tgtMatch = edgeTgt.match(/^(IN|OUT)\(([^)]+)\)/);
-                  if (tgtMatch && tgtMatch[2]) edgeTgt = tgtMatch[2];
+	              onClick={(datum: SankeyInteractionRecord) => {
+	                if ('source' in datum && 'target' in datum) {
+	                  if (datum.edgeRef) {
+	                    setSelectedLinkDetails(datum.edgeRef);
+	                  }
+	                  return;
+	                }
 
-                  const originalEdge = datum.edgeRef || edges.find(e => {
-                    const srcName = nodes.find(n => n.id === e.source_id)?.name || e.source_id;
-                    const tgtName = nodes.find(n => n.id === e.target_id)?.name || e.target_id;
-                    return (srcName === edgeSrc || e.source_id === edgeSrc) && 
-                           (tgtName === edgeTgt || e.target_id === edgeTgt) &&
-                           e.value_usd === datum.value;
-                  });
+	                if (datum.id === undefined) {
+	                  return;
+	                }
 
-                  if (originalEdge) {
-                    setSelectedLinkDetails(originalEdge);
-                  }
-                  return;
-              }
+	                setSelectedLinkDetails(null);
 
-              // Clicked on a Node
-              if (datum.id === undefined) return;
-              setSelectedLinkDetails(null); // Clear link selection when clicking node
+	                if (viewLevel === 'type') {
+	                  const typeToSearch = datum.label;
+	                  const mapTypeToInternal: Record<string, string> = {
+	                    国家: 'country',
+	                    グローバル企業: 'corporation',
+	                    '個人/属性': 'individual',
+	                    'マクロ主体(政府/日銀/家計)': 'macro_entity',
+	                    都道府県: 'prefecture',
+	                    国内企業: 'corporation_jp',
+	                    '国家予算(歳入)': 'mof_revenue',
+	                    '国家予算(歳出)': 'mof_expenditure',
+	                    社会保障制度: 'mhlw_benefit',
+	                    '受給者/産業': 'recipient',
+	                  };
+	                  const internalType = mapTypeToInternal[typeToSearch];
+	                  if (!internalType) {
+	                    return;
+	                  }
+	                  const firstEntity = nodes.find((node) => node.type === internalType);
+	                  if (firstEntity) {
+	                    setViewLevel('entity');
+	                    onSelectedEntityChange(firstEntity.id);
+	                  }
+	                  return;
+	                }
 
-              if (viewLevel === 'type') {
-                 // In Type mode, if they click a type node, switch to Entity mode and default to the first entity of that type
-                 const typeToSearch = datum.id.replace('SRC: ', '').replace('TRG: ', '');
-                 const mapTypeToInternal: Record<string, string> = { 
-                   '国家': 'country', 
-                   'グローバル企業': 'corporation', 
-                   '個人/属性': 'individual',
-                   'マクロ主体(政府/日銀/家計)': 'macro_entity',
-                   '都道府県': 'prefecture',
-                   '国内企業': 'corporation_jp',
-                   '国家予算(歳入)': 'mof_revenue',
-                   '国家予算(歳出)': 'mof_expenditure',
-                   '社会保障制度': 'mhlw_benefit',
-                   '受給者/産業': 'recipient'
-                 };
-                 const internalType = mapTypeToInternal[typeToSearch];
+	                if (datum.kind === 'entity' && datum.direction === 'out' && datum.actualNodeId && datum.expandable) {
+	                  updateExpandedNodeIds((current) => {
+	                    if (current.includes(datum.actualNodeId!)) {
+	                      const collapsedNodeIds = getCollapsedBranchNodeIds(evidenceFilteredEdges, datum.actualNodeId!);
+	                      return current.filter((nodeId) => !collapsedNodeIds.has(nodeId));
+	                    }
+	                    return [...current, datum.actualNodeId!];
+	                  });
+	                }
+	              }}
+	              nodeTooltip={({ node }: { node: SankeyNodeRecord }) => {
+	              const isClickable = viewLevel === 'type'
+	                ? node.id.startsWith('SRC: ') || node.id.startsWith('TRG: ')
+	                : Boolean(node.kind === 'entity' && node.direction === 'out' && node.expandable);
+	              const actionHint = viewLevel === 'type'
+	                ? 'クリックしてこのカテゴリの詳細へ'
+	                : node.kind === 'entity' && node.direction === 'out' && node.expandable
+	                  ? `クリックして次の資金フローを${node.expanded ? '閉じる' : '展開'}`
+	                  : null;
 
-                 if (internalType) {
-                   const firstEntity = nodes.find(n => n.type === internalType);
-                   if (firstEntity) {
-                     setViewLevel('entity');
-                     onSelectedEntityChange(firstEntity.id);
-                   }
-                 }
-                 return;
-              }
-
-              // Extract original entity ID or Name from node.id
-              let searchName = datum.id;
-              if (searchName.startsWith('IN: ')) searchName = searchName.replace('IN: ', '');
-              if (searchName.startsWith('OUT: ')) searchName = searchName.replace('OUT: ', '');
-
-              // Check if it's a known name
-              const foundByName = nodes.find(n => n.name === searchName);
-              if (foundByName) {
-                onSelectedEntityChange(foundByName.id);
-                return;
-              }
-
-              // Otherwise check if it's a category node containing the ID
-              const match = datum.id.match(/^(IN|OUT)\(([^)]+)\)/);
-              if (match && match[2]) {
-                const foundById = nodes.find(n => n.id === match[2]);
-                if (foundById) {
-                  onSelectedEntityChange(foundById.id);
-                  }
-              }
-            }}
-              nodeTooltip={({ node }: { node: SankeyNodeRecord }) => {
-              // Calculate if it's a clickable node
-              let isClickable = false;
-
-              if (viewLevel === 'type') {
-                 if (node.id.startsWith('SRC: ') || node.id.startsWith('TRG: ')) {
-                     isClickable = true;
-                 }
-              } else {
-                let searchName = node.id;
-                if (searchName.startsWith('IN: ')) searchName = searchName.replace('IN: ', '');
-                if (searchName.startsWith('OUT: ')) searchName = searchName.replace('OUT: ', '');
-                if (nodes.some(n => n.name === searchName)) isClickable = true;
-                
-                const match = node.id.match(/^(IN|OUT)\(([^)]+)\)/);
-                if (match && match[2] && nodes.some(n => n.id === match[2])) isClickable = true;
-              }
-
-              return (
-                <div style={{ whiteSpace: 'nowrap', background: '#111', padding: '8px', border: '1px solid #333', borderRadius: '4px' }}>
-                  <strong style={{ color: node.color }}>{node.id}</strong>
-                  {viewLevel !== 'entity' && (
-                    <div style={{ marginTop: '4px' }}>
-                      合計: {formatCurrency(node.value, currency)}
+	              return (
+	                <div style={{ whiteSpace: 'nowrap', background: '#111', padding: '8px', border: '1px solid #333', borderRadius: '4px' }}>
+	                  <strong style={{ color: node.color }}>{node.label}</strong>
+	                  {viewLevel !== 'entity' && (
+	                    <div style={{ marginTop: '4px' }}>
+	                      合計: {formatCurrency(node.value, currency)}
                     </div>
                   )}
                   {viewLevel === 'entity' && (
                     <div style={{ marginTop: '4px', fontSize: '10px', color: 'var(--text-muted)' }}>
-                      線幅は視認性のため圧縮補正しています。金額は詳細カードで確認してください。
-                    </div>
-                  )}
-                  {isClickable && (
-                    <div style={{ marginTop: '4px', fontSize: '10px', color: 'var(--accent-color)' }}>
-                       {viewLevel === 'type' ? 'クリックしてこのカテゴリの詳細へ' : 'クリックしてこのエンティティの詳細フローを見る'}
-                    </div>
-                  )}
-                </div>
-              );
-            }}
-              linkTooltip={({ link }: { link: SankeyLinkRecord }) => (
-            <div style={{ whiteSpace: 'nowrap', background: '#111', padding: '8px', border: '1px solid #333', borderRadius: '4px' }}>
-              <strong style={{ color: link.linkColor }}>{link.source.id} &rarr; {link.target.id}</strong>
-              <br />
-                {formatCurrency(link.edgeRef?.value_usd || link.value, currency)}
-                
-                {/* Find original edge data to display description/URL if present */}
-                {(() => {
-                  let edgeSrc = link.source.id;
-                  let edgeTgt = link.target.id;
-                  
-                  // Clean up auto-generated sankey prefixes to match original edge IDs
-                  if (edgeSrc.startsWith('IN: ')) edgeSrc = edgeSrc.replace('IN: ', '');
-                  if (edgeSrc.startsWith('OUT: ')) edgeSrc = edgeSrc.replace('OUT: ', '');
-                  if (edgeTgt.startsWith('IN: ')) edgeTgt = edgeTgt.replace('IN: ', '');
-                  if (edgeTgt.startsWith('OUT: ')) edgeTgt = edgeTgt.replace('OUT: ', '');
-                  if (edgeTgt.startsWith('OUT2: ')) edgeTgt = edgeTgt.replace('OUT2: ', '');
-                  
-                  // Handle intermediate category nodes
-                  const srcMatch = edgeSrc.match(/^(IN|OUT)\(([^)]+)\)/);
-                  if (srcMatch && srcMatch[2]) edgeSrc = srcMatch[2];
-                  
-                  const tgtMatch = edgeTgt.match(/^(IN|OUT)\(([^)]+)\)/);
-                  if (tgtMatch && tgtMatch[2]) edgeTgt = tgtMatch[2];
+	                      線幅は視認性のため圧縮補正しています。金額は詳細カードで確認してください。
+	                    </div>
+	                  )}
+	                  {viewLevel === 'entity' && node.kind === 'entity' && node.direction === 'out' && !node.expandable && (
+	                    <div style={{ marginTop: '4px', fontSize: '10px', color: 'var(--text-muted)' }}>
+	                      このノードより先の下流フローは未登録です。
+	                    </div>
+	                  )}
+	                  {isClickable && (
+	                    <div style={{ marginTop: '4px', fontSize: '10px', color: 'var(--accent-color)' }}>
+	                      {actionHint}
+	                    </div>
+	                  )}
+	                </div>
+	              );
+	            }}
+	              linkTooltip={({ link }: { link: SankeyLinkRecord }) => (
+	            <div style={{ whiteSpace: 'nowrap', background: '#111', padding: '8px', border: '1px solid #333', borderRadius: '4px' }}>
+	              <strong style={{ color: link.linkColor }}>{link.source.label} &rarr; {link.target.label}</strong>
+	              <br />
+	                {formatCurrency(link.edgeRef?.value_usd || link.value, currency)}
+	                
+	                {/* Find original edge data to display description/URL if present */}
+	                {(() => {
+	                  const originalEdge = link.edgeRef;
 
-                  // We lookup by name since sankey nodes use names.
-                  const originalEdge = link.edgeRef || edges.find(e => {
-                    const srcName = nodes.find(n => n.id === e.source_id)?.name || e.source_id;
-                    const tgtName = nodes.find(n => n.id === e.target_id)?.name || e.target_id;
-                    
-                    return (srcName === edgeSrc || e.source_id === edgeSrc) && 
-                           (tgtName === edgeTgt || e.target_id === edgeTgt) &&
-                           e.value_usd === link.value;
-                  });
-
-                  if (!originalEdge) return null;
+	                  if (!originalEdge) return null;
 
                   return (
                     <div style={{ marginTop: '8px', fontSize: '10px', color: 'var(--text-muted)', whiteSpace: 'normal', maxWidth: '300px' }}>
