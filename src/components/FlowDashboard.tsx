@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { ResponsiveSankey } from '@nivo/sankey';
+import type { SankeyLinkDatum, SankeyNodeDatum } from '@nivo/sankey';
 import type { Edge, Node } from '../data/mockGenerator';
 import type { AppMetadata } from '../types/frontendData';
 import { formatCurrency } from '../utils/currencyFormatter';
@@ -72,6 +73,23 @@ const getNearestAvailableYear = (years: number[], targetYear: number) => {
 };
 
 const isModeledEdge = (edge: Edge) => MODELED_DATASET_MARKERS.some((marker) => (edge.source_dataset || '').includes(marker));
+
+type SankeyNodeData = {
+  id: string;
+  nodeColor: string;
+};
+
+type SankeyLinkData = {
+  source: string;
+  target: string;
+  value: number;
+  linkColor: string;
+  edgeRef?: Edge;
+};
+
+type SankeyNodeRecord = SankeyNodeDatum<SankeyNodeData, SankeyLinkData>;
+type SankeyLinkRecord = SankeyLinkDatum<SankeyNodeData, SankeyLinkData>;
+type SankeyInteractionRecord = SankeyNodeRecord | SankeyLinkRecord;
 
 const getProvenanceBadge = (edge: Edge) => {
   const dataset = edge.source_dataset || '';
@@ -146,8 +164,8 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
 
   // Construct Sankey Data based on viewLevel
   const sankeyData = useMemo(() => {
-    const sNodes: { id: string; nodeColor: string }[] = [];
-    const sLinks: { source: string; target: string; value: number; linkColor: string; edgeRef?: Edge }[] = [];
+    const sNodes: SankeyNodeData[] = [];
+    const sLinks: SankeyLinkData[] = [];
     const nodeSet = new Set<string>();
     
     const addNode = (id: string, color: string = '#888') => {
@@ -327,7 +345,10 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
     });
     return mapping;
   }, [metadata.budgetHighlights]);
-  const activeEntityResearchYears = researchYearsByEntity.get(activeEntityId) || [];
+  const activeEntityResearchYears = useMemo(
+    () => researchYearsByEntity.get(activeEntityId) || [],
+    [activeEntityId, researchYearsByEntity]
+  );
   const activeEntityResearchLink = useMemo(() => {
     if (!activeEntityResearchYears.length) {
       return null;
@@ -591,11 +612,11 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
               現在のフィルタ条件では、該当する資金フローデータの記録がありません。
             </div>
           ) : (
-            <ResponsiveSankey
+            <ResponsiveSankey<SankeyNodeData, SankeyLinkData>
               data={sankeyData}
               margin={{ top: 20, right: 100, bottom: 20, left: 100 }}
               align="justify"
-              colors={(node: any) => node.nodeColor}
+              colors={(node) => node.nodeColor}
               nodeOpacity={1}
               nodeHoverOthersOpacity={0.1}
               nodeThickness={24}
@@ -615,11 +636,11 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
                   container: { background: '#111', color: '#fff', fontSize: '12px', border: '1px solid #333' }
                 }
               }}
-              onClick={(node: any) => {
+              onClick={(datum: SankeyInteractionRecord) => {
               // Clicked on a Link
-              if (node.source && node.target) {
-                  let edgeSrc = node.source.id;
-                  let edgeTgt = node.target.id;
+              if ('source' in datum && 'target' in datum) {
+                  let edgeSrc = datum.source.id;
+                  let edgeTgt = datum.target.id;
                   
                   if (edgeSrc.startsWith('IN: ')) edgeSrc = edgeSrc.replace('IN: ', '');
                   if (edgeSrc.startsWith('OUT: ')) edgeSrc = edgeSrc.replace('OUT: ', '');
@@ -633,12 +654,12 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
                   const tgtMatch = edgeTgt.match(/^(IN|OUT)\(([^)]+)\)/);
                   if (tgtMatch && tgtMatch[2]) edgeTgt = tgtMatch[2];
 
-                  const originalEdge = node.edgeRef || edges.find(e => {
+                  const originalEdge = datum.edgeRef || edges.find(e => {
                     const srcName = nodes.find(n => n.id === e.source_id)?.name || e.source_id;
                     const tgtName = nodes.find(n => n.id === e.target_id)?.name || e.target_id;
                     return (srcName === edgeSrc || e.source_id === edgeSrc) && 
                            (tgtName === edgeTgt || e.target_id === edgeTgt) &&
-                           e.value_usd === node.value;
+                           e.value_usd === datum.value;
                   });
 
                   if (originalEdge) {
@@ -648,12 +669,12 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
               }
 
               // Clicked on a Node
-              if (node.id === undefined) return;
+              if (datum.id === undefined) return;
               setSelectedLinkDetails(null); // Clear link selection when clicking node
 
               if (viewLevel === 'type') {
                  // In Type mode, if they click a type node, switch to Entity mode and default to the first entity of that type
-                 const typeToSearch = node.id.replace('SRC: ', '').replace('TRG: ', '');
+                 const typeToSearch = datum.id.replace('SRC: ', '').replace('TRG: ', '');
                  const mapTypeToInternal: Record<string, string> = { 
                    '国家': 'country', 
                    'グローバル企業': 'corporation', 
@@ -679,7 +700,7 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
               }
 
               // Extract original entity ID or Name from node.id
-              let searchName = node.id;
+              let searchName = datum.id;
               if (searchName.startsWith('IN: ')) searchName = searchName.replace('IN: ', '');
               if (searchName.startsWith('OUT: ')) searchName = searchName.replace('OUT: ', '');
 
@@ -691,7 +712,7 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
               }
 
               // Otherwise check if it's a category node containing the ID
-              const match = node.id.match(/^(IN|OUT)\(([^)]+)\)/);
+              const match = datum.id.match(/^(IN|OUT)\(([^)]+)\)/);
               if (match && match[2]) {
                 const foundById = nodes.find(n => n.id === match[2]);
                 if (foundById) {
@@ -699,29 +720,29 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
                   }
               }
             }}
-              nodeTooltip={(node: any) => {
+              nodeTooltip={({ node }: { node: SankeyNodeRecord }) => {
               // Calculate if it's a clickable node
               let isClickable = false;
 
               if (viewLevel === 'type') {
-                 if (node.node.id.startsWith('SRC: ') || node.node.id.startsWith('TRG: ')) {
+                 if (node.id.startsWith('SRC: ') || node.id.startsWith('TRG: ')) {
                      isClickable = true;
                  }
               } else {
-                let searchName = node.node.id;
+                let searchName = node.id;
                 if (searchName.startsWith('IN: ')) searchName = searchName.replace('IN: ', '');
                 if (searchName.startsWith('OUT: ')) searchName = searchName.replace('OUT: ', '');
                 if (nodes.some(n => n.name === searchName)) isClickable = true;
                 
-                const match = node.node.id.match(/^(IN|OUT)\(([^)]+)\)/);
+                const match = node.id.match(/^(IN|OUT)\(([^)]+)\)/);
                 if (match && match[2] && nodes.some(n => n.id === match[2])) isClickable = true;
               }
 
               return (
                 <div style={{ whiteSpace: 'nowrap', background: '#111', padding: '8px', border: '1px solid #333', borderRadius: '4px' }}>
-                  <strong style={{ color: node.node.color }}>{node.node.id}</strong>
+                  <strong style={{ color: node.color }}>{node.id}</strong>
                   <div style={{ marginTop: '4px' }}>
-                    合計: {formatCurrency(node.node.value, currency)}
+                    合計: {formatCurrency(node.value, currency)}
                   </div>
                   {isClickable && (
                     <div style={{ marginTop: '4px', fontSize: '10px', color: 'var(--accent-color)' }}>
@@ -731,16 +752,16 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
                 </div>
               );
             }}
-              linkTooltip={(node: any) => (
+              linkTooltip={({ link }: { link: SankeyLinkRecord }) => (
               <div style={{ whiteSpace: 'nowrap', background: '#111', padding: '8px', border: '1px solid #333', borderRadius: '4px' }}>
-                <strong style={{ color: node.link.linkColor }}>{node.link.source.id} &rarr; {node.link.target.id}</strong>
+                <strong style={{ color: link.linkColor }}>{link.source.id} &rarr; {link.target.id}</strong>
                 <br />
-                {formatCurrency(node.link.value, currency)}
+                {formatCurrency(link.value, currency)}
                 
                 {/* Find original edge data to display description/URL if present */}
                 {(() => {
-                  let edgeSrc = node.link.source.id;
-                  let edgeTgt = node.link.target.id;
+                  let edgeSrc = link.source.id;
+                  let edgeTgt = link.target.id;
                   
                   // Clean up auto-generated sankey prefixes to match original edge IDs
                   if (edgeSrc.startsWith('IN: ')) edgeSrc = edgeSrc.replace('IN: ', '');
@@ -757,13 +778,13 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
                   if (tgtMatch && tgtMatch[2]) edgeTgt = tgtMatch[2];
 
                   // We lookup by name since sankey nodes use names.
-                  const originalEdge = node.link.edgeRef || edges.find(e => {
+                  const originalEdge = link.edgeRef || edges.find(e => {
                     const srcName = nodes.find(n => n.id === e.source_id)?.name || e.source_id;
                     const tgtName = nodes.find(n => n.id === e.target_id)?.name || e.target_id;
                     
                     return (srcName === edgeSrc || e.source_id === edgeSrc) && 
                            (tgtName === edgeTgt || e.target_id === edgeTgt) &&
-                           e.value_usd === node.link.value;
+                           e.value_usd === link.value;
                   });
 
                   if (!originalEdge) return null;

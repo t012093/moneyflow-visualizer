@@ -20951,7 +20951,7 @@
           "実施主体は市町村で、市町村が認めた者への委託等が可能と明記されている。",
           "想定事務フローでも、市町村が審査し、事業者に給付費を支払う構造が確認できる。"
         ],
-        "body_markdown": "",
+        "body_markdown": "# 乳児等通園支援事業の公式フロー\n\n## 結論\n\n制度上の主な資金フローは、こども家庭庁から市町村を経て、確認を受けた実施施設・事業者へ流れる。\n\n## 2025年度予算上の位置づけ\n\n- 令和7年度こども家庭庁予算 事業別資料集では、乳児等通園支援事業は `<子ども・子育て支援交付金>` の内数として整理されている。\n- 記載は `2,431億円の内数 + 事項要求 2,074億円の内数`。\n\n## 制度フロー\n\n- 実施主体は市町村。\n- 市町村が認めた者への委託等が可能。\n- 補助割合は国 `3/4`、市町村 `1/4`。\n\n## 事務フロー\n\n- 事業者が確認を受ける。\n- 保護者が市町村へ認定申請する。\n- 利用実績に基づき、事業者が請求する。\n- 市町村が審査し、給付費を支払う。\n\n## 一次資料\n\n- 令和7年度こども家庭庁予算 事業別資料集\n- こども誰でも通園制度 公式ページ\n- 乳児等通園支援事業に関する想定事務フロー【第1版】\n",
         "doc_path": "docs/funding-knowledge/ministries/child-and-family-agency/KODOMO_DAREDEMO_TSUEN_FLOW_2025-2026.md",
         "display_order": 10,
         "sources": [
@@ -20989,7 +20989,7 @@
           "神戸市、横浜市、静岡市、京都市で、実施施設や利用料の支払先に関する制度運用の違いが確認できる。",
           "広島市では、保育の受け皿とは別に、管理運用業務を TOPPAN へ委託する公募結果が公表されている。"
         ],
-        "body_markdown": "",
+        "body_markdown": "# 自治体別の実施状況と委託先\n\n## 概況\n\n- こども家庭庁の実施状況資料では、2025年7月7日時点で `118自治体 / 757か所` が確認できる。\n- 受け皿は社会福祉法人、学校法人、公立施設、株式会社、NPO など多様。\n\n## 自治体ごとの見え方\n\n- 神戸市、横浜市、静岡市、京都市では、実施施設一覧や利用案内が公式ページで確認できる。\n- 静岡市では、利用料の施設直接払いが明示されている。\n- 京都市では、要綱上で委託先施設への支弁が整理されている。\n\n## 別系統の委託\n\n- 広島市では、実施施設への給付とは別に、制度管理運用業務の委託先が公募・公表されている。\n- このため、制度資金の主流は `国 -> 市町村 -> 実施施設・事業者` だが、行政運営事務の委託費が別系統でベンダーに流れる場合がある。\n\n## 一次資料\n\n- こども誰でも通園制度 令和6年度の実施状況\n- 神戸市 こども誰でも通園制度\n- 横浜市 こども誰でも通園制度（乳児等通園支援事業）について\n- 静岡市 乳児等通園支援事業（こども誰でも通園制度）利用のご案内\n- 京都市 京都市乳児等通園支援事業（こども誰でも通園制度）実施要綱\n- 広島市 乳児等通園支援事業に係る管理運用業務\n",
         "doc_path": "docs/funding-knowledge/ministries/child-and-family-agency/KODOMO_DAREDEMO_TSUEN_MUNICIPAL_IMPLEMENTATION_2026-03-13.md",
         "display_order": 20,
         "sources": [
@@ -21055,7 +21055,7 @@
           "静岡市は利用料の施設直接払いを明示し、京都市は要綱上で委託先施設への支弁を規定している。",
           "広島市は制度運営の事務委託、神戸市・横浜市は実施施設の拡充・一覧公開の事例として対比できる。"
         ],
-        "body_markdown": "",
+        "body_markdown": "# 自治体比較表\n\n## 比較対象\n\n- 神戸市\n- 横浜市\n- 静岡市\n- 京都市\n- 広島市\n\n## 比較観点\n\n- 実施規模\n- 主な受け皿\n- 利用料の支払先\n- 行政運営委託の有無\n\n## 観察メモ\n\n- 神戸市、横浜市は実施施設の一覧公開・拡充の事例として見やすい。\n- 静岡市は施設直接払いの明示があり、利用者負担の流れが確認しやすい。\n- 京都市は要綱ベースで支弁構造が確認できる。\n- 広島市は制度運営の事務委託が別建てで見える。\n\n## 全国概況\n\n- 2025年7月7日時点で `118自治体 / 757か所`。\n",
         "doc_path": "docs/funding-knowledge/ministries/child-and-family-agency/KODOMO_DAREDEMO_TSUEN_MUNICIPAL_COMPARISON_TABLE_2026-03-13.md",
         "display_order": 30,
         "sources": [
@@ -21100,6 +21100,158 @@
             "source_kind": "official_html",
             "authority_level": "primary",
             "display_order": 60
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_METI",
+        "fiscal_year": 2025,
+        "note_key": "meti-reviewed-budget-2025",
+        "title": "2025年度経済産業省関連予算の reviewed 要約",
+        "summary": "経済産業省関連予算の総額は 2兆524億円で、GX・エネルギー、AI・半導体、イノベーション支援が主要な柱です。",
+        "key_points": [
+          "GX・エネルギー安定供給の確保は 1兆28億円で、最大の政策枠として整理されている。",
+          "AI・半導体等の産業基盤強化は 3,818億円で、先端産業政策の重点枠になっている。",
+          "個別施策では、ポスト5G情報通信システム基盤強化研究開発事業 1,617億円、次世代半導体の量産等に向けた出資事業 1,000億円が reviewed 主要事業として掲載されている。"
+        ],
+        "body_markdown": "# 2025年度経済産業省関連予算の reviewed 要約\n\n## 総額\n\n- 経済産業省関連予算総額は `2兆524億円`。\n- 一般会計、エネルギー対策特別会計、GX経済移行債などを含む。\n\n## 主な政策枠\n\n- GX・エネルギー安定供給の確保: `1兆28億円`\n- AI・半導体等の産業基盤強化: `3,818億円`\n- イノベーション・新陳代謝の加速: `3,077億円`\n\n## reviewed 主要事業\n\n- ポスト5G情報通信システム基盤強化研究開発事業: `1,617億円`\n- 次世代半導体の量産等に向けた出資事業: `1,000億円`\n- 省エネルギー投資促進・需要構造転換支援事業費補助金: `760億円`\n\n## 読み方\n\n- GX とエネルギーが最大の政策枠。\n- AI・半導体と次世代通信が産業基盤強化の中心。\n\n## 一次資料\n\n- 2025年度経済産業政策の重点\n",
+        "doc_path": "docs/funding-knowledge/ministries/economy-trade-and-industry/METI_REVIEWED_BUDGET_2025.md",
+        "display_order": 140,
+        "sources": [
+          {
+            "source_title": "2025年度経済産業政策の重点",
+            "source_url": "https://www.meti.go.jp/main/yosangaisan/fy2025/pr/enj/siryo/01.pdf#page=2&search=%E7%B7%8F%E9%A1%8D",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          },
+          {
+            "source_title": "2025年度経済産業政策の重点",
+            "source_url": "https://www.meti.go.jp/main/yosangaisan/fy2025/pr/enj/siryo/01.pdf#page=2&search=GX%E3%83%BB%E3%82%A8%E3%83%8D%E3%83%AB%E3%82%AE%E3%83%BC",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 20
+          },
+          {
+            "source_title": "2025年度経済産業政策の重点",
+            "source_url": "https://www.meti.go.jp/main/yosangaisan/fy2025/pr/enj/siryo/01.pdf#page=6&search=%E3%83%9D%E3%82%B9%E3%83%885G",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 30
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_MEXT",
+        "fiscal_year": 2025,
+        "note_key": "mext-reviewed-budget-2025",
+        "title": "令和7年度文部科学省予算の reviewed 要約",
+        "summary": "文部科学省の令和7年度一般会計予算は 5兆5,094億円で、義務教育費と科学技術予算が大きな柱になっています。",
+        "key_points": [
+          "義務教育費国庫負担金は 1兆6,210億円で、学校教育の基盤的経費として最大級の政策枠になっている。",
+          "科学技術予算は 9,777億円で、研究開発・イノベーション政策の中心枠として整理されている。",
+          "個別施策では、科学研究費助成事業（科研費） 2,379億円が reviewed 主要事業として掲載されている。"
+        ],
+        "body_markdown": "# 令和7年度文部科学省予算の reviewed 要約\n\n## 総額\n\n- 令和7年度文部科学省一般会計予算は `55,094億円`。\n- 対前年度比 `1,709億円増`、`3.2%増`。\n\n## 主な政策枠\n\n- 義務教育費国庫負担金: `1兆6,210億円`\n- 科学技術予算: `9,777億円`\n\n## reviewed 主要事業\n\n- 科学研究費助成事業（科研費）: `2,379億円`\n- 国立大学法人運営費交付金等\n- 高校生等への修学支援\n- 私学助成関係予算\n\n## 読み方\n\n- 義務教育費は基盤的経費。\n- 科学技術予算と科研費は研究・イノベーション政策の核。\n\n## 一次資料\n\n- 文部科学省 令和7年度予算のポイント\n",
+        "doc_path": "docs/funding-knowledge/ministries/education-culture-sports-science-and-technology/MEXT_REVIEWED_BUDGET_2025.md",
+        "display_order": 120,
+        "sources": [
+          {
+            "source_title": "文部科学省 令和7年度予算のポイント",
+            "source_url": "https://www.mext.go.jp/content/20250305-ope_dev03-000037774-1.pdf#page=2&search=%E4%B8%80%E8%88%AC%E4%BC%9A%E8%A8%88",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          },
+          {
+            "source_title": "文部科学省 令和7年度予算のポイント",
+            "source_url": "https://www.mext.go.jp/content/20250305-ope_dev03-000037774-1.pdf#page=3&search=%E7%BE%A9%E5%8B%99%E6%95%99%E8%82%B2%E8%B2%BB",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 20
+          },
+          {
+            "source_title": "令和7年度予算のポイント",
+            "source_url": "https://www.mext.go.jp/content/20250305-ope_dev03-000037774-1.pdf#page=68&search=%E7%A7%91%E5%AD%A6%E7%A0%94%E7%A9%B6%E8%B2%BB%E5%8A%A9%E6%88%90%E4%BA%8B%E6%A5%AD",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 30
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_MHLW",
+        "fiscal_year": 2025,
+        "note_key": "mhlw-reviewed-budget-2025",
+        "title": "令和7年度厚生労働省予算の reviewed 要約",
+        "summary": "厚生労働省の令和7年度一般会計予算は 34兆3,064億円で、その大半を社会保障関係費が占めています。",
+        "key_points": [
+          "社会保障関係費は 33兆9,883億円で、一般会計の中心的な政策枠になっている。",
+          "増要因では年金が +2,892億円で最大、医療が +1,170億円、福祉等が +635億円で続く。",
+          "個別施策では、地域包括ケアシステムの推進 2,470億円や、リ・スキリングによる能力向上支援等 1,593億円が reviewed 主要事業として載っている。"
+        ],
+        "body_markdown": "# 令和7年度厚生労働省予算の reviewed 要約\n\n## 総額\n\n- 令和7年度厚生労働省一般会計予算は `34兆3,064億円`。\n- 一般会計ベースで、社会保障関係費が大半を占める。\n\n## 主な政策枠\n\n- 社会保障関係費: `33兆9,883億円`\n- 各医療保険制度などに関する医療費国庫負担: `10兆2,779億円`\n\n## 増要因\n\n- 年金: `+2,892億円`\n- 医療: `+1,170億円`\n- 福祉等: `+635億円`\n\n## reviewed 主要事業\n\n- 地域包括ケアシステムの推進: `2,470億円`\n- リ・スキリングによる能力向上支援等: `1,593億円`\n- 次なる感染症危機に備えた体制強化: `313億円`\n\n## 一次資料\n\n- 厚生労働省 令和7年度予算案の概要\n",
+        "doc_path": "docs/funding-knowledge/ministries/health-labour-welfare/MHLW_REVIEWED_BUDGET_2025.md",
+        "display_order": 110,
+        "sources": [
+          {
+            "source_title": "厚生労働省 令和7年度予算案の概要",
+            "source_url": "https://www.mhlw.go.jp/wp/yosan/yosan/25syokanyosan/dl/01-01.pdf#page=2&search=%E4%B8%80%E8%88%AC%E4%BC%9A%E8%A8%88",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          },
+          {
+            "source_title": "厚生労働省 令和7年度予算案の概要",
+            "source_url": "https://www.mhlw.go.jp/wp/yosan/yosan/25syokanyosan/dl/01-01.pdf#page=3&search=%E5%B9%B4%E9%87%91",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 20
+          },
+          {
+            "source_title": "厚生労働省 令和7年度予算案の概要",
+            "source_url": "https://www.mhlw.go.jp/wp/yosan/yosan/25syokanyosan/dl/01-01.pdf#page=6&search=%E5%9C%B0%E5%9F%9F%E5%8C%85%E6%8B%AC%E3%82%B1%E3%82%A2",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 30
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_MLIT",
+        "fiscal_year": 2024,
+        "note_key": "mlit-reviewed-budget-2024",
+        "title": "令和6年度国土交通省予算の reviewed 要約",
+        "summary": "国土交通省関係の令和6年度予算は 5兆9,537億円で、公共事業関係費が予算の大宗を占めています。",
+        "key_points": [
+          "公共事業関係費は 5兆2,901億円で、一般会計の大半を占める政策枠になっている。",
+          "重点施策では、流域治水の加速化・強化 6,114億円、効率的な物流ネットワークの早期整備・活用 3,802億円が reviewed 主要事業として整理されている。",
+          "住宅・建築物の省エネ対策等の強化 1,103億円も、GX とストック活用の重点施策として掲載されている。"
+        ],
+        "body_markdown": "# 令和6年度国土交通省予算の reviewed 要約\n\n## 総額\n\n- 令和6年度国土交通省関係予算は `5兆9,537億円`。\n\n## 主な政策枠\n\n- 公共事業関係費: `5兆2,901億円`\n- 非公共事業: `6,636億円`\n\n## reviewed 主要事業\n\n- 流域治水の加速化・強化: `6,114億円`\n- 効率的な物流ネットワークの早期整備・活用: `3,802億円`\n- 住宅・建築物の省エネ対策等の強化: `1,103億円`\n\n## 読み方\n\n- 公共事業が予算の大宗を占める。\n- 防災・物流・GX が重点施策として前面に出ている。\n\n## 一次資料\n\n- 国土交通省 令和6年度予算概要\n",
+        "doc_path": "docs/funding-knowledge/ministries/land-infrastructure-transport-and-tourism/MLIT_REVIEWED_BUDGET_2024.md",
+        "display_order": 130,
+        "sources": [
+          {
+            "source_title": "国土交通省 令和6年度予算概要",
+            "source_url": "https://www.mlit.go.jp/page/content/001720593.pdf#page=4&search=%E4%B8%80%E8%88%AC%E4%BC%9A%E8%A8%88",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          },
+          {
+            "source_title": "国土交通省 令和6年度予算概要",
+            "source_url": "https://www.mlit.go.jp/page/content/001720593.pdf#page=4&search=%E5%85%AC%E5%85%B1%E4%BA%8B%E6%A5%AD%E9%96%A2%E4%BF%82%E8%B2%BB",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 20
+          },
+          {
+            "source_title": "国土交通省 令和6年度予算概要",
+            "source_url": "https://www.mlit.go.jp/page/content/001720593.pdf#page=6&search=%E6%B5%81%E5%9F%9F%E6%B2%BB%E6%B0%B4",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 30
           }
         ]
       }
@@ -21237,6 +21389,282 @@
           {
             "source_title": "こども誰でも通園制度 令和6年度の実施状況",
             "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/c53b2923-930e-4490-9ea6-02f1b02f04dc/e23e860d/20250717_councils_daredemotsuen-kentokai_5ao3a471_02.pdf",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_METI",
+        "fiscal_year": 2025,
+        "fact_key": "meti-fy2025-total-budget",
+        "fact_group": "budget",
+        "title": "関連予算総額",
+        "value_text": "2兆524億円",
+        "numeric_value": 20524.0,
+        "unit": "億円",
+        "summary": "一般会計、エネルギー対策特別会計、GX経済移行債などを含む経済産業省関連予算の総額です。",
+        "note_key": "meti-reviewed-budget-2025",
+        "source_excerpt": "経済産業省関連予算総額 2兆524億円",
+        "display_order": 410,
+        "sources": [
+          {
+            "source_title": "2025年度経済産業政策の重点",
+            "source_url": "https://www.meti.go.jp/main/yosangaisan/fy2025/pr/enj/siryo/01.pdf#page=2&search=%E7%B7%8F%E9%A1%8D",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_METI",
+        "fiscal_year": 2025,
+        "fact_key": "meti-fy2025-gx-frame",
+        "fact_group": "policy_frame",
+        "title": "GX・エネルギー安定供給の確保",
+        "value_text": "1兆28億円",
+        "numeric_value": 10028.0,
+        "unit": "億円",
+        "summary": "GX、エネルギー安定供給、資源循環を束ねる最大の政策枠です。",
+        "note_key": "meti-reviewed-budget-2025",
+        "source_excerpt": "GX・エネルギー安定供給の確保 1兆28億円",
+        "display_order": 420,
+        "sources": [
+          {
+            "source_title": "2025年度経済産業政策の重点",
+            "source_url": "https://www.meti.go.jp/main/yosangaisan/fy2025/pr/enj/siryo/01.pdf#page=2&search=GX%E3%83%BB%E3%82%A8%E3%83%8D%E3%83%AB%E3%82%AE%E3%83%BC",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_METI",
+        "fiscal_year": 2025,
+        "fact_key": "meti-fy2025-post5g",
+        "fact_group": "individual_project",
+        "title": "ポスト5G情報通信システム基盤強化研究開発事業",
+        "value_text": "1,617億円",
+        "numeric_value": 1617.0,
+        "unit": "億円",
+        "summary": "次世代情報通信システムの研究開発と産業基盤強化を支える reviewed 重点事業です。",
+        "note_key": "meti-reviewed-budget-2025",
+        "source_excerpt": "ポスト5G情報通信システム基盤強化研究開発事業 1,617億円",
+        "display_order": 430,
+        "sources": [
+          {
+            "source_title": "2025年度経済産業政策の重点",
+            "source_url": "https://www.meti.go.jp/main/yosangaisan/fy2025/pr/enj/siryo/01.pdf#page=6&search=%E3%83%9D%E3%82%B9%E3%83%885G",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_MEXT",
+        "fiscal_year": 2025,
+        "fact_key": "mext-fy2025-total-budget",
+        "fact_group": "budget",
+        "title": "令和7年度一般会計予算",
+        "value_text": "55,094億円",
+        "numeric_value": 55094.0,
+        "unit": "億円",
+        "summary": "文部科学省の令和7年度一般会計予算総額です。",
+        "note_key": "mext-reviewed-budget-2025",
+        "source_excerpt": "令和7年度 文部科学省一般会計予算 55,094億円",
+        "display_order": 210,
+        "sources": [
+          {
+            "source_title": "文部科学省 令和7年度予算のポイント",
+            "source_url": "https://www.mext.go.jp/content/20250305-ope_dev03-000037774-1.pdf#page=2&search=%E4%B8%80%E8%88%AC%E4%BC%9A%E8%A8%88",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_MEXT",
+        "fiscal_year": 2025,
+        "fact_key": "mext-fy2025-compulsory-education-frame",
+        "fact_group": "policy_frame",
+        "title": "義務教育費国庫負担金",
+        "value_text": "1兆6,210億円",
+        "numeric_value": 16210.0,
+        "unit": "億円",
+        "summary": "義務教育段階の基盤的経費を支える最大級の政策枠です。",
+        "note_key": "mext-reviewed-budget-2025",
+        "source_excerpt": "義務教育費国庫負担金 1兆6,210億円",
+        "display_order": 220,
+        "sources": [
+          {
+            "source_title": "文部科学省 令和7年度予算のポイント",
+            "source_url": "https://www.mext.go.jp/content/20250305-ope_dev03-000037774-1.pdf#page=3&search=%E7%BE%A9%E5%8B%99%E6%95%99%E8%82%B2%E8%B2%BB",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_MEXT",
+        "fiscal_year": 2025,
+        "fact_key": "mext-fy2025-kakenhi",
+        "fact_group": "individual_project",
+        "title": "科学研究費助成事業（科研費）",
+        "value_text": "2,379億円",
+        "numeric_value": 2379.0,
+        "unit": "億円",
+        "summary": "研究者の自由な発想に基づく学術研究を支える reviewed 主要事業です。",
+        "note_key": "mext-reviewed-budget-2025",
+        "source_excerpt": "科学研究費助成事業（科研費） 2,379億円",
+        "display_order": 230,
+        "sources": [
+          {
+            "source_title": "令和7年度予算のポイント",
+            "source_url": "https://www.mext.go.jp/content/20250305-ope_dev03-000037774-1.pdf#page=68&search=%E7%A7%91%E5%AD%A6%E7%A0%94%E7%A9%B6%E8%B2%BB%E5%8A%A9%E6%88%90%E4%BA%8B%E6%A5%AD",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_MHLW",
+        "fiscal_year": 2025,
+        "fact_key": "mhlw-fy2025-total-budget",
+        "fact_group": "budget",
+        "title": "令和7年度一般会計予算",
+        "value_text": "34兆3,064億円",
+        "numeric_value": 343064.0,
+        "unit": "億円",
+        "summary": "厚生労働省の令和7年度一般会計予算総額です。",
+        "note_key": "mhlw-reviewed-budget-2025",
+        "source_excerpt": "令和7年度厚生労働省一般会計予算 34兆3,064億円",
+        "display_order": 110,
+        "sources": [
+          {
+            "source_title": "厚生労働省 令和7年度予算案の概要",
+            "source_url": "https://www.mhlw.go.jp/wp/yosan/yosan/25syokanyosan/dl/01-01.pdf#page=2&search=%E4%B8%80%E8%88%AC%E4%BC%9A%E8%A8%88",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_MHLW",
+        "fiscal_year": 2025,
+        "fact_key": "mhlw-fy2025-social-security-frame",
+        "fact_group": "policy_frame",
+        "title": "社会保障関係費",
+        "value_text": "33兆9,883億円",
+        "numeric_value": 339883.0,
+        "unit": "億円",
+        "summary": "厚生労働省一般会計の中心を占める社会保障関係費の政策枠です。",
+        "note_key": "mhlw-reviewed-budget-2025",
+        "source_excerpt": "社会保障関係費 33兆9,883億円",
+        "display_order": 120,
+        "sources": [
+          {
+            "source_title": "厚生労働省 令和7年度予算案の概要",
+            "source_url": "https://www.mhlw.go.jp/wp/yosan/yosan/25syokanyosan/dl/01-01.pdf#page=2&search=%E7%A4%BE%E4%BC%9A%E4%BF%9D%E9%9A%9C%E9%96%A2%E4%BF%82%E8%B2%BB",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_MHLW",
+        "fiscal_year": 2025,
+        "fact_key": "mhlw-fy2025-largest-increase-driver",
+        "fact_group": "increase_driver",
+        "title": "最大の増要因",
+        "value_text": "年金 +2,892億円",
+        "numeric_value": 2892.0,
+        "unit": "億円",
+        "summary": "増要因の中では年金が最も大きく、対前年度比で +2,892億円です。",
+        "note_key": "mhlw-reviewed-budget-2025",
+        "source_excerpt": "年金 +2,892億円",
+        "display_order": 130,
+        "sources": [
+          {
+            "source_title": "厚生労働省 令和7年度予算案の概要",
+            "source_url": "https://www.mhlw.go.jp/wp/yosan/yosan/25syokanyosan/dl/01-01.pdf#page=3&search=%E5%B9%B4%E9%87%91",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_MLIT",
+        "fiscal_year": 2024,
+        "fact_key": "mlit-fy2024-total-budget",
+        "fact_group": "budget",
+        "title": "令和6年度関係予算総額",
+        "value_text": "5兆9,537億円",
+        "numeric_value": 59537.0,
+        "unit": "億円",
+        "summary": "国土交通省関係の令和6年度予算総額です。",
+        "note_key": "mlit-reviewed-budget-2024",
+        "source_excerpt": "令和6年度国土交通省関係予算 5兆9,537億円",
+        "display_order": 310,
+        "sources": [
+          {
+            "source_title": "国土交通省 令和6年度予算概要",
+            "source_url": "https://www.mlit.go.jp/page/content/001720593.pdf#page=4&search=%E4%B8%80%E8%88%AC%E4%BC%9A%E8%A8%88",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_MLIT",
+        "fiscal_year": 2024,
+        "fact_key": "mlit-fy2024-public-works-frame",
+        "fact_group": "policy_frame",
+        "title": "公共事業関係費",
+        "value_text": "5兆2,901億円",
+        "numeric_value": 52901.0,
+        "unit": "億円",
+        "summary": "国土交通省予算の大宗を占める公共事業の政策枠です。",
+        "note_key": "mlit-reviewed-budget-2024",
+        "source_excerpt": "公共事業関係費 5兆2,901億円",
+        "display_order": 320,
+        "sources": [
+          {
+            "source_title": "国土交通省 令和6年度予算概要",
+            "source_url": "https://www.mlit.go.jp/page/content/001720593.pdf#page=4&search=%E5%85%AC%E5%85%B1%E4%BA%8B%E6%A5%AD%E9%96%A2%E4%BF%82%E8%B2%BB",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_MLIT",
+        "fiscal_year": 2024,
+        "fact_key": "mlit-fy2024-flood-control",
+        "fact_group": "individual_project",
+        "title": "流域治水の加速化・強化",
+        "value_text": "6,114億円",
+        "numeric_value": 6114.0,
+        "unit": "億円",
+        "summary": "水害・土砂災害対策を強化する reviewed 重点施策です。",
+        "note_key": "mlit-reviewed-budget-2024",
+        "source_excerpt": "流域治水の加速化・強化 6,114億円",
+        "display_order": 330,
+        "sources": [
+          {
+            "source_title": "国土交通省 令和6年度予算概要",
+            "source_url": "https://www.mlit.go.jp/page/content/001720593.pdf#page=6&search=%E6%B5%81%E5%9F%9F%E6%B2%BB%E6%B0%B4",
             "source_kind": "official_pdf",
             "authority_level": "primary",
             "display_order": 10

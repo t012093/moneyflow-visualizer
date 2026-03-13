@@ -372,9 +372,9 @@ export const BudgetReportPage: React.FC<BudgetReportPageProps> = ({
   selectedEntityId,
   onSelectedEntityChange,
 }) => {
-  const budgetHighlights = metadata.budgetHighlights || [];
-  const knowledgeNotes = metadata.knowledgeNotes || [];
-  const structuredFacts = metadata.structuredFacts || [];
+  const budgetHighlights = useMemo(() => metadata.budgetHighlights || [], [metadata.budgetHighlights]);
+  const knowledgeNotes = useMemo(() => metadata.knowledgeNotes || [], [metadata.knowledgeNotes]);
+  const structuredFacts = useMemo(() => metadata.structuredFacts || [], [metadata.structuredFacts]);
   const budgetPageParams = useMemo(() => parseBudgetPageParams(), []);
   const entityOptions = useMemo(() => {
     return [...new Set([
@@ -394,20 +394,20 @@ export const BudgetReportPage: React.FC<BudgetReportPageProps> = ({
   }, [budgetHighlights, knowledgeNotes, structuredFacts, metadata.featuredEntityId, nodes]);
   const fallbackEntityId = budgetPageParams.entityId || metadata.featuredEntityId || entityOptions[0]?.entityId || '';
   const activeEntityId = entityOptions.some((item) => item.entityId === selectedEntityId) ? selectedEntityId : fallbackEntityId;
-  const [activeTab, setActiveTab] = useState<BudgetTab>(
-    budgetPageParams.tab || (budgetPageParams.focusTargetId ? 'major_program' : 'overview')
-  );
   const focusTargetId = budgetPageParams.focusTargetId;
+  const requestedTab = budgetPageParams.tab || (focusTargetId ? 'major_program' : 'overview');
+  const tabScopeKey = `${activeEntityId}:${currentYear}:${requestedTab}:${focusTargetId || ''}`;
+  const [manualTabState, setManualTabState] = useState<{ scopeKey: string; tab: BudgetTab }>({
+    scopeKey: tabScopeKey,
+    tab: requestedTab,
+  });
+  const activeTab = manualTabState.scopeKey === tabScopeKey ? manualTabState.tab : requestedTab;
 
   useEffect(() => {
     if (selectedEntityId !== activeEntityId) {
       onSelectedEntityChange(activeEntityId);
     }
   }, [activeEntityId, onSelectedEntityChange, selectedEntityId]);
-
-  useEffect(() => {
-    setActiveTab(budgetPageParams.tab || (focusTargetId ? 'major_program' : 'overview'));
-  }, [activeEntityId, budgetPageParams.tab, currentYear, focusTargetId]);
 
   const currentHighlights = useMemo(
     () =>
@@ -837,7 +837,6 @@ export const BudgetReportPage: React.FC<BudgetReportPageProps> = ({
     overview,
     policyFrames,
     previousHighlights,
-    previousMajorPrograms,
     previousYear,
     activeEntityId,
     selectedEntityName,
@@ -937,7 +936,7 @@ export const BudgetReportPage: React.FC<BudgetReportPageProps> = ({
           {(Object.keys(TAB_LABELS) as BudgetTab[]).map((tab) => (
             <button
               key={tab}
-              onClick={() => setActiveTab(tab)}
+              onClick={() => setManualTabState({ scopeKey: tabScopeKey, tab })}
               style={{
                 background: activeTab === tab ? TAB_ACCENTS[tab] : 'rgba(255,255,255,0.04)',
                 color: activeTab === tab ? '#081018' : 'var(--text-main)',

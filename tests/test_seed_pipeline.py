@@ -58,6 +58,35 @@ class SeedPipelineRegressionTests(unittest.TestCase):
         self.assertTrue(any(fact["fact_key"] == "kodomo-daredemo-tsuen-budget-frame" for fact in structured_facts))
         self.assertTrue(any(fact["fact_key"] == "kodomo-daredemo-tsuen-rollout-sites" for fact in structured_facts))
 
+    def test_unified_export_contains_reviewed_ministry_knowledge_for_other_agencies(self) -> None:
+        metadata = self.unified_data["metadata"]
+        knowledge_notes = metadata.get("knowledgeNotes", [])
+        structured_facts = metadata.get("structuredFacts", [])
+
+        expected_note_keys = {
+            "mhlw-reviewed-budget-2025",
+            "mext-reviewed-budget-2025",
+            "mlit-reviewed-budget-2024",
+            "meti-reviewed-budget-2025",
+        }
+        expected_fact_keys = {
+            "mhlw-fy2025-total-budget",
+            "mext-fy2025-total-budget",
+            "mlit-fy2024-total-budget",
+            "meti-fy2025-total-budget",
+        }
+
+        self.assertTrue(expected_note_keys.issubset({note["note_key"] for note in knowledge_notes}))
+        self.assertTrue(expected_fact_keys.issubset({fact["fact_key"] for fact in structured_facts}))
+
+    def test_doc_paths_referenced_by_knowledge_notes_exist(self) -> None:
+        for note in self.unified_data["metadata"].get("knowledgeNotes", []):
+            doc_path = note.get("doc_path")
+            if not doc_path:
+                continue
+
+            self.assertTrue((ROOT / doc_path).exists(), msg=f"Missing knowledge note doc: {doc_path}")
+
     def test_unified_export_has_no_generic_meti_homepage_provenance(self) -> None:
         urls = set()
 

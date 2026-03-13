@@ -40,5 +40,8 @@ jobs:
       - name: Run seed pipeline regression tests
         run: python3 -m unittest discover -s tests
 
+      - name: Run frontend lint
+        run: npm run lint
+
       - name: Build frontend
         run: npm run build

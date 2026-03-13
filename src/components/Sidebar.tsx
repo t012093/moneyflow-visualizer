@@ -52,7 +52,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             <span style={{ textTransform: 'capitalize' }}>{cat}</span>
             <span style={{ 
               width: 12, height: 12, borderRadius: '50%', 
-              backgroundColor: `var(--color-${cat})` || 'white',
+              backgroundColor: `var(--color-${cat})`,
               marginLeft: 'auto'
             }} />
           </label>
