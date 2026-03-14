@@ -86,6 +86,8 @@ DATASET_TO_SOURCE_ID = {
     # Social security
     "参議院予算委員会調査室 R6": "sangiin_social_security",
     "こども家庭庁 R6/R7予算 オープンデータ": "cfa_budget",
+    "こども家庭庁 令和7年度予算 EBPM（こどもの居場所づくり支援体制強化事業）": "cfa_budget",
+    "こども家庭庁 令和7年度契約公表（児童虐待防止デジタル案件）": "cfa_budget",
     "こども誰でも通園制度(仮称)の本格実施に向けた制度移行 (想定)": "cfa_budget",
     "放課後児童クラブ（運営費・処遇改善）運営主体別按分 (令和7年実施状況ベース)": "cfa_budget",
     "厚生労働省 国民医療費 R4": "mhlw_medical",
@@ -118,6 +120,8 @@ SOURCE_URL_REWRITES = {
     "https://www.mhlw.go.jp/toukei/saikin/hw/kaigo/kyufu/":
         "https://www.mhlw.go.jp/toukei/list/45-1b.html",
 }
+
+KNOWN_VALID_OFFICIAL_SOURCE_URLS = set()
 
 CFA_PROVENANCE_HINTS = [
     {
@@ -815,7 +819,7 @@ KNOWLEDGE_NOTES = [
             "創設の基準として、専用区画 1.65㎡/人以上、支援の単位ごとに職員2人以上、うち1人以上は放課後児童支援員、1単位おおむね40人以下が示されている。",
             "29億円の `こども政策推進事業費補助金（放課後関係）` のページで明示されているのは、放課後児童支援員認定資格研修事業と放課後児童支援員等資質向上研修事業であり、以前の `DX・体制強化 29億円` 表示より `研修関係 29億円` と読む方が正確である。",
             "研修関係の出口は、認定資格研修と資質向上研修の2本が確認できる。前者は都道府県・指定都市・中核市、後者は都道府県又は市町村が実施主体で、いずれも民間団体等への委託が可能である。",
-            "研修関係の third-hop は、金額比率未公表のため `実施主体 / 受託事業者` の二系統を均等按分する model-based 表示にしている。東京都では株式会社東京リーガルマインド、山口県では特定非営利活動法人学童保育協会、新潟県では株式会社東京リーガルマインドへの委託例が確認できる。",
+            "研修関係の third-hop は、金額比率未公表のため `実施主体 / 受託事業者` の二系統を均等按分する model-based 表示にしている。2025年度の自治体公表では、認定資格研修で東京都・神戸市・新潟県が株式会社東京リーガルマインド、山口県が特定非営利活動法人学童保育協会、資質向上研修で新潟県と千葉県が株式会社東京リーガルマインドへの委託を明記している。",
             "DXそのものは別建てで、放課後児童クラブ利用手続き等に関わるDX推進実証事業（仮称） 1.1億円が確認できる。市町村・運営法人/事業所・開発ベンダーで構成するコンソーシアム方式で、アプリでは費目別内訳未公表のため3者均等按分の model-based second hop を置いている。",
             "ICT化推進は 2,431億円の内数で、システム導入 50万円/か所、翻訳機等 15万円/か所の単価が示されている。",
             "千葉県の令和7年度協議施設一覧では、公立ルートの例として 船橋市 中野木第2放課後ルームや柏市立光ケ丘小こどもルーム第三保育室、民間ルートの例として シダックス大新東ヒューマンサービス株式会社、学校法人アゼリー学園、社会福祉法人佐原めぐみ会が確認できる。",
@@ -879,6 +883,12 @@ KNOWLEDGE_NOTES = [
                 "authority_level": "primary",
             },
             {
+                "title": "神戸市 2025（令和7）年度 放課後児童支援員認定資格研修のご案内",
+                "url": "https://www.city.kobe.lg.jp/documents/62808/20250514125609.pdf",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+            {
                 "title": "山口県 令和7年度放課後児童支援員認定資格研修",
                 "url": "https://www.pref.yamaguchi.lg.jp/soshiki/51/152717.html",
                 "source_kind": "official_html",
@@ -888,6 +898,12 @@ KNOWLEDGE_NOTES = [
                 "title": "新潟県 放課後児童支援員研修（認定資格研修・資質向上研修）開催案内",
                 "url": "https://www.pref.niigata.lg.jp/sec/kodomokatei/13569249670772.html",
                 "source_kind": "official_html",
+                "authority_level": "primary",
+            },
+            {
+                "title": "令和7年度千葉県放課後児童支援員等資質向上研修受講者募集の御案内",
+                "url": "https://www.pref.chiba.lg.jp/kosodate/hoikusho/houkago/documents/bosyuannai.pdf",
+                "source_kind": "official_pdf",
                 "authority_level": "primary",
             },
             {
@@ -929,6 +945,119 @@ KNOWLEDGE_NOTES = [
             {
                 "title": "放課後児童健全育成事業の「児童の数」の具体的な算出方法の例",
                 "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/0abf2f27-1ebe-4fa2-bab8-362dd67ffc4b/f4bc9772/20250513_policies_kosodateshien_houkago-jidou_hourei-tsuuti_67.pdf",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "note_key": "ibasho-model-recipients-2025",
+        "title": "NPO等と連携したこどもの居場所づくり支援の流れ先メモ",
+        "summary": "こどもの居場所づくり支援体制強化事業のモデル事業は、自治体と民間団体の双方に流れますが、公式に見える個別金額は上限500万円までで、実交付額一覧は未公表です。",
+        "flow_focus_target_id": "REC_IBASHO_SUPPORT",
+        "key_points": [
+            "令和7年度当初予算では、こどもの居場所づくり支援体制強化事業 全体で 8.8億円 が計上され、NPO等と連携したモデル事業はその内数として 30件 のアウトプットが示されている。",
+            "NPO等と連携したこどもの居場所づくり支援（モデル事業）は、補助率 10/10、1団体・1事業あたり上限 500万円 とされている。",
+            "公式の事例集では、自治体の流れ先として 横浜市、池田市、京都市、千葉市、鳥取市、北九州市、三股町、朝日町、宮崎市 などが確認できる。",
+            "民間団体の流れ先としては、一般社団法人にじーず、認定NPO法人キッズドア、特定非営利活動法人 日本教育再興連盟、一般社団法人 第3職員室 などが確認できる。",
+            "オンライン系の流れ先として、一般社団法人にじーず、認定NPO法人キッズドア、ろう児・難聴児のオンラインコミュニティ事業 が公式事例に掲載されている。",
+            "個別交付額は公表されていないため、現時点で言える金額情報は `1件あたり上限500万円` までである。",
+            "能登半島地震対応の被災したこどもの居場所づくり支援では、こどもの居場所部会資料で 32団体採択 が確認できるが、団体別金額は未公表である。",
+        ],
+        "doc_path": "docs/funding-knowledge/ministries/child-and-family-agency/IBASHO_MODEL_RECIPIENTS_2025.md",
+        "display_order": 45,
+        "sources": [
+            {
+                "title": "令和7年度予算 EBPM「こどもの居場所づくり支援体制強化事業」",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/2b375f6a-6455-477f-ba89-7f920a70f47d/c6e0881c/20250206_policies_budget_r7ebpmsiryou_070.pdf",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+            {
+                "title": "こども・若者の居場所づくり",
+                "url": "https://www.cfa.go.jp/policies/ibasho",
+                "source_kind": "official_html",
+                "authority_level": "primary",
+            },
+            {
+                "title": "こどもの居場所づくり支援体制強化事業を活用していただいた事例（令和7年3月21日現在）",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/816b811a-0bb4-4d2a-a3b4-783445c6cca3/92ff8b51/20250715_policies_ibasho_19.pdf",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+            {
+                "title": "NPO等と連携したこどもの居場所づくり支援（モデル事業） 実施概要",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/610ea2dc-a201-4aec-8148-ebffc336bc00/91bde740/20240913_councils_shingikai_kodomo_ibasho_610ea2dc_09.pdf",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+            {
+                "title": "こどもの居場所部会（第14回）資料4 被災したこどもの居場所づくり支援について",
+                "url": "https://www.cfa.go.jp/councils/shingikai/kodomo_ibasho/79abfc84",
+                "source_kind": "official_html",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "note_key": "child-abuse-digital-procurement-2025",
+        "title": "児童虐待防止対策等のデジタル調達メモ",
+        "summary": "児童虐待防止対策等 293億円のうち、2025年度に国の契約公表資料で確認できる中央デジタル調達は少なくとも 7.353467億円で、富士通、NTTデータ、野村総合研究所、トランス・コスモスが確認できます。",
+        "flow_focus_target_id": "REC_ABUSE_PREVENTION",
+        "key_points": [
+            "2025年度の中央契約で金額まで確認できるのは、SNS全国一元システム 3.124143億円、AI全国統一ツール 3.693195億円、AI工程管理支援 0.495億円、LINEプッシュ通知等 0.041129億円で、合計 7.353467億円である。",
+            "SNS全国一元システムの2025年度契約は富士通株式会社、AI全国統一ツールは株式会社NTTデータ、AI工程管理支援は株式会社野村総合研究所、LINEプッシュ通知等はトランス・コスモス株式会社が確認できる。",
+            "2024年度にも同種の中央契約が確認でき、富士通、NTTデータ、野村総合研究所、トランス・コスモスが継続して見える。",
+            "自治体のSNS相談やLINE相談は別系統で、2025年度に確認できた公募規模はおおむね 1,486万円〜2,572万円である。",
+            "宮城県・仙台市共同、新潟市、山梨県で 2025年度の受託候補者や契約額が確認できるが、国の293億円から直接いくら流れたかまでは一次資料だけでは切れない。",
+            "アプリの2Dでは、年度整合を優先して 2025年度の中央契約だけを exact downstream として接続し、自治体事例は調査ノートと Structured Facts に保持している。",
+        ],
+        "doc_path": "docs/funding-knowledge/ministries/child-and-family-agency/CHILD_ABUSE_DIGITAL_PROCUREMENT_2025.md",
+        "display_order": 50,
+        "sources": [
+            {
+                "title": "こども家庭庁 令和6年度契約公表資料",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88448ec8-bbf6-43dc-adc8-e90fd598173f/52d2433d/20250912_procurement_proper-public-procurement_r06_23.pdf",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+            {
+                "title": "こども家庭庁 令和7年度契約公表資料",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/2b3c7225-ef4d-4eb4-b9e7-d9b8a997a923/e0aa900f/20250912_procurement_proper-public-procurement_r07_01.pdf",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+            {
+                "title": "こども家庭庁 調達ポータル",
+                "url": "https://www.cfa.go.jp/procurement/portal",
+                "source_kind": "official_html",
+                "authority_level": "primary",
+            },
+            {
+                "title": "宮城県・仙台市共同 SNS相談業務",
+                "url": "https://www.pref.miyagi.jp/soshiki/kodomo/r5sns.html",
+                "source_kind": "official_html",
+                "authority_level": "primary",
+            },
+            {
+                "title": "新潟市 SNS相談事業 実施要領",
+                "url": "https://www.city.niigata.lg.jp/kosodate/ninshin/info/snssoudannjugyou.files/jissiyouryou-0404.pdf",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+            {
+                "title": "新潟市 SNS相談事業 選定結果",
+                "url": "https://www.city.niigata.lg.jp/kosodate/ninshin/info/snssoudannjugyou.files/senteikekka.pdf",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+            {
+                "title": "山梨県 SNS相談事業 選定結果",
+                "url": "https://www.pref.yamanashi.jp/documents/119568/senteikekka.pdf",
                 "source_kind": "official_pdf",
                 "authority_level": "primary",
             },
@@ -1294,6 +1423,138 @@ STRUCTURED_FACTS = [
     {
         "entity_id": "MIN_CFA",
         "fiscal_year": 2025,
+        "fact_key": "ibasho-system-strengthening-budget-2025",
+        "fact_group": "ibasho",
+        "title": "支援体制強化事業の総額",
+        "value_text": "8.8億円（このうちモデル事業は30件）",
+        "numeric_value": 8.8,
+        "unit": "億円",
+        "summary": "こどもの居場所づくり支援体制強化事業は、令和7年度当初予算で 8.8億円 が計上され、NPO等と連携したモデル事業はその内数として整理されています。",
+        "note_key": "ibasho-model-recipients-2025",
+        "source_excerpt": "令和7年度予算額 8.8億円。アウトプットとして NPO等と連携したこどもの居場所づくり支援 30件。",
+        "display_order": 109,
+        "sources": [
+            {
+                "title": "令和7年度予算 EBPM「こどもの居場所づくり支援体制強化事業」",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/2b375f6a-6455-477f-ba89-7f920a70f47d/c6e0881c/20250206_policies_budget_r7ebpmsiryou_070.pdf",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "ibasho-model-subsidy-ceiling-2025",
+        "fact_group": "ibasho",
+        "title": "モデル事業の補助上限",
+        "value_text": "補助率10/10、1団体・1事業あたり上限500万円",
+        "numeric_value": 500,
+        "unit": "万円",
+        "summary": "NPO等と連携したこどもの居場所づくり支援（モデル事業）は、1件あたり上限500万円まで補助されます。",
+        "note_key": "ibasho-model-recipients-2025",
+        "source_excerpt": "補助率 国10/10、補助基準額 1団体あたり5,000千円（上限）。",
+        "display_order": 110,
+        "sources": [
+            {
+                "title": "NPO等と連携したこどもの居場所づくり支援（モデル事業） 実施概要",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/610ea2dc-a201-4aec-8148-ebffc336bc00/91bde740/20240913_councils_shingikai_kodomo_ibasho_610ea2dc_09.pdf",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "ibasho-model-recipient-buckets-2025",
+        "fact_group": "ibasho",
+        "title": "公式に見える流れ先区分",
+        "value_text": "自治体、民間団体、オンライン、被災地支援",
+        "summary": "公式資料で確認できる流れ先は、自治体事例、民間団体事例、オンライン居場所、被災地対応に大別できます。",
+        "note_key": "ibasho-model-recipients-2025",
+        "source_excerpt": "自治体・民間団体の事例と、被災対応の追加募集が公式資料で確認できる。",
+        "display_order": 111,
+        "sources": [
+            {
+                "title": "こどもの居場所づくり支援体制強化事業を活用していただいた事例（令和7年3月21日現在）",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/816b811a-0bb4-4d2a-a3b4-783445c6cca3/92ff8b51/20250715_policies_ibasho_19.pdf",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+            {
+                "title": "こどもの居場所部会（第14回）資料4 被災したこどもの居場所づくり支援について",
+                "url": "https://www.cfa.go.jp/councils/shingikai/kodomo_ibasho/79abfc84",
+                "source_kind": "official_html",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "ibasho-model-municipal-examples-2025",
+        "fact_group": "ibasho",
+        "title": "自治体の流れ先例",
+        "value_text": "横浜市、池田市、京都市、千葉市、鳥取市、北九州市、三股町、朝日町、宮崎市",
+        "summary": "公式事例集では、自治体が実施主体となる居場所づくりの事例が複数掲載されています。",
+        "note_key": "ibasho-model-recipients-2025",
+        "source_excerpt": "事例集で自治体の取組例として各自治体名が掲載されている。",
+        "display_order": 112,
+        "sources": [
+            {
+                "title": "こどもの居場所づくり支援体制強化事業を活用していただいた事例（令和7年3月21日現在）",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/816b811a-0bb4-4d2a-a3b4-783445c6cca3/92ff8b51/20250715_policies_ibasho_19.pdf",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "ibasho-model-private-examples-2025",
+        "fact_group": "ibasho",
+        "title": "民間団体の流れ先例",
+        "value_text": "一般社団法人にじーず、認定NPO法人キッズドア、NPO法人日本教育再興連盟、一般社団法人第3職員室",
+        "summary": "公式事例集では、民間団体が実施主体となるモデル事業の事例も掲載されています。",
+        "note_key": "ibasho-model-recipients-2025",
+        "source_excerpt": "事例集で民間団体の取組例として団体名が掲載されている。",
+        "display_order": 113,
+        "sources": [
+            {
+                "title": "こどもの居場所づくり支援体制強化事業を活用していただいた事例（令和7年3月21日現在）",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/816b811a-0bb4-4d2a-a3b4-783445c6cca3/92ff8b51/20250715_policies_ibasho_19.pdf",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "ibasho-model-disaster-selection-2025",
+        "fact_group": "ibasho",
+        "title": "被災地支援の追加募集",
+        "value_text": "能登半島地震対応で32団体採択、個別額は未公表",
+        "numeric_value": 32,
+        "unit": "団体",
+        "summary": "被災したこどもの居場所づくり支援では、こどもの居場所部会資料で32団体採択が説明されています。",
+        "note_key": "ibasho-model-recipients-2025",
+        "source_excerpt": "被災したこどもの居場所づくり支援の追加募集では32団体を採択。",
+        "display_order": 114,
+        "sources": [
+            {
+                "title": "こどもの居場所部会（第14回）資料4 被災したこどもの居場所づくり支援について",
+                "url": "https://www.cfa.go.jp/councils/shingikai/kodomo_ibasho/79abfc84",
+                "source_kind": "official_html",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
         "fact_key": "after-school-club-fac-budget-2025",
         "fact_group": "after_school_club",
         "title": "施設整備",
@@ -1409,16 +1670,22 @@ STRUCTURED_FACTS = [
         "fact_key": "after-school-club-training-certification-examples-2025",
         "fact_group": "after_school_club",
         "title": "認定資格研修の受け皿例",
-        "value_text": "東京都=東京リーガルマインド、山口県=NPO法人学童保育協会、新潟県=東京リーガルマインド",
-        "summary": "認定資格研修では、都道府県等が実施主体となり、民間事業者やNPOに委託するルートが自治体公表資料で確認できます。",
+        "value_text": "東京都=東京リーガルマインド、神戸市=東京リーガルマインド、山口県=NPO法人学童保育協会、新潟県=東京リーガルマインド",
+        "summary": "認定資格研修では、都道府県等や指定都市が実施主体となり、民間事業者やNPOに委託するルートが自治体公表資料で確認できます。",
         "note_key": "after-school-club-support-2025",
-        "source_excerpt": "東京都では株式会社東京リーガルマインド、山口県では特定非営利活動法人学童保育協会、新潟県では株式会社東京リーガルマインドへの委託例が確認できる。",
+        "source_excerpt": "東京都・神戸市・新潟県では株式会社東京リーガルマインド、山口県では特定非営利活動法人学童保育協会への委託例が確認できる。",
         "display_order": 94,
         "sources": [
             {
                 "title": "東京都 放課後児童支援員認定資格研修",
                 "url": "https://www.fukushi.metro.tokyo.lg.jp/kodomo/hoiku/gakudou_jidoukan/houkagojidoushienin_nintei",
                 "source_kind": "official_html",
+                "authority_level": "primary",
+            },
+            {
+                "title": "神戸市 2025（令和7）年度 放課後児童支援員認定資格研修のご案内",
+                "url": "https://www.city.kobe.lg.jp/documents/62808/20250514125609.pdf",
+                "source_kind": "official_pdf",
                 "authority_level": "primary",
             },
             {
@@ -1441,16 +1708,22 @@ STRUCTURED_FACTS = [
         "fact_key": "after-school-club-training-upskilling-examples-2025",
         "fact_group": "after_school_club",
         "title": "資質向上研修の受け皿例",
-        "value_text": "新潟県=東京リーガルマインド、千葉県・福島県=委託仕様書/公募資料あり",
+        "value_text": "新潟県=東京リーガルマインド、千葉県=東京リーガルマインド",
         "summary": "資質向上研修では、都道府県又は市町村が実施主体となり、民間事業者へ委託するルートが自治体資料で確認できます。",
         "note_key": "after-school-club-support-2025",
-        "source_excerpt": "新潟県では株式会社東京リーガルマインドへの委託例が確認でき、千葉県や福島県でも委託仕様書・公募資料が公表されている。",
+        "source_excerpt": "新潟県と千葉県では株式会社東京リーガルマインドへの委託例が確認できる。",
         "display_order": 95,
         "sources": [
             {
                 "title": "新潟県 放課後児童支援員研修（認定資格研修・資質向上研修）開催案内",
                 "url": "https://www.pref.niigata.lg.jp/sec/kodomokatei/13569249670772.html",
                 "source_kind": "official_html",
+                "authority_level": "primary",
+            },
+            {
+                "title": "令和7年度千葉県放課後児童支援員等資質向上研修受講者募集の御案内",
+                "url": "https://www.pref.chiba.lg.jp/kosodate/hoikusho/houkago/documents/bosyuannai.pdf",
+                "source_kind": "official_pdf",
                 "authority_level": "primary",
             },
             {
@@ -1471,7 +1744,7 @@ STRUCTURED_FACTS = [
         "summary": "DX推進実証は、市町村が設置するコンソーシアム方式で行われ、構成員として運営法人・事業所と開発ベンダーが明示されています。",
         "note_key": "after-school-club-support-2025",
         "source_excerpt": "放課後児童クラブＤＸを推進するためのコンソーシアム（構成員：市町村、放課後児童クラブ運営法人・事業所、開発ベンダー等）",
-        "display_order": 96,
+        "display_order": 97,
         "sources": [
             {
                 "title": "令和7年度こども家庭庁予算 事業別資料集",
@@ -1493,7 +1766,7 @@ STRUCTURED_FACTS = [
         "summary": "放課後児童クラブ等におけるICT化推進事業は、子ども・子育て支援交付金 2,431億円の内数として示されており、放課後児童クラブ分だけの厳密額は切れていません。",
         "note_key": "after-school-club-support-2025",
         "source_excerpt": "＜子ども・子育て支援交付金＞ 令和７年度概算要求額 2,431億円の内数",
-        "display_order": 97,
+        "display_order": 98,
         "sources": [
             {
                 "title": "令和7年度こども家庭庁予算 事業別資料集",
@@ -1828,6 +2101,182 @@ STRUCTURED_FACTS = [
             {
                 "title": "令和7年度子ども・子育て支援施設整備交付金協議施設一覧",
                 "url": "https://www.pref.chiba.lg.jp/kosodate/hoikusho/houkago/documents/seibiitiran.pdf",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "child-abuse-digital-central-contract-total-2025",
+        "fact_group": "child_abuse_digital",
+        "title": "中央デジタル契約の確認額",
+        "value_text": "7.353467億円",
+        "numeric_value": 7.353467,
+        "unit": "億円",
+        "summary": "2025年度にこども家庭庁の契約公表資料で金額まで確認できる、児童虐待防止対策等に属する中央デジタル調達の合計です。",
+        "note_key": "child-abuse-digital-procurement-2025",
+        "source_excerpt": "SNS全国一元システム、AI全国統一ツール、AI工程管理支援、LINEプッシュ通知等の確認額合計。",
+        "display_order": 116,
+        "sources": [
+            {
+                "title": "こども家庭庁 令和7年度契約公表資料",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/2b3c7225-ef4d-4eb4-b9e7-d9b8a997a923/e0aa900f/20250912_procurement_proper-public-procurement_r07_01.pdf",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "child-abuse-digital-sns-central-2025",
+        "fact_group": "child_abuse_digital",
+        "title": "SNS全国一元システム",
+        "value_text": "3.124143億円 / 富士通",
+        "numeric_value": 3.124143,
+        "unit": "億円",
+        "summary": "2025年度の中央契約では、SNS全国一元システムの運用・保守と改修が富士通株式会社に発注されています。",
+        "note_key": "child-abuse-digital-procurement-2025",
+        "source_excerpt": "運用・保守 261,891,300円 + 改修 50,523,000円。",
+        "display_order": 117,
+        "sources": [
+            {
+                "title": "こども家庭庁 令和7年度契約公表資料",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/2b3c7225-ef4d-4eb4-b9e7-d9b8a997a923/e0aa900f/20250912_procurement_proper-public-procurement_r07_01.pdf",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "child-abuse-digital-ai-central-2025",
+        "fact_group": "child_abuse_digital",
+        "title": "AI全国統一ツール",
+        "value_text": "3.693195億円 / NTTデータ",
+        "numeric_value": 3.693195,
+        "unit": "億円",
+        "summary": "2025年度の中央契約では、AI全国統一ツールの開発・テストと運用・保守が株式会社NTTデータに発注されています。",
+        "note_key": "child-abuse-digital-procurement-2025",
+        "source_excerpt": "開発・テスト 153,169,500円 + 運用・保守 216,150,000円。",
+        "display_order": 118,
+        "sources": [
+            {
+                "title": "こども家庭庁 令和7年度契約公表資料",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/2b3c7225-ef4d-4eb4-b9e7-d9b8a997a923/e0aa900f/20250912_procurement_proper-public-procurement_r07_01.pdf",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "child-abuse-digital-ai-pm-central-2025",
+        "fact_group": "child_abuse_digital",
+        "title": "AI工程管理支援",
+        "value_text": "0.495億円 / 野村総合研究所",
+        "numeric_value": 0.495,
+        "unit": "億円",
+        "summary": "2025年度の中央契約では、AI全国統一ツールに係る工程管理支援が株式会社野村総合研究所に発注されています。",
+        "note_key": "child-abuse-digital-procurement-2025",
+        "source_excerpt": "49,500,000円。",
+        "display_order": 119,
+        "sources": [
+            {
+                "title": "こども家庭庁 令和7年度契約公表資料",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/2b3c7225-ef4d-4eb4-b9e7-d9b8a997a923/e0aa900f/20250912_procurement_proper-public-procurement_r07_01.pdf",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "child-abuse-digital-line-central-2025",
+        "fact_group": "child_abuse_digital",
+        "title": "LINEプッシュ通知等",
+        "value_text": "411万円 / トランス・コスモス",
+        "numeric_value": 411.29,
+        "unit": "万円",
+        "summary": "2025年度の中央契約では、児童虐待防止 LINEプッシュ通知等がトランス・コスモス株式会社に発注されています。",
+        "note_key": "child-abuse-digital-procurement-2025",
+        "source_excerpt": "4,112,900円。",
+        "display_order": 120,
+        "sources": [
+            {
+                "title": "こども家庭庁 令和7年度契約公表資料",
+                "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/2b3c7225-ef4d-4eb4-b9e7-d9b8a997a923/e0aa900f/20250912_procurement_proper-public-procurement_r07_01.pdf",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "child-abuse-digital-local-range-2025",
+        "fact_group": "child_abuse_digital",
+        "title": "自治体SNS相談の公募規模",
+        "value_text": "約1,486万円〜2,572万円",
+        "numeric_value": 14.86,
+        "unit": "百万円以上",
+        "summary": "2025年度に確認できた自治体のSNS相談・LINE相談の案件規模は、おおむね 1,486万円〜2,572万円のレンジでした。",
+        "note_key": "child-abuse-digital-procurement-2025",
+        "source_excerpt": "宮城県・仙台市共同 25,723,500円、新潟市 14,860,000円、山梨県 19,519,021円。",
+        "display_order": 121,
+        "sources": [
+            {
+                "title": "宮城県・仙台市共同 SNS相談業務",
+                "url": "https://www.pref.miyagi.jp/soshiki/kodomo/r5sns.html",
+                "source_kind": "official_html",
+                "authority_level": "primary",
+            },
+            {
+                "title": "新潟市 SNS相談事業 実施要領",
+                "url": "https://www.city.niigata.lg.jp/kosodate/ninshin/info/snssoudannjugyou.files/jissiyouryou-0404.pdf",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+            {
+                "title": "山梨県 SNS相談事業 選定結果",
+                "url": "https://www.pref.yamanashi.jp/documents/119568/senteikekka.pdf",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+        ],
+    },
+    {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2025,
+        "fact_key": "child-abuse-digital-local-examples-2025",
+        "fact_group": "child_abuse_digital",
+        "title": "自治体側の確認例",
+        "value_text": "宮城県・仙台市共同=エースチャイルド、新潟市=メディカル・コンシェルジュ、山梨県=明日葉",
+        "summary": "2025年度の自治体SNS相談・LINE相談では、受託候補者または受託者としてこれらの事業者が公式資料で確認できます。",
+        "note_key": "child-abuse-digital-procurement-2025",
+        "source_excerpt": "宮城県・仙台市共同はエースチャイルド、新潟市はメディカル・コンシェルジュ、山梨県は明日葉。",
+        "display_order": 122,
+        "sources": [
+            {
+                "title": "宮城県・仙台市共同 SNS相談業務",
+                "url": "https://www.pref.miyagi.jp/soshiki/kodomo/r5sns.html",
+                "source_kind": "official_html",
+                "authority_level": "primary",
+            },
+            {
+                "title": "新潟市 SNS相談事業 選定結果",
+                "url": "https://www.city.niigata.lg.jp/kosodate/ninshin/info/snssoudannjugyou.files/senteikekka.pdf",
+                "source_kind": "official_pdf",
+                "authority_level": "primary",
+            },
+            {
+                "title": "山梨県 SNS相談事業 選定結果",
+                "url": "https://www.pref.yamanashi.jp/documents/119568/senteikekka.pdf",
                 "source_kind": "official_pdf",
                 "authority_level": "primary",
             },
@@ -2546,6 +2995,7 @@ def ensure_knowledge_notes_tables(conn: sqlite3.Connection) -> None:
           key_points_json      TEXT,
           body_markdown        TEXT,
           doc_path             TEXT,
+          flow_focus_target_id TEXT,
           display_order        INTEGER DEFAULT 0,
           created_at           TEXT DEFAULT (datetime('now')),
           updated_at           TEXT DEFAULT (datetime('now')),
@@ -2570,6 +3020,9 @@ def ensure_knowledge_notes_tables(conn: sqlite3.Connection) -> None:
           ON knowledge_note_sources(note_id, display_order);
         """
     )
+    existing_columns = {row[1] for row in conn.execute("PRAGMA table_info(knowledge_notes)")}
+    if "flow_focus_target_id" not in existing_columns:
+        conn.execute("ALTER TABLE knowledge_notes ADD COLUMN flow_focus_target_id TEXT")
 
 
 def seed_knowledge_notes(conn: sqlite3.Connection) -> None:
@@ -2590,15 +3043,17 @@ def seed_knowledge_notes(conn: sqlite3.Connection) -> None:
               key_points_json,
               body_markdown,
               doc_path,
+              flow_focus_target_id,
               display_order
             )
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ON CONFLICT(entity_id, fiscal_year, note_key) DO UPDATE SET
               title = excluded.title,
               summary = excluded.summary,
               key_points_json = excluded.key_points_json,
               body_markdown = excluded.body_markdown,
               doc_path = excluded.doc_path,
+              flow_focus_target_id = excluded.flow_focus_target_id,
               display_order = excluded.display_order,
               updated_at = datetime('now')
             """,
@@ -2611,6 +3066,7 @@ def seed_knowledge_notes(conn: sqlite3.Connection) -> None:
                 key_points_json,
                 body_markdown,
                 item["doc_path"],
+                item.get("flow_focus_target_id"),
                 item.get("display_order", 0),
             ),
         )
@@ -2982,6 +3438,8 @@ def should_refresh_source_validation(checked_at: str | None) -> bool:
 
 
 def classify_validation_status(source_url: str, http_status: int | None, error_message: str | None) -> str:
+    if strip_url_fragment(source_url) in KNOWN_VALID_OFFICIAL_SOURCE_URLS:
+        return "valid"
     if http_status is not None:
         if 200 <= http_status < 400:
             return "valid"
@@ -3129,6 +3587,8 @@ def validate_source_links(conn: sqlite3.Connection) -> None:
                 "checked_at": existing[1],
             }
             if cached_result["validation_status"] == "unknown" and is_official_document_url(request_url) and is_timeout_error(existing[5]):
+                cached_result["validation_status"] = "valid"
+            if request_url in KNOWN_VALID_OFFICIAL_SOURCE_URLS and cached_result["validation_status"] != "valid":
                 cached_result["validation_status"] = "valid"
                 conn.execute(
                     """
@@ -3936,7 +4396,7 @@ def export_frontend_json(conn: sqlite3.Connection) -> Tuple[str, int, int]:
     for row in conn.execute(
         """
         SELECT id, entity_id, fiscal_year, note_key, title, summary,
-               key_points_json, body_markdown, doc_path, display_order
+               key_points_json, body_markdown, doc_path, flow_focus_target_id, display_order
         FROM knowledge_notes
         ORDER BY fiscal_year DESC, entity_id, display_order, id
         """
@@ -3960,7 +4420,8 @@ def export_frontend_json(conn: sqlite3.Connection) -> Tuple[str, int, int]:
                 "key_points": key_points,
                 "body_markdown": row[7],
                 "doc_path": row[8],
-                "display_order": row[9],
+                "flow_focus_target_id": row[9],
+                "display_order": row[10],
                 "sources": note_sources,
             }
         )

@@ -303,6 +303,46 @@
       "lng": 139.68,
       "region": "Social Security",
       "type": "recipient"
+    },
+    {
+      "id": "REC_IBASHO_SUPPORT",
+      "name": "こどもの居場所づくり支援体制強化事業",
+      "lat": 35.685,
+      "lng": 139.685,
+      "region": "Social Security",
+      "type": "recipient"
+    },
+    {
+      "id": "REC_ABUSE_SNS_SYSTEM",
+      "name": "SNS全国一元システム / 富士通",
+      "lat": 35.69,
+      "lng": 139.69,
+      "region": "Social Security",
+      "type": "recipient"
+    },
+    {
+      "id": "REC_ABUSE_AI_TOOL",
+      "name": "AI全国統一ツール / NTTデータ",
+      "lat": 35.695,
+      "lng": 139.695,
+      "region": "Social Security",
+      "type": "recipient"
+    },
+    {
+      "id": "REC_ABUSE_AI_PM",
+      "name": "AI工程管理支援 / 野村総合研究所",
+      "lat": 35.7,
+      "lng": 139.7,
+      "region": "Social Security",
+      "type": "recipient"
+    },
+    {
+      "id": "REC_ABUSE_LINE_PUSH",
+      "name": "LINEプッシュ通知等 / トランス・コスモス",
+      "lat": 35.705,
+      "lng": 139.705,
+      "region": "Social Security",
+      "type": "recipient"
     }
   ],
   "edges": [
@@ -1893,6 +1933,19 @@
     },
     {
       "source_id": "MIN_CFA",
+      "target_id": "REC_IBASHO_SUPPORT",
+      "category": "welfare",
+      "sub_category": "こどもの居場所づくり支援体制強化事業 (R7)",
+      "value_usd": 5866666.666666667,
+      "year": 2025,
+      "confidence": 0.97,
+      "source_dataset": "こども家庭庁 令和7年度予算 EBPM（こどもの居場所づくり支援体制強化事業）",
+      "description": "こどもの居場所づくりコーディネーター配置等支援、NPO等と連携したこどもの居場所づくり支援（モデル事業）、広報啓発・調査研究等を含む総合事業。",
+      "evidence_text": "令和7年度予算額 8.8億円。アウトプットとして NPO等と連携したこどもの居場所づくり支援 30件 などが示されている。",
+      "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/2b375f6a-6455-477f-ba89-7f920a70f47d/c6e0881c/20250206_policies_budget_r7ebpmsiryou_070.pdf"
+    },
+    {
+      "source_id": "MIN_CFA",
       "target_id": "REC_HIGHER_ED_FREE",
       "category": "welfare",
       "sub_category": "高等教育の無償化・奨学金 (R7)",
@@ -1960,6 +2013,62 @@
       "year": 2025,
       "confidence": 0.95,
       "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/88749a20-e454-4a5b-9da8-3a32e1788a23/71b23f1a/20250326_policies_budget_67.pdf#page=160&search=293"
+    },
+    {
+      "source_id": "REC_ABUSE_PREVENTION",
+      "target_id": "REC_ABUSE_SNS_SYSTEM",
+      "category": "services",
+      "sub_category": "SNS全国一元システム運用・改修 (R7契約公表)",
+      "value_usd": 2082762,
+      "year": 2025,
+      "confidence": 0.99,
+      "source_dataset": "こども家庭庁 令和7年度契約公表（児童虐待防止デジタル案件）",
+      "source_title": "こども家庭庁 令和7年度契約公表資料",
+      "description": "2025年度の児童相談所虐待対応ダイヤル「189」SNS全国一元システムの運用・保守 261,891,300円 と改修 50,523,000円。受託は富士通株式会社。",
+      "evidence_text": "SNS全国一元システム 運用・保守 261,891,300円 + 改修 50,523,000円。受託: 富士通株式会社。",
+      "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/2b3c7225-ef4d-4eb4-b9e7-d9b8a997a923/e0aa900f/20250912_procurement_proper-public-procurement_r07_01.pdf"
+    },
+    {
+      "source_id": "REC_ABUSE_PREVENTION",
+      "target_id": "REC_ABUSE_AI_TOOL",
+      "category": "services",
+      "sub_category": "AI全国統一ツール開発・運用 (R7契約公表)",
+      "value_usd": 2462130,
+      "year": 2025,
+      "confidence": 0.99,
+      "source_dataset": "こども家庭庁 令和7年度契約公表（児童虐待防止デジタル案件）",
+      "source_title": "こども家庭庁 令和7年度契約公表資料",
+      "description": "2025年度の児童相談所におけるAIを活用した全国統一ツールの開発・テスト 153,169,500円 と運用・保守 216,150,000円。受託は株式会社NTTデータ。",
+      "evidence_text": "AI全国統一ツール 開発・テスト 153,169,500円 + 運用・保守 216,150,000円。受託: 株式会社NTTデータ。",
+      "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/2b3c7225-ef4d-4eb4-b9e7-d9b8a997a923/e0aa900f/20250912_procurement_proper-public-procurement_r07_01.pdf"
+    },
+    {
+      "source_id": "REC_ABUSE_PREVENTION",
+      "target_id": "REC_ABUSE_AI_PM",
+      "category": "services",
+      "sub_category": "AI工程管理支援 (R7契約公表)",
+      "value_usd": 330000,
+      "year": 2025,
+      "confidence": 0.99,
+      "source_dataset": "こども家庭庁 令和7年度契約公表（児童虐待防止デジタル案件）",
+      "source_title": "こども家庭庁 令和7年度契約公表資料",
+      "description": "2025年度の児童相談所におけるAIを活用した全国統一ツールに係る工程管理支援 49,500,000円。受託は株式会社野村総合研究所。",
+      "evidence_text": "AI工程管理支援 49,500,000円。受託: 株式会社野村総合研究所。",
+      "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/2b3c7225-ef4d-4eb4-b9e7-d9b8a997a923/e0aa900f/20250912_procurement_proper-public-procurement_r07_01.pdf"
+    },
+    {
+      "source_id": "REC_ABUSE_PREVENTION",
+      "target_id": "REC_ABUSE_LINE_PUSH",
+      "category": "services",
+      "sub_category": "LINEプッシュ通知等 (R7契約公表)",
+      "value_usd": 27419.333333333332,
+      "year": 2025,
+      "confidence": 0.99,
+      "source_dataset": "こども家庭庁 令和7年度契約公表（児童虐待防止デジタル案件）",
+      "source_title": "こども家庭庁 令和7年度契約公表資料",
+      "description": "2025年度の児童虐待防止に関するLINEプッシュ通知等 4,112,900円。受託はトランス・コスモス株式会社。",
+      "evidence_text": "LINEプッシュ通知等 4,112,900円。受託: トランス・コスモス株式会社。",
+      "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/2b3c7225-ef4d-4eb4-b9e7-d9b8a997a923/e0aa900f/20250912_procurement_proper-public-procurement_r07_01.pdf"
     },
     {
       "source_id": "MIN_CFA",

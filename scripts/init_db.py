@@ -262,6 +262,7 @@ CREATE TABLE IF NOT EXISTS knowledge_notes (
   key_points_json      TEXT,
   body_markdown        TEXT,
   doc_path             TEXT,
+  flow_focus_target_id TEXT,
   display_order        INTEGER DEFAULT 0,
   created_at           TEXT DEFAULT (datetime('now')),
   updated_at           TEXT DEFAULT (datetime('now')),

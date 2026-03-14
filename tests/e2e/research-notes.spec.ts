@@ -62,19 +62,40 @@ test.describe('2D research note links', () => {
     await expect(page.getByRole('combobox')).toHaveValue('USA');
   });
 
-  test('reviewed-only filter hides model-based downstream flows in 2D', async ({ page }) => {
+  test('ibasho note can open the dedicated 2D focused flow', async ({ page }) => {
+    await page.goto('/?view=budget&entity=MIN_CFA&year=2025&tab=research_note');
+
+    const ibashoCard = page.locator('article').filter({ hasText: 'NPO等と連携したこどもの居場所づくり支援の流れ先メモ' });
+    await expect(ibashoCard).toBeVisible();
+
+    const flowLink = ibashoCard.getByRole('link', { name: '2Dフローで見る' });
+    await expect(flowLink).toHaveAttribute('href', /view=2d/);
+    await expect(flowLink).toHaveAttribute('href', /focus=REC_IBASHO_SUPPORT/);
+
+    await flowLink.click();
+
+    await expect(page).toHaveURL(/view=2d/);
+    await expect(page).toHaveURL(/focus=REC_IBASHO_SUPPORT/);
+    await expect(page.getByText('こども家庭庁 (CFA) > こどもの居場所づくり支援体制強化事業', { exact: true })).toBeVisible();
+    await expect(page.getByText('現在のフィルタ条件では、該当する資金フローデータの記録がありません。', { exact: true })).toBeVisible();
+  });
+
+  test('focused 2D flow shows only one layer and reviewed-only hides model-based children', async ({ page }) => {
     await page.goto('/?view=2d&entity=MIN_CFA&year=2025');
     const modeledNodeLabel = page.locator('svg text').filter({ hasText: '放課後児童クラブ 公立民営' });
-    const reviewedNodeLabel = page.locator('svg text').filter({ hasText: 'こども誰でも通園制度' });
 
     await expect(page.getByLabel('実データのみ表示')).toBeVisible();
+    await expect(page).not.toHaveURL(/focus=/);
     const reviewedCountBefore = await page.getByTestId('evidence-summary-reviewed').textContent();
     expect(reviewedCountBefore).toMatch(/\d+本/);
     await expect(page.getByTestId('evidence-summary-model-based')).toContainText('0本');
     await expect(modeledNodeLabel).toHaveCount(0);
 
-    await clickSankeyNode(page, '放課後児童クラブ (運営費・処遇改善) ▸');
+    await clickSankeyNode(page, '放課後児童クラブ (運営費・処遇改善)');
 
+    await expect(page).toHaveURL(/focus=REC_AFTER_SCHOOL_OP/);
+    await expect(page.getByText('こども家庭庁 (CFA) > 放課後児童クラブ (運営費・処遇改善)', { exact: true })).toBeVisible();
+    await expect(page.getByTestId('evidence-summary-reviewed')).toContainText('0本');
     const modeledCountBefore = await page.getByTestId('evidence-summary-model-based').textContent();
     expect(modeledCountBefore).toMatch(/[1-9]\d*本/);
     const modeledCountToken = modeledCountBefore?.match(/\d+本/)?.[0];
@@ -83,10 +104,10 @@ test.describe('2D research note links', () => {
 
     await page.getByLabel('実データのみ表示').check();
 
-    await expect(page.getByTestId('evidence-summary-reviewed')).toContainText(reviewedCountBefore ?? '');
+    await expect(page.getByTestId('evidence-summary-reviewed')).toContainText('0本');
     await expect(page.getByTestId('evidence-summary-model-based')).toContainText('0本');
     await expect(page.getByTestId('evidence-hidden-modeled')).toContainText(modeledCountToken!);
     await expect(modeledNodeLabel).toHaveCount(0);
-    await expect(reviewedNodeLabel).toBeVisible();
+    await expect(page.getByText('現在のフィルタ条件では、該当する資金フローデータの記録がありません。', { exact: true })).toBeVisible();
   });
 });

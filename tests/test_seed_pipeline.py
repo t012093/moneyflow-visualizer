@@ -80,8 +80,20 @@ class SeedPipelineRegressionTests(unittest.TestCase):
 
         self.assertTrue(any(note["note_key"] == "kodomo-daredemo-tsuen-official-flow" for note in knowledge_notes))
         self.assertTrue(any(note["note_key"] == "after-school-club-support-2025" for note in knowledge_notes))
+        self.assertTrue(any(note["note_key"] == "ibasho-model-recipients-2025" for note in knowledge_notes))
+        self.assertTrue(any(note["note_key"] == "child-abuse-digital-procurement-2025" for note in knowledge_notes))
+        ibasho_note = next(note for note in knowledge_notes if note["note_key"] == "ibasho-model-recipients-2025")
+        self.assertEqual(ibasho_note.get("flow_focus_target_id"), "REC_IBASHO_SUPPORT")
+        abuse_note = next(note for note in knowledge_notes if note["note_key"] == "child-abuse-digital-procurement-2025")
+        self.assertEqual(abuse_note.get("flow_focus_target_id"), "REC_ABUSE_PREVENTION")
         self.assertTrue(any(fact["fact_key"] == "kodomo-daredemo-tsuen-budget-frame" for fact in structured_facts))
         self.assertTrue(any(fact["fact_key"] == "kodomo-daredemo-tsuen-rollout-sites" for fact in structured_facts))
+        self.assertTrue(any(fact["fact_key"] == "ibasho-system-strengthening-budget-2025" for fact in structured_facts))
+        self.assertTrue(any(fact["fact_key"] == "ibasho-model-subsidy-ceiling-2025" for fact in structured_facts))
+        self.assertTrue(any(fact["fact_key"] == "ibasho-model-recipient-buckets-2025" for fact in structured_facts))
+        self.assertTrue(any(fact["fact_key"] == "ibasho-model-municipal-examples-2025" for fact in structured_facts))
+        self.assertTrue(any(fact["fact_key"] == "ibasho-model-private-examples-2025" for fact in structured_facts))
+        self.assertTrue(any(fact["fact_key"] == "ibasho-model-disaster-selection-2025" for fact in structured_facts))
         self.assertTrue(any(fact["fact_key"] == "after-school-club-op-budget-2025" for fact in structured_facts))
         self.assertTrue(any(fact["fact_key"] == "after-school-club-training-budget-2025" for fact in structured_facts))
         self.assertTrue(any(fact["fact_key"] == "after-school-club-training-certification-2025" for fact in structured_facts))
@@ -100,9 +112,53 @@ class SeedPipelineRegressionTests(unittest.TestCase):
         self.assertTrue(any(fact["fact_key"] == "after-school-club-fac-creation-requirements-2025" for fact in structured_facts))
         self.assertTrue(any(fact["fact_key"] == "after-school-club-fac-public-examples-2025" for fact in structured_facts))
         self.assertTrue(any(fact["fact_key"] == "after-school-club-fac-private-examples-2025" for fact in structured_facts))
+        self.assertTrue(any(fact["fact_key"] == "child-abuse-digital-central-contract-total-2025" for fact in structured_facts))
+        self.assertTrue(any(fact["fact_key"] == "child-abuse-digital-sns-central-2025" for fact in structured_facts))
+        self.assertTrue(any(fact["fact_key"] == "child-abuse-digital-ai-central-2025" for fact in structured_facts))
+        self.assertTrue(any(fact["fact_key"] == "child-abuse-digital-local-examples-2025" for fact in structured_facts))
 
         edges = self.unified_data["edges"]
         self.assertTrue(any(edge["year"] == 2025 and edge["target_id"] == "REC_AFTER_SCHOOL_DX_PILOT" for edge in edges))
+        self.assertTrue(any(edge["year"] == 2025 and edge["target_id"] == "REC_IBASHO_SUPPORT" for edge in edges))
+        self.assertTrue(any(edge["year"] == 2025 and edge["target_id"] == "REC_ABUSE_PREVENTION" for edge in edges))
+
+    def test_unified_export_contains_exact_child_abuse_digital_downstream_in_2025(self) -> None:
+        edges = self.unified_data["edges"]
+        abuse_downstream = [
+            edge
+            for edge in edges
+            if edge["year"] == 2025 and edge["source_id"] == "REC_ABUSE_PREVENTION"
+        ]
+        self.assertEqual(
+            {edge["target_id"] for edge in abuse_downstream},
+            {
+                "REC_ABUSE_SNS_SYSTEM",
+                "REC_ABUSE_AI_TOOL",
+                "REC_ABUSE_AI_PM",
+                "REC_ABUSE_LINE_PUSH",
+            },
+        )
+        self.assertTrue(
+            all(edge["source_dataset"] == "こども家庭庁 令和7年度契約公表（児童虐待防止デジタル案件）" for edge in abuse_downstream)
+        )
+        self.assertAlmostEqual(
+            sum(edge["value_usd"] for edge in abuse_downstream),
+            735346700 / 150,
+            delta=1e-6,
+        )
+
+    def test_training_example_facts_include_confirmed_2025_recipients(self) -> None:
+        structured_facts = self.unified_data["metadata"].get("structuredFacts", [])
+        certification_examples = next(
+            fact for fact in structured_facts if fact["fact_key"] == "after-school-club-training-certification-examples-2025"
+        )
+        upskilling_examples = next(
+            fact for fact in structured_facts if fact["fact_key"] == "after-school-club-training-upskilling-examples-2025"
+        )
+
+        self.assertIn("神戸市=東京リーガルマインド", certification_examples["value_text"])
+        self.assertIn("山口県=NPO法人学童保育協会", certification_examples["value_text"])
+        self.assertIn("千葉県=東京リーガルマインド", upskilling_examples["value_text"])
 
     def test_unified_export_bridges_cfa_daredemo_to_distribution_targets_in_2025(self) -> None:
         edges = self.unified_data["edges"]

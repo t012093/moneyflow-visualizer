@@ -63,12 +63,6 @@ const CATEGORY_LABELS: Record<string, string> = {
 const MODELED_DATASET_MARKERS = ['省庁別主要経費推計', '想定', '按分', 'Proxy', 'Approximation', 'Estimated', 'meti_data'];
 type EdgeEvidenceStatus = 'reviewed' | 'model-based';
 type EdgeEvidenceCounts = Record<EdgeEvidenceStatus, number>;
-type EntityDrilldownState = {
-  visibleEdges: Edge[];
-  outboundDepthByNodeId: Map<string, number>;
-  expandableNodeIds: Set<string>;
-};
-
 const EVIDENCE_STYLES: Record<
   EdgeEvidenceStatus,
   {
@@ -124,67 +118,56 @@ const countEdgeEvidence = (edges: Edge[]): EdgeEvidenceCounts =>
     counts[getEdgeEvidenceStatus(edge)] += 1;
     return counts;
   }, createEmptyEvidenceCounts());
-const getEntityDrilldownState = (
-  edges: Edge[],
-  activeEntityId: string,
-  expandedNodeIds: Set<string>
-): EntityDrilldownState => {
-  const scoped = new Map<string, Edge>();
-  const directEdges = edges.filter((edge) => edge.source_id === activeEntityId || edge.target_id === activeEntityId);
-  const outboundDepthByNodeId = new Map<string, number>();
-  const expandableNodeIds = new Set<string>();
+const getDirectOutboundEdges = (edges: Edge[], sourceId: string) =>
+  edges.filter((edge) => edge.source_id === sourceId);
 
-  directEdges.forEach((edge) => {
-    scoped.set(getEdgeDisplayKey(edge), edge);
-  });
+const getNodesWithOutboundChildren = (edges: Edge[]) => new Set(edges.map((edge) => edge.source_id));
 
-  const directTargetIds = [...new Set(
-    directEdges
-      .filter((edge) => edge.source_id === activeEntityId)
-      .map((edge) => edge.target_id)
-  )];
+const findOutboundPath = (edges: Edge[], rootId: string, targetId: string): string[] | null => {
+  if (rootId === targetId) {
+    return [rootId];
+  }
 
-  directTargetIds.forEach((targetId) => {
-    outboundDepthByNodeId.set(targetId, 1);
-    if (edges.some((edge) => edge.source_id === targetId)) {
-      expandableNodeIds.add(targetId);
-    }
-  });
-
-  const queue = directTargetIds.filter((targetId) => expandedNodeIds.has(targetId));
-  const visited = new Set<string>();
+  const queue: string[] = [rootId];
+  const visited = new Set<string>([rootId]);
+  const parentByNodeId = new Map<string, string>();
 
   while (queue.length > 0) {
     const currentNodeId = queue.shift();
-    if (!currentNodeId || visited.has(currentNodeId)) {
+    if (!currentNodeId) {
       continue;
     }
-    visited.add(currentNodeId);
 
-    const currentDepth = outboundDepthByNodeId.get(currentNodeId) || 1;
-    const childEdges = edges.filter((edge) => edge.source_id === currentNodeId);
-    childEdges.forEach((edge) => {
-      scoped.set(getEdgeDisplayKey(edge), edge);
-      const nextDepth = currentDepth + 1;
-      const existingDepth = outboundDepthByNodeId.get(edge.target_id);
-      if (existingDepth === undefined || nextDepth < existingDepth) {
-        outboundDepthByNodeId.set(edge.target_id, nextDepth);
+    const childNodeIds = edges
+      .filter((edge) => edge.source_id === currentNodeId)
+      .map((edge) => edge.target_id);
+
+    for (const childNodeId of childNodeIds) {
+      if (visited.has(childNodeId)) {
+        continue;
       }
-      if (edges.some((candidate) => candidate.source_id === edge.target_id)) {
-        expandableNodeIds.add(edge.target_id);
+      visited.add(childNodeId);
+      parentByNodeId.set(childNodeId, currentNodeId);
+      if (childNodeId === targetId) {
+        const path = [targetId];
+        let cursor = targetId;
+        while (parentByNodeId.has(cursor)) {
+          const parent = parentByNodeId.get(cursor);
+          if (!parent) {
+            break;
+          }
+          path.unshift(parent);
+          cursor = parent;
+        }
+        return path;
       }
-      if (expandedNodeIds.has(edge.target_id)) {
-        queue.push(edge.target_id);
-      }
-    });
+      queue.push(childNodeId);
+    }
   }
 
-  return {
-    visibleEdges: [...scoped.values()],
-    outboundDepthByNodeId,
-    expandableNodeIds,
-  };
+  return null;
 };
+
 const getSankeyDisplayValue = (valueUsd: number, compressScale: boolean) => {
   if (!compressScale) {
     return valueUsd;
@@ -199,9 +182,7 @@ type SankeyNodeData = {
   actualNodeId?: string;
   kind?: 'root' | 'entity' | 'category' | 'aggregate';
   direction?: 'in' | 'out' | 'aggregate';
-  depth?: number;
   expandable?: boolean;
-  expanded?: boolean;
 };
 
 type SankeyLinkData = {
@@ -227,17 +208,8 @@ const getProvenanceBadge = (edge: Edge) => {
 };
 
 const formatSankeyNodeLabel = (nodeId: string) => {
-  if (nodeId.startsWith('IN: ')) return nodeId.replace('IN: ', '');
-  if (nodeId.startsWith('OUT: ')) return nodeId.replace('OUT: ', '');
-  if (nodeId.startsWith('OUT2: ')) return nodeId.replace('OUT2: ', '');
-  if (nodeId.startsWith('OUT3: ')) return nodeId.replace('OUT3: ', '');
   if (nodeId.startsWith('SRC: ')) return nodeId.replace('SRC: ', '');
   if (nodeId.startsWith('TRG: ')) return nodeId.replace('TRG: ', '');
-
-  const categoryMatch = nodeId.match(/^(IN|OUT)\(([^)]+)\): \[(.+)\]$/);
-  if (categoryMatch) {
-    return '';
-  }
 
   const macroCategoryMatch = nodeId.match(/^CAT\((.+)->(.+)\): \[(.+)\]$/);
   if (macroCategoryMatch) {
@@ -247,39 +219,20 @@ const formatSankeyNodeLabel = (nodeId: string) => {
   return nodeId;
 };
 const ENTITY_ROOT_NODE_ID = 'ENTITY_ROOT';
-const getOutboundNodeId = (depth: number, nodeId: string) => `OUTNODE|${depth}|${nodeId}`;
-const getInboundNodeId = (nodeId: string) => `INNODE|${nodeId}`;
-const getCategoryNodeId = (
-  direction: 'in' | 'out',
-  depth: number,
-  sourceId: string,
-  targetId: string,
-  category: string
-) => `CATNODE|${direction}|${depth}|${sourceId}|${targetId}|${category}`;
-const getDrilldownNodeColor = (depth: number) => {
-  const palette = ['#30363d', '#2dd4bf', '#f59e0b', '#fb7185', '#60a5fa'];
-  return palette[Math.max(0, (depth - 1) % palette.length)];
-};
-const getCollapsedBranchNodeIds = (edges: Edge[], rootNodeId: string) => {
-  const removedIds = new Set<string>([rootNodeId]);
-  const queue = [rootNodeId];
-
-  while (queue.length > 0) {
-    const currentNodeId = queue.shift();
-    if (!currentNodeId) {
-      continue;
-    }
-    edges
-      .filter((edge) => edge.source_id === currentNodeId)
-      .forEach((edge) => {
-        if (!removedIds.has(edge.target_id)) {
-          removedIds.add(edge.target_id);
-          queue.push(edge.target_id);
-        }
-      });
+const getEntityNodeId = (nodeId: string) => `ENTITYNODE|${nodeId}`;
+const getCategoryNodeId = (sourceId: string, targetId: string, category: string) =>
+  `CATNODE|${sourceId}|${targetId}|${category}`;
+const buildFocusedFlowHref = (pathname: string, search: string, year: number, entityId: string, targetNodeId: string | null) => {
+  const params = new URLSearchParams(search);
+  params.set('view', '2d');
+  params.set('year', String(year));
+  params.set('entity', entityId);
+  if (targetNodeId) {
+    params.set('focus', targetNodeId);
+  } else {
+    params.delete('focus');
   }
-
-  return removedIds;
+  return `${pathname}?${params.toString()}`;
 };
 
 export const FlowDashboard: React.FC<FlowDashboardProps> = ({
@@ -295,74 +248,87 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
   const [viewLevel, setViewLevel] = useState<'entity' | 'type'>('entity');
   const [reviewedOnly, setReviewedOnly] = useState(false);
   const [selectedLinkDetails, setSelectedLinkDetails] = useState<Edge | null>(null);
-  const [expandedNodeIdsByScope, setExpandedNodeIdsByScope] = useState<Record<string, string[]>>({});
   const activeEntityId = nodes.some((node) => node.id === selectedEntityId) ? selectedEntityId : 'MIN_CFA';
+  const initialFocusTargetId = useMemo(() => {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('focus') || null;
+  }, []);
+  const [focusNodeId, setFocusNodeId] = useState<string | null>(initialFocusTargetId);
   const useCompressedEntityScale = viewLevel === 'entity';
-  const drilldownScopeKey = `${viewLevel}:${activeEntityId}`;
-  const expandedNodeIds = useMemo(
-    () => expandedNodeIdsByScope[drilldownScopeKey] || [],
-    [drilldownScopeKey, expandedNodeIdsByScope]
-  );
   const evidenceFilteredEdges = useMemo(
     () => (reviewedOnly ? edges.filter((edge) => !isModeledEdge(edge)) : edges),
     [edges, reviewedOnly]
   );
-  const expandedNodeIdSet = useMemo(() => new Set(expandedNodeIds), [expandedNodeIds]);
   const nodeNameById = useMemo(
     () => new Map(nodes.map((node) => [node.id, node.name])),
     [nodes]
   );
-  const entityDrilldownState = useMemo(
-    () => getEntityDrilldownState(evidenceFilteredEdges, activeEntityId, expandedNodeIdSet),
-    [activeEntityId, evidenceFilteredEdges, expandedNodeIdSet]
+  const nodesWithOutboundChildren = useMemo(() => getNodesWithOutboundChildren(edges), [edges]);
+  const activeFocusNodeId = useMemo(() => {
+    if (!focusNodeId || focusNodeId === activeEntityId || !nodes.some((node) => node.id === focusNodeId)) {
+      return null;
+    }
+    return findOutboundPath(edges, activeEntityId, focusNodeId) ? focusNodeId : null;
+  }, [activeEntityId, edges, focusNodeId, nodes]);
+  const currentFlowSourceId = viewLevel === 'entity' ? (activeFocusNodeId || activeEntityId) : activeEntityId;
+  const currentFlowSourceName = nodeNameById.get(currentFlowSourceId) || currentFlowSourceId;
+  const currentLayerEdges = useMemo(
+    () => (viewLevel === 'entity' ? getDirectOutboundEdges(evidenceFilteredEdges, currentFlowSourceId) : []),
+    [currentFlowSourceId, evidenceFilteredEdges, viewLevel]
   );
-  const visibleExpandedNodeCount = useMemo(
-    () => expandedNodeIds.filter((nodeId) => entityDrilldownState.outboundDepthByNodeId.has(nodeId)).length,
-    [entityDrilldownState.outboundDepthByNodeId, expandedNodeIds]
+  const currentLayerAllEdges = useMemo(
+    () => (viewLevel === 'entity' ? getDirectOutboundEdges(edges, currentFlowSourceId) : []),
+    [currentFlowSourceId, edges, viewLevel]
   );
+  const focusPathNodeIds = useMemo(() => {
+    if (viewLevel !== 'entity') {
+      return [];
+    }
+    if (!activeFocusNodeId) {
+      return [activeEntityId];
+    }
+    return findOutboundPath(edges, activeEntityId, activeFocusNodeId) || [activeEntityId, activeFocusNodeId];
+  }, [activeEntityId, activeFocusNodeId, edges, viewLevel]);
+  const focusPathLabels = useMemo(
+    () => focusPathNodeIds.map((nodeId) => nodeNameById.get(nodeId) || nodeId),
+    [focusPathNodeIds, nodeNameById]
+  );
+  const parentFocusNodeId = focusPathNodeIds.length > 1 ? focusPathNodeIds[focusPathNodeIds.length - 2] : null;
 
   const evidenceSummary = useMemo(() => {
-    const fullScopeEdges = viewLevel === 'entity'
-      ? getEntityDrilldownState(edges, activeEntityId, expandedNodeIdSet).visibleEdges
-      : edges;
-    const visibleScopeEdges = viewLevel === 'entity' ? entityDrilldownState.visibleEdges : evidenceFilteredEdges;
-    const allCounts = countEdgeEvidence(fullScopeEdges);
-    const visibleCounts = countEdgeEvidence(visibleScopeEdges);
+    const allCounts = countEdgeEvidence(viewLevel === 'entity' ? currentLayerAllEdges : edges);
+    const visibleCounts = countEdgeEvidence(viewLevel === 'entity' ? currentLayerEdges : evidenceFilteredEdges);
 
     return {
       allCounts,
       visibleCounts,
       hiddenModeledCount: Math.max(0, allCounts['model-based'] - visibleCounts['model-based']),
-      scopeLabel: viewLevel === 'entity' ? 'この主体の表示フロー' : 'この年度の表示フロー',
     };
-  }, [activeEntityId, edges, entityDrilldownState.visibleEdges, evidenceFilteredEdges, expandedNodeIdSet, viewLevel]);
+  }, [currentLayerAllEdges, currentLayerEdges, edges, evidenceFilteredEdges, viewLevel]);
   const activeSelectedLinkDetails = useMemo(() => {
     if (!selectedLinkDetails) {
       return null;
     }
     const selectedKey = getEdgeDisplayKey(selectedLinkDetails);
-    return evidenceFilteredEdges.find((edge) => getEdgeDisplayKey(edge) === selectedKey) || null;
-  }, [evidenceFilteredEdges, selectedLinkDetails]);
+    return currentLayerEdges.find((edge) => getEdgeDisplayKey(edge) === selectedKey) || null;
+  }, [currentLayerEdges, selectedLinkDetails]);
 
   useEffect(() => {
     if (selectedEntityId !== activeEntityId) {
       onSelectedEntityChange(activeEntityId);
     }
   }, [activeEntityId, onSelectedEntityChange, selectedEntityId]);
-  const updateExpandedNodeIds = (updater: (current: string[]) => string[]) => {
-    setExpandedNodeIdsByScope((current) => {
-      const nextExpandedNodeIds = updater(current[drilldownScopeKey] || []);
-      if (nextExpandedNodeIds.length === 0) {
-        const rest = { ...current };
-        delete rest[drilldownScopeKey];
-        return rest;
-      }
-      return {
-        ...current,
-        [drilldownScopeKey]: nextExpandedNodeIds,
-      };
-    });
-  };
+
+  useEffect(() => {
+    if (viewLevel !== 'entity') {
+      return;
+    }
+    const nextHref = buildFocusedFlowHref(window.location.pathname, window.location.search, currentYear, activeEntityId, activeFocusNodeId);
+    const currentHref = `${window.location.pathname}${window.location.search}`;
+    if (nextHref !== currentHref) {
+      window.history.replaceState({}, '', nextHref);
+    }
+  }, [activeEntityId, activeFocusNodeId, currentYear, viewLevel]);
 
   // Group nodes by type for the dropdown
   const groupedNodes = useMemo(() => {
@@ -404,122 +370,42 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
     };
 
     if (viewLevel === 'entity') {
-      const selectedEdges = entityDrilldownState.visibleEdges;
-      const focusNodeName = nodeNameById.get(activeEntityId) || activeEntityId;
       addNode({
         id: ENTITY_ROOT_NODE_ID,
         nodeColor: '#ffffff',
-        label: focusNodeName,
-        actualNodeId: activeEntityId,
+        label: currentFlowSourceName,
+        actualNodeId: currentFlowSourceId,
         kind: 'root',
-        depth: 0,
       });
 
-      selectedEdges.forEach((edge) => {
-        const sourceName = nodeNameById.get(edge.source_id) || edge.source_id;
+      currentLayerEdges.forEach((edge) => {
         const targetName = nodeNameById.get(edge.target_id) || edge.target_id;
         const categoryLabel = `[${CATEGORY_LABELS[edge.category] || edge.category.toUpperCase()}]`;
         const catColor = CATEGORY_COLORS[edge.category] || '#aaa';
         const evidenceColor = EVIDENCE_STYLES[getEdgeEvidenceStatus(edge)].linkColor;
         const displayValue = getSankeyDisplayValue(edge.value_usd, useCompressedEntityScale);
+        const targetNodeId = getEntityNodeId(edge.target_id);
+        const catNodeId = getCategoryNodeId(edge.source_id, edge.target_id, edge.category);
+        const isExpandable = nodesWithOutboundChildren.has(edge.target_id);
 
-        if (edge.target_id === activeEntityId) {
-          const sourceNodeId = getInboundNodeId(edge.source_id);
-          const catNodeId = getCategoryNodeId('in', 1, edge.source_id, edge.target_id, edge.category);
-          addNode({
-            id: sourceNodeId,
-            nodeColor: '#30363d',
-            label: sourceName,
-            actualNodeId: edge.source_id,
-            kind: 'entity',
-            direction: 'in',
-            depth: 1,
-            expandable: false,
-            expanded: false,
-          });
-          addNode({
-            id: catNodeId,
-            nodeColor: catColor,
-            label: categoryLabel,
-            kind: 'category',
-            direction: 'in',
-            depth: 1,
-          });
-          sLinks.push({ source: sourceNodeId, target: catNodeId, value: displayValue, linkColor: evidenceColor, edgeRef: edge });
-          sLinks.push({ source: catNodeId, target: ENTITY_ROOT_NODE_ID, value: displayValue, linkColor: evidenceColor, edgeRef: edge });
-        } else if (edge.source_id === activeEntityId) {
-          const targetDepth = entityDrilldownState.outboundDepthByNodeId.get(edge.target_id) || 1;
-          const targetNodeId = getOutboundNodeId(targetDepth, edge.target_id);
-          const catNodeId = getCategoryNodeId('out', targetDepth, edge.source_id, edge.target_id, edge.category);
-          const isExpanded = expandedNodeIdSet.has(edge.target_id);
-          const isExpandable = entityDrilldownState.expandableNodeIds.has(edge.target_id);
-          addNode({
-            id: targetNodeId,
-            nodeColor: getDrilldownNodeColor(targetDepth),
-            label: isExpandable ? `${targetName} ${isExpanded ? '▾' : '▸'}` : targetName,
-            actualNodeId: edge.target_id,
-            kind: 'entity',
-            direction: 'out',
-            depth: targetDepth,
-            expandable: isExpandable,
-            expanded: isExpanded,
-          });
-          addNode({
-            id: catNodeId,
-            nodeColor: catColor,
-            label: categoryLabel,
-            kind: 'category',
-            direction: 'out',
-            depth: targetDepth,
-          });
-          sLinks.push({ source: ENTITY_ROOT_NODE_ID, target: catNodeId, value: displayValue, linkColor: evidenceColor, edgeRef: edge });
-          sLinks.push({ source: catNodeId, target: targetNodeId, value: displayValue, linkColor: evidenceColor, edgeRef: edge });
-        } else {
-          const sourceDepth = entityDrilldownState.outboundDepthByNodeId.get(edge.source_id);
-          if (!sourceDepth) {
-            return;
-          }
-          const sourceNodeId = getOutboundNodeId(sourceDepth, edge.source_id);
-          const targetDepth = entityDrilldownState.outboundDepthByNodeId.get(edge.target_id) || (sourceDepth + 1);
-          const targetNodeId = getOutboundNodeId(targetDepth, edge.target_id);
-          const catNodeId = getCategoryNodeId('out', targetDepth, edge.source_id, edge.target_id, edge.category);
-          const sourceExpanded = expandedNodeIdSet.has(edge.source_id);
-          const sourceExpandable = entityDrilldownState.expandableNodeIds.has(edge.source_id);
-          const targetExpanded = expandedNodeIdSet.has(edge.target_id);
-          const targetExpandable = entityDrilldownState.expandableNodeIds.has(edge.target_id);
-          addNode({
-            id: sourceNodeId,
-            nodeColor: getDrilldownNodeColor(sourceDepth),
-            label: sourceExpandable ? `${sourceName} ${sourceExpanded ? '▾' : '▸'}` : sourceName,
-            actualNodeId: edge.source_id,
-            kind: 'entity',
-            direction: 'out',
-            depth: sourceDepth,
-            expandable: sourceExpandable,
-            expanded: sourceExpanded,
-          });
-          addNode({
-            id: targetNodeId,
-            nodeColor: getDrilldownNodeColor(targetDepth),
-            label: targetExpandable ? `${targetName} ${targetExpanded ? '▾' : '▸'}` : targetName,
-            actualNodeId: edge.target_id,
-            kind: 'entity',
-            direction: 'out',
-            depth: targetDepth,
-            expandable: targetExpandable,
-            expanded: targetExpanded,
-          });
-          addNode({
-            id: catNodeId,
-            nodeColor: catColor,
-            label: categoryLabel,
-            kind: 'category',
-            direction: 'out',
-            depth: targetDepth,
-          });
-          sLinks.push({ source: sourceNodeId, target: catNodeId, value: displayValue, linkColor: evidenceColor, edgeRef: edge });
-          sLinks.push({ source: catNodeId, target: targetNodeId, value: displayValue, linkColor: evidenceColor, edgeRef: edge });
-        }
+        addNode({
+          id: targetNodeId,
+          nodeColor: '#30363d',
+          label: targetName,
+          actualNodeId: edge.target_id,
+          kind: 'entity',
+          direction: 'out',
+          expandable: isExpandable,
+        });
+        addNode({
+          id: catNodeId,
+          nodeColor: catColor,
+          label: categoryLabel,
+          kind: 'category',
+          direction: 'out',
+        });
+        sLinks.push({ source: ENTITY_ROOT_NODE_ID, target: catNodeId, value: displayValue, linkColor: evidenceColor, edgeRef: edge });
+        sLinks.push({ source: catNodeId, target: targetNodeId, value: displayValue, linkColor: evidenceColor, edgeRef: edge });
       });
     } else {
       // Macro Type Aggregation View (Country / Corporation / Individual)
@@ -617,14 +503,13 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
 
     return { nodes: [...nodeMap.values()], links: sLinks };
   }, [
-    activeEntityId,
-    entityDrilldownState.expandableNodeIds,
-    entityDrilldownState.outboundDepthByNodeId,
-    entityDrilldownState.visibleEdges,
+    currentFlowSourceId,
+    currentFlowSourceName,
+    currentLayerEdges,
     evidenceFilteredEdges,
-    expandedNodeIdSet,
     nodeNameById,
     nodes,
+    nodesWithOutboundChildren,
     useCompressedEntityScale,
     viewLevel,
   ]);
@@ -701,6 +586,21 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
     });
     return `${window.location.pathname}?${params.toString()}`;
   }, [activeEntityId, activeSelectedLinkDetails, budgetEntityIds, budgetYearsByEntity, currentYear]);
+  const focusedFlowDeepLink = useMemo(() => {
+    if (viewLevel !== 'entity' || !activeSelectedLinkDetails) {
+      return null;
+    }
+    if (!nodesWithOutboundChildren.has(activeSelectedLinkDetails.target_id)) {
+      return null;
+    }
+    return buildFocusedFlowHref(
+      window.location.pathname,
+      window.location.search,
+      currentYear,
+      activeEntityId,
+      activeSelectedLinkDetails.target_id
+    );
+  }, [activeEntityId, activeSelectedLinkDetails, currentYear, nodesWithOutboundChildren, viewLevel]);
   const researchDeepLink = useMemo(() => {
     if (!activeSelectedLinkDetails) {
       return activeEntityResearchLink;
@@ -778,10 +678,10 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
 
   const compactPanelStyle: React.CSSProperties = {
     display: 'grid',
-    gap: '0.3rem',
+    gap: '0.22rem',
     background: 'rgba(255,255,255,0.05)',
-    padding: '0.45rem 0.6rem',
-    borderRadius: '10px',
+    padding: '0.38rem 0.5rem',
+    borderRadius: '9px',
     border: '1px solid rgba(255,255,255,0.1)',
   };
 
@@ -811,7 +711,11 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
                 特定エンティティ
               </button>
               <button 
-                onClick={() => setViewLevel('type')}
+                onClick={() => {
+                  setFocusNodeId(null);
+                  setSelectedLinkDetails(null);
+                  setViewLevel('type');
+                }}
                 style={{ 
                   background: viewLevel === 'type' ? '#fff' : 'transparent', 
                   color: viewLevel === 'type' ? '#000' : 'var(--text-muted)',
@@ -829,7 +733,11 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
               <label style={{ fontSize: '0.72rem', color: 'var(--text-muted)', letterSpacing: '0.04em' }}>対象エンティティ</label>
               <select 
                 value={activeEntityId} 
-                onChange={(e) => onSelectedEntityChange(e.target.value)}
+                onChange={(e) => {
+                  setFocusNodeId(null);
+                  setSelectedLinkDetails(null);
+                  onSelectedEntityChange(e.target.value);
+                }}
                 style={{
                   background: '#000',
                   color: '#fff',
@@ -882,18 +790,56 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
 	            </div>
 	          )}
 
-	          <div style={{ ...compactPanelStyle, minWidth: '290px', maxWidth: '390px' }}>
-	            <div style={{ display: 'flex', justifyContent: 'space-between', gap: '0.55rem', alignItems: 'center', flexWrap: 'wrap' }}>
-	              <div style={{ display: 'grid', gap: '0.12rem' }}>
-	                <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', letterSpacing: '0.04em' }}>表示情報</div>
-	                <div style={{ color: 'var(--text-muted)', fontSize: '0.7rem' }}>{evidenceSummary.scopeLabel}</div>
+	          <div style={{ ...compactPanelStyle, minWidth: '236px', maxWidth: '280px', flex: '0 1 280px' }}>
+	            <div style={{ display: 'flex', justifyContent: 'space-between', gap: '0.45rem', alignItems: 'center' }}>
+	              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.24rem', alignItems: 'center' }}>
+              {(['reviewed', 'model-based'] as const).map((status) => (
+                <div
+                  key={status}
+                  title={`${EVIDENCE_STYLES[status].label}: ${EVIDENCE_STYLES[status].description}`}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.28rem',
+                    padding: '0.2rem 0.38rem',
+                    borderRadius: '999px',
+                    background: EVIDENCE_STYLES[status].background,
+                    border: EVIDENCE_STYLES[status].border,
+                    minHeight: '24px',
+                  }}
+                >
+                  <span
+                    style={{
+                      width: '7px',
+                      height: '7px',
+                      borderRadius: '999px',
+                      background: EVIDENCE_STYLES[status].linkColor,
+                      boxShadow: `0 0 8px ${EVIDENCE_STYLES[status].linkColor}`,
+                    }}
+                  />
+                  <span style={{ fontSize: '0.68rem', fontWeight: 800, color: EVIDENCE_STYLES[status].color }}>
+                    {status === 'reviewed' ? 'R' : 'M'}
+                  </span>
+                  <span data-testid={`evidence-summary-${status}`} style={{ fontSize: '0.72rem', fontWeight: 700, color: '#fff' }}>
+                    {evidenceSummary.visibleCounts[status]}本
+                  </span>
+                </div>
+              ))}
+              {reviewedOnly && evidenceSummary.hiddenModeledCount > 0 ? (
+                <span
+                  data-testid="evidence-hidden-modeled"
+                  style={{ fontSize: '0.62rem', color: 'var(--text-muted)', whiteSpace: 'nowrap' }}
+                >
+                  M非表示 {evidenceSummary.hiddenModeledCount}本
+                </span>
+              ) : null}
 	              </div>
               <label
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
-                  gap: '0.35rem',
-                  fontSize: '0.74rem',
+                  gap: '0.28rem',
+                  fontSize: '0.68rem',
                   color: '#fff',
                   cursor: 'pointer',
                   whiteSpace: 'nowrap',
@@ -906,125 +852,85 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
                   aria-label="実データのみ表示"
                   style={{ accentColor: '#4ade80' }}
                 />
-                実データのみ表示
+                実データ
               </label>
             </div>
-	            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.32rem' }}>
-              {(['reviewed', 'model-based'] as const).map((status) => (
-                <div
-                  key={status}
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '0.35rem',
-                    padding: '0.24rem 0.45rem',
-                    borderRadius: '999px',
-                    background: EVIDENCE_STYLES[status].background,
-                    border: EVIDENCE_STYLES[status].border,
-                  }}
-                >
-                  <span
-                    style={{
-                      width: '9px',
-                      height: '9px',
-                      borderRadius: '999px',
-                      background: EVIDENCE_STYLES[status].linkColor,
-                      boxShadow: `0 0 10px ${EVIDENCE_STYLES[status].linkColor}`,
-                    }}
-                  />
-                  <span style={{ fontSize: '0.78rem', fontWeight: 700, color: EVIDENCE_STYLES[status].color }}>
-                    {status === 'reviewed' ? 'R' : 'M'}
-                  </span>
-                  <span style={{ fontSize: '0.72rem', fontWeight: 700, color: EVIDENCE_STYLES[status].color }}>
-                    {EVIDENCE_STYLES[status].label}
-                  </span>
-                  <span
-                    data-testid={`evidence-summary-${status}`}
-                    style={{ fontSize: '0.76rem', fontWeight: 700, color: '#fff' }}
-                  >
-                    {evidenceSummary.visibleCounts[status]}本
-                  </span>
-                  {status === 'model-based' && reviewedOnly && evidenceSummary.hiddenModeledCount > 0 && (
-                    <span
-                      data-testid="evidence-hidden-modeled"
-                      style={{ fontSize: '0.66rem', color: 'var(--text-muted)' }}
-                    >
-                      非表示 {evidenceSummary.hiddenModeledCount}本
-                    </span>
-                  )}
-                </div>
-              ))}
-	            </div>
-	            <div style={{ display: 'flex', justifyContent: 'space-between', gap: '0.45rem', alignItems: 'center', flexWrap: 'wrap' }}>
-	              <div style={{ display: 'grid', gap: '0.08rem', fontSize: '0.68rem', color: 'var(--text-muted)', lineHeight: 1.35 }}>
-	                <span>緑=一次資料ベース、紫=配分モデル</span>
-	                {viewLevel === 'entity' && (
-	                  <span>
-	                    下流ノードをクリックすると次段を展開
-	                    {visibleExpandedNodeCount > 0 ? `（展開中 ${visibleExpandedNodeCount}）` : ''}
+	            <div style={{ display: 'flex', justifyContent: 'space-between', gap: '0.35rem', alignItems: 'center', flexWrap: 'wrap' }}>
+	              <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', flexWrap: 'wrap', fontSize: '0.62rem', color: 'var(--text-muted)', lineHeight: 1.2 }}>
+	                <span title="緑は一次資料ベース、紫は配分モデル">R=実 / M=モデル</span>
+	                {viewLevel === 'entity' ? (
+	                  <span title="常に直下1層だけ表示し、下流は専用フローへ移動します">
+	                    {activeFocusNodeId ? '専用フロー表示中' : '直下1層のみ表示'}
 	                  </span>
-	                )}
+	                ) : null}
 	              </div>
-	              <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', flexWrap: 'wrap', justifyContent: 'flex-end' }}>
-	                {viewLevel === 'entity' && visibleExpandedNodeCount > 0 ? (
-	                  <button
-	                    type="button"
-	                    onClick={() => updateExpandedNodeIds(() => [])}
-	                    style={{
-	                      padding: '0.24rem 0.55rem',
-	                      background: 'rgba(255,255,255,0.06)',
-	                      color: '#fff',
-	                      borderRadius: '999px',
-	                      border: '1px solid rgba(255,255,255,0.16)',
-	                      fontWeight: 600,
-	                      fontSize: '0.72rem',
-	                      cursor: 'pointer',
-	                    }}
-	                  >
-	                    展開をリセット
-	                  </button>
+	              <div style={{ display: 'flex', alignItems: 'center', gap: '0.28rem', flexWrap: 'wrap', justifyContent: 'flex-end' }}>
+	                {viewLevel === 'entity' && activeFocusNodeId ? (
+	                  <>
+	                    <button
+	                      type="button"
+	                      onClick={() => setFocusNodeId(parentFocusNodeId)}
+	                      style={{
+	                        padding: '0.18rem 0.44rem',
+	                        background: 'rgba(255,255,255,0.06)',
+	                        color: '#fff',
+	                        borderRadius: '999px',
+	                        border: '1px solid rgba(255,255,255,0.16)',
+	                        fontWeight: 600,
+	                        fontSize: '0.66rem',
+	                        cursor: 'pointer',
+	                      }}
+	                    >
+	                      親へ戻る
+	                    </button>
+	                    <button
+	                      type="button"
+	                      onClick={() => setFocusNodeId(null)}
+	                      style={{
+	                        padding: '0.18rem 0.44rem',
+	                        background: 'rgba(255,255,255,0.06)',
+	                        color: '#fff',
+	                        borderRadius: '999px',
+	                        border: '1px solid rgba(255,255,255,0.16)',
+	                        fontWeight: 600,
+	                        fontSize: '0.66rem',
+	                        cursor: 'pointer',
+	                      }}
+	                    >
+	                      起点へ戻る
+	                    </button>
+	                  </>
 	                ) : null}
 	                {viewLevel === 'entity' && activeEntityResearchLink ? (
 	                  <>
-	                    <span
-	                      style={{
-	                        display: 'inline-flex',
-	                        alignItems: 'center',
-	                        padding: '0.18rem 0.42rem',
-	                        borderRadius: '999px',
-	                        fontSize: '0.68rem',
-	                        fontWeight: 700,
-	                        color: '#d9f99d',
-	                        background: 'rgba(163, 230, 53, 0.1)',
-	                        border: '1px solid rgba(163, 230, 53, 0.22)',
-	                      }}
-	                    >
-	                      調査ノートあり
-	                    </span>
-	                    <span style={{ fontSize: '0.68rem', color: 'var(--text-muted)' }}>
-	                      {activeEntityResearchYears.includes(currentYear) ? `${currentYear}年対応` : `登録年 ${activeEntityResearchYears.join(', ')}`}
-	                    </span>
 	                    <a
 	                      href={activeEntityResearchLink}
+                        aria-label="調査ノートを開く"
+                        title={activeEntityResearchYears.includes(currentYear) ? `${currentYear}年の調査ノートあり` : `登録年 ${activeEntityResearchYears.join(', ')}`}
 	                      style={{
 	                        display: 'inline-block',
-	                        padding: '0.24rem 0.55rem',
+	                        padding: '0.18rem 0.44rem',
 	                        background: 'rgba(163, 230, 53, 0.14)',
 	                        color: '#d9f99d',
 	                        textDecoration: 'none',
 	                        borderRadius: '999px',
 	                        fontWeight: 600,
-	                        fontSize: '0.72rem',
+	                        fontSize: '0.66rem',
 	                        textAlign: 'center',
 	                        border: '1px solid rgba(163, 230, 53, 0.28)',
 	                      }}
 	                    >
-	                      調査ノートを開く
+	                      調査ノート {activeEntityResearchYears.includes(currentYear) ? currentYear : activeEntityResearchYears[0]}
 	                    </a>
 	                  </>
 	                ) : null}
 	              </div>
 	            </div>
+              {viewLevel === 'entity' ? (
+                <div style={{ fontSize: '0.62rem', color: 'var(--text-muted)', lineHeight: 1.3 }}>
+                  {focusPathLabels.join(' > ')}
+                </div>
+              ) : null}
 	          </div>
 
 	        </div>
@@ -1120,19 +1026,14 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
 	                  const firstEntity = nodes.find((node) => node.type === internalType);
 	                  if (firstEntity) {
 	                    setViewLevel('entity');
+                      setFocusNodeId(null);
 	                    onSelectedEntityChange(firstEntity.id);
 	                  }
 	                  return;
 	                }
 
 	                if (datum.kind === 'entity' && datum.direction === 'out' && datum.actualNodeId && datum.expandable) {
-	                  updateExpandedNodeIds((current) => {
-	                    if (current.includes(datum.actualNodeId!)) {
-	                      const collapsedNodeIds = getCollapsedBranchNodeIds(evidenceFilteredEdges, datum.actualNodeId!);
-	                      return current.filter((nodeId) => !collapsedNodeIds.has(nodeId));
-	                    }
-	                    return [...current, datum.actualNodeId!];
-	                  });
+                    setFocusNodeId(datum.actualNodeId);
 	                }
 	              }}
 	              nodeTooltip={({ node }: { node: SankeyNodeRecord }) => {
@@ -1142,7 +1043,7 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
 	              const actionHint = viewLevel === 'type'
 	                ? 'クリックしてこのカテゴリの詳細へ'
 	                : node.kind === 'entity' && node.direction === 'out' && node.expandable
-	                  ? `クリックして次の資金フローを${node.expanded ? '閉じる' : '展開'}`
+	                  ? 'クリックして専用フローへ'
 	                  : null;
 
 	              return (
@@ -1235,7 +1136,9 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
               フロー詳細情報
             </div>
             <button 
-              onClick={() => setSelectedLinkDetails(null)}
+              onClick={() => {
+                setSelectedLinkDetails(null);
+              }}
               style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontSize: '1.5rem', lineHeight: '1rem', padding: '0' }}
             >
               &times;
@@ -1296,7 +1199,7 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
               </div>
             )}
 
-            {(activeSelectedLinkDetails.source_url || budgetDeepLink || researchDeepLink) && (
+            {(activeSelectedLinkDetails.source_url || budgetDeepLink || researchDeepLink || focusedFlowDeepLink) && (
               <div style={{ display: 'flex', gap: '0.65rem', flexWrap: 'wrap', marginTop: '0.5rem' }}>
                 {activeSelectedLinkDetails.source_url && (
                   <a
@@ -1315,6 +1218,24 @@ export const FlowDashboard: React.FC<FlowDashboardProps> = ({
                     }}
                   >
                     元の資料・PDFを開く
+                  </a>
+                )}
+                {focusedFlowDeepLink && (
+                  <a
+                    href={focusedFlowDeepLink}
+                    style={{
+                      display: 'inline-block',
+                      padding: '0.5rem 1rem',
+                      background: 'rgba(255,255,255,0.08)',
+                      color: '#fff',
+                      textDecoration: 'none',
+                      borderRadius: '20px',
+                      fontWeight: 600,
+                      textAlign: 'center',
+                      border: '1px solid rgba(255,255,255,0.16)',
+                    }}
+                  >
+                    この先のフローへ
                   </a>
                 )}
                 {budgetDeepLink && (

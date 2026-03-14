@@ -360,7 +360,11 @@ function renderStructuredFactGrid(items: StructuredFactWithEvidence[], accent: s
   );
 }
 
-function renderKnowledgeNoteGrid(items: KnowledgeNoteWithEvidence[], accent: string) {
+function renderKnowledgeNoteGrid(
+  items: KnowledgeNoteWithEvidence[],
+  accent: string,
+  getFlowFocusHref: (item: KnowledgeNoteWithEvidence) => string | null
+) {
   return (
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '0.9rem' }}>
       {items.map((item) => (
@@ -412,6 +416,26 @@ function renderKnowledgeNoteGrid(items: KnowledgeNoteWithEvidence[], accent: str
               internal doc: {item.doc_path}
             </div>
           )}
+          {getFlowFocusHref(item) ? (
+            <div style={{ marginTop: '0.85rem' }}>
+              <a
+                href={getFlowFocusHref(item) || undefined}
+                style={{
+                  display: 'inline-block',
+                  padding: '0.42rem 0.9rem',
+                  borderRadius: '999px',
+                  background: 'rgba(96, 165, 250, 0.14)',
+                  border: '1px solid rgba(96, 165, 250, 0.28)',
+                  color: '#bfdbfe',
+                  fontWeight: 700,
+                  fontSize: '0.82rem',
+                  textDecoration: 'none',
+                }}
+              >
+                2Dフローで見る
+              </a>
+            </div>
+          ) : null}
           {item.body_markdown ? (
             <details style={{ marginTop: '0.85rem' }}>
               <summary style={{ cursor: 'pointer', color: accent, fontWeight: 600 }}>ノート全文</summary>
@@ -722,6 +746,18 @@ export const BudgetReportPage: React.FC<BudgetReportPageProps> = ({
       })),
     [currentImplementationSites]
   );
+  const buildKnowledgeNoteFlowHref = (item: KnowledgeNoteWithEvidence): string | null => {
+    if (!item.flow_focus_target_id) {
+      return null;
+    }
+    const params = new URLSearchParams({
+      view: '2d',
+      year: String(item.fiscal_year),
+      entity: item.entity_id,
+      focus: item.flow_focus_target_id,
+    });
+    return `${window.location.pathname}?${params.toString()}`;
+  };
 
   const majorPrograms = useMemo<MajorProgramWithEvidence[]>(() => {
     return edges
@@ -919,7 +955,7 @@ export const BudgetReportPage: React.FC<BudgetReportPageProps> = ({
                 <div style={{ fontSize: '0.9rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: TAB_ACCENTS.research_note }}>
                   Research Notes
                 </div>
-                {renderKnowledgeNoteGrid(visibleKnowledgeNotes, TAB_ACCENTS.research_note)}
+                {renderKnowledgeNoteGrid(visibleKnowledgeNotes, TAB_ACCENTS.research_note, buildKnowledgeNoteFlowHref)}
               </section>
             ) : null}
             {visibleImplementationSites.length ? (

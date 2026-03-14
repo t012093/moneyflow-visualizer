@@ -31,6 +31,7 @@ export interface KnowledgeNote {
   key_points?: string[];
   body_markdown?: string | null;
   doc_path?: string | null;
+  flow_focus_target_id?: string | null;
   display_order: number;
   sources: KnowledgeNoteSource[];
 }
