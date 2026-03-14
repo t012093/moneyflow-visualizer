@@ -1,0 +1,4 @@
+interface:
+  display_name: "ChatGPT Deep Research"
+  short_description: "Launch and inspect ChatGPT Deep Research runs"
+  default_prompt: "Use $chatgpt-deep-research to run or inspect a ChatGPT Deep Research job, confirm notifications, and extract the finished report."
