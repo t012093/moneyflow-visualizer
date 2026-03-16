@@ -119,6 +119,8 @@ class SeedPipelineRegressionTests(unittest.TestCase):
         self.assertTrue(any(fact["fact_key"] == "child-abuse-digital-local-examples-2025" for fact in structured_facts))
         self.assertTrue(any(fact["fact_key"] == "hitori-oya-platform-budget-cap-2026" for fact in structured_facts))
         self.assertTrue(any(fact["fact_key"] == "hitori-oya-platform-continuity-2026" for fact in structured_facts))
+        self.assertTrue(any(fact["fact_key"] == "hitori-oya-platform-current-operator-2026" for fact in structured_facts))
+        self.assertTrue(any(fact["fact_key"] == "hitori-oya-platform-award-disclosure-status-2026" for fact in structured_facts))
         self.assertIn(2026, metadata.get("fiscal_years", []))
 
         edges = self.unified_data["edges"]
