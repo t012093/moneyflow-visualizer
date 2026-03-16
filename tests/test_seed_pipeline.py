@@ -82,6 +82,7 @@ class SeedPipelineRegressionTests(unittest.TestCase):
         self.assertTrue(any(note["note_key"] == "after-school-club-support-2025" for note in knowledge_notes))
         self.assertTrue(any(note["note_key"] == "ibasho-model-recipients-2025" for note in knowledge_notes))
         self.assertTrue(any(note["note_key"] == "child-abuse-digital-procurement-2025" for note in knowledge_notes))
+        self.assertTrue(any(note["note_key"] == "hitori-oya-platform-procurement-2026" for note in knowledge_notes))
         ibasho_note = next(note for note in knowledge_notes if note["note_key"] == "ibasho-model-recipients-2025")
         self.assertEqual(ibasho_note.get("flow_focus_target_id"), "REC_IBASHO_SUPPORT")
         abuse_note = next(note for note in knowledge_notes if note["note_key"] == "child-abuse-digital-procurement-2025")
@@ -116,6 +117,9 @@ class SeedPipelineRegressionTests(unittest.TestCase):
         self.assertTrue(any(fact["fact_key"] == "child-abuse-digital-sns-central-2025" for fact in structured_facts))
         self.assertTrue(any(fact["fact_key"] == "child-abuse-digital-ai-central-2025" for fact in structured_facts))
         self.assertTrue(any(fact["fact_key"] == "child-abuse-digital-local-examples-2025" for fact in structured_facts))
+        self.assertTrue(any(fact["fact_key"] == "hitori-oya-platform-budget-cap-2026" for fact in structured_facts))
+        self.assertTrue(any(fact["fact_key"] == "hitori-oya-platform-continuity-2026" for fact in structured_facts))
+        self.assertIn(2026, metadata.get("fiscal_years", []))
 
         edges = self.unified_data["edges"]
         self.assertTrue(any(edge["year"] == 2025 and edge["target_id"] == "REC_AFTER_SCHOOL_DX_PILOT" for edge in edges))

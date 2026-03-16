@@ -21049,9 +21049,10 @@
       2022,
       2023,
       2024,
-      2025
+      2025,
+      2026
     ],
-    "latestFiscalYear": 2025,
+    "latestFiscalYear": 2026,
     "featuredEntityId": "MIN_CFA",
     "budgetHighlights": [
       {
@@ -22695,6 +22696,70 @@
     ],
     "knowledgeNotes": [
       {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2026,
+        "note_key": "hitori-oya-platform-procurement-2026",
+        "title": "ひとり親家庭に対するプラットフォーム構築事業の公募要件メモ",
+        "summary": "令和8年度公募では、ひとり親家庭向け支援情報の収集・整理、ポータル作成運用、広報啓発をまとめて担う事業として上限 27,556千円 が示されています。",
+        "key_points": [
+          "2026年1月27日に公募が始まり、締切は 2026年3月4日 だった。",
+          "事業内容は、ひとり親家庭向け支援情報の収集・整理、ポータルサイトの作成・運用、インターネット広告等を使った広報啓発である。",
+          "応募資格は法人格を持つ団体で、組織・人員体制、経営基盤、経理体制、反社排除、指名停止でないこと等が確認される。",
+          "公募要領上の上限額は 27,556千円 で、対象経費にはデザイン制作費、広告料、人件費、委託料、使用料・賃借料などが含まれる。",
+          "評価基準では、コンテンツ企画力、情報収集・集約・管理方法、広報施策の有効性、実施スケジュール、実施体制、プラットフォーム構築実績、児童福祉分野の知見が重視される。",
+          "令和6年度の制度説明資料では 27百万円、令和8年度の EBPM では 28百万円 が確認でき、少なくとも複数年度で継続している。",
+          "2026年3月16日時点で、この事業の二次募集を示す公式ページは確認できていない。"
+        ],
+        "body_markdown": "# ひとり親家庭に対するプラットフォーム構築事業の公募要件メモ\n\n## 結論\n\n- `令和8年度` の `ひとり親家庭に対するプラットフォーム構築事業` は、ひとり親家庭向け支援情報の `収集・整理`、`ポータルサイトの作成・運用`、`広報啓発` をまとめて担う事業として公募されている。\n- `2026年1月27日` に公募が始まり、締切は `2026年3月4日` だった。\n- 公募要領上の上限額は `27,556千円`。\n- 応募は `法人格` を持つ団体が前提で、`組織・人員体制`、`経理体制`、`児童福祉分野の知見`、`プラットフォーム構築・運用の実績` が重要になる。\n- `令和6年度` の制度説明資料では `27百万円`、`令和8年度` の EBPM 資料では `28百万円` が確認でき、少なくとも複数年度で継続している。\n- `2026年3月16日` 時点で、確認できた公式資料ではこの事業の `二次募集` は見当たらない。\n\n## 何をやる事業か\n\n公募要領で示されている中心業務は次のとおり。\n\n- ひとり親家庭に関する支援情報の収集\n- 支援情報の整理・集約\n- `ポータルサイト` の作成・運用\n- インターネット広告等を活用した `広報啓発`\n\n実態としては、現場支援そのものよりも、`情報基盤` と `広報導線` を整えるための事業と読むのが自然である。\n\n## 応募要件\n\n- `法人格` を有すること\n- 事業を実施するための `組織` と `人員` を持つこと\n- 事業を適切に執行できる `経営基盤` と `経理処理体制` を持つこと\n- 反社会的勢力に該当しないこと\n- 指名停止等を受けていないこと\n\n共同実施は可能だが、応募は `代表法人1者` で行う整理になっている。\n\n## 対象経費\n\n公募要領で確認できる主な対象経費は次のとおり。\n\n- `印刷製本費`\n- `デザイン制作費`\n- `広告料`\n- `人件費`\n- `謝金`\n- `旅費`\n- `通信運搬費`\n- `委託料`\n- `使用料・賃借料`\n\nつまり、`Web制作`、`運用`、`コンテンツ整備`、`広告運用` を一体で組める体制が求められている。\n\n## 評価軸\n\n評価基準で見られる主なポイントは次のとおり。\n\n- コンテンツ企画力\n- 情報収集・集約・管理方法\n- 広報施策の有効性\n- 実施スケジュール\n- 実施体制\n- プラットフォーム構築実績\n- 児童福祉分野の知見\n\nこのため、`Web制作会社` 単体よりも、`情報運用` と `福祉分野理解` まで含めて示せる事業者の方が相性がよい。\n\n## 継続性\n\n- `令和6年度` の制度説明資料では、`ひとり親家庭等に対するワンストップ相談体制強化事業（プラットフォーム構築事業）` として `27百万円` が示されている。\n- 同じ資料では、`2024年11月1日` に情報ポータルサイト `あなたの支え` を開設したことも確認できる。\n- `令和8年度` の EBPM 資料では `28百万円` が示され、引き続き `情報収集・整理`、`ポータルサイト作成・運用`、`広報啓発` が主要タスクになっている。\n\nしたがって、この事業は単年度のスポット施策というより、`ポータル運営を伴う継続事業` と見るのが妥当である。\n\n## 読み方\n\n- `参入しやすさ` という観点では、巨大な基幹システム案件よりは軽い\n- 一方で、単なるサイト制作ではなく、`情報運用 + 広報 + 行政精算` を含む\n- そのため、`制作会社`、`広報会社`、`福祉系NPO/一般社団` の連携モデルが最も現実的である\n\n## 一次資料\n\n- 令和8年度 ひとり親家庭に対するプラットフォーム構築事業 公募ページ\n- 令和8年度 ひとり親家庭に対するプラットフォーム構築事業 公募要領\n- 令和8年度 ひとり親家庭に対するプラットフォーム構築事業 評価基準\n- 令和8年度予算 EBPM「ひとり親家庭等に対するワンストップ相談体制強化事業」\n- ひとり親家庭等の支援について\n",
+        "doc_path": "docs/funding-knowledge/ministries/child-and-family-agency/HITORI_OYA_PLATFORM_PROCUREMENT_2026.md",
+        "flow_focus_target_id": null,
+        "display_order": 60,
+        "sources": [
+          {
+            "source_title": "令和8年度 ひとり親家庭に対するプラットフォーム構築事業 公募ページ",
+            "source_url": "https://www.cfa.go.jp/procurement/shugyoshien-r08",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 10
+          },
+          {
+            "source_title": "令和8年度 ひとり親家庭に対するプラットフォーム構築事業 公募要領",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/f787590f-c6ed-4f4f-9d58-a6ffc781f4b4/d14498e4/20260127_procurement_shugyoshien-r08_06.pdf",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 20
+          },
+          {
+            "source_title": "令和8年度 ひとり親家庭に対するプラットフォーム構築事業 評価基準",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/f787590f-c6ed-4f4f-9d58-a6ffc781f4b4/0061e7c1/20260127_procurement_shugyoshien-r08_02.pdf",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 30
+          },
+          {
+            "source_title": "令和8年度予算 EBPM「ひとり親家庭等に対するワンストップ相談体制強化事業」",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/e8adaa7f-8595-4662-88bd-dac21bac9382/480b4da6/20260203_policies_budget_r8ebpmsiryou_115.pdf#page=87",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 40
+          },
+          {
+            "source_title": "ひとり親家庭等の支援について",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/0a870592-1814-4b21-bf56-16f06080c594/7cf5dd42/20250107_policies_hitori-oya_73.pdf#page=51",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 50
+          },
+          {
+            "source_title": "こども家庭庁 ひとり親家庭等支援",
+            "source_url": "https://www.cfa.go.jp/policies/hitori-oya",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 60
+          }
+        ]
+      },
+      {
         "entity_id": "CITY_KOBE",
         "fiscal_year": 2025,
         "note_key": "kobe-daredemo-reviewed-2025",
@@ -23383,6 +23448,158 @@
       }
     ],
     "structuredFacts": [
+      {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2026,
+        "fact_key": "hitori-oya-platform-budget-cap-2026",
+        "fact_group": "hitori_oya_platform",
+        "title": "公募上限額",
+        "value_text": "27,556千円",
+        "numeric_value": 27556.0,
+        "unit": "千円",
+        "summary": "令和8年度公募要領で示されている事業費上限です。",
+        "note_key": "hitori-oya-platform-procurement-2026",
+        "source_excerpt": "基準額 27,556千円。",
+        "display_order": 130,
+        "sources": [
+          {
+            "source_title": "令和8年度 ひとり親家庭に対するプラットフォーム構築事業 公募要領",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/f787590f-c6ed-4f4f-9d58-a6ffc781f4b4/d14498e4/20260127_procurement_shugyoshien-r08_06.pdf",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2026,
+        "fact_key": "hitori-oya-platform-deadline-2026",
+        "fact_group": "hitori_oya_platform",
+        "title": "公募締切",
+        "value_text": "2026年3月4日",
+        "numeric_value": null,
+        "unit": null,
+        "summary": "令和8年度公募ページで確認できる締切日です。",
+        "note_key": "hitori-oya-platform-procurement-2026",
+        "source_excerpt": "公募期間 2026年1月27日〜2026年3月4日。",
+        "display_order": 131,
+        "sources": [
+          {
+            "source_title": "令和8年度 ひとり親家庭に対するプラットフォーム構築事業 公募ページ",
+            "source_url": "https://www.cfa.go.jp/procurement/shugyoshien-r08",
+            "source_kind": "official_html",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2026,
+        "fact_key": "hitori-oya-platform-scope-2026",
+        "fact_group": "hitori_oya_platform",
+        "title": "主な事業範囲",
+        "value_text": "情報収集・整理、ポータル作成運用、広報啓発",
+        "numeric_value": null,
+        "unit": null,
+        "summary": "事業の中心は、ひとり親家庭向け支援情報を集約し、ポータルサイトと広報導線を運用することです。",
+        "note_key": "hitori-oya-platform-procurement-2026",
+        "source_excerpt": "情報収集、情報整理、ポータルサイト作成・運用、インターネット広告等を活用した広報啓発。",
+        "display_order": 132,
+        "sources": [
+          {
+            "source_title": "令和8年度 ひとり親家庭に対するプラットフォーム構築事業 公募要領",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/f787590f-c6ed-4f4f-9d58-a6ffc781f4b4/d14498e4/20260127_procurement_shugyoshien-r08_06.pdf",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          },
+          {
+            "source_title": "令和8年度予算 EBPM「ひとり親家庭等に対するワンストップ相談体制強化事業」",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/e8adaa7f-8595-4662-88bd-dac21bac9382/480b4da6/20260203_policies_budget_r8ebpmsiryou_115.pdf#page=87",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 20
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2026,
+        "fact_key": "hitori-oya-platform-eligibility-2026",
+        "fact_group": "hitori_oya_platform",
+        "title": "応募資格の核",
+        "value_text": "法人格 + 組織・人員体制 + 経理体制",
+        "numeric_value": null,
+        "unit": null,
+        "summary": "法人格だけでなく、実施体制と経理処理能力まで確認される公募です。",
+        "note_key": "hitori-oya-platform-procurement-2026",
+        "source_excerpt": "法人格、組織・人員、経営基盤、経理処理体制、反社排除等。",
+        "display_order": 133,
+        "sources": [
+          {
+            "source_title": "令和8年度 ひとり親家庭に対するプラットフォーム構築事業 公募要領",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/f787590f-c6ed-4f4f-9d58-a6ffc781f4b4/d14498e4/20260127_procurement_shugyoshien-r08_06.pdf",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2026,
+        "fact_key": "hitori-oya-platform-evaluation-2026",
+        "fact_group": "hitori_oya_platform",
+        "title": "評価軸",
+        "value_text": "情報管理、ポータル構築、広報施策、体制、児童福祉知見",
+        "numeric_value": null,
+        "unit": null,
+        "summary": "評価基準では、Web制作だけでなく、情報運用と福祉分野理解まで含めて審査されます。",
+        "note_key": "hitori-oya-platform-procurement-2026",
+        "source_excerpt": "コンテンツ企画力、情報収集・集約・管理、広報施策、スケジュール、組織体制、実績、児童福祉分野の知見。",
+        "display_order": 134,
+        "sources": [
+          {
+            "source_title": "令和8年度 ひとり親家庭に対するプラットフォーム構築事業 評価基準",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/f787590f-c6ed-4f4f-9d58-a6ffc781f4b4/0061e7c1/20260127_procurement_shugyoshien-r08_02.pdf",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          }
+        ]
+      },
+      {
+        "entity_id": "MIN_CFA",
+        "fiscal_year": 2026,
+        "fact_key": "hitori-oya-platform-continuity-2026",
+        "fact_group": "hitori_oya_platform",
+        "title": "継続性",
+        "value_text": "R6=27百万円、R8=28百万円、2024-11-01に「あなたの支え」開設",
+        "numeric_value": null,
+        "unit": null,
+        "summary": "制度説明資料と EBPM 資料から、少なくとも複数年度で継続していることが確認できます。",
+        "note_key": "hitori-oya-platform-procurement-2026",
+        "source_excerpt": "令和6年度 27百万円、令和8年度 28百万円、2024年11月1日ポータルサイト開設。",
+        "display_order": 135,
+        "sources": [
+          {
+            "source_title": "ひとり親家庭等の支援について",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/0a870592-1814-4b21-bf56-16f06080c594/7cf5dd42/20250107_policies_hitori-oya_73.pdf#page=51",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 10
+          },
+          {
+            "source_title": "令和8年度予算 EBPM「ひとり親家庭等に対するワンストップ相談体制強化事業」",
+            "source_url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/e8adaa7f-8595-4662-88bd-dac21bac9382/480b4da6/20260203_policies_budget_r8ebpmsiryou_115.pdf#page=87",
+            "source_kind": "official_pdf",
+            "authority_level": "primary",
+            "display_order": 20
+          }
+        ]
+      },
       {
         "entity_id": "CITY_KOBE",
         "fiscal_year": 2025,
