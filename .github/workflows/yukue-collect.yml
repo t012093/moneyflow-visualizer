@@ -1,0 +1,102 @@
+name: Yukue collect
+
+# 各府省のRSS・公開API・ページから新しい動きを集めて、yukue/data を更新する。
+#
+# ・予定どおりの実行（schedule）は、既定のブランチ（main）にこのファイルがあるときだけ動く
+# ・集めた結果は、このワークフローが動いたブランチに、そのままコミットする
+# ・main 以外のブランチでこのファイルを書き換えたときは、書き出しをしない試運転だけを行う
+
+on:
+  schedule:
+    # 毎日 6:17 と 18:17（日本時間）。時刻はUTCで書く。ちょうどの時刻は混み合うので、少しずらしている
+    - cron: '17 21 * * *'
+    - cron: '17 9 * * *'
+  workflow_dispatch:
+    inputs:
+      only:
+        description: 実行する情報源のID（カンマ区切り。空ならすべて。例：mof,kakugi）
+        required: false
+        default: ''
+      dry_run:
+        description: 書き出さずに、結果だけを見る
+        type: boolean
+        default: false
+  push:
+    branches-ignore:
+      - main
+    paths:
+      - .github/workflows/yukue-collect.yml
+
+permissions:
+  contents: write
+
+# 同じブランチで2つ同時に動くと、コミットがぶつかる。あとから来たほうは、前のが終わるまで待たせる
+concurrency:
+  group: yukue-collect-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    defaults:
+      run:
+        working-directory: yukue/collector
+    env:
+      DRY_RUN: ${{ github.event_name == 'push' || inputs.dry_run == true }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: yukue/collector/package-lock.json
+
+      - name: Install
+        run: npm ci
+
+      - name: Test
+        run: npm test
+
+      - name: Collect
+        env:
+          # どれも任意。入れていなければ、AIによる整形を飛ばし、既定の名乗りで集める
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          YUKUE_USER_AGENT: ${{ vars.YUKUE_USER_AGENT }}
+          YUKUE_MODEL: ${{ vars.YUKUE_MODEL }}
+          YUKUE_ENRICH_LIMIT: ${{ vars.YUKUE_ENRICH_LIMIT }}
+          ONLY: ${{ inputs.only }}
+        run: |
+          args=()
+          if [ -n "$ONLY" ]; then args+=(--only "$ONLY"); fi
+          if [ "$DRY_RUN" = "true" ]; then args+=(--dry-run --no-enrich); fi
+          node src/cli.ts collect "${args[@]}"
+
+      - name: Commit data
+        if: env.DRY_RUN != 'true'
+        working-directory: .
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add yukue/data
+          if git diff --cached --quiet; then
+            echo "変更はありません。"
+            exit 0
+          fi
+          git commit -m "Update collected data ($(TZ=Asia/Tokyo date '+%Y-%m-%d %H:%M') JST)"
+          # 集めているあいだに別のコミットが入っていたら、その上に載せ直してからもう一度送る
+          for attempt in 1 2 3; do
+            if git push; then exit 0; fi
+            git pull --rebase
+          done
+          echo "::error::集めたデータを送れませんでした。ブランチの保護の設定で、このワークフローからの書き込みが止められていないか確かめてください。"
+          exit 1
+
+      # フィードの引っ越しなどで同じ情報源が失敗し続けたら、この実行を失敗にして知らせる（データは上で保存ずみ）
+      - name: Check source health
+        if: env.DRY_RUN != 'true'
+        run: node src/cli.ts health --max-failures 6
