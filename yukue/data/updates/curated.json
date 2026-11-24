@@ -1,0 +1,489 @@
+{
+  "generatedAt": "2026-11-24T09:00:00.000Z",
+  "items": [
+    {
+      "id": "curated:hosei2",
+      "date": "2026-11-24",
+      "type": "budget",
+      "theme": "whole",
+      "title": "令和8年度の第2次補正予算、首相が編成を指示",
+      "summary": "経済財政諮問会議で、首相が財務相に第2次補正予算の編成を指示した。規模と日程はまだ公表されていない。",
+      "ministry": "内閣府・財務省",
+      "amount": "規模は未公表",
+      "stage": {
+        "steps": [
+          "概算要求",
+          "政府案",
+          "国会審議",
+          "成立",
+          "執行",
+          "決算"
+        ],
+        "index": 0,
+        "label": "編成を指示"
+      },
+      "qa": {
+        "what": "今年度の予算に、追加の支出が上乗せされる見通し。6月の補正（+3.1兆円）に続く2回目。",
+        "who": "内容が決まるまで、対象は分からない。",
+        "when": "政府案の閣議決定と国会への提出の日程は未公表。"
+      },
+      "links": [
+        {
+          "name": "首相官邸",
+          "url": "https://www.kantei.go.jp/jp/105/actions/202611/24keizai.html"
+        }
+      ],
+      "sourceId": "curated",
+      "firstSeen": "2026-11-24T09:00:00.000Z",
+      "importance": 95,
+      "enriched": "curated"
+    },
+    {
+      "id": "curated:fy27",
+      "date": "2026-11-24",
+      "type": "budget",
+      "theme": "whole",
+      "title": "令和9年度予算、「編成の基本方針」の原案を提示",
+      "summary": "来年度予算をどういう考え方で組むかを示す「基本方針」の原案が、経済財政諮問会議に示された。与党との調整を経て成案になる。",
+      "ministry": "内閣府",
+      "amount": "概算要求 143.1兆円",
+      "stage": {
+        "steps": [
+          "概算要求",
+          "政府案",
+          "国会審議",
+          "成立",
+          "執行",
+          "決算"
+        ],
+        "index": 1,
+        "label": "政府案を編成中"
+      },
+      "qa": {
+        "what": "来年度予算の重点と規律の考え方が固まる。これをもとに年末の政府案をつくる。",
+        "who": "来年度の国の事業すべて。",
+        "when": "成案は次回の諮問会議に。政府案の決定時期は未定（例年は12月下旬）。"
+      },
+      "links": [
+        {
+          "name": "経済財政諮問会議",
+          "url": "https://www5.cao.go.jp/keizai-shimon/kaigi/minutes/2026/1124agenda.html"
+        },
+        {
+          "name": "財務省 概算要求",
+          "url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2027/sy20260904.pdf"
+        }
+      ],
+      "sourceId": "curated",
+      "firstSeen": "2026-11-24T09:00:00.000Z",
+      "importance": 90,
+      "enriched": "curated"
+    },
+    {
+      "id": "curated:aidx",
+      "date": "2026-11-24",
+      "type": "system",
+      "theme": "other",
+      "title": "AI・デジタル改革推進会議、専門調査会が初会合",
+      "summary": "10月20日の閣議決定で設けられた「AI・デジタル改革推進会議」の下で、専門調査会が最初の会合を開いた。",
+      "ministry": "デジタル庁",
+      "stage": {
+        "steps": [
+          "検討",
+          "意見募集",
+          "決定",
+          "開始"
+        ],
+        "index": 0,
+        "label": "検討"
+      },
+      "qa": {
+        "what": "行政や産業でのAI・デジタル活用について、制度の見直しを検討する場ができた。",
+        "who": "結論が出るまで、直接の影響はない。",
+        "when": "検討を始めた段階。取りまとめの時期は未公表。"
+      },
+      "links": [
+        {
+          "name": "デジタル庁",
+          "url": "https://www.digital.go.jp/councils/ai-digital-expert"
+        },
+        {
+          "name": "閣議案件",
+          "url": "https://www.kantei.go.jp/jp/kakugi/2026/kakugi-2026102001.html"
+        }
+      ],
+      "sourceId": "curated",
+      "firstSeen": "2026-11-24T09:00:00.000Z",
+      "importance": 56,
+      "enriched": "curated"
+    },
+    {
+      "id": "curated:bgata",
+      "date": "2026-11-20",
+      "type": "law",
+      "theme": "social",
+      "title": "B型肝炎の給付金、請求できる期限を延ばす改正法が公布",
+      "summary": "集団予防接種などでB型肝炎に感染した人への給付金について、請求期限を延長する改正特別措置法（令和8年法律第88号）が公布された。",
+      "ministry": "厚生労働省",
+      "stage": {
+        "steps": [
+          "検討",
+          "閣議決定",
+          "国会審議",
+          "成立",
+          "公布",
+          "施行"
+        ],
+        "index": 4,
+        "label": "公布"
+      },
+      "qa": {
+        "what": "給付金を請求できる期限が延びる。",
+        "who": "集団予防接種などが原因でB型肝炎ウイルスに感染した人と、その相続人。",
+        "when": "11月13日に成立、11月20日に公布。"
+      },
+      "links": [
+        {
+          "name": "衆議院 議案経過",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE34CE.htm"
+        }
+      ],
+      "sourceId": "curated",
+      "firstSeen": "2026-11-24T09:00:00.000Z",
+      "importance": 60,
+      "enriched": "curated"
+    },
+    {
+      "id": "curated:sdfpay",
+      "date": "2026-11-20",
+      "type": "law",
+      "theme": "defense",
+      "title": "自衛官などの給与を改定する改正法が公布",
+      "summary": "防衛省の職員（自衛官など）の俸給月額などを、一般職の国家公務員に準じて改定する改正法（令和8年法律第89号）が公布された。",
+      "ministry": "防衛省",
+      "stage": {
+        "steps": [
+          "検討",
+          "閣議決定",
+          "国会審議",
+          "成立",
+          "公布",
+          "施行"
+        ],
+        "index": 4,
+        "label": "公布"
+      },
+      "qa": {
+        "what": "自衛官など防衛省職員の俸給月額などが改定される。",
+        "who": "自衛官など、防衛省の職員。",
+        "when": "11月13日に成立、11月20日に公布。"
+      },
+      "links": [
+        {
+          "name": "衆議院 議案経過",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE34E2.htm"
+        }
+      ],
+      "sourceId": "curated",
+      "firstSeen": "2026-11-24T09:00:00.000Z",
+      "importance": 62,
+      "enriched": "curated"
+    },
+    {
+      "id": "curated:kessan",
+      "date": "2026-11-20",
+      "type": "budget",
+      "theme": "whole",
+      "title": "令和7年度の決算を国会に提出、税収は84.2兆円",
+      "summary": "昨年度に実際に入ったお金と使ったお金をまとめた決算が、国会に提出された。歳出は129.5兆円、使われずに残った「不用」は2.1兆円。",
+      "ministry": "財務省",
+      "amount": "歳出 129.5兆円",
+      "stage": {
+        "steps": [
+          "概算要求",
+          "政府案",
+          "国会審議",
+          "成立",
+          "執行",
+          "決算"
+        ],
+        "index": 5,
+        "label": "決算"
+      },
+      "qa": {
+        "what": "予算どおりに使われたかを確かめる材料がそろった。翌年度への繰り越しは12.2兆円。",
+        "who": "国の事業すべて。会計検査院の検査報告（11月5日）とあわせて国会で審査される。",
+        "when": "11月20日に国会へ提出。"
+      },
+      "links": [
+        {
+          "name": "財務省 決算",
+          "url": "https://www.mof.go.jp/policy/budget/budger_workflow/account/fy2025/ke0811.html"
+        },
+        {
+          "name": "会計検査院",
+          "url": "https://www.jbaudit.go.jp/report/new/index.html"
+        }
+      ],
+      "sourceId": "curated",
+      "firstSeen": "2026-11-24T09:00:00.000Z",
+      "importance": 72,
+      "enriched": "curated"
+    },
+    {
+      "id": "curated:boshi",
+      "date": "2026-11-19",
+      "type": "system",
+      "theme": "social",
+      "title": "母子健康手帳の電子版に向けた様式改正、意見を募集中",
+      "summary": "2027年度から電子版の母子健康手帳を使えるようにするため、手帳の様式を改める案について、12月18日まで意見を募集している。",
+      "ministry": "こども家庭庁",
+      "stage": {
+        "steps": [
+          "検討",
+          "意見募集",
+          "決定",
+          "開始"
+        ],
+        "index": 1,
+        "label": "意見募集"
+      },
+      "deadline": "2026-12-18",
+      "qa": {
+        "what": "紙の手帳に加えて、電子版の母子健康手帳を使えるようになる。",
+        "who": "妊娠中の人、乳幼児を育てている家庭、市区町村の窓口。",
+        "when": "2027年1月末に公布、2027年4月1日に施行の予定。"
+      },
+      "links": [
+        {
+          "name": "e-Gov パブリック・コメント",
+          "url": "https://public-comment.e-gov.go.jp/servlet/Public?CLASSNAME=PCMMSTDETAIL&id=141000248&Mode=0"
+        }
+      ],
+      "sourceId": "curated",
+      "firstSeen": "2026-11-24T09:00:00.000Z",
+      "importance": 58,
+      "enriched": "curated"
+    },
+    {
+      "id": "curated:senkyo",
+      "date": "2026-11-18",
+      "type": "law",
+      "theme": "local",
+      "title": "統一地方選の日程をそろえる特例法が公布",
+      "summary": "2027年3〜5月に任期が終わる地方議員と首長の選挙について、選挙の期日を統一する特例法（令和8年法律第83号）が公布された。",
+      "ministry": "衆議院 議案情報",
+      "stage": {
+        "steps": [
+          "検討",
+          "閣議決定",
+          "国会審議",
+          "成立",
+          "公布",
+          "施行"
+        ],
+        "index": 4,
+        "label": "公布"
+      },
+      "qa": {
+        "what": "対象となる自治体の選挙が、同じ日にまとめて行われる。",
+        "who": "2027年春に選挙がある自治体の有権者と候補者。",
+        "when": "11月11日に成立、11月18日に公布。"
+      },
+      "links": [
+        {
+          "name": "衆議院 議案経過",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE363A.htm"
+        }
+      ],
+      "sourceId": "curated",
+      "firstSeen": "2026-11-24T09:00:00.000Z",
+      "importance": 60,
+      "enriched": "curated"
+    },
+    {
+      "id": "curated:energy",
+      "date": "2026-11-13",
+      "type": "budget",
+      "theme": "industry",
+      "title": "冬の電気・ガス料金の支援を12月に前倒し、予備費から6,519億円",
+      "summary": "冬の電気・ガス料金への支援を12月に前倒しして行い、自治体が物価高対策に使える交付金も積み増すことを閣議決定した。",
+      "ministry": "経済産業省・内閣府",
+      "amount": "6,519億円",
+      "stage": {
+        "steps": [
+          "概算要求",
+          "政府案",
+          "国会審議",
+          "成立",
+          "執行",
+          "決算"
+        ],
+        "index": 4,
+        "label": "執行"
+      },
+      "qa": {
+        "what": "電気・ガス料金の支援に5,219億円、重点支援地方交付金に1,300億円を、予備費から出す。",
+        "who": "電気・ガスを使う家庭と事業者。交付金の使いみちは自治体が決める。",
+        "when": "電気・ガス料金の支援は12月から。"
+      },
+      "links": [
+        {
+          "name": "財務省 予備費使用",
+          "url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2026/r81113kakugikettei.pdf"
+        },
+        {
+          "name": "官房長官会見",
+          "url": "https://www.kantei.go.jp/jp/tyoukanpress/202611/13_a.html"
+        }
+      ],
+      "sourceId": "curated",
+      "firstSeen": "2026-11-24T09:00:00.000Z",
+      "importance": 80,
+      "enriched": "curated"
+    },
+    {
+      "id": "curated:gx",
+      "date": "2026-11-09",
+      "type": "grant",
+      "theme": "industry",
+      "title": "GX地域共創補助金2026、2次公募を受付中",
+      "summary": "脱炭素の電源を使う工場やデータセンターの設備投資への補助金。12月14日の正午まで申請を受け付けている。",
+      "ministry": "Jグランツ掲載",
+      "amount": "上限 最大250億円",
+      "stage": {
+        "steps": [
+          "予告",
+          "公募中",
+          "審査",
+          "採択"
+        ],
+        "index": 1,
+        "label": "公募中"
+      },
+      "deadline": "2026-12-14",
+      "qa": {
+        "what": "補助率は中小企業などが2分の1、大企業が3分の1。",
+        "who": "脱炭素電源を活用して工場やデータセンターに投資する事業者。",
+        "when": "11月9日から12月14日正午まで。"
+      },
+      "links": [
+        {
+          "name": "Jグランツ",
+          "url": "https://www.jgrants-portal.go.jp/subsidy/a0WfQ000003dVevUAE"
+        }
+      ],
+      "sourceId": "curated",
+      "firstSeen": "2026-11-24T09:00:00.000Z",
+      "importance": 55,
+      "enriched": "curated"
+    },
+    {
+      "id": "curated:vat",
+      "date": "2026-11-06",
+      "type": "tax",
+      "theme": "whole",
+      "title": "飲食料品の消費税率を1%に下げる法案、参議院で審議中",
+      "summary": "2027年4月から2年間、飲食料品の消費税率を8%から1%に下げ、中低所得の就業者に支援金を出す法案。11月6日に衆議院で可決された。",
+      "ministry": "内閣提出の法案",
+      "amount": "減収の見込みは未公表",
+      "stage": {
+        "steps": [
+          "要望",
+          "与党大綱",
+          "閣議決定",
+          "国会審議",
+          "成立",
+          "施行"
+        ],
+        "index": 3,
+        "label": "国会審議"
+      },
+      "qa": {
+        "what": "飲食料品にかかる消費税率が8%から1%になる。あわせて「就業者負担軽減支援金」をつくる。支給額は政令で決める。",
+        "who": "食料品を買うすべての人。支援金は中低所得で働いている人。",
+        "when": "成立すれば2027年4月から2年間。"
+      },
+      "links": [
+        {
+          "name": "衆議院 議案経過",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE342E.htm"
+        }
+      ],
+      "sourceId": "curated",
+      "firstSeen": "2026-11-24T09:00:00.000Z",
+      "importance": 92,
+      "enriched": "curated"
+    },
+    {
+      "id": "curated:jizoku",
+      "date": "2026-11-05",
+      "type": "grant",
+      "theme": "industry",
+      "title": "小規模事業者持続化補助金（創業型）第4回、受付中",
+      "summary": "創業まもない小規模事業者が販路を広げるための取り組みへの補助金。12月15日の17時まで申請を受け付けている。",
+      "ministry": "Jグランツ掲載",
+      "amount": "上限 200万円",
+      "stage": {
+        "steps": [
+          "予告",
+          "公募中",
+          "審査",
+          "採択"
+        ],
+        "index": 1,
+        "label": "公募中"
+      },
+      "deadline": "2026-12-15",
+      "qa": {
+        "what": "補助率は3分の2。チラシやウェブサイトの制作、展示会への出展などに使える。",
+        "who": "従業員20名以下の、創業まもない事業者。",
+        "when": "11月5日から12月15日17時まで。"
+      },
+      "links": [
+        {
+          "name": "Jグランツ",
+          "url": "https://www.jgrants-portal.go.jp/subsidy/a0WfQ000003kEuHUAU"
+        }
+      ],
+      "sourceId": "curated",
+      "firstSeen": "2026-11-24T09:00:00.000Z",
+      "importance": 54,
+      "enriched": "curated"
+    },
+    {
+      "id": "curated:bousai",
+      "date": "2026-11-02",
+      "type": "system",
+      "theme": "infra",
+      "title": "防災庁が発足",
+      "summary": "災害への備えから復旧・復興までをまとめて担う防災庁が発足した。来年度の予算では、新しい担当省庁として扱われる。",
+      "ministry": "防災庁",
+      "stage": {
+        "steps": [
+          "検討",
+          "意見募集",
+          "決定",
+          "開始"
+        ],
+        "index": 3,
+        "label": "開始"
+      },
+      "qa": {
+        "what": "防災に関する国の司令塔が、ひとつの組織にまとまった。",
+        "who": "自治体の防災担当、災害のときに支援を受ける人。",
+        "when": "2026年11月2日に発足。"
+      },
+      "links": [
+        {
+          "name": "防災庁",
+          "url": "https://www.bousai.go.jp/juyou/hossokushiki.html"
+        }
+      ],
+      "sourceId": "curated",
+      "firstSeen": "2026-11-24T09:00:00.000Z",
+      "importance": 66,
+      "enriched": "curated"
+    }
+  ]
+}

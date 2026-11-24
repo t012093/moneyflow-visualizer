@@ -6,7 +6,8 @@ import tseslint from 'typescript-eslint'
 import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
-  globalIgnores(['dist']),
+  // yukue/ は別のプロジェクト（それぞれに型検査とテストがある）なので、ここでは見ない
+  globalIgnores(['dist', 'yukue']),
   {
     files: ['**/*.{ts,tsx}'],
     extends: [

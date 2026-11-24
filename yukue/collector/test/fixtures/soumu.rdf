@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="Shift_JIS" ?>
+<rdf:RDF xmlns="http://purl.org/rss/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="ja">
+<channel rdf:about="https://www.soumu.go.jp/news.rdf">
+<title>総務省 ホームページ新着情報</title>
+<link>https://www.soumu.go.jp/</link>
+<description>総務省 ホームページ新着情報</description>
+</channel>
+<item rdf:about="https://www.soumu.go.jp/menu_kyotsuu/important/kinkyu02_000687.html">
+<title>令和8年熊本地震による被災地方公共団体における職員採用情報</title>
+<description>令和8年熊本地震による被災地方公共団体における職員採用情報</description>
+<link>https://www.soumu.go.jp/menu_kyotsuu/important/kinkyu02_000687.html</link>
+<dc:date>2026-11-24T05:00:00+09:00</dc:date>
+<dc:subject>新着情報</dc:subject>
+<dc:creator>総務省</dc:creator>
+<dc:publisher>総務省</dc:publisher>
+<dc:rights>総務省</dc:rights>
+</item>
+<item rdf:about="https://www.soumu.go.jp/menu_kyotsuu/important/kinkyu02_000686.html">
+<title>令和6年能登半島地震による被災地方公共団体における職員採用情報</title>
+<description>令和6年能登半島地震による被災地方公共団体における職員採用情報</description>
+<link>https://www.soumu.go.jp/menu_kyotsuu/important/kinkyu02_000686.html</link>
+<dc:date>2026-11-24T05:00:00+09:00</dc:date>
+<dc:subject>新着情報</dc:subject>
+<dc:creator>総務省</dc:creator>
+<dc:publisher>総務省</dc:publisher>
+<dc:rights>総務省</dc:rights>
+</item>
+<item rdf:about="https://www.soumu.go.jp/main_sosiki/joho_tsusin/policyreports/joho_tsusin/housou_seisaku/02ryutsu07_04000604.html">
+<title> 情報通信審議会　情報通信政策部会　放送政策委員会（第6回）</title>
+<description> 情報通信審議会　情報通信政策部会　放送政策委員会（第6回）</description>
+<link>https://www.soumu.go.jp/main_sosiki/joho_tsusin/policyreports/joho_tsusin/housou_seisaku/02ryutsu07_04000604.html</link>
+<dc:date>2026-11-24T05:00:00+09:00</dc:date>
+<dc:subject>新着情報</dc:subject>
+<dc:creator>総務省</dc:creator>
+<dc:publisher>総務省</dc:publisher>
+<dc:rights>総務省</dc:rights>
+</item>
+<item rdf:about="https://www.soumu.go.jp/main_sosiki/joho_tsusin/policyreports/joho_tsusin/kaisai/yusei/02kiban03_04001199.html">
+<title>情報通信行政・郵政行政審議会　電気通信事業部会　市場検証委員会　利用者視点を踏まえたモバイル市場の検証に関する専門委員会（第11回）</title>
+<description>情報通信行政・郵政行政審議会　電気通信事業部会　市場検証委員会　利用者視点を踏まえたモバイル市場の検証に関する専門委員会（第11回）</description>
+<link>https://www.soumu.go.jp/main_sosiki/joho_tsusin/policyreports/joho_tsusin/kaisai/yusei/02kiban03_04001199.html</link>
+<dc:date>2026-11-24T05:00:00+09:00</dc:date>
+<dc:subject>新着情報</dc:subject>
+<dc:creator>総務省</dc:creator>
+<dc:publisher>総務省</dc:publisher>
+<dc:rights>総務省</dc:rights>
+</item>
+<item rdf:about="https://www.soumu.go.jp/menu_news/s-news/01kiban18_01000307.html">
+<title>「でんわんセンター」における国際電話発着信の利用休止受付の開始</title>
+<description>「でんわんセンター」における国際電話発着信の利用休止受付の開始</description>
+<link>https://www.soumu.go.jp/menu_news/s-news/01kiban18_01000307.html</link>
+<dc:date>2026-11-24T05:00:00+09:00</dc:date>
+<dc:subject>新着情報</dc:subject>
+<dc:creator>総務省</dc:creator>
+<dc:publisher>総務省</dc:publisher>
+<dc:rights>総務省</dc:rights>
+</item>
+</rdf:RDF>

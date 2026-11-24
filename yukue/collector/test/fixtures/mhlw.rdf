@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns="http://purl.org/rss/1.0/"
+xmlns:content="http://purl.org/rss/1.0/modules/content/"
+xmlns:taxo="http://purl.org/rss/1.0/modules/taxonomy/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+xmlns:admin="http://webns.net/mvcb/"
+>
+<channel rdf:about="https://www.mhlw.go.jp/stf/news.rdf">
+<title>厚生労働省新着情報</title>
+<link>https://www.mhlw.go.jp/stf/news.rdf</link>
+<description>厚生労働省が発表する新着情報です。</description>
+<dc:date>2024-09-30T18:48:49+09:00</dc:date>
+<dc:language>ja</dc:language>
+<copyright>Copyright © Ministry of Health, Labour and Welfare, All Right reserved.</copyright>
+<admin:generatorAgent rdf:resource="https://www.mhlw.go.jp/stf/new-info/index.html"/>
+</channel>
+<item rdf:about="https://www.mhlw.go.jp/stf/newpage_77622.html">
+<title><![CDATA[第134回労働政策審議会労働条件分科会労災保険部会資料]]></title>
+<link>https://www.mhlw.go.jp/stf/newpage_77622.html</link>
+<dc:creator>厚生労働省</dc:creator>
+<dc:date>2026-11-24T18:13:00+09:00</dc:date>
+</item>
+<item rdf:about="https://www.mhlw.go.jp/stf/newpage_77538.html">
+<title><![CDATA[創薬力向上のための官民協議会 施策検討・推進部会における主な意見]]></title>
+<link>https://www.mhlw.go.jp/stf/newpage_77538.html</link>
+<dc:creator>厚生労働省</dc:creator>
+<dc:date>2026-11-24T17:00:00+09:00</dc:date>
+</item>
+<item rdf:about="https://www.mhlw.go.jp/toukei/saikin/hw/jinkou/geppo/s2026/09.html">
+<title><![CDATA[「人口動態統計速報」令和８（2026）年09月分]]></title>
+<link>https://www.mhlw.go.jp/toukei/saikin/hw/jinkou/geppo/s2026/09.html</link>
+<dc:creator>厚生労働省</dc:creator>
+<dc:date>2026-11-24T15:00:00+09:00</dc:date>
+</item>
+<item rdf:about="https://www.mhlw.go.jp/stf/newpage_77569.html">
+<title><![CDATA[第１回 生命科学・医学系研究等における個人情報の取扱い等に関する合同会議　第２タスクフォース ]]></title>
+<link>https://www.mhlw.go.jp/stf/newpage_77569.html</link>
+<dc:creator>厚生労働省</dc:creator>
+<dc:date>2026-11-24T14:00:00+09:00</dc:date>
+</item>
+<item rdf:about="https://www.mhlw.go.jp/stf/newpage_77563.html">
+<title><![CDATA[第222回社会保障審議会医療保険部会（ペーパーレス）の開催について]]></title>
+<link>https://www.mhlw.go.jp/stf/newpage_77563.html</link>
+<dc:creator>厚生労働省</dc:creator>
+<dc:date>2026-11-24T14:00:00+09:00</dc:date>
+</item>
+<item rdf:about="https://www.mhlw.go.jp/stf/newpage_77467.html">
+<title><![CDATA[第152回脳死下での臓器提供事例に係る検証会議を開催します]]></title>
+<link>https://www.mhlw.go.jp/stf/newpage_77467.html</link>
+<dc:creator>厚生労働省</dc:creator>
+<dc:date>2026-11-24T14:00:00+09:00</dc:date>
+</item>
+</rdf:RDF>

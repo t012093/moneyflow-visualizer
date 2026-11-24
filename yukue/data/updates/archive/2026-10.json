@@ -1,0 +1,845 @@
+{
+  "generatedAt": "2026-11-24T22:06:48.044Z",
+  "items": [
+    {
+      "id": "gian:kaku-222-17",
+      "date": "2026-10-30",
+      "type": "law",
+      "theme": "other",
+      "title": "特定タンカーに係る特定賠償義務履行担保契約等に関する特別措置法の一部を改正する法律案",
+      "summary": "内閣提出の法案。10月16日に提出、10月30日に衆議院で可決。いまは参議院で審議中。",
+      "ministry": "内閣提出の法案",
+      "stage": {
+        "steps": [
+          "検討",
+          "閣議決定",
+          "国会審議",
+          "成立",
+          "公布",
+          "施行"
+        ],
+        "index": 2,
+        "label": "参議院で審議中"
+      },
+      "links": [
+        {
+          "name": "衆議院 議案経過",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE364E.htm"
+        },
+        {
+          "name": "法案の本文",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/honbun/g22209017.htm"
+        }
+      ],
+      "sourceId": "shugiin",
+      "firstSeen": "2026-11-24T22:06:48.044Z",
+      "importance": 63,
+      "enriched": "rules"
+    },
+    {
+      "id": "gian:san-222-2",
+      "date": "2026-10-30",
+      "type": "tax",
+      "theme": "whole",
+      "title": "消費税の税率を当分の間の措置として引き下げる等のために講ずべき措置に関する法律案",
+      "summary": "参議院議員提出の法案。10月30日に提出。いまは参議院で審議中。",
+      "ministry": "参議院議員提出の法案",
+      "stage": {
+        "steps": [
+          "要望",
+          "与党大綱",
+          "閣議決定",
+          "国会審議",
+          "成立",
+          "施行"
+        ],
+        "index": 3,
+        "label": "参議院で審議中"
+      },
+      "links": [
+        {
+          "name": "衆議院 議案経過",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE3762.htm"
+        },
+        {
+          "name": "法案の本文",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/honbun/g22206002.htm"
+        }
+      ],
+      "sourceId": "shugiin",
+      "firstSeen": "2026-11-24T22:06:48.044Z",
+      "importance": 55,
+      "enriched": "rules"
+    },
+    {
+      "id": "gian:san-222-1",
+      "date": "2026-10-06",
+      "type": "law",
+      "theme": "other",
+      "title": "旧氏を通称として使用する機会の拡大を図るための措置等に関する法律案",
+      "summary": "参議院議員提出の法案。10月6日に提出。いまは参議院で審議中。",
+      "ministry": "参議院議員提出の法案",
+      "stage": {
+        "steps": [
+          "検討",
+          "閣議決定",
+          "国会審議",
+          "成立",
+          "公布",
+          "施行"
+        ],
+        "index": 2,
+        "label": "参議院で審議中"
+      },
+      "links": [
+        {
+          "name": "衆議院 議案経過",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE3352.htm"
+        },
+        {
+          "name": "法案の本文",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/honbun/g22206001.htm"
+        }
+      ],
+      "sourceId": "shugiin",
+      "firstSeen": "2026-11-24T22:06:48.044Z",
+      "importance": 35,
+      "enriched": "rules"
+    },
+    {
+      "id": "gian:shu-221-28",
+      "date": "2026-10-05",
+      "type": "law",
+      "theme": "other",
+      "title": "衆議院議員の選挙制度改革及び定数削減に関する法律案",
+      "summary": "衆議院議員提出の法案。10月5日に政治改革に関する特別委員会に付託。いまは撤回。",
+      "ministry": "衆議院議員提出の法案",
+      "stage": {
+        "steps": [
+          "検討",
+          "閣議決定",
+          "国会審議",
+          "成立",
+          "公布",
+          "施行"
+        ],
+        "index": 2,
+        "label": "撤回"
+      },
+      "links": [
+        {
+          "name": "衆議院 議案経過",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2D42.htm"
+        },
+        {
+          "name": "法案の本文",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/honbun/g22105028.htm"
+        }
+      ],
+      "sourceId": "shugiin",
+      "firstSeen": "2026-11-24T22:06:48.044Z",
+      "importance": 55,
+      "enriched": "rules"
+    },
+    {
+      "id": "gian:shu-221-30",
+      "date": "2026-10-05",
+      "type": "tax",
+      "theme": "whole",
+      "title": "賃金上昇を上回る所得税の負担増加に対処するために所得税に関し講ずべき措置に関する法律案",
+      "summary": "衆議院議員提出の法案。10月5日に財務金融委員会に付託。いまは撤回。",
+      "ministry": "衆議院議員提出の法案",
+      "stage": {
+        "steps": [
+          "要望",
+          "与党大綱",
+          "閣議決定",
+          "国会審議",
+          "成立",
+          "施行"
+        ],
+        "index": 3,
+        "label": "撤回"
+      },
+      "links": [
+        {
+          "name": "衆議院 議案経過",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2D72.htm"
+        },
+        {
+          "name": "法案の本文",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/honbun/g22105030.htm"
+        }
+      ],
+      "sourceId": "shugiin",
+      "firstSeen": "2026-11-24T22:06:48.044Z",
+      "importance": 55,
+      "enriched": "rules"
+    },
+    {
+      "id": "gian:shu-221-31",
+      "date": "2026-10-05",
+      "type": "law",
+      "theme": "other",
+      "title": "賃金上昇を上回る個人住民税の負担増加等に対処するために個人住民税に関し講ずべき措置に関する法律案",
+      "summary": "衆議院議員提出の法案。10月5日に総務委員会に付託。いまは撤回。",
+      "ministry": "衆議院議員提出の法案",
+      "stage": {
+        "steps": [
+          "検討",
+          "閣議決定",
+          "国会審議",
+          "成立",
+          "公布",
+          "施行"
+        ],
+        "index": 2,
+        "label": "撤回"
+      },
+      "links": [
+        {
+          "name": "衆議院 議案経過",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2D32.htm"
+        },
+        {
+          "name": "法案の本文",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/honbun/g22105031.htm"
+        }
+      ],
+      "sourceId": "shugiin",
+      "firstSeen": "2026-11-24T22:06:48.044Z",
+      "importance": 55,
+      "enriched": "rules"
+    },
+    {
+      "id": "gian:shu-221-1",
+      "date": "2026-10-05",
+      "type": "law",
+      "theme": "other",
+      "title": "政治資金規正法の一部を改正する法律案",
+      "summary": "衆議院議員提出の法案。10月5日に政治改革に関する特別委員会に付託。いまは衆議院で審議中。",
+      "ministry": "衆議院議員提出の法案",
+      "stage": {
+        "steps": [
+          "検討",
+          "閣議決定",
+          "国会審議",
+          "成立",
+          "公布",
+          "施行"
+        ],
+        "index": 2,
+        "label": "衆議院で審議中"
+      },
+      "links": [
+        {
+          "name": "衆議院 議案経過",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2D1E.htm"
+        },
+        {
+          "name": "法案の本文",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/honbun/g22105001.htm"
+        }
+      ],
+      "sourceId": "shugiin",
+      "firstSeen": "2026-11-24T22:06:48.044Z",
+      "importance": 35,
+      "enriched": "rules"
+    },
+    {
+      "id": "gian:shu-221-12",
+      "date": "2026-10-05",
+      "type": "law",
+      "theme": "other",
+      "title": "政党等の政治資金の収入に関する制度の在り方に係る措置に関する法律案",
+      "summary": "衆議院議員提出の法案。10月5日に政治改革に関する特別委員会に付託。いまは衆議院で審議中。",
+      "ministry": "衆議院議員提出の法案",
+      "stage": {
+        "steps": [
+          "検討",
+          "閣議決定",
+          "国会審議",
+          "成立",
+          "公布",
+          "施行"
+        ],
+        "index": 2,
+        "label": "衆議院で審議中"
+      },
+      "links": [
+        {
+          "name": "衆議院 議案経過",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2D22.htm"
+        },
+        {
+          "name": "法案の本文",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/honbun/g22105012.htm"
+        }
+      ],
+      "sourceId": "shugiin",
+      "firstSeen": "2026-11-24T22:06:48.044Z",
+      "importance": 35,
+      "enriched": "rules"
+    },
+    {
+      "id": "gian:shu-221-14",
+      "date": "2026-10-05",
+      "type": "law",
+      "theme": "other",
+      "title": "政治資金規正法の一部を改正する法律案",
+      "summary": "衆議院議員提出の法案。10月5日に政治改革に関する特別委員会に付託。いまは衆議院で審議中。",
+      "ministry": "衆議院議員提出の法案",
+      "stage": {
+        "steps": [
+          "検討",
+          "閣議決定",
+          "国会審議",
+          "成立",
+          "公布",
+          "施行"
+        ],
+        "index": 2,
+        "label": "衆議院で審議中"
+      },
+      "links": [
+        {
+          "name": "衆議院 議案経過",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2D26.htm"
+        },
+        {
+          "name": "法案の本文",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/honbun/g22105014.htm"
+        }
+      ],
+      "sourceId": "shugiin",
+      "firstSeen": "2026-11-24T22:06:48.044Z",
+      "importance": 35,
+      "enriched": "rules"
+    },
+    {
+      "id": "gian:shu-221-16",
+      "date": "2026-10-05",
+      "type": "tax",
+      "theme": "other",
+      "title": "自動車税及び軽自動車税の税率の上乗せに係る特例の廃止に関する法律案",
+      "summary": "衆議院議員提出の法案。10月5日に総務委員会に付託。いまは衆議院で審議中。",
+      "ministry": "衆議院議員提出の法案",
+      "stage": {
+        "steps": [
+          "要望",
+          "与党大綱",
+          "閣議決定",
+          "国会審議",
+          "成立",
+          "施行"
+        ],
+        "index": 3,
+        "label": "衆議院で審議中"
+      },
+      "links": [
+        {
+          "name": "衆議院 議案経過",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2D16.htm"
+        },
+        {
+          "name": "法案の本文",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/honbun/g22105016.htm"
+        }
+      ],
+      "sourceId": "shugiin",
+      "firstSeen": "2026-11-24T22:06:48.044Z",
+      "importance": 35,
+      "enriched": "rules"
+    },
+    {
+      "id": "gian:shu-221-17",
+      "date": "2026-10-05",
+      "type": "tax",
+      "theme": "other",
+      "title": "自動車重量税率の上乗せに係る特例の廃止に関する法律案",
+      "summary": "衆議院議員提出の法案。10月5日に財務金融委員会に付託。いまは衆議院で審議中。",
+      "ministry": "衆議院議員提出の法案",
+      "stage": {
+        "steps": [
+          "要望",
+          "与党大綱",
+          "閣議決定",
+          "国会審議",
+          "成立",
+          "施行"
+        ],
+        "index": 3,
+        "label": "衆議院で審議中"
+      },
+      "links": [
+        {
+          "name": "衆議院 議案経過",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2D6A.htm"
+        },
+        {
+          "name": "法案の本文",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/honbun/g22105017.htm"
+        }
+      ],
+      "sourceId": "shugiin",
+      "firstSeen": "2026-11-24T22:06:48.044Z",
+      "importance": 35,
+      "enriched": "rules"
+    },
+    {
+      "id": "gian:shu-221-19",
+      "date": "2026-10-05",
+      "type": "law",
+      "theme": "other",
+      "title": "自動車盗難対策等の推進に関する法律案",
+      "summary": "衆議院議員提出の法案。10月5日に内閣委員会に付託。いまは衆議院で審議中。",
+      "ministry": "衆議院議員提出の法案",
+      "stage": {
+        "steps": [
+          "検討",
+          "閣議決定",
+          "国会審議",
+          "成立",
+          "公布",
+          "施行"
+        ],
+        "index": 2,
+        "label": "衆議院で審議中"
+      },
+      "links": [
+        {
+          "name": "衆議院 議案経過",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2D06.htm"
+        },
+        {
+          "name": "法案の本文",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/honbun/g22105019.htm"
+        }
+      ],
+      "sourceId": "shugiin",
+      "firstSeen": "2026-11-24T22:06:48.044Z",
+      "importance": 35,
+      "enriched": "rules"
+    },
+    {
+      "id": "gian:shu-221-2",
+      "date": "2026-10-05",
+      "type": "law",
+      "theme": "debt",
+      "title": "令和八年度における公債の発行の特例に関する法律案",
+      "summary": "衆議院議員提出の法案。10月5日に財務金融委員会に付託。いまは衆議院で審議中。",
+      "ministry": "衆議院議員提出の法案",
+      "stage": {
+        "steps": [
+          "検討",
+          "閣議決定",
+          "国会審議",
+          "成立",
+          "公布",
+          "施行"
+        ],
+        "index": 2,
+        "label": "衆議院で審議中"
+      },
+      "links": [
+        {
+          "name": "衆議院 議案経過",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2D52.htm"
+        },
+        {
+          "name": "法案の本文",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/honbun/g22105002.htm"
+        }
+      ],
+      "sourceId": "shugiin",
+      "firstSeen": "2026-11-24T22:06:48.044Z",
+      "importance": 35,
+      "enriched": "rules"
+    },
+    {
+      "id": "gian:shu-221-20",
+      "date": "2026-10-05",
+      "type": "law",
+      "theme": "other",
+      "title": "盗難自動車等の処分の防止に関する法律案",
+      "summary": "衆議院議員提出の法案。10月5日に内閣委員会に付託。いまは衆議院で審議中。",
+      "ministry": "衆議院議員提出の法案",
+      "stage": {
+        "steps": [
+          "検討",
+          "閣議決定",
+          "国会審議",
+          "成立",
+          "公布",
+          "施行"
+        ],
+        "index": 2,
+        "label": "衆議院で審議中"
+      },
+      "links": [
+        {
+          "name": "衆議院 議案経過",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2D0E.htm"
+        },
+        {
+          "name": "法案の本文",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/honbun/g22105020.htm"
+        }
+      ],
+      "sourceId": "shugiin",
+      "firstSeen": "2026-11-24T22:06:48.044Z",
+      "importance": 35,
+      "enriched": "rules"
+    },
+    {
+      "id": "gian:shu-221-21",
+      "date": "2026-10-05",
+      "type": "law",
+      "theme": "other",
+      "title": "組織的な犯罪の処罰及び犯罪収益の規制等に関する法律及び刑事訴訟法の一部を改正する法律案",
+      "summary": "衆議院議員提出の法案。10月5日に法務委員会に付託。いまは衆議院で審議中。",
+      "ministry": "衆議院議員提出の法案",
+      "stage": {
+        "steps": [
+          "検討",
+          "閣議決定",
+          "国会審議",
+          "成立",
+          "公布",
+          "施行"
+        ],
+        "index": 2,
+        "label": "衆議院で審議中"
+      },
+      "links": [
+        {
+          "name": "衆議院 議案経過",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2D3A.htm"
+        },
+        {
+          "name": "法案の本文",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/honbun/g22105021.htm"
+        }
+      ],
+      "sourceId": "shugiin",
+      "firstSeen": "2026-11-24T22:06:48.044Z",
+      "importance": 35,
+      "enriched": "rules"
+    },
+    {
+      "id": "gian:shu-221-24",
+      "date": "2026-10-05",
+      "type": "law",
+      "theme": "other",
+      "title": "特別市の設置に係る制度の整備の推進に関する法律案",
+      "summary": "衆議院議員提出の法案。10月5日に地域活性化・こども政策・デジタル社会形成に関する特別委員会に付託。いまは衆議院で審議中。",
+      "ministry": "衆議院議員提出の法案",
+      "stage": {
+        "steps": [
+          "検討",
+          "閣議決定",
+          "国会審議",
+          "成立",
+          "公布",
+          "施行"
+        ],
+        "index": 2,
+        "label": "衆議院で審議中"
+      },
+      "links": [
+        {
+          "name": "衆議院 議案経過",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2CFE.htm"
+        },
+        {
+          "name": "法案の本文",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/honbun/g22105024.htm"
+        }
+      ],
+      "sourceId": "shugiin",
+      "firstSeen": "2026-11-24T22:06:48.044Z",
+      "importance": 35,
+      "enriched": "rules"
+    },
+    {
+      "id": "gian:shu-221-32",
+      "date": "2026-10-05",
+      "type": "law",
+      "theme": "industry",
+      "title": "受託中小企業振興法の一部を改正する法律案",
+      "summary": "衆議院議員提出の法案。10月5日に経済産業委員会に付託。いまは衆議院で審議中。",
+      "ministry": "衆議院議員提出の法案",
+      "stage": {
+        "steps": [
+          "検討",
+          "閣議決定",
+          "国会審議",
+          "成立",
+          "公布",
+          "施行"
+        ],
+        "index": 2,
+        "label": "衆議院で審議中"
+      },
+      "links": [
+        {
+          "name": "衆議院 議案経過",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2DC6.htm"
+        },
+        {
+          "name": "法案の本文",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/honbun/g22105032.htm"
+        }
+      ],
+      "sourceId": "shugiin",
+      "firstSeen": "2026-11-24T22:06:48.044Z",
+      "importance": 35,
+      "enriched": "rules"
+    },
+    {
+      "id": "gian:shu-221-33",
+      "date": "2026-10-05",
+      "type": "law",
+      "theme": "other",
+      "title": "ものづくり基盤技術振興基本法の一部を改正する法律案",
+      "summary": "衆議院議員提出の法案。10月5日に経済産業委員会に付託。いまは衆議院で審議中。",
+      "ministry": "衆議院議員提出の法案",
+      "stage": {
+        "steps": [
+          "検討",
+          "閣議決定",
+          "国会審議",
+          "成立",
+          "公布",
+          "施行"
+        ],
+        "index": 2,
+        "label": "衆議院で審議中"
+      },
+      "links": [
+        {
+          "name": "衆議院 議案経過",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2DD6.htm"
+        },
+        {
+          "name": "法案の本文",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/honbun/g22105033.htm"
+        }
+      ],
+      "sourceId": "shugiin",
+      "firstSeen": "2026-11-24T22:06:48.044Z",
+      "importance": 35,
+      "enriched": "rules"
+    },
+    {
+      "id": "gian:shu-221-34",
+      "date": "2026-10-05",
+      "type": "law",
+      "theme": "social",
+      "title": "新型コロナウイルス感染症対策検証委員会等の設置等に関する法律案",
+      "summary": "衆議院議員提出の法案。10月5日に議院運営委員会に付託。いまは衆議院で審議中。",
+      "ministry": "衆議院議員提出の法案",
+      "stage": {
+        "steps": [
+          "検討",
+          "閣議決定",
+          "国会審議",
+          "成立",
+          "公布",
+          "施行"
+        ],
+        "index": 2,
+        "label": "衆議院で審議中"
+      },
+      "links": [
+        {
+          "name": "衆議院 議案経過",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2D4A.htm"
+        },
+        {
+          "name": "法案の本文",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/honbun/g22105034.htm"
+        }
+      ],
+      "sourceId": "shugiin",
+      "firstSeen": "2026-11-24T22:06:48.044Z",
+      "importance": 35,
+      "enriched": "rules"
+    },
+    {
+      "id": "gian:shu-221-35",
+      "date": "2026-10-05",
+      "type": "law",
+      "theme": "other",
+      "title": "公職選挙法の一部を改正する法律案",
+      "summary": "衆議院議員提出の法案。10月5日に政治改革に関する特別委員会に付託。いまは衆議院で審議中。",
+      "ministry": "衆議院議員提出の法案",
+      "stage": {
+        "steps": [
+          "検討",
+          "閣議決定",
+          "国会審議",
+          "成立",
+          "公布",
+          "施行"
+        ],
+        "index": 2,
+        "label": "衆議院で審議中"
+      },
+      "links": [
+        {
+          "name": "衆議院 議案経過",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2D2A.htm"
+        },
+        {
+          "name": "法案の本文",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/honbun/g22105035.htm"
+        }
+      ],
+      "sourceId": "shugiin",
+      "firstSeen": "2026-11-24T22:06:48.044Z",
+      "importance": 35,
+      "enriched": "rules"
+    },
+    {
+      "id": "gian:shu-221-36",
+      "date": "2026-10-05",
+      "type": "law",
+      "theme": "infra",
+      "title": "非居住住宅税及び超短期所有住宅等の譲渡に係る事業所得等の課税の特例の創設等に関する法律案",
+      "summary": "衆議院議員提出の法案。10月5日に国土交通委員会に付託。いまは衆議院で審議中。",
+      "ministry": "衆議院議員提出の法案",
+      "stage": {
+        "steps": [
+          "検討",
+          "閣議決定",
+          "国会審議",
+          "成立",
+          "公布",
+          "施行"
+        ],
+        "index": 2,
+        "label": "衆議院で審議中"
+      },
+      "links": [
+        {
+          "name": "衆議院 議案経過",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2DB6.htm"
+        },
+        {
+          "name": "法案の本文",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/honbun/g22105036.htm"
+        }
+      ],
+      "sourceId": "shugiin",
+      "firstSeen": "2026-11-24T22:06:48.044Z",
+      "importance": 35,
+      "enriched": "rules"
+    },
+    {
+      "id": "gian:shu-221-37",
+      "date": "2026-10-05",
+      "type": "law",
+      "theme": "industry",
+      "title": "自動車産業における脱炭素化の推進に関する法律案",
+      "summary": "衆議院議員提出の法案。10月5日に経済産業委員会に付託。いまは衆議院で審議中。",
+      "ministry": "衆議院議員提出の法案",
+      "stage": {
+        "steps": [
+          "検討",
+          "閣議決定",
+          "国会審議",
+          "成立",
+          "公布",
+          "施行"
+        ],
+        "index": 2,
+        "label": "衆議院で審議中"
+      },
+      "links": [
+        {
+          "name": "衆議院 議案経過",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2DDE.htm"
+        },
+        {
+          "name": "法案の本文",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/honbun/g22105037.htm"
+        }
+      ],
+      "sourceId": "shugiin",
+      "firstSeen": "2026-11-24T22:06:48.044Z",
+      "importance": 35,
+      "enriched": "rules"
+    },
+    {
+      "id": "gian:shu-221-6",
+      "date": "2026-10-05",
+      "type": "law",
+      "theme": "social",
+      "title": "障害者及びその家族に対する福祉、教育等に係る支援に関する施策の総合的な推進に関する法律案",
+      "summary": "衆議院議員提出の法案。10月5日に文部科学委員会に付託。いまは衆議院で審議中。",
+      "ministry": "衆議院議員提出の法案",
+      "stage": {
+        "steps": [
+          "検討",
+          "閣議決定",
+          "国会審議",
+          "成立",
+          "公布",
+          "施行"
+        ],
+        "index": 2,
+        "label": "衆議院で審議中"
+      },
+      "links": [
+        {
+          "name": "衆議院 議案経過",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2DAE.htm"
+        },
+        {
+          "name": "法案の本文",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/honbun/g22105006.htm"
+        }
+      ],
+      "sourceId": "shugiin",
+      "firstSeen": "2026-11-24T22:06:48.044Z",
+      "importance": 35,
+      "enriched": "rules"
+    },
+    {
+      "id": "gian:shu-221-7",
+      "date": "2026-10-05",
+      "type": "law",
+      "theme": "social",
+      "title": "全ての国民が安心して医療を受けられる環境の整備を図るための高額療養費等の制度の在り方に係る措置に関する法律案",
+      "summary": "衆議院議員提出の法案。10月5日に厚生労働委員会に付託。いまは衆議院で審議中。",
+      "ministry": "衆議院議員提出の法案",
+      "stage": {
+        "steps": [
+          "検討",
+          "閣議決定",
+          "国会審議",
+          "成立",
+          "公布",
+          "施行"
+        ],
+        "index": 2,
+        "label": "衆議院で審議中"
+      },
+      "links": [
+        {
+          "name": "衆議院 議案経過",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2DBE.htm"
+        },
+        {
+          "name": "法案の本文",
+          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/honbun/g22105007.htm"
+        }
+      ],
+      "sourceId": "shugiin",
+      "firstSeen": "2026-11-24T22:06:48.044Z",
+      "importance": 35,
+      "enriched": "rules"
+    }
+  ]
+}

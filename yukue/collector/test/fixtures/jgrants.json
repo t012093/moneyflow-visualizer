@@ -1,0 +1,76 @@
+{
+ "metadata": {
+  "type": "https://developers.digital.go.jp/documents/jgrants/api/",
+  "resultset": {
+   "count": 193
+  }
+ },
+ "result": [
+  {
+   "acceptance_end_datetime": "2026-12-11T03:00:00.000Z",
+   "acceptance_start_datetime": "2026-11-11T03:00:00.000Z",
+   "id": "a0WfQ0000049swXUAQ",
+   "institution_name": null,
+   "name": "S-00010047",
+   "subsidy_max_limit": 2700000000,
+   "target_area_search": "全国",
+   "target_number_of_employees": "従業員数の制約なし",
+   "title": "令和７年度補正「次世代革新炉の開発・建設に向けた技術開発・サプライチェーン構築支援事業補助金」【三次公募】"
+  },
+  {
+   "acceptance_end_datetime": "2026-12-15T08:00:00.000Z",
+   "acceptance_start_datetime": "2026-10-16T06:00:00.000Z",
+   "id": "a0WfQ000003lu8IUAQ",
+   "institution_name": null,
+   "name": "S-00009961",
+   "subsidy_max_limit": 500000000,
+   "target_area_search": "全国",
+   "target_number_of_employees": "従業員数の制約なし",
+   "title": "【令和８年度】二酸化炭素排出抑制対策事業費等補助金（低炭素型建材活用新築ZEB支援事業）（三次公募）"
+  },
+  {
+   "acceptance_end_datetime": "2027-03-31T08:15:00.000Z",
+   "acceptance_start_datetime": "2026-04-01T00:00:00.000Z",
+   "id": "a0WfQ000004CHdtUAG",
+   "institution_name": null,
+   "name": "S-00010055",
+   "subsidy_max_limit": 0,
+   "target_area_search": "三重県",
+   "target_number_of_employees": "従業員数の制約なし",
+   "title": "四日市市中小企業脱炭素経営支援事業費補助金"
+  },
+  {
+   "acceptance_end_datetime": "2026-12-31T00:00:00.000Z",
+   "acceptance_start_datetime": "2026-11-11T15:00:00.000Z",
+   "id": "a0WfQ000004BTqnUAG",
+   "institution_name": null,
+   "name": "S-00010052",
+   "subsidy_max_limit": 50000,
+   "target_area_search": "東京都",
+   "target_number_of_employees": "従業員数の制約なし",
+   "title": "令和８年度在宅医療現場における防犯機器等導入支援事業"
+  },
+  {
+   "acceptance_end_datetime": "2026-12-11T03:00:00.000Z",
+   "acceptance_start_datetime": "2026-11-11T03:00:00.000Z",
+   "id": "a0WfQ0000049swXUAQ",
+   "institution_name": null,
+   "name": "S-00010047",
+   "subsidy_max_limit": 2700000000,
+   "target_area_search": "全国",
+   "target_number_of_employees": "従業員数の制約なし",
+   "title": "令和７年度補正「次世代革新炉の開発・建設に向けた技術開発・サプライチェーン構築支援事業補助金」【三次公募】"
+  },
+  {
+   "acceptance_end_datetime": "2027-03-31T08:15:00.000Z",
+   "acceptance_start_datetime": "2026-03-31T23:30:00.000Z",
+   "id": "a0WfQ0000047HWTUA2",
+   "institution_name": null,
+   "name": "S-00010039",
+   "subsidy_max_limit": 200000,
+   "target_area_search": "三重県",
+   "target_number_of_employees": "従業員数の制約なし",
+   "title": "四日市市燃料電池自動車導入促進補助金"
+  }
+ ]
+}

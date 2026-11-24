@@ -1,0 +1,425 @@
+{
+  "https://api.jgrants-portal.go.jp/exp/v1/public/subsidies?keyword=%E4%BA%8B%E6%A5%AD&sort=created_date&order=DESC&acceptance=1": {
+    "hash": "080d108191124aa05a29984a3abf372116e72481",
+    "fetchedAt": "2026-11-24T22:18:06.748Z"
+  },
+  "https://api.jgrants-portal.go.jp/exp/v1/public/subsidies?keyword=%E5%8A%A9%E6%88%90&sort=created_date&order=DESC&acceptance=1": {
+    "hash": "be5516d0bfe7e8dfddd9cf6c49b1177941ad5d14",
+    "fetchedAt": "2026-11-24T22:18:03.120Z"
+  },
+  "https://api.jgrants-portal.go.jp/exp/v1/public/subsidies?keyword=%E6%94%AF%E6%8F%B4&sort=created_date&order=DESC&acceptance=1": {
+    "hash": "3ed48fadb0a9d62a9b06b986dc15bb707c3d4aa6",
+    "fetchedAt": "2026-11-24T22:18:05.059Z"
+  },
+  "https://api.jgrants-portal.go.jp/exp/v1/public/subsidies?keyword=%E8%A3%9C%E5%8A%A9%E9%87%91&sort=created_date&order=DESC&acceptance=1": {
+    "hash": "617d6cb9f80dfd5eaab0e3ff813485a6b058fd5e",
+    "fetchedAt": "2026-11-24T22:18:02.405Z"
+  },
+  "https://public-comment.e-gov.go.jp/rss/pcm_list.xml": {
+    "etag": "\"eacf6fc91b5b33cb5a962a102baa2e6e-1-gzip\"",
+    "lastModified": "Tue, 24 Nov 2026 00:01:20 GMT",
+    "hash": "d50fe3594342216891361f8a415ae189a581b81a",
+    "fetchedAt": "2026-11-24T22:07:09.355Z"
+  },
+  "https://www.caa.go.jp/news.rss": {
+    "etag": "W/\"a81621440f9e9aca8d2d8a649fed55bf\"",
+    "lastModified": "Tue, 24 Nov 2026 09:24:22 GMT",
+    "hash": "60aa3e4bb5a8c0cbce1f55e8ecbfd20101107d22",
+    "fetchedAt": "2026-11-24T22:07:06.195Z"
+  },
+  "https://www.cao.go.jp/rss/news.rdf": {
+    "etag": "W/\"1937-66101645f90b8\"",
+    "lastModified": "Tue, 24 Nov 2026 08:21:07 GMT",
+    "hash": "1cdb499f79cb037dab1f239eaaa2989047d86df2",
+    "fetchedAt": "2026-11-24T22:17:44.992Z"
+  },
+  "https://www.digital.go.jp/rss/news.xml": {
+    "etag": "\"1795509136-gzip\"",
+    "lastModified": "Tue, 24 Nov 2026 08:32:16 GMT",
+    "hash": "4eed8d9e30989beeeea2c9d076140e2838f5a634",
+    "fetchedAt": "2026-11-24T22:07:07.719Z"
+  },
+  "https://www.fsa.go.jp/fsaNewsListAll_rss2.xml": {
+    "lastModified": "Tue, 24 Nov 2026 08:00:12 GMT",
+    "hash": "83a5fbbd47d53264a0f3d4caea90d4342aa2a0f7",
+    "fetchedAt": "2026-11-24T22:07:04.256Z"
+  },
+  "https://www.kantei.go.jp/index-jnews.rdf": {
+    "etag": "\"bcc21828a870c2f382bc7dcd83f8c2cc\"",
+    "lastModified": "Tue, 24 Nov 2026 12:03:31 GMT",
+    "hash": "c1e2e841fb6352b3efea804ffc6d1f713c653e7e",
+    "fetchedAt": "2026-11-24T22:06:49.681Z"
+  },
+  "https://www.kantei.go.jp/jp/kakugi/2026/kakugi-2026111301.html": {
+    "etag": "\"ee4b59c211699f7bf6df9a9fe1806b98\"",
+    "lastModified": "Fri, 13 Nov 2026 02:50:30 GMT",
+    "hash": "b2d374062268d83d52f615311e3113af5dfab186",
+    "fetchedAt": "2026-11-24T22:07:15.815Z"
+  },
+  "https://www.kantei.go.jp/jp/kakugi/2026/kakugi-2026111701.html": {
+    "etag": "\"59ed2f832dd390b24f00430955446e6a\"",
+    "lastModified": "Tue, 17 Nov 2026 02:50:20 GMT",
+    "hash": "55c34a2a2b0ae386e62b1ec342f497cbd9432b17",
+    "fetchedAt": "2026-11-24T22:07:14.363Z"
+  },
+  "https://www.kantei.go.jp/jp/kakugi/2026/kakugi-2026112001.html": {
+    "etag": "\"2f6684648aacf8ca6f7900974150380b\"",
+    "lastModified": "Fri, 20 Nov 2026 02:50:58 GMT",
+    "hash": "215ed8f9bcc3fa7a1a6ccf0af912d3bd9e98d377",
+    "fetchedAt": "2026-11-24T22:07:12.815Z"
+  },
+  "https://www.kantei.go.jp/jp/kakugi/2026/kakugi-2026112401.html": {
+    "etag": "\"e3c459708e2950c3b1ea661e99304639\"",
+    "lastModified": "Tue, 24 Nov 2026 02:50:24 GMT",
+    "hash": "731a1a1bb297552ff70cf79b198ee162004664b8",
+    "fetchedAt": "2026-11-24T22:07:11.351Z"
+  },
+  "https://www.kantei.go.jp/jp/kakugi/index.html": {
+    "etag": "\"17fc840989dc975345bbd28d65997d06\"",
+    "lastModified": "Tue, 24 Nov 2026 02:50:24 GMT",
+    "hash": "249fc0093693c7995cb6a59f2f5790d85667a1ef",
+    "fetchedAt": "2026-11-24T22:07:09.910Z"
+  },
+  "https://www.maff.go.jp/rss.xml": {
+    "etag": "W/\"ac5951cc32b187042338f07531aee997\"",
+    "lastModified": "Tue, 24 Nov 2026 08:00:17 GMT",
+    "hash": "30316d23a65ed7636ede12489ee706eeb068ddd5",
+    "fetchedAt": "2026-11-24T22:07:02.730Z"
+  },
+  "https://www.mext.go.jp/b_menu/news/index.rdf": {
+    "etag": "\"2b14-66101efbc03fe\"",
+    "lastModified": "Tue, 24 Nov 2026 09:00:05 GMT",
+    "hash": "3d9681ebf13aff204b872b4b31764909ecdf248c",
+    "fetchedAt": "2026-11-24T22:06:59.662Z"
+  },
+  "https://www.mhlw.go.jp/stf/news.rdf": {
+    "etag": "\"c6e9-661037ffbf059\"",
+    "lastModified": "Tue, 24 Nov 2026 10:52:00 GMT",
+    "hash": "76e6f5985050d8c77b2726609a34736aca227ed4",
+    "fetchedAt": "2026-11-24T22:06:54.026Z"
+  },
+  "https://www.mlit.go.jp/index.rdf": {
+    "etag": "W/\"9068628f4ab7666cb4f4ad929d00bce7\"",
+    "lastModified": "Tue, 24 Nov 2026 09:03:37 GMT",
+    "hash": "a0a411220c525ce9d8c366c3a79412fb70c9a54b",
+    "fetchedAt": "2026-11-24T22:07:01.185Z"
+  },
+  "https://www.mof.go.jp/news.rss": {
+    "etag": "\"776c-66105652ffb97\"",
+    "lastModified": "Tue, 24 Nov 2026 13:07:40 GMT",
+    "hash": "b83d6107f1c3dec31536b8436d9db7f120d1f0d1",
+    "fetchedAt": "2026-11-24T22:17:38.536Z"
+  },
+  "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2CFE.htm": {
+    "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",
+    "lastModified": "Tue, 24 Nov 2026 00:13:42 GMT",
+    "hash": "905d38a09d5747a2d5a53a76187eff705d4ce268",
+    "fetchedAt": "2026-11-24T22:07:35.563Z"
+  },
+  "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2D06.htm": {
+    "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",
+    "lastModified": "Tue, 24 Nov 2026 00:13:42 GMT",
+    "hash": "4759e3e78fb1aab375404f766972f80a01da1947",
+    "fetchedAt": "2026-11-24T22:07:31.005Z"
+  },
+  "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2D0E.htm": {
+    "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",
+    "lastModified": "Tue, 24 Nov 2026 00:13:42 GMT",
+    "hash": "eb91ed199c5cb19ff6c1fdc60917813a560b3169",
+    "fetchedAt": "2026-11-24T22:07:32.505Z"
+  },
+  "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2D16.htm": {
+    "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",
+    "lastModified": "Tue, 24 Nov 2026 00:13:42 GMT",
+    "hash": "aa4b4a242fb3cf57585fcda604214395e6b8f30c",
+    "fetchedAt": "2026-11-24T22:07:27.994Z"
+  },
+  "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2D1E.htm": {
+    "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",
+    "lastModified": "Tue, 24 Nov 2026 00:13:42 GMT",
+    "hash": "4786d201899b342bfcab0e6e946a7ae45809b542",
+    "fetchedAt": "2026-11-24T22:07:18.981Z"
+  },
+  "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2D22.htm": {
+    "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",
+    "lastModified": "Tue, 24 Nov 2026 00:13:42 GMT",
+    "hash": "c9309afdb64fd03356bb9ebe6cd0b0e04414e58f",
+    "fetchedAt": "2026-11-24T22:07:25.005Z"
+  },
+  "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2D26.htm": {
+    "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",
+    "lastModified": "Tue, 24 Nov 2026 00:13:42 GMT",
+    "hash": "60beb26dd42bec8efaf4402fcde79b5d5b292802",
+    "fetchedAt": "2026-11-24T22:07:26.499Z"
+  },
+  "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2D2A.htm": {
+    "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",
+    "lastModified": "Tue, 24 Nov 2026 00:13:42 GMT",
+    "hash": "bdebaca9adee0b94a829ca520782ce92bb5690d0",
+    "fetchedAt": "2026-11-24T22:07:46.001Z"
+  },
+  "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2D32.htm": {
+    "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",
+    "lastModified": "Tue, 24 Nov 2026 00:13:42 GMT",
+    "hash": "86255457d907e434f1c0436b7eb48487aa8cd4ba",
+    "fetchedAt": "2026-11-24T22:07:39.999Z"
+  },
+  "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2D3A.htm": {
+    "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",
+    "lastModified": "Tue, 24 Nov 2026 00:13:42 GMT",
+    "hash": "358c429af0302282610900397ee25375ae7efd74",
+    "fetchedAt": "2026-11-24T22:07:34.044Z"
+  },
+  "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2D42.htm": {
+    "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",
+    "lastModified": "Tue, 24 Nov 2026 00:13:42 GMT",
+    "hash": "51d7f0535a0a58e3b175412aeac4e20440d09178",
+    "fetchedAt": "2026-11-24T22:07:36.985Z"
+  },
+  "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2D4A.htm": {
+    "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",
+    "lastModified": "Tue, 24 Nov 2026 00:13:42 GMT",
+    "hash": "0e00173c01969679c0b5bf59ad8975a071b07d94",
+    "fetchedAt": "2026-11-24T22:07:44.501Z"
+  },
+  "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2D52.htm": {
+    "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",
+    "lastModified": "Tue, 24 Nov 2026 00:13:42 GMT",
+    "hash": "ecd8dc7b067d7353feb911ecbaa800683fe85ab4",
+    "fetchedAt": "2026-11-24T22:07:20.487Z"
+  },
+  "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2D6A.htm": {
+    "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",
+    "lastModified": "Tue, 24 Nov 2026 00:13:42 GMT",
+    "hash": "dca2819620804b62a70f0803ae9a06f12b2970a2",
+    "fetchedAt": "2026-11-24T22:07:29.534Z"
+  },
+  "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2D72.htm": {
+    "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",
+    "lastModified": "Tue, 24 Nov 2026 00:13:42 GMT",
+    "hash": "8ccadeb3c2c615f193ca775cabaad935b77f85c9",
+    "fetchedAt": "2026-11-24T22:07:38.511Z"
+  },
+  "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2DAE.htm": {
+    "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",
+    "lastModified": "Tue, 24 Nov 2026 00:13:42 GMT",
+    "hash": "ade328afffd7e56d21aaee1da8f97121066999cd",
+    "fetchedAt": "2026-11-24T22:07:21.994Z"
+  },
+  "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2DB6.htm": {
+    "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",
+    "lastModified": "Tue, 24 Nov 2026 00:13:42 GMT",
+    "hash": "02ff4b582aede8e4fd72a463e6d96096330c7c20",
+    "fetchedAt": "2026-11-24T22:07:47.656Z"
+  },
+  "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2DBE.htm": {
+    "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",
+    "lastModified": "Tue, 24 Nov 2026 00:13:42 GMT",
+    "hash": "aaeb78f25665134a707a5443354996ab29658abc",
+    "fetchedAt": "2026-11-24T22:07:23.498Z"
+  },
+  "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2DC6.htm": {
+    "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",
+    "lastModified": "Tue, 24 Nov 2026 00:13:42 GMT",
+    "hash": "8810edc3ad10471469d8624700a964b48b5f20ae",
+    "fetchedAt": "2026-11-24T22:07:41.498Z"
+  },
+  "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2DD6.htm": {
+    "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",
+    "lastModified": "Tue, 24 Nov 2026 00:13:42 GMT",
+    "hash": "d12c884cd95f0e560a7df72b02237323d2e2ac86",
+    "fetchedAt": "2026-11-24T22:07:42.999Z"
+  },
+  "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2DDE.htm": {
+    "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",
+    "lastModified": "Tue, 24 Nov 2026 00:13:42 GMT",
+    "hash": "dd9d80284de5a71c7a4251b3b01da6283e433db4",
+    "fetchedAt": "2026-11-24T22:07:49.011Z"
+  },
+  "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE3352.htm": {
+    "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",
+    "lastModified": "Tue, 24 Nov 2026 00:13:42 GMT",
+    "hash": "0c43c12ed213478f057ff793cbce08fd09960b68",
+    "fetchedAt": "2026-11-24T22:07:55.019Z"
+  },
+  "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE342E.htm": {
+    "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",
+    "lastModified": "Tue, 24 Nov 2026 00:13:42 GMT",
+    "hash": "83b7ad7a5b7c467a0f5a5dcb55e55f9ae731fbfd",
+    "fetchedAt": "2026-11-24T22:08:03.166Z"
+  },
+  "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE3442.htm": {
+    "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",
+    "lastModified": "Tue, 24 Nov 2026 00:13:42 GMT",
+    "hash": "9d3a8ecec9b9597a325ffa11cda38a03f0eee86d",
+    "fetchedAt": "2026-11-24T22:08:04.004Z"
+  },
+  "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE3456.htm": {
+    "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",
+    "lastModified": "Tue, 24 Nov 2026 00:13:42 GMT",
+    "hash": "0df25619022dcb5bef670dfad7a36ceb237595fa",
+    "fetchedAt": "2026-11-24T22:08:05.567Z"
+  },
+  "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE346A.htm": {
+    "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",
+    "lastModified": "Tue, 24 Nov 2026 00:13:42 GMT",
+    "hash": "ebd8fd0e5bb51eb72a87ae8acdda6de9cd32ca21",
+    "fetchedAt": "2026-11-24T22:08:07.048Z"
+  },
+  "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE347E.htm": {
+    "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",
+    "lastModified": "Tue, 24 Nov 2026 00:13:42 GMT",
+    "hash": "396cdc506404b78ab19d3e1495173e5e9659862e",
+    "fetchedAt": "2026-11-24T22:08:08.513Z"
+  },
+  "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE3492.htm": {
+    "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",
+    "lastModified": "Tue, 24 Nov 2026 00:13:42 GMT",
+    "hash": "975eb788fd06dac8a6cc6d0959f6b724fbf1b2ee",
+    "fetchedAt": "2026-11-24T22:08:10.024Z"
+  },
+  "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE34A6.htm": {
+    "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",
+    "lastModified": "Tue, 24 Nov 2026 00:13:42 GMT",
+    "hash": "0b66d0bf63de537e0185956b1c05979b46460846",
+    "fetchedAt": "2026-11-24T22:08:11.515Z"
+  },
+  "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE34BA.htm": {
+    "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",
+    "lastModified": "Tue, 24 Nov 2026 00:13:42 GMT",
+    "hash": "f0fa8e6b09f3e57e6b42ca37bca5d7ea44e222b6",
+    "fetchedAt": "2026-11-24T22:08:13.109Z"
+  },
+  "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE34CE.htm": {
+    "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",
+    "lastModified": "Tue, 24 Nov 2026 00:13:42 GMT",
+    "hash": "e64b726c34ff05b1c0af181072c4a8a3472b21b4",
+    "fetchedAt": "2026-11-24T22:08:14.512Z"
+  },
+  "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE34E2.htm": {
+    "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",
+    "lastModified": "Tue, 24 Nov 2026 00:13:42 GMT",
+    "hash": "f52263daa523f56fabe04369f6be2eb8838661cc",
+    "fetchedAt": "2026-11-24T22:08:16.007Z"
+  },
+  "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE34F6.htm": {
+    "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",
+    "lastModified": "Tue, 24 Nov 2026 00:13:42 GMT",
+    "hash": "b97e2a330d001edeb63014a13063bde941c9b006",
+    "fetchedAt": "2026-11-24T22:08:17.673Z"
+  },
+  "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE350A.htm": {
+    "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",
+    "lastModified": "Tue, 24 Nov 2026 00:13:42 GMT",
+    "hash": "7562f42396ebd49394ee2670ba12772219064544",
+    "fetchedAt": "2026-11-24T22:08:19.014Z"
+  },
+  "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE351E.htm": {
+    "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",
+    "lastModified": "Tue, 24 Nov 2026 00:13:42 GMT",
+    "hash": "5e78fdde15ca96b5171293192add82756169e593",
+    "fetchedAt": "2026-11-24T22:08:20.500Z"
+  },
+  "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE3532.htm": {
+    "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",
+    "lastModified": "Tue, 24 Nov 2026 00:13:42 GMT",
+    "hash": "5cedadec8ee0042f6cec2c496062debf1842cc07",
+    "fetchedAt": "2026-11-24T22:08:22.045Z"
+  },
+  "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE3626.htm": {
+    "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",
+    "lastModified": "Tue, 24 Nov 2026 00:13:42 GMT",
+    "hash": "e898a5772add86be9c91099360f69d0048dfc7f4",
+    "fetchedAt": "2026-11-24T22:08:23.486Z"
+  },
+  "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE363A.htm": {
+    "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",
+    "lastModified": "Tue, 24 Nov 2026 00:13:42 GMT",
+    "hash": "74d279a0d134e1a04ae759ce73016dfc96759587",
+    "fetchedAt": "2026-11-24T22:08:24.987Z"
+  },
+  "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE364E.htm": {
+    "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",
+    "lastModified": "Tue, 24 Nov 2026 00:13:42 GMT",
+    "hash": "ae42085c1871d37299d59195b8ad017312cea613",
+    "fetchedAt": "2026-11-24T22:08:26.483Z"
+  },
+  "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE36B6.htm": {
+    "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",
+    "lastModified": "Tue, 24 Nov 2026 00:13:42 GMT",
+    "hash": "85440f89a72ce90073fe475389c8713484caf135",
+    "fetchedAt": "2026-11-24T22:07:50.486Z"
+  },
+  "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE36CA.htm": {
+    "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",
+    "lastModified": "Tue, 24 Nov 2026 00:13:42 GMT",
+    "hash": "58306299f560b844a806a32c16c9098ddfa21b52",
+    "fetchedAt": "2026-11-24T22:08:27.987Z"
+  },
+  "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE36DE.htm": {
+    "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",
+    "lastModified": "Tue, 24 Nov 2026 00:13:42 GMT",
+    "hash": "786b16ede577bf0a90097af5fe3071bfa24acd40",
+    "fetchedAt": "2026-11-24T22:08:29.485Z"
+  },
+  "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE36F2.htm": {
+    "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",
+    "lastModified": "Tue, 24 Nov 2026 00:13:42 GMT",
+    "hash": "7861e8dce56f81f3d46b25b87da9b290d95de3ef",
+    "fetchedAt": "2026-11-24T22:08:30.990Z"
+  },
+  "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE3706.htm": {
+    "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",
+    "lastModified": "Tue, 24 Nov 2026 00:13:42 GMT",
+    "hash": "ef9c70633a087580d8f517cfc059628b2d3218ff",
+    "fetchedAt": "2026-11-24T22:08:32.487Z"
+  },
+  "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE374A.htm": {
+    "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",
+    "lastModified": "Tue, 24 Nov 2026 00:13:42 GMT",
+    "hash": "4fac76a855126e48a9cf8e153997faf34f65ada5",
+    "fetchedAt": "2026-11-24T22:07:52.010Z"
+  },
+  "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE3762.htm": {
+    "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",
+    "lastModified": "Tue, 24 Nov 2026 00:13:42 GMT",
+    "hash": "1b9964f23beb9fcb774bf3d366fd37a912386244",
+    "fetchedAt": "2026-11-24T22:07:56.502Z"
+  },
+  "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE377A.htm": {
+    "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",
+    "lastModified": "Tue, 24 Nov 2026 00:13:42 GMT",
+    "hash": "3ca00d31f7402ef9a572ea4404f261d0585abd85",
+    "fetchedAt": "2026-11-24T22:07:58.000Z"
+  },
+  "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE378A.htm": {
+    "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",
+    "lastModified": "Tue, 24 Nov 2026 00:13:42 GMT",
+    "hash": "6852fcca3fe1bc1a62ae332e2b1462faeea3e05c",
+    "fetchedAt": "2026-11-24T22:07:53.540Z"
+  },
+  "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE37A2.htm": {
+    "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",
+    "lastModified": "Tue, 24 Nov 2026 00:13:42 GMT",
+    "hash": "3d2cb643236bfcafcfcb51966a523600c9df4fba",
+    "fetchedAt": "2026-11-24T22:07:59.505Z"
+  },
+  "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE37BA.htm": {
+    "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",
+    "lastModified": "Tue, 24 Nov 2026 00:13:42 GMT",
+    "hash": "b49311ff6969b8e3fa91c4691f8aa84b2bfe6201",
+    "fetchedAt": "2026-11-24T22:08:00.987Z"
+  },
+  "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/menu.htm": {
+    "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",
+    "lastModified": "Tue, 24 Nov 2026 00:13:42 GMT",
+    "hash": "f11e30c9062689b3b01bd1d411edbd22903f213e",
+    "fetchedAt": "2026-11-24T22:07:17.513Z"
+  },
+  "https://www.soumu.go.jp/news.rdf": {
+    "etag": "W/\"3676-66104053ab9ba\"",
+    "lastModified": "Tue, 24 Nov 2026 11:29:15 GMT",
+    "hash": "1069ab02941797a3f7a1f6dae4367c97a3fbefa2",
+    "fetchedAt": "2026-11-24T22:06:55.721Z"
+  }
+}

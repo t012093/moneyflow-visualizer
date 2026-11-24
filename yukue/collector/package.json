@@ -1,0 +1,26 @@
+{
+  "name": "yukue-collector",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "各府省のRSS・公開API・ページを毎日集めて、yukue/data に書き出す",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "collect": "node src/cli.ts collect",
+    "discover": "node src/cli.ts discover",
+    "test": "node --test \"test/*.test.ts\"",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.13.0",
+    "fast-xml-parser": "^5.12.1",
+    "node-html-parser": "^9.0.7",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "typescript": "^7.0.2"
+  }
+}

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:admin="http://webns.net/mvcb/" version="2.0">
+  <channel>
+    <title>財務省：新着RSS</title>
+    <link>http://www.mof.go.jp</link>
+    <description />
+    <dc:language>ja</dc:language>
+    <item>
+      <title>国債市場特別参加者会合（第122回）開催日程</title>
+    <link>https://www.mof.go.jp/about_mof/councils/meeting_of_jgbsp/press_release/261124.html</link>
+    <description />
+    <pubDate>Tue, 24 Nov 2026 17:00:00 +0900</pubDate>
+    </item>
+    <item>
+      <title>片山財務大臣兼内閣府特命担当大臣閣議後記者会見の概要(令和8年11月24日(火曜日))</title>
+    <link>https://www.mof.go.jp/public_relations/conference/my20261124.html</link>
+    <description />
+    <pubDate>Tue, 24 Nov 2026 16:35:00 +0900</pubDate>
+    </item>
+    <item>
+      <title>政府調達情報</title>
+    <link>https://www.mof.go.jp/application-contact/procurement/seihuchoutatsu/index.htm</link>
+    <description />
+    <pubDate>Tue, 24 Nov 2026 10:00:00 +0900</pubDate>
+    </item>
+    <item>
+      <title>チェコとの新租税条約が署名されました</title>
+    <link>https://www.mof.go.jp/tax_policy/summary/international/tax_convention/press_release/20261124cz.html</link>
+    <description />
+    <pubDate>Tue, 24 Nov 2026 10:00:00 +0900</pubDate>
+    </item>
+    <item>
+      <title>国債金利情報(令和8年11月20日)</title>
+    <link>https://www.mof.go.jp/jgbs/reference/interest_rate/jgbcm.csv</link>
+    <description />
+    <pubDate>Tue, 24 Nov 2026 09:30:00 +0900</pubDate>
+    </item>
+    <item>
+      <title>片山財務大臣兼内閣府特命担当大臣閣議後記者会見の概要(令和8年11月20日(金曜日))</title>
+    <link>https://www.mof.go.jp/public_relations/conference/my20261120.html</link>
+    <description />
+    <pubDate>Fri, 20 Nov 2026 18:55:00 +0900</pubDate>
+    </item>
+    <item>
+      <title>関税・外国為替等審議会 第70回外国為替等分科会議事録</title>
+    <link>https://www.mof.go.jp/about_mof/councils/customs_foreign_exchange/sub-foreign_exchange/proceedings/proceedings/20261118185608.html</link>
+    <description />
+    <pubDate>Fri, 20 Nov 2026 18:00:00 +0900</pubDate>
+    </item>
+    <item>
+      <title>流動性供給(第465回)入札において追加発行した国債の銘柄</title>
+    <link>https://www.mof.go.jp/jgbs/auction/calendar/nyusatsu/resul20261120a.htm</link>
+    <description />
+    <pubDate>Fri, 20 Nov 2026 17:00:00 +0900</pubDate>
+    </item>
+  </channel>
+</rss>

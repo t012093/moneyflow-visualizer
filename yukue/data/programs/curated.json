@@ -1,0 +1,271 @@
+[
+  {
+    "id": "jidou",
+    "name": "児童手当",
+    "kind": "給付",
+    "aud": [
+      "family"
+    ],
+    "theme": "social",
+    "amt": "月1万〜3万円",
+    "amtNote": "子ども1人あたり。年齢と人数で変わる",
+    "who": "高校生年代までの子どもを育てている世帯",
+    "by": "こども家庭庁",
+    "status": "always",
+    "statusText": "通年",
+    "link": {
+      "name": "こども家庭庁",
+      "url": "https://www.cfa.go.jp/"
+    },
+    "apply": {
+      "where": "お住まいの市区町村",
+      "whereNote": "窓口のほか、マイナポータルからオンラインで申請できる自治体もあります。",
+      "url": "https://myna.go.jp/",
+      "urlName": "マイナポータル",
+      "needs": [
+        {
+          "id": "id",
+          "name": "申請する人の本人確認書類",
+          "note": "マイナンバーカードなど。"
+        },
+        {
+          "id": "bank",
+          "name": "振込先の口座が分かるもの",
+          "note": "申請する人の名義の口座。"
+        },
+        {
+          "id": "hoken",
+          "name": "健康保険の加入が分かるもの",
+          "note": "求められるかどうかは自治体によります。"
+        }
+      ],
+      "draft": null
+    }
+  },
+  {
+    "id": "shugaku",
+    "name": "高等学校等就学支援金",
+    "kind": "給付",
+    "aud": [
+      "family"
+    ],
+    "theme": "edu",
+    "amt": "授業料を支援",
+    "amtNote": "金額は学校の種類などで変わる",
+    "who": "高校などに通う生徒のいる世帯",
+    "by": "文部科学省",
+    "status": "always",
+    "statusText": "入学時・年度ごとに申請",
+    "link": {
+      "name": "文部科学省",
+      "url": "https://www.mext.go.jp/"
+    }
+  },
+  {
+    "id": "kunren",
+    "name": "教育訓練給付金",
+    "kind": "給付",
+    "aud": [
+      "person"
+    ],
+    "theme": "social",
+    "amt": "受講費の最大80%",
+    "amtNote": "講座の種類で給付率が変わる",
+    "who": "雇用保険に一定期間入っている人、入っていた人",
+    "by": "厚生労働省",
+    "status": "always",
+    "statusText": "通年",
+    "link": {
+      "name": "厚生労働省",
+      "url": "https://www.mhlw.go.jp/"
+    }
+  },
+  {
+    "id": "kougaku",
+    "name": "高額療養費制度",
+    "kind": "給付",
+    "aud": [
+      "person",
+      "family"
+    ],
+    "theme": "social",
+    "amt": "自己負担に月の上限",
+    "amtNote": "上限は年齢と所得で変わる",
+    "who": "医療費の自己負担が大きくなった人",
+    "by": "厚生労働省",
+    "status": "always",
+    "statusText": "通年",
+    "link": {
+      "name": "厚生労働省",
+      "url": "https://www.mhlw.go.jp/"
+    }
+  },
+  {
+    "id": "jizoku-p",
+    "name": "小規模事業者持続化補助金（創業型）第4回",
+    "kind": "補助金",
+    "aud": [
+      "biz"
+    ],
+    "theme": "industry",
+    "amt": "上限 200万円",
+    "amtNote": "補助率 3分の2",
+    "who": "従業員20名以下の、創業まもない事業者",
+    "by": "Jグランツ掲載",
+    "status": "open",
+    "statusText": "受付中 ・ 12月15日まで",
+    "link": {
+      "name": "Jグランツ",
+      "url": "https://www.jgrants-portal.go.jp/subsidy/a0WfQ000003kEuHUAU"
+    },
+    "apply": {
+      "where": "Jグランツ",
+      "whereNote": "オンラインで申請します。GビズIDのアカウントが必要です。",
+      "url": "https://www.jgrants-portal.go.jp/subsidy/a0WfQ000003kEuHUAU",
+      "needs": [
+        {
+          "id": "gbiz",
+          "name": "GビズIDのアカウント",
+          "note": "発行に日数がかかります。早めに手続きを。"
+        },
+        {
+          "id": "plan",
+          "name": "経営計画と補助事業の計画",
+          "note": "文章の下書きは、次の画面で作れます。"
+        },
+        {
+          "id": "shoko",
+          "name": "商工会・商工会議所の支援計画書",
+          "note": "地域の商工会か商工会議所に依頼します。"
+        },
+        {
+          "id": "sogyo",
+          "name": "創業の時期が分かる書類",
+          "note": "開業届の控え、登記事項証明書など。"
+        },
+        {
+          "id": "kessan",
+          "name": "直近の確定申告書か決算書",
+          "note": "まだ無い場合の扱いは、公募要領で確認。"
+        }
+      ],
+      "draft": {
+        "q1": "どんな事業をしていますか",
+        "q1ph": "例：自家焙煎のコーヒー豆を、店頭とオンラインで販売しています。",
+        "q2": "補助金でやりたいことは何ですか",
+        "q2ph": "例：オンラインショップを作り直して、定期便を案内するチラシを配りたい。",
+        "parts": [
+          {
+            "id": "gaiyo",
+            "name": "事業の概要"
+          },
+          {
+            "id": "torikumi",
+            "name": "販路を広げる取り組み"
+          },
+          {
+            "id": "kouka",
+            "name": "期待できる効果"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "gx-p",
+    "name": "GX地域共創補助金2026（2次公募）",
+    "kind": "補助金",
+    "aud": [
+      "biz"
+    ],
+    "theme": "industry",
+    "amt": "上限 最大250億円",
+    "amtNote": "補助率 中小など2分の1、大企業3分の1",
+    "who": "脱炭素電源を使う工場・データセンターに投資する事業者",
+    "by": "Jグランツ掲載",
+    "status": "open",
+    "statusText": "受付中 ・ 12月14日まで",
+    "link": {
+      "name": "Jグランツ",
+      "url": "https://www.jgrants-portal.go.jp/subsidy/a0WfQ000003dVevUAE"
+    }
+  },
+  {
+    "id": "gyomu",
+    "name": "業務改善助成金",
+    "kind": "助成金",
+    "aud": [
+      "biz",
+      "npo"
+    ],
+    "theme": "industry",
+    "amt": "最大600万円",
+    "amtNote": "賃上げの額と人数で変わる（サンプル）",
+    "who": "最低賃金を引き上げ、設備投資をする中小企業など",
+    "by": "厚生労働省",
+    "status": "soon",
+    "statusText": "予算がなくなり次第終了",
+    "link": {
+      "name": "厚生労働省",
+      "url": "https://www.mhlw.go.jp/"
+    }
+  },
+  {
+    "id": "career",
+    "name": "キャリアアップ助成金（正社員化コース）",
+    "kind": "助成金",
+    "aud": [
+      "biz",
+      "npo"
+    ],
+    "theme": "social",
+    "amt": "1人あたり最大80万円",
+    "amtNote": "企業の規模などで変わる（サンプル）",
+    "who": "有期雇用の人を正社員にした事業主",
+    "by": "厚生労働省",
+    "status": "always",
+    "statusText": "通年",
+    "link": {
+      "name": "厚生労働省",
+      "url": "https://www.mhlw.go.jp/"
+    }
+  },
+  {
+    "id": "kyumin",
+    "name": "休眠預金等活用事業",
+    "kind": "助成",
+    "aud": [
+      "npo"
+    ],
+    "theme": "other",
+    "amt": "事業ごとに設定",
+    "amtNote": "資金分配団体を通じて助成",
+    "who": "社会課題の解決に取り組むNPOなどの団体",
+    "by": "内閣府",
+    "status": "always",
+    "statusText": "公募は団体ごと",
+    "link": {
+      "name": "内閣府",
+      "url": "https://www.cao.go.jp/"
+    }
+  },
+  {
+    "id": "juten",
+    "name": "重点支援地方交付金",
+    "kind": "交付金",
+    "aud": [
+      "local"
+    ],
+    "theme": "local",
+    "amt": "11月に1,300億円を追加",
+    "amtNote": "6月の補正でも1,000億円を計上",
+    "who": "物価高への対策を行う都道府県・市区町村",
+    "by": "内閣府",
+    "status": "open",
+    "statusText": "追加分を配分中",
+    "link": {
+      "name": "財務省 予備費使用",
+      "url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2026/r81113kakugikettei.pdf"
+    }
+  }
+]

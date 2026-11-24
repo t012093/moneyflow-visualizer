@@ -1,0 +1,62 @@
+{
+  "kantei": {
+    "failures": 0,
+    "lastOk": "2026-11-24T22:17:34.426Z"
+  },
+  "mof": {
+    "failures": 0,
+    "lastOk": "2026-11-24T22:17:34.426Z"
+  },
+  "mhlw": {
+    "failures": 0,
+    "lastOk": "2026-11-24T22:17:34.426Z"
+  },
+  "soumu": {
+    "failures": 0,
+    "lastOk": "2026-11-24T22:17:34.426Z"
+  },
+  "cao": {
+    "failures": 0,
+    "lastOk": "2026-11-24T22:17:34.426Z"
+  },
+  "mext": {
+    "failures": 0,
+    "lastOk": "2026-11-24T22:17:34.426Z"
+  },
+  "mlit": {
+    "failures": 0,
+    "lastOk": "2026-11-24T22:17:34.426Z"
+  },
+  "maff": {
+    "failures": 0,
+    "lastOk": "2026-11-24T22:17:34.426Z"
+  },
+  "fsa": {
+    "failures": 0,
+    "lastOk": "2026-11-24T22:17:34.426Z"
+  },
+  "caa": {
+    "failures": 0,
+    "lastOk": "2026-11-24T22:17:34.426Z"
+  },
+  "digital": {
+    "failures": 0,
+    "lastOk": "2026-11-24T22:17:34.426Z"
+  },
+  "pubcomment": {
+    "failures": 0,
+    "lastOk": "2026-11-24T22:17:34.426Z"
+  },
+  "kakugi": {
+    "failures": 0,
+    "lastOk": "2026-11-24T22:17:34.426Z"
+  },
+  "shugiin": {
+    "failures": 0,
+    "lastOk": "2026-11-24T22:17:34.426Z"
+  },
+  "jgrants": {
+    "failures": 0,
+    "lastOk": "2026-11-24T22:17:34.426Z"
+  }
+}
