@@ -22,6 +22,17 @@ interface ApiRow {
 const str = (v: unknown) => (typeof v === 'string' ? v.trim() : '');
 const day = (v: unknown) => { const d = parseDate(str(v)); return d ? jstDate(d) : null; };
 
+/**
+ * 対象地域の表示。APIは「全国 / 北海道 / 青森県 / …」のように、すべての都道府県を並べて返すことがある。
+ * 全国が含まれていれば「全国」、数が多いときは先頭の3つと全体の数にまとめる。
+ */
+export function areaLabel(raw: string): string {
+  const parts = raw.split('/').map(s => s.trim()).filter(Boolean);
+  if (!parts.length) return '指定なし';
+  if (parts.includes('全国')) return '全国';
+  return parts.length > 4 ? `${parts.slice(0, 3).join('・')}など${parts.length}地域` : parts.join('・');
+}
+
 export function grantFromApi(row: ApiRow): JGrant | null {
   const id = str(row.id);
   const title = cleanTitle(str(row.title));
@@ -30,7 +41,7 @@ export function grantFromApi(row: ApiRow): JGrant | null {
   return {
     id,
     title,
-    area: str(row.target_area_search) || '指定なし',
+    area: areaLabel(str(row.target_area_search)),
     maxAmount: max,
     start: day(row.acceptance_start_datetime),
     end: day(row.acceptance_end_datetime),

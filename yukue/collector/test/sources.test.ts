@@ -4,7 +4,7 @@ import { test } from 'node:test';
 import { classify } from '../src/classify.ts';
 import { parseFeed } from '../src/feeds.ts';
 import { decodeBody } from '../src/http.ts';
-import { formatYen, grantFromApi, grantToItem } from '../src/sources/jgrants.ts';
+import { areaLabel, formatYen, grantFromApi, grantToItem } from '../src/sources/jgrants.ts';
 import { itemUrl, kakugiToItems, parseKakugiIndex, parseKakugiMeeting } from '../src/sources/kakugi.ts';
 import { pubcommentItems } from '../src/sources/pubcomment.ts';
 import { entriesToItems } from '../src/sources/rss.ts';
@@ -153,6 +153,16 @@ test('Jグランツ：APIの行を補助金にし、全国向けは動きにも�
   assert.match(item.amount ?? '', /^上限 /);
   assert.notEqual(item.theme, 'whole', '題に「補正予算」とあっても、分野は中身で決める');
   assert.equal(grantFromApi({ id: '../x', title: 'だめなID' }), null);
+});
+
+test('Jグランツ：対象地域は、全国ならひとことに、多いときは数にまとめる', () => {
+  assert.equal(areaLabel('全国'), '全国');
+  assert.equal(areaLabel('全国 / 北海道 / 青森県 / 岩手県 / 沖縄県'), '全国');
+  assert.equal(areaLabel('三重県'), '三重県');
+  assert.equal(areaLabel('東京都 / 神奈川県'), '東京都・神奈川県');
+  assert.equal(areaLabel('北海道 / 宮城県 / 茨城県 / 埼玉県 / 千葉県 / 東京都'), '北海道・宮城県・茨城県など6地域');
+  assert.equal(areaLabel(''), '指定なし');
+  assert.equal(grantFromApi({ id: 'a0W1', title: '電波遮へい対策事業', target_area_search: '全国 / 北海道 / 青森県' })?.area, '全国');
 });
 
 test('金額の表示', () => {
