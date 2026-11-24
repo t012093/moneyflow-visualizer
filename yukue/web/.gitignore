@@ -1,0 +1,5 @@
+node_modules
+dist
+# yukue/data の写し（npm run sync-data が作る。正本は ../data）
+public/data
+*.tsbuildinfo

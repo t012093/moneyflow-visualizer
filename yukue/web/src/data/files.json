@@ -1,0 +1,9 @@
+{
+  "budget": "budget/fy2026.json",
+  "updates": "updates/latest.json",
+  "programs": "programs/curated.json",
+  "briefing": "briefing.json",
+  "calendar": "calendar.json",
+  "jgrants": "programs/jgrants.json",
+  "run": "runs/latest.json"
+}
