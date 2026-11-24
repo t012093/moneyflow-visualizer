@@ -1,0 +1,1983 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style></head><body><title>ゆくえ デザインサンプル</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+JP:wght@400;500;600;700&family=Zen+Old+Mincho:wght@700;900&display=swap">
+<style>
+/* Layout: 藍のインクで刷った公文書を、流れ図が主役のアプリに。上にナビ、中央に本文、右に常設の「AIに聞く」。 */
+:root{
+  --plane:#f2f4f8; --surface:#ffffff; --surface-2:#f5f6fa;
+  --ink:#10172a; --ink-2:#46506a; --ink-3:#687188;
+  --line:#dfe4ec; --line-2:#c7cedb;
+  --accent:#1b3f8f; --accent-solid:#1b3f8f; --on-accent:#ffffff; --accent-wash:#e8edf9;
+  --seal:#c8402d;
+  /* 分野の色（図・一覧・チャットで共通。dataviz の検証済みパレット） */
+  --t1:#2a78d6; --t2:#eb6834; --t3:#1baf7a; --t4:#eda100; --t5:#e87ba4; --t6:#008300; --t7:#6250d6; --t0:#8d96a8;
+  --flow-neutral:#566079; --flow-pool:#10172a;
+  --good:#0ca30c; --warn:#fab219;
+  --rib:.27; --rib-n:.15; --rib-hi:.6; --rib-lo:.06;
+  --shadow:0 1px 2px rgba(16,23,42,.08),0 10px 28px rgba(16,23,42,.10);
+  --font-ui:"IBM Plex Sans JP","Hiragino Sans","Yu Gothic UI","Meiryo",system-ui,sans-serif;
+  --font-display:"Zen Old Mincho","Hiragino Mincho ProN","Yu Mincho",serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --header-h:56px; --dock-w:372px; --tab-h:58px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --plane:#0c1018; --surface:#151b27; --surface-2:#1a2130;
+    --ink:#e9edf5; --ink-2:#b4bdcf; --ink-3:#8a94a9;
+    --line:#252d3d; --line-2:#36405a;
+    --accent:#a3bcff; --accent-solid:#3f66cc; --on-accent:#ffffff; --accent-wash:#1b2540;
+    --seal:#e2634f;
+    --t1:#3987e5; --t2:#d95926; --t3:#199e70; --t4:#c98500; --t5:#d55181; --t6:#0ca30c; --t7:#9085e9; --t0:#6b7489;
+    --flow-neutral:#8791a6; --flow-pool:#e9edf5;
+    --rib:.36; --rib-n:.2; --rib-hi:.68; --rib-lo:.08;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 28px rgba(0,0,0,.35);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --plane:#0c1018; --surface:#151b27; --surface-2:#1a2130;
+  --ink:#e9edf5; --ink-2:#b4bdcf; --ink-3:#8a94a9;
+  --line:#252d3d; --line-2:#36405a;
+  --accent:#a3bcff; --accent-solid:#3f66cc; --on-accent:#ffffff; --accent-wash:#1b2540;
+  --seal:#e2634f;
+  --t1:#3987e5; --t2:#d95926; --t3:#199e70; --t4:#c98500; --t5:#d55181; --t6:#0ca30c; --t7:#9085e9; --t0:#6b7489;
+  --flow-neutral:#8791a6; --flow-pool:#e9edf5;
+  --rib:.36; --rib-n:.2; --rib-hi:.68; --rib-lo:.08;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 28px rgba(0,0,0,.35);
+  color-scheme:dark;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+body{background:var(--plane);color:var(--ink);font-family:var(--font-ui);font-size:14px;line-height:1.65;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--surface)}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;text-align:inherit}
+h1,h2,h3,p,ol,ul,dl,dd,figure{margin:0}
+ol,ul{padding:0;list-style:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.ic{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;flex:none;background:var(--t0)}
+.tag{display:inline-block;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.04em;padding:2px 7px;border-radius:5px;background:var(--accent-wash);color:var(--accent);line-height:1.5;white-space:nowrap}
+
+/* ---------- header ---------- */
+.hdr{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--surface);border-bottom:1px solid var(--line)}
+.hdr-in{display:flex;align-items:center;gap:8px 26px;height:var(--header-h);max-width:1560px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.brand{display:flex;align-items:center;gap:9px;flex:none}
+.brand-seal{width:24px;height:24px;flex:none;display:block}
+.brand-name{font-family:var(--font-display);font-weight:900;font-size:21px;letter-spacing:.1em;line-height:1}
+.brand-tag{font-family:var(--font-mono);font-size:10px;color:var(--ink-3);border:1px solid var(--line-2);border-radius:4px;padding:1px 5px;line-height:1.4}
+.nav{display:flex;align-self:stretch;gap:2px;min-width:0}
+.nav a{display:flex;align-items:center;padding:0 12px;color:var(--ink-2);font-weight:500;font-size:13.5px;border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap}
+.nav a:hover{color:var(--ink)}
+.nav a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--accent);font-weight:600}
+.hdr-act{margin-left:auto;display:flex;align-items:center;gap:4px 12px}
+.hdr-link{display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:0 8px;border-radius:10px;font-size:13px;color:var(--ink-2)}
+.hdr-link:hover{color:var(--ink);background:var(--surface-2)}
+.hdr-link[aria-current="page"]{color:var(--accent);font-weight:600}
+.m-only{display:none}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:36px;padding:0 14px;border-radius:10px;font-weight:600;font-size:13px;white-space:nowrap;transition:background .15s,border-color .15s,filter .15s}
+.btn .ic{width:16px;height:16px}
+.btn-solid{background:var(--accent-solid);color:var(--on-accent)}
+.btn-solid:hover{filter:brightness(1.12)}
+.btn-ghost{border:1px solid var(--line-2);color:var(--ink);background:var(--surface)}
+.btn-ghost:hover{background:var(--surface-2)}
+.btn-ai{background:var(--accent-wash);color:var(--accent)}
+.btn-ai[aria-expanded="true"]{background:var(--accent-solid);color:var(--on-accent)}
+.icon-btn{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;color:var(--ink-2)}
+.icon-btn:hover{background:var(--surface-2);color:var(--ink)}
+.lnk{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+
+/* ---------- shell ---------- */
+.shell{display:grid;grid-template-columns:minmax(0,1fr);gap:24px;max-width:1560px;margin:0 auto;padding-block:18px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));align-items:start}
+.main{min-width:0;container:main / inline-size}
+.sample-note{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;font-size:12px;color:var(--ink-2);margin-bottom:22px}
+.vh{display:grid;gap:6px;margin-bottom:20px}
+.eyebrow{font-family:var(--font-mono);font-size:11.5px;letter-spacing:.05em;color:var(--ink-3)}
+.vt{font-family:var(--font-display);font-weight:700;font-size:clamp(24px,calc(1.6vw + 16px),32px);line-height:1.3;letter-spacing:.03em;text-wrap:balance;font-feature-settings:"palt"}
+.lead{color:var(--ink-2);max-width:60ch}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:14px}
+.sec-h{font-size:14px;font-weight:700;margin-bottom:10px;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px}
+.sec-h small{font-weight:400;font-size:12px;color:var(--ink-3)}
+
+/* ---------- home ---------- */
+.home-top{display:grid;grid-template-columns:minmax(0,1fr);gap:26px;align-items:start}
+.brief{display:grid;gap:12px;padding-top:4px;min-width:0}
+.brief-list{border-top:1px solid var(--line)}
+.brief-item{display:grid;grid-template-columns:10px minmax(0,1fr);gap:3px 12px;width:100%;padding:13px 0;border-bottom:1px solid var(--line)}
+.brief-item .dot{margin-top:.55em}
+.brief-t{font-size:15px;font-weight:600;line-height:1.6}
+.brief-item:hover .brief-t{color:var(--accent)}
+.brief-m{grid-column:2;font-size:12px;color:var(--ink-3)}
+.brief-foot{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;font-size:12px;color:var(--ink-3)}
+.teaser{padding:18px 18px 12px;display:grid;gap:8px;min-width:0}
+.teaser-h{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:10px}
+.hero{font-size:clamp(42px,calc(3vw + 28px),56px);font-weight:600;line-height:1.05}
+.hero-u{font-size:.4em;font-weight:600;margin-left:.2em}
+.hero-sub{color:var(--ink-2);font-size:13px;margin-top:4px}
+.tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:24px}
+.tile{background:var(--surface);padding:14px 16px 12px;display:grid;gap:1px;min-width:0;align-content:start}
+.tile-l{font-size:12px;color:var(--ink-2)}
+.tile-v{font-size:26px;font-weight:600;line-height:1.25;white-space:nowrap}
+.tile-v small{font-size:.5em;font-weight:600;margin-left:.15em}
+.tile-d{font-size:12px;color:var(--ink-3)}
+.spark{width:100%;height:36px;margin-top:6px;display:block;overflow:visible}
+.home-low{display:grid;grid-template-columns:minmax(0,1fr);gap:30px;margin-top:30px}
+.rows{border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:92px minmax(0,1fr);gap:2px 14px;padding:11px 0;border-bottom:1px solid var(--line);font-size:13.5px;width:100%}
+.row-d{font-family:var(--font-mono);font-size:12px;color:var(--ink-2);padding-top:2px}
+.row-t{font-weight:600}
+.row-s{grid-column:2;font-size:12px;color:var(--ink-3)}
+button.row:hover .row-t{color:var(--accent)}
+.follow-chips{margin-bottom:12px}
+@container main (min-width:860px){
+  .home-top{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:32px}
+  .tiles{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .home-low{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:36px}
+}
+
+/* ---------- controls ---------- */
+.ctrl{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin-bottom:14px}
+.ctrl-g{display:flex;align-items:center;gap:8px}
+.ctrl-l{font-size:12px;color:var(--ink-3)}
+.seg{display:inline-flex;padding:3px;border-radius:11px;background:var(--surface);border:1px solid var(--line)}
+.seg button{min-height:32px;padding:0 12px;border-radius:8px;font-size:12.5px;font-weight:500;color:var(--ink-2);white-space:nowrap}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--surface);font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-flex;align-items:center;gap:6px;min-height:32px;padding:0 12px;border-radius:999px;border:1px solid var(--line-2);background:var(--surface);font-size:12.5px;color:var(--ink-2);white-space:nowrap}
+.chip .dot{width:8px;height:8px}
+.chip:hover{border-color:var(--ink-3)}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--surface);font-weight:600}
+
+/* ---------- flow ---------- */
+.life-wrap{display:grid;gap:10px;margin-bottom:18px;max-width:720px}
+.life-t{font-size:12px;color:var(--ink-3)}
+.life-t b{color:var(--ink);font-weight:700;margin-right:4px}
+.find-note{margin:-4px 0 14px}
+.life{display:grid;grid-template-columns:repeat(6,minmax(0,1fr))}
+.life li{position:relative;display:grid;justify-items:center;align-content:start;gap:1px;text-align:center;font-size:11.5px;line-height:1.4;color:var(--ink-3);padding-top:17px}
+.life li::before{content:"";position:absolute;top:4px;left:-50%;right:50%;height:2px;background:var(--line-2)}
+.life li:first-child::before{display:none}
+.life li::after{content:"";position:absolute;top:0;left:calc(50% - 5px);width:10px;height:10px;border-radius:50%;background:var(--plane);border:2px solid var(--line-2)}
+.life li.done{color:var(--ink-2)}
+.life li.done::before,.life li.now::before{background:var(--ink-2)}
+.life li.done::after{background:var(--ink-2);border-color:var(--ink-2)}
+.life li.now{color:var(--ink);font-weight:700}
+.life li.now::after{background:var(--accent-solid);border-color:var(--accent-solid);box-shadow:0 0 0 4px var(--accent-wash)}
+.life time{font-family:var(--font-mono);font-size:10.5px;font-weight:400;color:var(--ink-3)}
+.flow-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;align-items:start}
+@container main (min-width:900px){.flow-grid{grid-template-columns:minmax(0,1fr) 320px}}
+.flow-card{padding:12px 16px 12px;min-width:0;display:grid;gap:10px}
+.crumb{display:flex;flex-wrap:wrap;align-items:center;gap:2px;font-size:13px;min-height:30px}
+.crumb button{padding:3px 8px;border-radius:7px;color:var(--accent);font-weight:600}
+.crumb button:hover{background:var(--accent-wash)}
+.crumb .cur{padding:3px 8px;font-weight:700}
+.crumb .ic{width:14px;height:14px;color:var(--ink-3)}
+.crumb-hint{margin-left:auto;font-size:11.5px;color:var(--ink-3)}
+.flow-scroll{overflow-x:auto;overscroll-behavior-x:contain}
+.flow-box{min-width:0}
+.flow-box svg{display:block;width:100%;height:auto;overflow:visible}
+.fl text{font-family:var(--font-ui);font-size:12px;fill:var(--ink)}
+.fl .ln{font-weight:600}
+.fl .lv{fill:var(--ink-2);font-variant-numeric:tabular-nums}
+.fl .colh{fill:var(--ink-3);font-size:11px;letter-spacing:.04em}
+.fl .halo{paint-order:stroke;stroke:var(--surface);stroke-width:3.5px;stroke-linejoin:round}
+.fl .rib{fill-opacity:var(--rib);transition:fill-opacity .16s}
+.fl .rib.n{fill-opacity:var(--rib-n)}
+.fl .rib.sel{fill-opacity:var(--rib-hi)}
+.fl.has-hi .rib{fill-opacity:var(--rib-lo)}
+.fl.has-hi .rib.hi{fill-opacity:var(--rib-hi)}
+.fl .nd{cursor:pointer;transition:opacity .16s;outline-offset:3px}
+.fl.has-hi .nd:not(.hi){opacity:.38}
+.fl .nd.sel .bar{stroke:var(--ink);stroke-width:1.5px}
+.fl .hit{fill:transparent}
+.fl .more{fill:none;stroke:var(--ink-3);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.sel-bar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;min-height:44px;padding:6px 6px 6px 12px;border-radius:10px;background:var(--surface-2);font-size:13.5px}
+.sel-bar b{font-size:14.5px}
+.sel-bar .sel-sub{color:var(--ink-3);font-size:12px}
+.sel-bar .btn{margin-left:auto;min-height:32px}
+.sel-bar:empty{display:none}
+.legend{display:flex;flex-wrap:wrap;gap:2px 4px;padding-top:8px;border-top:1px solid var(--line)}
+.lg{display:inline-flex;align-items:center;gap:6px;padding:4px 8px;border-radius:7px;font-size:12px;color:var(--ink-2)}
+.lg i{width:10px;height:10px;border-radius:3px;flex:none}
+.lg:hover,.lg[aria-pressed="true"]{background:var(--surface-2);color:var(--ink)}
+.cap{font-size:11.5px;color:var(--ink-3);line-height:1.6}
+.tbl-wrap{overflow-x:auto}
+.tbl{width:100%;border-collapse:collapse;font-size:13px;min-width:520px}
+.tbl th,.tbl td{padding:9px 10px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+.tbl th:first-child,.tbl td:first-child{text-align:left}
+.tbl th{font-size:11.5px;font-weight:600;color:var(--ink-3)}
+.tbl td{font-variant-numeric:tabular-nums}
+.tbl td .dot{width:8px;height:8px;margin-right:8px}
+.tbl tr.grp td{font-size:11.5px;color:var(--ink-3);font-weight:600;background:var(--surface-2);text-align:left}
+.tbl.wrap td,.tbl.wrap th{white-space:normal;text-align:left;vertical-align:top}
+.detail{padding:16px;display:grid;gap:14px;min-width:0;align-content:start}
+.d-h1{display:flex;align-items:center;gap:9px;font-size:18px;font-weight:700;line-height:1.35}
+.d-h1 .dot{width:12px;height:12px}
+.d-desc{color:var(--ink-2);font-size:13px}
+.d-figs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.d-figs div{background:var(--surface);padding:9px 10px;min-width:0}
+.d-figs dt{font-size:11px;color:var(--ink-3)}
+.d-figs dd{font-size:15px;font-weight:600;white-space:nowrap}
+.d-sub{font-size:12px;font-weight:700;color:var(--ink-2);display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:4px}
+.d-sub small{font-weight:400;color:var(--ink-3);font-size:11px}
+.trend{width:100%;height:auto;display:block;overflow:visible;touch-action:pan-y}
+.trend text{font-family:var(--font-ui);font-size:11px;fill:var(--ink-3)}
+.trend .tv{fill:var(--ink);font-weight:600;font-size:12px}
+.d-link{display:grid;grid-template-columns:minmax(0,1fr) 15px;gap:1px 8px;align-items:center;width:100%;padding:8px 0;border-top:1px solid var(--line);font-size:13px}
+.d-link-t{font-weight:600;line-height:1.5}
+.d-link:hover .d-link-t{color:var(--accent)}
+.d-link-m{grid-column:1;font-size:11.5px;color:var(--ink-3)}
+.d-link .ic{grid-row:1 / span 2;grid-column:2;width:15px;height:15px;color:var(--ink-3)}
+.d-act{display:flex;flex-wrap:wrap;gap:8px}
+.src{font-size:11.5px;color:var(--ink-3)}
+.d-empty{color:var(--ink-2);font-size:13px}
+
+/* ---------- updates ---------- */
+.feed{display:grid;gap:24px;max-width:880px}
+.day-h{font-family:var(--font-mono);font-size:12px;color:var(--ink-3);letter-spacing:.04em;padding-bottom:6px;border-bottom:1px solid var(--line-2)}
+.up{border-bottom:1px solid var(--line)}
+.up-h{display:grid;grid-template-columns:78px minmax(0,1fr) auto;gap:3px 14px;width:100%;padding:14px 0;align-items:start}
+.up-type{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:var(--ink-2);padding-top:3px}
+.up-type .ic{width:15px;height:15px}
+.up-title{font-size:15px;font-weight:700;line-height:1.5}
+.up-h:hover .up-title{color:var(--accent)}
+.up-sum{grid-column:2;color:var(--ink-2);font-size:13px}
+.up-meta{grid-column:2;display:flex;flex-wrap:wrap;gap:2px 10px;align-items:center;font-size:12px;color:var(--ink-3);margin-top:2px}
+.up-meta .dot{width:8px;height:8px}
+.up-meta span{display:inline-flex;align-items:center;gap:6px}
+.up-stage{grid-column:3;grid-row:1 / span 2;display:grid;justify-items:end;gap:5px;font-size:12px;font-weight:600;white-space:nowrap;padding-top:3px}
+.steps{display:inline-flex;align-items:center;gap:3px}
+.steps i{width:14px;height:4px;border-radius:2px;background:var(--line-2)}
+.steps i.on{background:var(--ink-2)}
+.steps i.cur{background:var(--accent-solid)}
+.up-body{padding:0 0 18px 92px;display:grid;gap:12px}
+.qa{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.qa div{background:var(--surface);padding:12px 14px;min-width:0}
+.qa dt{font-size:11.5px;font-weight:700;color:var(--ink-3);margin-bottom:3px}
+.qa dd{font-size:13px}
+.up-acts{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.srcs{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:12px;color:var(--ink-3)}
+.srcl{display:inline-flex;align-items:center;gap:4px;font-family:var(--font-mono);font-size:11px;padding:3px 8px;border:1px solid var(--line-2);border-radius:6px;color:var(--ink-2)}
+.srcl:hover{border-color:var(--accent);color:var(--accent)}
+.srcl .ic{width:12px;height:12px}
+.empty{color:var(--ink-3);padding:24px 0}
+@container main (max-width:620px){
+  .up-h{grid-template-columns:minmax(0,1fr);gap:4px}
+  .up-sum,.up-meta{grid-column:1}
+  .up-stage{grid-column:1;grid-row:auto;justify-items:start;grid-auto-flow:column;justify-content:start;align-items:center;gap:8px}
+  .up-body{padding-left:0}
+  .qa{grid-template-columns:minmax(0,1fr)}
+}
+
+/* ---------- find ---------- */
+.progs{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px}
+.prog{padding:16px;display:grid;gap:10px;align-content:start;min-width:0}
+.prog-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 10px;align-items:center}
+.prog-kind{font-size:11.5px;font-weight:600;color:var(--ink-3);display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.prog-kind .dot{width:8px;height:8px}
+.prog-name{font-size:15.5px;font-weight:700;line-height:1.45}
+.prog-amt{font-size:19px;font-weight:600;line-height:1.35}
+.prog-amt small{display:block;font-size:11.5px;font-weight:400;color:var(--ink-3)}
+.prog-dl{display:grid;gap:4px;font-size:12.5px;color:var(--ink-2)}
+.prog-dl div{display:grid;grid-template-columns:40px minmax(0,1fr);gap:8px}
+.prog-dl dt{color:var(--ink-3)}
+.prog-act{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.st{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:600;padding:2px 9px;border-radius:999px;border:1px solid var(--line-2);white-space:nowrap}
+.st::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--ink-3)}
+.st.open::before{background:var(--good)}
+.st.soon::before{background:var(--warn)}
+
+/* ---------- connect ---------- */
+.con-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;align-items:start}
+@container main (min-width:900px){.con-grid{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}}
+.mock{overflow:hidden;min-width:0}
+.mock-bar{display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid var(--line);font-size:12px;color:var(--ink-3)}
+.mock-body{padding:16px;display:grid;gap:14px;background:var(--surface-2)}
+.m-user{justify-self:end;max-width:85%;background:var(--surface);border:1px solid var(--line);border-radius:14px 14px 4px 14px;padding:8px 13px;font-size:13.5px}
+.m-ai{display:grid;gap:10px;font-size:13.5px;min-width:0}
+.m-call{display:inline-flex;flex-wrap:wrap;align-items:center;gap:6px;font-family:var(--font-mono);font-size:11px;color:var(--ink-3)}
+.m-call .ic{width:13px;height:13px}
+.widget{background:var(--surface);border:1px solid var(--line-2);border-radius:12px;overflow:hidden;min-width:0}
+.widget-h{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 8px 8px 12px;border-bottom:1px solid var(--line);font-size:12px;font-weight:600}
+.widget-h span{display:inline-flex;align-items:center;gap:7px}
+.widget-b{padding:10px 12px 6px}
+.mock figcaption{padding:10px 14px;border-top:1px solid var(--line)}
+.con-side{display:grid;gap:16px;min-width:0}
+.con-card{padding:16px;display:grid;gap:12px;min-width:0}
+.con-card h2{font-size:15px;font-weight:700}
+.con-card > p{font-size:13px;color:var(--ink-2)}
+.stepsl{display:grid;gap:9px;counter-reset:s}
+.stepsl li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:10px;font-size:13px}
+.stepsl li::before{counter-increment:s;content:counter(s);width:22px;height:22px;border-radius:50%;background:var(--accent-wash);color:var(--accent);font-size:11.5px;font-weight:700;display:grid;place-items:center}
+.url{display:flex;align-items:center;gap:6px;border:1px solid var(--line-2);border-radius:10px;padding:4px 4px 4px 12px;background:var(--surface-2);min-width:0}
+.url code{flex:1;min-width:0;overflow-x:auto;white-space:nowrap;font-family:var(--font-mono);font-size:12px}
+.tool{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1px 10px;padding:9px 0;border-top:1px solid var(--line)}
+.tool code{font-family:var(--font-mono);font-size:12px;font-weight:500;overflow-wrap:anywhere}
+.tool p{grid-column:1;font-size:12px;color:var(--ink-2)}
+.ro{grid-row:1 / span 2;grid-column:2;align-self:center;font-size:10.5px;font-family:var(--font-mono);color:var(--ink-3);border:1px solid var(--line-2);border-radius:5px;padding:1px 6px;white-space:nowrap}
+.con-where{margin-top:26px;max-width:880px}
+
+/* ---------- notes ---------- */
+.notes{display:grid;gap:38px;max-width:940px}
+.note-sec{display:grid;gap:12px;min-width:0}
+.note-sec h2{font-family:var(--font-display);font-weight:700;font-size:20px;letter-spacing:.03em;font-feature-settings:"palt"}
+.note-sec > p{color:var(--ink-2);max-width:64ch}
+.note-sec strong{color:var(--ink);font-weight:700}
+.note-sec code{font-family:var(--font-mono);font-size:.92em;background:var(--surface-2);border:1px solid var(--line);border-radius:5px;padding:0 5px;overflow-wrap:anywhere}
+.kv{border-top:1px solid var(--line)}
+.kv > div{display:grid;grid-template-columns:minmax(0,1fr);gap:2px 22px;padding:12px 0;border-bottom:1px solid var(--line)}
+.kv dt{font-weight:700}
+.kv dd{color:var(--ink-2)}
+@container main (min-width:700px){.kv > div{grid-template-columns:minmax(0,5fr) minmax(0,8fr)}}
+.princ{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.princ li{background:var(--surface);padding:14px 16px;display:grid;gap:4px;align-content:start}
+.princ b{font-size:14px}
+.princ span{font-size:13px;color:var(--ink-2)}
+.pipe{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}
+@container main (min-width:760px){.pipe{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.pipe-col{padding:14px 16px;display:grid;gap:8px;align-content:start;min-width:0}
+.pipe-col h3{font-size:14px;font-weight:700;display:flex;align-items:center;gap:8px}
+.pipe-col h3 .ic{color:var(--accent)}
+.pipe-col li{font-size:13px;color:var(--ink-2);padding:6px 0;border-top:1px solid var(--line)}
+.pipe-col li b{color:var(--ink);font-weight:600}
+.diagram{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--surface);padding:14px}
+.diagram svg{display:block;min-width:700px;width:100%;height:auto;color:var(--ink)}
+.diagram text{font-family:var(--font-ui);fill:currentColor}
+.note-links{display:flex;flex-wrap:wrap;gap:6px}
+
+/* ---------- dock (AIに聞く) ---------- */
+.dock{display:none;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:16px;min-width:0;overflow:hidden}
+.dock-h{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 9px 9px 16px;border-bottom:1px solid var(--line)}
+.dock-t{display:flex;align-items:center;gap:8px;font-size:14px}
+.dock-t .ic{color:var(--accent)}
+.ctx{display:flex;flex-wrap:wrap;align-items:center;gap:4px 6px;padding:8px 16px;font-size:12px;color:var(--ink-2);background:var(--surface-2);border-bottom:1px solid var(--line)}
+.ctx b{color:var(--ink);font-weight:600}
+.msgs{flex:1;min-height:0;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:16px;overscroll-behavior:contain}
+.msg{display:grid;gap:8px;min-width:0}
+.msg.user{align-self:flex-end;max-width:88%}
+.bub{white-space:pre-wrap;overflow-wrap:anywhere;font-size:13.5px;line-height:1.75}
+.msg.user .bub{background:var(--accent-solid);color:var(--on-accent);border-radius:14px 14px 4px 14px;padding:7px 13px;line-height:1.6}
+.bub.thinking{color:var(--ink-3)}
+.act{display:inline-flex;align-items:center;gap:6px;justify-self:start;font-size:12px;font-weight:600;color:var(--accent);background:var(--accent-wash);border-radius:8px;padding:5px 10px}
+.act .ic{width:14px;height:14px}
+.fig{border:1px solid var(--line);border-radius:10px;padding:10px 12px;display:grid;gap:7px}
+.fig-t{font-size:11.5px;color:var(--ink-3);font-weight:600}
+.hb{display:grid;grid-template-columns:minmax(0,7.5em) minmax(0,1fr) auto;gap:8px;align-items:center;font-size:12px}
+.hb-n{color:var(--ink-2);line-height:1.35}
+.hb-t{height:10px;position:relative}
+.hb-b{position:absolute;left:0;top:0;bottom:0;border-radius:0 4px 4px 0;min-width:2px}
+.hb-v{font-variant-numeric:tabular-nums;font-weight:600;white-space:nowrap}
+.msrc{font-size:11.5px;color:var(--ink-3)}
+.sugg{display:flex;flex-wrap:wrap;gap:6px;padding:10px 14px 2px;border-top:1px solid var(--line)}
+.sugg button{font-size:12px;padding:6px 11px;border-radius:999px;border:1px solid var(--line-2);color:var(--ink-2);line-height:1.4}
+.sugg button:hover{border-color:var(--accent);color:var(--accent)}
+.composer{display:flex;align-items:flex-end;gap:8px;margin:10px 12px 6px;padding:5px 5px 5px 13px;border:1px solid var(--line-2);border-radius:14px;background:var(--surface)}
+.composer:focus-within{border-color:var(--accent)}
+.composer textarea{flex:1;min-width:0;resize:none;border:0;outline:0;background:transparent;color:var(--ink);font:inherit;font-size:14px;line-height:1.6;padding:6px 0;max-height:120px}
+.composer textarea::placeholder{color:var(--ink-3)}
+.send{width:36px;height:36px;border-radius:10px;background:var(--accent-solid);color:var(--on-accent);display:grid;place-items:center;flex:none}
+.send:disabled{opacity:.4;cursor:default}
+.dock-foot{padding:0 16px 12px;font-size:11px;color:var(--ink-3);line-height:1.5}
+.scrim{position:fixed;inset:0;z-index:70;background:rgba(10,14,24,.42)}
+@media (min-width:1180px){
+  .shell.dock-open{grid-template-columns:minmax(0,1fr) var(--dock-w)}
+  .shell.dock-open .dock{display:flex;position:sticky;top:calc(env(safe-area-inset-top,0px) + var(--header-h) + 18px);height:calc(100vh - var(--header-h) - 36px);height:calc(100dvh - var(--header-h) - 36px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));max-height:880px}
+  .scrim{display:none}
+}
+@media (max-width:1179.98px){
+  .dock{position:fixed;z-index:80;top:0;right:0;bottom:0;width:min(420px,100%);border-radius:0;border:0;border-left:1px solid var(--line);padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);padding-right:env(safe-area-inset-right,0px);box-shadow:var(--shadow)}
+  .shell.dock-open .dock{display:flex}
+}
+
+/* ---------- tab bar (phone) ---------- */
+.tabbar{display:none}
+@media (max-width:759.98px){
+  .nav,.btn-ai,.hdr-link span{display:none}
+  .m-only{display:inline-flex}
+  .hdr-link{width:36px;padding:0;justify-content:center}
+  .tabbar{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));position:fixed;left:0;right:0;bottom:0;z-index:55;background:var(--surface);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px);padding-left:max(8px,env(safe-area-inset-left,0px));padding-right:max(8px,env(safe-area-inset-right,0px))}
+  .tabbar a,.tabbar button{display:grid;justify-items:center;align-content:center;gap:2px;min-height:var(--tab-h);font-size:10.5px;line-height:1.3;color:var(--ink-3);text-align:center}
+  .tabbar .ic{width:21px;height:21px}
+  .tabbar [aria-current="page"]{color:var(--accent);font-weight:700}
+  .shell{padding-bottom:calc(var(--tab-h) + 32px)}
+  .dock{width:100%;border-left:0;padding-left:env(safe-area-inset-left,0px)}
+  .composer textarea{font-size:16px}
+  .flow-card,.teaser{padding-left:12px;padding-right:12px}
+  .life li{font-size:10.5px}
+  .life time{font-size:9.5px}
+}
+
+/* ---------- tooltip ---------- */
+.tip{position:fixed;z-index:90;pointer-events:none;background:var(--ink);color:var(--surface);border-radius:8px;padding:7px 10px;font-size:12px;line-height:1.45;max-width:240px;box-shadow:var(--shadow)}
+.tip b{display:block;font-size:14px;font-weight:600}
+.tip span{opacity:.82}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
+</style>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M4 11.2 12 4.5l8 6.7v8.3h-5.5V14h-5v5.5H4z"/></symbol>
+    <symbol id="i-flow" viewBox="0 0 24 24"><path d="M3 6.5h3.5c4.5 0 4.5 5.5 9 5.5H21M3 17.5h3.5c4.5 0 4.5-5.5 9-5.5M3 12h5"/></symbol>
+    <symbol id="i-pulse" viewBox="0 0 24 24"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></symbol>
+    <symbol id="i-plug" viewBox="0 0 24 24"><path d="M9 3v5M15 3v5M7 8h10v3a5 5 0 0 1-10 0zM12 16v5"/></symbol>
+    <symbol id="i-note" viewBox="0 0 24 24"><path d="M6 3.5h9l4 4v13H6zM14.5 3.5V8H19M9 12.5h7M9 16h5"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="M11 3.5l1.9 5.1 5.1 1.9-5.1 1.9L11 17.5l-1.9-5.1L4 10.5l5.1-1.9zM18.5 15l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><path d="M12 19V5.5M6 11l6-6 6 6"/></symbol>
+    <symbol id="i-stop" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1.5"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24"><path d="M9 5.5 15.5 12 9 18.5"/></symbol>
+    <symbol id="i-ext" viewBox="0 0 24 24"><path d="M14 4.5h5.5V10M19.5 4.5 11 13M17.5 13.5v6h-13v-13h6"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8.5" y="8.5" width="11" height="11" rx="2"/><path d="M5 15.5V5.5a1 1 0 0 1 1-1h9.5"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-law" viewBox="0 0 24 24"><path d="M6 3.5h12v17H6zM9 8h6M9 12h6M9 16h4"/></symbol>
+    <symbol id="i-yen" viewBox="0 0 24 24"><path d="M7 4.5l5 7 5-7M12 11.5V20M8 12.5h8M8 16h8"/></symbol>
+    <symbol id="i-gift" viewBox="0 0 24 24"><path d="M4 9.5h16v4H4zM5.5 13.5v7h13v-7M12 9.5v11M12 9.5c-2-4.5-6-3.5-5-1 .6 1.4 3 1 5 1zM12 9.5c2-4.5 6-3.5 5-1-.6 1.4-3 1-5 1z"/></symbol>
+    <symbol id="i-flag" viewBox="0 0 24 24"><path d="M6 21V4M6 4.5h11l-2 4 2 4H6"/></symbol>
+    <symbol id="i-pct" viewBox="0 0 24 24"><path d="M18 5 6 19"/><circle cx="7.5" cy="7.5" r="2.5"/><circle cx="16.5" cy="16.5" r="2.5"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 7.5V12l3 2"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 4 3.5 8.5 12 13l8.5-4.5zM3.5 12.5 12 17l8.5-4.5M3.5 16.5 12 21l8.5-4.5"/></symbol>
+  </defs>
+</svg>
+
+<header class="hdr">
+  <div class="hdr-in">
+    <a class="brand" href="#home" aria-label="ゆくえ ホーム">
+      <svg class="brand-seal" viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="6" style="fill:var(--seal)"/><path d="M5 9.5c3.2 0 3.6 5 7 5s3.8-5 7-5" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/></svg>
+      <span class="brand-name">ゆくえ</span><span class="brand-tag">仮称</span>
+    </a>
+    <nav class="nav" aria-label="メイン">
+      <a href="#home" data-nav="home">ホーム</a>
+      <a href="#flow" data-nav="flow">お金の流れ</a>
+      <a href="#updates" data-nav="updates">政策の動き</a>
+      <a href="#find" data-nav="find">制度をさがす</a>
+      <a href="#connect" data-nav="connect">AIとつなぐ</a>
+    </nav>
+    <div class="hdr-act">
+      <a class="hdr-link m-only" href="#connect" data-nav="connect" aria-label="AIとつなぐ"><svg class="ic"><use href="#i-plug"/></svg></a>
+      <a class="hdr-link" href="#notes" data-nav="notes" aria-label="設計メモ"><svg class="ic"><use href="#i-note"/></svg><span>設計メモ</span></a>
+      <button class="btn btn-ai" id="dockToggle" type="button" aria-expanded="false" aria-controls="dock"><svg class="ic"><use href="#i-spark"/></svg>AIに聞く</button>
+    </div>
+  </div>
+</header>
+
+<div class="shell" id="shell">
+  <main class="main" id="main">
+    <p class="sample-note"><span class="tag">デザインサンプル</span><span>画面の数値と記事には確認用のデータが含まれます。<a class="lnk" href="#notes">内訳を見る</a></span></p>
+
+    <!-- ホーム -->
+    <section class="view" id="v-home" data-view="home">
+      <div class="home-top">
+        <article class="brief">
+          <p class="eyebrow" id="briefMeta"></p>
+          <h1 class="vt">きょうの国の動き</h1>
+          <div class="brief-list" id="briefList"></div>
+          <p class="brief-foot"><span class="tag">AI要約</span><span id="briefSrc"></span><button class="lnk" type="button" data-ask="きょうの動きをまとめて教えて">このまとめについて聞く</button></p>
+        </article>
+        <article class="panel teaser">
+          <header class="teaser-h">
+            <div>
+              <p class="eyebrow" id="heroEyebrow"></p>
+              <p class="hero"><span id="heroTotal"></span><span class="hero-u">兆円</span></p>
+              <p class="hero-sub" id="heroSub"></p>
+            </div>
+            <a class="btn btn-ghost" href="#flow">流れをたどる<svg class="ic"><use href="#i-arrow"/></svg></a>
+          </header>
+          <div class="flow-box" id="homeFlow"></div>
+        </article>
+      </div>
+      <section class="tiles" id="tiles" aria-label="数字で見る今年度"></section>
+      <div class="home-low">
+        <section>
+          <h2 class="sec-h">フォロー中のテーマ<small>動きがあると通知します</small></h2>
+          <div class="chips follow-chips" id="followChips"></div>
+          <div class="rows" id="followRows"></div>
+        </section>
+        <section>
+          <h2 class="sec-h">これからの予定<small>公表されている日程と、例年の目安</small></h2>
+          <div class="rows" id="calRows"></div>
+        </section>
+      </div>
+    </section>
+
+    <!-- お金の流れ -->
+    <section class="view" id="v-flow" data-view="flow" hidden>
+      <header class="vh">
+        <p class="eyebrow" id="flowEyebrow"></p>
+        <h1 class="vt">お金の流れ</h1>
+        <p class="lead">左が「どこから来たか」、右が「どこへ行くか」。気になる行き先を押すと、説明と関連する動きが出ます。さらに内訳までたどれます。</p>
+      </header>
+      <div class="life-wrap">
+        <p class="life-t" id="lifeT"></p>
+        <ol class="life" id="life"></ol>
+      </div>
+      <div class="ctrl">
+        <div class="ctrl-g">
+          <span class="ctrl-l" id="unitL">単位</span>
+          <div class="seg" role="group" aria-labelledby="unitL" id="unitSeg">
+            <button type="button" data-unit="cho" aria-pressed="true">兆円</button>
+            <button type="button" data-unit="pc" aria-pressed="false">1人あたり</button>
+            <button type="button" data-unit="man" aria-pressed="false">1万円のうち</button>
+          </div>
+        </div>
+        <div class="ctrl-g">
+          <span class="ctrl-l" id="modeL">表示</span>
+          <div class="seg" role="group" aria-labelledby="modeL" id="modeSeg">
+            <button type="button" data-mode="flow" aria-pressed="true">流れ</button>
+            <button type="button" data-mode="table" aria-pressed="false">表</button>
+          </div>
+        </div>
+      </div>
+      <div class="flow-grid">
+        <figure class="panel flow-card">
+          <nav class="crumb" id="crumb" aria-label="階層"></nav>
+          <div class="flow-scroll" id="flowScroll"><div class="flow-box" id="mainFlow"></div></div>
+          <div class="tbl-wrap" id="flowTable" hidden></div>
+          <div class="sel-bar" id="selBar"></div>
+          <div class="legend" id="legend" role="group" aria-label="分野の色"></div>
+          <figcaption class="cap" id="flowCap"></figcaption>
+        </figure>
+        <aside class="panel detail" id="detail" aria-live="polite"></aside>
+      </div>
+    </section>
+
+    <!-- 政策の動き -->
+    <section class="view" id="v-updates" data-view="updates" hidden>
+      <header class="vh">
+        <p class="eyebrow">毎日更新 ・ 各省庁・国会・官報から</p>
+        <h1 class="vt">政策の動き</h1>
+        <p class="lead">法律、予算、税、制度、補助金。発表元がちがっても、「種類」と「いまの段階」をそろえて1か所に並べます。</p>
+      </header>
+      <div class="ctrl">
+        <div class="chips" id="upType" role="group" aria-label="種類"></div>
+      </div>
+      <div class="ctrl">
+        <div class="chips" id="upTheme" role="group" aria-label="分野"></div>
+      </div>
+      <div class="feed" id="feed"></div>
+    </section>
+
+    <!-- 制度をさがす -->
+    <section class="view" id="v-find" data-view="find" hidden>
+      <header class="vh">
+        <p class="eyebrow">給付 ・ 補助金 ・ 助成金 ・ 減税</p>
+        <h1 class="vt">制度をさがす</h1>
+        <p class="lead">立場をえらぶと、関係のある制度だけが残ります。自分が対象になるかどうかは、そのままAIに確認できます。</p>
+      </header>
+      <div class="ctrl">
+        <div class="chips" id="aud" role="group" aria-label="立場"></div>
+      </div>
+      <p class="cap find-note">金額や状態にはサンプルの値が含まれます。申請の前に、担当省庁のページで最新の条件を確認してください。</p>
+      <div class="progs" id="progs"></div>
+    </section>
+
+    <!-- AIとつなぐ -->
+    <section class="view" id="v-connect" data-view="connect" hidden>
+      <header class="vh">
+        <p class="eyebrow">コネクター（MCP Apps）</p>
+        <h1 class="vt">いつものAIから、そのまま聞ける</h1>
+        <p class="lead">ゆくえをClaudeやChatGPTにつなぐと、会話の中で国のお金の流れを調べられます。対応するアプリでは、図も会話の中にそのまま表示されます。</p>
+      </header>
+      <div class="con-grid">
+        <figure class="panel mock">
+          <div class="mock-bar"><svg class="ic"><use href="#i-spark"/></svg>AIアシスタントの会話画面（表示イメージ）</div>
+          <div class="mock-body">
+            <p class="m-user">防衛費って、何に使われているの？</p>
+            <div class="m-ai">
+              <p class="m-call"><svg class="ic"><use href="#i-plug"/></svg>ゆくえ ・ show_flow を使用</p>
+              <div class="widget">
+                <div class="widget-h"><span><svg class="brand-seal" viewBox="0 0 24 24" aria-hidden="true" style="width:16px;height:16px"><rect width="24" height="24" rx="6" style="fill:var(--seal)"/><path d="M5 9.5c3.2 0 3.6 5 7 5s3.8-5 7-5" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/></svg>お金の流れ › 防衛</span><button class="btn btn-ghost" type="button" id="conOpen" style="min-height:30px;padding:0 10px;font-size:12px">ゆくえで開く</button></div>
+                <div class="widget-b"><div class="flow-scroll"><div class="flow-box" id="conFlow"></div></div></div>
+              </div>
+              <p id="conText"></p>
+              <p class="srcs" id="conSrc"></p>
+            </div>
+          </div>
+          <figcaption class="cap">コネクターが返した図は、会話の中でそのまま操作できます。押した項目について、続けてAIに聞くこともできます。</figcaption>
+        </figure>
+        <div class="con-side">
+          <section class="panel con-card">
+            <h2>つなぎ方（Claudeの場合）</h2>
+            <ol class="stepsl">
+              <li>Claudeの「設定」から「コネクタ」を開く</li>
+              <li>「カスタムコネクタを追加」をえらび、下のURLを貼る</li>
+              <li>会話で「ゆくえで調べて」と頼む</li>
+            </ol>
+            <div class="url"><code id="mcpUrl">https://mcp.yukue.example/mcp</code><button class="btn btn-ghost" type="button" id="copyUrl"><svg class="ic"><use href="#i-copy"/></svg><span>コピー</span></button></div>
+            <p>公開されている情報だけを扱うので、ログインは要りません。ChatGPTなど、同じ規格（MCP Apps）に対応したAIにも同じサーバーでつなげる想定です。URLは見本です。</p>
+          </section>
+          <section class="panel con-card">
+            <h2>AIが使える道具</h2>
+            <div id="toolList"></div>
+          </section>
+        </div>
+      </div>
+      <section class="con-where">
+        <h2 class="sec-h">どこで図が出るか<small>2026年11月時点の公式ドキュメントにもとづく</small></h2>
+        <div class="tbl-wrap">
+          <table class="tbl wrap">
+            <thead><tr><th>使う場所</th><th>図の表示</th><th>補足</th></tr></thead>
+            <tbody>
+              <tr><td>Claude（Web・デスクトップ・スマホアプリ）</td><td>会話の中に表示</td><td>カスタムコネクタとしてURLで追加できる</td></tr>
+              <tr><td>ChatGPT</td><td>会話の中に表示</td><td>同じ規格（MCP Apps）で動く</td></tr>
+              <tr><td>Claude Code</td><td>テキストのみ</td><td>道具は呼べるが、図は描画されない</td></tr>
+              <tr><td>ゆくえのアプリ内チャット</td><td>画面の図が連動</td><td>同じ道具を使い、アプリ自身の図を動かす</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+
+    <!-- 設計メモ -->
+    <section class="view" id="v-notes" data-view="notes" hidden>
+      <header class="vh">
+        <p class="eyebrow">このサンプルの考え方</p>
+        <h1 class="vt">設計メモ</h1>
+        <p class="lead">なぜこの形にしたか、情報をどう集めてつなぐか、AIとどうつなぐかをまとめています。</p>
+      </header>
+      <div class="notes">
+        <section class="note-sec">
+          <h2>ねらい</h2>
+          <dl class="kv">
+            <div><dt>情報が省庁ごとにバラバラ</dt><dd>「お金の流れ」を背骨にして、政策・法律・制度・ニュースをすべてそこに結びつける。どの入口から入っても、同じ項目にたどり着く。</dd></div>
+            <div><dt>政策や制度の動きがXで流れていくだけ</dt><dd>毎日、各省庁・国会・官報などの一次情報から集め、「種類」と「いまの段階」をそろえて並べる。Xは話題のきっかけとして扱い、根拠にはしない。</dd></div>
+            <div><dt>見るだけで終わってしまう</dt><dd>どの画面からでもAIに聞ける。答えには出典が付き、画面の図も一緒に動く。外のAI（Claudeなど）からも同じ情報を呼び出せる。</dd></div>
+          </dl>
+          <figure>
+            <div class="diagram">
+              <svg viewBox="0 0 800 196" role="img" aria-label="財源から届け先までのお金の流れを背骨にして、税制改正、予算、法律、制度、支出の記録をそれぞれの段に結びつける構成図">
+                <defs><marker id="ah1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="currentColor"/></marker></defs>
+                <g font-size="13" font-weight="700" text-anchor="middle">
+                  <rect x="20" y="16" width="120" height="52" rx="9" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="80" y="39">財源</text>
+                  <rect x="180" y="16" width="120" height="52" rx="9" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="240" y="39">会計</text>
+                  <rect x="340" y="16" width="120" height="52" rx="9" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="400" y="39">分野</text>
+                  <rect x="500" y="16" width="120" height="52" rx="9" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="560" y="39">事業</text>
+                  <rect x="660" y="16" width="120" height="52" rx="9" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="720" y="39">届け先</text>
+                </g>
+                <g font-size="11" text-anchor="middle" opacity=".7">
+                  <text x="80" y="57">税・国債</text><text x="240" y="57">一般・特別</text><text x="400" y="57">社会保障など</text><text x="560" y="57">事業ごとの予算</text><text x="720" y="57">自治体・企業・個人</text>
+                </g>
+                <g stroke="currentColor" stroke-width="1.5" fill="none">
+                  <line x1="140" y1="42" x2="176" y2="42" marker-end="url(#ah1)"/><line x1="300" y1="42" x2="336" y2="42" marker-end="url(#ah1)"/><line x1="460" y1="42" x2="496" y2="42" marker-end="url(#ah1)"/><line x1="620" y1="42" x2="656" y2="42" marker-end="url(#ah1)"/>
+                </g>
+                <g stroke="currentColor" stroke-opacity=".4" stroke-width="1.2">
+                  <line x1="80" y1="68" x2="80" y2="98"/><line x1="240" y1="68" x2="240" y2="98"/><line x1="400" y1="68" x2="400" y2="98"/><line x1="560" y1="68" x2="560" y2="98"/><line x1="720" y1="68" x2="720" y2="98"/>
+                </g>
+                <g font-size="12" text-anchor="middle">
+                  <rect x="26" y="98" width="108" height="28" rx="14" style="fill:var(--accent-wash)"/><text x="80" y="116">税制改正</text>
+                  <rect x="186" y="98" width="108" height="28" rx="14" style="fill:var(--accent-wash)"/><text x="240" y="116">予算・補正予算</text>
+                  <rect x="346" y="98" width="108" height="28" rx="14" style="fill:var(--accent-wash)"/><text x="400" y="116">法律・計画</text>
+                  <rect x="506" y="98" width="108" height="28" rx="14" style="fill:var(--accent-wash)"/><text x="560" y="116">制度・補助金</text>
+                  <rect x="666" y="98" width="108" height="28" rx="14" style="fill:var(--accent-wash)"/><text x="720" y="116">採択・支出の記録</text>
+                </g>
+                <rect x="20" y="150" width="760" height="32" rx="9" fill="none" stroke="currentColor" stroke-opacity=".4" stroke-width="1.2"/>
+                <text x="400" y="171" font-size="12" text-anchor="middle">毎日のニュース・各省の発表は、関係する段すべてに結びつける</text>
+              </svg>
+            </div>
+            <figcaption class="cap">お金の流れの各段に、その段を動かす決定（税制、予算、法律、制度）をぶら下げる。ニュースは流れのどこに関わるかで整理する。</figcaption>
+          </figure>
+        </section>
+
+        <section class="note-sec">
+          <h2>お金の流れの見せ方</h2>
+          <ul class="princ">
+            <li><b>左から右へ、一本の流れ</b><span>「どこから来て、どこへ行くか」を1枚に。帯の太さがそのまま金額なので、数字を読まなくても大小が分かる。</span></li>
+            <li><b>最初は少なく、押すと深く</b><span>最初に見せるのは3列・十数本だけ。行き先を押すと内訳、その先の届け先へ進む。数千の事業を一度に並べない。</span></li>
+            <li><b>兆円を、自分の大きさに</b><span>「1人あたり」「1万円のうち」に切り替えられる。122兆円は想像しにくくても、1万円のうちの3,000円なら分かる。</span></li>
+            <li><b>色は分野に固定する</b><span>社会保障は青、防衛は黄。図でも、動きの一覧でも、チャットの答えでも同じ色を使う。絞り込んでも色は変わらない。</span></li>
+            <li><b>混ざるお金は、混ぜて描く</b><span>税金と国債は一般会計でひとつになる。「消費税がそのまま防衛費へ」のような、実際にはない線は引かない。</span></li>
+            <li><b>数字には出典と段階を付ける</b><span>当初予算か、補正後か、執行済みか。どの資料のどの段階の値かを示す。図と同じ内容を表でも出す。</span></li>
+          </ul>
+        </section>
+
+        <section class="note-sec">
+          <h2>毎日の収集のしくみ</h2>
+          <div class="pipe">
+            <section class="panel pipe-col">
+              <h3><svg class="ic"><use href="#i-clock"/></svg>集める（毎日・定時）</h3>
+              <ul>
+                <li><b>APIがあるもの</b>は定時に取得（法令、国会、補助金、法人情報など）</li>
+                <li><b>CSV・Excel</b>は更新を検知して取り込む（事業ごとの予算と支出先など）</li>
+                <li><b>PDFや新着ページ</b>は差分を拾い、AIで構造化する（予算書、各省の発表）</li>
+              </ul>
+            </section>
+            <section class="panel pipe-col">
+              <h3><svg class="ic"><use href="#i-layers"/></svg>つなぐ</h3>
+              <ul>
+                <li>資料ごとにちがう<b>単位（円・千円・億円）と時刻</b>をそろえる</li>
+                <li>AIが<b>種類・分野・段階</b>を判定し、短い要約を作る</li>
+                <li>事業番号・法令番号・法人番号で<b>お金の流れに結びつける</b></li>
+                <li>自信が低いもの、金額が大きいものは<b>人が確認</b>してから公開</li>
+              </ul>
+            </section>
+            <section class="panel pipe-col">
+              <h3><svg class="ic"><use href="#i-arrow"/></svg>届ける</h3>
+              <ul>
+                <li><b>アプリ</b>の流れ図・動きの一覧・制度さがし</li>
+                <li><b>AIチャット</b>（アプリ内）と<b>コネクター</b>（外のAI）</li>
+                <li>フォロー中のテーマに動きがあれば<b>通知</b></li>
+              </ul>
+            </section>
+          </div>
+          <p>おもな情報源は次のとおりです。いずれも国の機関が公開しているものです。事業レビューの集計額は予算書の金額と一致しないため、別の基準の数字として並べて示します。</p>
+          <div class="tbl-wrap" id="srcTable"></div>
+        </section>
+
+        <section class="note-sec">
+          <h2>AIとコネクター</h2>
+          <p>「Claudeの画面に自社のアプリを出せる」仕組みは、<strong>MCP Apps</strong> です。AIと外部サービスをつなぐ規格（MCP）の公式拡張として、2026年1月に公開されました。道具（ツール）にHTMLの画面を結びつけておくと、Claudeがそれを会話の中の安全な枠に表示します。開発には <code>@modelcontextprotocol/ext-apps</code> を使います。</p>
+          <p>Claudeでは「インタラクティブコネクタ」として、Web・デスクトップ・スマホアプリで表示されます。<strong>Claude Code は道具を呼べますが、図は描画しません。</strong>そこで、MCPサーバーを1つ作り、3つの出口で使い回す構成にします。</p>
+          <figure>
+            <div class="diagram">
+              <svg viewBox="0 0 800 318" role="img" aria-label="ゆくえのMCPサーバー1つを、外のAI、アプリ内チャット、開発者の3つの出口で共用する構成図">
+                <defs><marker id="ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="currentColor"/></marker></defs>
+                <rect x="8" y="114" width="170" height="90" rx="10" fill="none" stroke="currentColor" stroke-opacity=".45" stroke-width="1.3"/>
+                <text x="93" y="153" text-anchor="middle" font-size="13" font-weight="700">ゆくえのデータ基盤</text>
+                <text x="93" y="174" text-anchor="middle" font-size="11.5" opacity=".7">お金の流れ・政策・制度</text>
+                <line x1="182" y1="159" x2="258" y2="159" stroke="currentColor" stroke-width="1.5" marker-end="url(#ah2)"/>
+                <text x="220" y="150" text-anchor="middle" font-size="11" opacity=".7">検索・集計</text>
+                <rect x="264" y="84" width="200" height="150" rx="12" style="fill:var(--accent-wash);stroke:var(--accent)" stroke-width="1.5"/>
+                <text x="364" y="116" text-anchor="middle" font-size="14" font-weight="700">ゆくえ MCPサーバー</text>
+                <text x="364" y="146" text-anchor="middle" font-size="11.5">道具（ツール）6本</text>
+                <text x="364" y="164" text-anchor="middle" font-size="11.5" opacity=".7">すべて読み取り専用</text>
+                <text x="364" y="194" text-anchor="middle" font-size="11.5">図の画面（ui:// リソース）</text>
+                <text x="364" y="212" text-anchor="middle" font-size="11.5" opacity=".7">流れ図・一覧のウィジェット</text>
+                <g stroke="currentColor" stroke-width="1.5" fill="none">
+                  <path d="M464 159H520V50H604" marker-end="url(#ah2)"/>
+                  <path d="M464 159H604" marker-end="url(#ah2)"/>
+                  <path d="M464 159H520V268H604" marker-end="url(#ah2)"/>
+                </g>
+                <g font-size="11" text-anchor="middle" opacity=".7">
+                  <text x="562" y="42">コネクター</text><text x="562" y="151">Claude API</text><text x="562" y="260">MCP</text>
+                </g>
+                <g fill="none" stroke="currentColor" stroke-opacity=".45" stroke-width="1.3">
+                  <rect x="610" y="8" width="182" height="84" rx="10"/><rect x="610" y="117" width="182" height="84" rx="10"/><rect x="610" y="226" width="182" height="84" rx="10"/>
+                </g>
+                <g text-anchor="middle">
+                  <text x="701" y="45" font-size="13" font-weight="700">Claude・ChatGPT</text><text x="701" y="66" font-size="11.5" opacity=".7">会話の中に図を表示</text>
+                  <text x="701" y="154" font-size="13" font-weight="700">ゆくえのAIチャット</text><text x="701" y="175" font-size="11.5" opacity=".7">同じ道具でアプリの図を動かす</text>
+                  <text x="701" y="263" font-size="13" font-weight="700">Claude Code・開発者</text><text x="701" y="284" font-size="11.5" opacity=".7">テキストで結果を返す</text>
+                </g>
+              </svg>
+            </div>
+            <figcaption class="cap">道具と図の画面をMCPサーバーにまとめておくと、外のAI・自分たちのアプリ・開発者のどこから呼ばれても同じ答えを返せる。</figcaption>
+          </figure>
+          <dl class="kv">
+            <div><dt>外のAIから（コネクター）</dt><dd>ClaudeやChatGPTにURLで追加する。公開データだけなので認証なしで提供できる。公式ディレクトリに載せるには、全ツールへの読み取り専用の明示、プライバシーポリシー、画面写真などが必要。</dd></div>
+            <div><dt>アプリの中で（AIチャット）</dt><dd>Claude APIが、MCPコネクター経由で同じ道具を呼ぶ。図は会話に埋め込まず、アプリ自身の画面を動かす。このサンプルの「AIに聞く」がその形。</dd></div>
+            <div><dt>開発者・Claude Code から</dt><dd>同じサーバーにつなぐと、結果がテキストで返る。記事の下調べや分析の自動化に使える。</dd></div>
+          </dl>
+          <p class="note-links" id="noteLinks"></p>
+        </section>
+
+        <section class="note-sec">
+          <h2>このサンプルについて</h2>
+          <dl class="kv" id="aboutList"></dl>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <aside class="dock" id="dock" aria-label="AIに聞く">
+    <header class="dock-h">
+      <div class="dock-t"><svg class="ic"><use href="#i-spark"/></svg><strong>AIに聞く</strong><span class="tag" id="aiMode">サンプル応答</span></div>
+      <button class="icon-btn" id="dockClose" type="button" aria-label="閉じる"><svg class="ic"><use href="#i-x"/></svg></button>
+    </header>
+    <p class="ctx" id="ctx"></p>
+    <div class="msgs" id="msgs" role="log" aria-live="polite"></div>
+    <div class="sugg" id="sugg"></div>
+    <form class="composer" id="composer">
+      <label class="sr" for="q">質問を入力</label>
+      <textarea id="q" rows="1" placeholder="例：防衛費はどこへ行く？"></textarea>
+      <button class="send" id="send" type="submit" aria-label="送信"><svg class="ic"><use href="#i-send"/></svg></button>
+    </form>
+    <p class="dock-foot" id="dockFoot"></p>
+  </aside>
+</div>
+
+<div class="scrim" id="scrim" hidden></div>
+
+<nav class="tabbar" aria-label="メイン（下部）">
+  <a href="#home" data-nav="home"><svg class="ic"><use href="#i-home"/></svg>ホーム</a>
+  <a href="#flow" data-nav="flow"><svg class="ic"><use href="#i-flow"/></svg>流れ</a>
+  <a href="#updates" data-nav="updates"><svg class="ic"><use href="#i-pulse"/></svg>動き</a>
+  <a href="#find" data-nav="find"><svg class="ic"><use href="#i-search"/></svg>制度</a>
+  <button type="button" id="tabAi"><svg class="ic"><use href="#i-spark"/></svg>AIに聞く</button>
+</nav>
+
+<div class="tip" id="tip" hidden></div>
+<script>
+/* 画面に出すデータ。金額の単位は兆円。
+   総額・財源・主要経費は財務省「令和8年度予算」（2026年4月7日成立・当初）の公表値を丸めたもの。
+   内訳の一部、届け先、過去の推移、制度の金額は画面確認用のサンプル。 */
+const DATA = {
+  asOf: { date: '2026-11-24', dow: '火', time: '18:00' },
+  fy: {
+    label: '令和8年度', west: '2026年度', kind: '一般会計・当初予算',
+    total: 122.31, pop: 1.2243e8, popNote: '総人口 約1億2,243万人（2026年11月1日の概算値）',
+    years: [2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026],
+    trend: [97.5, 97.7, 101.5, 102.7, 106.6, 107.6, 114.4, 112.6, 115.2, 122.3],
+    poolDesc: '税金と国債などを合わせた、国の基本的な財布です。年金や国債の借り換えなどを扱う特別会計（歳出の純計 216.2兆円）は、この図には入れていません。',
+    lifeNote: '6月に補正予算（+3.1兆円）が成立。11月24日に第2次補正の編成が指示されました。',
+    capRoot: '出典：財務省「令和8年度予算」（2026年4月7日成立・当初）を0.1兆円単位に丸めた値。「産業・エネルギー」と「その他」は、主要経費をまとめた区分です。',
+    capDrill: '内訳の一部と、届け先ごとの金額は画面確認用のサンプルです。',
+    srcShort: '出典：財務省「令和8年度予算」（当初） ・ 過去の推移は概数',
+    srcDrill: '内訳の一部と届け先はサンプル（画面確認用）',
+    srcChip: '財務省「令和8年度予算」',
+    sampleNote: '総額・財源・主要経費は公表値にもとづく。内訳の一部、届け先、過去の推移、制度の金額はデザイン確認用のサンプル。'
+  },
+  themes: {
+    social: { name: '社会保障', c: '--t1' },
+    debt: { name: '国債', c: '--t2' },
+    local: { name: '地方', c: '--t3' },
+    defense: { name: '防衛', c: '--t4' },
+    infra: { name: '公共事業・防災', c: '--t5' },
+    edu: { name: '教育・科学', c: '--t6' },
+    industry: { name: '産業・エネルギー', c: '--t7' },
+    other: { name: 'その他', c: '--t0' },
+    whole: { name: '予算全体・税', c: '--flow-neutral' }
+  },
+  src: [
+    { id: 'consumption', name: '消費税', v: 26.69, tax: true, desc: '買い物のときに払う税。税率は10%（飲食料品などは8%）。国の税収でいちばん大きい。' },
+    { id: 'income', name: '所得税', v: 25.33, tax: true, desc: '給料や事業のもうけにかかる税。給与などから天引きされる分が約8割を占める。' },
+    { id: 'corp', name: '法人税', v: 20.70, tax: true, desc: '会社のもうけにかかる税。景気によって増減しやすい。' },
+    { id: 'othertax', name: 'その他の税', v: 11.03, tax: true, desc: '相続税、揮発油税、印紙収入など。' },
+    { id: 'bond', name: '国債（借金）', short: '国債', v: 29.58, alias: ['国債', '借金', '公債'], trend: [34.4, 33.7, 32.7, 32.6, 43.6, 36.9, 35.6, 35.4, 28.6, 29.6], desc: '税などで足りない分を、国債を発行して借りる。このうち22.9兆円は、赤字を埋めるための特例公債。' },
+    { id: 'otherrev', name: 'その他収入', v: 8.99, desc: '日本銀行からの納付金や国有財産の売却など、税以外の収入。' }
+  ],
+  recips: {
+    elder: '年金の受給者', insurer: '医療保険（病院への支払い）', family: '子育て世帯', person: '個人・世帯',
+    pref: '都道府県', city: '市区町村', muni: '自治体',
+    boj: '日本銀行', bank: '銀行・保険・年金基金', overseas: '海外の投資家', hh: '個人など',
+    sdf: '自衛隊員（給与など）', dind: '国内の防衛関連企業', fms: '海外からの調達',
+    build: '建設事業者', univ: '大学・研究機関', school: '私立学校', farm: '農業者・団体', biz: '事業者',
+    gov: '国の機関', intl: '途上国・国際機関', reserve: '使いみちは未定'
+  },
+  use: [
+    {
+      id: 'social', name: '社会保障', long: '社会保障関係費', v: 39.06, theme: 'social',
+      desc: '年金・医療・介護・子育てなど、暮らしを支える給付にあてるお金。',
+      trend: [32.5, 33.0, 34.1, 35.9, 35.8, 36.3, 36.9, 37.7, 38.3, 39.1],
+      drill: { items: [
+        { id: 's-pension', name: '年金', v: 13.90, desc: '基礎年金の半分を国が負担する分など。', to: { elder: 13.90 } },
+        { id: 's-medical', name: '医療', v: 12.70, desc: '医療保険への国の負担。窓口負担を除いた医療費の一部をまかなう。', to: { insurer: 12.70 } },
+        { id: 's-welfare', name: '生活保護・福祉', v: 4.40, desc: '生活保護、障害のある人への福祉サービスなど。', to: { muni: 3.10, person: 1.30 } },
+        { id: 's-care', name: '介護', v: 3.80, desc: '介護保険への国の負担。', to: { muni: 3.80 } },
+        { id: 's-child', name: '子ども・子育て', v: 3.50, desc: '児童手当、保育所の運営費など。', to: { family: 2.60, muni: 0.90 } },
+        { id: 's-health', name: '保健・衛生', v: 0.50, desc: '感染症対策、難病の医療費助成など。', to: { muni: 0.30, biz: 0.20 } },
+        { id: 's-work', name: '雇用・労災', v: 0.26, desc: '失業給付や職業訓練への国の負担。', to: { person: 0.26 } }
+      ] }
+    },
+    {
+      id: 'debt', name: '国債費', long: '国債費', v: 31.28, theme: 'debt',
+      desc: '過去に発行した国債の元本の返済と、利子の支払い。利払いだけで13.0兆円にのぼる。',
+      trend: [23.5, 23.3, 23.5, 23.4, 23.8, 24.3, 25.3, 27.0, 28.2, 31.3],
+      drill: { items: [
+        { id: 'd-principal', name: '元本の返済', v: 17.89, desc: '満期が来た国債の元本を返すお金（債務償還費）。', to: { boj: 8.05, bank: 7.51, overseas: 1.97, hh: 0.36 } },
+        { id: 'd-interest', name: '利子の支払い', v: 13.04, desc: '国債を持っている人に払う利子（利払費）。金利が上がると増える。', to: { boj: 5.87, bank: 5.48, overseas: 1.43, hh: 0.26 } },
+        { id: 'd-admin', name: '事務費など', v: 0.35, desc: '国債の発行や管理にかかる事務の費用。', to: { gov: 0.35 } }
+      ] }
+    },
+    {
+      id: 'local', name: '地方交付税', long: '地方交付税交付金など', v: 20.88, theme: 'local',
+      desc: '自治体ごとの税収の差をならすために、国から都道府県や市区町村へ配るお金。使いみちは自治体が決める。',
+      trend: [15.6, 15.5, 16.0, 15.8, 15.9, 15.9, 16.4, 17.8, 19.1, 20.9],
+      drill: { items: [
+        { id: 'l-tax', name: '地方交付税', v: 20.60, desc: '財源の足りない自治体に配る、使いみちが自由なお金。', to: { pref: 10.90, city: 9.70 } },
+        { id: 'l-special', name: '地方特例交付金など', v: 0.28, desc: '国の減税などで減った地方の収入を補うお金。', to: { city: 0.28 } }
+      ] }
+    },
+    {
+      id: 'defense', name: '防衛', long: '防衛関係費', v: 8.98, theme: 'defense',
+      desc: '自衛隊の人件費、装備品の購入や維持、基地の運営など。',
+      trend: [5.1, 5.2, 5.3, 5.3, 5.3, 5.4, 6.8, 7.9, 8.7, 9.0],
+      drill: { items: [
+        { id: 'f-equip', name: '装備品の購入・開発', v: 3.60, desc: '艦船、航空機、ミサイルなどの購入と研究開発。', to: { dind: 2.60, fms: 1.00 } },
+        { id: 'f-staff', name: '人件・糧食費', v: 2.30, desc: '自衛隊員の給与や食事など。', to: { sdf: 2.30 } },
+        { id: 'f-maint', name: '維持整備・弾薬・燃料', v: 2.20, desc: '装備品の修理、弾薬や燃料の確保。', to: { dind: 1.90, fms: 0.30 } },
+        { id: 'f-base', name: '施設・基地対策', v: 0.88, desc: '隊舎や基地の整備、基地周辺の自治体への対策。', to: { build: 0.48, muni: 0.40 } }
+      ] }
+    },
+    {
+      id: 'infra', name: '公共事業', long: '公共事業関係費', v: 6.11, theme: 'infra',
+      desc: '道路、河川、港、住宅など、インフラの整備と維持。防災・減災の工事もここに入る。',
+      trend: [6.0, 6.0, 6.9, 6.9, 6.1, 6.1, 6.1, 6.1, 6.1, 6.1],
+      drill: { items: [
+        { id: 'i-road', name: '道路', v: 1.70, desc: '国道の整備と維持、老朽化対策。', to: { build: 1.00, muni: 0.70 } },
+        { id: 'i-grant', name: '自治体向け交付金', v: 1.40, desc: '自治体が行うインフラ整備を支える交付金。', to: { muni: 1.40 } },
+        { id: 'i-river', name: '治水・防災', v: 1.20, desc: '堤防やダム、砂防など、水害と土砂災害への備え。', to: { build: 0.70, muni: 0.50 } },
+        { id: 'i-city', name: '住宅・都市', v: 0.70, desc: '公営住宅、市街地の整備など。', to: { muni: 0.50, build: 0.20 } },
+        { id: 'i-agri', name: '農林水産の基盤', v: 0.61, desc: '農地、林道、漁港の整備。', to: { muni: 0.41, build: 0.20 } },
+        { id: 'i-port', name: '港湾・空港・鉄道', v: 0.50, desc: '港や空港、整備新幹線など。', to: { build: 0.50 } }
+      ] }
+    },
+    {
+      id: 'edu', name: '教育・科学', long: '文教及び科学振興費', v: 6.04, theme: 'edu',
+      desc: '学校の先生の給与のうち国が負担する分、授業料の支援、大学や研究への投資。',
+      trend: [5.4, 5.4, 5.6, 5.5, 5.4, 5.4, 5.4, 5.5, 5.6, 6.0],
+      drill: { items: [
+        { id: 'e-teacher', name: '義務教育（先生の給与）', v: 1.63, desc: '公立の小中学校の教職員給与のうち、国が負担する3分の1。', to: { muni: 1.63 } },
+        { id: 'e-science', name: '科学技術・研究', v: 1.44, desc: '研究費の助成、宇宙・量子・AIなどの研究開発（科学技術振興費）。', to: { univ: 1.04, biz: 0.40 } },
+        { id: 'e-univ', name: '国立大学', v: 1.10, desc: '国立大学の運営を支える交付金。', to: { univ: 1.10 } },
+        { id: 'e-tuition', name: '高校・大学の授業料支援', v: 1.00, desc: '高校の就学支援金、大学の授業料減免と給付型奨学金。', to: { family: 1.00 } },
+        { id: 'e-other', name: 'その他の教育', v: 0.45, desc: '学校施設の整備、スポーツ・文化など。', to: { muni: 0.25, school: 0.20 } },
+        { id: 'e-private', name: '私立学校への助成', v: 0.42, desc: '私立の大学や高校などの運営費への助成。', to: { school: 0.42 } }
+      ] }
+    },
+    {
+      id: 'industry', name: '産業・エネルギー', short: '産業・エネ', long: '産業・エネルギー（食料・エネルギー・中小企業）', v: 2.24, theme: 'industry',
+      desc: '食料の安定供給、エネルギー対策、中小企業の支援。3つの主要経費をまとめた区分で、一般会計では全体の2%弱。',
+      drill: { items: [
+        { id: 'n-food', name: '食料・農業', v: 1.27, desc: '農業者への交付金、米や麦の安定供給など（食料安定供給関係費）。', to: { farm: 0.97, muni: 0.30 } },
+        { id: 'n-energy', name: 'エネルギー', v: 0.80, desc: '省エネ・再エネの導入支援、資源の確保など（エネルギー対策費）。', to: { biz: 0.80 } },
+        { id: 'n-sme', name: '中小企業', v: 0.17, desc: '資金繰りや事業承継、生産性向上の支援（中小企業対策費）。', to: { biz: 0.17 } }
+      ] }
+    },
+    {
+      id: 'other', name: 'その他', long: 'その他（行政の運営・予備費など）', v: 7.72, theme: 'other',
+      desc: '警察・裁判所・外交・税務など国の行政の運営、予備費1兆円、海外への経済協力など。',
+      drill: { items: [
+        { id: 'o-admin', name: '国の行政の運営など', v: 6.16, desc: '警察、裁判所、外交、税務、国会、デジタルなど（その他の事項経費）。', to: { gov: 6.16 } },
+        { id: 'o-reserve', name: '予備費', v: 1.00, desc: '災害など、予算を組むときに見通せない支出に備えるお金。', to: { reserve: 1.00 } },
+        { id: 'o-oda', name: '経済協力', v: 0.51, desc: '途上国への援助（ODA）や国際機関への拠出。', to: { intl: 0.51 } },
+        { id: 'o-pension', name: '恩給', v: 0.05, desc: '旧軍人やその遺族などへの給付。', to: { person: 0.05 } }
+      ] }
+    }
+  ],
+  life: [
+    { k: '概算要求', d: '25.08', s: 'done' },
+    { k: '政府案', d: '25.12.26', s: 'done' },
+    { k: '国会審議', d: '〜26.04', s: 'done' },
+    { k: '成立', d: '26.04.07', s: 'done' },
+    { k: '執行', d: 'いまここ', s: 'now' },
+    { k: '決算', d: '27年', s: '' }
+  ],
+  tiles: [
+    { label: '税収', value: '83.7', unit: '兆円', delta: '前年度の当初予算から +7.6%', series: [57.7, 59.1, 62.5, 63.5, 57.4, 65.2, 69.4, 69.6, 77.8, 83.7] },
+    { label: '新しく発行する国債', value: '29.6', unit: '兆円', delta: '6月の補正後は 32.7兆円', series: [34.4, 33.7, 32.7, 32.6, 43.6, 36.9, 35.6, 35.4, 28.6, 29.6] },
+    { label: '国債への依存度', value: '24.2', unit: '%', delta: '6月の補正後は 26.1%', series: [35.3, 34.5, 32.2, 31.7, 40.9, 34.3, 31.1, 31.5, 24.9, 24.2] },
+    { label: '社会保障費', value: '39.1', unit: '兆円', delta: '前年度の当初予算から +2.1%', series: [32.5, 33.0, 34.1, 35.9, 35.8, 36.3, 36.9, 37.7, 38.3, 39.1] }
+  ],
+  follow: ['social', 'industry', 'local'],
+  calendar: [
+    { when: '11.25 水', title: '国民年金「第3号被保険者制度」の検討会（第2回）', note: '厚生労働省' },
+    { when: '12.14 月', title: 'GX地域共創補助金2026（2次公募）の締切', note: 'Jグランツ ・ 正午まで' },
+    { when: '12.15 火', title: '小規模事業者持続化補助金（創業型）第4回の締切', note: 'Jグランツ ・ 17時まで' },
+    { when: '12.18 金', title: '母子健康手帳の様式改正、意見募集の締切', note: 'こども家庭庁' },
+    { when: '12月下旬', title: '令和9年度予算の政府案、税制改正大綱', note: '例年の時期。今年の日程は未定' }
+  ],
+  updates: [
+    {
+      id: 'hosei2', date: '2026-11-24', type: 'budget', theme: 'whole', stage: 0, stageText: '編成を指示', top: true,
+      title: '令和8年度の第2次補正予算、首相が編成を指示',
+      brief: '首相が、令和8年度の第2次補正予算を編成するよう財務相に指示した。規模と日程はまだ公表されていない。',
+      sum: '経済財政諮問会議で、首相が財務相に第2次補正予算の編成を指示した。規模と日程はまだ公表されていない。',
+      ministry: '内閣府・財務省', amount: '規模は未公表',
+      what: '今年度の予算に、追加の支出が上乗せされる見通し。6月の補正（+3.1兆円）に続く2回目。',
+      who: '内容が決まるまで、対象は分からない。',
+      when: '政府案の閣議決定と国会への提出の日程は未公表。',
+      links: [{ n: '首相官邸', u: 'https://www.kantei.go.jp/jp/105/actions/202611/24keizai.html' }]
+    },
+    {
+      id: 'fy27', date: '2026-11-24', type: 'budget', theme: 'whole', stage: 1, stageText: '政府案を編成中', top: true,
+      title: '令和9年度予算、「編成の基本方針」の原案を提示',
+      brief: '令和9年度予算の「編成の基本方針」の原案が示された。各省庁からの概算要求は、総額143.1兆円。',
+      sum: '来年度予算をどういう考え方で組むかを示す「基本方針」の原案が、経済財政諮問会議に示された。与党との調整を経て成案になる。',
+      ministry: '内閣府', amount: '概算要求 143.1兆円',
+      what: '来年度予算の重点と規律の考え方が固まる。これをもとに年末の政府案をつくる。',
+      who: '来年度の国の事業すべて。',
+      when: '成案は次回の諮問会議に。政府案の決定時期は未定（例年は12月下旬）。',
+      links: [{ n: '経済財政諮問会議', u: 'https://www5.cao.go.jp/keizai-shimon/kaigi/minutes/2026/1124agenda.html' }, { n: '財務省 概算要求', u: 'https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2027/sy20260904.pdf' }]
+    },
+    {
+      id: 'aidx', date: '2026-11-24', type: 'system', theme: 'other', stage: 0,
+      title: 'AI・デジタル改革推進会議、専門調査会が初会合',
+      sum: '10月20日の閣議決定で設けられた「AI・デジタル改革推進会議」の下で、専門調査会が最初の会合を開いた。',
+      ministry: 'デジタル庁', amount: null,
+      what: '行政や産業でのAI・デジタル活用について、制度の見直しを検討する場ができた。',
+      who: '結論が出るまで、直接の影響はない。',
+      when: '検討を始めた段階。取りまとめの時期は未公表。',
+      links: [{ n: 'デジタル庁', u: 'https://www.digital.go.jp/councils/ai-digital-expert' }, { n: '閣議案件', u: 'https://www.kantei.go.jp/jp/kakugi/2026/kakugi-2026102001.html' }]
+    },
+    {
+      id: 'bgata', date: '2026-11-20', type: 'law', theme: 'social', stage: 4,
+      title: 'B型肝炎の給付金、請求できる期限を延ばす改正法が公布',
+      sum: '集団予防接種などでB型肝炎に感染した人への給付金について、請求期限を延長する改正特別措置法（令和8年法律第88号）が公布された。',
+      ministry: '厚生労働省', amount: null,
+      what: '給付金を請求できる期限が延びる。',
+      who: '集団予防接種などが原因でB型肝炎ウイルスに感染した人と、その相続人。',
+      when: '11月13日に成立、11月20日に公布。',
+      links: [{ n: '衆議院 議案経過', u: 'https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE34CE.htm' }]
+    },
+    {
+      id: 'sdfpay', date: '2026-11-20', type: 'law', theme: 'defense', stage: 4,
+      title: '自衛官などの給与を改定する改正法が公布',
+      sum: '防衛省の職員（自衛官など）の俸給月額などを、一般職の国家公務員に準じて改定する改正法（令和8年法律第89号）が公布された。',
+      ministry: '防衛省', amount: null,
+      what: '自衛官など防衛省職員の俸給月額などが改定される。',
+      who: '自衛官など、防衛省の職員。',
+      when: '11月13日に成立、11月20日に公布。',
+      links: [{ n: '衆議院 議案経過', u: 'https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE34E2.htm' }]
+    },
+    {
+      id: 'kessan', date: '2026-11-20', type: 'budget', theme: 'whole', stage: 5,
+      title: '令和7年度の決算を国会に提出、税収は84.2兆円',
+      sum: '昨年度に実際に入ったお金と使ったお金をまとめた決算が、国会に提出された。歳出は129.5兆円、使われずに残った「不用」は2.1兆円。',
+      ministry: '財務省', amount: '歳出 129.5兆円',
+      what: '予算どおりに使われたかを確かめる材料がそろった。翌年度への繰り越しは12.2兆円。',
+      who: '国の事業すべて。会計検査院の検査報告（11月5日）とあわせて国会で審査される。',
+      when: '11月20日に国会へ提出。',
+      links: [{ n: '財務省 決算', u: 'https://www.mof.go.jp/policy/budget/budger_workflow/account/fy2025/ke0811.html' }, { n: '会計検査院', u: 'https://www.jbaudit.go.jp/report/new/index.html' }]
+    },
+    {
+      id: 'boshi', date: '2026-11-19', type: 'system', theme: 'social', stage: 1,
+      title: '母子健康手帳の電子版に向けた様式改正、意見を募集中',
+      sum: '2027年度から電子版の母子健康手帳を使えるようにするため、手帳の様式を改める案について、12月18日まで意見を募集している。',
+      ministry: 'こども家庭庁', amount: null,
+      what: '紙の手帳に加えて、電子版の母子健康手帳を使えるようになる。',
+      who: '妊娠中の人、乳幼児を育てている家庭、市区町村の窓口。',
+      when: '2027年1月末に公布、2027年4月1日に施行の予定。',
+      links: [{ n: 'e-Gov パブリック・コメント', u: 'https://public-comment.e-gov.go.jp/servlet/Public?CLASSNAME=PCMMSTDETAIL&id=141000248&Mode=0' }]
+    },
+    {
+      id: 'senkyo', date: '2026-11-18', type: 'law', theme: 'local', stage: 4,
+      title: '統一地方選の日程をそろえる特例法が公布',
+      sum: '2027年3〜5月に任期が終わる地方議員と首長の選挙について、選挙の期日を統一する特例法（令和8年法律第83号）が公布された。',
+      ministry: '衆議院 議案情報', amount: null,
+      what: '対象となる自治体の選挙が、同じ日にまとめて行われる。',
+      who: '2027年春に選挙がある自治体の有権者と候補者。',
+      when: '11月11日に成立、11月18日に公布。',
+      links: [{ n: '衆議院 議案経過', u: 'https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE363A.htm' }]
+    },
+    {
+      id: 'energy', date: '2026-11-13', type: 'budget', theme: 'industry', stage: 4,
+      title: '冬の電気・ガス料金の支援を12月に前倒し、予備費から6,519億円',
+      sum: '冬の電気・ガス料金への支援を12月に前倒しして行い、自治体が物価高対策に使える交付金も積み増すことを閣議決定した。',
+      ministry: '経済産業省・内閣府', amount: '6,519億円',
+      what: '電気・ガス料金の支援に5,219億円、重点支援地方交付金に1,300億円を、予備費から出す。',
+      who: '電気・ガスを使う家庭と事業者。交付金の使いみちは自治体が決める。',
+      when: '電気・ガス料金の支援は12月から。',
+      links: [{ n: '財務省 予備費使用', u: 'https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2026/r81113kakugikettei.pdf' }, { n: '官房長官会見', u: 'https://www.kantei.go.jp/jp/tyoukanpress/202611/13_a.html' }]
+    },
+    {
+      id: 'gx', date: '2026-11-09', type: 'grant', theme: 'industry', stage: 1,
+      title: 'GX地域共創補助金2026、2次公募を受付中',
+      sum: '脱炭素の電源を使う工場やデータセンターの設備投資への補助金。12月14日の正午まで申請を受け付けている。',
+      ministry: 'Jグランツ掲載', amount: '上限 最大250億円',
+      what: '補助率は中小企業などが2分の1、大企業が3分の1。',
+      who: '脱炭素電源を活用して工場やデータセンターに投資する事業者。',
+      when: '11月9日から12月14日正午まで。',
+      links: [{ n: 'Jグランツ', u: 'https://www.jgrants-portal.go.jp/subsidy/a0WfQ000003dVevUAE' }]
+    },
+    {
+      id: 'vat', date: '2026-11-06', type: 'tax', theme: 'whole', stage: 3, top: true,
+      title: '飲食料品の消費税率を1%に下げる法案、参議院で審議中',
+      brief: '飲食料品の消費税率を8%から1%に下げる法案は、衆議院を通過し、参議院の特別委員会で審議が続いている。',
+      sum: '2027年4月から2年間、飲食料品の消費税率を8%から1%に下げ、中低所得の就業者に支援金を出す法案。11月6日に衆議院で可決された。',
+      ministry: '内閣提出の法案', amount: '減収の見込みは未公表',
+      what: '飲食料品にかかる消費税率が8%から1%になる。あわせて「就業者負担軽減支援金」をつくる。支給額は政令で決める。',
+      who: '食料品を買うすべての人。支援金は中低所得で働いている人。',
+      when: '成立すれば2027年4月から2年間。',
+      links: [{ n: '衆議院 議案経過', u: 'https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE342E.htm' }]
+    },
+    {
+      id: 'jizoku', date: '2026-11-05', type: 'grant', theme: 'industry', stage: 1,
+      title: '小規模事業者持続化補助金（創業型）第4回、受付中',
+      sum: '創業まもない小規模事業者が販路を広げるための取り組みへの補助金。12月15日の17時まで申請を受け付けている。',
+      ministry: 'Jグランツ掲載', amount: '上限 200万円',
+      what: '補助率は3分の2。チラシやウェブサイトの制作、展示会への出展などに使える。',
+      who: '従業員20名以下の、創業まもない事業者。',
+      when: '11月5日から12月15日17時まで。',
+      links: [{ n: 'Jグランツ', u: 'https://www.jgrants-portal.go.jp/subsidy/a0WfQ000003kEuHUAU' }]
+    },
+    {
+      id: 'bousai', date: '2026-11-02', type: 'system', theme: 'infra', stage: 3,
+      title: '防災庁が発足',
+      sum: '災害への備えから復旧・復興までをまとめて担う防災庁が発足した。来年度の予算では、新しい担当省庁として扱われる。',
+      ministry: '防災庁', amount: null,
+      what: '防災に関する国の司令塔が、ひとつの組織にまとまった。',
+      who: '自治体の防災担当、災害のときに支援を受ける人。',
+      when: '2026年11月2日に発足。',
+      links: [{ n: '防災庁', u: 'https://www.bousai.go.jp/juyou/hossokushiki.html' }]
+    }
+  ],
+  programs: [
+    { id: 'jidou', name: '児童手当', kind: '給付', aud: ['family'], theme: 'social', amt: '月1万〜3万円', amtNote: '子ども1人あたり。年齢と人数で変わる', who: '高校生年代までの子どもを育てている世帯', by: 'こども家庭庁', status: 'always', statusText: '通年', link: { n: 'こども家庭庁', u: 'https://www.cfa.go.jp/' } },
+    { id: 'shugaku', name: '高等学校等就学支援金', kind: '給付', aud: ['family'], theme: 'edu', amt: '授業料を支援', amtNote: '金額は学校の種類などで変わる', who: '高校などに通う生徒のいる世帯', by: '文部科学省', status: 'always', statusText: '入学時・年度ごとに申請', link: { n: '文部科学省', u: 'https://www.mext.go.jp/' } },
+    { id: 'kunren', name: '教育訓練給付金', kind: '給付', aud: ['person'], theme: 'social', amt: '受講費の最大80%', amtNote: '講座の種類で給付率が変わる', who: '雇用保険に一定期間入っている人、入っていた人', by: '厚生労働省', status: 'always', statusText: '通年', link: { n: '厚生労働省', u: 'https://www.mhlw.go.jp/' } },
+    { id: 'kougaku', name: '高額療養費制度', kind: '給付', aud: ['person', 'family'], theme: 'social', amt: '自己負担に月の上限', amtNote: '上限は年齢と所得で変わる', who: '医療費の自己負担が大きくなった人', by: '厚生労働省', status: 'always', statusText: '通年', link: { n: '厚生労働省', u: 'https://www.mhlw.go.jp/' } },
+    { id: 'jizoku-p', name: '小規模事業者持続化補助金（創業型）第4回', kind: '補助金', aud: ['biz'], theme: 'industry', amt: '上限 200万円', amtNote: '補助率 3分の2', who: '従業員20名以下の、創業まもない事業者', by: 'Jグランツ掲載', status: 'open', statusText: '受付中 ・ 12月15日まで', link: { n: 'Jグランツ', u: 'https://www.jgrants-portal.go.jp/subsidy/a0WfQ000003kEuHUAU' } },
+    { id: 'gx-p', name: 'GX地域共創補助金2026（2次公募）', kind: '補助金', aud: ['biz'], theme: 'industry', amt: '上限 最大250億円', amtNote: '補助率 中小など2分の1、大企業3分の1', who: '脱炭素電源を使う工場・データセンターに投資する事業者', by: 'Jグランツ掲載', status: 'open', statusText: '受付中 ・ 12月14日まで', link: { n: 'Jグランツ', u: 'https://www.jgrants-portal.go.jp/subsidy/a0WfQ000003dVevUAE' } },
+    { id: 'gyomu', name: '業務改善助成金', kind: '助成金', aud: ['biz', 'npo'], theme: 'industry', amt: '最大600万円', amtNote: '賃上げの額と人数で変わる（サンプル）', who: '最低賃金を引き上げ、設備投資をする中小企業など', by: '厚生労働省', status: 'soon', statusText: '予算がなくなり次第終了', link: { n: '厚生労働省', u: 'https://www.mhlw.go.jp/' } },
+    { id: 'career', name: 'キャリアアップ助成金（正社員化コース）', kind: '助成金', aud: ['biz', 'npo'], theme: 'social', amt: '1人あたり最大80万円', amtNote: '企業の規模などで変わる（サンプル）', who: '有期雇用の人を正社員にした事業主', by: '厚生労働省', status: 'always', statusText: '通年', link: { n: '厚生労働省', u: 'https://www.mhlw.go.jp/' } },
+    { id: 'kyumin', name: '休眠預金等活用事業', kind: '助成', aud: ['npo'], theme: 'other', amt: '事業ごとに設定', amtNote: '資金分配団体を通じて助成', who: '社会課題の解決に取り組むNPOなどの団体', by: '内閣府', status: 'always', statusText: '公募は団体ごと', link: { n: '内閣府', u: 'https://www.cao.go.jp/' } },
+    { id: 'juten', name: '重点支援地方交付金', kind: '交付金', aud: ['local'], theme: 'local', amt: '11月に1,300億円を追加', amtNote: '6月の補正でも1,000億円を計上', who: '物価高への対策を行う都道府県・市区町村', by: '内閣府', status: 'open', statusText: '追加分を配分中', link: { n: '財務省 予備費使用', u: 'https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2026/r81113kakugikettei.pdf' } }
+  ],
+  tools: [
+    { name: 'show_flow', desc: 'お金の流れを図で表示する（年度・分野・階層を指定）' },
+    { name: 'get_budget_item', desc: '予算の項目や事業の金額、推移、出典を返す' },
+    { name: 'list_updates', desc: '政策の動きを、種類・分野・期間で一覧する' },
+    { name: 'get_update', desc: '1件の動きの要点、いまの段階、一次情報を返す' },
+    { name: 'find_programs', desc: '立場や地域に合う制度・補助金をさがす' },
+    { name: 'search', desc: '事業・法律・制度をキーワードで横断検索する' }
+  ],
+  sources: [
+    { name: '予算書・決算書データベース', by: '財務省', u: 'https://www.bb.mof.go.jp/', what: '昭和22年度からの予算書と決算書。一般会計・特別会計、当初・補正', how: 'PDFと、科目別のCSV・Excel' },
+    { name: '行政事業レビュー見える化サイト', by: '内閣官房', u: 'https://rssystem.go.jp/', what: '約5,700の事業ごとの予算、執行額、成果目標、支出先', how: 'CSVの一括ダウンロード' },
+    { name: 'e-Gov 法令検索', by: 'デジタル庁', u: 'https://laws.e-gov.go.jp/', what: '現行の法令の条文と改正の履歴', how: 'API（毎日更新）' },
+    { name: '国会会議録検索システム', by: '国立国会図書館', u: 'https://kokkai.ndl.go.jp/api.html', what: '本会議・委員会の会議録と発言', how: 'API' },
+    { name: '議案情報', by: '衆議院・参議院', u: 'https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/menu.htm', what: '法案の経過（付託、採決、公布日と法律番号）', how: 'ページを巡回して差分を取得' },
+    { name: '官報発行サイト', by: '内閣府', u: 'https://www.kanpo.go.jp/', what: '法律・政令の公布、政府調達の公告', how: '目次ページとPDF（平日8時30分に発行）' },
+    { name: 'e-Gov パブリック・コメント', by: 'デジタル庁', u: 'https://public-comment.e-gov.go.jp/', what: '意見募集中の案件、締切、担当部局', how: 'RSS' },
+    { name: 'Jグランツ', by: 'デジタル庁', u: 'https://www.jgrants-portal.go.jp/', what: '補助金の受付期間、上限額、補助率、対象地域', how: '公開API' },
+    { name: 'gBizINFO ・ 調達ポータル', by: '経済産業省 ほか', u: 'https://info.gbiz.go.jp/', what: '法人番号ごとの補助金の交付実績、落札の実績', how: 'API（要登録）とCSV' },
+    { name: '閣議案件 ・ 各府省の新着情報', by: '首相官邸 ほか', u: 'https://www.kantei.go.jp/jp/kakugi/index.html', what: '閣議決定、予備費の使用、各省の発表', how: 'RSSとページの巡回' }
+  ],
+  links: [
+    { n: 'MCP Apps の公開（MCP公式ブログ）', u: 'https://blog.modelcontextprotocol.io/posts/2026-01-26-mcp-apps/' },
+    { n: 'インタラクティブコネクタ（Claudeヘルプ）', u: 'https://support.claude.com/en/articles/13454812-use-interactive-connectors-in-claude' },
+    { n: 'MCP Apps クイックスタート（Claude Docs）', u: 'https://claude.com/docs/connectors/building/mcp-apps/quickstart' },
+    { n: 'MCPコネクター（Claude API）', u: 'https://platform.claude.com/docs/en/agents-and-tools/mcp-connector' },
+    { n: '令和8年度予算（財務省）', u: 'https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2026/index.html' }
+  ],
+  about: [
+    { k: '公表値にもとづくもの', v: '令和8年度一般会計の総額、財源、主要経費（財務省、2026年4月7日成立の当初予算）。0.1兆円単位に丸めています。「政策の動き」の各項目は、2026年10〜11月に各機関のページで確認したものです。' },
+    { k: 'サンプルの値', v: '社会保障・防衛・公共事業・教育の内訳の一部、届け先ごとの金額、過去10年の推移（概数）、一部の制度の金額と状態。画面の見え方を確かめるための値です。' },
+    { k: '名前', v: '「ゆくえ」は仮の名前です。' }
+  ]
+};
+(() => {
+'use strict';
+
+/* ---------- helpers ---------- */
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const NS = 'http://www.w3.org/2000/svg';
+const S = (tag, attrs = {}, kids = []) => {
+  const e = document.createElementNS(NS, tag);
+  for (const k in attrs) if (attrs[k] != null) e.setAttribute(k, attrs[k]);
+  for (const c of [].concat(kids)) if (c != null) e.append(c);
+  return e;
+};
+const H = (tag, attrs = {}, kids = []) => {
+  const e = document.createElement(tag);
+  for (const k in attrs) {
+    const v = attrs[k];
+    if (v == null || v === false) continue;
+    if (k === 'text') e.textContent = v; else e.setAttribute(k, v === true ? '' : v);
+  }
+  for (const c of [].concat(kids)) if (c != null) e.append(c);
+  return e;
+};
+const ic = name => `<svg class="ic" aria-hidden="true"><use href="#i-${name}"/></svg>`;
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------- data ---------- */
+const fy = DATA.fy, TOTAL = fy.total, POP = fy.pop, YEARS = fy.years, TH = DATA.themes;
+const useById = Object.fromEntries(DATA.use.map(u => [u.id, u]));
+const srcById = Object.fromEntries(DATA.src.map(s => [s.id, s]));
+const upById = Object.fromEntries(DATA.updates.map(u => [u.id, u]));
+const TYPES = { law: { n: '法律', i: 'law' }, budget: { n: '予算', i: 'yen' }, tax: { n: '税', i: 'pct' }, system: { n: '制度', i: 'flag' }, grant: { n: '補助金', i: 'gift' } };
+const STAGES = {
+  law: ['検討', '閣議決定', '国会審議', '成立', '公布', '施行'],
+  budget: ['概算要求', '政府案', '国会審議', '成立', '執行', '決算'],
+  tax: ['要望', '与党大綱', '閣議決定', '国会審議', '成立', '施行'],
+  system: ['検討', '意見募集', '決定', '開始'],
+  grant: ['予告', '公募中', '審査', '採択']
+};
+const AUD = { all: 'すべて', family: '子育て世帯', person: '個人', biz: '事業者・中小企業', npo: 'NPO・団体', local: '自治体' };
+const themeVar = t => `var(${(TH[t] || TH.other).c})`;
+const themeName = t => (TH[t] || TH.other).name;
+const stageName = u => u.stageText || STAGES[u.type][u.stage];
+
+const st = { view: 'home', unit: 'cho', mode: 'flow', path: [], sel: DATA.use[0].id, upType: 'all', upTheme: 'all', openUp: null, aud: 'all', dock: false };
+
+/* ---------- number formats ---------- */
+const n1 = v => (Math.round(v * 10) / 10).toFixed(1);
+const fmtCho = v => v >= 1 ? n1(v) + '兆円' : Math.round(v * 10000).toLocaleString('ja-JP') + '億円';
+const fmtPc = v => { const yen = v * 1e12 / POP; return yen >= 1e4 ? '約' + n1(yen / 1e4) + '万円' : '約' + (Math.round(yen / 100) * 100).toLocaleString('ja-JP') + '円'; };
+const fmtMan = v => { const y = v / TOTAL * 1e4; return (y >= 10 ? Math.round(y) : Math.round(y * 10) / 10).toLocaleString('ja-JP') + '円'; };
+const fmt = v => st.unit === 'pc' ? fmtPc(v) : st.unit === 'man' ? fmtMan(v) : fmtCho(v);
+const pct = v => (v / TOTAL * 100).toFixed(1) + '%';
+const yoyOf = tr => { if (!tr || tr.length < 2) return null; const a = tr[tr.length - 2], b = tr[tr.length - 1]; const p = (b - a) / a * 100; return (p >= 0 ? '+' : '−') + Math.abs(p).toFixed(1) + '%'; };
+const tw = (s, fs = 12) => { let w = 0; for (const ch of String(s)) w += (ch.charCodeAt(0) > 255 ? 1.03 : 0.6) * fs; return w; };
+
+/* ---------- flow models ---------- */
+function rootModel() {
+  return {
+    key: 'root',
+    cols: [
+      { title: '財源（どこから）', titleShort: '財源', nodes: DATA.src.map(s => ({ id: s.id, name: s.name, short: s.short, v: s.v, kind: 'src' })) },
+      { title: '一般会計', showValue: true, nodes: [{ id: 'pool', name: '一般会計', v: TOTAL, kind: 'pool' }] },
+      { title: '使いみち（どこへ）', titleShort: '使いみち', nodes: DATA.use.map(u => ({ id: u.id, name: u.name, short: u.short, v: u.v, theme: u.theme, kind: 'use', drill: !!u.drill })) }
+    ],
+    links: [
+      ...DATA.src.map(s => ({ s: s.id, t: 'pool', v: s.v, c: null })),
+      ...DATA.use.map(u => ({ s: 'pool', t: u.id, v: u.v, c: u.theme }))
+    ]
+  };
+}
+function drillModel(id) {
+  const u = useById[id], rec = {}, links = [];
+  u.drill.items.forEach(it => {
+    links.push({ s: u.id, t: it.id, v: it.v, c: u.theme });
+    for (const r in it.to) { rec[r] = (rec[r] || 0) + it.to[r]; links.push({ s: it.id, t: r, v: it.to[r], c: u.theme }); }
+  });
+  const order = Object.keys(DATA.recips).filter(r => rec[r]);
+  return {
+    key: id,
+    cols: [
+      { title: '分野', nodes: [{ id: u.id, name: u.name, v: u.v, theme: u.theme, kind: 'use' }] },
+      { title: '内訳', nodes: u.drill.items.map(it => ({ id: it.id, name: it.name, v: it.v, theme: u.theme, kind: 'item' })) },
+      { title: '届け先（おもな受け取り手）', nodes: order.map(r => ({ id: r, name: DATA.recips[r], v: rec[r], kind: 'recip' })) }
+    ],
+    links
+  };
+}
+const curModel = () => st.path.length ? drillModel(st.path[0]) : rootModel();
+const findNode = (model, id) => { for (const c of model.cols) { const n = c.nodes.find(x => x.id === id); if (n) return n; } return null; };
+
+/* ---------- tooltip ---------- */
+const tip = $('#tip');
+function showTip(e, strong, sub) {
+  tip.replaceChildren(H('b', { text: strong }), H('span', { text: sub }));
+  tip.hidden = false;
+  const r = tip.getBoundingClientRect();
+  let x = e.clientX + 14, y = e.clientY + 16;
+  if (x + r.width > innerWidth - 8) x = e.clientX - r.width - 14;
+  if (y + r.height > innerHeight - 8) y = e.clientY - r.height - 14;
+  tip.style.left = Math.max(8, x) + 'px';
+  tip.style.top = Math.max(8, y) + 'px';
+}
+const hideTip = () => { tip.hidden = true; };
+addEventListener('scroll', hideTip, { passive: true });
+
+/* ---------- flow renderer (layered sankey) ---------- */
+function ribbon(xa, ya, xb, yb, th) {
+  const g = th > 4 ? 0.75 : 0, t = Math.max(th - 2 * g, 0.8), y0 = ya + g, y1 = yb + g, mx = (xa + xb) / 2;
+  const f = n => n.toFixed(1);
+  return `M${f(xa)},${f(y0)}C${f(mx)},${f(y0)} ${f(mx)},${f(y1)} ${f(xb)},${f(y1)}L${f(xb)},${f(y1 + t)}C${f(mx)},${f(y1 + t)} ${f(mx)},${f(y0 + t)} ${f(xa)},${f(y0 + t)}Z`;
+}
+function spread(labs, minGap, lo, hi) {
+  labs.sort((a, b) => a.y - b.y);
+  for (let i = 1; i < labs.length; i++) if (labs[i].y - labs[i - 1].y < minGap) labs[i].y = labs[i - 1].y + minGap;
+  const n = labs.length;
+  if (n && labs[n - 1].y > hi) {
+    labs[n - 1].y = hi;
+    for (let i = n - 2; i >= 0; i--) if (labs[i + 1].y - labs[i].y < minGap) labs[i].y = labs[i + 1].y - minGap;
+  }
+  if (n && labs[0].y < lo) labs[0].y = lo;
+}
+function renderFlow(box, model, o = {}) {
+  const f = o.fmt || fmt;
+  box.style.minWidth = '';
+  const W0 = Math.max(Math.round(box.clientWidth), 260);
+  const outside = W0 >= 560, narrow = W0 < 400, nodeW = W0 < 480 ? 8 : 10, top = 26, bottom = 8;
+  const cols = model.cols, nc = cols.length, maxN = Math.max(...cols.map(c => c.nodes.length));
+  const base = o.compact ? (W0 < 480 ? 290 : 310) : (W0 < 480 ? 400 : 440);
+  const Hh = Math.max(base, top + bottom + maxN * 27);
+  const innerH = Hh - top - bottom;
+  const padY = Math.max(6, Math.min(16, innerH * 0.2 / Math.max(1, maxN - 1)));
+  const nm = nd => (narrow && nd.short) || nd.name;
+  const val = nd => narrow ? f(nd.v).replace('兆円', '兆') : f(nd.v);
+  const labW = nd => nd.kind === 'pool' ? 0 : tw(nm(nd)) + 7 + tw(val(nd));
+  const maxLab = c => Math.max(...c.nodes.map(labW));
+  /* ラベルの置き場所：幅があれば両端は図の外、中の列は右側。狭いときは全部を図の内側に置く */
+  const sideOf = ci => outside ? (ci === 0 && nc > 1 ? 'L' : 'R') : (ci === nc - 1 && nc > 1 ? 'L' : 'R');
+  const chev = outside && !o.compact && cols[nc - 1].nodes.some(n => n.drill);
+  const mL = outside ? maxLab(cols[0]) + 14 : 1;
+  const mR = outside ? maxLab(cols[nc - 1]) + 14 + (chev ? 16 : 0) : 1;
+  const gaps = [];
+  for (let i = 0; i < nc - 1; i++) {
+    const a = sideOf(i) === 'R' ? maxLab(cols[i]) : 0, b = sideOf(i + 1) === 'L' ? maxLab(cols[i + 1]) : 0;
+    gaps.push(Math.max(64, (a ? a + 18 : 0) + (b ? b + 18 : 0)));
+  }
+  const need = Math.ceil(mL + mR + nodeW * nc + gaps.reduce((x, y) => x + y, 0));
+  const scrolled = need > W0 + 8;
+  const W = scrolled ? need : W0;
+  if (scrolled) box.style.minWidth = need + 'px';
+  const extra = Math.max(0, W - need) / Math.max(1, nc - 1);
+  const xs = [mL];
+  for (let i = 0; i < nc - 1; i++) xs.push(xs[i] + nodeW + gaps[i] + extra);
+  let ky = Infinity;
+  cols.forEach(c => { const sum = c.nodes.reduce((a, b) => a + b.v, 0); ky = Math.min(ky, (innerH - padY * (c.nodes.length - 1)) / sum); });
+  const pos = {};
+  cols.forEach((c, i) => {
+    const x = xs[i];
+    const hs = c.nodes.map(nd => Math.max(nd.v * ky, 2));
+    const used = hs.reduce((a, b) => a + b, 0) + padY * (c.nodes.length - 1);
+    let y = top + (innerH - used) / 2;
+    c.nodes.forEach((nd, j) => { pos[nd.id] = { x, y, h: hs[j], col: i, idx: j, nd }; y += hs[j] + padY; });
+  });
+  const links = model.links.map(l => ({ ...l, th: l.v * ky }));
+  const out = {}, inn = {};
+  links.forEach(l => { (out[l.s] = out[l.s] || []).push(l); (inn[l.t] = inn[l.t] || []).push(l); });
+  for (const id in out) { out[id].sort((a, b) => pos[a.t].idx - pos[b.t].idx); let off = 0; out[id].forEach(l => { l.sy = pos[id].y + off; off += l.th; }); }
+  for (const id in inn) { inn[id].sort((a, b) => pos[a.s].idx - pos[b.s].idx); let off = 0; inn[id].forEach(l => { l.ty = pos[id].y + off; off += l.th; }); }
+
+  const svg = S('svg', { viewBox: `0 0 ${W} ${Hh}`, class: 'fl', role: 'group', 'aria-label': o.label || 'お金の流れの図' });
+  const gR = S('g'), gN = S('g');
+  const nodeEls = {};
+  const mark = id => {
+    const near = new Set([id]);
+    links.forEach(l => { const on = l.s === id || l.t === id; l.el.classList.toggle('hi', on); if (on) { near.add(l.s); near.add(l.t); } });
+    for (const k in nodeEls) nodeEls[k].classList.toggle('hi', near.has(k));
+    svg.classList.add('has-hi');
+  };
+  const unmark = () => { svg.classList.remove('has-hi'); links.forEach(l => l.el.classList.remove('hi')); for (const k in nodeEls) nodeEls[k].classList.remove('hi'); };
+
+  links.forEach(l => {
+    const a = pos[l.s], b = pos[l.t];
+    const p = S('path', { d: ribbon(a.x + nodeW + 1, l.sy, b.x - 1, l.ty, l.th), class: 'rib' + (l.c ? '' : ' n'), style: `fill:${l.c ? themeVar(l.c) : 'var(--flow-neutral)'}` });
+    if (o.sel && (l.s === o.sel || l.t === o.sel)) p.classList.add('sel');
+    l.el = p;
+    p.addEventListener('pointerenter', () => { unmark(); svg.classList.add('has-hi'); p.classList.add('hi'); nodeEls[l.s].classList.add('hi'); nodeEls[l.t].classList.add('hi'); });
+    p.addEventListener('pointermove', e => showTip(e, f(l.v), `${a.nd.name} → ${b.nd.name}`));
+    p.addEventListener('pointerleave', () => { unmark(); hideTip(); });
+    gR.append(p);
+  });
+
+  model.cols.forEach((c, ci) => {
+    const isFirst = ci === 0, isLast = ci === nc - 1, p0 = pos[c.nodes[0].id];
+    let hx, anchor;
+    if (isFirst && nc > 1) { hx = outside ? p0.x + nodeW : p0.x; anchor = outside ? 'end' : 'start'; }
+    else if (isLast) { hx = outside ? p0.x : p0.x + nodeW; anchor = outside ? 'start' : 'end'; }
+    else { hx = p0.x + nodeW / 2; anchor = 'middle'; }
+    const ht = S('text', { class: 'colh', x: hx.toFixed(1), y: 12, 'text-anchor': anchor });
+    ht.textContent = ((narrow && c.titleShort) || c.title) + (c.showValue ? '　' + val(c.nodes[0]) : '');
+    gN.append(ht);
+
+    const side = sideOf(ci);
+    const halo = !outside || (!isFirst && !isLast);
+    const labs = c.nodes.filter(nd => nd.kind !== 'pool').map(nd => ({ nd, y: pos[nd.id].y + pos[nd.id].h / 2 }));
+    spread(labs, 15, top + 6, Hh - 6);
+    const ly = Object.fromEntries(labs.map(l => [l.nd.id, l.y]));
+
+    c.nodes.forEach(nd => {
+      const p = pos[nd.id];
+      const fill = nd.kind === 'pool' ? 'var(--flow-pool)' : nd.theme ? themeVar(nd.theme) : 'var(--flow-neutral)';
+      const g = S('g', { class: 'nd' + (o.sel === nd.id ? ' sel' : ''), tabindex: '0', role: 'button', 'aria-label': `${nd.name} ${f(nd.v)}（全体の${pct(nd.v)}）` });
+      nodeEls[nd.id] = g;
+      const lw = nd.kind === 'pool' ? 0 : labW(nd);
+      const y = ly[nd.id] != null ? ly[nd.id] : p.y + p.h / 2;
+      const hitH = Math.max(p.h, 22), hitY = Math.min(p.y, y - 11);
+      const hitX = side === 'L' ? p.x - lw - 10 : p.x - 6;
+      g.append(S('rect', { class: 'hit', x: hitX.toFixed(1), y: hitY.toFixed(1), width: (lw + nodeW + 18).toFixed(1), height: (Math.max(hitH, y + 11 - hitY)).toFixed(1) }));
+      g.append(S('rect', { class: 'bar', x: p.x.toFixed(1), y: p.y.toFixed(1), width: nodeW, height: p.h.toFixed(1), rx: 2, style: `fill:${fill}` }));
+      if (nd.kind !== 'pool') {
+        const tx = side === 'L' ? p.x - 8 : p.x + nodeW + 8;
+        const t = S('text', { class: 'lab' + (halo ? ' halo' : ''), x: tx.toFixed(1), y: (y + 4).toFixed(1), 'text-anchor': side === 'L' ? 'end' : 'start' });
+        const a = S('tspan', { class: 'ln' }); a.textContent = nm(nd);
+        const b = S('tspan', { class: 'lv', dx: 7 }); b.textContent = val(nd);
+        t.append(a, b);
+        g.append(t);
+        if (chev && nd.drill) g.append(S('path', { class: 'more', d: `M${W - 9},${(y - 4).toFixed(1)}l4,4l-4,4` }));
+      }
+      const tipSub = nd.kind === 'pool' ? `${nd.name}（財源の合計）` : `${nd.name} ・ 全体の${pct(nd.v)}`;
+      g.addEventListener('pointerenter', () => mark(nd.id));
+      g.addEventListener('pointermove', e => showTip(e, f(nd.v), tipSub));
+      g.addEventListener('pointerleave', () => { unmark(); hideTip(); });
+      g.addEventListener('focus', () => mark(nd.id));
+      g.addEventListener('blur', unmark);
+      const pick = () => { hideTip(); if (o.onSelect) o.onSelect(nd); };
+      g.addEventListener('click', pick);
+      g.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(); } });
+      gN.append(g);
+    });
+  });
+  svg.append(gR, gN);
+  box.replaceChildren(svg);
+  return { scrolled };
+}
+
+/* ---------- small charts ---------- */
+function trendSvg(vals, color, unit) {
+  const W = 288, Hh = 96, l = 5, r = 5, t = 22, b = 18, n = vals.length;
+  const min = Math.min(...vals), max = Math.max(...vals), span = (max - min) || 1;
+  const lo = min - span * 0.18, hi = max + span * 0.08;
+  const X = i => l + (W - l - r) * i / (n - 1), Y = v => t + (Hh - t - b) * (1 - (v - lo) / (hi - lo));
+  const d = vals.map((v, i) => (i ? 'L' : 'M') + X(i).toFixed(1) + ',' + Y(v).toFixed(1)).join('');
+  const svg = S('svg', { viewBox: `0 0 ${W} ${Hh}`, class: 'trend', role: 'img', 'aria-label': `${YEARS[0]}年度 ${vals[0]}${unit} から ${YEARS[n - 1]}年度 ${vals[n - 1]}${unit} への推移` });
+  svg.append(
+    S('line', { x1: l, x2: W - r, y1: Hh - b, y2: Hh - b, style: 'stroke:var(--line-2)', 'stroke-width': 1 }),
+    S('path', { d: d + `L${X(n - 1).toFixed(1)},${Hh - b}L${X(0).toFixed(1)},${Hh - b}Z`, style: `fill:${color}`, 'fill-opacity': .1 }),
+    S('path', { d, fill: 'none', style: `stroke:${color}`, 'stroke-width': 2, 'stroke-linejoin': 'round', 'stroke-linecap': 'round' })
+  );
+  const cross = S('line', { y1: t - 4, y2: Hh - b, style: 'stroke:var(--ink-3)', 'stroke-width': 1, visibility: 'hidden' });
+  const dot = S('circle', { r: 4, style: `fill:${color};stroke:var(--surface)`, 'stroke-width': 2, cx: X(n - 1), cy: Y(vals[n - 1]) });
+  const t0 = S('text', { x: l, y: Y(vals[0]) - 8, 'text-anchor': 'start' }); t0.textContent = n1(vals[0]);
+  const t1 = S('text', { class: 'tv', x: W - r, y: Y(vals[n - 1]) - 10, 'text-anchor': 'end' }); t1.textContent = n1(vals[n - 1]) + unit;
+  const xa = S('text', { x: l, y: Hh - 4, 'text-anchor': 'start' }); xa.textContent = YEARS[0] + '年度';
+  const xb = S('text', { x: W - r, y: Hh - 4, 'text-anchor': 'end' }); xb.textContent = YEARS[n - 1] + '年度';
+  const hit = S('rect', { x: 0, y: 0, width: W, height: Hh, fill: 'transparent' });
+  const move = e => {
+    const bb = svg.getBoundingClientRect();
+    const i = Math.max(0, Math.min(n - 1, Math.round(((e.clientX - bb.left) / bb.width * W - l) / (W - l - r) * (n - 1))));
+    cross.setAttribute('x1', X(i)); cross.setAttribute('x2', X(i)); cross.setAttribute('visibility', 'visible');
+    dot.setAttribute('cx', X(i)); dot.setAttribute('cy', Y(vals[i]));
+    showTip(e, n1(vals[i]) + unit, YEARS[i] + '年度（当初予算）');
+  };
+  hit.addEventListener('pointermove', move);
+  hit.addEventListener('pointerdown', move);
+  hit.addEventListener('pointerleave', () => { cross.setAttribute('visibility', 'hidden'); dot.setAttribute('cx', X(n - 1)); dot.setAttribute('cy', Y(vals[n - 1])); hideTip(); });
+  svg.append(cross, t0, t1, xa, xb, dot, hit);
+  return svg;
+}
+function sparkSvg(vals) {
+  const W = 200, Hh = 36, n = vals.length, min = Math.min(...vals), max = Math.max(...vals), span = (max - min) || 1;
+  const X = i => 4 + (W - 8) * i / (n - 1), Y = v => 5 + (Hh - 10) * (1 - (v - min) / span);
+  const d = vals.map((v, i) => (i ? 'L' : 'M') + X(i).toFixed(1) + ',' + Y(v).toFixed(1)).join('');
+  const svg = S('svg', { viewBox: `0 0 ${W} ${Hh}`, class: 'spark', preserveAspectRatio: 'none', 'aria-hidden': 'true' });
+  svg.append(
+    S('path', { d, fill: 'none', style: 'stroke:var(--ink-3)', 'stroke-width': 1.6, 'stroke-linejoin': 'round', 'stroke-linecap': 'round', 'vector-effect': 'non-scaling-stroke' }),
+    S('circle', { cx: X(n - 1), cy: Y(vals[n - 1]), r: 3.5, style: 'fill:var(--accent);stroke:var(--surface)', 'stroke-width': 1.5 })
+  );
+  return svg;
+}
+
+/* ---------- shared bits ---------- */
+const stepsHtml = u => {
+  const all = STAGES[u.type];
+  return `<span class="steps" aria-hidden="true">${all.map((_, i) => `<i class="${i < u.stage ? 'on' : i === u.stage ? 'cur' : ''}"></i>`).join('')}</span>`;
+};
+const dateLabel = iso => {
+  const d = new Date(iso + 'T00:00:00'); const w = '日月火水木金土'[d.getDay()];
+  return `${d.getMonth() + 1}月${d.getDate()}日（${w}）`;
+};
+const srcLinks = links => links.filter(l => /^https:\/\//.test(l.u)).map(l => `<a class="srcl" href="${esc(l.u)}" target="_blank" rel="noopener">${esc(l.n)}${ic('ext')}</a>`).join('');
+
+/* ---------- home ---------- */
+function renderHome() {
+  const a = DATA.asOf;
+  $('#briefMeta').textContent = `${a.date.replace(/-/g, '.')} ${a.dow} ・ ${a.time} 更新`;
+  const tops = DATA.updates.filter(u => u.top).slice(0, 3);
+  $('#briefList').innerHTML = tops.map(u => `
+    <button class="brief-item" type="button" data-up="${u.id}">
+      <span class="dot" style="background:${themeVar(u.theme)}"></span>
+      <span class="brief-t">${esc(u.brief || u.title)}</span>
+      <span class="brief-m">${TYPES[u.type].n} ・ ${esc(stageName(u))} ・ ${esc(u.ministry)}</span>
+    </button>`).join('');
+  $('#briefSrc').textContent = `一次情報 ${tops.reduce((n, u) => n + u.links.length, 0)}件にもとづく`;
+  $('#heroEyebrow').textContent = `${fy.label} ${fy.kind}`;
+  $('#heroTotal').textContent = n1(TOTAL);
+  $('#heroSub').textContent = `国民1人あたり ${fmtPc(TOTAL)} ・ 前年度から ${yoyOf(fy.trend)}`;
+  const tiles = $('#tiles'); tiles.replaceChildren();
+  DATA.tiles.forEach(t => {
+    const el = H('div', { class: 'tile' });
+    el.innerHTML = `<p class="tile-l">${esc(t.label)}</p><p class="tile-v">${esc(t.value)}<small>${esc(t.unit)}</small></p><p class="tile-d">${esc(t.delta)}</p>`;
+    el.append(sparkSvg(t.series));
+    tiles.append(el);
+  });
+  $('#followChips').innerHTML = DATA.follow.map(k => `<button class="chip" type="button" data-uptheme-go="${k}"><span class="dot" style="background:${themeVar(k)}"></span>${esc(themeName(k))}</button>`).join('') + `<button class="chip" type="button" data-goview="updates">＋ テーマを追加</button>`;
+  $('#followRows').innerHTML = DATA.follow.map(k => DATA.updates.find(u => u.theme === k)).filter(Boolean).map(u => `
+    <button class="row" type="button" data-up="${u.id}">
+      <span class="row-d">${u.date.slice(5).replace('-', '.')}</span>
+      <span class="row-t">${esc(u.title)}</span>
+      <span class="row-s">${esc(themeName(u.theme))} ・ ${TYPES[u.type].n} ・ ${esc(stageName(u))}</span>
+    </button>`).join('');
+  $('#calRows').innerHTML = DATA.calendar.map(c => `
+    <div class="row"><span class="row-d">${esc(c.when)}</span><span class="row-t">${esc(c.title)}</span><span class="row-s">${esc(c.note)}</span></div>`).join('');
+  renderHomeFlow();
+}
+function renderHomeFlow() {
+  renderFlow($('#homeFlow'), rootModel(), { compact: true, fmt: fmtCho, label: `${fy.label}一般会計の財源と使いみち`, onSelect: nd => selectFlow(nd.id) });
+}
+
+/* ---------- flow view ---------- */
+function selectFlow(id, opt = {}) {
+  if (useById[id]) { st.path = opt.drill && useById[id].drill ? [id] : []; st.sel = id; }
+  else if (srcById[id] || id === 'pool') { st.path = []; st.sel = id; }
+  else { const par = DATA.use.find(u => u.drill && u.drill.items.some(i => i.id === id)); if (par) { st.path = [par.id]; st.sel = id; } }
+  st.mode = 'flow';
+  go('flow');
+}
+function renderFlowView() {
+  $('#flowEyebrow').textContent = `${fy.label}（${fy.west}）${fy.kind}`;
+  $('#lifeT').replaceChildren(H('b', { text: `${fy.label}予算のいま` }), ' ' + fy.lifeNote);
+  $('#life').innerHTML = DATA.life.map(s => `<li class="${s.s}">${esc(s.k)}<time>${esc(s.d)}</time></li>`).join('');
+  $$('#unitSeg button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.unit === st.unit)));
+  $$('#modeSeg button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.mode === st.mode)));
+  renderFlowChart();
+  renderDetail();
+}
+function renderFlowChart() {
+  const model = curModel(), root = model.key === 'root', isTable = st.mode === 'table';
+  const scroll = $('#flowScroll'), box = $('#mainFlow');
+  scroll.hidden = isTable; $('#flowTable').hidden = !isTable;
+  let wide = false;
+  if (isTable) renderFlowTable(model);
+  else wide = renderFlow(box, model, { sel: st.sel, label: root ? `${fy.label}一般会計の財源と使いみち` : `${useById[model.key].name}の内訳と届け先`, onSelect: nd => { if (st.sel === nd.id && nd.drill) { drill(nd.id); return; } st.sel = nd.id; renderFlowChart(); renderDetail(); renderCtx(); renderSugg(); } }).scrolled;
+  $('#crumb').innerHTML = (root ? `<span class="cur">全体</span>` : `<button type="button" data-crumb="root">全体</button>${ic('chev')}<span class="cur">${esc(useById[model.key].name)}</span>`)
+    + (wide ? `<span class="crumb-hint">横にスクロールできます</span>` : '');
+  const sn = findNode(model, st.sel);
+  $('#selBar').innerHTML = sn ? `<span class="dot" style="background:${sn.kind === 'pool' ? 'var(--flow-pool)' : sn.theme ? themeVar(sn.theme) : 'var(--flow-neutral)'}"></span><b>${esc(sn.name)}</b><span>${fmt(sn.v)}</span><span class="sel-sub">全体の${pct(sn.v)}</span>${root && sn.drill ? `<button class="btn btn-solid" type="button" data-drill="${sn.id}">内訳を見る${ic('chev')}</button>` : ''}` : '';
+  $('#legend').innerHTML = root
+    ? DATA.use.map(u => `<button class="lg" type="button" data-lg="${u.id}" aria-pressed="${st.sel === u.id}"><i style="background:${themeVar(u.theme)}"></i>${esc(u.name)}</button>`).join('')
+    : `<span class="lg"><i style="background:${themeVar(useById[model.key].theme)}"></i>${esc(useById[model.key].name)}のお金</span><span class="lg"><i style="background:var(--flow-neutral)"></i>届け先</span>`;
+  const unitNote = st.unit === 'pc' ? ` 1人あたり＝${fy.popNote}で割った値。` : st.unit === 'man' ? ' 1万円のうち＝一般会計の総額を1万円としたときの金額。' : '';
+  $('#flowCap').textContent = (root ? fy.capRoot : fy.capDrill) + unitNote;
+}
+function renderFlowTable(model) {
+  const rows = model.cols.map(c => {
+    const head = `<tr class="grp"><td colspan="5">${esc(c.title)}</td></tr>`;
+    return head + c.nodes.map(nd => `<tr><td><span class="dot" style="background:${nd.kind === 'pool' ? 'var(--flow-pool)' : nd.theme ? themeVar(nd.theme) : 'var(--flow-neutral)'}"></span>${esc(nd.name)}</td><td>${fmtCho(nd.v)}</td><td>${pct(nd.v)}</td><td>${fmtPc(nd.v)}</td><td>${fmtMan(nd.v)}</td></tr>`).join('');
+  }).join('');
+  $('#flowTable').innerHTML = `<table class="tbl"><thead><tr><th>項目</th><th>金額</th><th>全体に占める割合</th><th>1人あたり</th><th>1万円のうち</th></tr></thead><tbody>${rows}</tbody></table>`;
+}
+function drill(id) { if (!useById[id] || !useById[id].drill) return; st.path = [id]; st.sel = id; st.mode = 'flow'; renderFlowView(); renderCtx(); renderSugg(); }
+function renderDetail() {
+  const box = $('#detail'), model = curModel();
+  let nd = findNode(model, st.sel);
+  if (!nd) { st.sel = model.key === 'root' ? DATA.use[0].id : model.key; nd = findNode(model, st.sel); }
+  const u = useById[nd.id], s = srcById[nd.id];
+  const item = nd.kind === 'item' ? useById[model.key].drill.items.find(i => i.id === nd.id) : null;
+  const theme = nd.theme || (s || nd.kind === 'pool' ? 'whole' : null);
+  const desc = u ? u.desc : s ? s.desc : nd.kind === 'pool' ? fy.poolDesc : item ? item.desc : nd.kind === 'recip' ? `${useById[model.key].name}のうち、おもに${nd.name}に届く金額です。` : '';
+  const trend = u ? u.trend : s ? s.trend : nd.kind === 'pool' ? fy.trend : null;
+  const color = nd.kind === 'pool' ? 'var(--flow-pool)' : nd.theme ? themeVar(nd.theme) : 'var(--flow-neutral)';
+  const title = u ? (u.long || u.name) : nd.name;
+  const rel = theme ? DATA.updates.filter(x => x.theme === theme).slice(0, 2) : [];
+  const progs = u ? DATA.programs.filter(p => p.theme === u.theme).slice(0, 2) : [];
+  const yoy = yoyOf(trend);
+  let html = `<h2 class="d-h1"><span class="dot" style="background:${color}"></span>${esc(title)}</h2>`;
+  if (desc) html += `<p class="d-desc">${esc(desc)}</p>`;
+  html += `<dl class="d-figs"><div><dt>金額</dt><dd>${fmtCho(nd.v)}</dd></div><div><dt>1人あたり</dt><dd>${fmtPc(nd.v)}</dd></div><div><dt>1万円のうち</dt><dd>${fmtMan(nd.v)}</dd></div></dl>`;
+  if (trend) html += `<div><p class="d-sub">10年の推移<small>当初予算 ・ 前年度から ${yoy}</small></p><div id="dTrend"></div></div>`;
+  if (nd.kind === 'recip') {
+    const from = model.links.filter(l => l.t === nd.id).sort((a, b) => b.v - a.v);
+    html += `<div><p class="d-sub">どの内訳から届くか</p>${from.map(l => `<div class="d-link"><span class="d-link-t">${esc(findNode(model, l.s).name)}</span><span class="d-link-m">${fmtCho(l.v)}</span></div>`).join('')}</div>`;
+  }
+  if (rel.length) html += `<div><p class="d-sub">関連する動き</p>${rel.map(x => `<button class="d-link" type="button" data-up="${x.id}"><span class="d-link-t">${esc(x.title)}</span><span class="d-link-m">${x.date.slice(5).replace('-', '.')} ・ ${TYPES[x.type].n} ・ ${esc(stageName(x))}</span>${ic('chev')}</button>`).join('')}</div>`;
+  if (progs.length) html += `<div><p class="d-sub">関連する制度</p>${progs.map(p => `<button class="d-link" type="button" data-prog="${p.id}"><span class="d-link-t">${esc(p.name)}</span><span class="d-link-m">${esc(p.kind)} ・ ${esc(p.amt)}</span>${ic('chev')}</button>`).join('')}</div>`;
+  const q = u ? `${u.name}は何に使われているの？` : s ? `${s.name}は全体のどれくらい？` : item ? `${item.name}について教えて` : `${nd.name}について教えて`;
+  html += `<div class="d-act">${u && u.drill && model.key === 'root' ? `<button class="btn btn-solid" type="button" data-drill="${u.id}">内訳を見る${ic('chev')}</button>` : ''}<button class="btn btn-ghost" type="button" data-ask="${esc(q)}">${ic('spark')}AIに聞く</button></div>`;
+  html += `<p class="src">${esc(nd.kind === 'item' || nd.kind === 'recip' ? fy.srcDrill : fy.srcShort)}</p>`;
+  box.innerHTML = html;
+  if (trend) $('#dTrend').append(trendSvg(trend, color, '兆円'));
+}
+
+/* ---------- updates ---------- */
+function renderUpdates() {
+  $('#upType').innerHTML = [['all', 'すべて'], ...Object.entries(TYPES).map(([k, v]) => [k, v.n])].map(([k, n]) => `<button class="chip" type="button" data-uptype="${k}" aria-pressed="${st.upType === k}">${k !== 'all' ? ic(TYPES[k].i) : ''}${n}</button>`).join('');
+  const themes = [...new Set(DATA.updates.map(u => u.theme))];
+  $('#upTheme').innerHTML = [`<button class="chip" type="button" data-uptheme="all" aria-pressed="${st.upTheme === 'all'}">全分野</button>`, ...Object.keys(TH).filter(k => themes.includes(k)).map(k => `<button class="chip" type="button" data-uptheme="${k}" aria-pressed="${st.upTheme === k}"><span class="dot" style="background:${themeVar(k)}"></span>${esc(themeName(k))}</button>`)].join('');
+  const list = DATA.updates.filter(u => (st.upType === 'all' || u.type === st.upType) && (st.upTheme === 'all' || u.theme === st.upTheme));
+  const days = [...new Set(list.map(u => u.date))].sort().reverse();
+  $('#feed').innerHTML = days.length ? days.map(d => `
+    <section><h2 class="day-h">${d === DATA.asOf.date ? 'きょう ・ ' : ''}${dateLabel(d)}</h2>
+    ${list.filter(u => u.date === d).map(upHtml).join('')}</section>`).join('') : `<p class="empty">この条件に合う動きは、いまのところありません。</p>`;
+}
+function upHtml(u) {
+  const open = st.openUp === u.id, all = STAGES[u.type];
+  return `<article class="up" id="up-${u.id}">
+    <button class="up-h" type="button" data-toggle-up="${u.id}" aria-expanded="${open}">
+      <span class="up-type">${ic(TYPES[u.type].i)}${TYPES[u.type].n}</span>
+      <span class="up-title">${esc(u.title)}</span>
+      <span class="up-stage" title="${esc(all.join(' → '))}">${esc(stageName(u))}${stepsHtml(u)}</span>
+      <span class="up-sum">${esc(u.sum)}</span>
+      <span class="up-meta"><span><span class="dot" style="background:${themeVar(u.theme)}"></span>${esc(themeName(u.theme))}</span><span>${esc(u.ministry)}</span>${u.amount ? `<span>${esc(u.amount)}</span>` : ''}</span>
+    </button>
+    ${open ? `<div class="up-body">
+      <dl class="qa"><div><dt>何が変わる</dt><dd>${esc(u.what)}</dd></div><div><dt>だれに関係</dt><dd>${esc(u.who)}</dd></div><div><dt>いつから</dt><dd>${esc(u.when)}</dd></div></dl>
+      <div class="up-acts">
+        ${useById[u.theme] ? `<button class="btn btn-ghost" type="button" data-goflow="${u.theme}">${ic('flow')}お金の流れで見る</button>` : ''}
+        <button class="btn btn-ghost" type="button" data-ask="「${esc(u.title)}」をわかりやすく説明して">${ic('spark')}AIに聞く</button>
+      </div>
+      <p class="srcs">一次情報${srcLinks(u.links)}</p>
+      <p class="src">段階：${all.map((s, i) => i === u.stage ? `【${esc(s)}】` : esc(s)).join(' → ')}</p>
+    </div>` : ''}
+  </article>`;
+}
+function openUpdate(id) {
+  st.upType = 'all'; st.upTheme = 'all'; st.openUp = id;
+  go('updates');
+  requestAnimationFrame(() => { const el = $('#up-' + id); if (el) el.scrollIntoView({ block: 'center', behavior: reduced ? 'auto' : 'smooth' }); });
+}
+
+/* ---------- find ---------- */
+function renderFind() {
+  $('#aud').innerHTML = Object.entries(AUD).map(([k, n]) => `<button class="chip" type="button" data-aud="${k}" aria-pressed="${st.aud === k}">${n}</button>`).join('');
+  const list = DATA.programs.filter(p => st.aud === 'all' || p.aud.includes(st.aud));
+  $('#progs').innerHTML = list.map(p => `
+    <article class="panel prog" id="prog-${p.id}">
+      <div class="prog-top"><span class="prog-kind"><span class="dot" style="background:${themeVar(p.theme)}"></span>${esc(p.kind)} ・ ${esc(themeName(p.theme))}</span><span class="st ${p.status}">${esc(p.statusText)}</span></div>
+      <h2 class="prog-name">${esc(p.name)}</h2>
+      <p class="prog-amt">${esc(p.amt)}<small>${esc(p.amtNote)}</small></p>
+      <dl class="prog-dl"><div><dt>対象</dt><dd>${esc(p.who)}</dd></div><div><dt>担当</dt><dd>${esc(p.by)}</dd></div></dl>
+      <div class="prog-act"><button class="btn btn-ghost" type="button" data-ask="「${esc(p.name)}」の対象になる条件を教えて">${ic('spark')}条件をAIに確認</button>${/^https:\/\//.test(p.link.u) ? `<a class="srcl" href="${esc(p.link.u)}" target="_blank" rel="noopener">${esc(p.link.n)}${ic('ext')}</a>` : ''}</div>
+    </article>`).join('') || `<p class="empty">この立場に合う制度は、サンプルには入っていません。</p>`;
+}
+
+/* ---------- connect / notes ---------- */
+function renderConnect() {
+  const d = useById.defense;
+  renderFlow($('#conFlow'), drillModel('defense'), { compact: true, fmt: fmtCho, label: '防衛費の内訳と届け先' });
+  const top = [...d.drill.items].sort((a, b) => b.v - a.v);
+  $('#conText').textContent = `${fy.label}の${d.long || d.name}は${fmtCho(d.v)}で、一般会計の${pct(d.v)}です。いちばん大きいのは${top[0].name}（${fmtCho(top[0].v)}）、次が${top[1].name}（${fmtCho(top[1].v)}）です。図の項目を押すと、届け先ごとの金額を確認できます。`;
+  $('#conSrc').innerHTML = `出典<span class="srcl">${esc(fy.srcChip)}</span><span class="srcl">内訳はサンプル</span>`;
+  $('#toolList').innerHTML = DATA.tools.map(t => `<div class="tool"><code>${esc(t.name)}</code><span class="ro">読み取り専用</span><p>${esc(t.desc)}</p></div>`).join('');
+}
+function renderNotes() {
+  $('#srcTable').innerHTML = `<table class="tbl wrap"><thead><tr><th>情報源</th><th>わかること</th><th>取り方</th></tr></thead><tbody>${DATA.sources.map(s => `<tr><td>${/^https:\/\//.test(s.u || '') ? `<a class="lnk" href="${esc(s.u)}" target="_blank" rel="noopener">${esc(s.name)}</a>` : esc(s.name)}<br><span class="src">${esc(s.by)}</span></td><td>${esc(s.what)}</td><td>${esc(s.how)}</td></tr>`).join('')}</tbody></table>`;
+  $('#noteLinks').innerHTML = `<span class="src" style="align-self:center">参照した資料</span>` + srcLinks(DATA.links);
+  $('#aboutList').innerHTML = DATA.about.map(a => `<div><dt>${esc(a.k)}</dt><dd>${esc(a.v)}</dd></div>`).join('')
+    + `<div><dt>右側の「AIに聞く」</dt><dd>${chat.sample ? 'この画面ではClaudeが実際に答えます。根拠にするのはこのサンプルのデータだけで、答えに合わせて画面の図も動かします。' : 'あらかじめ用意した規則で答えるサンプル応答です。公開したページをClaudeの中で開くと、Claudeが実際に答えます。'}</dd></div>`;
+}
+
+/* ---------- router ---------- */
+const VIEWS = ['home', 'flow', 'updates', 'find', 'connect', 'notes'];
+const RENDER = { home: renderHome, flow: renderFlowView, updates: renderUpdates, find: renderFind, connect: renderConnect, notes: renderNotes };
+function show(v) {
+  if (!VIEWS.includes(v)) v = 'home';
+  const changed = st.view !== v;
+  st.view = v;
+  $$('.view').forEach(s => { s.hidden = s.dataset.view !== v; });
+  $$('[data-nav]').forEach(a => { if (a.dataset.nav === v) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
+  RENDER[v]();
+  renderCtx(); renderSugg();
+  if (changed) scrollTo(0, 0);
+}
+function go(v) { if (location.hash.slice(1) === v) show(v); else location.hash = v; }
+addEventListener('hashchange', () => show(location.hash.slice(1)));
+
+/* ---------- dock ---------- */
+const shell = $('#shell');
+const overlayMq = matchMedia('(max-width:1179.98px)');
+function setDock(open, focus) {
+  st.dock = open;
+  shell.classList.toggle('dock-open', open);
+  $('#dockToggle').setAttribute('aria-expanded', String(open));
+  $('#scrim').hidden = !(open && overlayMq.matches);
+  document.body.style.overflow = open && overlayMq.matches ? 'hidden' : '';
+  if (open && focus) $('#q').focus();
+  try { localStorage.setItem('yukue.dock', open ? '1' : '0'); } catch (e) { /* storage unavailable */ }
+  requestAnimationFrame(rerenderFlows);
+}
+overlayMq.addEventListener('change', () => { $('#scrim').hidden = !(st.dock && overlayMq.matches); document.body.style.overflow = st.dock && overlayMq.matches ? 'hidden' : ''; });
+function rerenderFlows() {
+  if (st.view === 'home') renderHomeFlow();
+  else if (st.view === 'flow') renderFlowChart();
+  else if (st.view === 'connect') renderConnect();
+}
+let rw = 0, rt = 0;
+new ResizeObserver(() => {
+  const w = $('#main').clientWidth;
+  if (Math.abs(w - rw) > 3) { rw = w; clearTimeout(rt); rt = setTimeout(rerenderFlows, 90); }
+}).observe($('#main'));
+
+/* ---------- chat ---------- */
+const chat = { turns: [], busy: false, ctl: null, stop: false, sample: null, tools: false, tier: 'quick' };
+const msgs = $('#msgs');
+const scrollMsgs = () => { msgs.scrollTop = msgs.scrollHeight; };
+function selName() {
+  if (st.view !== 'flow') return '';
+  const nd = findNode(curModel(), st.sel); return nd ? nd.name : '';
+}
+function ctxText() {
+  const names = { home: 'ホーム', flow: 'お金の流れ', updates: '政策の動き', find: '制度をさがす', connect: 'AIとつなぐ', notes: '設計メモ' };
+  let t = names[st.view];
+  if (st.view === 'flow') { if (st.path.length) t += ' › ' + useById[st.path[0]].name; const n = selName(); if (n && (!st.path.length || n !== useById[st.path[0]].name)) t += ' › ' + n; }
+  if (st.view === 'updates' && st.openUp && upById[st.openUp]) t += ' › ' + upById[st.openUp].title;
+  if (st.view === 'find' && st.aud !== 'all') t += ' › ' + AUD[st.aud];
+  return t;
+}
+function renderCtx() { $('#ctx').replaceChildren('いま見ている画面：', H('b', { text: ctxText() })); }
+function suggestions() {
+  if (st.view === 'flow') {
+    const nd = findNode(curModel(), st.sel);
+    if (nd && useById[nd.id]) return [`${nd.name}は何に使われているの？`, `${nd.name}に関係する最近の動きは？`, 'いちばん大きい支出は？'];
+    if (nd && srcById[nd.id]) return [`${nd.name}は全体のどれくらい？`, '税収はどこから来ている？', 'いちばん大きい支出は？'];
+    return ['いちばん大きい支出は？', '国の借金の返済にいくら使っている？', '税収はどこから来ている？'];
+  }
+  if (st.view === 'updates') return ['きょうの動きをまとめて教えて', '最近、成立した法律は？', '社会保障に関係する動きは？'];
+  if (st.view === 'find') return ['子育て世帯が使える制度は？', '中小企業が申請できる補助金は？', 'NPOが使える助成は？'];
+  if (st.view === 'connect') return ['防衛費は何に使われているの？', '社会保障の内訳を見せて'];
+  return ['きょうの動きをまとめて教えて', '国の借金の返済にいくら使っている？', '子育て世帯が使える制度は？'];
+}
+function renderSugg() {
+  const box = $('#sugg'); box.replaceChildren();
+  if (chat.busy) return;
+  suggestions().forEach(q => { const b = H('button', { type: 'button', text: q }); b.dataset.ask = q; box.append(b); });
+}
+function addUser(text) { const m = H('div', { class: 'msg user' }, H('div', { class: 'bub', text })); msgs.append(m); scrollMsgs(); }
+function addAi(text) {
+  const bub = H('div', { class: 'bub' + (text ? '' : ' thinking'), text: text || '考えています…' });
+  const root = H('div', { class: 'msg ai' }, bub);
+  msgs.append(root); scrollMsgs();
+  return {
+    root, bub,
+    set(t) { bub.classList.remove('thinking'); bub.textContent = t; scrollMsgs(); },
+    act(label, run) { const b = H('button', { class: 'act', type: 'button' }); b.innerHTML = ic('arrow'); b.append(label); b.addEventListener('click', () => { run(); if (overlayMq.matches) setDock(false); }); root.append(b); scrollMsgs(); },
+    fig(title, items) {
+      const max = Math.max(...items.map(i => i.v));
+      const f = H('div', { class: 'fig' }, H('p', { class: 'fig-t', text: title }));
+      items.forEach(i => { const bar = H('span', { class: 'hb-b' }); bar.style.width = (i.v / max * 100).toFixed(1) + '%'; bar.style.background = i.theme ? themeVar(i.theme) : 'var(--flow-neutral)'; f.append(H('div', { class: 'hb' }, [H('span', { class: 'hb-n', text: i.name }), H('span', { class: 'hb-t' }, bar), H('span', { class: 'hb-v', text: fmtCho(i.v) })])); });
+      root.append(f); scrollMsgs();
+    },
+    src(t) { root.append(H('p', { class: 'msrc', text: t })); scrollMsgs(); }
+  };
+}
+function setBusy(b) {
+  chat.busy = b;
+  const s = $('#send');
+  s.innerHTML = ic(b ? 'stop' : 'send');
+  s.setAttribute('aria-label', b ? '止める' : '送信');
+  s.type = b ? 'button' : 'submit';
+  renderSugg();
+}
+
+/* 画面を動かす共通の操作（サンプル応答と、Claude が呼ぶ道具の両方で使う） */
+const actions = {
+  flow(id, drillIn) { selectFlow(id, { drill: drillIn }); },
+  updates(type, theme) { st.upType = TYPES[type] ? type : 'all'; st.upTheme = TH[theme] ? theme : 'all'; st.openUp = null; go('updates'); },
+  update(id) { openUpdate(id); },
+  programs(aud) { st.aud = AUD[aud] ? aud : 'all'; go('find'); }
+};
+
+/* --- サンプル応答（Claude が使えないとき） --- */
+const THEME_RE = { debt: /借金|返済|利払|国債費/, social: /社会保障|年金|医療|介護|子育て|こども|子ども|児童|福祉/, defense: /防衛|自衛隊/, local: /地方|交付税|自治体/, infra: /公共事業|道路|防災|インフラ/, edu: /教育|科学|大学|高校|学校|研究/, industry: /産業|エネルギー|農業|中小企業|半導体/ };
+const matchTheme = q => Object.keys(THEME_RE).find(k => THEME_RE[k].test(q) && useById[k]);
+const matchAud = q => /子育て|こども|子ども|家庭|出産/.test(q) ? 'family' : /中小|事業|企業|会社|店|フリーランス/.test(q) ? 'biz' : /NPO|ＮＰＯ|団体|法人/i.test(q) ? 'npo' : /自治体|市町村/.test(q) ? 'local' : /個人|自分|学び|医療費/.test(q) ? 'person' : 'all';
+function localAnswer(q) {
+  const quoted = (q.match(/「(.+?)」/) || [])[1];
+  if (quoted) {
+    const u = DATA.updates.find(x => x.title === quoted); if (u) return ansUpdate(u);
+    const p = DATA.programs.find(x => x.name === quoted); if (p) return ansProgram(p);
+  }
+  const theme = matchTheme(q);
+  if (/補助金|助成|給付|制度|支援|もらえる|使える|申請/.test(q)) return ansPrograms(matchAud(q));
+  if (/きょう|今日|けさ|今朝|まとめ/.test(q)) return ansBrief();
+  if (/最近|動き|ニュース|法律|法案|成立|決定/.test(q)) return ansUpdates(theme, /成立|公布|法律/.test(q));
+  if (/一番|いちばん|最大|大きい|多い|順/.test(q)) return ansBiggest();
+  if (/税収|財源|どこから|消費税|所得税|法人税|発行|全体のどれくらい/.test(q)) return ansRevenue(q);
+  if (theme) return ansTheme(theme);
+  return { text: 'このサンプルでは、令和8年度一般会計の流れ、最近の政策の動き、制度の一覧について答えられます。下の質問例から試してみてください。' };
+}
+function ansTheme(id) {
+  const u = useById[id], items = u.drill ? [...u.drill.items].sort((a, b) => b.v - a.v) : [];
+  const rel = DATA.updates.find(x => x.theme === u.theme);
+  let text = `${u.long || u.name}は${fmtCho(u.v)}で、一般会計の${pct(u.v)}にあたります。国民1人あたりにすると${fmtPc(u.v)}です。`;
+  if (items.length > 1) text += `\n内訳で大きいのは${items[0].name}（${fmtCho(items[0].v)}）と${items[1].name}（${fmtCho(items[1].v)}）です。`;
+  if (u.trend) { const a = u.trend[0], b = u.trend[u.trend.length - 1]; text += `\n${YEARS[0]}年度の${fmtCho(a)}から、10年で${b > a ? `${fmtCho(b - a)}増えて` : b < a ? `${fmtCho(a - b)}減って` : '横ばいで'}います。`; }
+  if (rel) text += `\n関連する最近の動きは「${rel.title}」（${stageName(rel)}）です。`;
+  return { text, act: [`お金の流れ › ${u.name} を表示`, () => actions.flow(id, true)], fig: items.length ? [`${u.name}の内訳`, items.map(i => ({ name: i.name, v: i.v, theme: u.theme }))] : null, src: `出典：${fy.srcChip}（内訳はサンプル）` };
+}
+function ansBiggest() {
+  const items = [...DATA.use].sort((a, b) => b.v - a.v);
+  return { text: `いちばん大きいのは${items[0].name}の${fmtCho(items[0].v)}で、全体の${pct(items[0].v)}です。次が${items[1].name}（${fmtCho(items[1].v)}）、${items[2].name}（${fmtCho(items[2].v)}）で、この3つで全体の${pct(items[0].v + items[1].v + items[2].v)}を占めます。`, act: ['お金の流れを表示', () => actions.flow(items[0].id, false)], fig: ['使いみち（大きい順）', items.map(i => ({ name: i.name, v: i.v, theme: i.theme }))], src: `出典：${fy.srcChip}` };
+}
+function ansRevenue(q) {
+  const one = DATA.src.find(s => q.includes(s.name) || (s.alias && s.alias.some(a => q.includes(a))));
+  if (one) return { text: `${one.name}は${fmtCho(one.v)}で、一般会計の財源の${pct(one.v)}です。${one.desc}`, act: [`お金の流れ › ${one.name} を表示`, () => actions.flow(one.id, false)], src: `出典：${fy.srcChip}` };
+  const items = [...DATA.src].sort((a, b) => b.v - a.v);
+  const tax = DATA.src.filter(s => s.tax).reduce((a, s) => a + s.v, 0);
+  return { text: `財源${fmtCho(TOTAL)}のうち、税収は${fmtCho(tax)}（${pct(tax)}）です。大きい順に${items.slice(0, 3).map(s => `${s.name}（${fmtCho(s.v)}）`).join('、')}。税で足りない分は国債の発行でまかなっています。`, act: ['お金の流れを表示', () => actions.flow(items[0].id, false)], fig: ['財源（大きい順）', items.map(s => ({ name: s.name, v: s.v }))], src: `出典：${fy.srcChip}` };
+}
+function ansBrief() {
+  const tops = DATA.updates.filter(u => u.top).slice(0, 3);
+  return { text: `けさ集めた中で、とくに大きな動きは次の${tops.length}件です。\n${tops.map(u => `・${u.brief || u.title}（${stageName(u)}）`).join('\n')}`, act: ['政策の動きを表示', () => actions.updates('all', 'all')], src: `出典：${[...new Set(tops.flatMap(u => u.links.map(l => l.n)))].slice(0, 4).join('、')}` };
+}
+function ansUpdates(theme, lawsOnly) {
+  const list = DATA.updates.filter(u => (!theme || u.theme === theme) && (!lawsOnly || (u.type === 'law' && u.stage >= 3))).slice(0, 4);
+  if (!list.length) return { text: 'その条件に合う動きは、このサンプルのデータには含まれていません。' };
+  const head = lawsOnly ? '最近、成立・公布された法律です。' : `${theme ? themeName(theme) + 'に関係する' : '最近の'}動きです。`;
+  return { text: `${head}\n${list.map(u => `・${u.date.slice(5).replace('-', '/')} ${u.title}（${TYPES[u.type].n}・${stageName(u)}）`).join('\n')}`, act: ['政策の動きを表示', () => actions.updates(lawsOnly ? 'law' : 'all', theme || 'all')], src: 'それぞれの一次情報は、一覧の各項目から開けます。' };
+}
+function ansUpdate(u) {
+  return { text: `${u.sum}\n・何が変わる：${u.what}\n・だれに関係：${u.who}\n・いつから：${u.when}\nいまの段階は「${stageName(u)}」です。`, act: ['この動きを開く', () => actions.update(u.id)], src: `出典：${u.links.map(l => l.n).join('、')}` };
+}
+function ansPrograms(aud) {
+  const list = DATA.programs.filter(p => aud === 'all' || p.aud.includes(aud));
+  if (!list.length) return { text: 'その立場に合う制度は、このサンプルのデータには含まれていません。' };
+  return { text: `${aud === 'all' ? 'サンプルに入っている' : AUD[aud] + 'が使える'}制度は${list.length}件あります。\n${list.slice(0, 5).map(p => `・${p.name}：${p.amt}（${p.statusText}）`).join('\n')}\n金額や締切はサンプルです。申請の前に、担当省庁のページで最新の条件を確認してください。`, act: ['制度をさがす を表示', () => actions.programs(aud)] };
+}
+function ansProgram(p) {
+  return { text: `${p.name}は、${p.who}が対象の${p.kind}です。金額の目安は${p.amt}（${p.amtNote}）、担当は${p.by}、いまの状態は「${p.statusText}」です。\n金額や締切はサンプルです。くわしい条件は担当省庁のページで確認してください。`, act: ['制度をさがす を表示', () => actions.programs(p.aud[0])] };
+}
+async function askLocal(q, m) {
+  const a = localAnswer(q);
+  if (a.act) a.act[1]();
+  m.bub.classList.remove('thinking');
+  if (reduced) m.set(a.text);
+  else { for (let i = 0; i <= a.text.length && !chat.stop; i += 3) { m.bub.textContent = a.text.slice(0, i); scrollMsgs(); await sleep(12); } m.set(a.text); }
+  if (a.fig) m.fig(a.fig[0], a.fig[1]);
+  if (a.act) m.act(a.act[0], a.act[1]);
+  if (a.src) m.src(a.src);
+}
+
+/* --- Claude が実際に答える（公開ページを Claude の中で開いたとき） --- */
+function rules() {
+  const data = {
+    年度: `${fy.label}（${fy.west}）${fy.kind}`, 総額: fmtCho(TOTAL), 人口の前提: fy.popNote,
+    財源: DATA.src.map(s => ({ id: s.id, 名前: s.name, 金額: fmtCho(s.v), 割合: pct(s.v), 説明: s.desc })),
+    使いみち: DATA.use.map(u => ({ id: u.id, 名前: u.long || u.name, 金額: fmtCho(u.v), 割合: pct(u.v), 説明: u.desc, 推移_兆円: u.trend ? Object.fromEntries(YEARS.map((y, i) => [y, u.trend[i]])) : undefined, 内訳: u.drill ? u.drill.items.map(i => ({ 名前: i.name, 金額: fmtCho(i.v) })) : undefined })),
+    政策の動き: DATA.updates.map(u => ({ id: u.id, 日付: u.date, 種類: TYPES[u.type].n, 分野: themeName(u.theme), 分野id: u.theme, 題: u.title, 要約: u.sum, 段階: stageName(u), 担当: u.ministry, 金額: u.amount || undefined, 何が変わる: u.what, だれに関係: u.who, いつから: u.when, 出典: u.links.map(l => l.n) })),
+    制度: DATA.programs.map(p => ({ 名前: p.name, 種類: p.kind, 対象: p.who, 立場: p.aud, 金額: `${p.amt}（${p.amtNote}）`, 担当: p.by, 状態: p.statusText })),
+    出典: fy.srcChip, 注意: fy.sampleNote
+  };
+  return [
+    'あなたは「ゆくえ」の案内役です。ゆくえは、日本の国のお金の流れと政策の動きを見える化するサービスのデザインサンプルです。',
+    '下の【データ】だけを根拠に、日本語で答えてください。',
+    '・3〜6文で簡潔に。並べるときは行頭に「・」を付ける。Markdownの記法（**、#、表）は使わない。',
+    '・金額は【データ】の値をそのまま使う。【データ】にないことは「このサンプルのデータには含まれていません」と伝え、数字を推測で作らない。',
+    '・政策への賛否や評価は述べず、事実と仕組みの説明にとどめる。',
+    '・図や一覧を見せたほうが早いときは道具を使う。show_flow はお金の流れの図で項目を選ぶ。show_updates は政策の動きを絞り込む。show_programs は制度を立場で絞り込む。使ったら、何を表示したかを一言添える。',
+    '・最後の行に「出典：」として、根拠にした出典名を示す。内訳・届け先・制度の金額はサンプルである点に、必要なら一言触れる。',
+    '【データ】', JSON.stringify(data)
+  ].join('\n');
+}
+function liveTools(m) {
+  const flowIds = [...DATA.use.map(u => u.id), ...DATA.src.map(s => s.id)];
+  return [
+    {
+      name: 'show_flow',
+      description: 'お金の流れの図を開き、指定した使いみち（または財源）を選んで画面に表示する。drill が true なら、その使いみちの内訳と届け先まで開く。戻り値は選んだ項目の金額、割合、内訳。',
+      inputSchema: { type: 'object', properties: { id: { type: 'string', enum: flowIds, description: '【データ】の 使いみち または 財源 の id' }, drill: { type: 'boolean', description: '内訳まで開くか' } }, required: ['id'] },
+      execute(input) {
+        const id = String(input.id || ''), u = useById[id], s = srcById[id];
+        if (!u && !s) throw new Error('id が不正です。使えるのは ' + flowIds.join(', '));
+        const d = !!input.drill && !!(u && u.drill);
+        actions.flow(id, d);
+        m.act(`お金の流れ › ${(u || s).name} を表示`, () => actions.flow(id, d));
+        if (u && u.drill) m.fig(`${u.name}の内訳`, [...u.drill.items].sort((a, b) => b.v - a.v).map(i => ({ name: i.name, v: i.v, theme: u.theme })));
+        return { 表示した項目: (u || s).name, 金額: fmtCho((u || s).v), 割合: pct((u || s).v), 内訳: u && u.drill ? u.drill.items.map(i => `${i.name} ${fmtCho(i.v)}`) : undefined };
+      }
+    },
+    {
+      name: 'show_updates',
+      description: '政策の動きの一覧を、種類と分野で絞り込んで画面に表示する。戻り値は該当した動きの題と段階。',
+      inputSchema: { type: 'object', properties: { type: { type: 'string', enum: ['all', ...Object.keys(TYPES)], description: 'law=法律, budget=予算, tax=税, system=制度, grant=補助金' }, theme: { type: 'string', enum: ['all', ...Object.keys(TH)], description: '【データ】の 分野id' } } },
+      execute(input) {
+        const type = TYPES[input.type] ? String(input.type) : 'all', theme = TH[input.theme] ? String(input.theme) : 'all';
+        actions.updates(type, theme);
+        m.act('政策の動きを表示', () => actions.updates(type, theme));
+        return DATA.updates.filter(u => (type === 'all' || u.type === type) && (theme === 'all' || u.theme === theme)).map(u => `${u.date} ${u.title}（${stageName(u)}）`);
+      }
+    },
+    {
+      name: 'show_programs',
+      description: '「制度をさがす」画面を、立場で絞り込んで表示する。戻り値は該当した制度の名前と金額の目安。',
+      inputSchema: { type: 'object', properties: { audience: { type: 'string', enum: Object.keys(AUD), description: 'family=子育て世帯, person=個人, biz=事業者・中小企業, npo=NPO・団体, local=自治体' } } },
+      execute(input) {
+        const aud = AUD[input.audience] ? String(input.audience) : 'all';
+        actions.programs(aud);
+        m.act('制度をさがす を表示', () => actions.programs(aud));
+        return DATA.programs.filter(p => aud === 'all' || p.aud.includes(aud)).map(p => `${p.name}：${p.amt}（${p.statusText}）`);
+      }
+    }
+  ];
+}
+const ERR = {
+  rate_limited: '利用が混み合っています。少し時間をおいて、もう一度お試しください。',
+  session_expired: 'サインインの有効期限が切れました。ページを開き直してください。',
+  refused: 'この質問にはお答えできません。聞き方を変えてお試しください。',
+  prompt_too_large: '会話が長くなりました。ページを開き直すと、新しい会話を始められます。'
+};
+async function askLive(q, m) {
+  chat.turns.push({ role: 'user', content: `（いま見ている画面：${ctxText()}）\n${q}` });
+  chat.ctl = new AbortController();
+  const opts = { cache: false, signal: chat.ctl.signal, modelTier: chat.tier, onText: ({ text }) => m.set(text) };
+  if (chat.tools) opts.tools = liveTools(m);
+  try {
+    const res = await chat.sample([{ role: 'user', content: rules() }, ...chat.turns.slice(-12)], opts);
+    m.set(res.text + (res.truncated ? '\n（長くなったため、途中で切れています）' : ''));
+    chat.turns.push({ role: 'assistant', content: res.text });
+  } catch (e) {
+    const code = e && e.code;
+    chat.turns.pop();
+    if (code === 'cancelled') { m.set((e.text || '') + (e.text ? '\n' : '') + '（止めました）'); return; }
+    if (['not_granted', 'sampling_disabled', 'not_declared', 'capability_disabled', 'capability_removed'].includes(code)) {
+      chat.sample = null; setMode();
+      await askLocal(q, m);
+      return;
+    }
+    if (code === 'tools_unavailable') chat.tools = false;
+    m.set((code === 'refused' ? '' : (e && e.text ? e.text + '\n' : '')) + (ERR[code] || 'うまく答えを取得できませんでした。もう一度お試しください。'));
+  }
+}
+async function ask(q) {
+  q = String(q || '').trim();
+  if (!q || chat.busy) return;
+  if (!st.dock) setDock(true);
+  addUser(q);
+  $('#q').value = ''; autosize();
+  const m = addAi();
+  chat.stop = false; setBusy(true);
+  try { if (chat.sample) await askLive(q, m); else await askLocal(q, m); }
+  catch (e) { m.set('うまく答えを取得できませんでした。もう一度お試しください。'); }
+  finally { setBusy(false); }
+}
+function setMode() {
+  const live = !!chat.sample;
+  $('#aiMode').textContent = live ? 'Claudeが回答' : 'サンプル応答';
+  $('#dockFoot').textContent = live
+    ? 'この画面ではClaudeが実際に答えます（初回に利用の許可を求めます）。根拠はこのサンプルのデータです。'
+    : 'あらかじめ用意したサンプル応答です。公開版では、出典つきでAIが答えます。';
+  if (st.view === 'notes') renderNotes();
+}
+function autosize() { const t = $('#q'); t.style.height = 'auto'; t.style.height = Math.min(t.scrollHeight, 120) + 'px'; }
+
+/* ---------- events ---------- */
+document.addEventListener('click', e => {
+  const t = e.target.closest('[data-ask],[data-drill],[data-goflow],[data-up],[data-prog],[data-unit],[data-mode],[data-uptype],[data-uptheme],[data-uptheme-go],[data-aud],[data-crumb],[data-lg],[data-toggle-up],[data-goview]');
+  if (!t) return;
+  const d = t.dataset;
+  if (d.ask != null) ask(d.ask);
+  else if (d.drill != null) drill(d.drill);
+  else if (d.goflow != null) selectFlow(d.goflow);
+  else if (d.up != null) openUpdate(d.up);
+  else if (d.prog != null) { st.aud = 'all'; go('find'); requestAnimationFrame(() => { const el = $('#prog-' + d.prog); if (el) el.scrollIntoView({ block: 'center' }); }); }
+  else if (d.unit != null) { st.unit = d.unit; renderFlowView(); }
+  else if (d.mode != null) { st.mode = d.mode; renderFlowView(); }
+  else if (d.uptype != null) { st.upType = d.uptype; st.openUp = null; renderUpdates(); renderCtx(); }
+  else if (d.uptheme != null) { st.upTheme = d.uptheme; st.openUp = null; renderUpdates(); renderCtx(); }
+  else if (d.upthemeGo != null) actions.updates('all', d.upthemeGo);
+  else if (d.aud != null) { st.aud = d.aud; renderFind(); renderCtx(); }
+  else if (d.crumb != null) { st.path = []; renderFlowView(); renderCtx(); renderSugg(); }
+  else if (d.lg != null) { st.sel = d.lg; renderFlowChart(); renderDetail(); renderCtx(); renderSugg(); }
+  else if (d.toggleUp != null) { st.openUp = st.openUp === d.toggleUp ? null : d.toggleUp; renderUpdates(); renderCtx(); }
+  else if (d.goview != null) go(d.goview);
+});
+$('#dockToggle').addEventListener('click', () => setDock(!st.dock, true));
+$('#dockClose').addEventListener('click', () => setDock(false));
+$('#tabAi').addEventListener('click', () => setDock(true, true));
+$('#scrim').addEventListener('click', () => setDock(false));
+addEventListener('keydown', e => { if (e.key === 'Escape' && st.dock && overlayMq.matches) setDock(false); });
+$('#composer').addEventListener('submit', e => { e.preventDefault(); ask($('#q').value); });
+$('#send').addEventListener('click', () => { if (chat.busy) { chat.stop = true; if (chat.ctl) chat.ctl.abort(); } });
+$('#q').addEventListener('input', autosize);
+$('#q').addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) { e.preventDefault(); ask($('#q').value); } });
+$('#conOpen').addEventListener('click', () => selectFlow('defense', { drill: true }));
+$('#copyUrl').addEventListener('click', async () => {
+  const code = $('#mcpUrl'), label = $('#copyUrl span');
+  try { await navigator.clipboard.writeText(code.textContent); label.textContent = 'コピーしました'; }
+  catch (e) { const r = document.createRange(); r.selectNodeContents(code); const s = getSelection(); s.removeAllRanges(); s.addRange(r); label.textContent = '選択しました'; }
+  setTimeout(() => { label.textContent = 'コピー'; }, 1800);
+});
+
+/* ---------- boot ---------- */
+addAi('国のお金の流れや、最近の政策の動きについて聞いてください。答えに合わせて、左の画面も動かします。');
+setMode();
+let dockPref = null;
+try { dockPref = localStorage.getItem('yukue.dock'); } catch (e) { /* storage unavailable */ }
+if (!overlayMq.matches && dockPref !== '0') { st.dock = true; shell.classList.add('dock-open'); $('#dockToggle').setAttribute('aria-expanded', 'true'); }
+show(location.hash.slice(1) || 'home');
+(async () => {
+  try {
+    const sample = window.claude && window.claude.use ? await window.claude.use('sample') : null;
+    if (!sample) return;
+    const caps = await sample.limits().catch(() => null);
+    chat.sample = sample;
+    chat.tools = !!(caps && caps.tools);
+    if (caps && caps.modelTiers && !caps.modelTiers.includes('quick')) chat.tier = 'default';
+    setMode();
+  } catch (e) { /* Claude is not available in this view: keep the sample responder */ }
+})();
+})();
+</script>
+</body></html>
