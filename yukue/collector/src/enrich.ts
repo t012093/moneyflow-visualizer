@@ -99,6 +99,20 @@ export function applyEnrichment(item: UpdateItem, r: EnrichedFields): UpdateItem
   return next;
 }
 
+/**
+ * 本文を取りに行ってよいページか。
+ * リンクはフィードに書かれていたもの（外から来た値）なので、国の機関のサイト（go.jp）の、PDFでないページだけに限る。
+ * フィードが書きかえられても、手元のネットワークの中や関係のないサイトへは取りに行かない。
+ */
+export function isReadablePage(url: string): boolean {
+  try {
+    const u = new URL(url);
+    return u.protocol === 'https:' && !u.username && !u.port && /(^|\.)go\.jp$/.test(u.hostname) && !/\.pdf$/i.test(u.pathname);
+  } catch {
+    return false;
+  }
+}
+
 export interface EnrichOptions {
   limit: number;
   minImportance: number;
@@ -117,7 +131,7 @@ export async function enrichItems(items: UpdateItem[], enricher: Enricher, http:
     try {
       const url = item.links[0]?.url ?? '';
       let text = '';
-      if (/^https:\/\//.test(url) && !/\.pdf($|\?)/i.test(url)) {
+      if (isReadablePage(url)) {
         try { text = mainText((await http.get(url, { accept: 'text/html', conditional: false })).text); } catch { text = ''; }
       }
       const r = await enricher.enrich(item, text);

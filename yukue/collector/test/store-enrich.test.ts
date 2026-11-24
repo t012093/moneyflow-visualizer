@@ -5,7 +5,7 @@ import { join } from 'node:path';
 import { test } from 'node:test';
 import type { Briefing, UpdateItem, UpdatesFile } from '../../shared/types.ts';
 import { stageOf } from '../src/classify.ts';
-import { applyEnrichment, enrichItems, mainText, type Enricher } from '../src/enrich.ts';
+import { applyEnrichment, enrichItems, isReadablePage, mainText, type Enricher } from '../src/enrich.ts';
 import { PoliteClient } from '../src/http.ts';
 import { buildBriefing, mergeUpdates, readArchive, rebuildFromArchive, writeArchive } from '../src/store.ts';
 import { addDays } from '../src/text.ts';
@@ -134,6 +134,24 @@ test('AIの整形：重要度の高い順に上限まで処理し、失敗した
   assert.equal(seen[2].split('|')[1], '', 'PDFは本文を取りに行かない');
   assert.equal(pages.length, 2);
   assert.match(logs[0], /mof:boom/);
+});
+
+test('AIの整形：本文を取りに行くのは、国の機関のサイトのページだけ', async () => {
+  assert.equal(isReadablePage('https://www.mof.go.jp/policy/budget/index.html'), true);
+  assert.equal(isReadablePage('https://www.jgrants-portal.go.jp/subsidy/a0W'), true);
+  for (const url of ['http://www.mof.go.jp/a.html', 'https://www.mof.go.jp/a.pdf', 'https://www.mof.go.jp/a.PDF?x=1', 'https://example.com/go.jp/a.html', 'https://evilgo.jp/a.html', 'https://go.jp.example.com/', 'https://localhost/a', 'https://169.254.169.254/latest', 'https://user@www.mof.go.jp/', 'https://www.mof.go.jp:8443/', 'ftp://www.mof.go.jp/a', 'not a url']) {
+    assert.equal(isReadablePage(url), false, url);
+  }
+  const pages: string[] = [];
+  const http = new PoliteClient({
+    userAgent: 'yukue-collector/0.1 (test)', minIntervalMs: 0, timeoutMs: 1000, state: {}, respectRobots: false,
+    fetchImpl: (async (input: RequestInfo | URL) => { pages.push(String(input)); return new Response('<main>本文</main>'); }) as typeof fetch
+  });
+  const texts: string[] = [];
+  const enricher: Enricher = { async enrich(_it, text) { texts.push(text); return null; } };
+  await enrichItems([item({ id: 'x:a', importance: 80, links: [{ name: 'よそのサイト', url: 'https://example.com/a.html' }] }), item({ id: 'mof:b', importance: 70 })], enricher, http, { limit: 5, minImportance: 50, log: () => {} });
+  assert.deepEqual(pages, ['https://www.mof.go.jp/mof:b.html']);
+  assert.deepEqual(texts, ['', '本文'], 'よそのサイトは取りに行かず、題だけで整える');
 });
 
 test('本文の抜き出し', () => {
