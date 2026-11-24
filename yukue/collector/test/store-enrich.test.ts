@@ -7,7 +7,8 @@ import type { Briefing, UpdateItem, UpdatesFile } from '../../shared/types.ts';
 import { stageOf } from '../src/classify.ts';
 import { applyEnrichment, enrichItems, mainText, type Enricher } from '../src/enrich.ts';
 import { PoliteClient } from '../src/http.ts';
-import { buildBriefing, mergeUpdates, writeArchive } from '../src/store.ts';
+import { buildBriefing, mergeUpdates, readArchive, rebuildFromArchive, writeArchive } from '../src/store.ts';
+import { addDays } from '../src/text.ts';
 
 const NOW = new Date('2026-11-24T16:00:00Z'); // 日本時間 11月25日
 
@@ -137,4 +138,41 @@ test('AIの整形：重要度の高い順に上限まで処理し、失敗した
 
 test('本文の抜き出し', () => {
   assert.equal(mainText('<body><header>上</header><article><p>一つめ</p><script>x()</script><p>二つめ</p></article><footer>下</footer></body>'), '一つめ\n二つめ');
+});
+
+test('重ね合わせ：重要なものほど長く残し、定型の発表は1週間で一覧から外す', () => {
+  const at = (id: string, daysAgo: number, over: Partial<UpdateItem>) => item({ id, date: addDays('2026-11-25', -daysAgo), ...over });
+  const r = mergeUpdates([], [], [
+    at('mof:noise-6', 6, { noise: true, importance: 15 }), at('mof:noise-8', 8, { noise: true, importance: 15 }),
+    at('mof:low-20', 20, { importance: 30 }), at('mof:low-22', 22, { importance: 30 }),
+    at('mof:mid-44', 44, { importance: 45 }), at('mof:mid-46', 46, { importance: 45 }),
+    at('mof:high-59', 59, { importance: 60 }), at('mof:high-61', 61, { importance: 60 })
+  ], NOW);
+  assert.deepEqual(r.items.map(i => i.id).sort(), ['mof:high-59', 'mof:low-20', 'mof:mid-44', 'mof:noise-6']);
+  assert.deepEqual(r.addedIds.sort(), ['mof:high-59', 'mof:low-20', 'mof:mid-44', 'mof:noise-6'], '外したものは「新しく加わった」に数えない');
+});
+
+test('重ね合わせ：件数の上限を超えるときは、定型の発表の古いものから外す', () => {
+  const many: UpdateItem[] = [];
+  for (let n = 0; n < 350; n++) {
+    many.push(item({ id: `mof:n${n}`, date: addDays('2026-11-25', -(n % 3)), noise: true, importance: 15 }));
+    many.push(item({ id: `mof:k${n}`, date: addDays('2026-11-25', -5), importance: 30 }));
+  }
+  const r = mergeUpdates([], [], many, NOW);
+  assert.equal(r.items.length, 600);
+  assert.equal(r.items.filter(i => !i.noise).length, 350, '定型でないものは、古くてもすべて残る');
+  const droppedNoise = many.filter(i => i.noise && !r.items.some(k => k.id === i.id));
+  assert.ok(droppedNoise.length === 100 && droppedNoise.every(i => i.date === addDays('2026-11-25', -2)), '外れるのは、定型のうち古いもの');
+});
+
+test('作り直し：保管用ファイルから、一覧から外れていた項目を、いまの決まりで入れ直す', () => {
+  const dir = mkdtempSync(join(tmpdir(), 'yukue-rebuild-'));
+  const kept = item({ id: 'mof:kept', title: '一覧にあるほうの題', importance: 60 });
+  const bill = item({ id: 'gian:kaku-222-9', sourceId: 'shugiin', date: '2026-10-10', importance: 62, title: '一覧から外れていた法案' });
+  const oldNoise = item({ id: 'mof:noise', date: '2026-11-01', noise: true, importance: 15 });
+  writeArchive(dir, [{ ...kept, title: '保管されている古い題' }, bill, oldNoise], NOW);
+  assert.equal(readArchive(dir).length, 3);
+  const r = rebuildFromArchive([kept], [], readArchive(dir), NOW);
+  assert.deepEqual(r.items.map(i => [i.id, i.title]), [['mof:kept', '一覧にあるほうの題'], ['gian:kaku-222-9', '一覧から外れていた法案']]);
+  assert.deepEqual(readArchive(join(dir, 'missing')), []);
 });

@@ -31,9 +31,18 @@ export const MIN_INTERVAL_MS = num('YUKUE_MIN_INTERVAL_MS', 1500, 500);
 export const TIMEOUT_MS = num('YUKUE_TIMEOUT_MS', 30_000, 1000);
 export const MAX_BODY_BYTES = 8 * 1024 * 1024;
 
-/** updates/latest.json に残す件数と日数。古いものは月ごとの archive に残る。 */
-export const LATEST_LIMIT = 500;
+/**
+ * updates/latest.json に残す件数と日数。古いものは月ごとの archive に残る。
+ * 重要なものほど長く残す。定型の発表（人事、入札、会議資料の掲載など）は数が多いので、1週間で一覧から外す。
+ */
+export const LATEST_LIMIT = 600;
+/** 重要度50以上 */
 export const KEEP_DAYS = 60;
+/** 重要度40〜49 */
+export const KEEP_DAYS_MID = 45;
+/** 重要度40未満 */
+export const KEEP_DAYS_LOW = 21;
+export const KEEP_DAYS_NOISE = 7;
 
 /** フィード1本から1回に取り込む件数の上限。 */
 export const FEED_ENTRY_LIMIT = 80;

@@ -54,7 +54,7 @@ export const pubcommentSource: Source = {
   async run(ctx) {
     const page = await ctx.http.get(URL, { accept: 'application/xml, text/xml, */*' });
     if (page.notModified || !page.changed) return { items: [], fetched: 0, unchanged: true };
-    const feed = parseFeed(page.text);
+    const feed = parseFeed(page.text, page.url);
     return { items: pubcommentItems(feed.entries, ctx.now), fetched: feed.entries.length };
   }
 };

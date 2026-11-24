@@ -23,6 +23,10 @@ test('分類：題と発表元から、種類・分野・段階・定型かど�
   assert.deepEqual([c('こども基本法の一部を改正する法律案', 'こども家庭庁').type, c('こども基本法の一部を改正する法律案', 'こども家庭庁').theme], ['law', 'social']);
   assert.deepEqual([c('省エネ設備導入補助金の公募を開始します', '経済産業省').type, c('省エネ設備導入補助金の公募を開始します', '経済産業省').theme], ['grant', 'industry']);
   assert.equal(c('「基本方針」の改定案に対する意見募集', '総務省').stage?.label, '意見募集');
+  assert.deepEqual([c('こども大綱の見直しに関する意見募集を開始しました', 'こども家庭庁').type, c('こども大綱の見直しに関する意見募集を開始しました', 'こども家庭庁').stage?.label], ['system', '意見募集'], '「募集を開始」でも、意見募集は公募ではない');
+  assert.equal(c('審議会の公募委員の募集について', '総務省').type, 'system', '人の募集は、補助金の公募ではない');
+  assert.equal(c('統計調査員の募集を開始しました', '総務省').type, 'news');
+  assert.equal(c('ボランティア活動支援事業の公募について', '内閣府').type, 'grant', '補助金などの名前があれば公募');
   assert.equal(c('片山財務大臣閣議後記者会見の概要').noise, true);
   assert.equal(c('国庫短期証券（第1420回）の入札結果').noise, true);
   assert.equal(c('第134回労働政策審議会労働条件分科会労災保険部会資料', '厚生労働省').noise, true);

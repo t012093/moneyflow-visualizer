@@ -6,9 +6,10 @@ import { DATA_DIR, ENRICH_LIMIT, MIN_INTERVAL_MS, TIMEOUT_MS, USER_AGENT, env } 
 import { createClaudeEnricher, enrichItems } from './enrich.ts';
 import { findFeedLinks, parseFeed } from './feeds.ts';
 import { PoliteClient } from './http.ts';
-import { allSources } from './sources/registry.ts';
+import { extractList } from './sources/list.ts';
+import { allSources, classifyDefs } from './sources/registry.ts';
 import type { Ctx } from './sources/types.ts';
-import { buildBriefing, loadState, mergeReportSources, mergeUpdates, readJson, saveState, trackHealth, writeArchive, writeJson, type HealthState } from './store.ts';
+import { buildBriefing, loadState, mergeReportSources, mergeUpdates, readArchive, readJson, rebuildFromArchive, reclassify, saveState, trackHealth, writeArchive, writeJson, type HealthState } from './store.ts';
 import { jstDate } from './text.ts';
 
 const HELP = `ゆくえ 収集システム
@@ -24,6 +25,13 @@ const HELP = `ゆくえ 収集システム
 
   node src/cli.ts discover <URL...>
       ページからフィード（RSS・Atom）のURLを探し、読めるかを確かめる
+      フィードがないページでは、新着の並び（日付とリンク）を何件読み取れるかも表示する
+
+  node src/cli.ts reclassify [--dry-run]
+      分類の規則を直したあと、通信をせずに、手元の一覧（updates/latest.json）へ当て直す
+
+  node src/cli.ts rebuild [--dry-run]
+      一覧に残す期間や件数の決まりを変えたあと、月ごとの保管用ファイルから一覧を作り直す
 
   node src/cli.ts sources
       登録してある情報源の一覧を表示する
@@ -142,12 +150,24 @@ async function discover(urls: string[]): Promise<number> {
     console.log(`\n${pageUrl}`);
     let candidates: string[] = [];
     try {
-      const body = (await http.get(pageUrl, { conditional: false })).text;
+      const page = await http.get(pageUrl, { conditional: false });
+      const body = page.text;
       // 渡されたURLそのものがフィードなら、それを確かめて終わる
       if (/^\s*(<\?xml|<rss|<rdf:RDF|<feed)/i.test(body)) candidates = [pageUrl];
-      else candidates = findFeedLinks(body, pageUrl);
+      else {
+        candidates = findFeedLinks(body, pageUrl);
+        const list = extractList(body, page.url, new Date());
+        if (list.length) {
+          const dates = list.map(e => e.date).sort();
+          console.log(`  新着の並びとして、日付つきのリンクを${list.length}件読み取れます（${dates[0]} 〜 ${dates[dates.length - 1]}）`);
+          for (const e of list.slice(0, 3)) console.log(`      ${e.date}  ${e.title.slice(0, 50)}`);
+          console.log('      → フィードがなければ、sources/registry.ts の LIST_PAGES に足せます');
+        } else console.log('  新着の並び（日付とリンク）は読み取れませんでした');
+      }
     } catch (e) {
+      // ページそのものが取れないときは、同じサイトをそれ以上たたかない
       console.log(`  ページを取得できませんでした: ${e instanceof Error ? e.message : String(e)}`);
+      continue;
     }
     if (!candidates.length) {
       console.log('  <link rel="alternate"> が見つからないので、よくある場所を試します');
@@ -155,7 +175,8 @@ async function discover(urls: string[]): Promise<number> {
     }
     for (const c of candidates) {
       try {
-        const feed = parseFeed((await http.get(c, { conditional: false })).text);
+        const got = await http.get(c, { conditional: false });
+        const feed = parseFeed(got.text, got.url);
         const newest = feed.entries.map(e => e.date).filter((d): d is Date => !!d).sort((a, b) => b.getTime() - a.getTime())[0];
         console.log(`  ○ ${c}\n      「${feed.title}」 ${feed.entries.length}件、最新 ${newest ? jstDate(newest) : '日付なし'}`);
       } catch (e) {
@@ -163,6 +184,47 @@ async function discover(urls: string[]): Promise<number> {
       }
     }
   }
+  return 0;
+}
+
+/** 分類の規則を、手元の一覧に当て直す。通信はしない。 */
+function reclassifyLatest(dryRun: boolean): number {
+  const file = join(DATA_DIR, 'updates/latest.json');
+  const latest = readJson<UpdatesFile | null>(file, null);
+  if (!latest) { console.error('一覧（updates/latest.json）がありません。先に collect を実行してください。'); return 1; }
+  const r = reclassify(latest.items, classifyDefs());
+  const before = new Map(latest.items.map(i => [i.id, i] as const));
+  for (const i of r.changed.slice(0, 40)) {
+    const old = before.get(i.id)!;
+    const show = (x: UpdateItem) => `${x.type}/${x.theme}${x.stage ? `/${x.stage.label}` : ''} ${x.importance}${x.noise ? ' 定型' : ''}`;
+    console.log(`  ${show(old)}  →  ${show(i)}   ${i.title.slice(0, 44)}`);
+  }
+  console.log(`\n  ${r.changed.length}件の分類が変わりました（全${latest.items.length}件）。`);
+  if (dryRun) { console.log('  --dry-run のため、書き出していません。'); return 0; }
+  if (r.changed.length) {
+    const now = new Date();
+    writeJson(file, { generatedAt: latest.generatedAt, items: r.items } satisfies UpdatesFile);
+    writeArchive(DATA_DIR, r.changed, now);
+    writeJson(join(DATA_DIR, 'briefing.json'), buildBriefing(r.items, readJson<Briefing | null>(join(DATA_DIR, 'briefing.json'), null), now));
+  }
+  return 0;
+}
+
+/** 保管用ファイルから一覧を作り直す。通信はしない。 */
+function rebuildLatest(dryRun: boolean): number {
+  const file = join(DATA_DIR, 'updates/latest.json');
+  const latest = readJson<UpdatesFile>(file, { generatedAt: '', items: [] });
+  const curated = readJson<UpdatesFile>(join(DATA_DIR, 'updates/curated.json'), { generatedAt: '', items: [] }).items;
+  const now = new Date();
+  const r = rebuildFromArchive(latest.items, curated, readArchive(DATA_DIR), now);
+  const before = new Set(latest.items.map(i => i.id));
+  const after = new Set(r.items.map(i => i.id));
+  const back = r.items.filter(i => !before.has(i.id));
+  for (const i of [...back].sort((a, b) => b.importance - a.importance).slice(0, 15)) console.log(`  ＋ ${String(i.importance).padStart(3)}  ${i.date}  ${i.title.slice(0, 50)}`);
+  console.log(`\n  一覧 ${latest.items.length}件 → ${r.items.length}件（戻したもの ${back.length}件、外したもの ${latest.items.filter(i => !after.has(i.id)).length}件）`);
+  if (dryRun) { console.log('  --dry-run のため、書き出していません。'); return 0; }
+  writeJson(file, { generatedAt: latest.generatedAt || now.toISOString(), items: r.items } satisfies UpdatesFile);
+  writeJson(join(DATA_DIR, 'briefing.json'), buildBriefing(r.items, readJson<Briefing | null>(join(DATA_DIR, 'briefing.json'), null), now));
   return 0;
 }
 
@@ -179,6 +241,8 @@ else if (command === 'health') {
   if (!Number.isInteger(max) || max < 1) { console.error('--max-failures は1以上の整数で指定してください。'); code = 2; }
   else code = checkHealth(max);
 }
+else if (command === 'reclassify') code = reclassifyLatest(values['dry-run']);
+else if (command === 'rebuild') code = rebuildLatest(values['dry-run']);
 else if (command === 'discover') code = await discover(rest);
 else if (command === 'sources') for (const s of allSources()) console.log(`${s.id.padEnd(12)} ${s.kind.padEnd(5)} ${s.name}  ${s.url}`);
 else { console.error(`知らないコマンドです: ${command}\n\n${HELP}`); code = 2; }

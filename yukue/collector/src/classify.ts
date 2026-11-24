@@ -21,12 +21,33 @@ export function stageOf(type: StagedType, index: number, label?: string): Stage 
 }
 
 const TYPE_RULES: [RegExp, UpdateType][] = [
-  [/(補助金|助成金|交付金|支援事業|実証事業|委託事業|補助事業).{0,30}(公募|募集|受付|採択|交付決定)|(公募|募集)(を開始|開始|のお知らせ|について)|採択結果|交付決定/, 'grant'],
   [/税制|税率|減税|増税|課税|控除|租税|消費税|所得税|法人税|関税|印紙税|酒税|たばこ税/, 'tax'],
   [/予算|補正|予備費|決算|概算要求|財政投融資/, 'budget'],
   [/法律案|法案|法律第\d+号|を改正する法律|法律の公布|法律が成立/, 'law'],
   [/政令|省令|告示|指針|ガイドライン|基本方針|基本計画|戦略|大綱|制度|意見募集|パブリック.?コメント|検討会|審議会|分科会|部会|取りまとめ|とりまとめ|報告書|中間整理|答申|建議|閣議決定|閣議了解|推進会議|諮問会議/, 'system']
 ];
+
+/** 意見募集（パブリック・コメント）。「募集を開始」と書かれていても、補助金の公募ではない。 */
+const CONSULT = /意見募集|意見公募|意見の募集|意見を募集|御意見の募集|ご意見の募集|パブリック.?コメント/;
+/** 「公募」「募集」でも、人や作品を募るもの。補助金などの名前がいっしょに出てこないかぎり、公募（grant）にはしない。 */
+const PEOPLE_CALL = /委員|職員|採用|非常勤|任期付|調査員|相談員|公証人|講師|専門家|アドバイザー|人材|会員|参加者|受講|出展|作品|愛称|標語|ロゴ|モニター|ボランティア|サポーター|大賞|表彰|コンテスト/;
+/** お金を出す仕組みの名前。このあとに「公募・募集・受付・採択」が続けば、補助金などの公募とみなす。 */
+const GRANT_CALL = /(?:補助金|助成金|交付金|給付金|支援金|奨励金|支援事業|実証事業|委託事業|補助事業|モデル事業|促進事業|推進事業).{0,30}(?:公募|募集|受付|採択)/;
+/** 「〜事業の公募」。お金の名前がなくても、事業の担い手を募るものは公募とみなす（人や作品を募るものは除く）。 */
+const PROJECT_CALL = /事業.{0,30}(?:公募|募集|採択)/;
+
+/** 補助金などの公募・採択か。「公募」「募集」という言葉だけでは決めない（委員の公募、会員の募集、意見募集などがある）。 */
+function isGrantCall(title: string): boolean {
+  if (/交付税|譲与税/.test(title)) return false;
+  if (GRANT_CALL.test(title) || /採択結果|交付決定/.test(title)) return true;
+  return PROJECT_CALL.test(title) && !PEOPLE_CALL.test(title);
+}
+
+function typeOf(title: string): UpdateType {
+  if (CONSULT.test(title)) return 'system';
+  if (isGrantCall(title)) return 'grant';
+  return TYPE_RULES.find(([re]) => re.test(title))?.[1] ?? 'news';
+}
 
 const KEYWORD_THEME: [RegExp, ThemeId][] = [
   // 「公務員災害補償」などが防災に入らないよう、先に受ける
@@ -142,7 +163,7 @@ export function importanceOf(type: UpdateType, stage: Stage | undefined, text: s
 export function classify(input: ClassifyInput): Classified {
   const t = input.title;
   const all = `${t} ${input.summary ?? ''}`;
-  const type = TYPE_RULES.find(([re]) => re.test(t))?.[1] ?? 'news';
+  const type = typeOf(t);
   const noise = NOISE.test(t) && !STRONG.test(t);
   const stage = detectStage(type, t);
   const amount = extractAmount(all);

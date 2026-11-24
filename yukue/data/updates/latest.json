@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-24T22:17:34.426Z",
+  "generatedAt": "2026-11-24T22:38:54.219Z",
   "items": [
     {
       "id": "jgrants:a0W5h00000GMgXBEA1",
@@ -894,6 +894,101 @@
       "enriched": "rules"
     },
     {
+      "id": "env:14ebfdb606cd",
+      "date": "2026-11-24",
+      "type": "news",
+      "theme": "industry",
+      "title": "「令和8年度第60回全国野生生物保護活動発表大会」の開催及び参加校（環境大臣賞等受賞校）の決定について",
+      "summary": "",
+      "ministry": "環境省",
+      "links": [
+        {
+          "name": "環境省",
+          "url": "https://www.env.go.jp/press/press_05839.html"
+        }
+      ],
+      "sourceId": "env",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 25,
+      "enriched": "rules"
+    },
+    {
+      "id": "env:224242a23f6d",
+      "date": "2026-11-24",
+      "type": "news",
+      "theme": "industry",
+      "title": "第13回大気汚染に関する日中韓三カ国政策対話及び生活環境に関する日中韓三カ国政策対話の結果について",
+      "summary": "",
+      "ministry": "環境省",
+      "links": [
+        {
+          "name": "環境省",
+          "url": "https://www.env.go.jp/press/press_05866.html"
+        }
+      ],
+      "sourceId": "env",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 25,
+      "enriched": "rules"
+    },
+    {
+      "id": "env:89de32309045",
+      "date": "2026-11-24",
+      "type": "news",
+      "theme": "industry",
+      "title": "株式会社JTBによる、あなたの「好き」が国立公園の力になる新プロジェクト「HELLO NATIONAL PARKS」の開始について",
+      "summary": "",
+      "ministry": "環境省",
+      "links": [
+        {
+          "name": "環境省",
+          "url": "https://www.env.go.jp/press/press_05873.html"
+        }
+      ],
+      "sourceId": "env",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 25,
+      "enriched": "rules"
+    },
+    {
+      "id": "env:a1fbe1aa623d",
+      "date": "2026-11-24",
+      "type": "news",
+      "theme": "industry",
+      "title": "「環境省LD-Tech認証製品の公募に関する説明会」の開催について",
+      "summary": "",
+      "ministry": "環境省",
+      "links": [
+        {
+          "name": "環境省",
+          "url": "https://www.env.go.jp/press/press_05857.html"
+        }
+      ],
+      "sourceId": "env",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 25,
+      "enriched": "rules"
+    },
+    {
+      "id": "env:f1e3d0079946",
+      "date": "2026-11-24",
+      "type": "news",
+      "theme": "industry",
+      "title": "第9回日本・ベトナム環境政策対話の結果について",
+      "summary": "",
+      "ministry": "環境省",
+      "links": [
+        {
+          "name": "環境省",
+          "url": "https://www.env.go.jp/press/press_05867.html"
+        }
+      ],
+      "sourceId": "env",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 25,
+      "enriched": "rules"
+    },
+    {
       "id": "fsa:02021ae23423",
       "date": "2026-11-24",
       "type": "news",
@@ -1004,6 +1099,44 @@
       ],
       "sourceId": "mhlw",
       "firstSeen": "2026-11-24T22:06:48.044Z",
+      "importance": 25,
+      "enriched": "rules"
+    },
+    {
+      "id": "mod:18e6fddb0967",
+      "date": "2026-11-24",
+      "type": "news",
+      "theme": "defense",
+      "title": "多軌道観測実証衛星の打上げについて",
+      "summary": "",
+      "ministry": "防衛省",
+      "links": [
+        {
+          "name": "防衛省",
+          "url": "https://www.mod.go.jp/j/press/news/2026/11/24c.html"
+        }
+      ],
+      "sourceId": "mod",
+      "firstSeen": "2026-11-24T22:38:54.219Z",
+      "importance": 25,
+      "enriched": "rules"
+    },
+    {
+      "id": "mod:ac1579a2bc72",
+      "date": "2026-11-24",
+      "type": "news",
+      "theme": "defense",
+      "title": "シンガポール共和国国防大臣兼公共サービス調整大臣の当省訪問について",
+      "summary": "",
+      "ministry": "防衛省",
+      "links": [
+        {
+          "name": "防衛省",
+          "url": "https://www.mod.go.jp/j/press/news/2026/11/24a.html"
+        }
+      ],
+      "sourceId": "mod",
+      "firstSeen": "2026-11-24T22:38:54.219Z",
       "importance": 25,
       "enriched": "rules"
     },
@@ -1182,6 +1315,76 @@
       "enriched": "rules"
     },
     {
+      "id": "cfa:271c2d5c9897",
+      "date": "2026-11-24",
+      "type": "system",
+      "theme": "social",
+      "title": "こども家庭審議会 幼児期までのこどもの育ち部会（第17回）の開催について掲載しました",
+      "summary": "",
+      "ministry": "こども家庭庁",
+      "stage": {
+        "steps": [
+          "検討",
+          "意見募集",
+          "決定",
+          "開始"
+        ],
+        "index": 0,
+        "label": "検討"
+      },
+      "links": [
+        {
+          "name": "こども家庭庁",
+          "url": "https://www.cfa.go.jp/press/3ad539f8-3eec-450f-8d2d-c928d0697f78"
+        }
+      ],
+      "sourceId": "cfa",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 15,
+      "noise": true,
+      "enriched": "rules"
+    },
+    {
+      "id": "cfa:2aeb189c231e",
+      "date": "2026-11-24",
+      "type": "news",
+      "theme": "social",
+      "title": "こども意見ファシリテーター養成講座（群馬県桐生市）開催のご案内を掲載しました",
+      "summary": "",
+      "ministry": "こども家庭庁",
+      "links": [
+        {
+          "name": "こども家庭庁",
+          "url": "https://www.cfa.go.jp/press/a71c8b63-0e3b-455d-b9d7-c8b6db229b15"
+        }
+      ],
+      "sourceId": "cfa",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 15,
+      "noise": true,
+      "enriched": "rules"
+    },
+    {
+      "id": "cfa:eb1f53870528",
+      "date": "2026-11-24",
+      "type": "news",
+      "theme": "social",
+      "title": "中司大臣記者会見（令和8年11月24日）を掲載しました",
+      "summary": "",
+      "ministry": "こども家庭庁",
+      "links": [
+        {
+          "name": "こども家庭庁",
+          "url": "https://www.cfa.go.jp/speech/8b395dc4"
+        }
+      ],
+      "sourceId": "cfa",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 15,
+      "noise": true,
+      "enriched": "rules"
+    },
+    {
       "id": "digital:0a46c472e54e",
       "date": "2026-11-24",
       "type": "news",
@@ -1257,6 +1460,86 @@
       ],
       "sourceId": "digital",
       "firstSeen": "2026-11-24T22:06:48.044Z",
+      "importance": 15,
+      "noise": true,
+      "enriched": "rules"
+    },
+    {
+      "id": "env:0367a473c6d1",
+      "date": "2026-11-24",
+      "type": "system",
+      "theme": "industry",
+      "title": "メチル水銀による健康影響にかかる疫学調査の在り方に 関する検討会（第4回）の開催について",
+      "summary": "",
+      "ministry": "環境省",
+      "stage": {
+        "steps": [
+          "検討",
+          "意見募集",
+          "決定",
+          "開始"
+        ],
+        "index": 0,
+        "label": "検討"
+      },
+      "links": [
+        {
+          "name": "環境省",
+          "url": "https://www.env.go.jp/press/press_05884.html"
+        }
+      ],
+      "sourceId": "env",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 15,
+      "noise": true,
+      "enriched": "rules"
+    },
+    {
+      "id": "env:48f92ac2360c",
+      "date": "2026-11-24",
+      "type": "news",
+      "theme": "industry",
+      "title": "第27回日中韓三カ国環境大臣会合（TEMM27）の開催について",
+      "summary": "",
+      "ministry": "環境省",
+      "links": [
+        {
+          "name": "環境省",
+          "url": "https://www.env.go.jp/press/press_05849.html"
+        }
+      ],
+      "sourceId": "env",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 15,
+      "noise": true,
+      "enriched": "rules"
+    },
+    {
+      "id": "env:7ff5c7d392c7",
+      "date": "2026-11-24",
+      "type": "system",
+      "theme": "industry",
+      "title": "令和8年度スクラップヤード環境対策技術検討会（第4回）の開催について",
+      "summary": "",
+      "ministry": "環境省",
+      "stage": {
+        "steps": [
+          "検討",
+          "意見募集",
+          "決定",
+          "開始"
+        ],
+        "index": 0,
+        "label": "検討"
+      },
+      "links": [
+        {
+          "name": "環境省",
+          "url": "https://www.env.go.jp/press/press_05790.html"
+        }
+      ],
+      "sourceId": "env",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
       "importance": 15,
       "noise": true,
       "enriched": "rules"
@@ -1982,6 +2265,66 @@
       "enriched": "rules"
     },
     {
+      "id": "mod:5e1e16c30890",
+      "date": "2026-11-24",
+      "type": "news",
+      "theme": "defense",
+      "title": "小田原防衛副大臣の第3回シューマン安全保障・防衛フォーラムへの出席及び諸外国等との会談について（概要）",
+      "summary": "",
+      "ministry": "防衛省",
+      "links": [
+        {
+          "name": "防衛省",
+          "url": "https://www.mod.go.jp/j/approach/exchange/area/2026/20261117_eu-j.html"
+        }
+      ],
+      "sourceId": "mod",
+      "firstSeen": "2026-11-24T22:38:54.219Z",
+      "importance": 15,
+      "noise": true,
+      "enriched": "rules"
+    },
+    {
+      "id": "mod:a04bd5583c78",
+      "date": "2026-11-24",
+      "type": "news",
+      "theme": "defense",
+      "title": "日チリ防衛相会談について",
+      "summary": "",
+      "ministry": "防衛省",
+      "links": [
+        {
+          "name": "防衛省",
+          "url": "https://www.mod.go.jp/j/approach/exchange/area/2026/20261120_chl-j.html"
+        }
+      ],
+      "sourceId": "mod",
+      "firstSeen": "2026-11-24T22:38:54.219Z",
+      "importance": 15,
+      "noise": true,
+      "enriched": "rules"
+    },
+    {
+      "id": "mod:fa0c7c1d2578",
+      "date": "2026-11-24",
+      "type": "news",
+      "theme": "infra",
+      "title": "第3回那覇港湾施設移設に係るてだこの都市・浦添の振興に関する協議会の開催について",
+      "summary": "",
+      "ministry": "防衛省",
+      "links": [
+        {
+          "name": "防衛省",
+          "url": "https://www.mod.go.jp/j/press/news/2026/11/24b.html"
+        }
+      ],
+      "sourceId": "mod",
+      "firstSeen": "2026-11-24T22:38:54.219Z",
+      "importance": 15,
+      "noise": true,
+      "enriched": "rules"
+    },
+    {
       "id": "mof:05123fa684b0",
       "date": "2026-11-24",
       "type": "news",
@@ -2057,6 +2400,46 @@
       ],
       "sourceId": "mof",
       "firstSeen": "2026-11-24T22:06:48.044Z",
+      "importance": 15,
+      "noise": true,
+      "enriched": "rules"
+    },
+    {
+      "id": "moj:b28fce90559c",
+      "date": "2026-11-24",
+      "type": "news",
+      "theme": "other",
+      "title": "事務補佐員の募集（厚生管理官・令和9年2月採用）",
+      "summary": "",
+      "ministry": "法務省",
+      "links": [
+        {
+          "name": "法務省",
+          "url": "https://www.moj.go.jp/kouseikanrikan/shomu/kouseikanrikan01_00075.html"
+        }
+      ],
+      "sourceId": "moj",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 15,
+      "noise": true,
+      "enriched": "rules"
+    },
+    {
+      "id": "moj:e6bc4ec928e1",
+      "date": "2026-11-24",
+      "type": "news",
+      "theme": "other",
+      "title": "法務大臣閣議後記者会見の概要－令和8年11月20日（金）",
+      "summary": "",
+      "ministry": "法務省",
+      "links": [
+        {
+          "name": "法務省",
+          "url": "https://www.moj.go.jp/hisho/kouhou/hisho08_01194.html"
+        }
+      ],
+      "sourceId": "moj",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
       "importance": 15,
       "noise": true,
       "enriched": "rules"
@@ -2189,6 +2572,25 @@
       "firstSeen": "2026-11-24T22:06:48.044Z",
       "importance": 15,
       "noise": true,
+      "enriched": "rules"
+    },
+    {
+      "id": "env:71f28e37b7ff",
+      "date": "2026-11-24",
+      "type": "news",
+      "theme": "industry",
+      "title": "国連気候変動枠組条約第31回締約国会議（COP31）、京都議定書第21回締約国会合（CMP21）及びパリ協定第8回締約国会合（CMA8）が開催されました",
+      "summary": "",
+      "ministry": "環境省",
+      "links": [
+        {
+          "name": "環境省",
+          "url": "https://www.env.go.jp/press/press_05878.html"
+        }
+      ],
+      "sourceId": "env",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 3,
       "enriched": "rules"
     },
     {
@@ -2455,6 +2857,37 @@
       "enriched": "rules"
     },
     {
+      "id": "jbaudit:a88661d8d835",
+      "date": "2026-11-20",
+      "type": "budget",
+      "theme": "whole",
+      "title": "「令和7年度決算検査報告」の本文を掲載しました。",
+      "summary": "",
+      "ministry": "会計検査院",
+      "stage": {
+        "steps": [
+          "概算要求",
+          "政府案",
+          "国会審議",
+          "成立",
+          "執行",
+          "決算"
+        ],
+        "index": 5,
+        "label": "決算"
+      },
+      "links": [
+        {
+          "name": "会計検査院",
+          "url": "https://www.jbaudit.go.jp/report/new/all/index.html"
+        }
+      ],
+      "sourceId": "jbaudit",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 67,
+      "enriched": "rules"
+    },
+    {
       "id": "curated:sdfpay",
       "date": "2026-11-20",
       "type": "law",
@@ -2598,13 +3031,13 @@
       "enriched": "rules"
     },
     {
-      "id": "caa:475d41bdcbea",
+      "id": "env:f628ed6d7d4d",
       "date": "2026-11-20",
       "type": "grant",
-      "theme": "other",
-      "title": "臨時事務補助員(総務課管理室〔支部図書館〕)の募集について",
+      "theme": "industry",
+      "title": "令和8年度運輸部門等の脱炭素化に向けた先進的システム社会実装促進事業の二次公募の公募結果及び三次公募について",
       "summary": "",
-      "ministry": "消費者庁",
+      "ministry": "環境省",
       "stage": {
         "steps": [
           "予告",
@@ -2617,12 +3050,12 @@
       },
       "links": [
         {
-          "name": "消費者庁",
-          "url": "https://www.caa.go.jp/notice/entry/048234/"
+          "name": "環境省",
+          "url": "https://www.env.go.jp/press/press_05809.html"
         }
       ],
-      "sourceId": "caa",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
+      "sourceId": "env",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
       "importance": 44,
       "enriched": "rules"
     },
@@ -2834,6 +3267,25 @@
       "sourceId": "pubcomment",
       "firstSeen": "2026-11-24T22:06:48.044Z",
       "importance": 44,
+      "enriched": "rules"
+    },
+    {
+      "id": "nta:cb870809b890",
+      "date": "2026-11-20",
+      "type": "tax",
+      "theme": "whole",
+      "title": "法人税及び地方法人税の予定申告書、消費税及び地方消費税の中間申告書並びに納付書発送等に関するお知らせ",
+      "summary": "",
+      "ministry": "国税庁",
+      "links": [
+        {
+          "name": "国税庁",
+          "url": "https://www.nta.go.jp/information/news/pdf/0026010-147.pdf"
+        }
+      ],
+      "sourceId": "nta",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 43,
       "enriched": "rules"
     },
     {
@@ -3177,6 +3629,25 @@
       "sourceId": "kantei",
       "firstSeen": "2026-11-24T22:06:48.044Z",
       "importance": 29,
+      "enriched": "rules"
+    },
+    {
+      "id": "caa:475d41bdcbea",
+      "date": "2026-11-20",
+      "type": "news",
+      "theme": "other",
+      "title": "臨時事務補助員(総務課管理室〔支部図書館〕)の募集について",
+      "summary": "",
+      "ministry": "消費者庁",
+      "links": [
+        {
+          "name": "消費者庁",
+          "url": "https://www.caa.go.jp/notice/entry/048234/"
+        }
+      ],
+      "sourceId": "caa",
+      "firstSeen": "2026-11-24T22:06:48.044Z",
+      "importance": 25,
       "enriched": "rules"
     },
     {
@@ -3598,6 +4069,101 @@
       "enriched": "rules"
     },
     {
+      "id": "mod:435e4f937949",
+      "date": "2026-11-20",
+      "type": "news",
+      "theme": "defense",
+      "title": "第4回日印外務・防衛閣僚会合（「2＋2」） 共同声明",
+      "summary": "",
+      "ministry": "防衛省",
+      "links": [
+        {
+          "name": "防衛省",
+          "url": "https://www.mod.go.jp/j/approach/exchange/area/2026/20261119_ind-j_b.html"
+        }
+      ],
+      "sourceId": "mod",
+      "firstSeen": "2026-11-24T22:38:54.219Z",
+      "importance": 25,
+      "enriched": "rules"
+    },
+    {
+      "id": "mod:5954a0d96dfd",
+      "date": "2026-11-20",
+      "type": "news",
+      "theme": "social",
+      "title": "駐留軍要員健康保険組合（駐健保）の選定議員の公募について",
+      "summary": "",
+      "ministry": "防衛省",
+      "links": [
+        {
+          "name": "防衛省",
+          "url": "https://www.mod.go.jp/j/press/news/2026/11/20a.html"
+        }
+      ],
+      "sourceId": "mod",
+      "firstSeen": "2026-11-24T22:38:54.219Z",
+      "importance": 25,
+      "enriched": "rules"
+    },
+    {
+      "id": "mod:724754b9057a",
+      "date": "2026-11-20",
+      "type": "news",
+      "theme": "defense",
+      "title": "第4回日印外務・防衛閣僚会合（「2＋2」）",
+      "summary": "",
+      "ministry": "防衛省",
+      "links": [
+        {
+          "name": "防衛省",
+          "url": "https://www.mod.go.jp/j/approach/exchange/area/2026/20261119_ind-j_c.html"
+        }
+      ],
+      "sourceId": "mod",
+      "firstSeen": "2026-11-24T22:38:54.219Z",
+      "importance": 25,
+      "enriched": "rules"
+    },
+    {
+      "id": "mod:850816c4309a",
+      "date": "2026-11-20",
+      "type": "news",
+      "theme": "defense",
+      "title": "日印防衛相共同プレスステートメント",
+      "summary": "",
+      "ministry": "防衛省",
+      "links": [
+        {
+          "name": "防衛省",
+          "url": "https://www.mod.go.jp/j/approach/exchange/area/2026/20261119_ind-j_a.html"
+        }
+      ],
+      "sourceId": "mod",
+      "firstSeen": "2026-11-24T22:38:54.219Z",
+      "importance": 25,
+      "enriched": "rules"
+    },
+    {
+      "id": "moj:3ce59ec5ff8f",
+      "date": "2026-11-20",
+      "type": "news",
+      "theme": "other",
+      "title": "令和8年度土地家屋調査士試験筆記試験（多肢択一式問題）の正解及び基準点等について",
+      "summary": "",
+      "ministry": "法務省",
+      "links": [
+        {
+          "name": "法務省",
+          "url": "https://www.moj.go.jp/MINJI/minji05_00804.html"
+        }
+      ],
+      "sourceId": "moj",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 25,
+      "enriched": "rules"
+    },
+    {
       "id": "soumu:edeb7357a805",
       "date": "2026-11-20",
       "type": "news",
@@ -3731,6 +4297,146 @@
       ],
       "sourceId": "caa",
       "firstSeen": "2026-11-24T22:06:48.044Z",
+      "importance": 15,
+      "noise": true,
+      "enriched": "rules"
+    },
+    {
+      "id": "cfa:0907284e3e82",
+      "date": "2026-11-20",
+      "type": "news",
+      "theme": "social",
+      "title": "「こども若者の自殺対策の推進に関するワーキンググループ（第1回）」について掲載しました",
+      "summary": "",
+      "ministry": "こども家庭庁",
+      "links": [
+        {
+          "name": "こども家庭庁",
+          "url": "https://www.cfa.go.jp/councils/workinggroup"
+        }
+      ],
+      "sourceId": "cfa",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 15,
+      "noise": true,
+      "enriched": "rules"
+    },
+    {
+      "id": "cfa:2b66b12bea71",
+      "date": "2026-11-20",
+      "type": "system",
+      "theme": "social",
+      "title": "CDR（Child Death Review ：こどもの死亡検証）の制度のあり方に関する検討会 （第5回）を掲載しました",
+      "summary": "",
+      "ministry": "こども家庭庁",
+      "stage": {
+        "steps": [
+          "検討",
+          "意見募集",
+          "決定",
+          "開始"
+        ],
+        "index": 0,
+        "label": "検討"
+      },
+      "links": [
+        {
+          "name": "こども家庭庁",
+          "url": "https://www.cfa.go.jp/councils/cdr-seidonoarikata/dafdc690"
+        }
+      ],
+      "sourceId": "cfa",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 15,
+      "noise": true,
+      "enriched": "rules"
+    },
+    {
+      "id": "cfa:43cbb7599a5b",
+      "date": "2026-11-20",
+      "type": "news",
+      "theme": "social",
+      "title": "第1回こども・若者の自殺対策の推進に関するワーキンググループの開催について掲載しました",
+      "summary": "",
+      "ministry": "こども家庭庁",
+      "links": [
+        {
+          "name": "こども家庭庁",
+          "url": "https://www.cfa.go.jp/press/cbd8762e-b8b9-487a-8d55-b795057c0798"
+        }
+      ],
+      "sourceId": "cfa",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 15,
+      "noise": true,
+      "enriched": "rules"
+    },
+    {
+      "id": "cfa:5384cea8ae43",
+      "date": "2026-11-20",
+      "type": "system",
+      "theme": "social",
+      "title": "第5回CDR（Child Death Review：こどもの死亡検証）の制度のあり方に関する検討会の開催のお知らせと検討会当日の頭撮り・事後記者ブリーフィングの実施について掲載しました",
+      "summary": "",
+      "ministry": "こども家庭庁",
+      "stage": {
+        "steps": [
+          "検討",
+          "意見募集",
+          "決定",
+          "開始"
+        ],
+        "index": 0,
+        "label": "検討"
+      },
+      "links": [
+        {
+          "name": "こども家庭庁",
+          "url": "https://www.cfa.go.jp/press/a2c988a4-78ee-4c3c-912f-cf2e050c7beb"
+        }
+      ],
+      "sourceId": "cfa",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 15,
+      "noise": true,
+      "enriched": "rules"
+    },
+    {
+      "id": "cfa:66c581a041c1",
+      "date": "2026-11-20",
+      "type": "news",
+      "theme": "social",
+      "title": "「こどもの自殺対策に関する関係省庁連絡会議（第11回）」について掲載しました",
+      "summary": "",
+      "ministry": "こども家庭庁",
+      "links": [
+        {
+          "name": "こども家庭庁",
+          "url": "https://www.cfa.go.jp/councils/kodomonojisatsutaisaku-kaigi/f2569aa2"
+        }
+      ],
+      "sourceId": "cfa",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 15,
+      "noise": true,
+      "enriched": "rules"
+    },
+    {
+      "id": "cfa:f0836f6088ae",
+      "date": "2026-11-20",
+      "type": "news",
+      "theme": "social",
+      "title": "中司大臣記者会見（令和8年11月20日）を掲載しました",
+      "summary": "",
+      "ministry": "こども家庭庁",
+      "links": [
+        {
+          "name": "こども家庭庁",
+          "url": "https://www.cfa.go.jp/speech/3ccaacbe"
+        }
+      ],
+      "sourceId": "cfa",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
       "importance": 15,
       "noise": true,
       "enriched": "rules"
@@ -3876,6 +4582,86 @@
       "enriched": "rules"
     },
     {
+      "id": "env:62f910c03566",
+      "date": "2026-11-20",
+      "type": "news",
+      "theme": "industry",
+      "title": "「TNFD提言に沿った自然関連情報分析ガイダンス（地域金融機関向け）」勉強会の開催について",
+      "summary": "",
+      "ministry": "環境省",
+      "links": [
+        {
+          "name": "環境省",
+          "url": "https://www.env.go.jp/press/press_05837.html"
+        }
+      ],
+      "sourceId": "env",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 15,
+      "noise": true,
+      "enriched": "rules"
+    },
+    {
+      "id": "env:a1b79fb0e63b",
+      "date": "2026-11-20",
+      "type": "news",
+      "theme": "industry",
+      "title": "自然関連財務情報開示をめぐる最新動向に関するセミナーの開催について",
+      "summary": "",
+      "ministry": "環境省",
+      "links": [
+        {
+          "name": "環境省",
+          "url": "https://www.env.go.jp/press/press_05852.html"
+        }
+      ],
+      "sourceId": "env",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 15,
+      "noise": true,
+      "enriched": "rules"
+    },
+    {
+      "id": "env:e36cd35c03e9",
+      "date": "2026-11-20",
+      "type": "news",
+      "theme": "local",
+      "title": "「令和8年度中国四国地方資源循環自治体フォーラム」の開催について",
+      "summary": "",
+      "ministry": "環境省",
+      "links": [
+        {
+          "name": "環境省",
+          "url": "https://www.env.go.jp/press/press_05823.html"
+        }
+      ],
+      "sourceId": "env",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 15,
+      "noise": true,
+      "enriched": "rules"
+    },
+    {
+      "id": "env:e9d83d10e583",
+      "date": "2026-11-20",
+      "type": "news",
+      "theme": "industry",
+      "title": "令和8年度第3回グリーンファイナンスセミナーの開催について",
+      "summary": "",
+      "ministry": "環境省",
+      "links": [
+        {
+          "name": "環境省",
+          "url": "https://www.env.go.jp/press/press_05811.html"
+        }
+      ],
+      "sourceId": "env",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 15,
+      "noise": true,
+      "enriched": "rules"
+    },
+    {
       "id": "fsa:8e60149c8784",
       "date": "2026-11-20",
       "type": "news",
@@ -3911,6 +4697,126 @@
       ],
       "sourceId": "fsa",
       "firstSeen": "2026-11-24T22:06:48.044Z",
+      "importance": 15,
+      "noise": true,
+      "enriched": "rules"
+    },
+    {
+      "id": "jbaudit:4c40c73573f4",
+      "date": "2026-11-20",
+      "type": "news",
+      "theme": "whole",
+      "title": "「採用情報（選考採用試験（係長級又は課長補佐級、一般職相当））」を更新しました。",
+      "summary": "",
+      "ministry": "会計検査院",
+      "links": [
+        {
+          "name": "会計検査院",
+          "url": "https://www.jbaudit.go.jp/recruit/katsute_ippan.html"
+        }
+      ],
+      "sourceId": "jbaudit",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 15,
+      "noise": true,
+      "enriched": "rules"
+    },
+    {
+      "id": "jbaudit:51ee8efc86bf",
+      "date": "2026-11-20",
+      "type": "news",
+      "theme": "whole",
+      "title": "「業務説明会のご案内」を更新しました。",
+      "summary": "",
+      "ministry": "会計検査院",
+      "links": [
+        {
+          "name": "会計検査院",
+          "url": "https://www.jbaudit.go.jp/recruit/business.html"
+        }
+      ],
+      "sourceId": "jbaudit",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 15,
+      "noise": true,
+      "enriched": "rules"
+    },
+    {
+      "id": "jbaudit:c69ea855fe6a",
+      "date": "2026-11-20",
+      "type": "tax",
+      "theme": "whole",
+      "title": "基金、租税特別措置等に関する検査結果をまとめたページを更新しました。",
+      "summary": "",
+      "ministry": "会計検査院",
+      "links": [
+        {
+          "name": "会計検査院",
+          "url": "https://www.jbaudit.go.jp/report/about/02.html"
+        }
+      ],
+      "sourceId": "jbaudit",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 15,
+      "noise": true,
+      "enriched": "rules"
+    },
+    {
+      "id": "jbaudit:d5136f1bf4b4",
+      "date": "2026-11-20",
+      "type": "news",
+      "theme": "whole",
+      "title": "「採用情報（専門的な知識経験等を有する任期付職員）」を更新しました。",
+      "summary": "",
+      "ministry": "会計検査院",
+      "links": [
+        {
+          "name": "会計検査院",
+          "url": "https://www.jbaudit.go.jp/recruit/term.html"
+        }
+      ],
+      "sourceId": "jbaudit",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 15,
+      "noise": true,
+      "enriched": "rules"
+    },
+    {
+      "id": "jbaudit:deff6fc0f5ac",
+      "date": "2026-11-20",
+      "type": "news",
+      "theme": "whole",
+      "title": "「採用情報（育児休業代替職員））」を更新しました。",
+      "summary": "",
+      "ministry": "会計検査院",
+      "links": [
+        {
+          "name": "会計検査院",
+          "url": "https://www.jbaudit.go.jp/recruit/term02.html"
+        }
+      ],
+      "sourceId": "jbaudit",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 15,
+      "noise": true,
+      "enriched": "rules"
+    },
+    {
+      "id": "jbaudit:f59e7f2eae3f",
+      "date": "2026-11-20",
+      "type": "news",
+      "theme": "whole",
+      "title": "「採用情報（非常勤職員（期間業務職員））」を更新しました。",
+      "summary": "",
+      "ministry": "会計検査院",
+      "links": [
+        {
+          "name": "会計検査院",
+          "url": "https://www.jbaudit.go.jp/recruit/term04.html"
+        }
+      ],
+      "sourceId": "jbaudit",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
       "importance": 15,
       "noise": true,
       "enriched": "rules"
@@ -5432,6 +6338,46 @@
       "enriched": "rules"
     },
     {
+      "id": "moj:654f6337e6bf",
+      "date": "2026-11-20",
+      "type": "news",
+      "theme": "other",
+      "title": "第27回法整備支援連絡会を開催します（令和8年12月11日）",
+      "summary": "",
+      "ministry": "法務省",
+      "links": [
+        {
+          "name": "法務省",
+          "url": "https://www.moj.go.jp/housouken/houso_renrakukai_R8.html"
+        }
+      ],
+      "sourceId": "moj",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 15,
+      "noise": true,
+      "enriched": "rules"
+    },
+    {
+      "id": "moj:c03b86cea8c6",
+      "date": "2026-11-20",
+      "type": "news",
+      "theme": "other",
+      "title": "法務大臣閣議後記者会見の概要－令和8年11月17日（火）",
+      "summary": "",
+      "ministry": "法務省",
+      "links": [
+        {
+          "name": "法務省",
+          "url": "https://www.moj.go.jp/hisho/kouhou/hisho08_01193.html"
+        }
+      ],
+      "sourceId": "moj",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 15,
+      "noise": true,
+      "enriched": "rules"
+    },
+    {
       "id": "soumu:9b25cbc2d7ad",
       "date": "2026-11-20",
       "type": "system",
@@ -6290,6 +7236,25 @@
       "enriched": "rules"
     },
     {
+      "id": "cfa:42f382cdb89f",
+      "date": "2026-11-19",
+      "type": "news",
+      "theme": "social",
+      "title": "旧優生保護法補償金等支給法に基づく補償金等の請求・相談件数及び支給認定件数、並びにサポート弁護士登録数等の状況について更新しました",
+      "summary": "",
+      "ministry": "こども家庭庁",
+      "links": [
+        {
+          "name": "こども家庭庁",
+          "url": "https://www.cfa.go.jp/kyuyusei-hoshokin"
+        }
+      ],
+      "sourceId": "cfa",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 25,
+      "enriched": "rules"
+    },
+    {
       "id": "digital:bc95959064fe",
       "date": "2026-11-19",
       "type": "news",
@@ -6305,6 +7270,25 @@
       ],
       "sourceId": "digital",
       "firstSeen": "2026-11-24T22:06:48.044Z",
+      "importance": 25,
+      "enriched": "rules"
+    },
+    {
+      "id": "env:c6632b01ef60",
+      "date": "2026-11-19",
+      "type": "news",
+      "theme": "industry",
+      "title": "「CAMPUR中間レポート」をASEAN加盟国と共同で作成しました",
+      "summary": "",
+      "ministry": "環境省",
+      "links": [
+        {
+          "name": "環境省",
+          "url": "https://www.env.go.jp/press/press_05856.html"
+        }
+      ],
+      "sourceId": "env",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
       "importance": 25,
       "enriched": "rules"
     },
@@ -6442,6 +7426,82 @@
       "enriched": "rules"
     },
     {
+      "id": "mod:26d26fadbdcf",
+      "date": "2026-11-19",
+      "type": "news",
+      "theme": "defense",
+      "title": "日米合同委員会合意について",
+      "summary": "",
+      "ministry": "防衛省",
+      "links": [
+        {
+          "name": "防衛省",
+          "url": "https://www.mod.go.jp/j/press/news/2026/11/19a.pdf"
+        }
+      ],
+      "sourceId": "mod",
+      "firstSeen": "2026-11-24T22:38:54.219Z",
+      "importance": 25,
+      "enriched": "rules"
+    },
+    {
+      "id": "mod:4f69b866538d",
+      "date": "2026-11-19",
+      "type": "news",
+      "theme": "defense",
+      "title": "日独防衛当局間（MM）協議の開催（結果）",
+      "summary": "",
+      "ministry": "防衛省",
+      "links": [
+        {
+          "name": "防衛省",
+          "url": "https://www.mod.go.jp/j/approach/exchange/area/2026/20261119_deu-j.html"
+        }
+      ],
+      "sourceId": "mod",
+      "firstSeen": "2026-11-24T22:38:54.219Z",
+      "importance": 25,
+      "enriched": "rules"
+    },
+    {
+      "id": "mod:59b4a2cf1aef",
+      "date": "2026-11-19",
+      "type": "news",
+      "theme": "defense",
+      "title": "日米合同委員会合意について",
+      "summary": "",
+      "ministry": "防衛省",
+      "links": [
+        {
+          "name": "防衛省",
+          "url": "https://www.mod.go.jp/j/press/news/2026/11/19b.pdf"
+        }
+      ],
+      "sourceId": "mod",
+      "firstSeen": "2026-11-24T22:38:54.219Z",
+      "importance": 25,
+      "enriched": "rules"
+    },
+    {
+      "id": "mod:689a0b4f7a36",
+      "date": "2026-11-19",
+      "type": "news",
+      "theme": "defense",
+      "title": "チリ共和国国防大臣の当省訪問について",
+      "summary": "",
+      "ministry": "防衛省",
+      "links": [
+        {
+          "name": "防衛省",
+          "url": "https://www.mod.go.jp/j/press/news/2026/11/19c.html"
+        }
+      ],
+      "sourceId": "mod",
+      "firstSeen": "2026-11-24T22:38:54.219Z",
+      "importance": 25,
+      "enriched": "rules"
+    },
+    {
       "id": "caa:3ae34906e630",
       "date": "2026-11-19",
       "type": "news",
@@ -6542,6 +7602,106 @@
       "enriched": "rules"
     },
     {
+      "id": "cfa:19fdf8d81335",
+      "date": "2026-11-19",
+      "type": "news",
+      "theme": "social",
+      "title": "青少年インターネット環境整備法の在り方等に関する検討ワーキンググループ（第13回）の開催案内を掲載しました",
+      "summary": "",
+      "ministry": "こども家庭庁",
+      "links": [
+        {
+          "name": "こども家庭庁",
+          "url": "https://www.cfa.go.jp/councils/internet-kaigi/c76416e1"
+        }
+      ],
+      "sourceId": "cfa",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 15,
+      "noise": true,
+      "enriched": "rules"
+    },
+    {
+      "id": "cfa:2b531139fb3d",
+      "date": "2026-11-19",
+      "type": "news",
+      "theme": "social",
+      "title": "「第1回 保育の魅力フォトコンテスト」を開催します",
+      "summary": "",
+      "ministry": "こども家庭庁",
+      "links": [
+        {
+          "name": "こども家庭庁",
+          "url": "https://www.cfa.go.jp/press/1ff19f4a-c058-43ce-82ec-643a42fadb20"
+        }
+      ],
+      "sourceId": "cfa",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 15,
+      "noise": true,
+      "enriched": "rules"
+    },
+    {
+      "id": "cfa:744d3d7a1c4f",
+      "date": "2026-11-19",
+      "type": "news",
+      "theme": "social",
+      "title": "第8回特別養子縁組に関する支援の在り方に関する専門委員会について掲載しました",
+      "summary": "",
+      "ministry": "こども家庭庁",
+      "links": [
+        {
+          "name": "こども家庭庁",
+          "url": "https://www.cfa.go.jp/councils/shingikai/shakai_katei/tokubetsu-yoshi/1bec26a7"
+        }
+      ],
+      "sourceId": "cfa",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 15,
+      "noise": true,
+      "enriched": "rules"
+    },
+    {
+      "id": "cfa:ab468ab830e5",
+      "date": "2026-11-19",
+      "type": "news",
+      "theme": "social",
+      "title": "第8回特別養子縁組に関する支援の在り方に関する専門委員会の開催について掲載しました",
+      "summary": "",
+      "ministry": "こども家庭庁",
+      "links": [
+        {
+          "name": "こども家庭庁",
+          "url": "https://www.cfa.go.jp/press/b00abf6a-9427-4d77-a739-e68342c1df91"
+        }
+      ],
+      "sourceId": "cfa",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 15,
+      "noise": true,
+      "enriched": "rules"
+    },
+    {
+      "id": "cfa:bb4817d2d6a6",
+      "date": "2026-11-19",
+      "type": "news",
+      "theme": "social",
+      "title": "青少年インターネット環境整備法の在り方等に関する検討ワーキンググループ（第13回）の開催について掲載しました",
+      "summary": "",
+      "ministry": "こども家庭庁",
+      "links": [
+        {
+          "name": "こども家庭庁",
+          "url": "https://www.cfa.go.jp/press/51c93d01-d420-4d31-83f1-3b989b7a7bd1"
+        }
+      ],
+      "sourceId": "cfa",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 15,
+      "noise": true,
+      "enriched": "rules"
+    },
+    {
       "id": "digital:5db6abd51db9",
       "date": "2026-11-19",
       "type": "news",
@@ -6557,6 +7717,56 @@
       ],
       "sourceId": "digital",
       "firstSeen": "2026-11-24T22:06:48.044Z",
+      "importance": 15,
+      "noise": true,
+      "enriched": "rules"
+    },
+    {
+      "id": "env:62de71f16c34",
+      "date": "2026-11-19",
+      "type": "system",
+      "theme": "industry",
+      "title": "中央環境審議会大気・騒音振動部会自動車排出ガス総合対策小委員会（第4回）の開催について",
+      "summary": "",
+      "ministry": "環境省",
+      "stage": {
+        "steps": [
+          "検討",
+          "意見募集",
+          "決定",
+          "開始"
+        ],
+        "index": 0,
+        "label": "検討"
+      },
+      "links": [
+        {
+          "name": "環境省",
+          "url": "https://www.env.go.jp/press/press_05848.html"
+        }
+      ],
+      "sourceId": "env",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 15,
+      "noise": true,
+      "enriched": "rules"
+    },
+    {
+      "id": "env:ac398df03bda",
+      "date": "2026-11-19",
+      "type": "news",
+      "theme": "industry",
+      "title": "「第2回エコチル調査全国フォーラム」書道展、短歌展、オリジナルかるたの入賞者決定について",
+      "summary": "",
+      "ministry": "環境省",
+      "links": [
+        {
+          "name": "環境省",
+          "url": "https://www.env.go.jp/press/press_05846.html"
+        }
+      ],
+      "sourceId": "env",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
       "importance": 15,
       "noise": true,
       "enriched": "rules"
@@ -7422,6 +8632,25 @@
       "enriched": "rules"
     },
     {
+      "id": "mod:b1b3ff05ed44",
+      "date": "2026-11-18",
+      "type": "news",
+      "theme": "defense",
+      "title": "中野審議官のウクライナ支援に関する多国間会議への参加",
+      "summary": "",
+      "ministry": "防衛省",
+      "links": [
+        {
+          "name": "防衛省",
+          "url": "https://www.mod.go.jp/j/press/news/2026/11/18a.html"
+        }
+      ],
+      "sourceId": "mod",
+      "firstSeen": "2026-11-24T22:38:54.219Z",
+      "importance": 25,
+      "enriched": "rules"
+    },
+    {
       "id": "caa:b26070e51b68",
       "date": "2026-11-18",
       "type": "news",
@@ -7437,6 +8666,46 @@
       ],
       "sourceId": "caa",
       "firstSeen": "2026-11-24T22:06:48.044Z",
+      "importance": 15,
+      "noise": true,
+      "enriched": "rules"
+    },
+    {
+      "id": "cfa:457f9601e242",
+      "date": "2026-11-18",
+      "type": "news",
+      "theme": "social",
+      "title": "社会総がかりで取り組むいじめ・不登校対策に向けた全国フォーラムの開催について掲載しました",
+      "summary": "",
+      "ministry": "こども家庭庁",
+      "links": [
+        {
+          "name": "こども家庭庁",
+          "url": "https://www.cfa.go.jp/policies/ijime-boushi/r08-ijime-futokoforum"
+        }
+      ],
+      "sourceId": "cfa",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 15,
+      "noise": true,
+      "enriched": "rules"
+    },
+    {
+      "id": "cfa:50bb89a08c59",
+      "date": "2026-11-18",
+      "type": "news",
+      "theme": "social",
+      "title": "意見招請：子ども・子育て支援勘定業務関連システム ガバメントクラウド上での再構築に係るテスト・切替 業務を掲載しました",
+      "summary": "",
+      "ministry": "こども家庭庁",
+      "links": [
+        {
+          "name": "こども家庭庁",
+          "url": "https://www.cfa.go.jp/procurement"
+        }
+      ],
+      "sourceId": "cfa",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
       "importance": 15,
       "noise": true,
       "enriched": "rules"
@@ -7822,6 +9091,36 @@
       "enriched": "rules"
     },
     {
+      "id": "mod:d275fb998261",
+      "date": "2026-11-18",
+      "type": "system",
+      "theme": "defense",
+      "title": "防衛人事審議会公正審査分科会の開催について",
+      "summary": "",
+      "ministry": "防衛省",
+      "stage": {
+        "steps": [
+          "検討",
+          "意見募集",
+          "決定",
+          "開始"
+        ],
+        "index": 0,
+        "label": "検討"
+      },
+      "links": [
+        {
+          "name": "防衛省",
+          "url": "https://www.mod.go.jp/j/press/news/2026/11/18b.html"
+        }
+      ],
+      "sourceId": "mod",
+      "firstSeen": "2026-11-24T22:38:54.219Z",
+      "importance": 15,
+      "noise": true,
+      "enriched": "rules"
+    },
+    {
       "id": "mof:16ced0974ce3",
       "date": "2026-11-18",
       "type": "news",
@@ -7859,6 +9158,25 @@
       "firstSeen": "2026-11-24T22:06:48.044Z",
       "importance": 15,
       "noise": true,
+      "enriched": "rules"
+    },
+    {
+      "id": "nta:d1ed79e39682",
+      "date": "2026-11-18",
+      "type": "news",
+      "theme": "whole",
+      "title": "新設法人が設立の日に通算グループから離脱する場合のその法人の事業年度及び青色申告の承認について（文書回答事例）",
+      "summary": "",
+      "ministry": "国税庁",
+      "links": [
+        {
+          "name": "国税庁",
+          "url": "https://www.nta.go.jp/about/organization/tokyo/bunshokaito/hojin/261027/index.htm"
+        }
+      ],
+      "sourceId": "nta",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 13,
       "enriched": "rules"
     },
     {
@@ -8070,32 +9388,32 @@
       "enriched": "rules"
     },
     {
-      "id": "maff:981cbe8d72de",
+      "id": "env:7f484e7dc9c3",
       "date": "2026-11-17",
-      "type": "grant",
+      "type": "system",
       "theme": "industry",
-      "title": "独立行政法人農林水産消費安全技術センターの理事長の公募について",
+      "title": "令和8年度環境配慮契約法基本方針検討会(第2回)の開催について",
       "summary": "",
-      "ministry": "農林水産省",
+      "ministry": "環境省",
       "stage": {
         "steps": [
-          "予告",
-          "公募中",
-          "審査",
-          "採択"
+          "検討",
+          "意見募集",
+          "決定",
+          "開始"
         ],
-        "index": 1,
-        "label": "公募中"
+        "index": 0,
+        "label": "検討"
       },
       "links": [
         {
-          "name": "農林水産省",
-          "url": "https://www.maff.go.jp/j/press/kanbo/hisyo/261117.html"
+          "name": "環境省",
+          "url": "https://www.env.go.jp/press/press_05828.html"
         }
       ],
-      "sourceId": "maff",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 44,
+      "sourceId": "env",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 45,
       "enriched": "rules"
     },
     {
@@ -8214,6 +9532,82 @@
       "enriched": "rules"
     },
     {
+      "id": "env:67ea6ea0cb43",
+      "date": "2026-11-17",
+      "type": "news",
+      "theme": "industry",
+      "title": "「日本の気候変動対策イニシアティブ2026」を公表しました",
+      "summary": "",
+      "ministry": "環境省",
+      "links": [
+        {
+          "name": "環境省",
+          "url": "https://www.env.go.jp/press/press_05855.html"
+        }
+      ],
+      "sourceId": "env",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 25,
+      "enriched": "rules"
+    },
+    {
+      "id": "env:c75469f0a072",
+      "date": "2026-11-17",
+      "type": "news",
+      "theme": "industry",
+      "title": "令和8年度「環境スタートアップ大賞」の募集について",
+      "summary": "",
+      "ministry": "環境省",
+      "links": [
+        {
+          "name": "環境省",
+          "url": "https://www.env.go.jp/press/press_05825.html"
+        }
+      ],
+      "sourceId": "env",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 25,
+      "enriched": "rules"
+    },
+    {
+      "id": "env:e841858674de",
+      "date": "2026-11-17",
+      "type": "news",
+      "theme": "industry",
+      "title": "「リチウムイオン電池等の処理施設リスト」掲載希望処理施設の公募について",
+      "summary": "",
+      "ministry": "環境省",
+      "links": [
+        {
+          "name": "環境省",
+          "url": "https://www.env.go.jp/press/press_05854.html"
+        }
+      ],
+      "sourceId": "env",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 25,
+      "enriched": "rules"
+    },
+    {
+      "id": "maff:981cbe8d72de",
+      "date": "2026-11-17",
+      "type": "news",
+      "theme": "industry",
+      "title": "独立行政法人農林水産消費安全技術センターの理事長の公募について",
+      "summary": "",
+      "ministry": "農林水産省",
+      "links": [
+        {
+          "name": "農林水産省",
+          "url": "https://www.maff.go.jp/j/press/kanbo/hisyo/261117.html"
+        }
+      ],
+      "sourceId": "maff",
+      "firstSeen": "2026-11-24T22:06:48.044Z",
+      "importance": 25,
+      "enriched": "rules"
+    },
+    {
       "id": "mhlw:b2a5aa9128bb",
       "date": "2026-11-17",
       "type": "news",
@@ -8229,6 +9623,25 @@
       ],
       "sourceId": "mhlw",
       "firstSeen": "2026-11-24T22:06:48.044Z",
+      "importance": 25,
+      "enriched": "rules"
+    },
+    {
+      "id": "mod:a6dbf320a1e0",
+      "date": "2026-11-17",
+      "type": "news",
+      "theme": "defense",
+      "title": "推定ロシア機による領空侵犯について",
+      "summary": "",
+      "ministry": "防衛省",
+      "links": [
+        {
+          "name": "防衛省",
+          "url": "https://www.mod.go.jp/j/press/news/2026/11/17c.html"
+        }
+      ],
+      "sourceId": "mod",
+      "firstSeen": "2026-11-24T22:38:54.219Z",
       "importance": 25,
       "enriched": "rules"
     },
@@ -8291,833 +9704,22 @@
       "enriched": "rules"
     },
     {
-      "id": "caa:acadacbcfd32",
-      "date": "2026-11-17",
-      "type": "news",
-      "theme": "other",
-      "title": "「フィッシング啓発強化キャンペーン」の実施について",
-      "summary": "",
-      "ministry": "消費者庁",
-      "links": [
-        {
-          "name": "消費者庁",
-          "url": "https://www.caa.go.jp/notice/entry/048173/"
-        }
-      ],
-      "sourceId": "caa",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "kakugi:2026111701:12711fa9e96f",
-      "date": "2026-11-17",
-      "type": "system",
-      "theme": "local",
-      "title": "熊本市長選挙結果調",
-      "summary": "11月17日の閣議で決定。",
-      "ministry": "総務省",
-      "stage": {
-        "steps": [
-          "検討",
-          "意見募集",
-          "決定",
-          "開始"
-        ],
-        "index": 2,
-        "label": "閣議決定"
-      },
-      "links": [
-        {
-          "name": "首相官邸 閣議案件",
-          "url": "https://www.kantei.go.jp/jp/kakugi/2026/kakugi-2026111701.html#:~:text=%E7%86%8A%E6%9C%AC%E5%B8%82%E9%95%B7%E9%81%B8%E6%8C%99%E7%B5%90%E6%9E%9C%E8%AA%BF"
-        }
-      ],
-      "sourceId": "kakugi",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "kakugi:2026111701:1ca8e195ee9e",
-      "date": "2026-11-17",
-      "type": "system",
-      "theme": "local",
-      "title": "福岡市長選挙結果調",
-      "summary": "11月17日の閣議で決定。",
-      "ministry": "総務省",
-      "stage": {
-        "steps": [
-          "検討",
-          "意見募集",
-          "決定",
-          "開始"
-        ],
-        "index": 2,
-        "label": "閣議決定"
-      },
-      "links": [
-        {
-          "name": "首相官邸 閣議案件",
-          "url": "https://www.kantei.go.jp/jp/kakugi/2026/kakugi-2026111701.html#:~:text=%E7%A6%8F%E5%B2%A1%E5%B8%82%E9%95%B7%E9%81%B8%E6%8C%99%E7%B5%90%E6%9E%9C%E8%AA%BF"
-        }
-      ],
-      "sourceId": "kakugi",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "kakugi:2026111701:1f61c140bdfa",
-      "date": "2026-11-17",
-      "type": "system",
-      "theme": "other",
-      "title": "各府省幹部職員の任免につき、内閣の承認を得ることについて",
-      "summary": "11月17日の閣議で決定。",
-      "ministry": "閣議案件",
-      "stage": {
-        "steps": [
-          "検討",
-          "意見募集",
-          "決定",
-          "開始"
-        ],
-        "index": 2,
-        "label": "閣議決定"
-      },
-      "links": [
-        {
-          "name": "首相官邸 閣議案件",
-          "url": "https://www.kantei.go.jp/jp/kakugi/2026/kakugi-2026111701.html#:~:text=%E5%90%84%E5%BA%9C%E7%9C%81%E5%B9%B9%E9%83%A8%E8%81%B7%E5%93%A1%E3%81%AE%E4%BB%BB%E5%85%8D%E3%81%AB%E3%81%A4%E3%81%8D%E3%80%81%E5%86%85%E9%96%A3%E3%81%AE%E6%89%BF%E8%AA%8D%E3%82%92%E5%BE%97%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"
-        }
-      ],
-      "sourceId": "kakugi",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "kakugi:2026111701:28d239918fa2",
-      "date": "2026-11-17",
-      "type": "system",
-      "theme": "local",
-      "title": "愛媛県知事選挙結果調",
-      "summary": "11月17日の閣議で決定。",
-      "ministry": "総務省",
-      "stage": {
-        "steps": [
-          "検討",
-          "意見募集",
-          "決定",
-          "開始"
-        ],
-        "index": 2,
-        "label": "閣議決定"
-      },
-      "links": [
-        {
-          "name": "首相官邸 閣議案件",
-          "url": "https://www.kantei.go.jp/jp/kakugi/2026/kakugi-2026111701.html#:~:text=%E6%84%9B%E5%AA%9B%E7%9C%8C%E7%9F%A5%E4%BA%8B%E9%81%B8%E6%8C%99%E7%B5%90%E6%9E%9C%E8%AA%BF"
-        }
-      ],
-      "sourceId": "kakugi",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "kakugi:2026111701:2dbad742a241",
-      "date": "2026-11-17",
-      "type": "system",
-      "theme": "other",
-      "title": "乾 悦久外10名を特命全権大使に任命することについて",
-      "summary": "11月17日の閣議で決定。",
-      "ministry": "閣議案件",
-      "stage": {
-        "steps": [
-          "検討",
-          "意見募集",
-          "決定",
-          "開始"
-        ],
-        "index": 2,
-        "label": "閣議決定"
-      },
-      "links": [
-        {
-          "name": "首相官邸 閣議案件",
-          "url": "https://www.kantei.go.jp/jp/kakugi/2026/kakugi-2026111701.html#:~:text=%E4%B9%BE%20%E6%82%A6%E4%B9%85%E5%A4%96%EF%BC%91%EF%BC%90%E5%90%8D%E3%82%92%E7%89%B9%E5%91%BD%E5%85%A8%E6%A8%A9%E5%A4%A7%E4%BD%BF%E3%81%AB%E4%BB%BB%E5%91%BD%E3%81%99%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"
-        }
-      ],
-      "sourceId": "kakugi",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "kakugi:2026111701:740745de1b5c",
-      "date": "2026-11-17",
-      "type": "system",
-      "theme": "other",
-      "title": "衆議院議員西村智奈美（中道）提出石垣市の台湾定期航路事業「やいま丸」に関する質問に対する答弁書について",
-      "summary": "11月17日の閣議で決定。",
-      "ministry": "内閣府本府",
-      "stage": {
-        "steps": [
-          "検討",
-          "意見募集",
-          "決定",
-          "開始"
-        ],
-        "index": 2,
-        "label": "閣議決定"
-      },
-      "links": [
-        {
-          "name": "首相官邸 閣議案件",
-          "url": "https://www.kantei.go.jp/jp/kakugi/2026/kakugi-2026111701.html#:~:text=%E8%A1%86%E8%AD%B0%E9%99%A2%E8%AD%B0%E5%93%A1%E8%A5%BF%E6%9D%91%E6%99%BA%E5%A5%88%E7%BE%8E%EF%BC%88%E4%B8%AD%E9%81%93%EF%BC%89%E6%8F%90%E5%87%BA%E7%9F%B3%E5%9E%A3%E5%B8%82%E3%81%AE%E5%8F%B0%E6%B9%BE%E5%AE%9A%E6%9C%9F%E8%88%AA%E8%B7%AF%E4%BA%8B%E6%A5%AD%E3%80%8C%E3%82%84%E3%81%84%E3%81%BE%E4%B8%B8%E3%80%8D%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E8%B3%AA%E5%95%8F%E3%81%AB%E5%AF%BE%E3%81%99%E3%82%8B%E7%AD%94%E5%BC%81%E6%9B%B8%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"
-        }
-      ],
-      "sourceId": "kakugi",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "kakugi:2026111701:83cf8ea03d51",
-      "date": "2026-11-17",
-      "type": "system",
-      "theme": "edu",
-      "title": "参議院議員奥田ふみよ（い党）提出奨学金債務免除の必要性に関する質問に対する答弁書について",
-      "summary": "11月17日の閣議で決定。",
-      "ministry": "文部科学省",
-      "stage": {
-        "steps": [
-          "検討",
-          "意見募集",
-          "決定",
-          "開始"
-        ],
-        "index": 2,
-        "label": "閣議決定"
-      },
-      "links": [
-        {
-          "name": "首相官邸 閣議案件",
-          "url": "https://www.kantei.go.jp/jp/kakugi/2026/kakugi-2026111701.html#:~:text=%E5%8F%82%E8%AD%B0%E9%99%A2%E8%AD%B0%E5%93%A1%E5%A5%A5%E7%94%B0%E3%81%B5%E3%81%BF%E3%82%88%EF%BC%88%E3%81%84%E5%85%9A%EF%BC%89%E6%8F%90%E5%87%BA%E5%A5%A8%E5%AD%A6%E9%87%91%E5%82%B5%E5%8B%99%E5%85%8D%E9%99%A4%E3%81%AE%E5%BF%85%E8%A6%81%E6%80%A7%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E8%B3%AA%E5%95%8F%E3%81%AB%E5%AF%BE%E3%81%99%E3%82%8B%E7%AD%94%E5%BC%81%E6%9B%B8%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"
-        }
-      ],
-      "sourceId": "kakugi",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "kakugi:2026111701:8beb2a489e2a",
-      "date": "2026-11-17",
-      "type": "system",
-      "theme": "edu",
-      "title": "神戸大学名誉教授利根川孝外123名の叙位又は叙勲について",
-      "summary": "11月17日の閣議で決定。",
-      "ministry": "閣議案件",
-      "stage": {
-        "steps": [
-          "検討",
-          "意見募集",
-          "決定",
-          "開始"
-        ],
-        "index": 2,
-        "label": "閣議決定"
-      },
-      "links": [
-        {
-          "name": "首相官邸 閣議案件",
-          "url": "https://www.kantei.go.jp/jp/kakugi/2026/kakugi-2026111701.html#:~:text=%E7%A5%9E%E6%88%B8%E5%A4%A7%E5%AD%A6%E5%90%8D%E8%AA%89%E6%95%99%E6%8E%88%E5%88%A9%E6%A0%B9%E5%B7%9D%E5%AD%9D%E5%A4%96%EF%BC%91%EF%BC%92%EF%BC%93%E5%90%8D%E3%81%AE%E5%8F%99%E4%BD%8D%E5%8F%88%E3%81%AF%E5%8F%99%E5%8B%B2%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"
-        }
-      ],
-      "sourceId": "kakugi",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "kakugi:2026111701:8d93b42f6edf",
-      "date": "2026-11-17",
-      "type": "system",
-      "theme": "other",
-      "title": "シンガポール国駐箚特命全権大使宇山智哉外1名に交付すべき信任状及び前任特命全権大使石川浩司外1名の解任状につき認証を仰ぐことについて",
-      "summary": "11月17日の閣議で決定。",
-      "ministry": "外務省",
-      "stage": {
-        "steps": [
-          "検討",
-          "意見募集",
-          "決定",
-          "開始"
-        ],
-        "index": 2,
-        "label": "閣議決定"
-      },
-      "links": [
-        {
-          "name": "首相官邸 閣議案件",
-          "url": "https://www.kantei.go.jp/jp/kakugi/2026/kakugi-2026111701.html#:~:text=%E3%82%B7%E3%83%B3%E3%82%AC%E3%83%9D%E3%83%BC%E3%83%AB%E5%9B%BD%E9%A7%90%E7%AE%9A%E7%89%B9%E5%91%BD%E5%85%A8%E6%A8%A9%E5%A4%A7%E4%BD%BF%E5%AE%87%E5%B1%B1%E6%99%BA%E5%93%89%E5%A4%96%EF%BC%91%E5%90%8D%E3%81%AB%E4%BA%A4%E4%BB%98%E3%81%99%E3%81%B9%E3%81%8D%E4%BF%A1%E4%BB%BB%E7%8A%B6%E5%8F%8A%E3%81%B3%E5%89%8D%E4%BB%BB%E7%89%B9%E5%91%BD%E5%85%A8%E6%A8%A9%E5%A4%A7%E4%BD%BF%E7%9F%B3%E5%B7%9D%E6%B5%A9%E5%8F%B8%E5%A4%96%EF%BC%91%E5%90%8D%E3%81%AE%E8%A7%A3%E4%BB%BB%E7%8A%B6%E3%81%AB%E3%81%A4%E3%81%8D%E8%AA%8D%E8%A8%BC%E3%82%92%E4%BB%B0%E3%81%90%E3%81%93%E3%81%A8%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"
-        }
-      ],
-      "sourceId": "kakugi",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "kakugi:2026111701:9ffe3d132aa1",
-      "date": "2026-11-17",
-      "type": "system",
-      "theme": "defense",
-      "title": "参議院議員石垣のりこ（立憲）提出個人BSD報告書に係る調査についての小泉防衛大臣の発言及び公益通報への対応に関する質問に対する答弁書について",
-      "summary": "11月17日の閣議で決定。",
-      "ministry": "防衛省",
-      "stage": {
-        "steps": [
-          "検討",
-          "意見募集",
-          "決定",
-          "開始"
-        ],
-        "index": 0,
-        "label": "検討"
-      },
-      "links": [
-        {
-          "name": "首相官邸 閣議案件",
-          "url": "https://www.kantei.go.jp/jp/kakugi/2026/kakugi-2026111701.html#:~:text=%E5%8F%82%E8%AD%B0%E9%99%A2%E8%AD%B0%E5%93%A1%E7%9F%B3%E5%9E%A3%E3%81%AE%E3%82%8A%E3%81%93%EF%BC%88%E7%AB%8B%E6%86%B2%EF%BC%89%E6%8F%90%E5%87%BA%E5%80%8B%E4%BA%BA%EF%BC%A2%EF%BC%B3%EF%BC%A4%E5%A0%B1%E5%91%8A%E6%9B%B8%E3%81%AB%E4%BF%82%E3%82%8B%E8%AA%BF%E6%9F%BB%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E3%81%AE%E5%B0%8F%E6%B3%89%E9%98%B2%E8%A1%9B%E5%A4%A7%E8%87%A3%E3%81%AE%E7%99%BA%E8%A8%80%E5%8F%8A%E3%81%B3%E5%85%AC%E7%9B%8A%E9%80%9A%E5%A0%B1%E3%81%B8%E3%81%AE%E5%AF%BE%E5%BF%9C%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E8%B3%AA%E5%95%8F%E3%81%AB%E5%AF%BE%E3%81%99%E3%82%8B%E7%AD%94%E5%BC%81%E6%9B%B8%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"
-        }
-      ],
-      "sourceId": "kakugi",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "kakugi:2026111701:a5d8935cc4b1",
-      "date": "2026-11-17",
-      "type": "system",
-      "theme": "other",
-      "title": "参議院議員石垣のりこ（立憲）提出証券取引所が定める約定取消し制度の法的根拠及びサイバー攻撃による不正注文への同制度の適用に関する質問に対する答弁書について",
-      "summary": "11月17日の閣議で決定。",
-      "ministry": "金融庁",
-      "stage": {
-        "steps": [
-          "検討",
-          "意見募集",
-          "決定",
-          "開始"
-        ],
-        "index": 0,
-        "label": "検討"
-      },
-      "links": [
-        {
-          "name": "首相官邸 閣議案件",
-          "url": "https://www.kantei.go.jp/jp/kakugi/2026/kakugi-2026111701.html#:~:text=%E5%8F%82%E8%AD%B0%E9%99%A2%E8%AD%B0%E5%93%A1%E7%9F%B3%E5%9E%A3%E3%81%AE%E3%82%8A%E3%81%93%EF%BC%88%E7%AB%8B%E6%86%B2%EF%BC%89%E6%8F%90%E5%87%BA%E8%A8%BC%E5%88%B8%E5%8F%96%E5%BC%95%E6%89%80%E3%81%8C%E5%AE%9A%E3%82%81%E3%82%8B%E7%B4%84%E5%AE%9A%E5%8F%96%E6%B6%88%E3%81%97%E5%88%B6%E5%BA%A6%E3%81%AE%E6%B3%95%E7%9A%84%E6%A0%B9%E6%8B%A0%E5%8F%8A%E3%81%B3%E3%82%B5%E3%82%A4%E3%83%90%E3%83%BC%E6%94%BB%E6%92%83%E3%81%AB%E3%82%88%E3%82%8B%E4%B8%8D%E6%AD%A3%E6%B3%A8%E6%96%87%E3%81%B8%E3%81%AE%E5%90%8C%E5%88%B6%E5%BA%A6%E3%81%AE%E9%81%A9%E7%94%A8%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E8%B3%AA%E5%95%8F%E3%81%AB%E5%AF%BE%E3%81%99%E3%82%8B%E7%AD%94%E5%BC%81%E6%9B%B8%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"
-        }
-      ],
-      "sourceId": "kakugi",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "kakugi:2026111701:b8e17fc1de61",
-      "date": "2026-11-17",
-      "type": "system",
-      "theme": "other",
-      "title": "参議院議員石垣のりこ（立憲）提出サイバー攻撃による不正売買が証券市場全体に及ぼす影響と投資家保護に関する質問に対する答弁書について",
-      "summary": "11月17日の閣議で決定。",
-      "ministry": "金融庁",
-      "stage": {
-        "steps": [
-          "検討",
-          "意見募集",
-          "決定",
-          "開始"
-        ],
-        "index": 2,
-        "label": "閣議決定"
-      },
-      "links": [
-        {
-          "name": "首相官邸 閣議案件",
-          "url": "https://www.kantei.go.jp/jp/kakugi/2026/kakugi-2026111701.html#:~:text=%E5%8F%82%E8%AD%B0%E9%99%A2%E8%AD%B0%E5%93%A1%E7%9F%B3%E5%9E%A3%E3%81%AE%E3%82%8A%E3%81%93%EF%BC%88%E7%AB%8B%E6%86%B2%EF%BC%89%E6%8F%90%E5%87%BA%E3%82%B5%E3%82%A4%E3%83%90%E3%83%BC%E6%94%BB%E6%92%83%E3%81%AB%E3%82%88%E3%82%8B%E4%B8%8D%E6%AD%A3%E5%A3%B2%E8%B2%B7%E3%81%8C%E8%A8%BC%E5%88%B8%E5%B8%82%E5%A0%B4%E5%85%A8%E4%BD%93%E3%81%AB%E5%8F%8A%E3%81%BC%E3%81%99%E5%BD%B1%E9%9F%BF%E3%81%A8%E6%8A%95%E8%B3%87%E5%AE%B6%E4%BF%9D%E8%AD%B7%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E8%B3%AA%E5%95%8F%E3%81%AB%E5%AF%BE%E3%81%99%E3%82%8B%E7%AD%94%E5%BC%81%E6%9B%B8%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"
-        }
-      ],
-      "sourceId": "kakugi",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "kakugi:2026111701:c6c38a3a5540",
-      "date": "2026-11-17",
-      "type": "system",
-      "theme": "other",
-      "title": "参議院議員石垣のりこ（立憲）提出公的給付におけるステーブルコイン等の活用等に係る問題点に関する質問に対する答弁書について",
-      "summary": "11月17日の閣議で決定。",
-      "ministry": "デジタル庁",
-      "stage": {
-        "steps": [
-          "検討",
-          "意見募集",
-          "決定",
-          "開始"
-        ],
-        "index": 2,
-        "label": "閣議決定"
-      },
-      "links": [
-        {
-          "name": "首相官邸 閣議案件",
-          "url": "https://www.kantei.go.jp/jp/kakugi/2026/kakugi-2026111701.html#:~:text=%E5%8F%82%E8%AD%B0%E9%99%A2%E8%AD%B0%E5%93%A1%E7%9F%B3%E5%9E%A3%E3%81%AE%E3%82%8A%E3%81%93%EF%BC%88%E7%AB%8B%E6%86%B2%EF%BC%89%E6%8F%90%E5%87%BA%E5%85%AC%E7%9A%84%E7%B5%A6%E4%BB%98%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E3%82%B9%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E3%82%B3%E3%82%A4%E3%83%B3%E7%AD%89%E3%81%AE%E6%B4%BB%E7%94%A8%E7%AD%89%E3%81%AB%E4%BF%82%E3%82%8B%E5%95%8F%E9%A1%8C%E7%82%B9%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E8%B3%AA%E5%95%8F%E3%81%AB%E5%AF%BE%E3%81%99%E3%82%8B%E7%AD%94%E5%BC%81%E6%9B%B8%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"
-        }
-      ],
-      "sourceId": "kakugi",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "kakugi:2026111701:dc1c97309ce0",
-      "date": "2026-11-17",
-      "type": "system",
-      "theme": "other",
-      "title": "参議院議員石垣のりこ（立憲）提出サイバー攻撃による不正売買に伴う連鎖的な取引及び信用取引の損失処理及び被害者救済に関する質問に対する答弁書について",
-      "summary": "11月17日の閣議で決定。",
-      "ministry": "金融庁",
-      "stage": {
-        "steps": [
-          "検討",
-          "意見募集",
-          "決定",
-          "開始"
-        ],
-        "index": 2,
-        "label": "閣議決定"
-      },
-      "links": [
-        {
-          "name": "首相官邸 閣議案件",
-          "url": "https://www.kantei.go.jp/jp/kakugi/2026/kakugi-2026111701.html#:~:text=%E5%8F%82%E8%AD%B0%E9%99%A2%E8%AD%B0%E5%93%A1%E7%9F%B3%E5%9E%A3%E3%81%AE%E3%82%8A%E3%81%93%EF%BC%88%E7%AB%8B%E6%86%B2%EF%BC%89%E6%8F%90%E5%87%BA%E3%82%B5%E3%82%A4%E3%83%90%E3%83%BC%E6%94%BB%E6%92%83%E3%81%AB%E3%82%88%E3%82%8B%E4%B8%8D%E6%AD%A3%E5%A3%B2%E8%B2%B7%E3%81%AB%E4%BC%B4%E3%81%86%E9%80%A3%E9%8E%96%E7%9A%84%E3%81%AA%E5%8F%96%E5%BC%95%E5%8F%8A%E3%81%B3%E4%BF%A1%E7%94%A8%E5%8F%96%E5%BC%95%E3%81%AE%E6%90%8D%E5%A4%B1%E5%87%A6%E7%90%86%E5%8F%8A%E3%81%B3%E8%A2%AB%E5%AE%B3%E8%80%85%E6%95%91%E6%B8%88%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E8%B3%AA%E5%95%8F%E3%81%AB%E5%AF%BE%E3%81%99%E3%82%8B%E7%AD%94%E5%BC%81%E6%9B%B8%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"
-        }
-      ],
-      "sourceId": "kakugi",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "kakugi:2026111701:e54e030444b3",
-      "date": "2026-11-17",
-      "type": "system",
-      "theme": "other",
-      "title": "衆議院議員山本ジョージ（無）提出核兵器禁止条約第1回再検討会議国会議員会合に関する質問に対する答弁書について",
-      "summary": "11月17日の閣議で決定。",
-      "ministry": "外務省",
-      "stage": {
-        "steps": [
-          "検討",
-          "意見募集",
-          "決定",
-          "開始"
-        ],
-        "index": 0,
-        "label": "検討"
-      },
-      "links": [
-        {
-          "name": "首相官邸 閣議案件",
-          "url": "https://www.kantei.go.jp/jp/kakugi/2026/kakugi-2026111701.html#:~:text=%E8%A1%86%E8%AD%B0%E9%99%A2%E8%AD%B0%E5%93%A1%E5%B1%B1%E6%9C%AC%E3%82%B8%E3%83%A7%E3%83%BC%E3%82%B8%EF%BC%88%E7%84%A1%EF%BC%89%E6%8F%90%E5%87%BA%E6%A0%B8%E5%85%B5%E5%99%A8%E7%A6%81%E6%AD%A2%E6%9D%A1%E7%B4%84%E7%AC%AC%EF%BC%91%E5%9B%9E%E5%86%8D%E6%A4%9C%E8%A8%8E%E4%BC%9A%E8%AD%B0%E5%9B%BD%E4%BC%9A%E8%AD%B0%E5%93%A1%E4%BC%9A%E5%90%88%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E8%B3%AA%E5%95%8F%E3%81%AB%E5%AF%BE%E3%81%99%E3%82%8B%E7%AD%94%E5%BC%81%E6%9B%B8%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"
-        }
-      ],
-      "sourceId": "kakugi",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "kakugi:2026111701:ea5d29b94258",
-      "date": "2026-11-17",
-      "type": "system",
-      "theme": "other",
-      "title": "特命全権大使宇山秀樹の平和と安定に係る国際協力の実施に関し、関係諸国・国際機関等と協議するための日本政府代表を免ずることについて",
-      "summary": "11月17日の閣議で決定。",
-      "ministry": "閣議案件",
-      "stage": {
-        "steps": [
-          "検討",
-          "意見募集",
-          "決定",
-          "開始"
-        ],
-        "index": 2,
-        "label": "閣議決定"
-      },
-      "links": [
-        {
-          "name": "首相官邸 閣議案件",
-          "url": "https://www.kantei.go.jp/jp/kakugi/2026/kakugi-2026111701.html#:~:text=%E7%89%B9%E5%91%BD%E5%85%A8%E6%A8%A9%E5%A4%A7%E4%BD%BF%E5%AE%87%E5%B1%B1%E7%A7%80%E6%A8%B9%E3%81%AE%E5%B9%B3%E5%92%8C%E3%81%A8%E5%AE%89%E5%AE%9A%E3%81%AB%E4%BF%82%E3%82%8B%E5%9B%BD%E9%9A%9B%E5%8D%94%E5%8A%9B%E3%81%AE%E5%AE%9F%E6%96%BD%E3%81%AB%E9%96%A2%E3%81%97%E3%80%81%E9%96%A2%E4%BF%82%E8%AB%B8%E5%9B%BD%E3%83%BB%E5%9B%BD%E9%9A%9B%E6%A9%9F%E9%96%A2%E7%AD%89%E3%81%A8%E5%8D%94%E8%AD%B0%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AE%E6%97%A5%E6%9C%AC%E6%94%BF%E5%BA%9C%E4%BB%A3%E8%A1%A8%E3%82%92%E5%85%8D%E3%81%9A%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"
-        }
-      ],
-      "sourceId": "kakugi",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "kantei:8311fb336c9c",
-      "date": "2026-11-17",
-      "type": "news",
-      "theme": "other",
-      "title": "高市総理はASEAN（東南アジア諸国連合）関連首脳会議等に出席しました（1）",
-      "summary": "",
-      "ministry": "首相官邸",
-      "links": [
-        {
-          "name": "首相官邸",
-          "url": "https://www.kantei.go.jp/jp/105/actions/202611/16asean.html"
-        }
-      ],
-      "sourceId": "kantei",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "maff:17f12cfb331e",
-      "date": "2026-11-17",
-      "type": "news",
-      "theme": "industry",
-      "title": "令和8年度（第82回）「農業技術功労者表彰」受賞者の決定及び表彰式開催のお知らせ",
-      "summary": "",
-      "ministry": "農林水産省",
-      "links": [
-        {
-          "name": "農林水産省",
-          "url": "https://www.affrc.maff.go.jp/docs/press/261113.html"
-        }
-      ],
-      "sourceId": "maff",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "mhlw:000376664b04",
-      "date": "2026-11-17",
-      "type": "news",
-      "theme": "social",
-      "title": "採用情報（任期付職員（企画開発係長）募集情報）",
-      "summary": "",
-      "ministry": "厚生労働省",
-      "links": [
-        {
-          "name": "厚生労働省",
-          "url": "https://www.mhlw.go.jp/stf/kouseiroudoushou/saiyou/ninkituki/ninki-igyoukeieisenmonkanorsyusa_00002.html"
-        }
-      ],
-      "sourceId": "mhlw",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "mhlw:03cff9cda093",
-      "date": "2026-11-17",
-      "type": "system",
-      "theme": "social",
-      "title": "第215回労働政策審議会労働条件分科会（資料）",
-      "summary": "",
-      "ministry": "厚生労働省",
-      "stage": {
-        "steps": [
-          "検討",
-          "意見募集",
-          "決定",
-          "開始"
-        ],
-        "index": 0,
-        "label": "検討"
-      },
-      "links": [
-        {
-          "name": "厚生労働省",
-          "url": "https://www.mhlw.go.jp/stf/newpage_77450.html"
-        }
-      ],
-      "sourceId": "mhlw",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "mhlw:2fe998f25134",
-      "date": "2026-11-17",
-      "type": "system",
-      "theme": "social",
-      "title": "令和8年度第4回「団体等検定制度についての出張相談会」を開催します",
-      "summary": "",
-      "ministry": "厚生労働省",
-      "stage": {
-        "steps": [
-          "検討",
-          "意見募集",
-          "決定",
-          "開始"
-        ],
-        "index": 0,
-        "label": "検討"
-      },
-      "links": [
-        {
-          "name": "厚生労働省",
-          "url": "https://www.mhlw.go.jp/stf/newpage_77334.html"
-        }
-      ],
-      "sourceId": "mhlw",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "mhlw:3f2d7fedbceb",
-      "date": "2026-11-17",
-      "type": "news",
-      "theme": "social",
-      "title": "第28回新型インフルエンザ対策に関する小委員会 第13回危機対応医薬品等に関する小委員会 資料",
-      "summary": "",
-      "ministry": "厚生労働省",
-      "links": [
-        {
-          "name": "厚生労働省",
-          "url": "https://www.mhlw.go.jp/stf/newpage_77489.html"
-        }
-      ],
-      "sourceId": "mhlw",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "mhlw:4df53ebb1c45",
-      "date": "2026-11-17",
-      "type": "system",
-      "theme": "social",
-      "title": "令和8年度第8回医薬品等安全対策部会安全対策調査会 議事録",
-      "summary": "",
-      "ministry": "厚生労働省",
-      "stage": {
-        "steps": [
-          "検討",
-          "意見募集",
-          "決定",
-          "開始"
-        ],
-        "index": 0,
-        "label": "検討"
-      },
-      "links": [
-        {
-          "name": "厚生労働省",
-          "url": "https://www.mhlw.go.jp/stf/newpage_77439.html"
-        }
-      ],
-      "sourceId": "mhlw",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "mhlw:ee386a8c5c0d",
-      "date": "2026-11-17",
-      "type": "system",
-      "theme": "social",
-      "title": "第106回「電離放射線障害の業務上外に関する検討会」を開催します",
-      "summary": "",
-      "ministry": "厚生労働省",
-      "stage": {
-        "steps": [
-          "検討",
-          "意見募集",
-          "決定",
-          "開始"
-        ],
-        "index": 0,
-        "label": "検討"
-      },
-      "links": [
-        {
-          "name": "厚生労働省",
-          "url": "https://www.mhlw.go.jp/stf/newpage_77311.html"
-        }
-      ],
-      "sourceId": "mhlw",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "mhlw:f6b137344199",
-      "date": "2026-11-17",
-      "type": "system",
-      "theme": "social",
-      "title": "第64回社会保障審議会生活保護基準部会 資料",
-      "summary": "",
-      "ministry": "厚生労働省",
-      "stage": {
-        "steps": [
-          "検討",
-          "意見募集",
-          "決定",
-          "開始"
-        ],
-        "index": 0,
-        "label": "検討"
-      },
-      "links": [
-        {
-          "name": "厚生労働省",
-          "url": "https://www.mhlw.go.jp/stf/newpage_77427.html"
-        }
-      ],
-      "sourceId": "mhlw",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "mlit:e6b0fe234798",
-      "date": "2026-11-17",
-      "type": "news",
-      "theme": "infra",
-      "title": "井林大臣会見要旨",
-      "summary": "",
-      "ministry": "国土交通省",
-      "links": [
-        {
-          "name": "国土交通省",
-          "url": "https://www.mlit.go.jp/report/interview/daijin261117.html"
-        }
-      ],
-      "sourceId": "mlit",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "mof:136cedb039a6",
+      "id": "nta:3761e70f2ada",
       "date": "2026-11-17",
       "type": "news",
       "theme": "whole",
-      "title": "片山財務大臣兼内閣府特命担当大臣閣議後記者会見の概要(令和8年11月17日(火曜日))",
+      "title": "放射性物質に対する酒類の安全性確保のための施策について",
       "summary": "",
-      "ministry": "財務省",
+      "ministry": "国税庁",
       "links": [
         {
-          "name": "財務省",
-          "url": "https://www.mof.go.jp/public_relations/conference/my20261117.html"
+          "name": "国税庁",
+          "url": "https://www.nta.go.jp/taxes/sake/anzen/radioactivity.htm"
         }
       ],
-      "sourceId": "mof",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "mof:5b99912b596f",
-      "date": "2026-11-17",
-      "type": "news",
-      "theme": "whole",
-      "title": "人事異動（令和8年11月17日-所管法人役員の任命）",
-      "summary": "",
-      "ministry": "財務省",
-      "links": [
-        {
-          "name": "財務省",
-          "url": "https://www.mof.go.jp/about_mof/introduction/personnel/transfers/2026.11.17.pdf"
-        }
-      ],
-      "sourceId": "mof",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "mof:83334cbc3f3d",
-      "date": "2026-11-17",
-      "type": "news",
-      "theme": "whole",
-      "title": "中西 英介様に「AI時代における情報発信－LLMOとは？AIは財務省をどう語っているか？ AIにどう対峙していくべきか？－」について、ご講演いただきました",
-      "summary": "",
-      "ministry": "財務省",
-      "links": [
-        {
-          "name": "財務省",
-          "url": "https://www.mof.go.jp/insideLink/20261116154329.html"
-        }
-      ],
-      "sourceId": "mof",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "mof:d8d48c85356e",
-      "date": "2026-11-17",
-      "type": "news",
-      "theme": "whole",
-      "title": "交付税及び譲与税配付金特別会計の借入金の入札結果（令和8年11月17日入札）",
-      "summary": "",
-      "ministry": "財務省",
-      "links": [
-        {
-          "name": "財務省",
-          "url": "https://www.mof.go.jp/jgbs/auction/calendar/kariire/kari-result261117.htm"
-        }
-      ],
-      "sourceId": "mof",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 8,
-      "noise": true,
+      "sourceId": "nta",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 13,
       "enriched": "rules"
     },
     {
@@ -9191,51 +9793,22 @@
       "enriched": "rules"
     },
     {
-      "id": "maff:ad87c868e25f",
-      "date": "2026-11-16",
-      "type": "grant",
-      "theme": "industry",
-      "title": "第4回フラッグシップ輸出産地の募集を開始します！",
-      "summary": "",
-      "ministry": "農林水産省",
-      "stage": {
-        "steps": [
-          "予告",
-          "公募中",
-          "審査",
-          "採択"
-        ],
-        "index": 1,
-        "label": "公募中"
-      },
-      "links": [
-        {
-          "name": "農林水産省",
-          "url": "https://www.maff.go.jp/j/press/yusyutu_kokusai/s_keisei/261116.html"
-        }
-      ],
-      "sourceId": "maff",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 44,
-      "enriched": "rules"
-    },
-    {
       "id": "maff:d91e35489c4b",
       "date": "2026-11-16",
-      "type": "grant",
+      "type": "system",
       "theme": "industry",
       "title": "「林政審議会」委員の公募について",
       "summary": "",
       "ministry": "農林水産省",
       "stage": {
         "steps": [
-          "予告",
-          "公募中",
-          "審査",
-          "採択"
+          "検討",
+          "意見募集",
+          "決定",
+          "開始"
         ],
-        "index": 1,
-        "label": "公募中"
+        "index": 0,
+        "label": "検討"
       },
       "links": [
         {
@@ -9245,7 +9818,7 @@
       ],
       "sourceId": "maff",
       "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 44,
+      "importance": 40,
       "enriched": "rules"
     },
     {
@@ -9287,6 +9860,25 @@
       "enriched": "rules"
     },
     {
+      "id": "maff:ad87c868e25f",
+      "date": "2026-11-16",
+      "type": "news",
+      "theme": "industry",
+      "title": "第4回フラッグシップ輸出産地の募集を開始します！",
+      "summary": "",
+      "ministry": "農林水産省",
+      "links": [
+        {
+          "name": "農林水産省",
+          "url": "https://www.maff.go.jp/j/press/yusyutu_kokusai/s_keisei/261116.html"
+        }
+      ],
+      "sourceId": "maff",
+      "firstSeen": "2026-11-24T22:06:48.044Z",
+      "importance": 25,
+      "enriched": "rules"
+    },
+    {
       "id": "mhlw:83d17ad4fd91",
       "date": "2026-11-16",
       "type": "news",
@@ -9325,233 +9917,22 @@
       "enriched": "rules"
     },
     {
-      "id": "caa:d01f354c4336",
-      "date": "2026-11-16",
-      "type": "news",
-      "theme": "edu",
-      "title": "消費者教育の取組事例(2026年度)を更新しました",
-      "summary": "",
-      "ministry": "消費者庁",
-      "links": [
-        {
-          "name": "消費者庁",
-          "url": "https://www.caa.go.jp/notice/entry/048156/"
-        }
-      ],
-      "sourceId": "caa",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "kantei:3fdbdb7c5085",
-      "date": "2026-11-16",
-      "type": "news",
-      "theme": "other",
-      "title": "政府主催拉致問題に関するシンポジウムについて",
-      "summary": "",
-      "ministry": "首相官邸",
-      "links": [
-        {
-          "name": "首相官邸",
-          "url": "https://www.kantei.go.jp/jp/tyoukanpress/202611/16_a.html"
-        }
-      ],
-      "sourceId": "kantei",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "maff:dc048c0fac99",
-      "date": "2026-11-16",
-      "type": "news",
-      "theme": "edu",
-      "title": "「和文化シンポジウム」を開催！",
-      "summary": "",
-      "ministry": "農林水産省",
-      "links": [
-        {
-          "name": "農林水産省",
-          "url": "https://www.maff.go.jp/j/press/nousan/tokusan/261116.html"
-        }
-      ],
-      "sourceId": "maff",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "mhlw:3bc5e1342f45",
-      "date": "2026-11-16",
-      "type": "system",
-      "theme": "social",
-      "title": "第62回労働政策審議会人材開発分科会（オンライン併用）の開催について",
-      "summary": "",
-      "ministry": "厚生労働省",
-      "stage": {
-        "steps": [
-          "検討",
-          "意見募集",
-          "決定",
-          "開始"
-        ],
-        "index": 0,
-        "label": "検討"
-      },
-      "links": [
-        {
-          "name": "厚生労働省",
-          "url": "https://www.mhlw.go.jp/stf/newpage_77440.html"
-        }
-      ],
-      "sourceId": "mhlw",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "mhlw:6d99df3d4eb7",
-      "date": "2026-11-16",
+      "id": "moj:ba34d357d1cb",
+      "date": "2026-11-14",
       "type": "news",
       "theme": "social",
-      "title": "上野厚生労働大臣 閣議後記者会見のお知らせ",
+      "title": "Microsoft365の大規模障害に伴うメールシステムの不具合の解消について",
       "summary": "",
-      "ministry": "厚生労働省",
+      "ministry": "法務省",
       "links": [
         {
-          "name": "厚生労働省",
-          "url": "https://www.mhlw.go.jp/stf/newpage_77453.html"
+          "name": "法務省",
+          "url": "https://www.moj.go.jp/gyoumusisho_index_00001.html"
         }
       ],
-      "sourceId": "mhlw",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "mhlw:8926fb53f8c4",
-      "date": "2026-11-16",
-      "type": "system",
-      "theme": "social",
-      "title": "薬事審議会 医薬品第二部会を開催します",
-      "summary": "",
-      "ministry": "厚生労働省",
-      "stage": {
-        "steps": [
-          "検討",
-          "意見募集",
-          "決定",
-          "開始"
-        ],
-        "index": 0,
-        "label": "検討"
-      },
-      "links": [
-        {
-          "name": "厚生労働省",
-          "url": "https://www.mhlw.go.jp/stf/newpage_77353.html"
-        }
-      ],
-      "sourceId": "mhlw",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "mhlw:c72afc6720d9",
-      "date": "2026-11-16",
-      "type": "system",
-      "theme": "social",
-      "title": "第7回2040年に向けた看護職員の養成・確保の在り方に関する検討会の開催について：開催案内",
-      "summary": "",
-      "ministry": "厚生労働省",
-      "stage": {
-        "steps": [
-          "検討",
-          "意見募集",
-          "決定",
-          "開始"
-        ],
-        "index": 0,
-        "label": "検討"
-      },
-      "links": [
-        {
-          "name": "厚生労働省",
-          "url": "https://www.mhlw.go.jp/stf/newpage_77291.html"
-        }
-      ],
-      "sourceId": "mhlw",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "mof:39a201ab16a7",
-      "date": "2026-11-16",
-      "type": "news",
-      "theme": "whole",
-      "title": "片山財務大臣兼内閣府特命担当大臣閣議後記者会見の概要(令和8年11月13日(金曜日))",
-      "summary": "",
-      "ministry": "財務省",
-      "links": [
-        {
-          "name": "財務省",
-          "url": "https://www.mof.go.jp/public_relations/conference/my20261113.html"
-        }
-      ],
-      "sourceId": "mof",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "mof:30754db08c0a",
-      "date": "2026-11-16",
-      "type": "news",
-      "theme": "debt",
-      "title": "10年物価連動国債（第31回）の入札結果（令和8年11月16日入札）",
-      "summary": "",
-      "ministry": "財務省",
-      "links": [
-        {
-          "name": "財務省",
-          "url": "https://www.mof.go.jp/jgbs/auction/calendar/nyusatsu/resul20261116.htm"
-        }
-      ],
-      "sourceId": "mof",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 8,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "mof:fedd8a70f3fd",
-      "date": "2026-11-16",
-      "type": "news",
-      "theme": "debt",
-      "title": "10年物価連動国債（第31回）の入札発行（令和8年11月16日入札）",
-      "summary": "",
-      "ministry": "財務省",
-      "links": [
-        {
-          "name": "財務省",
-          "url": "https://www.mof.go.jp/jgbs/auction/calendar/nyusatsu/offer20261116.htm"
-        }
-      ],
-      "sourceId": "mof",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 8,
-      "noise": true,
+      "sourceId": "moj",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 25,
       "enriched": "rules"
     },
     {
@@ -9811,6 +10192,35 @@
       "enriched": "rules"
     },
     {
+      "id": "env:fa86ba38f60d",
+      "date": "2026-11-13",
+      "type": "grant",
+      "theme": "industry",
+      "title": "令和8年度国立公園等資源整備事業費補助金（エコツーリズムを通じた地域の魅力向上事業）（三次公募）の採択結果について",
+      "summary": "",
+      "ministry": "環境省",
+      "stage": {
+        "steps": [
+          "予告",
+          "公募中",
+          "審査",
+          "採択"
+        ],
+        "index": 3,
+        "label": "採択"
+      },
+      "links": [
+        {
+          "name": "環境省",
+          "url": "https://www.env.go.jp/press/110930_00007.html"
+        }
+      ],
+      "sourceId": "env",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 40,
+      "enriched": "rules"
+    },
+    {
       "id": "mof:24ece8836f38",
       "date": "2026-11-13",
       "type": "news",
@@ -9865,6 +10275,44 @@
       "sourceId": "mof",
       "firstSeen": "2026-11-24T22:06:48.044Z",
       "importance": 30,
+      "enriched": "rules"
+    },
+    {
+      "id": "env:3bca7763ab7a",
+      "date": "2026-11-13",
+      "type": "news",
+      "theme": "industry",
+      "title": "「廃棄物・資源循環分野のフィジカルAIコンソーシアム」の設立と会員の募集について",
+      "summary": "",
+      "ministry": "環境省",
+      "links": [
+        {
+          "name": "環境省",
+          "url": "https://www.env.go.jp/press/press_05819.html"
+        }
+      ],
+      "sourceId": "env",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 25,
+      "enriched": "rules"
+    },
+    {
+      "id": "env:b0708478d722",
+      "date": "2026-11-13",
+      "type": "news",
+      "theme": "edu",
+      "title": "令和8年度「体験の機会の場」と連携した教職員等環境教育・学習推進リーダー養成研修の開催～「循環型社会を支える現場から学ぶ環境教育」③－循環型社会と生物多様性を結ぶ環境教育リーダー育成－～",
+      "summary": "",
+      "ministry": "環境省",
+      "links": [
+        {
+          "name": "環境省",
+          "url": "https://www.env.go.jp/press/press_05821.html"
+        }
+      ],
+      "sourceId": "env",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 25,
       "enriched": "rules"
     },
     {
@@ -9982,6 +10430,44 @@
       "enriched": "rules"
     },
     {
+      "id": "mod:495ffa922c70",
+      "date": "2026-11-13",
+      "type": "news",
+      "theme": "defense",
+      "title": "政府専用機の運航について",
+      "summary": "",
+      "ministry": "防衛省",
+      "links": [
+        {
+          "name": "防衛省",
+          "url": "https://www.mod.go.jp/j/press/news/2026/11/13a.html"
+        }
+      ],
+      "sourceId": "mod",
+      "firstSeen": "2026-11-24T22:38:54.219Z",
+      "importance": 25,
+      "enriched": "rules"
+    },
+    {
+      "id": "mod:4a4c0b2989cc",
+      "date": "2026-11-13",
+      "type": "news",
+      "theme": "defense",
+      "title": "日英伊防衛相テレビ会合について",
+      "summary": "",
+      "ministry": "防衛省",
+      "links": [
+        {
+          "name": "防衛省",
+          "url": "https://www.mod.go.jp/j/approach/exchange/area/2026/20261111_gbr_ita-j.html"
+        }
+      ],
+      "sourceId": "mod",
+      "firstSeen": "2026-11-24T22:38:54.219Z",
+      "importance": 25,
+      "enriched": "rules"
+    },
+    {
       "id": "kakugi:2026111301:cc76f272a9d0",
       "date": "2026-11-13",
       "type": "system",
@@ -10011,403 +10497,22 @@
       "enriched": "rules"
     },
     {
-      "id": "kakugi:2026111301:1786779c49b6",
-      "date": "2026-11-13",
-      "type": "system",
-      "theme": "other",
-      "title": "元特定郵便局長森岡詳欣外158名の叙位又は叙勲について",
-      "summary": "11月13日の閣議で決定。",
-      "ministry": "閣議案件",
-      "stage": {
-        "steps": [
-          "検討",
-          "意見募集",
-          "決定",
-          "開始"
-        ],
-        "index": 2,
-        "label": "閣議決定"
-      },
-      "links": [
-        {
-          "name": "首相官邸 閣議案件",
-          "url": "https://www.kantei.go.jp/jp/kakugi/2026/kakugi-2026111301.html#:~:text=%E5%85%83%E7%89%B9%E5%AE%9A%E9%83%B5%E4%BE%BF%E5%B1%80%E9%95%B7%E6%A3%AE%E5%B2%A1%E8%A9%B3%E6%AC%A3%E5%A4%96%EF%BC%91%EF%BC%95%EF%BC%98%E5%90%8D%E3%81%AE%E5%8F%99%E4%BD%8D%E5%8F%88%E3%81%AF%E5%8F%99%E5%8B%B2%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"
-        }
-      ],
-      "sourceId": "kakugi",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "kakugi:2026111301:1ffbd63b3376",
-      "date": "2026-11-13",
-      "type": "system",
-      "theme": "other",
-      "title": "内閣総理大臣高市早苗外2名の海外出張について",
-      "summary": "11月13日の閣議で了解。",
-      "ministry": "閣議案件",
-      "stage": {
-        "steps": [
-          "検討",
-          "意見募集",
-          "決定",
-          "開始"
-        ],
-        "index": 2,
-        "label": "閣議了解"
-      },
-      "links": [
-        {
-          "name": "首相官邸 閣議案件",
-          "url": "https://www.kantei.go.jp/jp/kakugi/2026/kakugi-2026111301.html#:~:text=%E5%86%85%E9%96%A3%E7%B7%8F%E7%90%86%E5%A4%A7%E8%87%A3%E9%AB%98%E5%B8%82%E6%97%A9%E8%8B%97%E5%A4%96%EF%BC%92%E5%90%8D%E3%81%AE%E6%B5%B7%E5%A4%96%E5%87%BA%E5%BC%B5%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"
-        }
-      ],
-      "sourceId": "kakugi",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "kakugi:2026111301:24139d4fc635",
-      "date": "2026-11-13",
-      "type": "system",
-      "theme": "other",
-      "title": "ギニア国駐箚特命全権大使北川 洋外1名に交付すべき信任状及び前任特命全権大使加藤隆一外1名の解任状につき認証を仰ぐことについて",
-      "summary": "11月13日の閣議で決定。",
-      "ministry": "外務省",
-      "stage": {
-        "steps": [
-          "検討",
-          "意見募集",
-          "決定",
-          "開始"
-        ],
-        "index": 2,
-        "label": "閣議決定"
-      },
-      "links": [
-        {
-          "name": "首相官邸 閣議案件",
-          "url": "https://www.kantei.go.jp/jp/kakugi/2026/kakugi-2026111301.html#:~:text=%E3%82%AE%E3%83%8B%E3%82%A2%E5%9B%BD%E9%A7%90%E7%AE%9A%E7%89%B9%E5%91%BD%E5%85%A8%E6%A8%A9%E5%A4%A7%E4%BD%BF%E5%8C%97%E5%B7%9D%20%E6%B4%8B%E5%A4%96%EF%BC%91%E5%90%8D%E3%81%AB%E4%BA%A4%E4%BB%98%E3%81%99%E3%81%B9%E3%81%8D%E4%BF%A1%E4%BB%BB%E7%8A%B6%E5%8F%8A%E3%81%B3%E5%89%8D%E4%BB%BB%E7%89%B9%E5%91%BD%E5%85%A8%E6%A8%A9%E5%A4%A7%E4%BD%BF%E5%8A%A0%E8%97%A4%E9%9A%86%E4%B8%80%E5%A4%96%EF%BC%91%E5%90%8D%E3%81%AE%E8%A7%A3%E4%BB%BB%E7%8A%B6%E3%81%AB%E3%81%A4%E3%81%8D%E8%AA%8D%E8%A8%BC%E3%82%92%E4%BB%B0%E3%81%90%E3%81%93%E3%81%A8%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"
-        }
-      ],
-      "sourceId": "kakugi",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "kakugi:2026111301:351b15942eb1",
-      "date": "2026-11-13",
-      "type": "system",
-      "theme": "other",
-      "title": "環境大臣笹川博義に気候変動に関する国際連合枠組条約第31回締約国会議日本政府代表等を命ずることについて",
-      "summary": "11月13日の閣議で決定。",
-      "ministry": "閣議案件",
-      "stage": {
-        "steps": [
-          "検討",
-          "意見募集",
-          "決定",
-          "開始"
-        ],
-        "index": 2,
-        "label": "閣議決定"
-      },
-      "links": [
-        {
-          "name": "首相官邸 閣議案件",
-          "url": "https://www.kantei.go.jp/jp/kakugi/2026/kakugi-2026111301.html#:~:text=%E7%92%B0%E5%A2%83%E5%A4%A7%E8%87%A3%E7%AC%B9%E5%B7%9D%E5%8D%9A%E7%BE%A9%E3%81%AB%E6%B0%97%E5%80%99%E5%A4%89%E5%8B%95%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E5%9B%BD%E9%9A%9B%E9%80%A3%E5%90%88%E6%9E%A0%E7%B5%84%E6%9D%A1%E7%B4%84%E7%AC%AC%EF%BC%93%EF%BC%91%E5%9B%9E%E7%B7%A0%E7%B4%84%E5%9B%BD%E4%BC%9A%E8%AD%B0%E6%97%A5%E6%9C%AC%E6%94%BF%E5%BA%9C%E4%BB%A3%E8%A1%A8%E7%AD%89%E3%82%92%E5%91%BD%E3%81%9A%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"
-        }
-      ],
-      "sourceId": "kakugi",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "kakugi:2026111301:40d6bc8e4598",
-      "date": "2026-11-13",
-      "type": "system",
-      "theme": "local",
-      "title": "参議院議員石垣のりこ（立憲）提出デジタル商品券等を利用した地方自治体の給付事業におけるサイバーセキュリティ対策に関する質問に対する答弁書について",
-      "summary": "11月13日の閣議で決定。",
-      "ministry": "総務省",
-      "stage": {
-        "steps": [
-          "検討",
-          "意見募集",
-          "決定",
-          "開始"
-        ],
-        "index": 2,
-        "label": "閣議決定"
-      },
-      "links": [
-        {
-          "name": "首相官邸 閣議案件",
-          "url": "https://www.kantei.go.jp/jp/kakugi/2026/kakugi-2026111301.html#:~:text=%E5%8F%82%E8%AD%B0%E9%99%A2%E8%AD%B0%E5%93%A1%E7%9F%B3%E5%9E%A3%E3%81%AE%E3%82%8A%E3%81%93%EF%BC%88%E7%AB%8B%E6%86%B2%EF%BC%89%E6%8F%90%E5%87%BA%E3%83%87%E3%82%B8%E3%82%BF%E3%83%AB%E5%95%86%E5%93%81%E5%88%B8%E7%AD%89%E3%82%92%E5%88%A9%E7%94%A8%E3%81%97%E3%81%9F%E5%9C%B0%E6%96%B9%E8%87%AA%E6%B2%BB%E4%BD%93%E3%81%AE%E7%B5%A6%E4%BB%98%E4%BA%8B%E6%A5%AD%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E3%82%B5%E3%82%A4%E3%83%90%E3%83%BC%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E5%AF%BE%E7%AD%96%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E8%B3%AA%E5%95%8F%E3%81%AB%E5%AF%BE%E3%81%99%E3%82%8B%E7%AD%94%E5%BC%81%E6%9B%B8%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"
-        }
-      ],
-      "sourceId": "kakugi",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "kakugi:2026111301:44c096a7f811",
-      "date": "2026-11-13",
-      "type": "system",
-      "theme": "other",
-      "title": "参議院議員石垣のりこ（立憲）提出公的給付におけるデジタル手段の利用要件と公平性に関する質問に対する答弁書について",
-      "summary": "11月13日の閣議で決定。",
-      "ministry": "デジタル庁",
-      "stage": {
-        "steps": [
-          "検討",
-          "意見募集",
-          "決定",
-          "開始"
-        ],
-        "index": 2,
-        "label": "閣議決定"
-      },
-      "links": [
-        {
-          "name": "首相官邸 閣議案件",
-          "url": "https://www.kantei.go.jp/jp/kakugi/2026/kakugi-2026111301.html#:~:text=%E5%8F%82%E8%AD%B0%E9%99%A2%E8%AD%B0%E5%93%A1%E7%9F%B3%E5%9E%A3%E3%81%AE%E3%82%8A%E3%81%93%EF%BC%88%E7%AB%8B%E6%86%B2%EF%BC%89%E6%8F%90%E5%87%BA%E5%85%AC%E7%9A%84%E7%B5%A6%E4%BB%98%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E3%83%87%E3%82%B8%E3%82%BF%E3%83%AB%E6%89%8B%E6%AE%B5%E3%81%AE%E5%88%A9%E7%94%A8%E8%A6%81%E4%BB%B6%E3%81%A8%E5%85%AC%E5%B9%B3%E6%80%A7%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E8%B3%AA%E5%95%8F%E3%81%AB%E5%AF%BE%E3%81%99%E3%82%8B%E7%AD%94%E5%BC%81%E6%9B%B8%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"
-        }
-      ],
-      "sourceId": "kakugi",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "kakugi:2026111301:990bc8f40704",
-      "date": "2026-11-13",
-      "type": "system",
-      "theme": "social",
-      "title": "衆議院議員小川淳也（中道）提出eスポーツ関連業務を活用した障害者就労支援に関する質問に対する答弁書について",
-      "summary": "11月13日の閣議で決定。",
-      "ministry": "厚生労働省",
-      "stage": {
-        "steps": [
-          "検討",
-          "意見募集",
-          "決定",
-          "開始"
-        ],
-        "index": 2,
-        "label": "閣議決定"
-      },
-      "links": [
-        {
-          "name": "首相官邸 閣議案件",
-          "url": "https://www.kantei.go.jp/jp/kakugi/2026/kakugi-2026111301.html#:~:text=%E8%A1%86%E8%AD%B0%E9%99%A2%E8%AD%B0%E5%93%A1%E5%B0%8F%E5%B7%9D%E6%B7%B3%E4%B9%9F%EF%BC%88%E4%B8%AD%E9%81%93%EF%BC%89%E6%8F%90%E5%87%BA%EF%BD%85%E3%82%B9%E3%83%9D%E3%83%BC%E3%83%84%E9%96%A2%E9%80%A3%E6%A5%AD%E5%8B%99%E3%82%92%E6%B4%BB%E7%94%A8%E3%81%97%E3%81%9F%E9%9A%9C%E5%AE%B3%E8%80%85%E5%B0%B1%E5%8A%B4%E6%94%AF%E6%8F%B4%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E8%B3%AA%E5%95%8F%E3%81%AB%E5%AF%BE%E3%81%99%E3%82%8B%E7%AD%94%E5%BC%81%E6%9B%B8%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"
-        }
-      ],
-      "sourceId": "kakugi",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "maff:3734086822ad",
+      "id": "nta:8113eb3f918e",
       "date": "2026-11-13",
       "type": "news",
       "theme": "industry",
-      "title": "千葉県における高病原性鳥インフルエンザの疑似患畜の確認（国内2例目）及び「農林水産省鳥インフルエンザ防疫対策本部」の持ち回り開催について",
+      "title": "酒類の輸出動向（令和8年9月分）",
       "summary": "",
-      "ministry": "農林水産省",
+      "ministry": "国税庁",
       "links": [
         {
-          "name": "農林水産省",
-          "url": "https://www.maff.go.jp/j/press/syouan/douei/261113.html"
+          "name": "国税庁",
+          "url": "https://www.nta.go.jp/taxes/sake/yushutsu/yushutsu_tokei/index.htm"
         }
       ],
-      "sourceId": "maff",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "maff:4d28b7e68c6f",
-      "date": "2026-11-13",
-      "type": "news",
-      "theme": "industry",
-      "title": "「令和8年度農作業安全ポスターデザインコンテスト」の受賞作品の決定について",
-      "summary": "",
-      "ministry": "農林水産省",
-      "links": [
-        {
-          "name": "農林水産省",
-          "url": "https://www.maff.go.jp/j/press/nousan/sizai/261113.html"
-        }
-      ],
-      "sourceId": "maff",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "maff:55869bcf5c4e",
-      "date": "2026-11-13",
-      "type": "news",
-      "theme": "infra",
-      "title": "「令和8年熊本地震に関する農林水産省緊急自然災害対策本部」（第16回）の持ち回り開催について",
-      "summary": "",
-      "ministry": "農林水産省",
-      "links": [
-        {
-          "name": "農林水産省",
-          "url": "https://www.maff.go.jp/j/press/kanbo/bunsyo/saigai/261113.html"
-        }
-      ],
-      "sourceId": "maff",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "mhlw:886294381e57",
-      "date": "2026-11-13",
-      "type": "system",
-      "theme": "social",
-      "title": "第37回厚生科学審議会がん登録部会の開催について（オンライン開催）",
-      "summary": "",
-      "ministry": "厚生労働省",
-      "stage": {
-        "steps": [
-          "検討",
-          "意見募集",
-          "決定",
-          "開始"
-        ],
-        "index": 0,
-        "label": "検討"
-      },
-      "links": [
-        {
-          "name": "厚生労働省",
-          "url": "https://www.mhlw.go.jp/stf/newpage_77359.html"
-        }
-      ],
-      "sourceId": "mhlw",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "mlit:271d5aa49919",
-      "date": "2026-11-13",
-      "type": "news",
-      "theme": "infra",
-      "title": "井林大臣会見要旨",
-      "summary": "",
-      "ministry": "国土交通省",
-      "links": [
-        {
-          "name": "国土交通省",
-          "url": "https://www.mlit.go.jp/report/interview/daijin261113.html"
-        }
-      ],
-      "sourceId": "mlit",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "mof:74291e2b27b3",
-      "date": "2026-11-13",
-      "type": "news",
-      "theme": "whole",
-      "title": "国庫短期証券（第1421回）の発行予定額等",
-      "summary": "",
-      "ministry": "財務省",
-      "links": [
-        {
-          "name": "財務省",
-          "url": "https://www.mof.go.jp/jgbs/auction/calendar/tbill/tbill_auct/auct20261113.htm"
-        }
-      ],
-      "sourceId": "mof",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "mof:659ef9995cf4",
-      "date": "2026-11-13",
-      "type": "news",
-      "theme": "whole",
-      "title": "国庫短期証券（第1419回）の入札発行",
-      "summary": "",
-      "ministry": "財務省",
-      "links": [
-        {
-          "name": "財務省",
-          "url": "https://www.mof.go.jp/jgbs/auction/calendar/tbill/tbill_nyusatsu/offer20261113.htm"
-        }
-      ],
-      "sourceId": "mof",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 8,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "mof:680d7075f4f4",
-      "date": "2026-11-13",
-      "type": "news",
-      "theme": "whole",
-      "title": "流動性供給(第465回)入札の発行予定額等",
-      "summary": "",
-      "ministry": "財務省",
-      "links": [
-        {
-          "name": "財務省",
-          "url": "https://www.mof.go.jp/jgbs/auction/calendar/yotei/auct20261113.htm"
-        }
-      ],
-      "sourceId": "mof",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 8,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "mof:9b694abe26a9",
-      "date": "2026-11-13",
-      "type": "news",
-      "theme": "whole",
-      "title": "国庫短期証券（第1419回）の入札結果",
-      "summary": "",
-      "ministry": "財務省",
-      "links": [
-        {
-          "name": "財務省",
-          "url": "https://www.mof.go.jp/jgbs/auction/calendar/tbill/tbill_nyusatsu/resul20261113.htm"
-        }
-      ],
-      "sourceId": "mof",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 8,
-      "noise": true,
+      "sourceId": "nta",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 13,
       "enriched": "rules"
     },
     {
@@ -10465,259 +10570,186 @@
       "enriched": "rules"
     },
     {
-      "id": "maff:d7422f2df685",
+      "id": "env:1ac5292da0d3",
+      "date": "2026-11-12",
+      "type": "grant",
+      "theme": "industry",
+      "title": "令和8年度特定外来生物防除等対策事業（交付金）の追加公募（二次公募）について",
+      "summary": "",
+      "ministry": "環境省",
+      "stage": {
+        "steps": [
+          "予告",
+          "公募中",
+          "審査",
+          "採択"
+        ],
+        "index": 1,
+        "label": "公募中"
+      },
+      "links": [
+        {
+          "name": "環境省",
+          "url": "https://www.env.go.jp/press/press_05847.html"
+        }
+      ],
+      "sourceId": "env",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 44,
+      "enriched": "rules"
+    },
+    {
+      "id": "env:1e57c86e91df",
+      "date": "2026-11-12",
+      "type": "system",
+      "theme": "industry",
+      "title": "「温室効果ガス算定排出量等の報告等に関する命令第一条第五号に規定する環境大臣及び経済産業大臣が定める国内認証排出削減量の一部を改正する件（案）」等に対する意見募集（パブリックコメント）について",
+      "summary": "",
+      "ministry": "環境省",
+      "stage": {
+        "steps": [
+          "検討",
+          "意見募集",
+          "決定",
+          "開始"
+        ],
+        "index": 1,
+        "label": "意見募集"
+      },
+      "links": [
+        {
+          "name": "環境省",
+          "url": "https://www.env.go.jp/press/press_05859.html"
+        }
+      ],
+      "sourceId": "env",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 44,
+      "enriched": "rules"
+    },
+    {
+      "id": "env:b98bc2b8dabb",
+      "date": "2026-11-12",
+      "type": "system",
+      "theme": "industry",
+      "title": "「絶滅のおそれのある野生動植物の種の保存につき講ずべき措置について（答申案）」に対する意見募集（パブリック・コメント）について",
+      "summary": "",
+      "ministry": "環境省",
+      "stage": {
+        "steps": [
+          "検討",
+          "意見募集",
+          "決定",
+          "開始"
+        ],
+        "index": 1,
+        "label": "意見募集"
+      },
+      "links": [
+        {
+          "name": "環境省",
+          "url": "https://www.env.go.jp/press/press_05803.html"
+        }
+      ],
+      "sourceId": "env",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 44,
+      "enriched": "rules"
+    },
+    {
+      "id": "env:f78de2ba6f2e",
+      "date": "2026-11-12",
+      "type": "system",
+      "theme": "industry",
+      "title": "絶滅のおそれのある野生動植物の種の保存に関する法律に基づく生息地等保護区及び管理地区の指定案に関する公告及び意見募集（パブリック・コメント）について",
+      "summary": "",
+      "ministry": "環境省",
+      "stage": {
+        "steps": [
+          "検討",
+          "意見募集",
+          "決定",
+          "開始"
+        ],
+        "index": 1,
+        "label": "意見募集"
+      },
+      "links": [
+        {
+          "name": "環境省",
+          "url": "https://www.env.go.jp/press/press_05793.html"
+        }
+      ],
+      "sourceId": "env",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 44,
+      "enriched": "rules"
+    },
+    {
+      "id": "nta:493f8a6fef4c",
+      "date": "2026-11-12",
+      "type": "grant",
+      "theme": "whole",
+      "title": "酒類事業者向け補助金の第5期採択事業者の決定",
+      "summary": "",
+      "ministry": "国税庁",
+      "stage": {
+        "steps": [
+          "予告",
+          "公募中",
+          "審査",
+          "採択"
+        ],
+        "index": 3,
+        "label": "採択"
+      },
+      "links": [
+        {
+          "name": "国税庁",
+          "url": "https://www.nta.go.jp/taxes/sake/boshujoho/hojojigyo.htm#saitaku"
+        }
+      ],
+      "sourceId": "nta",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 28,
+      "enriched": "rules"
+    },
+    {
+      "id": "env:d2369c7efb10",
       "date": "2026-11-12",
       "type": "news",
       "theme": "industry",
-      "title": "京都府における高病原性鳥インフルエンザの疑似患畜の確認及び「農林水産省鳥インフルエンザ防疫対策本部」の開催について",
+      "title": "（仮称）伊佐・えびの・人吉風力発電事業に係る環境影響評価準備書に対する環境大臣意見の提出について",
       "summary": "",
-      "ministry": "農林水産省",
+      "ministry": "環境省",
       "links": [
         {
-          "name": "農林水産省",
-          "url": "https://www.maff.go.jp/j/press/syouan/douei/261111.html"
+          "name": "環境省",
+          "url": "https://www.env.go.jp/press/press_05815.html"
         }
       ],
-      "sourceId": "maff",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
+      "sourceId": "env",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 25,
       "enriched": "rules"
     },
     {
-      "id": "mof:78075d8f385f",
-      "date": "2026-11-12",
-      "type": "tax",
-      "theme": "whole",
-      "title": "関税・外国為替等審議会 関税分科会 特殊関税部会(令和8年10月19日)議事録",
-      "summary": "",
-      "ministry": "財務省",
-      "stage": {
-        "steps": [
-          "要望",
-          "与党大綱",
-          "閣議決定",
-          "国会審議",
-          "成立",
-          "施行"
-        ],
-        "index": 3,
-        "label": "国会審議"
-      },
-      "links": [
-        {
-          "name": "財務省",
-          "url": "https://www.mof.go.jp/about_mof/councils/customs_foreign_exchange/sub-of_customs/proceedings_tokusyu/proceedings/kanb20261019.html"
-        }
-      ],
-      "sourceId": "mof",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "mof:9ab1a8b89220",
-      "date": "2026-11-12",
-      "type": "tax",
-      "theme": "whole",
-      "title": "関税・外国為替等審議会 関税分科会（令和8年10月6日開催）議事録",
-      "summary": "",
-      "ministry": "財務省",
-      "stage": {
-        "steps": [
-          "要望",
-          "与党大綱",
-          "閣議決定",
-          "国会審議",
-          "成立",
-          "施行"
-        ],
-        "index": 3,
-        "label": "国会審議"
-      },
-      "links": [
-        {
-          "name": "財務省",
-          "url": "https://www.mof.go.jp/about_mof/councils/customs_foreign_exchange/sub-of_customs/proceedings_customs/proceedings/kana20261006.html"
-        }
-      ],
-      "sourceId": "mof",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "mof:acbf6d71c086",
-      "date": "2026-11-12",
-      "type": "budget",
-      "theme": "whole",
-      "title": "財政投融資分科会（令和8年9月18日開催）議事録",
-      "summary": "",
-      "ministry": "財務省",
-      "links": [
-        {
-          "name": "財務省",
-          "url": "https://www.mof.go.jp/about_mof/councils/fiscal_system_council/sub-of_filp/proceedings/proceedings/zaitoa20260918.html"
-        }
-      ],
-      "sourceId": "mof",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "mof:b496a5d519f7",
-      "date": "2026-11-12",
-      "type": "budget",
-      "theme": "whole",
-      "title": "財政投融資分科会（令和8年10月19日開催）議事要旨",
-      "summary": "",
-      "ministry": "財務省",
-      "links": [
-        {
-          "name": "財務省",
-          "url": "https://www.mof.go.jp/about_mof/councils/fiscal_system_council/sub-of_filp/proceedings/outline/zaitoa20261019.html"
-        }
-      ],
-      "sourceId": "mof",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "mof:b935032214b3",
-      "date": "2026-11-12",
-      "type": "tax",
-      "theme": "whole",
-      "title": "関税・外国為替等審議会 関税分科会 特殊関税部会(令和8年10月19日)議事録",
-      "summary": "",
-      "ministry": "財務省",
-      "stage": {
-        "steps": [
-          "要望",
-          "与党大綱",
-          "閣議決定",
-          "国会審議",
-          "成立",
-          "施行"
-        ],
-        "index": 3,
-        "label": "国会審議"
-      },
-      "links": [
-        {
-          "name": "財務省",
-          "url": "https://www.mof.go.jp/about_mof/councils/customs_foreign_exchange/sub-of_customs/proceedings_tokusyu/proceedings/kanb20261019.html.html"
-        }
-      ],
-      "sourceId": "mof",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 15,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "mof:b13c4a79f834",
+      "id": "moj:0c6063de1c72",
       "date": "2026-11-12",
       "type": "news",
-      "theme": "debt",
-      "title": "5年利付国債（第189回）の入札結果（令和8年11月12日入札）",
+      "theme": "other",
+      "title": "令和8年度における公証人法第13条ノ2に規定する公証人の公募について",
       "summary": "",
-      "ministry": "財務省",
+      "ministry": "法務省",
       "links": [
         {
-          "name": "財務省",
-          "url": "https://www.mof.go.jp/jgbs/auction/calendar/nyusatsu/resul20261112.htm"
+          "name": "法務省",
+          "url": "https://www.moj.go.jp/MINJI/minji03_00098.html"
         }
       ],
-      "sourceId": "mof",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 8,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "mof:cac5404a3498",
-      "date": "2026-11-12",
-      "type": "news",
-      "theme": "debt",
-      "title": "5年利付国債（第189回）の入札発行（令和8年11月12日入札）",
-      "summary": "",
-      "ministry": "財務省",
-      "links": [
-        {
-          "name": "財務省",
-          "url": "https://www.mof.go.jp/jgbs/auction/calendar/nyusatsu/offer20261112.htm"
-        }
-      ],
-      "sourceId": "mof",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 8,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "mof:e41e33d45a70",
-      "date": "2026-11-12",
-      "type": "news",
-      "theme": "whole",
-      "title": "交付税及び譲与税配付金特別会計の借入金の入札予定（令和8年11月12日公表）",
-      "summary": "",
-      "ministry": "財務省",
-      "links": [
-        {
-          "name": "財務省",
-          "url": "https://www.mof.go.jp/jgbs/auction/calendar/kariire/kari-offer261112.htm"
-        }
-      ],
-      "sourceId": "mof",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 8,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "mof:ea4aa23a0cd7",
-      "date": "2026-11-12",
-      "type": "news",
-      "theme": "debt",
-      "title": "5年利付国債（第189回）の第II非価格競争入札結果（令和8年11月12日入札）",
-      "summary": "",
-      "ministry": "財務省",
-      "links": [
-        {
-          "name": "財務省",
-          "url": "https://www.mof.go.jp/jgbs/auction/calendar/nyusatsu/resul20261112a.htm"
-        }
-      ],
-      "sourceId": "mof",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 8,
-      "noise": true,
-      "enriched": "rules"
-    },
-    {
-      "id": "mof:fc32f436ac2f",
-      "date": "2026-11-12",
-      "type": "news",
-      "theme": "whole",
-      "title": "国有林野事業債務管理特別会計の借入金の入札結果（令和8年11月12日入札）",
-      "summary": "",
-      "ministry": "財務省",
-      "links": [
-        {
-          "name": "財務省",
-          "url": "https://www.mof.go.jp/jgbs/auction/calendar/kariire/rinya-result261112.htm"
-        }
-      ],
-      "sourceId": "mof",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 8,
-      "noise": true,
+      "sourceId": "moj",
+      "firstSeen": "2026-11-24T22:35:43.761Z",
+      "importance": 25,
       "enriched": "rules"
     },
     {
@@ -10898,6 +10930,63 @@
       ],
       "sourceId": "maff",
       "firstSeen": "2026-11-24T22:06:48.044Z",
+      "importance": 25,
+      "enriched": "rules"
+    },
+    {
+      "id": "mod:2209929bd5e6",
+      "date": "2026-11-11",
+      "type": "news",
+      "theme": "defense",
+      "title": "米軍再編に係る岩国飛行場から三沢基地への訓練移転について",
+      "summary": "",
+      "ministry": "防衛省",
+      "links": [
+        {
+          "name": "防衛省",
+          "url": "https://www.mod.go.jp/j/press/news/2026/11/11a.html"
+        }
+      ],
+      "sourceId": "mod",
+      "firstSeen": "2026-11-24T22:38:54.219Z",
+      "importance": 25,
+      "enriched": "rules"
+    },
+    {
+      "id": "mod:944b9dc34378",
+      "date": "2026-11-11",
+      "type": "news",
+      "theme": "defense",
+      "title": "日米合同委員会合意について",
+      "summary": "",
+      "ministry": "防衛省",
+      "links": [
+        {
+          "name": "防衛省",
+          "url": "https://www.mod.go.jp/j/press/news/2026/11/11b.pdf"
+        }
+      ],
+      "sourceId": "mod",
+      "firstSeen": "2026-11-24T22:38:54.219Z",
+      "importance": 25,
+      "enriched": "rules"
+    },
+    {
+      "id": "mod:f82728af2f5d",
+      "date": "2026-11-11",
+      "type": "news",
+      "theme": "defense",
+      "title": "日カザフスタン防衛当局間（MM）協議の開催（結果）",
+      "summary": "",
+      "ministry": "防衛省",
+      "links": [
+        {
+          "name": "防衛省",
+          "url": "https://www.mod.go.jp/j/approach/exchange/area/2026/20261110_kaz-j.html"
+        }
+      ],
+      "sourceId": "mod",
+      "firstSeen": "2026-11-24T22:38:54.219Z",
       "importance": 25,
       "enriched": "rules"
     },
@@ -11139,6 +11228,25 @@
       "enriched": "rules"
     },
     {
+      "id": "mod:35bde4b89697",
+      "date": "2026-11-09",
+      "type": "news",
+      "theme": "defense",
+      "title": "日米合同委員会合意について",
+      "summary": "",
+      "ministry": "防衛省",
+      "links": [
+        {
+          "name": "防衛省",
+          "url": "https://www.mod.go.jp/j/press/news/2026/11/09a.pdf"
+        }
+      ],
+      "sourceId": "mod",
+      "firstSeen": "2026-11-24T22:38:54.219Z",
+      "importance": 25,
+      "enriched": "rules"
+    },
+    {
       "id": "curated:vat",
       "date": "2026-11-06",
       "type": "tax",
@@ -11284,6 +11392,101 @@
       "enriched": "rules"
     },
     {
+      "id": "mod:7ec6a875fb46",
+      "date": "2026-11-06",
+      "type": "news",
+      "theme": "defense",
+      "title": "シナイ半島国際平和協力業務実施計画の変更について",
+      "summary": "",
+      "ministry": "防衛省",
+      "links": [
+        {
+          "name": "防衛省",
+          "url": "https://www.mod.go.jp/j/press/news/2026/11/06a.html"
+        }
+      ],
+      "sourceId": "mod",
+      "firstSeen": "2026-11-24T22:38:54.219Z",
+      "importance": 25,
+      "enriched": "rules"
+    },
+    {
+      "id": "mod:a9e21054cb13",
+      "date": "2026-11-06",
+      "type": "news",
+      "theme": "defense",
+      "title": "カザフスタンに対する衛生分野の能力構築支援事業について",
+      "summary": "",
+      "ministry": "防衛省",
+      "links": [
+        {
+          "name": "防衛省",
+          "url": "https://www.mod.go.jp/j/press/news/2026/11/06e.html"
+        }
+      ],
+      "sourceId": "mod",
+      "firstSeen": "2026-11-24T22:38:54.219Z",
+      "importance": 25,
+      "enriched": "rules"
+    },
+    {
+      "id": "mod:ac0c616f65c7",
+      "date": "2026-11-06",
+      "type": "news",
+      "theme": "defense",
+      "title": "海賊対処行動の継続について",
+      "summary": "",
+      "ministry": "防衛省",
+      "links": [
+        {
+          "name": "防衛省",
+          "url": "https://www.mod.go.jp/j/press/news/2026/11/06b.html"
+        }
+      ],
+      "sourceId": "mod",
+      "firstSeen": "2026-11-24T22:38:54.219Z",
+      "importance": 25,
+      "enriched": "rules"
+    },
+    {
+      "id": "mod:e51357a4bdeb",
+      "date": "2026-11-06",
+      "type": "news",
+      "theme": "defense",
+      "title": "フィジーに対する能力構築支援事業（衛生分）の実施について",
+      "summary": "",
+      "ministry": "防衛省",
+      "links": [
+        {
+          "name": "防衛省",
+          "url": "https://www.mod.go.jp/j/press/news/2026/11/06d.html"
+        }
+      ],
+      "sourceId": "mod",
+      "firstSeen": "2026-11-24T22:38:54.219Z",
+      "importance": 25,
+      "enriched": "rules"
+    },
+    {
+      "id": "mod:f07edee9d4bc",
+      "date": "2026-11-06",
+      "type": "news",
+      "theme": "defense",
+      "title": "ベトナム社会主義共和国副首相兼国防大臣の当省訪問について",
+      "summary": "",
+      "ministry": "防衛省",
+      "links": [
+        {
+          "name": "防衛省",
+          "url": "https://www.mod.go.jp/j/press/news/2026/11/06c.html"
+        }
+      ],
+      "sourceId": "mod",
+      "firstSeen": "2026-11-24T22:38:54.219Z",
+      "importance": 25,
+      "enriched": "rules"
+    },
+    {
       "id": "curated:jizoku",
       "date": "2026-11-05",
       "type": "grant",
@@ -11424,41 +11627,6 @@
       "enriched": "rules"
     },
     {
-      "id": "gian:san-222-1",
-      "date": "2026-10-06",
-      "type": "law",
-      "theme": "other",
-      "title": "旧氏を通称として使用する機会の拡大を図るための措置等に関する法律案",
-      "summary": "参議院議員提出の法案。10月6日に提出。いまは参議院で審議中。",
-      "ministry": "参議院議員提出の法案",
-      "stage": {
-        "steps": [
-          "検討",
-          "閣議決定",
-          "国会審議",
-          "成立",
-          "公布",
-          "施行"
-        ],
-        "index": 2,
-        "label": "参議院で審議中"
-      },
-      "links": [
-        {
-          "name": "衆議院 議案経過",
-          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE3352.htm"
-        },
-        {
-          "name": "法案の本文",
-          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/honbun/g22206001.htm"
-        }
-      ],
-      "sourceId": "shugiin",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 35,
-      "enriched": "rules"
-    },
-    {
       "id": "gian:shu-221-28",
       "date": "2026-10-05",
       "type": "law",
@@ -11561,636 +11729,6 @@
       "sourceId": "shugiin",
       "firstSeen": "2026-11-24T22:06:48.044Z",
       "importance": 55,
-      "enriched": "rules"
-    },
-    {
-      "id": "gian:shu-221-1",
-      "date": "2026-10-05",
-      "type": "law",
-      "theme": "other",
-      "title": "政治資金規正法の一部を改正する法律案",
-      "summary": "衆議院議員提出の法案。10月5日に政治改革に関する特別委員会に付託。いまは衆議院で審議中。",
-      "ministry": "衆議院議員提出の法案",
-      "stage": {
-        "steps": [
-          "検討",
-          "閣議決定",
-          "国会審議",
-          "成立",
-          "公布",
-          "施行"
-        ],
-        "index": 2,
-        "label": "衆議院で審議中"
-      },
-      "links": [
-        {
-          "name": "衆議院 議案経過",
-          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2D1E.htm"
-        },
-        {
-          "name": "法案の本文",
-          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/honbun/g22105001.htm"
-        }
-      ],
-      "sourceId": "shugiin",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 35,
-      "enriched": "rules"
-    },
-    {
-      "id": "gian:shu-221-12",
-      "date": "2026-10-05",
-      "type": "law",
-      "theme": "other",
-      "title": "政党等の政治資金の収入に関する制度の在り方に係る措置に関する法律案",
-      "summary": "衆議院議員提出の法案。10月5日に政治改革に関する特別委員会に付託。いまは衆議院で審議中。",
-      "ministry": "衆議院議員提出の法案",
-      "stage": {
-        "steps": [
-          "検討",
-          "閣議決定",
-          "国会審議",
-          "成立",
-          "公布",
-          "施行"
-        ],
-        "index": 2,
-        "label": "衆議院で審議中"
-      },
-      "links": [
-        {
-          "name": "衆議院 議案経過",
-          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2D22.htm"
-        },
-        {
-          "name": "法案の本文",
-          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/honbun/g22105012.htm"
-        }
-      ],
-      "sourceId": "shugiin",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 35,
-      "enriched": "rules"
-    },
-    {
-      "id": "gian:shu-221-14",
-      "date": "2026-10-05",
-      "type": "law",
-      "theme": "other",
-      "title": "政治資金規正法の一部を改正する法律案",
-      "summary": "衆議院議員提出の法案。10月5日に政治改革に関する特別委員会に付託。いまは衆議院で審議中。",
-      "ministry": "衆議院議員提出の法案",
-      "stage": {
-        "steps": [
-          "検討",
-          "閣議決定",
-          "国会審議",
-          "成立",
-          "公布",
-          "施行"
-        ],
-        "index": 2,
-        "label": "衆議院で審議中"
-      },
-      "links": [
-        {
-          "name": "衆議院 議案経過",
-          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2D26.htm"
-        },
-        {
-          "name": "法案の本文",
-          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/honbun/g22105014.htm"
-        }
-      ],
-      "sourceId": "shugiin",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 35,
-      "enriched": "rules"
-    },
-    {
-      "id": "gian:shu-221-16",
-      "date": "2026-10-05",
-      "type": "tax",
-      "theme": "other",
-      "title": "自動車税及び軽自動車税の税率の上乗せに係る特例の廃止に関する法律案",
-      "summary": "衆議院議員提出の法案。10月5日に総務委員会に付託。いまは衆議院で審議中。",
-      "ministry": "衆議院議員提出の法案",
-      "stage": {
-        "steps": [
-          "要望",
-          "与党大綱",
-          "閣議決定",
-          "国会審議",
-          "成立",
-          "施行"
-        ],
-        "index": 3,
-        "label": "衆議院で審議中"
-      },
-      "links": [
-        {
-          "name": "衆議院 議案経過",
-          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2D16.htm"
-        },
-        {
-          "name": "法案の本文",
-          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/honbun/g22105016.htm"
-        }
-      ],
-      "sourceId": "shugiin",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 35,
-      "enriched": "rules"
-    },
-    {
-      "id": "gian:shu-221-17",
-      "date": "2026-10-05",
-      "type": "tax",
-      "theme": "other",
-      "title": "自動車重量税率の上乗せに係る特例の廃止に関する法律案",
-      "summary": "衆議院議員提出の法案。10月5日に財務金融委員会に付託。いまは衆議院で審議中。",
-      "ministry": "衆議院議員提出の法案",
-      "stage": {
-        "steps": [
-          "要望",
-          "与党大綱",
-          "閣議決定",
-          "国会審議",
-          "成立",
-          "施行"
-        ],
-        "index": 3,
-        "label": "衆議院で審議中"
-      },
-      "links": [
-        {
-          "name": "衆議院 議案経過",
-          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2D6A.htm"
-        },
-        {
-          "name": "法案の本文",
-          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/honbun/g22105017.htm"
-        }
-      ],
-      "sourceId": "shugiin",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 35,
-      "enriched": "rules"
-    },
-    {
-      "id": "gian:shu-221-19",
-      "date": "2026-10-05",
-      "type": "law",
-      "theme": "other",
-      "title": "自動車盗難対策等の推進に関する法律案",
-      "summary": "衆議院議員提出の法案。10月5日に内閣委員会に付託。いまは衆議院で審議中。",
-      "ministry": "衆議院議員提出の法案",
-      "stage": {
-        "steps": [
-          "検討",
-          "閣議決定",
-          "国会審議",
-          "成立",
-          "公布",
-          "施行"
-        ],
-        "index": 2,
-        "label": "衆議院で審議中"
-      },
-      "links": [
-        {
-          "name": "衆議院 議案経過",
-          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2D06.htm"
-        },
-        {
-          "name": "法案の本文",
-          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/honbun/g22105019.htm"
-        }
-      ],
-      "sourceId": "shugiin",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 35,
-      "enriched": "rules"
-    },
-    {
-      "id": "gian:shu-221-2",
-      "date": "2026-10-05",
-      "type": "law",
-      "theme": "debt",
-      "title": "令和八年度における公債の発行の特例に関する法律案",
-      "summary": "衆議院議員提出の法案。10月5日に財務金融委員会に付託。いまは衆議院で審議中。",
-      "ministry": "衆議院議員提出の法案",
-      "stage": {
-        "steps": [
-          "検討",
-          "閣議決定",
-          "国会審議",
-          "成立",
-          "公布",
-          "施行"
-        ],
-        "index": 2,
-        "label": "衆議院で審議中"
-      },
-      "links": [
-        {
-          "name": "衆議院 議案経過",
-          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2D52.htm"
-        },
-        {
-          "name": "法案の本文",
-          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/honbun/g22105002.htm"
-        }
-      ],
-      "sourceId": "shugiin",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 35,
-      "enriched": "rules"
-    },
-    {
-      "id": "gian:shu-221-20",
-      "date": "2026-10-05",
-      "type": "law",
-      "theme": "other",
-      "title": "盗難自動車等の処分の防止に関する法律案",
-      "summary": "衆議院議員提出の法案。10月5日に内閣委員会に付託。いまは衆議院で審議中。",
-      "ministry": "衆議院議員提出の法案",
-      "stage": {
-        "steps": [
-          "検討",
-          "閣議決定",
-          "国会審議",
-          "成立",
-          "公布",
-          "施行"
-        ],
-        "index": 2,
-        "label": "衆議院で審議中"
-      },
-      "links": [
-        {
-          "name": "衆議院 議案経過",
-          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2D0E.htm"
-        },
-        {
-          "name": "法案の本文",
-          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/honbun/g22105020.htm"
-        }
-      ],
-      "sourceId": "shugiin",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 35,
-      "enriched": "rules"
-    },
-    {
-      "id": "gian:shu-221-21",
-      "date": "2026-10-05",
-      "type": "law",
-      "theme": "other",
-      "title": "組織的な犯罪の処罰及び犯罪収益の規制等に関する法律及び刑事訴訟法の一部を改正する法律案",
-      "summary": "衆議院議員提出の法案。10月5日に法務委員会に付託。いまは衆議院で審議中。",
-      "ministry": "衆議院議員提出の法案",
-      "stage": {
-        "steps": [
-          "検討",
-          "閣議決定",
-          "国会審議",
-          "成立",
-          "公布",
-          "施行"
-        ],
-        "index": 2,
-        "label": "衆議院で審議中"
-      },
-      "links": [
-        {
-          "name": "衆議院 議案経過",
-          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2D3A.htm"
-        },
-        {
-          "name": "法案の本文",
-          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/honbun/g22105021.htm"
-        }
-      ],
-      "sourceId": "shugiin",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 35,
-      "enriched": "rules"
-    },
-    {
-      "id": "gian:shu-221-24",
-      "date": "2026-10-05",
-      "type": "law",
-      "theme": "other",
-      "title": "特別市の設置に係る制度の整備の推進に関する法律案",
-      "summary": "衆議院議員提出の法案。10月5日に地域活性化・こども政策・デジタル社会形成に関する特別委員会に付託。いまは衆議院で審議中。",
-      "ministry": "衆議院議員提出の法案",
-      "stage": {
-        "steps": [
-          "検討",
-          "閣議決定",
-          "国会審議",
-          "成立",
-          "公布",
-          "施行"
-        ],
-        "index": 2,
-        "label": "衆議院で審議中"
-      },
-      "links": [
-        {
-          "name": "衆議院 議案経過",
-          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2CFE.htm"
-        },
-        {
-          "name": "法案の本文",
-          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/honbun/g22105024.htm"
-        }
-      ],
-      "sourceId": "shugiin",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 35,
-      "enriched": "rules"
-    },
-    {
-      "id": "gian:shu-221-32",
-      "date": "2026-10-05",
-      "type": "law",
-      "theme": "industry",
-      "title": "受託中小企業振興法の一部を改正する法律案",
-      "summary": "衆議院議員提出の法案。10月5日に経済産業委員会に付託。いまは衆議院で審議中。",
-      "ministry": "衆議院議員提出の法案",
-      "stage": {
-        "steps": [
-          "検討",
-          "閣議決定",
-          "国会審議",
-          "成立",
-          "公布",
-          "施行"
-        ],
-        "index": 2,
-        "label": "衆議院で審議中"
-      },
-      "links": [
-        {
-          "name": "衆議院 議案経過",
-          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2DC6.htm"
-        },
-        {
-          "name": "法案の本文",
-          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/honbun/g22105032.htm"
-        }
-      ],
-      "sourceId": "shugiin",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 35,
-      "enriched": "rules"
-    },
-    {
-      "id": "gian:shu-221-33",
-      "date": "2026-10-05",
-      "type": "law",
-      "theme": "other",
-      "title": "ものづくり基盤技術振興基本法の一部を改正する法律案",
-      "summary": "衆議院議員提出の法案。10月5日に経済産業委員会に付託。いまは衆議院で審議中。",
-      "ministry": "衆議院議員提出の法案",
-      "stage": {
-        "steps": [
-          "検討",
-          "閣議決定",
-          "国会審議",
-          "成立",
-          "公布",
-          "施行"
-        ],
-        "index": 2,
-        "label": "衆議院で審議中"
-      },
-      "links": [
-        {
-          "name": "衆議院 議案経過",
-          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2DD6.htm"
-        },
-        {
-          "name": "法案の本文",
-          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/honbun/g22105033.htm"
-        }
-      ],
-      "sourceId": "shugiin",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 35,
-      "enriched": "rules"
-    },
-    {
-      "id": "gian:shu-221-34",
-      "date": "2026-10-05",
-      "type": "law",
-      "theme": "social",
-      "title": "新型コロナウイルス感染症対策検証委員会等の設置等に関する法律案",
-      "summary": "衆議院議員提出の法案。10月5日に議院運営委員会に付託。いまは衆議院で審議中。",
-      "ministry": "衆議院議員提出の法案",
-      "stage": {
-        "steps": [
-          "検討",
-          "閣議決定",
-          "国会審議",
-          "成立",
-          "公布",
-          "施行"
-        ],
-        "index": 2,
-        "label": "衆議院で審議中"
-      },
-      "links": [
-        {
-          "name": "衆議院 議案経過",
-          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2D4A.htm"
-        },
-        {
-          "name": "法案の本文",
-          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/honbun/g22105034.htm"
-        }
-      ],
-      "sourceId": "shugiin",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 35,
-      "enriched": "rules"
-    },
-    {
-      "id": "gian:shu-221-35",
-      "date": "2026-10-05",
-      "type": "law",
-      "theme": "other",
-      "title": "公職選挙法の一部を改正する法律案",
-      "summary": "衆議院議員提出の法案。10月5日に政治改革に関する特別委員会に付託。いまは衆議院で審議中。",
-      "ministry": "衆議院議員提出の法案",
-      "stage": {
-        "steps": [
-          "検討",
-          "閣議決定",
-          "国会審議",
-          "成立",
-          "公布",
-          "施行"
-        ],
-        "index": 2,
-        "label": "衆議院で審議中"
-      },
-      "links": [
-        {
-          "name": "衆議院 議案経過",
-          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2D2A.htm"
-        },
-        {
-          "name": "法案の本文",
-          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/honbun/g22105035.htm"
-        }
-      ],
-      "sourceId": "shugiin",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 35,
-      "enriched": "rules"
-    },
-    {
-      "id": "gian:shu-221-36",
-      "date": "2026-10-05",
-      "type": "law",
-      "theme": "infra",
-      "title": "非居住住宅税及び超短期所有住宅等の譲渡に係る事業所得等の課税の特例の創設等に関する法律案",
-      "summary": "衆議院議員提出の法案。10月5日に国土交通委員会に付託。いまは衆議院で審議中。",
-      "ministry": "衆議院議員提出の法案",
-      "stage": {
-        "steps": [
-          "検討",
-          "閣議決定",
-          "国会審議",
-          "成立",
-          "公布",
-          "施行"
-        ],
-        "index": 2,
-        "label": "衆議院で審議中"
-      },
-      "links": [
-        {
-          "name": "衆議院 議案経過",
-          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2DB6.htm"
-        },
-        {
-          "name": "法案の本文",
-          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/honbun/g22105036.htm"
-        }
-      ],
-      "sourceId": "shugiin",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 35,
-      "enriched": "rules"
-    },
-    {
-      "id": "gian:shu-221-37",
-      "date": "2026-10-05",
-      "type": "law",
-      "theme": "industry",
-      "title": "自動車産業における脱炭素化の推進に関する法律案",
-      "summary": "衆議院議員提出の法案。10月5日に経済産業委員会に付託。いまは衆議院で審議中。",
-      "ministry": "衆議院議員提出の法案",
-      "stage": {
-        "steps": [
-          "検討",
-          "閣議決定",
-          "国会審議",
-          "成立",
-          "公布",
-          "施行"
-        ],
-        "index": 2,
-        "label": "衆議院で審議中"
-      },
-      "links": [
-        {
-          "name": "衆議院 議案経過",
-          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2DDE.htm"
-        },
-        {
-          "name": "法案の本文",
-          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/honbun/g22105037.htm"
-        }
-      ],
-      "sourceId": "shugiin",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 35,
-      "enriched": "rules"
-    },
-    {
-      "id": "gian:shu-221-6",
-      "date": "2026-10-05",
-      "type": "law",
-      "theme": "social",
-      "title": "障害者及びその家族に対する福祉、教育等に係る支援に関する施策の総合的な推進に関する法律案",
-      "summary": "衆議院議員提出の法案。10月5日に文部科学委員会に付託。いまは衆議院で審議中。",
-      "ministry": "衆議院議員提出の法案",
-      "stage": {
-        "steps": [
-          "検討",
-          "閣議決定",
-          "国会審議",
-          "成立",
-          "公布",
-          "施行"
-        ],
-        "index": 2,
-        "label": "衆議院で審議中"
-      },
-      "links": [
-        {
-          "name": "衆議院 議案経過",
-          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2DAE.htm"
-        },
-        {
-          "name": "法案の本文",
-          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/honbun/g22105006.htm"
-        }
-      ],
-      "sourceId": "shugiin",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 35,
-      "enriched": "rules"
-    },
-    {
-      "id": "gian:shu-221-7",
-      "date": "2026-10-05",
-      "type": "law",
-      "theme": "social",
-      "title": "全ての国民が安心して医療を受けられる環境の整備を図るための高額療養費等の制度の在り方に係る措置に関する法律案",
-      "summary": "衆議院議員提出の法案。10月5日に厚生労働委員会に付託。いまは衆議院で審議中。",
-      "ministry": "衆議院議員提出の法案",
-      "stage": {
-        "steps": [
-          "検討",
-          "閣議決定",
-          "国会審議",
-          "成立",
-          "公布",
-          "施行"
-        ],
-        "index": 2,
-        "label": "衆議院で審議中"
-      },
-      "links": [
-        {
-          "name": "衆議院 議案経過",
-          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2DBE.htm"
-        },
-        {
-          "name": "法案の本文",
-          "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/honbun/g22105007.htm"
-        }
-      ],
-      "sourceId": "shugiin",
-      "firstSeen": "2026-11-24T22:06:48.044Z",
-      "importance": 35,
       "enriched": "rules"
     }
   ]

@@ -39,14 +39,14 @@ function text(v: unknown): string {
   return '';
 }
 
-function rssItem(raw: unknown): FeedEntry {
+function rssItem(raw: unknown, base?: string): FeedEntry {
   const it = isNode(raw) ? raw : {};
   const guid = it.guid;
   const guidIsLink = isNode(guid) ? guid['@_isPermaLink'] !== 'false' : true;
   const link = text(it.link) || text(it['@_rdf:about']) || (guidIsLink && /^https?:/.test(text(guid)) ? text(guid) : '');
   return {
     title: cleanTitle(text(it.title)),
-    link: link ? canonicalUrl(link) : '',
+    link: link ? canonicalUrl(link, base) : '',
     date: parseDate(text(it.pubDate) || text(it['dc:date']) || text(it.date)),
     summary: stripTags(text(it.description) || text(it['content:encoded'])),
     categories: [...arr(it.category), ...arr(it['dc:subject'])].map(text).filter(Boolean),
@@ -54,7 +54,7 @@ function rssItem(raw: unknown): FeedEntry {
   };
 }
 
-function atomEntry(raw: unknown): FeedEntry {
+function atomEntry(raw: unknown, base?: string): FeedEntry {
   const e = isNode(raw) ? raw : {};
   const links = arr(e.link);
   const alt = links.find(l => isNode(l) && (l['@_rel'] ?? 'alternate') === 'alternate') ?? links[0];
@@ -62,7 +62,7 @@ function atomEntry(raw: unknown): FeedEntry {
   const author = isNode(e.author) ? text(e.author.name) : text(e.author);
   return {
     title: cleanTitle(text(e.title)),
-    link: href ? canonicalUrl(href) : '',
+    link: href ? canonicalUrl(href, base) : '',
     date: parseDate(text(e.updated) || text(e.published)),
     summary: stripTags(text(e.summary) || text(e.content)),
     categories: arr(e.category).map(c => (isNode(c) ? text(c['@_term']) || text(c) : text(c))).filter(Boolean),
@@ -70,19 +70,22 @@ function atomEntry(raw: unknown): FeedEntry {
   };
 }
 
-/** RSS 2.0、RSS 1.0（RDF）、Atom を同じ形にそろえて返す。 */
-export function parseFeed(xml: string): Feed {
+/**
+ * RSS 2.0、RSS 1.0（RDF）、Atom を同じ形にそろえて返す。
+ * base はフィード自身のURL。項目のリンクが「/j/press/…」のように省略して書かれているフィード（防衛省など）で使う。
+ */
+export function parseFeed(xml: string, base?: string): Feed {
   const doc = parser.parse(xml) as Node;
   const rss = doc.rss;
   if (isNode(rss) && isNode(rss.channel)) {
-    return { title: text(rss.channel.title), entries: arr(rss.channel.item).map(rssItem) };
+    return { title: text(rss.channel.title), entries: arr(rss.channel.item).map(i => rssItem(i, base)) };
   }
   const rdf = doc['rdf:RDF'] ?? doc.RDF;
   if (isNode(rdf)) {
-    return { title: isNode(rdf.channel) ? text(rdf.channel.title) : '', entries: arr(rdf.item).map(rssItem) };
+    return { title: isNode(rdf.channel) ? text(rdf.channel.title) : '', entries: arr(rdf.item).map(i => rssItem(i, base)) };
   }
   if (isNode(doc.feed)) {
-    return { title: text(doc.feed.title), entries: arr(doc.feed.entry).map(atomEntry) };
+    return { title: text(doc.feed.title), entries: arr(doc.feed.entry).map(e => atomEntry(e, base)) };
   }
   throw new Error('フィードとして読めませんでした（RSS・RDF・Atom のいずれでもない）');
 }

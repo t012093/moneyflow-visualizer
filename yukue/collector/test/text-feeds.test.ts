@@ -76,6 +76,13 @@ test('Atom を読み、rel=alternate のリンクを使う', () => {
   assert.deepEqual(feed.entries.map(e => [e.title, e.link, e.summary, e.categories[0]]), [['制度を見直しました', 'https://example.go.jp/a.html', '概要です', '制度']]);
 });
 
+test('項目のリンクが省略して書かれたフィード（防衛省）は、フィードのURLをもとに補う', () => {
+  const xml = `<?xml version="1.0" encoding="UTF-8" ?><rss version="2.0"><channel><title>防衛省・自衛隊</title>
+    <item><title>多軌道観測実証衛星の打上げについて</title><link>/j/press/news/2026/11/24c.html</link><guid isPermaLink="true">/j/press/news/2026/11/24c.html</guid><pubDate>Tue, 24 Nov 2026 18:00:36 +0900</pubDate></item></channel></rss>`;
+  assert.equal(parseFeed(xml, 'https://www.mod.go.jp/j/rss/news.xml').entries[0].link, 'https://www.mod.go.jp/j/press/news/2026/11/24c.html');
+  assert.equal(parseFeed(xml).entries[0].link, '/j/press/news/2026/11/24c.html', 'もとのURLが分からなければ、そのまま返す（あとで https でないものとして落ちる）');
+});
+
 test('フィードでないものは、分かる言葉で失敗する', () => {
   assert.throws(() => parseFeed('<html><body>403</body></html>'), /フィードとして読めません/);
 });

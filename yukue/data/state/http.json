@@ -1,19 +1,19 @@
 {
   "https://api.jgrants-portal.go.jp/exp/v1/public/subsidies?keyword=%E4%BA%8B%E6%A5%AD&sort=created_date&order=DESC&acceptance=1": {
     "hash": "080d108191124aa05a29984a3abf372116e72481",
-    "fetchedAt": "2026-11-24T22:18:06.748Z"
+    "fetchedAt": "2026-11-24T22:36:26.925Z"
   },
   "https://api.jgrants-portal.go.jp/exp/v1/public/subsidies?keyword=%E5%8A%A9%E6%88%90&sort=created_date&order=DESC&acceptance=1": {
     "hash": "be5516d0bfe7e8dfddd9cf6c49b1177941ad5d14",
-    "fetchedAt": "2026-11-24T22:18:03.120Z"
+    "fetchedAt": "2026-11-24T22:36:23.357Z"
   },
   "https://api.jgrants-portal.go.jp/exp/v1/public/subsidies?keyword=%E6%94%AF%E6%8F%B4&sort=created_date&order=DESC&acceptance=1": {
     "hash": "3ed48fadb0a9d62a9b06b986dc15bb707c3d4aa6",
-    "fetchedAt": "2026-11-24T22:18:05.059Z"
+    "fetchedAt": "2026-11-24T22:36:25.190Z"
   },
   "https://api.jgrants-portal.go.jp/exp/v1/public/subsidies?keyword=%E8%A3%9C%E5%8A%A9%E9%87%91&sort=created_date&order=DESC&acceptance=1": {
     "hash": "617d6cb9f80dfd5eaab0e3ff813485a6b058fd5e",
-    "fetchedAt": "2026-11-24T22:18:02.405Z"
+    "fetchedAt": "2026-11-24T22:36:22.454Z"
   },
   "https://public-comment.e-gov.go.jp/rss/pcm_list.xml": {
     "etag": "\"eacf6fc91b5b33cb5a962a102baa2e6e-1-gzip\"",
@@ -28,21 +28,43 @@
     "fetchedAt": "2026-11-24T22:07:06.195Z"
   },
   "https://www.cao.go.jp/rss/news.rdf": {
-    "etag": "W/\"1937-66101645f90b8\"",
+    "etag": "W/\"1937-66101645f99b2\"",
     "lastModified": "Tue, 24 Nov 2026 08:21:07 GMT",
     "hash": "1cdb499f79cb037dab1f239eaaa2989047d86df2",
-    "fetchedAt": "2026-11-24T22:17:44.992Z"
+    "fetchedAt": "2026-11-24T22:35:52.691Z"
+  },
+  "https://www.cfa.go.jp/news": {
+    "etag": "\"1795532068-gzip\"",
+    "lastModified": "Tue, 24 Nov 2026 14:54:28 GMT",
+    "hash": "9cfce272ea418cd8055d6e93bdf6b8d11645d808",
+    "fetchedAt": "2026-11-24T22:36:08.082Z"
+  },
+  "https://www.cfa.go.jp/news?page=1": {
+    "etag": "\"1795532126-gzip\"",
+    "lastModified": "Tue, 24 Nov 2026 14:55:26 GMT",
+    "hash": "abc6b14b6d8bd84849266cda8d2bbf1c4b3440f0",
+    "fetchedAt": "2026-11-24T22:36:09.606Z"
   },
   "https://www.digital.go.jp/rss/news.xml": {
-    "etag": "\"1795509136-gzip\"",
-    "lastModified": "Tue, 24 Nov 2026 08:32:16 GMT",
+    "etag": "\"1795509119-gzip\"",
+    "lastModified": "Tue, 24 Nov 2026 08:31:59 GMT",
     "hash": "4eed8d9e30989beeeea2c9d076140e2838f5a634",
-    "fetchedAt": "2026-11-24T22:07:07.719Z"
+    "fetchedAt": "2026-11-24T22:36:03.234Z"
+  },
+  "https://www.env.go.jp/press/index.html": {
+    "etag": "\"d048526017f6efac4727fcededb7e24a\"",
+    "lastModified": "Tue, 24 Nov 2026 08:32:05 GMT",
+    "hash": "7164060636b3ecaa9f8c41b767b2afcb95cd5fe0",
+    "fetchedAt": "2026-11-24T22:36:06.518Z"
   },
   "https://www.fsa.go.jp/fsaNewsListAll_rss2.xml": {
     "lastModified": "Tue, 24 Nov 2026 08:00:12 GMT",
     "hash": "83a5fbbd47d53264a0f3d4caea90d4342aa2a0f7",
     "fetchedAt": "2026-11-24T22:07:04.256Z"
+  },
+  "https://www.jbaudit.go.jp/": {
+    "hash": "d7d3f8427c72721baf5117e7720610a37559249c",
+    "fetchedAt": "2026-11-24T22:36:14.841Z"
   },
   "https://www.kantei.go.jp/index-jnews.rdf": {
     "etag": "\"bcc21828a870c2f382bc7dcd83f8c2cc\"",
@@ -104,11 +126,29 @@
     "hash": "a0a411220c525ce9d8c366c3a79412fb70c9a54b",
     "fetchedAt": "2026-11-24T22:07:01.185Z"
   },
+  "https://www.mod.go.jp/j/rss/news.xml": {
+    "etag": "W/\"cb33-66101fcb759c0\"",
+    "lastModified": "Tue, 24 Nov 2026 09:03:43 GMT",
+    "hash": "09b89c7ce13e86e9ce18d5f23ed8e43431fe826d",
+    "fetchedAt": "2026-11-24T22:38:55.753Z"
+  },
   "https://www.mof.go.jp/news.rss": {
     "etag": "\"776c-66105652ffb97\"",
     "lastModified": "Tue, 24 Nov 2026 13:07:40 GMT",
     "hash": "b83d6107f1c3dec31536b8436d9db7f120d1f0d1",
     "fetchedAt": "2026-11-24T22:17:38.536Z"
+  },
+  "https://www.moj.go.jp/": {
+    "etag": "W/\"c894-661019ed6c200\"",
+    "lastModified": "Tue, 24 Nov 2026 08:37:28 GMT",
+    "hash": "a2a37f5f5fcfa5eaa88aa8eb0a464a79e5e02d9d",
+    "fetchedAt": "2026-11-24T22:36:13.185Z"
+  },
+  "https://www.nta.go.jp/": {
+    "etag": "\"129a2-660fe9559c928\"",
+    "lastModified": "Tue, 24 Nov 2026 05:00:03 GMT",
+    "hash": "c02ad793251ad7c04f4b7f77c8c890f990588a6c",
+    "fetchedAt": "2026-11-24T22:36:11.501Z"
   },
   "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2CFE.htm": {
     "etag": "W/\"MTAtODA4Qy00OTI1OERDNDAwMDBDNkY3LTQ5MjU4RUI5MDAwMTQxMEQtMA==\"",

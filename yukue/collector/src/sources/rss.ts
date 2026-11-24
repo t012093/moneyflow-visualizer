@@ -55,7 +55,7 @@ export function rssSource(def: RssDef): Source {
     async run(ctx) {
       const page = await ctx.http.get(def.url, { accept: 'application/rss+xml, application/atom+xml, application/xml, text/xml, */*' });
       if (page.notModified || !page.changed) return { items: [], fetched: 0, unchanged: true };
-      const feed = parseFeed(page.text);
+      const feed = parseFeed(page.text, page.url);
       return { items: entriesToItems(feed.entries, def, ctx.now), fetched: feed.entries.length };
     }
   };

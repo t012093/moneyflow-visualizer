@@ -1,7 +1,8 @@
-import { mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import type { Briefing, RunReport, SourceStatus, UpdateItem, UpdatesFile } from '../../shared/types.ts';
-import { KEEP_DAYS, LATEST_LIMIT } from './config.ts';
+import { classify } from './classify.ts';
+import { KEEP_DAYS, KEEP_DAYS_LOW, KEEP_DAYS_MID, KEEP_DAYS_NOISE, LATEST_LIMIT } from './config.ts';
 import type { CollectorState } from './sources/types.ts';
 import { addDays, jstDate } from './text.ts';
 
@@ -94,21 +95,21 @@ export function mergeUpdates(prev: UpdateItem[], curated: UpdateItem[], incoming
     byId.delete(it.id);
   }
   const curatedUrls = new Set(curated.flatMap(c => c.links.map(l => l.url)));
-  const oldest = addDays(jstDate(now), -KEEP_DAYS);
-  const noiseOldest = addDays(jstDate(now), -14);
+  const today = jstDate(now);
+  // 重要なものほど長く残す（月ごとの保管用ファイルには、どれも残る）
+  const keepFrom = (it: UpdateItem) => addDays(today, -(it.noise ? KEEP_DAYS_NOISE : it.importance >= 50 ? KEEP_DAYS : it.importance >= 40 ? KEEP_DAYS_MID : KEEP_DAYS_LOW));
   // 別々の情報源が同じページを指しているときは、重要度の高いほうだけ残す
   const seenUrl = new Map<string, string>();
   const rest: UpdateItem[] = [];
   for (const it of [...byId.values()].sort((a, b) => b.importance - a.importance || byNewest(a, b))) {
     const url = it.links[0]?.url ?? it.id;
     const owner = seenUrl.get(url);
-    if (it.date < oldest || curatedUrls.has(url) || (owner !== undefined && owner !== it.sourceId)) continue;
-    // 定型の発表は、2週間で一覧から外す（月ごとの保管用ファイルには残る）
-    if (it.noise && it.date < noiseOldest) continue;
+    if (it.date < keepFrom(it) || curatedUrls.has(url) || (owner !== undefined && owner !== it.sourceId)) continue;
     seenUrl.set(url, it.sourceId);
     rest.push(it);
   }
-  rest.sort(byNewest);
+  // 件数の上限を超えるときは、定型の発表の古いものから先に外す
+  rest.sort((a, b) => Number(!!a.noise) - Number(!!b.noise) || byNewest(a, b));
   const items = [...curated, ...rest.slice(0, LATEST_LIMIT)].sort(byNewest);
   const kept = new Set(items.map(i => i.id));
   return { items, touched: touched.filter(t => kept.has(t.id)), addedIds: addedIds.filter(id => kept.has(id)) };
@@ -169,4 +170,46 @@ export function mergeReportSources(prev: RunReport | null, order: string[], curr
   const now = new Map(current.map(s => [s.id, s] as const));
   const before = new Map((prev?.sources ?? []).map(s => [s.id, s] as const));
   return order.map(id => now.get(id) ?? before.get(id)).filter((s): s is SourceStatus => !!s);
+}
+
+/**
+ * 分類の規則を直したあと、手元の一覧に当て直す。
+ * 対象は、フィードや新着ページから集めて規則で分類した項目だけ（人やAIが整えたもの、国会・閣議など専用の読み方をするものは触らない）。
+ */
+export function reclassify(items: UpdateItem[], defs: Map<string, { ministry: string; boost?: number }>): { items: UpdateItem[]; changed: UpdateItem[] } {
+  const changed: UpdateItem[] = [];
+  const out = items.map(item => {
+    const def = defs.get(item.sourceId);
+    if (!def || item.enriched !== 'rules') return item;
+    const c = classify({ title: item.title, summary: item.summary, ministry: def.ministry, boost: def.boost });
+    const next: UpdateItem = { ...item, type: c.type, theme: c.theme, importance: c.importance };
+    if (c.stage) next.stage = c.stage; else delete next.stage;
+    if (c.amount) next.amount = c.amount; else delete next.amount;
+    if (c.noise) next.noise = true; else delete next.noise;
+    if (JSON.stringify(next) === JSON.stringify(item)) return item;
+    changed.push(next);
+    return next;
+  });
+  return { items: out, changed };
+}
+
+/** 月ごとの保管用ファイルに入っている項目を、すべて読む。 */
+export function readArchive(dataDir: string): UpdateItem[] {
+  const dir = join(dataDir, 'updates/archive');
+  let files: string[];
+  try {
+    files = readdirSync(dir).filter(f => /^\d{4}-\d{2}\.json$/.test(f)).sort();
+  } catch {
+    return [];
+  }
+  return files.flatMap(f => readJson<UpdatesFile>(join(dir, f), { generatedAt: '', items: [] }).items);
+}
+
+/**
+ * 保管用ファイルから、一覧を作り直す。残す期間や件数の決まりを変えたあとに使う（通信はしない）。
+ * いまの一覧にある項目はそのまま生かし、一覧から外れていた項目を、いまの決まりで入れ直す。
+ */
+export function rebuildFromArchive(latest: UpdateItem[], curated: UpdateItem[], archived: UpdateItem[], now: Date): MergeResult {
+  const have = new Set(latest.map(i => i.id));
+  return mergeUpdates(latest, curated, archived.filter(a => !have.has(a.id) && a.sourceId !== 'curated'), now);
 }

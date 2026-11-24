@@ -1,62 +1,86 @@
 {
   "kantei": {
     "failures": 0,
-    "lastOk": "2026-11-24T22:17:34.426Z"
+    "lastOk": "2026-11-24T22:35:43.761Z"
   },
   "mof": {
     "failures": 0,
-    "lastOk": "2026-11-24T22:17:34.426Z"
+    "lastOk": "2026-11-24T22:35:43.761Z"
   },
   "mhlw": {
     "failures": 0,
-    "lastOk": "2026-11-24T22:17:34.426Z"
+    "lastOk": "2026-11-24T22:35:43.761Z"
   },
   "soumu": {
     "failures": 0,
-    "lastOk": "2026-11-24T22:17:34.426Z"
+    "lastOk": "2026-11-24T22:35:43.761Z"
   },
   "cao": {
     "failures": 0,
-    "lastOk": "2026-11-24T22:17:34.426Z"
+    "lastOk": "2026-11-24T22:35:43.761Z"
   },
   "mext": {
     "failures": 0,
-    "lastOk": "2026-11-24T22:17:34.426Z"
+    "lastOk": "2026-11-24T22:35:43.761Z"
   },
   "mlit": {
     "failures": 0,
-    "lastOk": "2026-11-24T22:17:34.426Z"
+    "lastOk": "2026-11-24T22:35:43.761Z"
   },
   "maff": {
     "failures": 0,
-    "lastOk": "2026-11-24T22:17:34.426Z"
+    "lastOk": "2026-11-24T22:35:43.761Z"
   },
   "fsa": {
     "failures": 0,
-    "lastOk": "2026-11-24T22:17:34.426Z"
+    "lastOk": "2026-11-24T22:35:43.761Z"
   },
   "caa": {
     "failures": 0,
-    "lastOk": "2026-11-24T22:17:34.426Z"
+    "lastOk": "2026-11-24T22:35:43.761Z"
   },
   "digital": {
     "failures": 0,
-    "lastOk": "2026-11-24T22:17:34.426Z"
+    "lastOk": "2026-11-24T22:35:43.761Z"
+  },
+  "mod": {
+    "failures": 0,
+    "lastOk": "2026-11-24T22:38:54.219Z"
+  },
+  "env": {
+    "failures": 0,
+    "lastOk": "2026-11-24T22:35:43.761Z"
+  },
+  "cfa": {
+    "failures": 0,
+    "lastOk": "2026-11-24T22:35:43.761Z"
+  },
+  "nta": {
+    "failures": 0,
+    "lastOk": "2026-11-24T22:35:43.761Z"
+  },
+  "moj": {
+    "failures": 0,
+    "lastOk": "2026-11-24T22:35:43.761Z"
+  },
+  "jbaudit": {
+    "failures": 0,
+    "lastOk": "2026-11-24T22:35:43.761Z"
   },
   "pubcomment": {
     "failures": 0,
-    "lastOk": "2026-11-24T22:17:34.426Z"
+    "lastOk": "2026-11-24T22:35:43.761Z"
   },
   "kakugi": {
     "failures": 0,
-    "lastOk": "2026-11-24T22:17:34.426Z"
+    "lastOk": "2026-11-24T22:35:43.761Z"
   },
   "shugiin": {
     "failures": 0,
-    "lastOk": "2026-11-24T22:17:34.426Z"
+    "lastOk": "2026-11-24T22:35:43.761Z"
   },
   "jgrants": {
     "failures": 0,
-    "lastOk": "2026-11-24T22:17:34.426Z"
+    "lastOk": "2026-11-24T22:35:43.761Z"
   }
 }
