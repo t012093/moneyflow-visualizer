@@ -147,12 +147,27 @@ export function upcoming(
     .map(x => x.r);
 }
 
-/** フォロー中の分野ごとに、いちばん新しい動きを1件ずつ（並べ替え済みの一覧を渡す） */
-export function latestByTheme(themes: readonly ThemeId[], sorted: readonly UpdateItem[]): UpdateItem[] {
-  const out: UpdateItem[] = [];
-  for (const t of themes) {
-    const u = sorted.find(x => x.theme === t);
-    if (u) out.push(u);
-  }
-  return out;
+/**
+ * その分野の動きから、目立たせる分をえらぶ（ホームの「フォロー中のテーマ」、流れ図の「関連する動き」、チャット）。
+ * 直近 days 日のものを、重要度の高い順（同じなら新しい順）に並べる。
+ * それで足りないときだけ、もっと前のものを同じ並びで足す。人事・入札・会見などは選ばない。
+ */
+export function pickByTheme(
+  updates: readonly UpdateItem[],
+  theme: ThemeId,
+  count: number,
+  today: string,
+  days = 14
+): UpdateItem[] {
+  const pool = updates.filter(u => !u.noise && u.theme === theme);
+  const byWeight = (a: UpdateItem, b: UpdateItem): number =>
+    b.importance - a.importance || (a.date < b.date ? 1 : a.date > b.date ? -1 : 0);
+  const isRecent = (u: UpdateItem): boolean => {
+    const age = daysBetween(u.date, today);
+    return age != null && age <= days;
+  };
+  const recent = pool.filter(isRecent).sort(byWeight);
+  if (recent.length >= count) return recent.slice(0, count);
+  const older = pool.filter(u => !isRecent(u)).sort(byWeight);
+  return [...recent, ...older].slice(0, count);
 }

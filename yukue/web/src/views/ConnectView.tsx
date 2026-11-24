@@ -4,7 +4,7 @@ import { FlowDiagram } from '../components/FlowDiagram.tsx';
 import { Ic, Seal } from '../components/Icons.tsx';
 import { MCP_URL, TOOLS } from '../content.ts';
 import { fmtCho } from '../lib/format.ts';
-import { useApp } from '../state/context.tsx';
+import { useApp } from '../state/context.ts';
 
 export function ConnectView() {
   const { store, model } = useApp();

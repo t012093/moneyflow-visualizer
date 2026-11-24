@@ -7,8 +7,8 @@ import {
   groupByDay,
   isHttps,
   isPassedLaw,
-  latestByTheme,
   matchesQuery,
+  pickByTheme,
   resolveBriefing,
   safeLinks,
   sortUpdates,
@@ -172,9 +172,27 @@ describe('ホームに出す分', () => {
     expect(upcoming([], [], '2026-11-24')).toEqual([]);
   });
 
-  it('フォロー中の分野ごとに、いちばん新しい動きを1件ずつ', () => {
-    const sorted = filterUpdates(sortUpdates(items), ALL);
-    expect(ids(latestByTheme(['social', 'industry', 'local'], sorted))).toEqual(['f', 'e']);
+  it('分野ごとに目立たせる動き：直近14日の中で、重要度の高い順（同じなら新しい順）', () => {
+    const list = [
+      update({ id: 'visit', date: '2026-11-24', theme: 'social', importance: 20, title: '視察に参加しました' }),
+      update({ id: 'law', date: '2026-11-13', theme: 'social', importance: 80, title: '改正法が成立' }),
+      update({ id: 'bill', date: '2026-11-20', theme: 'social', importance: 80, title: '法案を提出' }),
+      update({ id: 'opinion', date: '2026-11-22', theme: 'social', importance: 45, title: '意見募集' }),
+      update({ id: 'old', date: '2026-10-01', theme: 'social', importance: 99, title: '前の月の大きな動き' }),
+      update({ id: 'jinji', date: '2026-11-24', theme: 'social', importance: 100, noise: true, title: '人事異動' }),
+      update({ id: 'other', date: '2026-11-24', theme: 'industry', importance: 90, title: 'ほかの分野' })
+    ];
+    // 新しいだけの軽い発表（視察）や、人事などは選ばない
+    expect(ids(pickByTheme(list, 'social', 2, '2026-11-25'))).toEqual(['bill', 'law']);
+    expect(ids(pickByTheme(list, 'social', 1, '2026-11-25'))).toEqual(['bill']);
+    // 14日より前のものは、足りないときだけ足す（足すときも重要度の高い順）
+    expect(ids(pickByTheme(list, 'social', 5, '2026-11-25'))).toEqual(['bill', 'law', 'opinion', 'visit', 'old']);
+    expect(ids(pickByTheme(list, 'social', 2, '2026-12-20'))).toEqual(['old', 'bill']);
+    expect(ids(pickByTheme(list, 'social', 2, '2026-11-25', 3))).toEqual(['opinion', 'visit']);
+    expect(ids(pickByTheme(list, 'industry', 2, '2026-11-25'))).toEqual(['other']);
+    expect(pickByTheme(list, 'defense', 2, '2026-11-25')).toEqual([]);
+    // 元の配列は並べ替えない
+    expect(ids(list)).toEqual(['visit', 'law', 'bill', 'opinion', 'old', 'jinji', 'other']);
   });
 });
 

@@ -6,7 +6,7 @@ import { useEffect, useLayoutEffect, useMemo, useRef, useState, type KeyboardEve
 import { layoutFlow, neighborhood } from '../lib/flowLayout.ts';
 import type { FlowModel, FlowNode } from '../lib/flowModel.ts';
 import type { ThemeId } from '../types.ts';
-import { hideTip, showTip } from './Tip.tsx';
+import { hideTip, showTip } from './tip.ts';
 
 export interface FlowDiagramProps {
   model: FlowModel;
@@ -26,7 +26,8 @@ export interface FlowDiagramProps {
   onScrolledChange?: (scrolled: boolean) => void;
 }
 
-type Highlight = { kind: 'node'; id: string } | { kind: 'ribbon'; index: number } | null;
+/** 強調している相手。帯は並び順で指すので、どの図の帯かも覚えておく */
+type Highlight = { kind: 'node'; id: string } | { kind: 'ribbon'; index: number; model: FlowModel } | null;
 
 /** 入れ物の幅をはかる。3px を超えて変わったときだけ、図を配置し直す */
 function useBoxWidth(ref: RefObject<HTMLDivElement | null>): number {
@@ -60,32 +61,31 @@ export function FlowDiagram({ model, fmt, pct, themeVar, label, compact, sel, on
   const layout = useMemo(() => (width > 0 ? layoutFlow(model, width, { fmt, compact }) : null), [model, width, fmt, compact]);
   const [hi, setHi] = useState<Highlight>(null);
 
-  // 図の中身が入れ替わったら、もう無い項目の強調は外す
-  useEffect(() => {
-    setHi(h => (h && h.kind === 'node' && model.cols.some(c => c.nodes.some(n => n.id === h.id)) ? h : null));
-  }, [model]);
-
   const scrolled = !!layout?.scrolled;
   useEffect(() => {
     onScrolledChange?.(scrolled);
   }, [scrolled, onScrolledChange]);
 
-  const lit = useMemo(() => {
-    if (!layout || !hi) return null;
-    if (hi.kind === 'node') return neighborhood(layout, hi.id);
-    const r = layout.ribbons.find(x => x.index === hi.index);
-    return r ? { nodes: new Set([r.link.s, r.link.t]), ribbons: new Set([r.index]) } : null;
-  }, [layout, hi]);
-
-  const nameOf = useMemo(() => {
+  const names = useMemo(() => {
     const m = new Map<string, string>();
     for (const c of model.cols) for (const n of c.nodes) m.set(n.id, n.name);
-    return (id: string): string => m.get(id) ?? id;
+    return m;
   }, [model]);
+  const nameOf = (id: string): string => names.get(id) ?? id;
+
+  // 図の中身が入れ替わったあとは、今の図にもある項目の強調だけを生かす（もう無い項目や、前の図の帯は強調しない）
+  const lit = useMemo(() => {
+    if (!layout || !hi) return null;
+    if (hi.kind === 'node') return names.has(hi.id) ? neighborhood(layout, hi.id) : null;
+    if (hi.model !== model) return null;
+    const r = layout.ribbons.find(x => x.index === hi.index);
+    return r ? { nodes: new Set([r.link.s, r.link.t]), ribbons: new Set([r.index]) } : null;
+  }, [layout, hi, names, model]);
 
   // ポインターが乗っているあいだは強調する（図が入れ替わった直後は enter が来ないので、move でも確かめる）
   const lightNode = (id: string): void => setHi(h => (h && h.kind === 'node' && h.id === id ? h : { kind: 'node', id }));
-  const lightRibbon = (index: number): void => setHi(h => (h && h.kind === 'ribbon' && h.index === index ? h : { kind: 'ribbon', index }));
+  const lightRibbon = (index: number): void =>
+    setHi(h => (h && h.kind === 'ribbon' && h.index === index && h.model === model ? h : { kind: 'ribbon', index, model }));
 
   const pick = (node: FlowNode): void => {
     hideTip();

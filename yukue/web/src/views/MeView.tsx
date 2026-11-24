@@ -5,7 +5,7 @@ import { Ic } from '../components/Icons.tsx';
 import { AIMS, ASTEPS, BFORM, INCOME, INDUSTRY, KIDS, KIND, KOYO, OFORM, PREFS, WORK } from '../content.ts';
 import { matchPrograms } from '../lib/match.ts';
 import { cleanProfile, type AimId, type KidsId, type KindId, type Profile } from '../lib/profile.ts';
-import { useApp, useUi } from '../state/context.tsx';
+import { useApp, useUi } from '../state/context.ts';
 import { PresetButtons } from './FindView.tsx';
 
 const keysOf = <T extends string>(map: Record<T, string>): T[] => Object.keys(map) as T[];

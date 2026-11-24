@@ -64,9 +64,10 @@ describe('かんたん応答（手元の規則で答える）', () => {
     expect(a.source).toBe('出典：財務省「令和8年度予算」（内訳はサンプル）');
   });
 
-  it('関連する最近の動きは、ふだん外している発表（noise）からは選ばない', () => {
+  it('関連する最近の動きは、重要度の高いものをえらぶ。ふだん外している発表（noise）からは選ばない', () => {
     const a = setup().ask('社会保障の内訳を見せて');
-    expect(a.text).toContain('関連する最近の動きは「年金の検討会を開催」です。');
+    // 新しいだけの「年金の検討会を開催」（重要度40）より、重要度60の法律を出す
+    expect(a.text).toContain('関連する最近の動きは「B型肝炎の給付金、請求できる期限を延ばす改正法が公布」（公布）です。');
     expect(a.text).not.toContain('人事異動');
   });
 
@@ -288,7 +289,7 @@ describe('会話の進行', () => {
     expect(chat.getState().busy).toBe(false);
   });
 
-  it('設定を使わない人の設定は、そのまま provider に渡る状態に入っている（外へ送る provider が自分で確かめる）', async () => {
+  it('provider には、画面の状態・いま見ている画面・きょうの日付を渡す（設定を外へ送ってよいかは useInAi で分かる）', async () => {
     const { store } = setup();
     store.usePreset('person');
     store.setUseInAi(false);

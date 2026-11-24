@@ -7,7 +7,7 @@ import type { ChatMessage } from '../chat/controller.ts';
 import { screenLabel, suggestions } from '../chat/screen.ts';
 import { fmtCho } from '../lib/format.ts';
 import { useMediaQuery } from '../lib/hooks.ts';
-import { useApp, useChatState, useUi } from '../state/context.tsx';
+import { useApp, useChatState, useUi } from '../state/context.ts';
 import { OVERLAY_QUERY } from '../state/store.ts';
 import { Ic } from './Icons.tsx';
 

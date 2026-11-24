@@ -9,13 +9,14 @@ import { createLocalProvider } from './chat/local.ts';
 import { Dock, Scrim } from './components/Dock.tsx';
 import { Header, TabBar } from './components/Header.tsx';
 import { IconSprite } from './components/Icons.tsx';
-import { TipLayer, hideTip } from './components/Tip.tsx';
+import { TipLayer } from './components/Tip.tsx';
+import { hideTip } from './components/tip.ts';
 import { VIEW_NAMES, type ViewId } from './content.ts';
 import { DataLoadError, loadData } from './data/load.ts';
 import { buildModel } from './data/model.ts';
 import { prefersReducedMotion } from './lib/hooks.ts';
 import { storage } from './lib/storage.ts';
-import { AppProvider, useApp, useUi, type AppServices } from './state/context.tsx';
+import { AppContext, useApp, useUi, type AppServices } from './state/context.ts';
 import { AppStore, viewFromHash } from './state/store.ts';
 import { AboutView } from './views/AboutView.tsx';
 import { ApplyView } from './views/ApplyView.tsx';
@@ -158,9 +159,9 @@ export function App() {
   const [boot, setBoot] = useState<Boot>({ status: 'loading' });
   const [attempt, setAttempt] = useState(0);
 
+  // attempt がふえるたびに読み込む（最初の1回と、「もう一度読み込む」を押したとき）
   useEffect(() => {
     const ctl = new AbortController();
-    setBoot({ status: 'loading' });
     loadData(ctl.signal).then(
       data => {
         if (ctl.signal.aborted) return;
@@ -182,11 +183,17 @@ export function App() {
     <>
       <IconSprite />
       {boot.status === 'ready' ? (
-        <AppProvider value={boot.services}>
+        <AppContext.Provider value={boot.services}>
           <Shell />
-        </AppProvider>
+        </AppContext.Provider>
       ) : (
-        <BootScreen boot={boot} onRetry={() => setAttempt(n => n + 1)} />
+        <BootScreen
+          boot={boot}
+          onRetry={() => {
+            setBoot({ status: 'loading' });
+            setAttempt(n => n + 1);
+          }}
+        />
       )}
       <TipLayer />
     </>

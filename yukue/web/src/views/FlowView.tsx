@@ -5,11 +5,11 @@ import { TrendChart } from '../components/Charts.tsx';
 import { FlowDiagram } from '../components/FlowDiagram.tsx';
 import { Ic } from '../components/Icons.tsx';
 import { typeInfo } from '../content.ts';
-import { shortDate } from '../lib/dates.ts';
+import { shortDate, todayJst } from '../lib/dates.ts';
 import { findNode, type FlowModel, type FlowNode } from '../lib/flowModel.ts';
 import { fmtCho, yoyOf, type Unit } from '../lib/format.ts';
-import { stageName } from '../lib/updates.ts';
-import { useApp, useUi } from '../state/context.tsx';
+import { pickByTheme, stageName } from '../lib/updates.ts';
+import { useApp, useUi } from '../state/context.ts';
 import { currentFlow, type FlowMode } from '../state/store.ts';
 import type { ThemeId } from '../types.ts';
 
@@ -233,7 +233,7 @@ function Detail({ flow, node: nd }: { flow: FlowModel; node: FlowNode }) {
   const trend = (u ? u.trend : s ? s.trend : isPool ? fy.trend : null) ?? null;
   const color = model.nodeColor(nd);
   const title = u ? u.long || u.name : nd.name;
-  const related = theme ? model.visibleUpdates.filter(x => x.theme === theme).slice(0, 2) : [];
+  const related = theme ? pickByTheme(model.updates, theme, 2, todayJst(store.now())) : [];
   const programs = u ? model.programs.filter(p => p.theme === u.theme).slice(0, 2) : [];
   const yoy = yoyOf(trend);
   const from = nd.kind === 'recip' ? flow.links.filter(l => l.t === nd.id).sort((a, b) => b.v - a.v) : [];

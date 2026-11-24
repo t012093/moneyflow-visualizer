@@ -3,9 +3,10 @@
  *
  * 使い方：
  *   npm run build && npx vite preview --port 4173 --strictPort &
- *   NODE_PATH=/opt/node-tools/node_modules node scripts/browser-check.cjs
+ *   npm run browser-check
  *
- * Playwright はこのパッケージの依存には入れていない（NODE_PATH などで見える場所にあること）。
+ * Playwright はこのパッケージの依存には入れていない。別に用意する
+ * （npm install --no-save playwright && npx playwright install chromium。ほかの場所にあるなら NODE_PATH で指す）。
  * 環境変数： YUKUE_URL（既定 http://127.0.0.1:4173/）、YUKUE_SHOTS（スクリーンショットの保存先。無ければ撮らない）
  *
  * 見るところ：1440px と 390px、ライトとダークで、
@@ -38,6 +39,16 @@ function check(where, label, ok, detail) {
     failures.push(`[${where}] ${label}${detail !== undefined ? ' — ' + JSON.stringify(detail) : ''}`);
     console.log(`  NG  ${label}`, detail !== undefined ? detail : '');
   }
+}
+
+/** 画面と同じ決まり：その分野の、直近14日で重要度の高い動き（同じなら新しい順）。足りなければ前のものを足す */
+function pickByTheme(items, theme, count, today, days = 14) {
+  const pool = items.filter(u => !u.noise && u.theme === theme);
+  const byWeight = (a, b) => b.importance - a.importance || (a.date < b.date ? 1 : a.date > b.date ? -1 : 0);
+  const age = u => Math.round((Date.parse(today + 'T00:00:00Z') - Date.parse(u.date + 'T00:00:00Z')) / 86400000);
+  const recent = pool.filter(u => age(u) <= days).sort(byWeight);
+  if (recent.length >= count) return recent.slice(0, count);
+  return [...recent, ...pool.filter(u => age(u) > days).sort(byWeight)].slice(0, count);
 }
 
 const jst = iso => {
@@ -184,6 +195,9 @@ async function run() {
       check(where, 'きょうの動きは briefing.json から', briefExpected ? briefShown === briefExpected : briefShown <= 3, { briefShown, briefExpected });
       const aiTag = await count('.brief-foot .tag');
       check(where, '「AI要約」の印は、AIがまとめたときだけ', aiTag === (data.briefing && data.briefing.method === 'ai' && briefShown ? 1 : 0), aiTag);
+      const followTitles = await page.locator('.home-low section').nth(0).locator('.row .row-t').allInnerTexts();
+      const followWant = ['social', 'industry', 'local'].flatMap(t => pickByTheme(data.updates.items, t, 1, today)).map(u => u.title.trim());
+      check(where, 'フォロー中のテーマ：直近14日で重要度の高い動きを出す', JSON.stringify(followTitles.map(t => t.trim())) === JSON.stringify(followWant), { followTitles, followWant });
       const agenda = await page.locator('.home-low section').nth(1).locator('.row').count();
       check(where, 'これからの予定は6件まで', agenda >= 1 && agenda <= 6, agenda);
       const whens = await page.locator('.home-low section').nth(1).locator('.row .row-d').allInnerTexts();
@@ -203,6 +217,9 @@ async function run() {
       const first = data.budget.use[0];
       check(where, '最初は、いちばん上の使いみちをえらんでいる', (await text('.sel-bar b')) === first.name, await text('.sel-bar b'));
       check(where, 'えらんだ項目と帯の印', (await count('#v-flow g.nd.sel')) === 1 && (await count('#v-flow path.rib.sel')) === 1, undefined);
+      const relTitles = (await page.locator('.detail .d-sub:has-text("関連する動き") ~ button .d-link-t').allInnerTexts()).map(t => t.trim());
+      const relWant = pickByTheme(data.updates.items, first.theme, 2, today).map(u => u.title.trim());
+      check(where, '関連する動き：直近14日で重要度の高い動きを出す', JSON.stringify(relTitles) === JSON.stringify(relWant), { relTitles, relWant });
 
       // 内訳に進む（ボタン）
       await page.click('.sel-bar .btn');
@@ -278,6 +295,7 @@ async function run() {
 
       /* ---------- 政策の動き ---------- */
       await go('updates');
+      check(where, '見出しの上の言葉（集めていない官報は書かない）', (await text('#v-updates .eyebrow')) === '毎日更新 ・ 各府省・国会・Jグランツから', await text('#v-updates .eyebrow'));
       const shownAtFirst = await count('.up');
       check(where, '最初に出すのは60件まで', shownAtFirst === Math.min(60, visible.length), { shownAtFirst, visible: visible.length });
       check(where, '「もっと見る」', (await count('.feed-more button')) === (visible.length > 60 ? 1 : 0), undefined);
@@ -481,7 +499,7 @@ async function run() {
         check(where, 'Jグランツ：地域の選択肢はデータから作る', areas.length >= 2 && areas[0] === 'すべての地域', areas.slice(0, 5));
         const area = areas.find(a => a !== 'すべての地域' && a !== '全国') || areas[1];
         await page.selectOption('#jgArea', area);
-        const parts = g => (g.area || '').split(/[\/／、,，]/).map(s => s.trim());
+        const parts = g => (g.area || '').split(/[/／、,，]/).map(s => s.trim());
         const inArea = open.filter(g => parts(g).includes(area)).length;
         check(where, `Jグランツ：地域「${area}」で絞る`, (await count('#v-find .prog')) === Math.min(60, inArea), { got: await count('#v-find .prog'), inArea });
         await page.selectOption('#jgArea', '');
@@ -597,11 +615,29 @@ async function run() {
       const aboutText = await text('#v-about');
       check(where, 'このサイトについて：サンプルの説明', aboutText.includes(data.budget.fy.sampleNote) && aboutText.includes('サンプルの値'), undefined);
       if (data.run && data.run.sources.length) {
-        check(where, 'このサイトについて：収集元の表', (await count('#v-about table.tbl tbody tr')) === data.run.sources.length, await count('#v-about table.tbl tbody tr'));
+        const rowTexts = (await page.locator('#v-about table.tbl tbody tr').allInnerTexts()).map(t => t.replace(/\s+/g, ' '));
+        check(where, 'このサイトについて：収集元の表', rowTexts.length === data.run.sources.length, rowTexts.length);
         const ng = data.run.sources.filter(s => !s.ok).length;
         check(where, 'このサイトについて：失敗した収集元の印', (await count('#v-about .st.fail')) === ng && (await count('#v-about .st.open')) === data.run.sources.length - ng, undefined);
+        const listed = {};
+        for (const u of data.updates.items) listed[u.sourceId] = (listed[u.sourceId] || 0) + 1;
+        const wrong = [];
+        data.run.sources.forEach((src, i) => {
+          const row = rowTexts[i] || '';
+          const n = (listed[src.id] || 0).toLocaleString('ja-JP');
+          if (!row.includes(` ${n}件`)) wrong.push(`${src.id}: 掲載中 ${n}件 がない → ${row}`);
+          if (src.ok && src.unchanged && (!row.includes('変化なし') || row.includes('取得 0件'))) wrong.push(`${src.id}: 変化なし → ${row}`);
+          if (src.ok && !src.unchanged && !row.includes(`取得 ${src.fetched.toLocaleString('ja-JP')}件 ・ 新着 ${src.added.toLocaleString('ja-JP')}件`)) wrong.push(`${src.id}: 件数 → ${row}`);
+          if (src.checkedAt) {
+            const c = jst(src.checkedAt);
+            if (!row.includes(`${Number(c.ymd.slice(5, 7))}月${Number(c.ymd.slice(8, 10))}日 ${c.time} に確認`)) wrong.push(`${src.id}: 確認の日時 → ${row}`);
+          }
+        });
+        check(where, 'このサイトについて：情報源ごとの掲載中の件数、変化なし、確認の日時', wrong.length === 0, wrong.slice(0, 4));
+        const sum = (await text('#v-about .run-sum')).replace(/\s+/g, ' ');
         const f = jst(data.run.finishedAt);
-        check(where, 'このサイトについて：収集が終わった時刻（日本時間）', aboutText.includes(`${Number(f.ymd.slice(5, 7))}月${Number(f.ymd.slice(8, 10))}日 ${f.time} に完了`), f);
+        check(where, 'このサイトについて：直近の収集の日時（日本時間）', sum.includes(`直近の収集 ${f.ymd.slice(0, 4)}年${Number(f.ymd.slice(5, 7))}月${Number(f.ymd.slice(8, 10))}日 ${f.time}`), sum);
+        check(where, 'このサイトについて：掲載中の動きは、読み込んだ一覧から数える', sum.includes(`掲載中の動き ${data.updates.items.length.toLocaleString('ja-JP')}件`) && sum.includes(`新しく加わった動き ${data.run.totals.added.toLocaleString('ja-JP')}件`) && !sum.includes('取得'), sum);
       } else {
         check(where, 'このサイトについて：収集の記録がないときの表示', aboutText.includes('収集の記録は、まだありません。') || aboutText.includes('収集の記録を読み込めませんでした。'), undefined);
       }
@@ -692,9 +728,11 @@ async function run() {
       startedAt: '2026-12-31T15:00:00.000Z',
       finishedAt: '2026-12-31T15:30:00.000Z',
       sources: [
-        { id: 'ok', name: 'うまくいった収集元', kind: 'rss', url: 'https://example.go.jp/news.rdf', ok: true, fetched: 1234, added: 5, ms: 800 },
-        { id: 'ng', name: '失敗した収集元', kind: 'html', url: 'http://example.go.jp/', ok: false, fetched: 0, added: 0, error: 'HTTP 503 ' + 'e'.repeat(120), ms: 30000 },
-        { id: 'api', name: 'APIの収集元', kind: 'api', url: '', ok: true, fetched: 10, added: 0, ms: 5 }
+        { id: 'syn', name: 'うまくいった収集元', kind: 'rss', url: 'https://example.go.jp/news.rdf', ok: true, fetched: 1234, added: 5, ms: 800, checkedAt: '2026-12-31T15:29:00.000Z', failures: 0, lastOk: '2026-12-31T15:29:00.000Z' },
+        { id: 'ng', name: '失敗した収集元', kind: 'html', url: 'http://example.go.jp/', ok: false, fetched: 0, added: 0, error: 'HTTP 503 ' + 'e'.repeat(120), ms: 30000, checkedAt: '2026-12-31T15:29:30.000Z', failures: 3, lastOk: '2026-12-30T00:00:00.000Z' },
+        { id: 'once', name: '1回だけ失敗した収集元', kind: 'html', url: '', ok: false, fetched: 0, added: 0, error: '時間切れ', ms: 30000, failures: 1 },
+        { id: 'same', name: '変わっていない収集元', kind: 'rss', url: '', ok: true, fetched: 0, added: 0, unchanged: true, ms: 300, checkedAt: '2026-12-25T03:00:00.000Z' },
+        { id: 'jgrants', name: 'APIの収集元', kind: 'api', url: '', ok: true, fetched: 10, added: 0, ms: 5 }
       ],
       totals: { fetched: 1244, added: 5, items: 6 }
     };
@@ -819,10 +857,16 @@ async function run() {
     // このサイトについて
     await go('about');
     const about = await page.locator('#v-about').innerText();
-    check(where, '収集元：失敗の理由を出す', about.includes('失敗') && about.includes('HTTP 503') && (await page.locator('#v-about .st.fail').count()) === 1, undefined);
+    const aboutRows = (await page.locator('#v-about table.tbl tbody tr').allInnerTexts()).map(t => t.replace(/\s+/g, ' '));
+    check(where, '収集元：行の数と、失敗の印', aboutRows.length === 5 && (await page.locator('#v-about .st.fail').count()) === 2, aboutRows.length);
+    check(where, '収集元：失敗の理由、続けて失敗した回数、最後に取得できた日時', aboutRows[1].includes('失敗') && aboutRows[1].includes('3回つづけて失敗 ・ HTTP 503') && aboutRows[1].includes('最後に取得できたのは 2026年12月30日 09:00'), aboutRows[1].slice(0, 160));
+    check(where, '収集元：1回だけの失敗には、回数を出さない', aboutRows[2].includes('時間切れ') && !aboutRows[2].includes('つづけて') && !aboutRows[2].includes('最後に取得'), aboutRows[2]);
+    check(where, '収集元：変わっていないときは「変化なし」', aboutRows[3].includes('変化なし') && !aboutRows[3].includes('取得 0件') && aboutRows[3].includes('2026年12月25日 12:00 に確認'), aboutRows[3]);
     check(where, '収集元：取り方の呼び名', about.includes('RSS') && about.includes('ページの巡回') && about.includes('API'), undefined);
-    check(where, '収集元：件数は桁区切り', about.includes('取得 1,234件 ・ 新着 5件'), undefined);
-    check(where, '収集元：終わった時刻は日本時間', about.includes('2027年1月1日 00:30 に完了'), undefined);
+    check(where, '収集元：件数は桁区切り', aboutRows[0].includes('取得 1,234件 ・ 新着 5件') && aboutRows[0].includes('2027年1月1日 00:29 に確認'), aboutRows[0]);
+    check(where, '収集元：掲載中の件数は、読み込んだ動きから数える', aboutRows[0].includes(' 8件 ') && aboutRows[1].includes(' 0件 ') && aboutRows[4].includes('ほかに、受付中の補助金 4件'), [aboutRows[0], aboutRows[4]]);
+    const runSum = (await page.locator('#v-about .run-sum').innerText()).replace(/\s+/g, ' ');
+    check(where, '収集元：まとめの行（日本時間、掲載中は読み込んだ一覧から）', runSum.includes('直近の収集 2027年1月1日 00:30') && runSum.includes('新しく加わった動き 5件') && runSum.includes('掲載中の動き 8件') && runSum.includes('失敗している情報源 2件') && !runSum.includes('1,244'), runSum);
     const srcLinks = await page.locator('#v-about table a').evaluateAll(as => as.map(a => a.getAttribute('href')));
     check(where, '収集元：https のURLだけリンクにする', JSON.stringify(srcLinks) === JSON.stringify(['https://example.go.jp/news.rdf']), srcLinks);
     await noOverflow('about（長い理由）');

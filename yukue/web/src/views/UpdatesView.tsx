@@ -5,7 +5,7 @@ import { Ic } from '../components/Icons.tsx';
 import { TYPES, TYPE_IDS, isThemeId, typeInfo } from '../content.ts';
 import { dateLabel, deadlineLabel, todayJst } from '../lib/dates.ts';
 import { filterUpdates, groupByDay, safeLinks, stageName } from '../lib/updates.ts';
-import { useApp, useUi } from '../state/context.tsx';
+import { useApp, useUi } from '../state/context.ts';
 import type { ThemeId, UpdateItem } from '../types.ts';
 
 export function UpdatesView() {
@@ -30,7 +30,7 @@ export function UpdatesView() {
   return (
     <section className="view" id="v-updates" data-view="updates">
       <header className="vh">
-        <p className="eyebrow">毎日更新 ・ 各省庁・国会・官報から</p>
+        <p className="eyebrow">毎日更新 ・ 各府省・国会・Jグランツから</p>
         <h1 className="vt">政策の動き</h1>
         <p className="lead">
           法律、予算、税、制度、補助金。発表元がちがっても、「種類」と「いまの段階」をそろえて1か所に並べます。

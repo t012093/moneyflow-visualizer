@@ -8,7 +8,7 @@ import { slashDate } from '../lib/dates.ts';
 import { fmtCho } from '../lib/format.ts';
 import { matchPrograms } from '../lib/match.ts';
 import { profileSummary } from '../lib/profile.ts';
-import { isPassedLaw, resolveBriefing, stageName } from '../lib/updates.ts';
+import { isPassedLaw, pickByTheme, resolveBriefing, stageName } from '../lib/updates.ts';
 import { applyProgramOf } from '../state/store.ts';
 import type { Program, ThemeId, UpdateItem } from '../types.ts';
 import type { ChatContext, ChatProvider, ChatReply } from './types.ts';
@@ -82,7 +82,7 @@ function ansTheme(id: ThemeId, ctx: ChatContext): ChatReply {
   const u = model.useById.get(id);
   if (!u) return { text: NOT_IN_DATA };
   const items = u.drill ? [...u.drill.items].sort((a, b) => b.v - a.v) : [];
-  const rel = model.visibleUpdates.find(x => x.theme === u.theme);
+  const rel = pickByTheme(model.updates, u.theme, 1, ctx.today)[0];
   let text = `${u.long || u.name}は${fmtCho(u.v)}で、一般会計の${fmt.pct(u.v)}にあたります。国民1人あたりにすると${fmt.pc(u.v)}です。`;
   const [i0, i1] = items;
   if (i0 && i1) text += `\n内訳で大きいのは${i0.name}（${fmtCho(i0.v)}）と${i1.name}（${fmtCho(i1.v)}）です。`;

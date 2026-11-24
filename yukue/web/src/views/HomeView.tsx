@@ -7,8 +7,8 @@ import { Ic } from '../components/Icons.tsx';
 import { FOLLOW, typeInfo } from '../content.ts';
 import { shortDate, stampJst, todayJst } from '../lib/dates.ts';
 import { fmtCho, n1, yoyOf } from '../lib/format.ts';
-import { latestByTheme, resolveBriefing, safeLinks, stageName, upcoming } from '../lib/updates.ts';
-import { useApp } from '../state/context.tsx';
+import { pickByTheme, resolveBriefing, safeLinks, stageName, upcoming } from '../lib/updates.ts';
+import { useApp } from '../state/context.ts';
 import type { UpdateItem } from '../types.ts';
 
 /** 「予算 ・ 国会審議 ・ 財務省」のような一行（無いものは飛ばす） */
@@ -22,7 +22,7 @@ export function HomeView() {
   const stamp = stampJst(data.updates.generatedAt);
   const tops = useMemo(() => resolveBriefing(data.briefing, model.updates), [data.briefing, model.updates]);
   const sources = tops.reduce((n, t) => n + safeLinks(t.update.links).length, 0);
-  const followed = useMemo(() => latestByTheme(FOLLOW, model.visibleUpdates), [model.visibleUpdates]);
+  const followed = useMemo(() => FOLLOW.flatMap(t => pickByTheme(model.updates, t, 1, today)), [model.updates, today]);
   const agenda = useMemo(() => upcoming(data.calendar, model.updates, today), [data.calendar, model.updates, today]);
   const yoy = yoyOf(fy.trend);
   const rowMeta = (u: UpdateItem): string => metaLine([model.themeName(u.theme), typeInfo(u.type).n, stageName(u)]);

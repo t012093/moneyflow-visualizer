@@ -86,7 +86,7 @@ const isSrc = (v: unknown): boolean =>
   isNode(v) && (v.trend === undefined || isNumList(v.trend)) && (v.alias === undefined || (Array.isArray(v.alias) && v.alias.every(isStr)));
 
 /** 予算のファイルは人が整えるものなので、形がちがえば全体を読み込みの失敗として扱う */
-function isBudget(v: unknown): v is BudgetFile {
+export function isBudget(v: unknown): v is BudgetFile {
   if (!isObj(v) || !isObj(v.fy) || !isObj(v.themes) || !isObj(v.recips)) return false;
   const fy = v.fy;
   if (!isNum(fy.total) || !(fy.total > 0) || !isNum(fy.pop) || !(fy.pop > 0)) return false;
@@ -140,7 +140,7 @@ function cleanUpdate(v: unknown): UpdateItem | null {
   };
 }
 
-function cleanUpdates(v: unknown): UpdatesFile | null {
+export function cleanUpdates(v: unknown): UpdatesFile | null {
   if (!isObj(v) || !Array.isArray(v.items)) return null;
   const items: UpdateItem[] = [];
   const seen = new Set<string>();
@@ -204,7 +204,7 @@ function cleanProgram(v: unknown): Program | null {
   };
 }
 
-function cleanPrograms(v: unknown): Program[] | null {
+export function cleanPrograms(v: unknown): Program[] | null {
   if (!Array.isArray(v)) return null;
   const out: Program[] = [];
   for (const raw of v) {
@@ -214,7 +214,7 @@ function cleanPrograms(v: unknown): Program[] | null {
   return out;
 }
 
-function cleanBriefing(v: unknown): Briefing | null {
+export function cleanBriefing(v: unknown): Briefing | null {
   if (!isObj(v) || !Array.isArray(v.items)) return null;
   const items: Briefing['items'] = [];
   for (const it of v.items) if (isObj(it) && isStr(it.id)) items.push({ id: it.id, text: strOr(it.text, '') });
@@ -222,7 +222,7 @@ function cleanBriefing(v: unknown): Briefing | null {
   return { date: strOr(v.date, ''), generatedAt: strOr(v.generatedAt, ''), method, items };
 }
 
-function cleanCalendar(v: unknown): CalendarEntry[] | null {
+export function cleanCalendar(v: unknown): CalendarEntry[] | null {
   if (!Array.isArray(v)) return null;
   const out: CalendarEntry[] = [];
   for (const c of v) {
@@ -238,7 +238,7 @@ function cleanCalendar(v: unknown): CalendarEntry[] | null {
   return out;
 }
 
-function cleanJGrants(v: unknown): JGrantsFile | null {
+export function cleanJGrants(v: unknown): JGrantsFile | null {
   if (!isObj(v) || !Array.isArray(v.items)) return null;
   const items: JGrant[] = [];
   for (const g of v.items) {
@@ -257,7 +257,7 @@ function cleanJGrants(v: unknown): JGrantsFile | null {
   return { generatedAt: strOr(v.generatedAt, ''), items };
 }
 
-function cleanRun(v: unknown): RunReport | null {
+export function cleanRun(v: unknown): RunReport | null {
   if (!isObj(v) || !Array.isArray(v.sources)) return null;
   const sources: SourceStatus[] = [];
   for (const s of v.sources) {
@@ -270,8 +270,12 @@ function cleanRun(v: unknown): RunReport | null {
       ok: s.ok === true,
       fetched: isNum(s.fetched) ? s.fetched : 0,
       added: isNum(s.added) ? s.added : 0,
+      unchanged: s.unchanged === true ? true : undefined,
       error: isStr(s.error) && s.error ? s.error : undefined,
-      ms: isNum(s.ms) ? s.ms : 0
+      ms: isNum(s.ms) ? s.ms : 0,
+      checkedAt: isStr(s.checkedAt) && s.checkedAt ? s.checkedAt : undefined,
+      failures: isNum(s.failures) && s.failures > 0 ? s.failures : undefined,
+      lastOk: isStr(s.lastOk) && s.lastOk ? s.lastOk : undefined
     });
   }
   const t = isObj(v.totals) ? v.totals : {};

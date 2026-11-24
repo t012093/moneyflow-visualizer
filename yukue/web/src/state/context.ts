@@ -10,13 +10,12 @@ export interface AppServices {
   model: Model;
 }
 
-const AppContext = createContext<AppServices | null>(null);
-
-export const AppProvider = AppContext.Provider;
+/** App.tsx が、データを読み込んだあとに値を入れる */
+export const AppContext = createContext<AppServices | null>(null);
 
 export function useApp(): AppServices {
   const v = useContext(AppContext);
-  if (!v) throw new Error('AppProvider の外では使えません');
+  if (!v) throw new Error('AppContext の外では使えません');
   return v;
 }
 

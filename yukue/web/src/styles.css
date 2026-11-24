@@ -513,7 +513,7 @@ button.row:hover .row-t{color:var(--accent)}
 .ctrl .sel{min-width:0;max-width:min(100%,280px)}
 
 /* 集めた発表には、切れ目のない長い文字列（URLなど）が入ることがある。枠からはみ出さないように折り返す */
-.prog-name,.prog-kind.wrap,.prog-dl dd,.up-title,.up-sum,.up-meta,.up-body .src,.row-t,.row-s,.brief-t,.brief-m,.d-link-t,.d-link-m,.bub,.tbl.wrap td{overflow-wrap:anywhere}
+.prog-name,.prog-kind.wrap,.prog-dl dd,.up-title,.up-sum,.up-meta,.up-body .src,.row-t,.row-s,.brief-t,.brief-m,.d-link-t,.d-link-m{overflow-wrap:anywhere}
 .up-meta span{min-width:0;max-width:100%}
 .feed-more{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px}
 .up-title .tag,.prog-name .tag{margin-left:8px;vertical-align:2px;font-weight:400}

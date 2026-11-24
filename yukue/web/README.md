@@ -64,7 +64,7 @@ src/
     apply.ts, storage.ts   申請の準備の記録、この端末への保存
   state/
     store.ts               画面の状態と操作（試作の st・pf・apps と、それを書きかえる関数）
-    context.tsx            React から使うための入口
+    context.ts             React から使うための入口（Context とフック）
   chat/
     types.ts               ChatProvider（答え手の約束ごと）と ViewAction（画面を動かす操作）
     local.ts               かんたん応答：手元の規則で答える（試作の localAnswer）
@@ -89,16 +89,17 @@ scripts/
 
 ## ブラウザーでの確認
 
-Playwright が見える環境で（このパッケージの依存には入れていません）、ビルドしたものを配信してから実行します。
+`scripts/browser-check.cjs` は、ビルドしたものを実際のブラウザー（Playwright の Chromium）で開いて確かめます。
+Playwright はこのパッケージの依存には入れていないので、別に用意してください（例：`npm install --no-save playwright` と `npx playwright install chromium`。ほかの場所に入れてあるなら、`NODE_PATH` でその `node_modules` を指します）。
 
 ```bash
 npm run build
 npx vite preview --port 4173 --strictPort &
-NODE_PATH=/opt/node-tools/node_modules node scripts/browser-check.cjs
+npm run browser-check
 ```
 
 1440px と 390px、ライトとダークで、コンソールのエラー、ページの横はみ出し、流れ図の内訳、合う制度、申請の準備、チャット、政策の動き、Jグランツ、読み込みの失敗などを確かめます。
-`YUKUE_SHOTS=どこか` を付けると、スクリーンショットも残します。外へのリクエストは、この確認の中ではすべて止めます。
+`YUKUE_URL` で確かめる先を、`YUKUE_SHOTS=どこか` でスクリーンショットの保存先を指定できます。外へのリクエストは、この確認の中ではすべて止めます。
 
 ## 試作と変えてあるところ
 

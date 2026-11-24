@@ -4,14 +4,21 @@
  */
 import { SrcLinks } from '../components/Bits.tsx';
 import { FETCH_KIND, LAW_LINKS, LAW_NOTE } from '../content.ts';
-import { dateTimeLabel } from '../lib/dates.ts';
+import { dateTimeLabel, todayJst } from '../lib/dates.ts';
+import { filterJGrants } from '../lib/jgrants.ts';
 import { isHttps } from '../lib/updates.ts';
-import { useApp } from '../state/context.tsx';
+import { useApp } from '../state/context.ts';
 import type { SourceStatus } from '../types.ts';
 
 const count = (n: number): string => n.toLocaleString('ja-JP');
+/** Jグランツの情報源のID（収集システムの登録名）。受付中の補助金の数も添える */
+const JGRANTS_SOURCE_ID = 'jgrants';
 
-function SourceRow({ s }: { s: SourceStatus }) {
+/** 1つの情報源の、いちばん新しい記録 */
+function SourceRow({ s, listed, grants }: { s: SourceStatus; listed: number; grants: number | null }) {
+  const lastOk = dateTimeLabel(s.lastOk);
+  const checked = dateTimeLabel(s.checkedAt);
+  const streak = s.failures != null && s.failures > 1 ? `${count(s.failures)}回つづけて失敗` : null;
   return (
     <tr>
       <td>
@@ -26,26 +33,52 @@ function SourceRow({ s }: { s: SourceStatus }) {
       <td>{FETCH_KIND[s.kind]}</td>
       <td>
         <span className={s.ok ? 'st open' : 'st fail'}>{s.ok ? '取得できた' : '失敗'}</span>
-        {!s.ok && s.error && (
+        {!s.ok && (streak || s.error) && (
           <>
             <br />
-            <span className="src">{s.error}</span>
+            <span className="src">{[streak, s.error].filter(Boolean).join(' ・ ')}</span>
+          </>
+        )}
+        {!s.ok && lastOk && (
+          <>
+            <br />
+            <span className="src">{`最後に取得できたのは ${lastOk}`}</span>
           </>
         )}
       </td>
       <td>
-        取得 {count(s.fetched)}件 ・ 新着 {count(s.added)}件
+        {`${count(listed)}件`}
+        {grants != null && (
+          <>
+            <br />
+            <span className="src">{`ほかに、受付中の補助金 ${count(grants)}件`}</span>
+          </>
+        )}
+      </td>
+      <td>
+        {!s.ok ? '―' : s.unchanged ? '変化なし' : `取得 ${count(s.fetched)}件 ・ 新着 ${count(s.added)}件`}
+        {checked && (
+          <>
+            <br />
+            <span className="src">{`${checked} に確認`}</span>
+          </>
+        )}
       </td>
     </tr>
   );
 }
 
 export function AboutView() {
-  const { model } = useApp();
+  const { store, model } = useApp();
   const { fy, data } = model;
   const run = data.run;
   const finished = dateTimeLabel(run?.finishedAt);
   const failed = run ? run.sources.filter(s => !s.ok).length : 0;
+  /** 「制度をさがす」に出している、受付中の補助金の数 */
+  const openGrants = filterJGrants(data.jgrants.items, { query: '', area: '' }, todayJst(store.now())).length;
+  /** いま画面に載せている動きの数（情報源ごと） */
+  const listed = new Map<string, number>();
+  for (const u of model.updates) listed.set(u.sourceId, (listed.get(u.sourceId) ?? 0) + 1);
 
   return (
     <section className="view" id="v-about" data-view="about">
@@ -113,21 +146,18 @@ export function AboutView() {
               <p className="run-sum">
                 {finished && (
                   <span>
-                    直近の収集 <b>{finished} に完了</b>
+                    直近の収集 <b>{finished}</b>
                   </span>
                 )}
                 <span>
-                  取得 <b>{count(run.totals.fetched)}件</b>
+                  新しく加わった動き <b>{`${count(run.totals.added)}件`}</b>
                 </span>
                 <span>
-                  新着 <b>{count(run.totals.added)}件</b>
-                </span>
-                <span>
-                  掲載中の動き <b>{count(run.totals.items)}件</b>
+                  掲載中の動き <b>{`${count(model.updates.length)}件`}</b>
                 </span>
                 {failed > 0 && (
                   <span>
-                    失敗 <b>{count(failed)}件</b>
+                    失敗している情報源 <b>{`${count(failed)}件`}</b>
                   </span>
                 )}
               </p>
@@ -138,16 +168,25 @@ export function AboutView() {
                       <th>情報源</th>
                       <th>取り方</th>
                       <th>結果</th>
-                      <th>件数</th>
+                      <th>掲載中</th>
+                      <th>直近の確認</th>
                     </tr>
                   </thead>
                   <tbody>
                     {run.sources.map(s => (
-                      <SourceRow key={s.id} s={s} />
+                      <SourceRow
+                        key={s.id}
+                        s={s}
+                        listed={listed.get(s.id) ?? 0}
+                        grants={s.id === JGRANTS_SOURCE_ID ? openGrants : null}
+                      />
                     ))}
                   </tbody>
                 </table>
               </div>
+              <p className="cap">
+                表は、情報源ごとの、いちばん新しい記録です。前回から中身が変わっていないときは「変化なし」と表示します。
+              </p>
             </>
           )}
           {data.missing.length > 0 && (

@@ -11,7 +11,7 @@ import { fmtYen } from '../lib/format.ts';
 import { areaLabel, filterJGrants, jgrantAreas, jgrantStatus } from '../lib/jgrants.ts';
 import { matchPrograms, type Match } from '../lib/match.ts';
 import { profileSummary, type PresetId } from '../lib/profile.ts';
-import { useApp, useUi } from '../state/context.tsx';
+import { useApp, useUi } from '../state/context.ts';
 import { findModeOf, type FindMode } from '../state/store.ts';
 import type { JGrant, Program } from '../types.ts';
 

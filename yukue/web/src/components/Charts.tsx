@@ -1,7 +1,7 @@
 /** 小さな図：10年の推移（折れ線）と、タイルの中の線。 */
 import { useState, type PointerEvent } from 'react';
 import { n1 } from '../lib/format.ts';
-import { hideTip, showTip } from './Tip.tsx';
+import { hideTip, showTip } from './tip.ts';
 
 interface TrendProps {
   values: readonly number[];

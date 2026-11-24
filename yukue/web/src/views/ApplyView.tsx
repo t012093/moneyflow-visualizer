@@ -9,7 +9,7 @@ import { draftText, hasDraft, newAppRecord } from '../lib/apply.ts';
 import { matchProgram } from '../lib/match.ts';
 import { profileSummary } from '../lib/profile.ts';
 import { isHttps } from '../lib/updates.ts';
-import { useApp, useUi } from '../state/context.tsx';
+import { useApp, useUi } from '../state/context.ts';
 import { applyProgramOf } from '../state/store.ts';
 
 const COPY_LABEL = '下書きをコピー';
@@ -19,7 +19,8 @@ export function ApplyView() {
   const st = useUi();
   const p = applyProgramOf(model, st);
   const pid = p?.id ?? null;
-  const [draftNote, setDraftNote] = useState('');
+  /** 下書きのボタンを押したあとの知らせ。その制度の、その段階にいるあいだだけ出す */
+  const [note, setNote] = useState<{ pid: string; step: number; text: string } | null>(null);
   const [copyLabel, setCopyLabel] = useState(COPY_LABEL);
   const currentStep = useRef<HTMLButtonElement>(null);
   const focusStep = useRef(false);
@@ -31,9 +32,9 @@ export function ApplyView() {
   }, [store, pid]);
 
   const step = (pid ? st.apps[pid]?.step : undefined) ?? 0;
+  const draftNote = note && note.pid === pid && note.step === step ? note.text : '';
   // 段階を切り替えたら、いまの段階の見出しにフォーカスを移す
   useEffect(() => {
-    setDraftNote('');
     if (focusStep.current) {
       focusStep.current = false;
       currentStep.current?.focus();
@@ -86,13 +87,13 @@ export function ApplyView() {
   );
   const makeDraft = (): void => {
     const result = store.makeDraft(p.id);
-    setDraftNote(
+    const text =
       result === 'need-answers'
         ? '2つの質問に答えてから押してください。'
         : result === 'made'
           ? '下書きができました。事実を確かめて、自分の言葉に直してください。'
-          : ''
-    );
+          : '';
+    setNote({ pid: p.id, step, text });
   };
   const copyDraft = async (): Promise<void> => {
     if (!d) return;
@@ -261,7 +262,7 @@ export function ApplyView() {
         <h2>提出する</h2>
         <p>
           <b>{`提出先：${ap.where}`}</b>
-          {`　${ap.whereNote}`}
+          {`\u3000${ap.whereNote}`}
         </p>
         <p>提出は、ご本人が公式の窓口で行います。ゆくえが代わりに送信することはありません。</p>
         <div className="d-act">

@@ -7,7 +7,7 @@ import { normalizeText } from './updates.ts';
 /** 対象地域は「東京都 / 神奈川県」のように並ぶことがあるので、1つずつに分ける */
 export function areaParts(area: string | null | undefined): string[] {
   return (area ?? '')
-    .split(/[\/／、,，]/)
+    .split(/[/／、,，]/)
     .map(s => s.trim())
     .filter(Boolean);
 }
