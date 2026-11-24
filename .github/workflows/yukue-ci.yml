@@ -1,0 +1,75 @@
+name: Yukue CI
+
+# yukue/ 以下（収集システムと画面）の型検査・テスト・ビルド。
+# 毎日の収集が送るデータのコミットでは動かない（GITHUB_TOKEN での push は、ほかのワークフローを起こさないため）。
+
+on:
+  push:
+    paths:
+      - yukue/**
+      - .github/workflows/yukue-ci.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: yukue-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  collector:
+    name: Collector
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: yukue/collector
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: yukue/collector/package-lock.json
+
+      - name: Install
+        run: npm ci
+
+      - name: Type check
+        run: npm run typecheck
+
+      - name: Test
+        run: npm test
+
+  web:
+    name: Web
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: yukue/web
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: yukue/web/package-lock.json
+
+      - name: Install
+        run: npm ci
+
+      - name: Type check
+        run: npm run typecheck
+
+      - name: Test
+        run: npm test
+
+      - name: Build
+        run: npm run build
