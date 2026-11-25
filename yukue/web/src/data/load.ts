@@ -265,7 +265,7 @@ export function cleanRun(v: unknown): RunReport | null {
     sources.push({
       id: strOr(s.id, s.name),
       name: s.name,
-      kind: s.kind === 'rss' || s.kind === 'api' ? s.kind : 'html',
+      kind: s.kind === 'rss' || s.kind === 'api' || s.kind === 'file' ? s.kind : 'html',
       url: strOr(s.url, ''),
       ok: s.ok === true,
       fetched: isNum(s.fetched) ? s.fetched : 0,

@@ -112,7 +112,7 @@ export const FOLLOW: readonly ThemeId[] = ['social', 'industry', 'local'];
 export const PAGE_SIZE = 60;
 
 /** 収集の取り方の呼び名 */
-export const FETCH_KIND: Record<SourceStatus['kind'], string> = { rss: 'RSS', api: 'API', html: 'ページの巡回' };
+export const FETCH_KIND: Record<SourceStatus['kind'], string> = { rss: 'RSS', api: 'API', html: 'ページの巡回', file: 'ファイルの一括取得' };
 
 /** 「AIとつなぐ」に出す、コネクターの道具の一覧 */
 export const TOOLS: readonly { name: string; desc: string; badge?: string }[] = [

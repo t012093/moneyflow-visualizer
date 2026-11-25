@@ -2,11 +2,14 @@ import { appendFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { parseArgs } from 'node:util';
 import type { Briefing, JGrant, JGrantsFile, RunReport, SourceStatus, UpdateItem, UpdatesFile } from '../../shared/types.ts';
-import { DATA_DIR, ENRICH_LIMIT, MIN_INTERVAL_MS, TIMEOUT_MS, USER_AGENT, env } from './config.ts';
+import { DATASET_HELP, runDatasetCommand } from './commands/datasets.ts';
+import { DERIVE_HELP, runDeriveCommand } from './commands/derive.ts';
+import { politeClient, type CommandFlags } from './commands/shared.ts';
+import { DATA_DIR, ENRICH_LIMIT, env } from './config.ts';
 import { compareModels, pickSamples, renderReport } from './compare.ts';
 import { createClaudeEnricher, enrichItems } from './enrich.ts';
 import { findFeedLinks, parseFeed } from './feeds.ts';
-import { PoliteClient } from './http.ts';
+import type { PoliteClient } from './http.ts';
 import { extractList } from './sources/list.ts';
 import { allSources, classifyDefs } from './sources/registry.ts';
 import type { Ctx } from './sources/types.ts';
@@ -41,10 +44,10 @@ const HELP = `ゆくえ 収集システム
 
   node src/cli.ts sources
       登録してある情報源の一覧を表示する
-`;
+${DATASET_HELP}${DERIVE_HELP}`;
 
 function newClient(state: Ctx['state']): PoliteClient {
-  return new PoliteClient({ userAgent: USER_AGENT, minIntervalMs: MIN_INTERVAL_MS, timeoutMs: TIMEOUT_MS, state: state.http });
+  return politeClient(state.http);
 }
 
 async function collect(opts: { only?: string[]; dryRun: boolean; enrich: boolean }): Promise<number> {
@@ -254,8 +257,14 @@ function rebuildLatest(dryRun: boolean): number {
 
 const { values, positionals } = parseArgs({
   allowPositionals: true,
-  options: { only: { type: 'string' }, 'dry-run': { type: 'boolean', default: false }, 'no-enrich': { type: 'boolean', default: false }, 'max-failures': { type: 'string' }, models: { type: 'string' }, limit: { type: 'string' }, out: { type: 'string' }, help: { type: 'boolean', short: 'h', default: false } }
+  options: {
+    only: { type: 'string' }, 'dry-run': { type: 'boolean', default: false }, 'no-enrich': { type: 'boolean', default: false }, 'max-failures': { type: 'string' },
+    models: { type: 'string' }, limit: { type: 'string' }, out: { type: 'string' },
+    force: { type: 'boolean', default: false }, full: { type: 'boolean', default: false }, year: { type: 'string' }, model: { type: 'string' },
+    help: { type: 'boolean', short: 'h', default: false }
+  }
 });
+const flags: CommandFlags = { dryRun: values['dry-run'], force: values.force, full: values.full, only: values.only, limit: values.limit, year: values.year, model: values.model, out: values.out };
 const [command, ...rest] = positionals;
 let code = 0;
 if (values.help || !command) console.log(HELP);
@@ -275,5 +284,9 @@ else if (command === 'compare') {
 }
 else if (command === 'discover') code = await discover(rest);
 else if (command === 'sources') for (const s of allSources()) console.log(`${s.id.padEnd(12)} ${s.kind.padEnd(5)} ${s.name}  ${s.url}`);
-else { console.error(`知らないコマンドです: ${command}\n\n${HELP}`); code = 2; }
+else {
+  const ext = (await runDatasetCommand(command, rest, flags)) ?? (await runDeriveCommand(command, rest, flags));
+  if (ext === undefined) { console.error(`知らないコマンドです: ${command}\n\n${HELP}`); code = 2; }
+  else code = ext;
+}
 process.exitCode = code;
