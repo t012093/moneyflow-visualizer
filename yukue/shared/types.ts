@@ -232,6 +232,40 @@ export interface Program {
   statusText: string;
   link: SourceLink;
   apply?: ProgramApply;
+  /** 公式ページに書かれている対象の条件（そのままに近い言い方で、箇条書き） */
+  criteria?: string[];
+  /** 設定と見くらべるための条件。すべて合えば「対象の可能性が高い」 */
+  rules?: ProgramRule[];
+  /** 設定では分からないので、本人がたしかめること（「加入していた期間が足りているか」） */
+  confirm?: string[];
+  /** 条件に合う人でも、使えるのは特定のときだけの制度（高額療養費など）。そのときの説明 */
+  whenNote?: string;
+  /** 締切（YYYY-MM-DD）。通年の制度にはない */
+  deadline?: string;
+  /** 金額や条件のもとにした公式ページ */
+  sources?: SourceLink[];
+  /** 公式ページで中身を確かめた日（YYYY-MM-DD） */
+  checkedAt?: string;
+}
+
+/**
+ * 設定（マイページ）の1項目と見くらべる条件。公式の要件を、設定で見られる範囲に簡単にしたもの。
+ * field と値の名前は、画面の設定項目（yukue/web/src/content.ts の KIDS・KOYO・WORK・INCOME・BFORM・AIMS・INDUSTRY・OFORM）に合わせる。
+ */
+export interface ProgramRule {
+  field: 'kids' | 'koyo' | 'work' | 'income' | 'bform' | 'staff' | 'years' | 'aims' | 'industry' | 'oform';
+  /** 設定の値がこのどれかなら合う（kids・aims は、どれか1つでも入っていれば合う） */
+  anyOf?: string[];
+  /** 数の上限（staff：従業員の数、years：創業からの年数） */
+  max?: number;
+  /** 合ったときの理由（「高校生年代までの子どもがいる」） */
+  yes: string;
+  /** 合わなかったときの理由（「高校生年代までの子どもを育てている世帯が対象」） */
+  no: string;
+  /** 設定が未入力のときに、たしかめること（「子どもの年齢」） */
+  ask: string;
+  /** 合わなかったときの扱い。既定は「対象外の見込み」。later は「あとで対象になる」 */
+  otherwise?: 'no' | 'later' | 'maybe';
 }
 
 /** Jグランツの公開APIから取った、受付中の補助金。 */
