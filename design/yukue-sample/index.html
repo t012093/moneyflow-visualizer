@@ -472,11 +472,17 @@ button.row:hover .row-t{color:var(--accent)}
 .wm-th .dot{width:8px;height:8px}
 .wm-acts{margin-left:auto;display:inline-flex;gap:6px}
 .wm-title{flex-basis:100%;font-size:16px;font-weight:700;line-height:1.5}
+.wm-gist{flex-basis:100%;font-size:13px;line-height:1.7;color:var(--ink-2);max-width:68ch}
+.wm-gist b{display:inline-block;margin-right:8px;padding:0 8px;border-radius:6px;background:var(--surface-2);color:var(--ink);font-size:12.5px;font-weight:700;line-height:1.7;white-space:nowrap;font-variant-numeric:tabular-nums}
 .life.wn{grid-template-columns:repeat(var(--n),minmax(0,1fr))}
 .wm .life li:not(.done):not(.now)::after{background:var(--surface)}
 .wm .life li{padding-inline:2px}
 .tk-l,.tk-x{text-wrap:balance}
-.tk-d{display:inline-flex;align-items:center;gap:4px}
+.tk-d{display:inline-flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:2px 4px}
+.tk-d time{white-space:nowrap}
+.life .tk-b{padding:0 3px;border-radius:6px}
+.tk-b time{text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:3px;color:var(--ink-2)}
+.tk-b:hover time{color:var(--accent);text-decoration-color:var(--accent)}
 .tk-d .pill-n{min-width:16px;height:16px;padding:0 4px;font-size:10px}
 .tk-x{font-size:10.5px;font-weight:400;color:var(--ink-3);line-height:1.35}
 .tk-q{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:3px;margin-top:5px}
@@ -484,13 +490,28 @@ button.row:hover .row-t{color:var(--accent)}
 .qchip{display:inline-flex;align-items:center;min-height:22px;padding:0 7px;border-radius:6px;font-size:11px;font-weight:600;line-height:1.3;color:var(--ink);white-space:nowrap}
 .qchip.said{background:var(--accent-wash);color:var(--accent);border:1px solid transparent}
 .qchip.silent{border:1px dashed var(--ink-3);background:var(--surface)}
+.life .qchip{padding:0 7px;font-size:11px;font-weight:600}
 button.qchip:hover{border-color:var(--accent);border-style:solid}
 .wm-calls{display:grid;gap:6px;padding-top:10px;border-top:1px solid var(--line)}
 .wm-calls .d-sub{margin-bottom:0;justify-content:flex-start}
 .wcalls{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));gap:8px}
 .wcall{display:grid;align-content:start;gap:5px;padding:9px 11px;border-radius:10px;background:var(--surface-2);text-align:left;font-size:12.5px;min-width:0}
 .wcall b{font-size:13px;line-height:1.45}
-button.wcall:hover{outline:1px solid var(--accent)}
+button.wcall:hover,.wcall[aria-expanded="true"]{outline:1px solid var(--accent)}
+.wcall-more{display:grid;gap:8px;padding:10px 12px;border-radius:10px;border:1px solid var(--line)}
+.wcall-more[hidden]{display:none}
+.wcall-more .prog-dl{max-width:520px}
+.wm-foot{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px}
+.wm-open{border-color:transparent;background:var(--accent-wash);color:var(--accent)}
+.wm-open:hover{border-color:var(--accent);color:var(--accent)}
+.wm-src{display:inline-flex;flex-wrap:wrap;align-items:center;gap:6px;min-width:0}
+.wm-src small{font-size:11px;color:var(--ink-3)}
+.wm-body{display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+.wm-body .d-sub{margin-bottom:0}
+.wm-sum{font-size:14px;line-height:1.75;max-width:66ch}
+.wm-more .qa{grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr))}
+.w-lk{font:inherit;font-weight:600;text-align:left;text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:3px}
+.w-lk:hover{color:var(--accent);text-decoration-color:var(--accent)}
 .wm-more{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;padding-top:12px;border-top:1px solid var(--line)}
 .wm-more[hidden],.w-more[hidden],.nav-n[hidden]{display:none}
 .wm-cols{display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
@@ -627,8 +648,8 @@ span.wc:hover,.chip:disabled:hover{border-color:var(--line-2)}
   .qchip{padding:0 5px;font-size:10.5px;letter-spacing:0}
   .tk-q{flex-direction:column;flex-wrap:nowrap}
   .tk-q small{flex-basis:auto}
-  .wm-acts .mini[data-ask]{padding:0 8px}
-  .wm-acts .mini[data-ask] span{display:none}
+  .life .qchip{padding:0 5px;font-size:10.5px}
+  .life .tk-b{padding:0}
   .w-legend{margin-left:0;flex-basis:100%}
 }
 
@@ -1106,6 +1127,7 @@ span.wc:hover,.chip:disabled:hover{border-color:var(--line-2)}
           <p>発表を読んだあとで「あれは、その後どうなった？」と思ったときに、続きがすぐ分かるようにします。追う単位は1本の記事ではなく、<strong>時間をかけて進む案件</strong>と、<strong>まだ出ていないものの条件</strong>です。</p>
           <dl class="kv">
             <div><dt>ひと目で分かる形にする</dt><dd>文で説明するより先に、数と形で状態を見せる。いちばん上に、前回からの動きの件数。案件は段階の線で表し、通った段階には日付を、これからの段階にはそこで決まる未定の点を載せる。締切は残り日数を大きく出す。根拠や経過の文は、開いたときに出す。</dd></div>
+            <div><dt>中身へ、1回で行ける</dt><dd>カードには、段階だけでなく要点を1行と金額を出す。通った段階の日付を押すと、その段階で起きたことと一次情報が開く。「内容と経過を見る」には、概要、何が変わる、だれに関係、いつから。一次情報へのリンクは、カードの上にも置く。公募は札を押すと、対象・金額・締切が開く。</dd></div>
             <div><dt>ウォッチは3種類</dt><dd>「追っている案件」は、段階が進んだとき、未定だった点が決まったとき、そこから公募が出たときに知らせる。「待ち受け」は、まだ出ていない補助金などを条件で待ち、合う公募が出たら知らせる。「締切」は、申請しようと思っているものの締切が近づいたときと、要領が変わったときに知らせる。</dd></div>
             <div><dt>未定の点には、根拠を付ける</dt><dd>「まだ決まっていないこと」は、発表にもとづくものだけを出す。発表で「未定」とされているのか、発表に書かれていないだけなのかを分けて示し、元の言葉があれば引用する。根拠を示せない点は、未定として並べない。</dd></div>
             <div><dt>予算と公募のつながり</dt><dd>いま公開されているデータでつなげられるのは、「どの年度の、どの補正予算から出たか」まで。事業ひとつひとつについて、予算と公募を結ぶことはまだできない。画面の「この予算から出た公募」はサンプル。</dd></div>
@@ -1501,6 +1523,11 @@ const DATA = {
       {
         id: 'hosei1', on: true, title: '令和8年度 補正予算（第1号）', keys: ['6月の補正', '第1号', '1次補正'], type: 'budget', theme: 'whole', steps: 'hosei', cur: 4,
         links: [{ n: '財務省 令和8年度予算', u: 'https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2026/index.html' }],
+        amount: '+3兆1,135億円',
+        sum: '6月に成立した、今年度1回目の補正予算。一般会計に3兆1,135億円を追加し、補正後の総額は125兆4,228億円になった。',
+        what: '今年度の予算に、3兆1,135億円の支出が加わった。新しく発行する国債は、29.6兆円から32.7兆円に増えた。',
+        who: '自治体の物価高対策に使う重点支援地方交付金に1,000億円。ほかの内訳は、この見本には入れていません。',
+        when: '2026年6月に成立。事業ごとに、公募や交付が進む。',
         events: [
           { d: '2026-06', at: 3, t: '成立。一般会計に3兆1,135億円を追加（補正後の総額 125兆4,228億円）' },
           { d: '2026-11-23', at: 4, t: 'この補正予算の事業から、公募が始まりました', sample: true, call: 'ai-dx' }
@@ -2026,6 +2053,7 @@ function renderUpdates() {
   $('#feed').innerHTML = days.length ? days.map(d => `
     <section><h2 class="day-h">${d === DATA.asOf.date ? 'きょう ・ ' : ''}${dateLabel(d)}</h2>
     ${list.filter(u => u.date === d).map(upHtml).join('')}</section>`).join('') : `<p class="empty">この条件に合う動きは、いまのところありません。</p>`;
+  if (st.goUp) { const id = st.goUp; st.goUp = null; reveal('#up-' + id); }
 }
 function upHtml(u) {
   const open = st.openUp === u.id, all = STAGES[u.type];
@@ -2050,10 +2078,18 @@ function upHtml(u) {
     </div>` : ''}
   </article>`;
 }
+/* 画面を切り替えると先頭に戻るので、目当ての項目へは、描き終えたあとで送る */
+function reveal(sel, mark) {
+  requestAnimationFrame(() => {
+    const el = $(sel);
+    if (!el) return;
+    el.scrollIntoView({ block: 'center', behavior: reduced ? 'auto' : 'smooth' });
+    if (mark) { el.classList.add('w-hi'); setTimeout(() => el.classList.remove('w-hi'), 2400); }
+  });
+}
 function openUpdate(id) {
-  st.upType = 'all'; st.upTheme = 'all'; st.openUp = id;
+  st.upType = 'all'; st.upTheme = 'all'; st.openUp = id; st.goUp = id;
   go('updates');
-  requestAnimationFrame(() => { const el = $('#up-' + id); if (el) el.scrollIntoView({ block: 'center', behavior: reduced ? 'auto' : 'smooth' }); });
 }
 
 /* ---------- find ---------- */
@@ -2090,6 +2126,7 @@ function renderFind() {
     const list = DATA.programs.filter(p => st.aud === 'all' || p.aud.includes(st.aud));
     $('#progs').innerHTML = list.length ? `<div class="progs">${list.map(p => progCard(p, null)).join('')}</div>` : `<p class="empty">この立場に合う制度は、サンプルには入っていません。</p>`;
   }
+  if (st.goProg) { const id = st.goProg; st.goProg = null; reveal('#prog-' + id, true); }
 }
 
 /* ---------- profile, login, applications (this sample keeps them in this browser only) ---------- */
@@ -2318,8 +2355,9 @@ const CALLS = WD.matters.flatMap(m => (m.calls || []).map(c => ({ ...c, src: m, 
 /* 案件：用意したものがなければ、「政策の動き」の1件から最小の形をつくる */
 const matterOf = id => {
   const m = WD.matters.find(x => x.id === id), u = upById[m ? m.up : id];
-  if (m) { const steps = WD.steps[m.steps] || STAGES[m.type], cur = m.cur != null ? m.cur : u.stage; return { ...m, steps, cur, now: m.steps ? steps[cur] : stageName(u), links: m.links || (u ? u.links : []) }; }
-  return u ? { id, up: id, title: u.title, type: u.type, theme: u.theme, steps: STAGES[u.type], cur: u.stage, now: stageName(u), links: u.links, events: [{ d: u.date, t: u.title }] } : null;
+  const body = x => ({ sum: x.sum, what: x.what, who: x.who, when: x.when, amount: x.amount });
+  if (m) { const steps = WD.steps[m.steps] || STAGES[m.type], cur = m.cur != null ? m.cur : u.stage; return { ...body(u || {}), ...m, steps, cur, now: m.steps ? steps[cur] : stageName(u), links: m.links || (u ? u.links : []) }; }
+  return u ? { ...body(u), id, up: id, title: u.title, type: u.type, theme: u.theme, steps: STAGES[u.type], cur: u.stage, now: stageName(u), links: u.links, events: [{ d: u.date, t: u.title }] } : null;
 };
 const wIds = () => [...new Set([...W.matters, ...WD.matters.map(m => m.id), ...DATA.updates.filter(u => u.top).map(u => u.id)])];
 const dlOf = id => DATA.programs.find(p => p.id === id && p.due) || CALLS.find(c => c.id === id && c.due) || null;
@@ -2375,7 +2413,7 @@ const wmBtn = (id, fk) => { const on = W.matters.includes(id); return `<button c
 const dlBtn = (id, fk) => { const on = W.dls.includes(id); return `<button class="btn btn-ghost" type="button" data-wd-toggle="${id}" data-fk="${fk}" aria-pressed="${on}">${ic(on ? 'check' : 'clock')}${on ? 'ウォッチ中' : '締切をウォッチ'}</button>`; };
 const openHtml = m => !m.open ? `<p class="d-empty">この案件の未定の点は、まだ整理されていません</p>` : !m.open.length ? `<p class="d-empty">この案件で、未定とされている点はありません</p>`
   : `<ul class="wo">${m.open.map(o => `<li><b>${esc(o.q)}${o.sample ? ' ' + SMP : ''}</b><span class="wo-b"><span class="basis ${o.basis}">${BASIS[o.basis]}</span>${o.quote ? `<span>「${esc(o.quote)}」</span>` : ''}</span><small>分かる時期の目安：${esc(o.due || 'まだ示されていません')}</small></li>`).join('')}</ul>`;
-const evHtml = (e, links) => { const n = isNew(e.d), tag = n ? 'b' : 'span'; return `<li><time>${wDate(e.d)}</time>${n ? NEW : ''}<${tag}>${esc(e.t)}</${tag}>${e.sample ? SMP : ''}${links && !e.sample ? srcLinks(links) : ''}</li>`; };
+const evHtml = (e, links, id) => { const n = isNew(e.d), tag = n ? 'b' : 'span'; return `<li${id ? ` id="${id}" tabindex="-1"` : ''}><time>${wDate(e.d)}</time>${n ? NEW : ''}<${tag}>${esc(e.t)}</${tag}>${e.sample ? SMP : ''}${links && !e.sample ? srcLinks(links) : ''}</li>`; };
 const condChips = (s, rm) => Object.keys(COND).flatMap(k => rm
   ? s[k].map((v, i) => `<button class="chip wc" type="button" data-wdraft-rm="${k}:${i}" aria-label="${COND[k]}「${esc(v)}」をはずす"><small>${COND[k]}</small>${esc(v)}${ic('x')}</button>`)
   : s[k].length ? [`<span class="chip wc"><small>${COND[k]}</small>${esc(s[k].join('・'))}</span>`] : []).join('');
@@ -2389,10 +2427,17 @@ function callHtml(c, s) {
     <div class="w-more" id="${key}"${open ? '' : ' hidden'}>${hit ? `<p class="w-row-m"><span>${esc(hit.why)}</span></p>` : ''}<dl class="prog-dl"><div><dt>対象</dt><dd>${esc(c.who)}</dd></div>${c.amt ? `<div><dt>金額</dt><dd>${esc(c.amt)}</dd></div>` : ''}<div><dt>予算</dt><dd><button class="lnk" type="button" data-wgo="wm-${c.src.id}">${esc(c.src.title)}</button></dd></div></dl><p class="cap">サンプルの公募です。公開版では、ここから公募要領と申請の準備へ進めます。</p></div>
   </div>`;
 }
-/* 案件カードの中の公募。待ち受けに合っていれば、その待ち受けへ飛べる */
+/* 案件カードの中の公募。押すと、その公募の中身が下に開く */
 function callTile(c) {
-  const by = W.stands.find(x => hitsOf(x).some(h => h.c.id === c.id)), tag = by ? 'button' : 'div';
-  return `<${tag} class="wcall"${by ? ` type="button" data-wgo="ws-${by.id}"` : ''}><b>${esc(c.name)}</b><span class="w-row-m"><span class="st ${c.st}">${esc(c.stText)}</span>${c.due ? `<span>締切 ${wDate(c.due)}</span>` : ''}${c.amt ? `<span>${esc(c.amt)}</span>` : ''}</span>${by ? `<span class="w-on">${ic('bell')}待ち受けに合いました</span>` : ''}</${tag}>`;
+  const key = 'wcd-' + c.id, by = W.stands.some(x => hitsOf(x).some(h => h.c.id === c.id));
+  return `<button class="wcall" type="button" data-wopen="${key}" aria-expanded="${st.wOpen.has(key)}" aria-controls="${key}"><b>${esc(c.name)}</b><span class="w-row-m"><span class="st ${c.st}">${esc(c.stText)}</span>${c.due ? `<span>締切 ${wDate(c.due)}</span>` : ''}${c.amt ? `<span>${esc(c.amt)}</span>` : ''}</span>${by ? `<span class="w-on">${ic('bell')}待ち受けに合いました</span>` : ''}</button>`;
+}
+function callMore(c) {
+  const key = 'wcd-' + c.id, by = W.stands.filter(x => hitsOf(x).some(h => h.c.id === c.id));
+  return `<div class="wcall-more" id="${key}"${st.wOpen.has(key) ? '' : ' hidden'}><p class="w-row-t">${esc(c.name)} ${SMP}</p>
+    <dl class="prog-dl"><div><dt>対象</dt><dd>${esc(c.who)}</dd></div>${c.amt ? `<div><dt>金額</dt><dd>${esc(c.amt)}</dd></div>` : ''}${c.due ? `<div><dt>締切</dt><dd>${wDate(c.due)}（${leftText(daysTo(c.due))}）</dd></div>` : ''}<div><dt>状態</dt><dd>${esc(c.stText)}</dd></div></dl>
+    <div class="w-row-a">${c.due ? dlBtn(c.id, 'call-' + key) : ''}${by.map(x => `<button class="mini" type="button" data-wgo="ws-${x.id}">${ic('bell')}待ち受け「${esc(x.q)}」</button>`).join('')}</div>
+    <p class="cap">サンプルの公募です。公開版では、ここから公募要領と申請の準備へ進めます。</p></div>`;
 }
 /* 段階の線。通った段階には日付を、これからの段階には「分かる時期」と、そこで決まる未定の点を載せる */
 const tkDate = iso => (iso.length < 10 ? `${iso.slice(0, 4)}.${+iso.slice(5, 7)}` : iso.slice(5).replace('-', '.'));
@@ -2402,25 +2447,30 @@ function trackHtml(m) {
   return `<ol class="life wn" style="--n:${m.steps.length}" aria-label="この案件の段階">${m.steps.map((x, i) => {
     const e = m.events.filter(v => (v.at != null ? v.at : m.cur) === i).sort((p, q) => (p.d < q.d ? 1 : -1))[0], qs = open.filter(o => at(o) === i);
     return `<li class="${i < m.cur ? 'done' : i === m.cur ? 'now' : ''}"${i === m.cur ? ' aria-current="step"' : ''}><span class="tk-l">${esc(x)}</span>`
-      + (e ? `<time class="tk-d">${tkDate(e.d)}${isNew(e.d) ? NEW : ''}</time>` : i === m.cur ? `<time class="tk-d">いまここ</time>` : '')
+      + (e ? `<button class="tk-d tk-b" type="button" data-wshow="${log}" data-wev="wev-${m.id}-${m.events.indexOf(e)}" title="${esc(e.t)}" aria-label="${esc(x)}（${wDate(e.d)}）の内容を見る"><time>${tkDate(e.d)}</time>${isNew(e.d) ? NEW : ''}</button>` : i === m.cur ? `<time class="tk-d">いまここ</time>` : '')
       + (i === nx ? `<span class="tk-x">${esc(m.next.s || m.next.when)}</span>` : '')
       + (qs.length ? `<span class="tk-q"><small>未定</small>${qs.map(o => `<button class="qchip ${o.basis}" type="button" data-wshow="${log}" title="${esc(o.q)}：${BASIS[o.basis]}">${esc(o.s || o.q)}</button>`).join('')}</span>` : '')
       + `</li>`;
   }).join('')}</ol>`;
 }
 function matterHtml(m) {
-  const calls = CALLS.filter(c => c.src.id === m.id), nx = m.steps[m.cur + 1], log = 'wlog-' + m.id, open = st.wOpen.has(log);
+  const calls = CALLS.filter(c => c.src.id === m.id), nx = m.steps[m.cur + 1], log = 'wlog-' + m.id, open = st.wOpen.has(log), u = upById[m.up];
+  const qa = [['何が変わる', m.what], ['だれに関係', m.who], ['いつから', m.when]].filter(x => x[1]);
   return `<article class="panel wm" id="wm-${m.id}" tabindex="-1">
     <header class="wm-top"><span class="up-type">${ic(TYPES[m.type].i)}${TYPES[m.type].n}</span><span class="wm-th"><span class="dot" style="background:${themeVar(m.theme)}"></span>${esc(themeName(m.theme))}</span>
-      <span class="wm-acts"><button class="mini" type="button" data-ask="「${esc(m.title)}」は、その後どうなった？" aria-label="AIに聞く：その後どうなった？">${ic('spark')}<span>その後は？</span></button><button class="mini" type="button" data-wopen="${log}" aria-expanded="${open}" aria-controls="${log}">くわしく${ic('chev')}</button></span>
-      <h3 class="wm-title">${esc(m.title)}</h3></header>
+      <span class="wm-acts"><button class="mini" type="button" data-ask="「${esc(m.title)}」は、その後どうなった？" aria-label="AIに聞く：その後どうなった？">${ic('spark')}<span>その後は？</span></button></span>
+      <h3 class="wm-title">${esc(m.title)}</h3>
+      ${m.what || m.amount ? `<p class="wm-gist">${m.amount ? `<b>${esc(m.amount)}</b>` : ''}${esc(m.what || '')}</p>` : ''}</header>
     ${trackHtml(m)}
-    ${calls.length ? `<div class="wm-calls"><p class="d-sub">ここから出た公募${SMP}</p><div class="wcalls">${calls.map(callTile).join('')}</div></div>` : ''}
+    ${calls.length ? `<div class="wm-calls"><p class="d-sub">ここから出た公募${SMP}</p><div class="wcalls">${calls.map(callTile).join('')}</div>${calls.map(callMore).join('')}</div>` : ''}
+    <div class="wm-foot"><button class="mini wm-open" type="button" data-wopen="${log}" aria-expanded="${open}" aria-controls="${log}">内容と経過を見る${ic('chev')}</button>${m.links.length ? `<span class="wm-src"><small>一次情報</small>${srcLinks(m.links)}</span>` : ''}</div>
     <div class="wm-more" id="${log}"${open ? '' : ' hidden'}>
+      ${m.sum || qa.length ? `<div class="wm-body"><p class="d-sub">内容</p>${m.sum ? `<p class="wm-sum">${esc(m.sum)}</p>` : ''}${qa.length ? `<dl class="qa">${qa.map(x => `<div><dt>${x[0]}</dt><dd>${esc(x[1])}</dd></div>`).join('')}</dl>` : ''}
+        <div class="up-acts">${u ? `<button class="btn btn-ghost" type="button" data-up="${u.id}">${ic(TYPES[u.type].i)}政策の動きで読む</button>` : ''}${useById[m.theme] ? `<button class="btn btn-ghost" type="button" data-goflow="${m.theme}">${ic('flow')}お金の流れで見る</button>` : ''}</div></div>` : ''}
       <div class="wm-cols">
         <div><p class="d-sub">まだ決まっていないこと</p>${openHtml(m)}</div>
         <div class="wm-side"><div><p class="d-sub">次の節目</p><p class="w-next">${m.next ? `<span>${esc(m.next.when)}</span><b>${esc(m.next.what)}</b>${m.next.note ? `<small>${esc(m.next.note)}</small>` : ''}` : nx ? `<b>${esc(nx)}</b><small>次の段階です。日程は、まだ整理されていません</small>` : `<small>最後の段階まで進んでいます</small>`}</p></div>
-          <div><p class="d-sub">これまでの経過</p><ul class="wm-ev">${[...m.events].reverse().map(e => evHtml(e, m.links)).join('')}</ul></div></div>
+          <div><p class="d-sub">これまでの経過</p><ul class="wm-ev">${m.events.map((e, i) => [e, i]).reverse().map(([e, i]) => evHtml(e, m.links, `wev-${m.id}-${i}`)).join('')}</ul></div></div>
       </div>
       <div class="up-acts"><button class="qbtn" type="button" data-wm-toggle="${m.id}" data-fk="off-${m.id}">ウォッチをやめる</button></div>
     </div>
@@ -2437,8 +2487,8 @@ function standHtml(s) {
 function dlHtml(x) {
   const n = WD.notes[x.id], left = daysTo(x.due);
   return `<div class="panel w-row wd${left <= 7 ? ' near' : ''}" id="wd-${x.id}" tabindex="-1"><span class="wd-left">${left > 0 ? `<small>あと</small><b>${left}</b><small>日</small>` : `<b class="wd-t">${leftText(left)}</b>`}</span><div class="w-row-b">
-      <p class="w-row-t">${esc(x.name)}${x.sample ? ' ' + SMP : ''}</p>
-      <p class="w-row-m"><span>締切 ${wDate(x.due)}</span></p>
+      <p class="w-row-t">${x.sample ? `${esc(x.name)} ${SMP}` : `<button class="w-lk" type="button" data-prog="${x.id}">${esc(x.name)}</button>`}</p>
+      <p class="w-row-m"><span>締切 ${wDate(x.due)}</span>${x.amt ? `<span>${esc(x.amt)}</span>` : ''}${x.sample ? `<button class="lnk" type="button" data-wgo="wm-${x.src.id}">${esc(x.src.title)}から</button>` : srcLinks([x.link])}</p>
       ${n ? `<p class="w-note">${isNew(n.d) ? NEW : ''}<span>${md(n.d)} ${esc(n.t)}</span>${SMP}</p>` : ''}
     </div><button class="icon-btn w-x" type="button" data-wd-toggle="${x.id}" data-fk="dl-${x.id}" aria-label="「${esc(x.name)}」の締切のウォッチをやめる" title="やめる">${ic('x')}</button>
     <span class="wd-bar" aria-hidden="true"><i style="width:${Math.max(4, Math.min(100, Math.round((1 - left / 60) * 100)))}%"></i></span>
@@ -2911,7 +2961,7 @@ document.addEventListener('click', e => {
   else if (d.drill != null) drill(d.drill);
   else if (d.goflow != null) selectFlow(d.goflow);
   else if (d.up != null) openUpdate(d.up);
-  else if (d.prog != null) { st.aud = 'all'; st.findMode = 'all'; go('find'); requestAnimationFrame(() => { const el = $('#prog-' + d.prog); if (el) el.scrollIntoView({ block: 'center' }); }); }
+  else if (d.prog != null) { st.aud = 'all'; st.findMode = 'all'; st.goProg = d.prog; go('find'); }
   else if (d.unit != null) { st.unit = d.unit; renderFlowView(); }
   else if (d.mode != null) { st.mode = d.mode; renderFlowView(); }
   else if (d.uptype != null) { st.upType = d.uptype; st.openUp = null; renderUpdates(); renderCtx(); renderSugg(); }
@@ -2948,7 +2998,12 @@ document.addEventListener('click', e => {
   const back = (...sels) => { for (const s of sels) { const el = s && $(s); if (el) { el.focus(); return; } } };
   if (d.wgo != null) actions.watch(d.wgo, true);
   else if (d.wopen != null) { const el = document.getElementById(d.wopen), open = el.hidden; el.hidden = !open; t.setAttribute('aria-expanded', String(open)); st.wOpen[open ? 'add' : 'delete'](d.wopen); }
-  else if (d.wshow != null) { const el = document.getElementById(d.wshow), b = $(`[data-wopen="${d.wshow}"]`); el.hidden = false; st.wOpen.add(d.wshow); if (b) b.setAttribute('aria-expanded', 'true'); el.scrollIntoView({ block: 'nearest', behavior: reduced ? 'auto' : 'smooth' }); }
+  else if (d.wshow != null) {
+    const el = document.getElementById(d.wshow), b = $(`[data-wopen="${d.wshow}"]`), ev = d.wev && document.getElementById(d.wev);
+    el.hidden = false; st.wOpen.add(d.wshow); if (b) b.setAttribute('aria-expanded', 'true');
+    if (ev) { ev.scrollIntoView({ block: 'center', behavior: reduced ? 'auto' : 'smooth' }); ev.focus({ preventScroll: true }); ev.classList.add('w-hi'); setTimeout(() => ev.classList.remove('w-hi'), 2400); }
+    else el.scrollIntoView({ block: 'nearest', behavior: reduced ? 'auto' : 'smooth' });
+  }
   else if (d.wseen != null) { W.seen = TODAY; wSave(); back('#wReset'); }
   else if (d.wreset != null) { W = W0(); st.draft = null; st.wOpen.clear(); wSave(); back('#wSeen', '#wReset'); }
   else if (d.wmToggle != null) {
