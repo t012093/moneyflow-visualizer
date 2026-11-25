@@ -72,6 +72,8 @@ export interface UpdateItem {
   docsChecked?: string;
   /** AIが資料から作ったポイント。どの資料の何ページの、どの文にもとづくかを必ず持つ */
   points?: DocPoint[];
+  /** points を作ろうとした日時（ISO 8601）。作れなかったときも入る（やり直さないため） */
+  pointsChecked?: string;
 }
 
 /** 資料の種類。画面の印と、読み方の切り替えに使う */

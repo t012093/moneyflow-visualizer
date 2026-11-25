@@ -125,3 +125,20 @@ test('やり直しても 5xx なら、その情報源だけ失敗として返す
   await assert.rejects(h.client.get('https://a.example/x'), (e: unknown) => e instanceof HttpError && e.status === 500);
   assert.equal(h.calls.filter(c => c.url.endsWith('/x')).length, 3);
 });
+
+test('binary を指定すると、中身をそのまま返し、大きさの上限も変えられる', async () => {
+  const body = new Uint8Array([0x50, 0x4b, 0x03, 0x04, 1, 2, 3, 4]);
+  const calls: string[] = [];
+  const fetchImpl = (async (input: string | URL | Request) => {
+    const url = String(input);
+    calls.push(url);
+    if (url.endsWith('/robots.txt')) return new Response('', { status: 404 });
+    return new Response(body, { status: 200, headers: { 'content-type': 'application/zip', 'last-modified': 'Wed, 25 Nov 2026 05:27:13 GMT' } });
+  }) as typeof fetch;
+  const client = new PoliteClient({ userAgent: 'test/1.0', minIntervalMs: 0, timeoutMs: 1000, state: {}, fetchImpl, sleep: async () => {} });
+  const page = await client.get('https://example.go.jp/a.zip', { binary: true });
+  assert.deepEqual([...(page.bytes ?? [])], [...body]);
+  assert.equal(page.text, '');
+  assert.equal(page.lastModified, 'Wed, 25 Nov 2026 05:27:13 GMT');
+  await assert.rejects(() => client.get('https://example.go.jp/b.zip', { binary: true, maxBytes: 4, conditional: false }), /大きすぎる/);
+});

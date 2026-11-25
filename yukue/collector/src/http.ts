@@ -15,6 +15,10 @@ export interface Page {
   notModified: boolean;
   /** 前回と中身がちがう（初回は true） */
   changed: boolean;
+  /** 中身そのもの（binary を指定したときだけ。ZIP や PDF 用。このとき text は空） */
+  bytes?: Uint8Array;
+  /** サーバーが返した更新日時（Last-Modified ヘッダーのまま） */
+  lastModified?: string;
 }
 
 export class HttpError extends Error {
@@ -113,7 +117,7 @@ export class PoliteClient {
     return p;
   }
 
-  async get(url: string, opts: { conditional?: boolean; accept?: string } = {}): Promise<Page> {
+  async get(url: string, opts: { conditional?: boolean; accept?: string; binary?: boolean; maxBytes?: number } = {}): Promise<Page> {
     const u = new URL(url);
     if (u.protocol !== 'https:' && u.protocol !== 'http:') throw new Error(`対応していないURLです: ${url}`);
     let crawlDelayMs = 0;
@@ -153,7 +157,7 @@ export class PoliteClient {
       }
       if (!res.ok) throw new HttpError(res.status, url);
       const buf = new Uint8Array(await res.arrayBuffer());
-      if (buf.byteLength > MAX_BODY_BYTES) throw new Error(`大きすぎるため読み込みません（${buf.byteLength}バイト）: ${url}`);
+      if (buf.byteLength > (opts.maxBytes ?? MAX_BODY_BYTES)) throw new Error(`大きすぎるため読み込みません（${buf.byteLength}バイト）: ${url}`);
       const hash = sha1(buf);
       const changed = !prev || prev.hash !== hash;
       this.o.state[url] = {
@@ -162,7 +166,9 @@ export class PoliteClient {
         hash,
         fetchedAt: new Date(this.now()).toISOString()
       };
-      return { url: res.url || url, status: res.status, text: decodeBody(buf, res.headers.get('content-type')), notModified: false, changed };
+      const lastModified = res.headers.get('last-modified') ?? undefined;
+      if (opts.binary) return { url: res.url || url, status: res.status, text: '', bytes: buf, notModified: false, changed, lastModified };
+      return { url: res.url || url, status: res.status, text: decodeBody(buf, res.headers.get('content-type')), notModified: false, changed, lastModified };
     }
   }
 }
