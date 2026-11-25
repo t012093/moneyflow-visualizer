@@ -1,0 +1,88 @@
+name: Yukue pages
+
+# 画面（yukue/web）をビルドして、GitHub Pages に公開する。
+# 動くのは main だけ。リポジトリの Settings → Pages で、Source を「GitHub Actions」にしておく必要がある。
+#
+# 毎日の収集（Yukue collect）と週1回の取り込み（Yukue datasets）は、データを GITHUB_TOKEN でコミットする。
+# そのコミットでは push のワークフローが起きないので、それぞれの完了をきっかけに公開し直す。
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - yukue/web/**
+      - yukue/data/**
+      - yukue/shared/**
+      - .github/workflows/yukue-pages.yml
+  workflow_run:
+    workflows:
+      - Yukue collect
+      - Yukue datasets
+    types:
+      - completed
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 公開は1つずつ。あとから来たものがあれば、古いほうはやめる
+concurrency:
+  group: yukue-pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build
+    # 収集が失敗した回は、公開し直さない（データは変わっていない）
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: yukue/web
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          # workflow_run のときも、いまの main（収集がコミットしたあと）を取り出す
+          ref: main
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: yukue/web/package-lock.json
+
+      - name: Install
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+        env:
+          # AIの裏側（yukue/server）を公開しているときだけ、そのURLを入れる。空なら、画面のチャットは手元のデータだけで答える
+          VITE_YUKUE_API: ${{ vars.YUKUE_API_URL }}
+          VITE_YUKUE_MCP_URL: ${{ vars.YUKUE_MCP_URL }}
+
+      - name: Upload
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: yukue/web/dist
+
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
