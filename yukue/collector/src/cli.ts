@@ -1,8 +1,9 @@
-import { appendFileSync } from 'node:fs';
+import { appendFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { parseArgs } from 'node:util';
 import type { Briefing, JGrant, JGrantsFile, RunReport, SourceStatus, UpdateItem, UpdatesFile } from '../../shared/types.ts';
 import { DATA_DIR, ENRICH_LIMIT, MIN_INTERVAL_MS, TIMEOUT_MS, USER_AGENT, env } from './config.ts';
+import { compareModels, pickSamples, renderReport } from './compare.ts';
 import { createClaudeEnricher, enrichItems } from './enrich.ts';
 import { findFeedLinks, parseFeed } from './feeds.ts';
 import { PoliteClient } from './http.ts';
@@ -29,6 +30,11 @@ const HELP = `ゆくえ 収集システム
 
   node src/cli.ts reclassify [--dry-run]
       分類の規則を直したあと、通信をせずに、手元の一覧（updates/latest.json）へ当て直す
+
+  node src/cli.ts compare [--models a,b] [--limit 件数] [--out ファイル]
+      AIによる整形を、同じ項目でモデルを変えて比べ、読み比べ用の報告（Markdown）を作る
+      既定は claude-haiku-5-5 と claude-sonnet-5-5、10件、compare-report.md。一覧には書き込まない
+      （ANTHROPIC_API_KEY が必要。API の費用がかかる）
 
   node src/cli.ts rebuild [--dry-run]
       一覧に残す期間や件数の決まりを変えたあと、月ごとの保管用ファイルから一覧を作り直す
@@ -210,6 +216,24 @@ function reclassifyLatest(dryRun: boolean): number {
   return 0;
 }
 
+/** モデルを変えて整形を比べる。一覧には書き込まない。 */
+async function compare(models: string[], limit: number, out: string): Promise<number> {
+  if (!env('ANTHROPIC_API_KEY')) { console.error('ANTHROPIC_API_KEY が設定されていません。比較には API の利用（費用がかかります）が必要です。'); return 2; }
+  const latest = readJson<UpdatesFile | null>(join(DATA_DIR, 'updates/latest.json'), null);
+  if (!latest) { console.error('一覧（updates/latest.json）がありません。先に collect を実行してください。'); return 1; }
+  const samples = pickSamples(latest.items, limit);
+  if (!samples.length) { console.error('比べられる項目（定型でなく、重要度の高いもの）がありません。'); return 1; }
+  console.log(`  ${samples.length}件を、${models.join(' と ')} で整形します`);
+  const http = newClient({ http: {}, seen: {}, gian: {} });
+  const results = await compareModels(samples, http, { models, makeEnricher: (model, onUsage) => createClaudeEnricher(undefined, model, onUsage), log: msg => console.log(`    ${msg}`) });
+  const report = renderReport(results, models, new Date().toISOString());
+  writeFileSync(out, report + '\n');
+  const summary = env('GITHUB_STEP_SUMMARY');
+  if (summary) { try { appendFileSync(summary, report + '\n'); } catch { /* まとめが書けなくても続ける */ } }
+  console.log(`\n${report.split('## 項目ごとの結果')[0]}\n  報告を ${out} に書き出しました。`);
+  return results.some(c => c.results.some(r => r.fields)) ? 0 : 1;
+}
+
 /** 保管用ファイルから一覧を作り直す。通信はしない。 */
 function rebuildLatest(dryRun: boolean): number {
   const file = join(DATA_DIR, 'updates/latest.json');
@@ -230,7 +254,7 @@ function rebuildLatest(dryRun: boolean): number {
 
 const { values, positionals } = parseArgs({
   allowPositionals: true,
-  options: { only: { type: 'string' }, 'dry-run': { type: 'boolean', default: false }, 'no-enrich': { type: 'boolean', default: false }, 'max-failures': { type: 'string' }, help: { type: 'boolean', short: 'h', default: false } }
+  options: { only: { type: 'string' }, 'dry-run': { type: 'boolean', default: false }, 'no-enrich': { type: 'boolean', default: false }, 'max-failures': { type: 'string' }, models: { type: 'string' }, limit: { type: 'string' }, out: { type: 'string' }, help: { type: 'boolean', short: 'h', default: false } }
 });
 const [command, ...rest] = positionals;
 let code = 0;
@@ -243,6 +267,12 @@ else if (command === 'health') {
 }
 else if (command === 'reclassify') code = reclassifyLatest(values['dry-run']);
 else if (command === 'rebuild') code = rebuildLatest(values['dry-run']);
+else if (command === 'compare') {
+  const models = (values.models ?? 'claude-haiku-5-5,claude-sonnet-5-5').split(',').map(m => m.trim()).filter(Boolean);
+  const limit = Number(values.limit ?? 10);
+  if (models.length < 1 || !Number.isInteger(limit) || limit < 1 || limit > 50) { console.error('--models はカンマ区切り、--limit は1〜50の整数で指定してください。'); code = 2; }
+  else code = await compare(models, limit, values.out ?? 'compare-report.md');
+}
 else if (command === 'discover') code = await discover(rest);
 else if (command === 'sources') for (const s of allSources()) console.log(`${s.id.padEnd(12)} ${s.kind.padEnd(5)} ${s.name}  ${s.url}`);
 else { console.error(`知らないコマンドです: ${command}\n\n${HELP}`); code = 2; }

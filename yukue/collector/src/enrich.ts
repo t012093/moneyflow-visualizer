@@ -40,15 +40,23 @@ export interface Enricher {
   enrich(item: UpdateItem, pageText: string): Promise<EnrichedFields | null>;
 }
 
-export function createClaudeEnricher(client: Anthropic = new Anthropic(), model = ENRICH_MODEL): Enricher {
+export interface Usage {
+  input: number;
+  output: number;
+}
+
+/** 安全上の理由でモデルが答えを控えたとき、API側で別のモデルに引き継ぐ指定。Haiku はこの仕組みに対応していないので付けない。 */
+export function fallbackParams(model: string): { betas: ['server-side-fallback-2026-07-01']; fallbacks: 'default' } | Record<string, never> {
+  return /^claude-haiku/.test(model) ? {} : { betas: ['server-side-fallback-2026-07-01'], fallbacks: 'default' };
+}
+
+export function createClaudeEnricher(client: Anthropic = new Anthropic(), model = ENRICH_MODEL, onUsage?: (u: Usage) => void): Enricher {
   return {
     async enrich(item, pageText) {
       const res = await client.beta.messages.parse({
         model,
         max_tokens: 4000,
-        // 安全上の理由でモデルが答えを控えたとき、API側で別のモデルに引き継ぐ
-        betas: ['server-side-fallback-2026-07-01'],
-        fallbacks: 'default',
+        ...fallbackParams(model),
         system: SYSTEM,
         output_config: { effort: 'low', format: betaZodOutputFormat(Enriched) },
         messages: [{
@@ -62,6 +70,7 @@ export function createClaudeEnricher(client: Anthropic = new Anthropic(), model 
           ].filter(Boolean).join('\n')
         }]
       });
+      onUsage?.({ input: res.usage.input_tokens + (res.usage.cache_read_input_tokens ?? 0) + (res.usage.cache_creation_input_tokens ?? 0), output: res.usage.output_tokens });
       if (res.stop_reason === 'refusal') return null;
       return res.parsed_output ?? null;
     }
@@ -141,4 +150,19 @@ export async function enrichItems(items: UpdateItem[], enricher: Enricher, http:
     }
   }
   return { items: items.map(i => out.get(i.id) ?? i), done };
+}
+
+
+/**
+ * 整形した文に出てくる数字のうち、もとの題や本文に見当たらないもの。
+ * 「本文にない数字を足していないか」を機械的に確かめるための目安で、1桁の数字は対象にしない。
+ */
+export function ungroundedNumbers(fields: EnrichedFields, source: string): string[] {
+  const norm = (t: string) => t.replace(/[０-９]/g, c => String.fromCharCode(c.charCodeAt(0) - 0xfee0)).replace(/(\d)[,，](?=\d)/g, '$1');
+  const have = new Set(norm(source).match(/\d+(?:\.\d+)?/g) ?? []);
+  const out = new Set<string>();
+  for (const n of norm([fields.title, fields.summary, fields.what, fields.who, fields.when].join(' ')).match(/\d+(?:\.\d+)?/g) ?? []) {
+    if (n.length >= 2 && !have.has(n)) out.add(n);
+  }
+  return [...out];
 }

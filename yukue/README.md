@@ -91,6 +91,16 @@ node src/cli.ts rebuild                # 残す期間の決まりを変えたと
 
 AIが整えた項目は `enriched: "ai"` となり、画面ではそのことが分かるように表示します。
 
+#### モデルを選ぶ
+
+使うモデルは `YUKUE_MODEL` で切り替えます（例：`claude-haiku-5-5`、`claude-sonnet-5-5`）。切り替える前に、同じ項目で読み比べられます。
+
+```bash
+node src/cli.ts compare --models claude-haiku-5-5,claude-sonnet-5-5 --limit 10
+```
+
+一覧には書き込まず、`compare-report.md` に、項目ごとの結果を横に並べた報告を作ります。モデルごとのトークン数と費用、そして「整形した文に、もとの題と本文に見当たらない数字が出ていないか」の確認も付きます。GitHub では、Actions の「Yukue compare models」から手動で実行できます（main に入ってから）。
+
 ### 情報源を増やす
 
 ```bash

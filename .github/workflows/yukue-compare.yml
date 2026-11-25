@@ -1,0 +1,54 @@
+name: Yukue compare models
+
+# AIによる整形を、同じ項目でモデルを変えて比べる（手動で実行する）。
+# 一覧には書き込まず、報告を実行のまとめのページと成果物に出す。API の費用がかかる。
+
+on:
+  workflow_dispatch:
+    inputs:
+      models:
+        description: 比べるモデル（カンマ区切り）
+        default: claude-haiku-5-5,claude-sonnet-5-5
+      limit:
+        description: 比べる項目の数（1〜50）
+        default: '10'
+
+permissions:
+  contents: read
+
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: yukue/collector
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: yukue/collector/package-lock.json
+
+      - name: Install
+        run: npm ci
+
+      - name: Compare
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          YUKUE_USER_AGENT: ${{ vars.YUKUE_USER_AGENT }}
+          MODELS: ${{ inputs.models }}
+          LIMIT: ${{ inputs.limit }}
+        run: node src/cli.ts compare --models "$MODELS" --limit "$LIMIT" --out compare-report.md
+
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: compare-report
+          path: yukue/collector/compare-report.md
+          if-no-files-found: ignore
