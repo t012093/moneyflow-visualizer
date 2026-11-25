@@ -72,10 +72,16 @@ ol,ul{padding:0;list-style:none}
 .nav a:hover{color:var(--ink)}
 .nav a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--accent);font-weight:600}
 .hdr-act{margin-left:auto;display:flex;align-items:center;gap:4px 12px}
-.hdr-link{display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:0 8px;border-radius:10px;font-size:13px;color:var(--ink-2)}
+.hdr-link{position:relative;display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:0 8px;border-radius:10px;font-size:13px;color:var(--ink-2)}
 .hdr-link:hover{color:var(--ink);background:var(--surface-2)}
 .hdr-link[aria-current="page"]{color:var(--accent);font-weight:600}
 .m-only{display:none}
+.nav-n,.pill-n{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--seal);color:var(--surface);font-size:10.5px;font-weight:700;line-height:1;flex:none}
+.nav-n{margin-left:6px;font-variant-numeric:tabular-nums}
+.nav-n[hidden],.w-more[hidden]{display:none}
+.nav-dot{position:absolute;top:6px;right:5px;width:8px;height:8px;border-radius:50%;background:var(--seal);box-shadow:0 0 0 2px var(--surface)}
+@media (min-width:920px) and (max-width:1119.98px){.hdr-in{column-gap:14px}.nav a{padding:0 8px}.hdr-act{column-gap:6px}}
+@media (min-width:920px) and (max-width:1019.98px){.hdr-link span{display:none}.hdr-link{width:36px;padding:0;justify-content:center}}
 
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:36px;padding:0 14px;border-radius:10px;font-weight:600;font-size:13px;white-space:nowrap;transition:background .15s,border-color .15s,filter .15s}
 .btn .ic{width:16px;height:16px}
@@ -88,6 +94,10 @@ ol,ul{padding:0;list-style:none}
 .icon-btn{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;color:var(--ink-2)}
 .icon-btn:hover{background:var(--surface-2);color:var(--ink)}
 .lnk{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.btn-ghost[aria-pressed="true"]{background:var(--accent-wash);border-color:transparent;color:var(--accent)}
+.btn:disabled,.chip:disabled{opacity:.5;cursor:default}
+.qbtn{display:inline-flex;align-items:center;gap:5px;min-height:36px;padding:0 6px;border-radius:8px;font-size:12.5px;color:var(--ink-2);text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:3px}
+.qbtn:hover{color:var(--ink);background:var(--surface-2)}
 
 /* ---------- shell ---------- */
 .shell{display:grid;grid-template-columns:minmax(0,1fr);gap:24px;max-width:1560px;margin:0 auto;padding-block:18px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));align-items:start}
@@ -130,7 +140,8 @@ ol,ul{padding:0;list-style:none}
 .row-t{font-weight:600}
 .row-s{grid-column:2;font-size:12px;color:var(--ink-3)}
 button.row:hover .row-t{color:var(--accent)}
-.follow-chips{margin-bottom:12px}
+.sec-more{margin-left:auto;font-size:12.5px}
+.home-follow{margin-top:18px}
 @container main (min-width:860px){
   .home-top{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:32px}
   .tiles{grid-template-columns:repeat(4,minmax(0,1fr))}
@@ -159,7 +170,7 @@ button.row:hover .row-t{color:var(--accent)}
 .life li{position:relative;display:grid;justify-items:center;align-content:start;gap:1px;text-align:center;font-size:11.5px;line-height:1.4;color:var(--ink-3);padding-top:17px}
 .life li::before{content:"";position:absolute;top:4px;left:-50%;right:50%;height:2px;background:var(--line-2)}
 .life li:first-child::before{display:none}
-.life li::after{content:"";position:absolute;top:0;left:calc(50% - 5px);width:10px;height:10px;border-radius:50%;background:var(--plane);border:2px solid var(--line-2)}
+.life li::after{content:"";position:absolute;z-index:1;top:0;left:calc(50% - 5px);width:10px;height:10px;border-radius:50%;background:var(--plane);border:2px solid var(--line-2)}
 .life li.done{color:var(--ink-2)}
 .life li.done::before,.life li.now::before{background:var(--ink-2)}
 .life li.done::after{background:var(--ink-2);border-color:var(--ink-2)}
@@ -374,7 +385,7 @@ button.row:hover .row-t{color:var(--accent)}
 
 /* ---------- notes ---------- */
 .notes{display:grid;gap:38px;max-width:940px}
-.note-sec{display:grid;gap:12px;min-width:0}
+.note-sec{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;min-width:0}
 .note-sec h2{font-family:var(--font-display);font-weight:700;font-size:20px;letter-spacing:.03em;font-feature-settings:"palt"}
 .note-sec > p{color:var(--ink-2);max-width:64ch}
 .note-sec strong{color:var(--ink);font-weight:700}
@@ -399,6 +410,71 @@ button.row:hover .row-t{color:var(--accent)}
 .diagram svg{display:block;min-width:700px;width:100%;height:auto;color:var(--ink)}
 .diagram text{font-family:var(--font-ui);fill:currentColor}
 .note-links{display:flex;flex-wrap:wrap;gap:6px}
+
+/* ---------- watch ---------- */
+.watch{display:grid;gap:34px;max-width:940px;overflow-wrap:anywhere}
+.watch [id]{scroll-margin-top:calc(var(--header-h) + env(safe-area-inset-top,0px) + 16px)}
+.w-hi{outline:2px solid var(--accent);outline-offset:3px}
+.w-sec{display:grid;gap:12px;min-width:0}
+.w-sec > .sec-h,.w-how .sec-h{margin-bottom:0}
+.w-sec > .sec-h{font-size:17px}
+.w-list{display:grid;gap:14px}
+.w-list:empty{display:none}
+.w-digest,.wm,.ws{padding:16px 18px;display:grid;gap:14px;min-width:0}
+.w-digest{gap:8px}
+.w-digest h2{font-size:15px;font-weight:700}
+.w-digest .rows{margin:4px 0 6px}
+.wm-top{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px}
+.watch .up-type{padding-top:0}
+.wm-th{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--ink-3)}
+.wm-th .dot{width:8px;height:8px}
+.wm-title{flex-basis:100%;font-size:16px;font-weight:700;line-height:1.5}
+.life.wn{grid-template-columns:repeat(var(--n),minmax(0,1fr));max-width:640px}
+.wm .life li:not(.done):not(.now)::after{background:var(--surface)}
+.wm-ev{display:grid;gap:7px}
+.wm-ev li{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;font-size:13.5px}
+.wm-ev time{min-width:92px;font-family:var(--font-mono);font-size:12px;color:var(--ink-2)}
+.wm-cols{display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
+@container main (min-width:700px){.wm-cols{grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:24px}}
+.wo{border-top:1px solid var(--line)}
+.wo li{display:grid;gap:3px;padding:9px 0;border-bottom:1px solid var(--line)}
+.wo b{font-size:13.5px}
+.wo-b{display:flex;flex-wrap:wrap;align-items:center;gap:3px 8px;font-size:12px;color:var(--ink-2)}
+.basis{font-size:11px;font-weight:600;line-height:1.5;padding:1px 7px;border-radius:5px;border:1px solid var(--line-2);white-space:nowrap}
+.basis.said{border-color:transparent;background:var(--accent-wash);color:var(--accent)}
+.wo small,.w-next small{font-size:12px;color:var(--ink-3)}
+.w-next{display:grid;gap:2px;padding:10px 12px;border-radius:10px;background:var(--surface-2);font-size:13px}
+.w-next span{font-family:var(--font-mono);font-size:12px;color:var(--ink-2)}
+.w-next b{font-size:14px}
+.w-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;padding:11px 0;border-top:1px solid var(--line);font-size:13px}
+.w-row-b{flex:1 1 280px;min-width:0;display:grid;gap:3px}
+.w-row-t{font-size:14px;font-weight:600;line-height:1.5}
+.w-row-m{display:flex;flex-wrap:wrap;align-items:center;gap:3px 10px;font-size:12px;color:var(--ink-2)}
+.w-row-a{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.w-row > .w-more{flex-basis:100%;display:grid;gap:6px}
+.w-rows > .w-row:last-child{border-bottom:1px solid var(--line)}
+.w-rows > .d-empty + .d-sub{margin-top:14px}
+.w-row.wd{display:grid;grid-template-columns:minmax(0,1fr) 120px 190px}
+.wd .w-row-a{justify-content:flex-end}
+@container main (max-width:620px){.w-row.wd{grid-template-columns:120px minmax(0,1fr)}.wd .w-row-b{grid-column:1 / -1}.wd .w-row-a{justify-content:flex-start}}
+.wd-left{display:grid;gap:5px;font-size:13px;font-weight:700}
+.wd-bar{height:4px;border-radius:2px;background:var(--line-2);overflow:hidden}
+.wd-bar i{display:block;height:100%;border-radius:2px;background:var(--accent-solid)}
+.w-add{display:flex;flex-wrap:wrap;gap:8px;max-width:640px}
+.w-add .inp{flex:1 1 260px}
+.w-add .btn{min-height:38px}
+.w-draft{display:grid;gap:10px;padding:14px 16px;border-radius:14px;background:var(--accent-wash)}
+.wc small{font-size:11px;color:var(--ink-3)}
+.wc .ic{width:13px;height:13px}
+.wc{height:auto;padding-block:3px;white-space:normal;text-align:left;border-radius:14px;line-height:1.45}
+span.wc{min-height:28px;cursor:default}
+span.wc:hover,.chip:disabled:hover{border-color:var(--line-2)}
+.w-on{display:inline-flex;align-items:center;gap:5px;color:var(--accent);font-weight:600}
+.w-on .ic{width:14px;height:14px}
+.ws-foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:4px 12px}
+.w-how{display:grid;gap:10px;padding:14px 16px;border:1px solid var(--line);border-radius:14px}
+.w-how > p{font-size:13px;color:var(--ink-2);max-width:64ch}
+.w-how .chips{align-items:center}
 
 /* ---------- dock (AIに聞く) ---------- */
 .dock{display:none;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:16px;min-width:0;overflow:hidden}
@@ -444,9 +520,9 @@ button.row:hover .row-t{color:var(--accent)}
   .shell.dock-open .dock{display:flex}
 }
 
-/* ---------- tab bar (phone) ---------- */
+/* ---------- tab bar (phone, and widths too narrow for the text nav) ---------- */
 .tabbar{display:none}
-@media (max-width:759.98px){
+@media (max-width:919.98px){
   .nav,.btn-ai,.hdr-link span{display:none}
   .m-only{display:inline-flex}
   .hdr-link{width:36px;padding:0;justify-content:center}
@@ -455,11 +531,17 @@ button.row:hover .row-t{color:var(--accent)}
   .tabbar .ic{width:21px;height:21px}
   .tabbar [aria-current="page"]{color:var(--accent);font-weight:700}
   .shell{padding-bottom:calc(var(--tab-h) + 32px)}
+}
+@media (max-width:759.98px){
   .dock{width:100%;border-left:0;padding-left:env(safe-area-inset-left,0px)}
   .composer textarea,.sel,.inp,.ta{font-size:16px}
   .flow-card,.teaser{padding-left:12px;padding-right:12px}
   .life li{font-size:10.5px}
   .life time{font-size:9.5px}
+  .hdr-in{column-gap:8px}
+  .hdr-act{column-gap:2px}
+  .w-digest,.wm,.ws{padding:14px}
+  .w-digest .row{grid-template-columns:62px minmax(0,1fr);column-gap:10px}
 }
 
 /* ---------- tooltip ---------- */
@@ -494,6 +576,7 @@ button.row:hover .row-t{color:var(--accent)}
     <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 7.5V12l3 2"/></symbol>
     <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="3.7"/><path d="M4.5 20c.9-3.9 3.9-5.6 7.5-5.6s6.6 1.7 7.5 5.6"/></symbol>
     <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 4 3.5 8.5 12 13l8.5-4.5zM3.5 12.5 12 17l8.5-4.5M3.5 16.5 12 21l8.5-4.5"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2.5 12c2.4-4.4 5.6-6.5 9.5-6.5s7.1 2.1 9.5 6.5c-2.4 4.4-5.6 6.5-9.5 6.5S4.9 16.4 2.5 12z"/><circle cx="12" cy="12" r="3"/></symbol>
   </defs>
 </svg>
 
@@ -508,9 +591,11 @@ button.row:hover .row-t{color:var(--accent)}
       <a href="#flow" data-nav="flow">お金の流れ</a>
       <a href="#updates" data-nav="updates">政策の動き</a>
       <a href="#find" data-nav="find">制度をさがす</a>
+      <a href="#watch" data-nav="watch">ウォッチ<span class="nav-n" id="watchN" hidden></span></a>
       <a href="#connect" data-nav="connect">AIとつなぐ</a>
     </nav>
     <div class="hdr-act">
+      <a class="hdr-link m-only" href="#watch" data-nav="watch" id="watchM" aria-label="ウォッチ"><svg class="ic"><use href="#i-eye"/></svg><i class="nav-dot" id="watchDot" hidden></i></a>
       <a class="hdr-link m-only" href="#connect" data-nav="connect" aria-label="AIとつなぐ"><svg class="ic"><use href="#i-plug"/></svg></a>
       <a class="hdr-link" href="#notes" data-nav="notes" aria-label="設計メモ"><svg class="ic"><use href="#i-note"/></svg><span>設計メモ</span></a>
       <a class="hdr-link" href="#me" data-nav="me" aria-label="マイページ"><svg class="ic"><use href="#i-user"/></svg><span id="acctLabel">ログイン</span></a>
@@ -547,9 +632,12 @@ button.row:hover .row-t{color:var(--accent)}
       <section class="tiles" id="tiles" aria-label="数字で見る今年度"></section>
       <div class="home-low">
         <section>
-          <h2 class="sec-h">フォロー中のテーマ<small>動きがあると通知します</small></h2>
-          <div class="chips follow-chips" id="followChips"></div>
-          <div class="rows" id="followRows"></div>
+          <h2 class="sec-h">ウォッチ中の動き<small id="homeWatchSub">前回見たときからの変化</small><a class="lnk sec-more" href="#watch">すべて見る</a></h2>
+          <div class="rows" id="homeWatchRows"></div>
+          <div class="home-follow" id="homeFollow" hidden>
+            <p class="d-sub">追っている分野の動き</p>
+            <div class="rows" id="followRows"></div>
+          </div>
         </section>
         <section>
           <h2 class="sec-h">これからの予定<small>公表されている日程と、例年の目安</small></h2>
@@ -632,6 +720,50 @@ button.row:hover .row-t{color:var(--accent)}
       </div>
       <p class="cap find-note" id="findNote"></p>
       <div id="progs"></div>
+    </section>
+
+    <!-- ウォッチ -->
+    <section class="view" id="v-watch" data-view="watch" hidden>
+      <header class="vh">
+        <p class="eyebrow">あとで知りたいことを、ここに置いておく</p>
+        <h1 class="vt">ウォッチ</h1>
+        <p class="lead">発表の時点では、決まっていないことがたくさんあります。気になる案件や、まだ出ていない補助金の条件を置いておくと、動きがあったときにここへ出ます。</p>
+      </header>
+      <div class="watch">
+        <section class="panel w-digest" id="wDigest" aria-live="polite"></section>
+        <section class="w-sec">
+          <h2 class="sec-h">追っている案件<small>段階が進んだとき、未定だった点が決まったときに知らせます</small></h2>
+          <div class="w-list" id="wMatters"></div>
+          <div class="w-rows" id="wMore"></div>
+        </section>
+        <section class="w-sec">
+          <h2 class="sec-h">待ち受け<small>まだ出ていないものを、条件で待ちます。条件に合う公募や制度が出たら知らせます</small></h2>
+          <form class="w-add" id="standForm">
+            <label class="sr" for="standInput">待ち受けたい条件</label>
+            <input class="inp" id="standInput" type="text" maxlength="60" autocomplete="off" placeholder="例：AIの導入に使える補助金が出たら">
+            <button class="btn btn-solid" id="standGo" type="submit">条件にする</button>
+          </form>
+          <div id="standDraft" aria-live="polite"></div>
+          <div class="w-list" id="wStands"></div>
+        </section>
+        <section class="w-sec">
+          <h2 class="sec-h">締切<small>申請しようと思っているものの締切と、要領の変更を知らせます</small></h2>
+          <div class="w-rows" id="wDeadlines" tabindex="-1"></div>
+        </section>
+        <section class="w-sec">
+          <h2 class="sec-h">分野をまとめて追う<small>分野ごとの動きを、ホームにまとめて出します</small></h2>
+          <div class="chips" id="followChips" role="group" aria-label="追う分野"></div>
+        </section>
+        <section class="w-how">
+          <h2 class="sec-h">知らせ方</h2>
+          <p>いまは、この画面とホームを開いたときに変化を出します。ログインすると、メールやアプリの通知で受け取れます（公開版）。</p>
+          <div class="chips" role="group" aria-label="知らせるタイミング（公開版で使えます）">
+            <button class="chip" id="notifyDaily" type="button" disabled>変化があった日に</button>
+            <button class="chip" id="notifyWeekly" type="button" disabled>週に1回まとめて</button>
+            <span class="tag">公開版で使えます</span>
+          </div>
+        </section>
+      </div>
     </section>
 
     <!-- マイページ -->
@@ -809,7 +941,7 @@ button.row:hover .row-t{color:var(--accent)}
               <ul>
                 <li><b>アプリ</b>の流れ図・動きの一覧・制度さがし</li>
                 <li><b>AIチャット</b>（アプリ内）と<b>コネクター</b>（外のAI）</li>
-                <li>フォロー中のテーマに動きがあれば<b>通知</b></li>
+                <li><b>ウォッチ</b>している案件・条件・締切に動きがあれば知らせる</li>
               </ul>
             </section>
           </div>
@@ -877,6 +1009,18 @@ button.row:hover .row-t{color:var(--accent)}
             <div><dt>AIに渡す情報</dt><dd>設定をAIの回答に使うかどうかは、本人が切り替えられる。病歴や障害などは「要配慮個人情報」で、同意なしには集められない。海外の事業者が動かすAIに個人データを送るときは、外国への提供としての同意と説明が要る場合があり、公式の整理はまだ定まっていない。公開の前に専門家と決める。</dd></div>
           </dl>
           <p class="note-links" id="lawLinks"></p>
+        </section>
+
+        <section class="note-sec">
+          <h2>ウォッチの設計</h2>
+          <p>発表を読んだあとで「あれは、その後どうなった？」と思ったときに、続きがすぐ分かるようにします。追う単位は1本の記事ではなく、<strong>時間をかけて進む案件</strong>と、<strong>まだ出ていないものの条件</strong>です。</p>
+          <dl class="kv">
+            <div><dt>ウォッチは3種類</dt><dd>「追っている案件」は、段階が進んだとき、未定だった点が決まったとき、そこから公募が出たときに知らせる。「待ち受け」は、まだ出ていない補助金などを条件で待ち、合う公募が出たら知らせる。「締切」は、申請しようと思っているものの締切が近づいたときと、要領が変わったときに知らせる。</dd></div>
+            <div><dt>未定の点には、根拠を付ける</dt><dd>「まだ決まっていないこと」は、発表にもとづくものだけを出す。発表で「未定」とされているのか、発表に書かれていないだけなのかを分けて示し、元の言葉があれば引用する。根拠を示せない点は、未定として並べない。</dd></div>
+            <div><dt>予算と公募のつながり</dt><dd>いま公開されているデータでつなげられるのは、「どの年度の、どの補正予算から出たか」まで。事業ひとつひとつについて、予算と公募を結ぶことはまだできない。画面の「この予算から出た公募」はサンプル。</dd></div>
+            <div><dt>AIから頼む</dt><dd>「政策の動き」を読みながら「規模が決まったら教えて」と頼むと、その案件をウォッチに足す。「AIの補助金が出たら教えて」と頼むと、条件にして待ち受ける。「その後どうなった？」には、経過と、まだ決まっていない点で答える。</dd></div>
+            <div><dt>知らせ方</dt><dd>このサンプルでは、ウォッチの画面とホームを開いたときに変化を出す。メールやアプリの通知にはログインが要るので、公開版で用意する。</dd></div>
+          </dl>
         </section>
 
         <section class="note-sec">
@@ -1224,7 +1368,7 @@ const DATA = {
     { id: 'shugaku', name: '高等学校等就学支援金', kind: '給付', aud: ['family'], theme: 'edu', amt: '授業料を支援', amtNote: '金額は学校の種類などで変わる', who: '高校などに通う生徒のいる世帯', by: '文部科学省', status: 'always', statusText: '入学時・年度ごとに申請', link: { n: '文部科学省', u: 'https://www.mext.go.jp/' } },
     { id: 'kunren', name: '教育訓練給付金', kind: '給付', aud: ['person'], theme: 'social', amt: '受講費の最大80%', amtNote: '講座の種類で給付率が変わる', who: '雇用保険に一定期間入っている人、入っていた人', by: '厚生労働省', status: 'always', statusText: '通年', link: { n: '厚生労働省', u: 'https://www.mhlw.go.jp/' } },
     { id: 'kougaku', name: '高額療養費制度', kind: '給付', aud: ['person', 'family'], theme: 'social', amt: '自己負担に月の上限', amtNote: '上限は年齢と所得で変わる', who: '医療費の自己負担が大きくなった人', by: '厚生労働省', status: 'always', statusText: '通年', link: { n: '厚生労働省', u: 'https://www.mhlw.go.jp/' } },
-    { id: 'jizoku-p', name: '小規模事業者持続化補助金（創業型）第4回', kind: '補助金', aud: ['biz'], theme: 'industry', amt: '上限 200万円', amtNote: '補助率 3分の2', who: '従業員20名以下の、創業まもない事業者', by: 'Jグランツ掲載', status: 'open', statusText: '受付中 ・ 12月15日まで', link: { n: 'Jグランツ', u: 'https://www.jgrants-portal.go.jp/subsidy/a0WfQ000003kEuHUAU' },
+    { id: 'jizoku-p', name: '小規模事業者持続化補助金（創業型）第4回', kind: '補助金', aud: ['biz'], theme: 'industry', amt: '上限 200万円', amtNote: '補助率 3分の2', who: '従業員20名以下の、創業まもない事業者', by: 'Jグランツ掲載', status: 'open', statusText: '受付中 ・ 12月15日まで', due: '2026-12-15', link: { n: 'Jグランツ', u: 'https://www.jgrants-portal.go.jp/subsidy/a0WfQ000003kEuHUAU' },
       apply: {
         where: 'Jグランツ', whereNote: 'オンラインで申請します。GビズIDのアカウントが必要です。', url: 'https://www.jgrants-portal.go.jp/subsidy/a0WfQ000003kEuHUAU',
         needs: [
@@ -1240,12 +1384,67 @@ const DATA = {
           parts: [{ id: 'gaiyo', name: '事業の概要' }, { id: 'torikumi', name: '販路を広げる取り組み' }, { id: 'kouka', name: '期待できる効果' }]
         }
       } },
-    { id: 'gx-p', name: 'GX地域共創補助金2026（2次公募）', kind: '補助金', aud: ['biz'], theme: 'industry', amt: '上限 最大250億円', amtNote: '補助率 中小など2分の1、大企業3分の1', who: '脱炭素電源を使う工場・データセンターに投資する事業者', by: 'Jグランツ掲載', status: 'open', statusText: '受付中 ・ 12月14日まで', link: { n: 'Jグランツ', u: 'https://www.jgrants-portal.go.jp/subsidy/a0WfQ000003dVevUAE' } },
+    { id: 'gx-p', name: 'GX地域共創補助金2026（2次公募）', kind: '補助金', aud: ['biz'], theme: 'industry', amt: '上限 最大250億円', amtNote: '補助率 中小など2分の1、大企業3分の1', who: '脱炭素電源を使う工場・データセンターに投資する事業者', by: 'Jグランツ掲載', status: 'open', statusText: '受付中 ・ 12月14日まで', due: '2026-12-14', link: { n: 'Jグランツ', u: 'https://www.jgrants-portal.go.jp/subsidy/a0WfQ000003dVevUAE' } },
     { id: 'gyomu', name: '業務改善助成金', kind: '助成金', aud: ['biz', 'npo'], theme: 'industry', amt: '最大600万円', amtNote: '賃上げの額と人数で変わる（サンプル）', who: '最低賃金を引き上げ、設備投資をする中小企業など', by: '厚生労働省', status: 'soon', statusText: '予算がなくなり次第終了', link: { n: '厚生労働省', u: 'https://www.mhlw.go.jp/' } },
     { id: 'career', name: 'キャリアアップ助成金（正社員化コース）', kind: '助成金', aud: ['biz', 'npo'], theme: 'social', amt: '1人あたり最大80万円', amtNote: '企業の規模などで変わる（サンプル）', who: '有期雇用の人を正社員にした事業主', by: '厚生労働省', status: 'always', statusText: '通年', link: { n: '厚生労働省', u: 'https://www.mhlw.go.jp/' } },
     { id: 'kyumin', name: '休眠預金等活用事業', kind: '助成', aud: ['npo'], theme: 'other', amt: '事業ごとに設定', amtNote: '資金分配団体を通じて助成', who: '社会課題の解決に取り組むNPOなどの団体', by: '内閣府', status: 'always', statusText: '公募は団体ごと', link: { n: '内閣府', u: 'https://www.cao.go.jp/' } },
     { id: 'juten', name: '重点支援地方交付金', kind: '交付金', aud: ['local'], theme: 'local', amt: '11月に1,300億円を追加', amtNote: '6月の補正でも1,000億円を計上', who: '物価高への対策を行う都道府県・市区町村', by: '内閣府', status: 'open', statusText: '追加分を配分中', link: { n: '財務省 予備費使用', u: 'https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2026/r81113kakugikettei.pdf' } }
   ],
+  /* ウォッチ：あとで知りたいことを置いておく。seen は「前回見た日」。
+     公表値と「政策の動き」にもとづくもの以外には sample を付け、画面に「サンプル」の札を出す。 */
+  watch: {
+    seen: '2026-11-19', checked: 'きょう 6:17',
+    steps: { hosei: ['編成を指示', '政府案を閣議決定', '国会に提出', '成立', '執行（公募・交付）'] },
+    matters: [
+      {
+        id: 'hosei2', up: 'hosei2', on: true, title: '令和8年度 第2次補正予算', type: 'budget', theme: 'whole', steps: 'hosei', cur: 0,
+        events: [{ d: '2026-11-24', t: '首相が、財務相に編成を指示（経済財政諮問会議）' }],
+        open: [
+          { q: '規模（総額）', basis: 'said', quote: '規模と日程はまだ公表されていない', due: '政府案の閣議決定のとき' },
+          { q: '財源（国債を追加で発行するか）', basis: 'silent', due: '政府案の閣議決定のとき' },
+          { q: '中身（どの分野に、いくら）', basis: 'silent', due: '政府案の閣議決定のとき' },
+          { q: '国会に出す時期', basis: 'said', quote: '規模と日程はまだ公表されていない' }
+        ],
+        next: { when: '日程は未公表', what: '政府案の閣議決定', note: '分かりしだい、ここに出ます' }
+      },
+      {
+        id: 'hosei1', on: true, title: '令和8年度 補正予算（第1号）', keys: ['6月の補正', '第1号', '1次補正'], type: 'budget', theme: 'whole', steps: 'hosei', cur: 4,
+        links: [{ n: '財務省 令和8年度予算', u: 'https://www.mof.go.jp/policy/budget/budger_workflow/budget/fy2026/index.html' }],
+        events: [
+          { d: '2026-06', t: '成立。一般会計に3兆1,135億円を追加（補正後の総額 125兆4,228億円）' },
+          { d: '2026-11-23', t: 'この補正予算の事業から、公募が始まりました', sample: true, call: 'ai-dx' }
+        ],
+        open: [],
+        next: { when: '令和9年の秋ごろ（例年の目安）', what: '決算で、実際に使われた額が分かります' },
+        calls: [
+          { id: 'ai-dx', d: '2026-11-23', name: '中小企業のAI・デジタル化導入補助金', kind: '補助金', theme: 'industry', aud: '事業者', who: '中小企業', st: 'open', stText: '受付中', due: '2027-01-15', amt: '上限 450万円' },
+          { id: 'shoene', name: '省エネ設備への更新支援', kind: '補助金', theme: 'industry', aud: '事業者', who: '事業者', st: 'open', stText: '受付中', due: '2026-12-20' },
+          { id: 'bukka', name: '物価高に対応する地方向けの交付金', kind: '交付金', theme: 'local', aud: '自治体', who: '都道府県・市区町村', st: 'open', stText: '配分中' }
+        ]
+      },
+      {
+        id: 'bgata', up: 'bgata', on: true, title: 'B型肝炎の給付金、請求期限を延ばす改正法', type: 'law', theme: 'social',
+        events: [{ d: '2026-11-13', t: '国会で成立' }, { d: '2026-11-20', t: '公布（令和8年法律第88号）' }],
+        open: [{ q: '施行日', basis: 'silent', due: '官報にのった法律の本文を確かめたとき', sample: true }],
+        next: { when: '日付は未確認', what: '施行', note: '分かりしだい、ここに出ます' }
+      },
+      {
+        id: 'fy27', up: 'fy27', title: '令和9年度予算', type: 'budget', theme: 'whole',
+        events: [{ d: '2026-11-24', t: '「編成の基本方針」の原案が示された。各省庁からの概算要求は、総額143.1兆円' }],
+        open: [
+          { q: '総額', basis: 'silent', due: '政府案（例年は12月下旬）' },
+          { q: '防衛費など、分野ごとの額', basis: 'silent', due: '政府案（例年は12月下旬）' }
+        ],
+        next: { when: '例年は12月下旬', what: '政府案の決定', note: '今年の日程は未定' }
+      }
+    ],
+    stands: [
+      { id: 's1', q: 'AIの導入に使える補助金', kind: ['補助金・助成金'], words: ['AI', '生成AI', 'デジタル化', 'DX'], aud: ['事業者'], area: ['全国'] },
+      { id: 's2', q: '子育て世帯向けの、新しい給付', kind: ['給付'], aud: ['子育て世帯'] }
+    ],
+    dls: ['jizoku-p', 'gx-p'],
+    notes: { 'jizoku-p': { d: '2026-11-22', t: '公募要領が更新されました' } }
+  },
   tools: [
     { name: 'show_flow', desc: 'お金の流れを図で表示する（年度・分野・階層を指定）' },
     { name: 'get_budget_item', desc: '予算の項目や事業の金額、推移、出典を返す' },
@@ -1291,6 +1490,7 @@ const DATA = {
     { k: '公表値にもとづくもの', v: '令和8年度一般会計の総額、財源、主要経費（財務省、2026年4月7日成立の当初予算）。0.1兆円単位に丸めています。「政策の動き」の各項目は、2026年10〜11月に各機関のページで確認したものです。' },
     { k: 'サンプルの値', v: '社会保障・防衛・公共事業・教育の内訳の一部、届け先ごとの金額、過去10年の推移（概数）、一部の制度の金額と状態。画面の見え方を確かめるための値です。' },
     { k: 'マイページと申請の準備', v: '合うかどうかの判定の規則、そろえるものの一覧、下書きの文例はサンプルです。ログインは画面の再現だけで、認証は行いません。入れた設定は、このブラウザにだけ保存されます。' },
+    { k: 'ウォッチ', v: '補正予算から出た公募、待ち受けに合った結果、公募要領の更新の知らせはサンプルで、画面では「サンプル」の札を付けています。「最後に確かめた」の時刻も見本です。変化を確認したかどうかと、ウォッチの中身は、このブラウザにだけ保存されます。' },
     { k: '名前', v: '「ゆくえ」は仮の名前です。' }
   ]
 };
@@ -1353,7 +1553,7 @@ const themeVar = t => `var(${(TH[t] || TH.other).c})`;
 const themeName = t => (TH[t] || TH.other).name;
 const stageName = u => u.stageText || STAGES[u.type][u.stage];
 
-const st = { view: 'home', unit: 'cho', mode: 'flow', path: [], sel: DATA.use[0].id, upType: 'all', upTheme: 'all', openUp: null, aud: 'all', dock: false, findMode: 'match', applyId: null, wipeArm: false };
+const st = { view: 'home', unit: 'cho', mode: 'flow', path: [], sel: DATA.use[0].id, upType: 'all', upTheme: 'all', openUp: null, aud: 'all', dock: false, findMode: 'match', applyId: null, wipeArm: false, draft: null, wGo: null, wOpen: new Set() };
 
 /* ---------- number formats ---------- */
 const n1 = v => (Math.round(v * 10) / 10).toFixed(1);
@@ -1631,10 +1831,13 @@ function renderHome() {
     el.append(sparkSvg(t.series));
     tiles.append(el);
   });
-  $('#followChips').innerHTML = DATA.follow.map(k => `<button class="chip" type="button" data-uptheme-go="${k}"><span class="dot" style="background:${themeVar(k)}"></span>${esc(themeName(k))}</button>`).join('') + `<button class="chip" type="button" data-goview="updates">＋ テーマを追加</button>`;
-  $('#followRows').innerHTML = DATA.follow.map(k => DATA.updates.find(u => u.theme === k)).filter(Boolean).map(u => `
+  const ch = changes(), fol = W.follow.map(k => DATA.updates.find(u => u.theme === k)).filter(Boolean).sort((a, b) => (a.date < b.date ? 1 : -1));
+  $('#homeWatchSub').textContent = ch.length ? '前回見たときからの変化' : 'これからの節目と締切';
+  $('#homeWatchRows').innerHTML = (ch.length ? ch : upcoming()).slice(0, 3).map(chRow).join('') || `<p class="empty">ウォッチしているものは、まだありません。</p>`;
+  $('#homeFollow').hidden = !fol.length;
+  $('#followRows').innerHTML = fol.map(u => `
     <button class="row" type="button" data-up="${u.id}">
-      <span class="row-d">${u.date.slice(5).replace('-', '.')}</span>
+      <span class="row-d">${dShort(u.date)}</span>
       <span class="row-t">${esc(u.title)}</span>
       <span class="row-s">${esc(themeName(u.theme))} ・ ${TYPES[u.type].n} ・ ${esc(stageName(u))}</span>
     </button>`).join('');
@@ -1714,6 +1917,9 @@ function renderDetail() {
   if (progs.length) html += `<div><p class="d-sub">関連する制度</p>${progs.map(p => `<button class="d-link" type="button" data-prog="${p.id}"><span class="d-link-t">${esc(p.name)}</span><span class="d-link-m">${esc(p.kind)} ・ ${esc(p.amt)}</span>${ic('chev')}</button>`).join('')}</div>`;
   const q = u ? `${u.name}は何に使われているの？` : s ? `${s.name}は全体のどれくらい？` : item ? `${item.name}について教えて` : `${nd.name}について教えて`;
   html += `<div class="d-act">${u && u.drill && model.key === 'root' ? `<button class="btn btn-solid" type="button" data-drill="${u.id}">内訳を見る${ic('chev')}</button>` : ''}<button class="btn btn-ghost" type="button" data-ask="${esc(q)}">${ic('spark')}AIに聞く</button></div>`;
+  if (u && u.id !== 'debt') html += W.stands.some(x => x.id === 'th-' + u.theme)
+    ? `<ul class="chk"><li class="ok">${ic('check')}<span>待ち受けに足しました。<a class="lnk" href="#watch">ウォッチで見る</a></span></li></ul>`
+    : `<div><button class="qbtn" type="button" data-wstand-theme="${u.theme}">この分野の補助金を待ち受ける</button></div>`;
   html += `<p class="src">${esc(nd.kind === 'item' || nd.kind === 'recip' ? fy.srcDrill : fy.srcShort)}</p>`;
   box.innerHTML = html;
   if (trend) $('#dTrend').append(trendSvg(trend, color, '兆円'));
@@ -1738,11 +1944,13 @@ function upHtml(u) {
       <span class="up-title">${esc(u.title)}</span>
       <span class="up-stage" title="${esc(all.join(' → '))}">${esc(stageName(u))}${stepsHtml(u)}</span>
       <span class="up-sum">${esc(u.sum)}</span>
-      <span class="up-meta"><span><span class="dot" style="background:${themeVar(u.theme)}"></span>${esc(themeName(u.theme))}</span><span>${esc(u.ministry)}</span>${u.amount ? `<span>${esc(u.amount)}</span>` : ''}</span>
+      <span class="up-meta"><span><span class="dot" style="background:${themeVar(u.theme)}"></span>${esc(themeName(u.theme))}</span><span>${esc(u.ministry)}</span>${u.amount ? `<span>${esc(u.amount)}</span>` : ''}${W.matters.includes(u.id) ? `<span class="w-on">${ic('eye')}ウォッチ中</span>` : ''}</span>
     </button>
     ${open ? `<div class="up-body">
       <dl class="qa"><div><dt>何が変わる</dt><dd>${esc(u.what)}</dd></div><div><dt>だれに関係</dt><dd>${esc(u.who)}</dd></div><div><dt>いつから</dt><dd>${esc(u.when)}</dd></div></dl>
+      ${WD.matters.some(m => m.id === u.id) ? `<div><p class="d-sub">まだ決まっていないこと</p>${openHtml(matterOf(u.id))}</div>` : ''}
       <div class="up-acts">
+        ${wmBtn(u.id, 'up-' + u.id)}
         ${useById[u.theme] ? `<button class="btn btn-ghost" type="button" data-goflow="${u.theme}">${ic('flow')}お金の流れで見る</button>` : ''}
         <button class="btn btn-ghost" type="button" data-ask="「${esc(u.title)}」をわかりやすく説明して">${ic('spark')}AIに聞く</button>
       </div>
@@ -1768,7 +1976,7 @@ function progCard(p, m) {
       <p class="prog-amt">${esc(p.amt)}<small>${esc(p.amtNote)}</small></p>
       ${mh}
       <dl class="prog-dl"><div><dt>対象</dt><dd>${esc(p.who)}</dd></div><div><dt>担当</dt><dd>${esc(p.by)}</dd></div></dl>
-      <div class="prog-act">${p.apply ? `<button class="btn btn-solid" type="button" data-apply="${p.id}">申請の準備をする</button>` : ''}<button class="btn btn-ghost" type="button" data-ask="「${esc(p.name)}」の対象になる条件を教えて">${ic('spark')}条件をAIに確認</button>${/^https:\/\//.test(p.link.u) ? `<a class="srcl" href="${esc(p.link.u)}" target="_blank" rel="noopener">${esc(p.link.n)}${ic('ext')}</a>` : ''}</div>
+      <div class="prog-act">${p.apply ? `<button class="btn btn-solid" type="button" data-apply="${p.id}">申請の準備をする</button>` : ''}${p.due ? dlBtn(p.id, 'find-' + p.id) : ''}<button class="btn btn-ghost" type="button" data-ask="「${esc(p.name)}」の対象になる条件を教えて">${ic('spark')}条件をAIに確認</button>${/^https:\/\//.test(p.link.u) ? `<a class="srcl" href="${esc(p.link.u)}" target="_blank" rel="noopener">${esc(p.link.n)}${ic('ext')}</a>` : ''}</div>
     </article>`;
 }
 function renderFind() {
@@ -1866,7 +2074,7 @@ function renderMe() { renderLoginCard(); renderPfForm(); renderMeSide(); }
 function renderLoginCard() {
   $('#acctLabel').textContent = login ? 'マイページ' : 'ログイン';
   $('#loginCard').innerHTML = login
-    ? `<h2 class="sec-h">ログイン中<small>サンプルのアカウント</small></h2><ul class="chk"><li class="ok">${ic('check')}設定を、ほかの端末でも使える</li><li class="ok">${ic('check')}フォロー中のテーマと締切を通知する</li><li class="ok">${ic('check')}申請の準備と記録を残す</li></ul><div class="d-act"><button class="btn btn-ghost" type="button" data-logout>ログアウト</button></div>`
+    ? `<h2 class="sec-h">ログイン中<small>サンプルのアカウント</small></h2><ul class="chk"><li class="ok">${ic('check')}設定を、ほかの端末でも使える</li><li class="ok">${ic('check')}ウォッチの変化と締切を、メールやアプリで知らせる</li><li class="ok">${ic('check')}申請の準備と記録を残す</li></ul><div class="d-act"><button class="btn btn-ghost" type="button" data-logout>ログアウト</button></div>`
     : `<h2 class="sec-h">ログイン</h2><p>ログインすると、設定をほかの端末でも使えて、締切の通知と申請の記録ができます。ログインしなくても、この端末に保存して使えます。</p><div class="d-act"><button class="btn btn-solid" type="button" data-login>メールアドレスでログイン</button><button class="btn btn-ghost" type="button" data-login>パスキーでログイン</button></div><p class="cap">サンプルなので、実際の認証は行いません。押すと、ログインした状態の画面になります。</p>`;
 }
 function renderPfForm() {
@@ -2010,6 +2218,230 @@ async function copyDraft(btn) {
   setTimeout(() => { label.textContent = '下書きをコピー'; }, 1800);
 }
 
+/* ---------- watch（あとで知りたいことを置いておく。中身はこのブラウザにだけ保存する） ---------- */
+const WD = DATA.watch, TODAY = DATA.asOf.date;
+const COND = { kind: '種類', words: 'ことば', aud: '対象', theme: '分野', area: '地域' };
+const BASIS = { said: '発表で「未定」とされている', silent: '発表には書かれていない' };
+const NEW = '<span class="pill-n">新</span>', SMP = '<span class="tag">サンプル</span>';
+const CALLS = WD.matters.flatMap(m => (m.calls || []).map(c => ({ ...c, src: m, sample: true })));
+/* 案件：用意したものがなければ、「政策の動き」の1件から最小の形をつくる */
+const matterOf = id => {
+  const m = WD.matters.find(x => x.id === id), u = upById[m ? m.up : id];
+  if (m) { const steps = WD.steps[m.steps] || STAGES[m.type], cur = m.cur != null ? m.cur : u.stage; return { ...m, steps, cur, now: m.steps ? steps[cur] : stageName(u), links: m.links || (u ? u.links : []) }; }
+  return u ? { id, up: id, title: u.title, type: u.type, theme: u.theme, steps: STAGES[u.type], cur: u.stage, now: stageName(u), links: u.links, events: [{ d: u.date, t: u.title }] } : null;
+};
+const wIds = () => [...new Set([...W.matters, ...WD.matters.map(m => m.id), ...DATA.updates.filter(u => u.top).map(u => u.id)])];
+const dlOf = id => DATA.programs.find(p => p.id === id && p.due) || CALLS.find(c => c.id === id && c.due) || null;
+const normStand = s => ({ id: String(s.id).replace(/[^\w-]/g, ''), q: String(s.q), ...Object.fromEntries(Object.keys(COND).map(k => [k, Array.isArray(s[k]) ? s[k].map(String) : []])) });
+const W0 = () => ({ matters: WD.matters.filter(m => m.on).map(m => m.id), stands: WD.stands.map(normStand), dls: [...WD.dls], follow: [...DATA.follow], seen: WD.seen });
+function cleanW(s) {
+  const d = W0(), o = s && typeof s === 'object' ? s : {}, list = (v, ok) => (Array.isArray(v) ? [...new Set(v)].filter(x => ok(x)) : null);
+  return {
+    matters: list(o.matters, matterOf) || d.matters, dls: list(o.dls, dlOf) || d.dls, follow: list(o.follow, k => TH[k]) || d.follow,
+    stands: Array.isArray(o.stands) ? o.stands.filter(x => x && typeof x === 'object' && x.q).map(normStand).filter(x => x.id) : d.stands,
+    seen: /^\d{4}-\d\d-\d\d$/.test(o.seen) ? o.seen : d.seen
+  };
+}
+let W = cleanW(store.get('watch', null));
+const isNew = d => !!d && d > W.seen;
+const md = iso => `${+iso.slice(5, 7)}月${+iso.slice(8, 10)}日`;
+const wDate = iso => iso.length < 10 ? `${iso.slice(0, 4)}年${+iso.slice(5, 7)}月` : (iso.slice(0, 4) === TODAY.slice(0, 4) ? '' : iso.slice(0, 4) + '年') + dateLabel(iso);
+const dShort = iso => `${iso.slice(5).replace('-', '.')} ${'日月火水木金土'[new Date(iso + 'T00:00:00').getDay()]}`;
+const daysTo = iso => Math.round((Date.parse(iso) - Date.parse(TODAY)) / 864e5);
+const leftText = n => n > 0 ? `あと${n}日` : n === 0 ? 'きょうまで' : '締切を過ぎました';
+const dlList = () => W.dls.map(dlOf).sort((a, b) => (a.due < b.due ? -1 : a.due > b.due ? 1 : 0));
+/* 待ち受けの条件と、新しく出た公募の照合（サンプルの規則） */
+const hitsOf = s => CALLS.map(c => {
+  const ws = s.words.filter(w => c.name.toUpperCase().includes(w.toUpperCase()));
+  if ((s.kind.length && !s.kind.some(k => k.split('・').includes(c.kind))) || (s.words.length && !ws.length) || (s.aud.length && !s.aud.some(a => a.startsWith(c.aud))) || (s.theme.length && !s.theme.includes(themeName(c.theme)))) return null;
+  const why = [ws.length ? '題に' + ws.map(w => `「${w}」`).join('') : '', s.aud.length ? `対象が「${c.who}」` : '', s.theme.length ? `分野が「${themeName(c.theme)}」` : ''].filter(Boolean).join('、');
+  return { c, why: why || `種類が「${c.kind}」` };
+}).filter(Boolean);
+/* 前回見たときからの変化。同じ公募は、待ち受けに合ったものとして1回だけ数える */
+function changes() {
+  const out = [], hit = new Set();
+  W.stands.forEach(s => hitsOf(s).forEach(({ c }) => { if (isNew(c.d) && !hit.has(c.id)) { hit.add(c.id); out.push({ d: c.d, t: `「${c.name}」の公募が出ました`, k: '待ち受け', of: `「${s.q}」 ・ ${c.src.title}から`, to: 'ws-' + s.id, sample: true }); } }));
+  W.matters.map(matterOf).forEach(m => m.events.forEach(e => { if (isNew(e.d) && !hit.has(e.call)) out.push({ d: e.d, t: e.t, k: '追っている案件', of: m.title, to: 'wm-' + m.id, sample: e.sample }); }));
+  W.dls.forEach(id => { const n = WD.notes[id]; if (n && isNew(n.d)) out.push({ d: n.d, t: n.t, k: '締切', of: dlOf(id).name, to: 'wd-' + id, sample: true }); });
+  return out.sort((a, b) => (a.d < b.d ? 1 : a.d > b.d ? -1 : 0));
+}
+const upcoming = () => [
+  ...dlList().filter(x => daysTo(x.due) >= 0).map(x => ({ d: x.due, t: `${x.name}の締切`, k: '締切', of: leftText(daysTo(x.due)), to: 'wd-' + x.id, sample: x.sample })),
+  ...W.matters.map(matterOf).filter(m => m.next).map(m => ({ t: m.next.what, k: '追っている案件', of: `${m.title} ・ ${m.next.when}`, to: 'wm-' + m.id }))
+];
+const chRow = c => `<button class="row" type="button" data-wgo="${c.to}"><span class="row-d">${c.d ? dShort(c.d) : 'これから'}</span><span class="row-t">${esc(c.t)}</span><span class="row-s">${c.k} ・ ${esc(c.of)}${c.sample ? ' ' + SMP : ''}</span></button>`;
+function renderWatchNav() {
+  const n = changes().length;
+  $('#watchN').hidden = $('#watchDot').hidden = !n;
+  $('#watchN').innerHTML = `${n}<span class="sr">件の変化</span>`;
+  $('#watchM').setAttribute('aria-label', n ? `ウォッチ（${n}件の変化）` : 'ウォッチ');
+}
+function wSave() {
+  store.set('watch', W); renderWatchNav();
+  if (['watch', 'home', 'updates', 'find'].includes(st.view)) RENDER[st.view](); else if (st.view === 'flow') renderDetail();
+}
+const wmBtn = (id, fk) => { const on = W.matters.includes(id); return `<button class="btn btn-ghost" type="button" data-wm-toggle="${id}" data-fk="${fk}" aria-pressed="${on}">${ic(on ? 'check' : 'eye')}${on ? 'ウォッチ中' : 'ウォッチする'}</button>`; };
+const dlBtn = (id, fk) => { const on = W.dls.includes(id); return `<button class="btn btn-ghost" type="button" data-wd-toggle="${id}" data-fk="${fk}" aria-pressed="${on}">${ic(on ? 'check' : 'clock')}${on ? 'ウォッチ中' : '締切をウォッチ'}</button>`; };
+const openHtml = m => !m.open ? `<p class="d-empty">この案件の未定の点は、まだ整理されていません</p>` : !m.open.length ? `<p class="d-empty">この案件で、未定とされている点はありません</p>`
+  : `<ul class="wo">${m.open.map(o => `<li><b>${esc(o.q)}${o.sample ? ' ' + SMP : ''}</b><span class="wo-b"><span class="basis ${o.basis}">${BASIS[o.basis]}</span>${o.quote ? `<span>「${esc(o.quote)}」</span>` : ''}</span><small>分かる時期の目安：${esc(o.due || 'まだ示されていません')}</small></li>`).join('')}</ul>`;
+const evHtml = (e, links) => { const n = isNew(e.d), tag = n ? 'b' : 'span'; return `<li><time>${wDate(e.d)}</time>${n ? NEW : ''}<${tag}>${esc(e.t)}</${tag}>${e.sample ? SMP : ''}${links && !e.sample ? srcLinks(links) : ''}</li>`; };
+const condChips = (s, rm) => Object.keys(COND).flatMap(k => rm
+  ? s[k].map((v, i) => `<button class="chip wc" type="button" data-wdraft-rm="${k}:${i}" aria-label="${COND[k]}「${esc(v)}」をはずす"><small>${COND[k]}</small>${esc(v)}${ic('x')}</button>`)
+  : s[k].length ? [`<span class="chip wc"><small>${COND[k]}</small>${esc(s[k].join('・'))}</span>`] : []).join('');
+/* 公募の1行。s があれば「待ち受けに合ったもの」、なければ案件カードの中の一覧 */
+function callHtml(c, s) {
+  const key = `wc-${s ? s.id : 'm'}-${c.id}`, open = st.wOpen.has(key), hit = s && hitsOf(s).find(h => h.c.id === c.id);
+  const by = s ? [] : W.stands.filter(x => hitsOf(x).some(h => h.c.id === c.id));
+  return `<div class="w-row"><div class="w-row-b">
+      <p class="w-row-t">${esc(c.name)} ${SMP}${s && isNew(c.d) ? ' ' + NEW : ''}</p>
+      ${hit ? `<p class="w-row-m"><span>${esc(hit.why)}</span></p>` : ''}
+      <p class="w-row-m"><span class="st ${c.st}">${esc(c.stText)}</span>${c.due ? `<span>締切 ${wDate(c.due)}</span>` : ''}${c.amt ? `<span>${esc(c.amt)}</span>` : ''}${s ? `<button class="lnk" type="button" data-wgo="wm-${c.src.id}">${esc(c.src.title)}から</button>` : ''}</p>
+      ${by.map(x => `<p class="w-row-m"><span class="w-on">${ic('check')}待ち受け「${esc(x.q)}」に合いました</span></p>`).join('')}
+    </div>${s ? `<div class="w-row-a"><button class="btn btn-ghost" type="button" data-wopen="${key}" aria-expanded="${open}" aria-controls="${key}">くわしく見る</button>${c.due ? dlBtn(c.id, 'hit-' + key) : ''}</div>
+    <div class="w-more" id="${key}"${open ? '' : ' hidden'}><dl class="prog-dl"><div><dt>対象</dt><dd>${esc(c.who)}</dd></div>${c.amt ? `<div><dt>金額</dt><dd>${esc(c.amt)}</dd></div>` : ''}<div><dt>予算</dt><dd>${esc(c.src.title)}</dd></div></dl><p class="cap">サンプルの公募です。公開版では、ここから公募要領と申請の準備へ進めます。</p></div>` : ''}
+  </div>`;
+}
+function matterHtml(m) {
+  const news = m.events.filter(e => isNew(e.d)), calls = CALLS.filter(c => c.src.id === m.id), nx = m.steps[m.cur + 1], log = 'wlog-' + m.id, open = st.wOpen.has(log);
+  return `<article class="panel wm" id="wm-${m.id}" tabindex="-1">
+    <header class="wm-top"><span class="up-type">${ic(TYPES[m.type].i)}${TYPES[m.type].n}</span><span class="wm-th"><span class="dot" style="background:${themeVar(m.theme)}"></span>${esc(themeName(m.theme))}</span>${news.length ? NEW : ''}<h3 class="wm-title">${esc(m.title)}</h3></header>
+    <ol class="life wn" style="--n:${m.steps.length}" aria-label="この案件の段階">${m.steps.map((x, i) => `<li class="${i < m.cur ? 'done' : i === m.cur ? 'now' : ''}"${i === m.cur ? ' aria-current="step"' : ''}>${esc(x)}${i === m.cur ? '<time>いまここ</time>' : ''}</li>`).join('')}</ol>
+    ${news.length ? `<div><p class="d-sub">前回からの変化</p><ul class="wm-ev">${news.map(e => evHtml(e)).join('')}</ul></div>` : ''}
+    <div class="wm-cols">
+      <div><p class="d-sub">まだ決まっていないこと</p>${openHtml(m)}</div>
+      <div><p class="d-sub">次の節目</p><p class="w-next">${m.next ? `<span>${esc(m.next.when)}</span><b>${esc(m.next.what)}</b>${m.next.note ? `<small>${esc(m.next.note)}</small>` : ''}` : nx ? `<b>${esc(nx)}</b><small>次の段階です。日程は、まだ整理されていません</small>` : `<small>最後の段階まで進んでいます</small>`}</p></div>
+    </div>
+    ${calls.length ? `<div><p class="d-sub">この予算から出た公募</p>${calls.map(c => callHtml(c)).join('')}</div>` : ''}
+    <div id="${log}"${open ? '' : ' hidden'}><p class="d-sub">これまでの経過</p><ul class="wm-ev">${[...m.events].reverse().map(e => evHtml(e, m.links)).join('')}</ul></div>
+    <div class="up-acts"><button class="btn btn-ghost" type="button" data-wopen="${log}" aria-expanded="${open}" aria-controls="${log}">経過をすべて見る</button><button class="btn btn-ghost" type="button" data-ask="「${esc(m.title)}」は、その後どうなった？">${ic('spark')}AIに聞く：その後どうなった？</button><button class="qbtn" type="button" data-wm-toggle="${m.id}" data-fk="off-${m.id}">ウォッチをやめる</button></div>
+  </article>`;
+}
+function standHtml(s) {
+  const hits = hitsOf(s);
+  return `<article class="panel ws" id="ws-${s.id}" tabindex="-1">
+    <h3 class="wm-title">「${esc(s.q)}」${hits.some(h => isNew(h.c.d)) ? ' ' + NEW : ''}</h3>
+    <div class="chips">${condChips(s)}</div>
+    ${hits.length ? `<div><p class="d-sub">条件に合ったもの</p>${hits.map(h => callHtml(h.c, s)).join('')}</div>` : `<p class="d-empty">条件に合うものは、まだ出ていません</p>`}
+    <div class="ws-foot"><span class="src">最後に確かめた：${esc(WD.checked)}</span><button class="qbtn" type="button" data-ws-off="${s.id}">やめる</button></div>
+  </article>`;
+}
+function dlHtml(x) {
+  const n = WD.notes[x.id], left = daysTo(x.due);
+  return `<div class="w-row wd" id="wd-${x.id}" tabindex="-1"><div class="w-row-b">
+      <p class="w-row-t">${esc(x.name)}${x.sample ? ' ' + SMP : ''}</p>
+      <p class="w-row-m"><span>締切 ${wDate(x.due)}</span></p>
+      ${n ? `<p class="w-row-m">${isNew(n.d) ? NEW : ''}<span>${md(n.d)} ${esc(n.t)}</span>${SMP}</p>` : ''}
+    </div><span class="wd-left">${leftText(left)}<span class="wd-bar" aria-hidden="true"><i style="width:${Math.max(4, Math.min(100, Math.round((1 - left / 60) * 100)))}%"></i></span></span><div class="w-row-a">${x.apply ? `<button class="btn btn-ghost" type="button" data-apply="${x.id}">申請の準備へ</button>` : ''}<button class="qbtn" type="button" data-wd-toggle="${x.id}" data-fk="dl-${x.id}">やめる</button></div>
+  </div>`;
+}
+const put = (sel, html) => { const el = $(sel); if (el.__h !== html) { el.__h = html; el.innerHTML = html; } };
+function renderStandDraft() {
+  const d = st.draft;
+  put('#standDraft', d ? `<div class="w-draft"><p class="d-sub">この条件で待ち受けます<small>いらない条件は、押すとはずせます</small></p><div class="chips">${condChips(d, true)}</div><div class="d-act"><button class="btn btn-solid" type="button" id="standSave"${Object.keys(COND).some(k => k !== 'area' && d[k].length) ? '' : ' disabled'}>保存する</button><button class="btn btn-ghost" type="button" id="standCancel">やめる</button></div></div>` : '');
+}
+function renderWatch() {
+  const ch = changes();
+  const more = wIds().filter(id => !W.matters.includes(id)).map(matterOf);
+  put('#wDigest', `<h2>前回からの変化</h2>` + (ch.length ? `<p>前回見たとき（${md(W.seen)}）から、${ch.length}件の変化があります</p><div class="rows">${ch.map(chRow).join('')}</div>` : `<p>前回見たときから、変化はありません</p>`)
+    + `<div class="d-act">${ch.length ? `<button class="btn btn-solid" type="button" id="wSeen" data-wseen>確認しました</button>` : ''}<button class="qbtn" type="button" id="wReset" data-wreset>サンプルの状態に戻す</button></div>`);
+  put('#wMatters', W.matters.map(id => matterHtml(matterOf(id))).join(''));
+  put('#wMore', (W.matters.length ? '' : `<p class="d-empty">いま追っている案件はありません。</p>`) + (more.length ? `<p class="d-sub">いま動いている案件</p>${more.map(m => `<div class="w-row" id="wm-${m.id}" tabindex="-1"><div class="w-row-b"><p class="w-row-t">${esc(m.title)}</p><p class="w-row-m"><span class="up-type">${ic(TYPES[m.type].i)}${TYPES[m.type].n}</span><span>${esc(m.now)}</span></p></div><div class="w-row-a">${wmBtn(m.id, 'more-' + m.id)}</div></div>`).join('')}` : ''));
+  renderStandDraft();
+  put('#wStands', W.stands.map(standHtml).join('') || `<p class="d-empty">待ち受けは、まだありません。上の欄に、待ちたいものを入れてください。</p>`);
+  put('#wDeadlines', dlList().map(dlHtml).join('') || `<p class="d-empty">締切をウォッチしているものはありません。「制度をさがす」で「締切をウォッチ」を押すと、ここに並びます。</p>`);
+  put('#followChips', Object.keys(TH).map(k => `<button class="chip" type="button" data-wfollow="${k}" data-fk="fol-${k}" aria-pressed="${W.follow.includes(k)}"><span class="dot" style="background:${themeVar(k)}"></span>${esc(themeName(k))}</button>`).join(''));
+  if (st.wGo) { const g = st.wGo; st.wGo = null; requestAnimationFrame(() => flash(g.id, g.focus)); }
+}
+function flash(id, focus) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.scrollIntoView({ block: 'start', behavior: reduced ? 'auto' : 'smooth' });
+  if (focus) el.focus({ preventScroll: true });
+  el.classList.add('w-hi'); setTimeout(() => el.classList.remove('w-hi'), 2400);
+}
+/* ことばを条件に読みかえる（サンプルの規則） */
+const KIND_RE = [[/補助金|助成/, '補助金・助成金'], [/給付|手当/, '給付'], [/法律|法案/, '法律'], [/税/, '税']];
+const AUD_RE = [[/子育て/, '子育て世帯'], [/中小|事業|会社/, '事業者'], [/NPO|ＮＰＯ/i, 'NPO'], [/自治体/, '自治体']];
+const TOPICS = '生成AI AI デジタル DX 省エネ 脱炭素 GX 子育て 創業 賃上げ 防災 農業 観光 輸出 介護 住宅 医療 教育 研究 再エネ 半導体 物価高'.split(' ');
+const WHEN_NEW = /出たら|でたら|始まったら/, WHEN_SET = /決まったら|きまったら|分かったら|わかったら|進んだら|動いたら|動きがあったら|成立したら|施行されたら/;
+const standPhrase = q => String(q).trim().replace(/[。.！!？?\s]+$/, '').replace(/^(待ち受け|ウォッチ)(に|へ)、?/, '').replace(/(について|が|を|は|に|も|、)*(新しく)?(出たら|でたら|始まったら|決まったら|きまったら|分かったら|わかったら|進んだら|動いたら|動きがあったら|成立したら|施行されたら|待ち受け|ウォッチして|追って|追いかけて|足して|追加して).*$/, '').replace(/^「(.+)」$/, '$1').trim().slice(0, 60);
+function readCond(q) {
+  const pick = list => list.filter(x => x[0].test(q)).map(x => x[1]);
+  const c = normStand({ id: '', q, kind: pick(KIND_RE), words: TOPICS.filter(w => q.toUpperCase().includes(w)), aud: pick(AUD_RE), area: [PREFS.find(p => q.includes(p.slice(0, -1))) || '全国'] });
+  if (!c.kind.length && !c.words.length && !c.aud.length) c.words = [q];
+  if (!c.aud.length && pf.kind) c.aud = [`${KIND[pf.kind]}（マイページから）`];
+  return c;
+}
+function addStand(s) {
+  const old = W.stands.find(x => (s.id && x.id === s.id) || x.q === s.q);
+  if (old) return old;
+  const n = normStand({ ...s, id: s.id || 's' + Date.now().toString(36) });
+  W.stands = [n, ...W.stands]; wSave();
+  return n;
+}
+/* 「AIに聞く」のうち、ウォッチに関わる4つの聞き方。Claude が使えるときも、ここで先に答える */
+const lcs = (a, b) => { let best = 0; for (let i = 0; i < a.length; i++) for (let j = 0; j < b.length; j++) { let k = 0; while (i + k < a.length && a[i + k] === b[j + k]) k++; if (k > best) best = k; } return best; };
+/* 「政策の動き」で開いている項目。「これ」「この件」と聞かれたときの相手 */
+const ctxMatter = () => (st.view === 'updates' && st.openUp ? matterOf(st.openUp) : null);
+const vague = s => !s || /^(これ|この|それ|その|あれ)/.test(s);
+const ptName = o => o.q.split(/[（(]/)[0];
+function pickMatter(body, quoted, min = 4) {
+  const all = wIds().map(matterOf);
+  let best = quoted ? all.find(m => m.title === quoted || (upById[m.up] || {}).title === quoted) : null, score = min - 1;
+  if (!best) all.forEach(m => { const n = (m.keys || []).some(k => body.includes(k)) ? 99 : Math.max(lcs(body, m.title.replace(/\s/g, '')), m.up ? lcs(body, upById[m.up].title) : 0); if (n > score) { score = n; best = m; } });
+  return best;
+}
+function namedMatter(q) {
+  const quoted = (q.match(/「(.+?)」/) || [])[1], body = q.replace(/は?、?(その後|どうなった|続報).*$/, '').replace(/[\s、。？?！!「」]/g, '');
+  return pickMatter(body, quoted) || (body.length < 2 || vague(body) ? ctxMatter() || (body.length < 2 ? W.matters.map(matterOf).find(m => m.events.some(e => isNew(e.d))) || matterOf(W.matters[0]) : null) : null);
+}
+/* 「〜が決まったら教えて」：案件をウォッチに足す。名前がなければ、いま開いている項目のこととして読む */
+function matterAnswer(q) {
+  const x = standPhrase(q).replace(/[\s、「」]/g, ''), ctx = ctxMatter(), pts = m => (m.open || []).filter(o => q.includes(ptName(o)));
+  const m = (x && pickMatter(x, (q.match(/「(.+?)」/) || [])[1], 3)) || (ctx && (vague(x) || pts(ctx).length) ? ctx : null);
+  if (!m) return null;
+  const was = W.matters.includes(m.id), hit = pts(m), open = m.open || [];
+  if (!was) { W.matters = [...W.matters, m.id]; wSave(); }
+  const lines = [was ? `「${m.title}」は、すでにウォッチしています。` : `ウォッチに足しました：「${m.title}」`, `いまは「${m.now}」の段階です。`];
+  if (hit.length) lines.push(...hit.map(o => `・${o.q}：${BASIS[o.basis]}（分かる時期の目安：${o.due || 'まだ示されていません'}）`));
+  else if (open.length) lines.push(`まだ決まっていないこと：${open.map(ptName).join('、')}`);
+  lines.push('段階が進んだときと、未定だった点が決まったときに、ウォッチとホームに出します。');
+  return { text: lines.join('\n'), act: ['ウォッチでこの案件を見る', () => actions.watch('wm-' + m.id)], src: m.links.length ? `出典：${m.links.map(l => l.n).join('、')}` : '' };
+}
+function watchAnswer(q) {
+  const tell = /教えて|知らせて|しらせて|通知/.test(q), add = /(足し|追加し|入れ)(て|たい)/.test(q), set = WHEN_SET.test(q) && tell;
+  const follow = /ウォッチ(して(?![いる])|したい)/.test(q) || (/ウォッチ(に|へ)/.test(q) && add);
+  const stand = (WHEN_NEW.test(q) && tell) || /待ち受け(て(?![いる])|たい)/.test(q) || (/待ち受け(に|へ)/.test(q) && add);
+  if (set || follow) { const a = matterAnswer(q); if (a) return a; }
+  if (set || follow || stand) {
+    const p = standPhrase(q), c = p && readCond(p);
+    if ((set || follow) && (!p || (c.words[0] === p && !c.kind.length))) return { text: 'どの案件のことか、分かりませんでした。案件の名前を入れるか、「政策の動き」で項目を開いてから、もう一度聞いてください。' };
+    if (!p) return { text: '待ち受けは、まだ出ていない補助金や制度を、条件で待つしくみです。「AIの補助金が出たら教えて」のように頼むと、条件にして待ち受けます。', act: ['ウォッチを開く', () => actions.watch('standForm')] };
+    /* 同じ種類で、ことばが重なる待ち受けがすでにあれば、足さずにそれを見せる */
+    const near = W.stands.find(s => s.q === c.q || (c.words.length && s.kind.join() === c.kind.join() && c.words.every(w => s.words.includes(w) || s.aud.some(a => a.includes(w)))));
+    const s = near || addStand(c), hits = hitsOf(s);
+    return { text: `${near ? 'すでに、近い条件で待ち受けています' : '待ち受けに足しました'}：「${s.q}」\n${Object.keys(COND).filter(k => s[k].length).map(k => `・${COND[k]}：${s[k].join('・')}`).join('\n')}\n${hits.length ? `条件に合うものが、${hits.length}件出ています：${hits.map(h => `${h.c.name}（サンプル）`).join('、')}` : '条件に合う公募や制度が出たら、ウォッチとホームに出します。'}`, act: ['ウォッチで待ち受けを見る', () => actions.watch('ws-' + s.id)] };
+  }
+  if (/待ち受け(って|とは)/.test(q)) return { text: '待ち受けは、まだ出ていない補助金や制度を、条件で待つしくみです。「AIの補助金が出たら教えて」のように頼むと、条件にして待ち受けます。', act: ['ウォッチを開く', () => actions.watch('standForm')] };
+  if (/ウォッチ|待ち受け/.test(q) && /何を|なにを|どれ|一覧|ている|てる|中の|いくつ|何件/.test(q)) {
+    const ms = W.matters.map(matterOf), ch = changes().length, part = (h, rows) => (rows.length ? [h, ...rows] : []);
+    return { text: [`いまウォッチしているのは、案件${ms.length}件、待ち受け${W.stands.length}件、締切${W.dls.length}件です。`, ...part('追っている案件', ms.map(m => `・${m.title}（${m.now}）`)), ...part('待ち受け', W.stands.map(x => `・「${x.q}」`)), ...part('締切', dlList().map(x => `・${x.name}：${wDate(x.due)}まで`)), ch ? `前回見たときから、${ch}件の変化があります。` : '前回見たときから、変化はありません。'].join('\n'), act: ['ウォッチを開く', () => actions.watch()] };
+  }
+  if (/締切/.test(q) && /近|迫|せま/.test(q)) {
+    const list = dlList();
+    return { text: list.length ? `ウォッチしている締切は${list.length}件です。近い順に並べます。\n${list.map(x => { const n = WD.notes[x.id]; return `・${x.name}：${wDate(x.due)}まで（${leftText(daysTo(x.due))}）${n ? `\n　${md(n.d)}に${n.t}（サンプル）` : ''}`; }).join('\n')}` : 'いま、締切をウォッチしているものはありません。「制度をさがす」で「締切をウォッチ」を押すと、ウォッチに並びます。', act: ['ウォッチで締切を見る', () => actions.watch('wDeadlines')] };
+  }
+  const m = /どうなった|その後|続報/.test(q) && namedMatter(q);
+  if (!m) return null;
+  const nx = m.steps[m.cur + 1], lines = [`「${m.title}」は、いま「${m.now}」の段階です。`, 'これまでの動き', ...[...m.events].reverse().slice(0, 3).map(e => `・${wDate(e.d)} ${e.t}${e.sample ? '（サンプル）' : ''}`)];
+  if (!m.open) lines.push('この案件の未定の点は、まだ整理されていません。');
+  else if (!m.open.length) lines.push('この案件で、未定とされている点はありません。');
+  else lines.push('まだ決まっていないこと', ...m.open.map(o => `・${o.q}：${BASIS[o.basis]}${o.due ? `（目安：${o.due}）` : ''}`));
+  lines.push(...(m.next ? [`次の節目：${m.next.what}`, `時期の目安：${m.next.when}`] : [nx ? `次の段階：${nx}` : '最後の段階まで進んでいます。']));
+  if (!W.matters.includes(m.id)) lines.push('この案件は、まだウォッチしていません。ウォッチすると、動きがあったときに知らせます。');
+  return { text: lines.join('\n'), act: ['ウォッチでこの案件を見る', () => actions.watch('wm-' + m.id)], src: m.links.length ? `出典：${m.links.map(l => l.n).join('、')}` : '' };
+}
+
 /* ---------- connect / notes ---------- */
 function renderConnect() {
   const d = useById.defense;
@@ -2029,8 +2461,8 @@ function renderNotes() {
 }
 
 /* ---------- router ---------- */
-const VIEWS = ['home', 'flow', 'updates', 'find', 'me', 'apply', 'connect', 'notes'];
-const RENDER = { home: renderHome, flow: renderFlowView, updates: renderUpdates, find: renderFind, me: renderMe, apply: renderApply, connect: renderConnect, notes: renderNotes };
+const VIEWS = ['home', 'flow', 'updates', 'find', 'watch', 'me', 'apply', 'connect', 'notes'];
+const RENDER = { home: renderHome, flow: renderFlowView, updates: renderUpdates, find: renderFind, watch: renderWatch, me: renderMe, apply: renderApply, connect: renderConnect, notes: renderNotes };
 function show(v) {
   if (!VIEWS.includes(v)) v = 'home';
   const changed = st.view !== v;
@@ -2073,12 +2505,15 @@ new ResizeObserver(() => {
 const chat = { turns: [], busy: false, ctl: null, stop: false, sample: null, tools: false, tier: 'quick' };
 const msgs = $('#msgs');
 const scrollMsgs = () => { msgs.scrollTop = msgs.scrollHeight; };
+/* 質問例が入れ替わると一覧の高さが変わる。その前にいちばん下を見ていたときは、下に合わせ直す */
+let msgsH = msgs.clientHeight;
+new ResizeObserver(() => { const end = msgs.scrollHeight - msgs.scrollTop - msgsH < 8; msgsH = msgs.clientHeight; if (end) scrollMsgs(); }).observe(msgs);
 function selName() {
   if (st.view !== 'flow') return '';
   const nd = findNode(curModel(), st.sel); return nd ? nd.name : '';
 }
 function ctxText() {
-  const names = { home: 'ホーム', flow: 'お金の流れ', updates: '政策の動き', find: '制度をさがす', me: 'マイページ', apply: '申請の準備', connect: 'AIとつなぐ', notes: '設計メモ' };
+  const names = { home: 'ホーム', flow: 'お金の流れ', updates: '政策の動き', find: '制度をさがす', watch: 'ウォッチ', me: 'マイページ', apply: '申請の準備', connect: 'AIとつなぐ', notes: '設計メモ' };
   let t = names[st.view];
   if (st.view === 'flow') { if (st.path.length) t += ' › ' + useById[st.path[0]].name; const n = selName(); if (n && (!st.path.length || n !== useById[st.path[0]].name)) t += ' › ' + n; }
   if (st.view === 'updates' && st.openUp && upById[st.openUp]) t += ' › ' + upById[st.openUp].title;
@@ -2094,8 +2529,9 @@ function suggestions() {
     if (nd && srcById[nd.id]) return [`${nd.name}は全体のどれくらい？`, '税収はどこから来ている？', 'いちばん大きい支出は？'];
     return ['いちばん大きい支出は？', '国の借金の返済にいくら使っている？', '税収はどこから来ている？'];
   }
-  if (st.view === 'updates') return ['きょうの動きをまとめて教えて', '最近、成立した法律は？', '社会保障に関係する動きは？'];
+  if (st.view === 'updates') { const m = ctxMatter(); return m && m.open && m.open.length ? [`${ptName(m.open[0])}が決まったら教えて`, 'この件は、その後どうなった？', 'きょうの動きをまとめて教えて'] : ['きょうの動きをまとめて教えて', '最近、成立した法律は？', '社会保障に関係する動きは？']; }
   if (st.view === 'find') return pf.kind ? ['私に合う制度は？', '中小企業が申請できる補助金は？', 'NPOが使える助成は？'] : ['子育て世帯が使える制度は？', '中小企業が申請できる補助金は？', 'NPOが使える助成は？'];
+  if (st.view === 'watch') return ['第2次補正予算は、その後どうなった？', 'AIの補助金が出たら教えて', '締切が近いものは？'];
   if (st.view === 'me') return ['私に合う制度は？', '入れた情報は何に使われるの？'];
   if (st.view === 'apply') return [`「${applyProg().name}」の申請で気をつけることは？`, '私に合う制度は？'];
   if (st.view === 'connect') return ['防衛費は何に使われているの？', '社会保障の内訳を見せて'];
@@ -2131,6 +2567,7 @@ function setBusy(b) {
   s.setAttribute('aria-label', b ? '止める' : '送信');
   s.type = b ? 'button' : 'submit';
   renderSugg();
+  if (!b) scrollMsgs();
 }
 
 /* 画面を動かす共通の操作（サンプル応答と、Claude が呼ぶ道具の両方で使う） */
@@ -2138,7 +2575,8 @@ const actions = {
   flow(id, drillIn) { selectFlow(id, { drill: drillIn }); },
   updates(type, theme) { st.upType = TYPES[type] ? type : 'all'; st.upTheme = TH[theme] ? theme : 'all'; st.openUp = null; go('updates'); },
   update(id) { openUpdate(id); },
-  programs(aud, matched) { st.aud = AUD[aud] ? aud : 'all'; st.findMode = matched ? 'match' : 'all'; go('find'); }
+  programs(aud, matched) { st.aud = AUD[aud] ? aud : 'all'; st.findMode = matched ? 'match' : 'all'; go('find'); },
+  watch(id, focus) { st.wGo = id ? { id, focus } : null; go('watch'); }
 };
 
 /* --- サンプル応答（Claude が使えないとき） --- */
@@ -2217,8 +2655,7 @@ function ansApply(p) {
 function ansPrivacy() {
   return { text: '入れた設定は、この端末に保存されます。合う制度の判定と、申請の下書きにだけ使います。AIに質問するときは、設定の要約がAIに渡ります。渡したくないときは、マイページの「情報の扱い」でオフにできます。', act: ['マイページを開く', () => go('me')] };
 }
-async function askLocal(q, m) {
-  const a = localAnswer(q);
+async function askLocal(q, m, a = localAnswer(q)) {
   if (a.act) a.act[1]();
   m.bub.classList.remove('thinking');
   if (reduced) m.set(a.text);
@@ -2331,7 +2768,12 @@ async function ask(q) {
   $('#q').value = ''; autosize();
   const m = addAi();
   chat.stop = false; setBusy(true);
-  try { if (chat.sample) await askLive(q, m); else await askLocal(q, m); }
+  try {
+    const w = watchAnswer(q);
+    /* ウォッチの受け答えは手元で返す。Claude が答えているときは、続きの質問で話が通じるよう、やりとりの記録にも残す */
+    if (w) { await askLocal(q, m, w); if (chat.sample) chat.turns.push({ role: 'user', content: q }, { role: 'assistant', content: w.text }); }
+    else if (chat.sample) await askLive(q, m); else await askLocal(q, m);
+  }
   catch (e) { m.set('うまく答えを取得できませんでした。もう一度お試しください。'); }
   finally { setBusy(false); }
 }
@@ -2347,7 +2789,7 @@ function autosize() { const t = $('#q'); t.style.height = 'auto'; t.style.height
 
 /* ---------- events ---------- */
 document.addEventListener('click', e => {
-  const t = e.target.closest('[data-ask],[data-drill],[data-goflow],[data-up],[data-prog],[data-unit],[data-mode],[data-uptype],[data-uptheme],[data-uptheme-go],[data-aud],[data-crumb],[data-lg],[data-toggle-up],[data-goview]');
+  const t = e.target.closest('[data-ask],[data-drill],[data-goflow],[data-up],[data-prog],[data-unit],[data-mode],[data-uptype],[data-uptheme],[data-aud],[data-crumb],[data-lg],[data-toggle-up]');
   if (!t) return;
   const d = t.dataset;
   if (d.ask != null) ask(d.ask);
@@ -2357,14 +2799,12 @@ document.addEventListener('click', e => {
   else if (d.prog != null) { st.aud = 'all'; st.findMode = 'all'; go('find'); requestAnimationFrame(() => { const el = $('#prog-' + d.prog); if (el) el.scrollIntoView({ block: 'center' }); }); }
   else if (d.unit != null) { st.unit = d.unit; renderFlowView(); }
   else if (d.mode != null) { st.mode = d.mode; renderFlowView(); }
-  else if (d.uptype != null) { st.upType = d.uptype; st.openUp = null; renderUpdates(); renderCtx(); }
-  else if (d.uptheme != null) { st.upTheme = d.uptheme; st.openUp = null; renderUpdates(); renderCtx(); }
-  else if (d.upthemeGo != null) actions.updates('all', d.upthemeGo);
+  else if (d.uptype != null) { st.upType = d.uptype; st.openUp = null; renderUpdates(); renderCtx(); renderSugg(); }
+  else if (d.uptheme != null) { st.upTheme = d.uptheme; st.openUp = null; renderUpdates(); renderCtx(); renderSugg(); }
   else if (d.aud != null) { st.aud = d.aud; renderFind(); renderCtx(); }
   else if (d.crumb != null) { st.path = []; renderFlowView(); renderCtx(); renderSugg(); }
   else if (d.lg != null) { st.sel = d.lg; renderFlowChart(); renderDetail(); renderCtx(); renderSugg(); }
-  else if (d.toggleUp != null) { st.openUp = st.openUp === d.toggleUp ? null : d.toggleUp; renderUpdates(); renderCtx(); }
-  else if (d.goview != null) go(d.goview);
+  else if (d.toggleUp != null) { st.openUp = st.openUp === d.toggleUp ? null : d.toggleUp; renderUpdates(); renderCtx(); renderSugg(); }
 });
 /* マイページ・制度の照合・申請の準備 */
 document.addEventListener('click', e => {
@@ -2384,6 +2824,35 @@ document.addEventListener('click', e => {
     if (!st.wipeArm) { st.wipeArm = true; renderMeSide(); const b = $('[data-fk="wipe"]'); if (b) b.focus(); }
     else { st.wipeArm = false; pf = cleanPf(null); apps = {}; store.del('profile'); store.del('apps'); renderMe(); renderSugg(); }
   }
+});
+/* ウォッチ */
+document.addEventListener('click', e => {
+  const t = e.target.closest('[data-wgo],[data-wopen],[data-wseen],[data-wreset],[data-wm-toggle],[data-wd-toggle],[data-ws-off],[data-wfollow],[data-wdraft-rm],[data-wstand-theme],#standSave,#standCancel');
+  if (!t) return;
+  const d = t.dataset, fk = d.fk && `[data-fk="${d.fk}"]`, tog = (list, id) => (list.includes(id) ? list.filter(x => x !== id) : [...list, id]);
+  const back = (...sels) => { for (const s of sels) { const el = s && $(s); if (el) { el.focus(); return; } } };
+  if (d.wgo != null) actions.watch(d.wgo, true);
+  else if (d.wopen != null) { const el = document.getElementById(d.wopen), open = el.hidden; el.hidden = !open; t.setAttribute('aria-expanded', String(open)); st.wOpen[open ? 'add' : 'delete'](d.wopen); }
+  else if (d.wseen != null) { W.seen = TODAY; wSave(); back('#wReset'); }
+  else if (d.wreset != null) { W = W0(); st.draft = null; st.wOpen.clear(); wSave(); back('#wSeen', '#wReset'); }
+  else if (d.wmToggle != null) {
+    const add = !W.matters.includes(d.wmToggle);
+    W.matters = tog(W.matters, d.wmToggle); wSave();
+    if (add && st.view === 'watch') flash('wm-' + d.wmToggle, true); else back(fk, `[data-fk="more-${d.wmToggle}"]`, '#wMatters .wm', '#standInput');
+  }
+  else if (d.wdToggle != null) { W.dls = tog(W.dls, d.wdToggle); wSave(); back(fk, '#wDeadlines'); }
+  else if (d.wsOff != null) { W.stands = W.stands.filter(s => s.id !== d.wsOff); wSave(); back('#standInput'); }
+  else if (d.wfollow != null) { W.follow = tog(W.follow, d.wfollow); wSave(); back(fk); }
+  else if (d.wdraftRm != null) { const [k, i] = d.wdraftRm.split(':'); st.draft[k].splice(Number(i), 1); renderStandDraft(); back('#standDraft .chip', '#standCancel'); }
+  else if (d.wstandTheme != null) { addStand({ id: 'th-' + d.wstandTheme, q: `${themeName(d.wstandTheme)}の補助金`, kind: ['補助金・助成金'], theme: [themeName(d.wstandTheme)], area: ['全国'] }); back('#detail a[href="#watch"]'); }
+  else if (t.id === 'standSave') { const s = addStand(st.draft); st.draft = null; $('#standInput').value = ''; renderStandDraft(); flash('ws-' + s.id, true); }
+  else if (t.id === 'standCancel') { st.draft = null; renderStandDraft(); back('#standInput'); }
+});
+$('#standForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const v = $('#standInput').value.trim(), q = standPhrase(v) || v;
+  if (!q) { $('#standInput').focus(); return; }
+  st.draft = readCond(q); renderStandDraft(); $('#standSave').focus();
 });
 /* 値が変わったときだけ保存して再描画する（入力欄を離れた瞬間に隣のボタンを差し替えると、そのクリックが失われるため） */
 const onPfField = e => { const k = e.target.dataset.pf; if (k && pf[k] !== e.target.value) { pf[k] = e.target.value; savePf(); } };
@@ -2421,6 +2890,7 @@ $('#copyUrl').addEventListener('click', async () => {
 addAi('国のお金の流れや、最近の政策の動きについて聞いてください。答えに合わせて、左の画面も動かします。');
 setMode();
 $('#acctLabel').textContent = login ? 'マイページ' : 'ログイン';
+renderWatchNav();
 let dockPref = null;
 try { dockPref = localStorage.getItem('yukue.dock'); } catch (e) { /* storage unavailable */ }
 if (!overlayMq.matches && dockPref !== '0') { st.dock = true; shell.classList.add('dock-open'); $('#dockToggle').setAttribute('aria-expanded', 'true'); }
